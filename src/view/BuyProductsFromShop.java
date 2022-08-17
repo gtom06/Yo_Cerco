@@ -110,6 +110,7 @@ public class BuyProductsFromShop {
         tableView.getItems().clear();
         String paramForSearch = requestTextField.getText();
         ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList();
+/*
         ArrayList<ProductShop> productShopArrayList = ProductHandler.findProductShopBy(s.getShopId());
 
         if (productShopArrayList != null) {
@@ -120,5 +121,7 @@ public class BuyProductsFromShop {
         } else {
             System.out.println("no result");
         }
+
+ */
     }
 }

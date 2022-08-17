@@ -14,4 +14,5 @@ module Supermarket {
     opens model.Department;
     opens model.Db;
     opens model.Dao;
+    opens main;
 }
