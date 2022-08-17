@@ -4,8 +4,6 @@ module Supermarket {
     requires javafx.base;
     requires javafx.fxml;
     requires java.sql;
-    requires mail;
-    requires activation;
     opens view;
     opens model;
     opens model.Product;

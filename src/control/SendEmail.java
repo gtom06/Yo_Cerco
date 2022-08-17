@@ -1,9 +1,11 @@
+
 package control;
 import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
+//import javax.mail.*;
+//import javax.mail.internet.*;
 
 public class SendEmail {
+/*
     public static void main(String[] args) {
 
         String host="mail.javatpoint.com";
@@ -39,4 +41,5 @@ public class SendEmail {
 
         } catch (MessagingException e) {e.printStackTrace();}
     }
+*/
 }

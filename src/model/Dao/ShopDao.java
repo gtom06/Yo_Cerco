@@ -230,6 +230,31 @@ public class ShopDao {
         }
     }
 
+    public static ArrayList<Shop> findShopByFavouriteUser(String username) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+
+        //Shop shop = null;
+        ArrayList<Shop> arrayShop= new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM shop s JOIN user_favoriteshop ufs " +
+                    "ON s.shop_id = ufs.shop_id " +
+                    "WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            arrayShop = convertRSInArrayShop(rs);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return arrayShop;
+        }
+    }
+
     public static ArrayList<Shop> findShopByNameAndTime(String name, Integer time) {
         PreparedStatement stmt = null;
         Connection conn = null;

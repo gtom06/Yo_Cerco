@@ -7,13 +7,19 @@ public interface Constants {
     //for images
     String SHOP_IMAGE = "src/images/shop/";
     String DEPARTMENT_IMAGE = "src/images/department/";
+
+
     //for shop/product_shop
+    //values
     int NEW_OPENING = 0;
     int AVAILABLE = 1;
     int NOT_AVAILABLE = -1;
+    //String
     String AVAILABLE_STRING = "Available";
     String SOON_BACK_STRING = "Soon back";
     String NOT_AVAILABLE_STRING = "Not available";
+    String MY_FAVORITE_SHOPS = "My favorite shops";
+    String MY_FAVORITE_SHOPS_CAPSLOCK = "MY FAVORITE SHOPS";
 
     //for product type
     String REFRIGERATED = "Freeze";

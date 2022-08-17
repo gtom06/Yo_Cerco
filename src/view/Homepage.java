@@ -39,6 +39,7 @@ public class Homepage {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchProduct.fxml"));
         Parent root = loader.load();
         SearchProduct searchProduct = loader.getController();
+        System.out.println("user " + u.toString());
         searchProduct.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
@@ -50,10 +51,11 @@ public class Homepage {
 
     @FXML
     protected void onClickAnchorPane3() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("favoriteShops.fxml"));
         Parent root = loader.load();
-        SearchShop searchShop = loader.getController();
-        searchShop.passUser(u);
+        FavoriteShops favoriteShops = loader.getController();
+        System.out.println("user: " + u.toString());
+        favoriteShops.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();

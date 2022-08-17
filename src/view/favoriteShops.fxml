@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FavoriteShops">
+    <children>
+        <Rectangle fill="#937565" height="50.0" width="1000.0" />
+        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/shop/icons8-casa-48.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="param1" layoutX="86.0" layoutY="472.0" />
+        <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
+        <TableView fx:id="tableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="563.0" prefWidth="898.0">
+        </TableView>
+    </children>
+</AnchorPane>

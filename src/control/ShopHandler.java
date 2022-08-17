@@ -3,6 +3,7 @@ import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.Dao.ShopDao;
+import model.User.User;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -93,5 +94,9 @@ public class ShopHandler {
             productSkuArrayList.add(sp.getSku());
         }
         return ShopDao.findShopsWithProducts(productSkuArrayList);
+    }
+
+    public static ArrayList<Shop> findFavouriteShopsFromUser(User user){
+        return ShopDao.findShopByFavouriteUser(user.getUsername());
     }
 }
