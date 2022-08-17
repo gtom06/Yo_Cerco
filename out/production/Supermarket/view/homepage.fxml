@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Homepage">
+   <left>
+      <AnchorPane maxHeight="650.0" maxWidth="333.0" minHeight="650.0" minWidth="333.0" onMouseClicked="#onClickAnchorPane1" prefHeight="650.0" prefWidth="333.0" style="-fx-background-color: #830514;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="134.0" layoutY="164.0" text="Ricerca shop" />
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="132.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shop/icons8-negozio-96.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane1" maxHeight="650.0" maxWidth="334.0" minHeight="650.0" minWidth="334.0" onMouseClicked="#onClickAnchorPane2" prefHeight="650.0" prefWidth="334.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="123.0" layoutY="166.0" text="Ricerca prodotto" />
+            <ImageView fitHeight="70" fitWidth="70" layoutX="132.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shop/icons8-cesto-della-spesa-96.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+   <right>
+      <AnchorPane maxHeight="650.0" maxWidth="333.0" minHeight="650.0" minWidth="333.0" prefHeight="650.0" prefWidth="333.0" onMouseClicked="#onClickAnchorPane3" style="-fx-background-color: #830514;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="146.0" layoutY="169.0" text="Preferiti" />
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="132.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shop/icons8-aggiungi-ai-preferiti-96.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </right>
+   <top>
+      <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #937565;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="logoutButton" layoutX="932.0" layoutY="13.0" maxHeight="25.0" maxWidth="54.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="25.0" prefWidth="54.0" text="Logout" />
+            <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
