@@ -65,12 +65,16 @@ public class ShopHandler {
         return null;
     }
 
-// todo: check the usage and remove it
+    public static boolean isFavoriteShop(Shop shop, User user) {
+        return ShopDao.isFavoriteShop(shop.getShopId(), user.getUsername());
+    }
+
+    // todo: check the usage and remove it
     public String getPhotoByShopId(int shopId){
         return ShopDao.findShopById(shopId).getLogoImagepath();
     }
 
-// todo: remove that class and use another way
+    // todo: remove that class and use another way
     public static int getShopFromString(String s){
         int tab = s.indexOf(" ");
         String subString = "";
@@ -81,8 +85,12 @@ public class ShopHandler {
         return Integer.valueOf(subString);
     }
 
-    public static void insertShopIntoFavorite(String shopId, String username){
-        ShopDao.insertFavoriteShopIntoDb(Integer.valueOf(shopId), username);
+    public static void removeShopFromFavorite(Shop shop, User user) {
+        ShopDao.removeFavoriteShopFromDb(shop.getShopId(), user.getUsername());
+    }
+
+    public static void insertShopIntoFavorite(Shop shop, User user){
+        ShopDao.insertFavoriteShopIntoDb(Integer.valueOf(shop.getShopId()), user.getUsername());
     }
 
     public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){

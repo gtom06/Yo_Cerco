@@ -26,31 +26,37 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static model.Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK;
+import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
+
 
 public class ShopView {
-    User u = null;
+    User user = null;
     @FXML
-    Label shopName, shopAddress, shopCity;
-    @FXML
-    ImageView homepageImageView, shopLogo,
-            dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9;
+    ImageView   homepageImageView, shopLogo,
+                addShopToFavorites, removeShopFromFavorites,
+                dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9;
     @FXML
     TableView<Department> tableView = new TableView<>();
     TableColumn<Department, String> nameColumn;
     @FXML
     Label labelHi;
+    @FXML
+    Label labelShopName, labelShopAddress, labelShopOpeningTime, labelFavorite;
     ArrayList<ImageView> imageDep= new ArrayList<>();
     ArrayList<String> dep = new ArrayList<>();
     String shopId = "";
     InputStream stream = null;
     Image image = null;
 
+    Shop shop = null;
+
     @FXML
     protected void onHomepageImageClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(u);
+        homepage.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -60,72 +66,54 @@ public class ShopView {
     }
 
     public void passUser(User user) {
-        u = user;
+        this.user = user;
         labelHi.setText(user.getUsername());
     }
 
     public void passShop(Shop shop) throws FileNotFoundException {
+        this.shop = shop;
         stream = new FileInputStream(shop.getLogoImagepath());
-        image = new Image(stream);
+        image = new Image(stream, 200, 200, false, false);
+        labelShopName.setText(shop.getShopName());
+
+        if (ShopHandler.isFavoriteShop(shop, user)) {
+            //set to remove
+            labelFavorite.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+            removeShopFromFavorites.setVisible(true);
+            addShopToFavorites.setVisible(false);
+        } else {
+            //set to add
+            labelFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+            removeShopFromFavorites.setVisible(false);
+            addShopToFavorites.setVisible(true);
+        }
+
         shopLogo.setImage(image);
-        shopCity.setText(shop.getCity());
-        shopAddress.setText(shop.getAddress());
-        shopName.setText(shop.getShopName());
         shopId = String.valueOf(shop.getShopId());
-
-        //for departments
-        imageDep.add(dep1);
-        imageDep.add(dep2);
-        imageDep.add(dep3);
-        imageDep.add(dep4);
-        imageDep.add(dep5);
-        imageDep.add(dep6);
-        imageDep.add(dep7);
-        imageDep.add(dep8);
-        imageDep.add(dep9);
-
-        ArrayList<Department> departmentArrayList = DepartmentHandler.findDepartmentByShop(shop.getShopId());
-        if (departmentArrayList != null) {
-            int departmentArrayListSize = departmentArrayList.size();
-            for (int i = 0; i < departmentArrayListSize; i++) {
-                if (i > 8 && departmentArrayListSize > 9) {
-                    String logoImagepath = departmentArrayList.get(i).getLogoImagepath();
-                    if (logoImagepath != "") {
-                        FileInputStream stream = new FileInputStream(Constants.DEPARTMENT_IMAGE + departmentArrayList.get(i).getLogoImagepath());
-                        Image image = new Image(stream);
-                        imageDep.get(i).setImage(image);
-                        dep.add(departmentArrayList.get(i).getName());
-                    }
-                }
-                else {
-                }
-            }
-        }
-        else{
-            System.out.println("no department result");
-        }
-
-        //create tableView
-        tableView.setEditable(false);
-        nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(10);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tableView.getColumns().addAll(nameColumn);
-        //retrieve objects
-        ObservableList<Department> observableListDepartment = FXCollections.observableArrayList();
-        departmentArrayList = DepartmentHandler.findDepartmentByShop(shop.getShopId());
-        if (departmentArrayList != null) {
-            for (Department d : departmentArrayList) {
-                observableListDepartment.add(d);
-            }
-            tableView.setItems(observableListDepartment);
-        }
-        else {
-            System.out.println("no result");
-        }
+        labelShopAddress.setText(shop.getAddress() +" - " +shop.getCity());
+        labelShopOpeningTime.setText(shop.getOpeningTime());
     }
 
+    //methods for adding and removing shops from favorite
     public void addToFavorite() {
-        ShopHandler.insertShopIntoFavorite(shopId, labelHi.getText());
+        ShopHandler.insertShopIntoFavorite(shop, user);
+        labelFavorite.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+        removeShopFromFavorites.setVisible(true);
+        addShopToFavorites.setVisible(false);
+    }
+
+    public void removeFromFavorite(){
+        ShopHandler.removeShopFromFavorite(shop, user);
+        labelFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+        removeShopFromFavorites.setVisible(false);
+        addShopToFavorites.setVisible(true);
+    }
+
+    public void addRemoveFavoriteFromLabel(){
+        if (labelFavorite.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
+            removeFromFavorite();
+        } else {
+            addToFavorite();
+        }
     }
 }

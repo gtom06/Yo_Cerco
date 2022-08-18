@@ -27,8 +27,8 @@ create table shop_department(
 );
 
 create table user_favoriteshop(
-    username        varchar(100),
-    shop_id         numeric(10) references
+    username        varchar(100)    references userx(username),
+    shop_id         numeric(10)     references shop(shop_id)
 );
 
 create sequence sku_id_sequence;

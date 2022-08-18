@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class ShopDao {
 
     public static void insertShopDb(Shop shop) {
-
     }
 
     public static void deleteShopDb(Shop shop) {
@@ -159,25 +158,6 @@ public class ShopDao {
         }
     }
 
-    public static void insertFavoriteShopIntoDb(int shopId, String username) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        try {
-            conn = dbHelper.openDBConnection();
-            String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
-                    "VALUES (?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setInt(2, shopId);
-            stmt.executeUpdate();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
-        }
-    }
-
     public static ArrayList<Shop> findShopByAddressAndTime(String address, Integer time) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -311,7 +291,10 @@ public class ShopDao {
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * FROM product_shop PS JOIN shop S on S.shop_id = PS.shop_id WHERE sku IN ";
+            String sql = "SELECT DISTINCT * " +
+                    "FROM product_shop PS " +
+                    "JOIN shop S on S.shop_id = PS.shop_id " +
+                    "WHERE sku IN ";
             System.out.println(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
             stmt = conn.prepareStatement(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
 
@@ -322,6 +305,71 @@ public class ShopDao {
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             return arrayShop;
+        }
+    }
+
+    public static void insertFavoriteShopIntoDb(int shopId, String username) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
+                    "VALUES (?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, shopId);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+    }
+
+    public static void removeFavoriteShopFromDb(int shopId, String username) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "DELETE FROM user_favoriteshop " +
+                    "WHERE username = ? AND shop_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, shopId);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+    }
+
+    public static boolean isFavoriteShop(int shopId, String username) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        boolean output = false;
+        ArrayList<Shop> arrayShop= new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM user_favoriteshop " +
+                    "WHERE shop_id = ? AND username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setString(2, username);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                output = true;
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return output;
         }
     }
 }

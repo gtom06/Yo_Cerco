@@ -98,8 +98,8 @@ public class Login {
                     newStage.setScene(new Scene(root));
                     newStage.show();
                     newStage.setResizable(false);
-                    //Stage stage = (Stage) loginButton.getScene().getWindow();
-                    //stage.close();
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    stage.close();
                 }
                 if (u instanceof Admin) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
@@ -110,8 +110,8 @@ public class Login {
                     newStage.setScene(new Scene(root));
                     newStage.show();
                     newStage.setResizable(false);
-                    //Stage stage = (Stage) loginButton.getScene().getWindow();
-                    //stage.close();
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    stage.close();
                 }
             }
         }
