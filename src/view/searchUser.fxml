@@ -17,7 +17,7 @@
         <Button fx:id="searchButton" layoutX="822.0" layoutY="58.0" mnemonicParsing="false" onAction="#onSearchButtonClick" text="Search" textAlignment="CENTER" />
         <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/shop/icons8-casa-48.png" />
+                <Image url="@../images/user_interface/icons8-home-48.png" />
             </image>
         </ImageView>
         <ListView fx:id="shopListView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="563.0" prefWidth="898.0" />

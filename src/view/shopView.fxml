@@ -7,17 +7,22 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
     <children>
         <Rectangle fill="#a8dadc" height="700.0" smooth="false" stroke="BLACK" width="1018.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <Rectangle fill="#457b9d" height="475.0" layoutX="26.0" layoutY="52.0" width="968.0" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
         <Label fx:id="labelHi" layoutX="50.0" layoutY="70.0" prefHeight="58.0" prefWidth="102.0" />
-        <ImageView fx:id="shopLogo" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0"/>
+        <ImageView fx:id="shopLogo" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0" />
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="99.0">
          <image>
             <Image url="@../images/shop/icons8-google-maps-48.png" />
          </image>
       </ImageView>
+        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/icons8-home-48.png" />
+            </image>
+        </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="155.0">
          <image>
             <Image url="@../images/shop/icons8-clock-48.png" />
@@ -28,17 +33,17 @@
             <Image url="@../images/shop/icons8-ringing-phone-48.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="addShopToFavorites" onMouseClicked="#addToFavorite" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="929.0">
+      <ImageView fx:id="addShopToFavorites" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="351.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="929.0">
          <image>
             <Image url="@../images/shop/icons8-we-heart-it-48.png" />
          </image>
       </ImageView>
-        <ImageView fx:id="removeShopFromFavorites" onMouseClicked="#removeFromFavorite" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="929.0">
+        <ImageView fx:id="removeShopFromFavorites" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="351.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="929.0">
             <image>
                 <Image url="@../images/shop/icons8-close-48.png" />
             </image>
         </ImageView>
-      <Label fx:id="labelFavorite" onMouseClicked="#addRemoveFavoriteFromLabel" layoutX="101.0" layoutY="351.0" prefHeight="40.0" prefWidth="200.0" textAlignment="JUSTIFY" textFill="#ffb703">
+      <Label fx:id="labelFavorite" layoutX="101.0" layoutY="351.0" onMouseClicked="#addRemoveFavoriteFromLabel" prefHeight="40.0" prefWidth="200.0" textAlignment="JUSTIFY" textFill="#ffb703">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
@@ -201,6 +206,21 @@
       <Label fx:id="openingTimeShop112" layoutX="778.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="AMICI ANIMALI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="905.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="homepageImageView1" fitHeight="96.0" fitWidth="96.0" layoutX="42.0" layoutY="419.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/icons8-home-48.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelShopNow" layoutX="152.0" layoutY="444.0" prefHeight="46.0" prefWidth="224.0" text="SHOP NOW" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+         <font>
+            <Font name="Tahoma Bold" size="36.0" />
          </font>
       </Label>
     </children>

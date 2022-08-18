@@ -37,7 +37,7 @@
       </RadioButton>
       <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/shop/icons8-casa-48.png" />
+            <Image url="@../images/user_interface/icons8-home-48.png" />
          </image>
       </ImageView>
       <Label fx:id="selected" layoutX="86.0" layoutY="472.0" />

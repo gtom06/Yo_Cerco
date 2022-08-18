@@ -116,4 +116,16 @@ public class ShopView {
             addToFavorite();
         }
     }
+    public void previousPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+        Parent root = loader.load();
+        SearchShop searchShop = loader.getController();
+        searchShop.passUser(user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
+    }
 }
