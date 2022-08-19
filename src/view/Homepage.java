@@ -51,11 +51,11 @@ public class Homepage {
 
     @FXML
     protected void onClickAnchorPane3() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("favoriteShops.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("favorite.fxml"));
         Parent root = loader.load();
-        FavoriteShops favoriteShops = loader.getController();
+        Favorite favorite = loader.getController();
         System.out.println("user: " + u.toString());
-        favoriteShops.passUser(u);
+        favorite.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
