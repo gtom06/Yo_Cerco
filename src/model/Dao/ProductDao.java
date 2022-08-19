@@ -3,6 +3,8 @@ package model.Dao;
 import model.Db.DbHelper;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
+import model.Shop.Shop;
+import model.User.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -141,6 +143,40 @@ public class ProductDao {
 
                 productShop = new ProductShop(sku, amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase,shopId,type);
                 productArrayList.add(productShop);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return productArrayList;
+        }
+    }
+
+    public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(String username) {
+        //todo:
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<SimpleProduct> productArrayList = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM  s JOIN user_favoriteshop ufs " +
+                    "ON s.shop_id = ufs.shop_id " +
+                    "WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                SimpleProduct simpleProduct;
+                Integer sku = rs.getInt("sku");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                Integer type = rs.getInt("type");
+                Double weight = rs.getDouble("weight");
+                String logoImagepath = rs.getString("logo_imagepath");
+                simpleProduct = new SimpleProduct(sku, name, description, type, weight, logoImagepath);
+                productArrayList.add(simpleProduct);
             }
         } catch (SQLException se) {
             se.printStackTrace();

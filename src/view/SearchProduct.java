@@ -29,7 +29,7 @@ public class SearchProduct {
     @FXML
     Button searchForShop;
     @FXML
-    TableView<SimpleProduct> tableView = new TableView<>();
+    TableView<SimpleProduct> productTableView = new TableView<>();
     TableColumn<SimpleProduct, String> descriptionColumn;
     TableColumn<SimpleProduct, Integer> typeColumn;
     TableColumn<SimpleProduct, String> nameColumn;
@@ -73,7 +73,7 @@ public class SearchProduct {
 
     @FXML
     protected void onSearchButtonClick() {
-        tableView.getItems().clear();
+        productTableView.getItems().clear();
         String paramForSearch = requestTextField.getText();
         ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList();
         ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findSimpleProductBy(paramForSearch);
@@ -82,7 +82,7 @@ public class SearchProduct {
             for (SimpleProduct sp : simpleProductArrayList) {
                 observableListProducts.add(sp);
             }
-            tableView.setItems(observableListProducts);
+            productTableView.setItems(observableListProducts);
         }
         else {
             System.out.println("no result");
@@ -92,7 +92,7 @@ public class SearchProduct {
     @FXML
     protected void onSearchShopButtonClick() {
         ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
-        for (SimpleProduct sp : tableView.getSelectionModel().getSelectedItems()) {
+        for (SimpleProduct sp : productTableView.getSelectionModel().getSelectedItems()) {
             simpleProductArrayList.add(sp);
         }
         ShopHandler.findShopsContainingProductBy(simpleProductArrayList);
@@ -105,8 +105,8 @@ public class SearchProduct {
     @FXML
     public void initialize(){
 
-        tableView.setEditable(true);
-        tableView.getSelectionModel().setSelectionMode(
+        productTableView.setEditable(true);
+        productTableView.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
 
@@ -126,6 +126,6 @@ public class SearchProduct {
         weightColumn.setMinWidth(30);
         weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
 
-        tableView.getColumns().addAll(nameColumn, descriptionColumn, typeColumn, weightColumn);
+        productTableView.getColumns().addAll(nameColumn, descriptionColumn, typeColumn, weightColumn);
     }
 }

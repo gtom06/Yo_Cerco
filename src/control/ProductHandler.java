@@ -4,6 +4,7 @@ import model.Dao.ProductDao;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
+import model.User.User;
 
 import java.util.ArrayList;
 
@@ -27,5 +28,9 @@ public class ProductHandler {
             return null;
         }
         return ProductDao.findProductInShop(shop.getShopId());
+    }
+
+    public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(User user) {
+        return ProductDao.findFavoriteShopsFromUser(user.getUsername());
     }
 }
