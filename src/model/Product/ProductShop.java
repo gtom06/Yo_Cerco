@@ -2,13 +2,13 @@ package model.Product;
 
 public class ProductShop implements Product {
     private final int sku;
-    private double amount;
-    private double discountedAmount;
+    private final double amount;
+    private final double discountedAmount;
     private final String currency;
     private double percentOfDiscount;
     private int availableQuantity;
     private int numberOfPurchase;
-    private final int shopId;
+    private int shopId;
     private final String type;
 
     public ProductShop(int sku, double amount, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId, String type) {
@@ -20,6 +20,15 @@ public class ProductShop implements Product {
         this.availableQuantity = availableQuantity;
         this.numberOfPurchase = numberOfPurchase;
         this.shopId = shopId;
+        this.type = type;
+    }
+
+    //used in OrderItem
+    public ProductShop(int sku, double amount, double discountedAmount, String currency, String type) {
+        this.sku = sku;
+        this.amount = amount;
+        this.discountedAmount = discountedAmount;
+        this.currency = currency;
         this.type = type;
     }
 

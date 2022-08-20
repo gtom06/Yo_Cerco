@@ -34,14 +34,15 @@ create table user_favoriteproduct(
 );
 create sequence orders_id_sequence;
 create table orders(
-    order_id            numeric(10)     primary key default nextval('orders_id_sequence'),
-    username            varchar(100)    references userx(username),
-    payment             varchar(100),
-    order_date          date,
-    total_amount        float(10),
-    currency            varchar(5),
-    status              varchar(100),
-    collection_date     date
+    order_id                    numeric(10)     primary key default nextval('orders_id_sequence'),
+    username                    varchar(100)    references userx(username),
+    payment                     varchar(100),
+    order_timestamp             timestamp       DEFAULT current_timestamp,
+    total_amount                float(10),
+    total_quantity              numeric(10),
+    currency                    varchar(5),
+    status                      varchar(100),
+    collection_order_timestamp  timestamp
 );
 
 /*
