@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="350.0" maxWidth="1000.0" minHeight="350.0" minWidth="1000.0" prefHeight="350.0" prefWidth="1000.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
+         <children>
+            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="266.0" layoutY="55.0" prefHeight="28.0" prefWidth="74.0" text="Name:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="95.0" prefHeight="28.0" prefWidth="112.0" text="Surname:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="135.0" prefHeight="28.0" prefWidth="125.0" text="Username:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="175.0" prefHeight="28.0" prefWidth="98.0" text="Address:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="215.0" prefHeight="32.0" prefWidth="80.0" text="Phone:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="350.0" maxHeight="350.0" maxWidth="1000.0" minHeight="350.0" minWidth="1000.0" prefHeight="350.0" prefWidth="1000.0" style="-fx-background-color: #457b9d; -fx-border-color: ffb703; -fx-border-width: 5;">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="58.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+               <image>
+                  <Image url="@../images/user_interface/icons8-in-transit-96.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="384.0" layoutY="152.0" prefHeight="46.0" prefWidth="231.0" text="MY ORDERS" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

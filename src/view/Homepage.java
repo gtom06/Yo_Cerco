@@ -65,6 +65,21 @@ public class Homepage {
     }
 
     @FXML
+    protected void onClickAnchorPane4() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(" myProfile.fxml"));
+        Parent root = loader.load();
+        myProfile myProfile = loader.getController();
+        System.out.println("user: " + u.toString());
+        myProfile.passUser(u);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) anchorPane1.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     protected void onLogoutButtonClick() throws IOException {
         Stage stage2 = new Stage();
         Parent root = FXMLLoader.load((getClass().getResource("login.fxml")));
