@@ -7,12 +7,14 @@ public class ShopHolder implements User {
     private final String name;
     private final String email;
     private final String password;
+    private final String surname;
 
-    public ShopHolder(String username, String password, String name, String email) {
+    public ShopHolder(String username, String password, String name, String surname, String email) {
         this.username = username;
-        this.name = name;
-        this.email = email;
         this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
     }
 
     @Override
@@ -23,6 +25,11 @@ public class ShopHolder implements User {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getSurname() {
+        return surname;
     }
 
     @Override

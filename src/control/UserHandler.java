@@ -20,15 +20,16 @@ public class UserHandler {
     public static ArrayList<User> selectUsernamesFromKeyword(String keyword) {
         return UserDao.retriveUserFrom(keyword);
     }
-    public static boolean insertUser(String username, String name, String password, String email, Date dateOfBirth, String gender, String roleString) {
+    public static boolean insertUser(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String roleString) {
         if (roleString.equals(Constants.BUYER) || roleString.equals(Constants.BUYER_USER)) {
-            Buyer buyer = new Buyer(username, name, password, email, dateOfBirth, gender);
+            //todo: insert new params
+            Buyer buyer = new Buyer(username, name, surname, password, email, dateOfBirth, billingStreet, null, null, null, phone, gender, null);
             return UserDao.insertUser(buyer);
         } else if (roleString.equals(Constants.ADMIN) || roleString.equals(Constants.ADMIN_USER)) {
-            Admin admin = new Admin(username, name, email, password);
+            Admin admin = new Admin(username, name, surname, email, password);
             return UserDao.insertUser(admin);
         } else if (roleString.equals(Constants.OWNER) || roleString.equals(Constants.SHOPHOLDER_USER)) {
-            ShopHolder shopHolder = new ShopHolder(username, password, name, email);
+            ShopHolder shopHolder = new ShopHolder(username, password, name, surname, email);
             return UserDao.insertUser(shopHolder);
         }
         System.out.println("insert failed");

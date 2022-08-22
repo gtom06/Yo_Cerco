@@ -1,42 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MyProfile">
    <children>
       <AnchorPane maxHeight="350.0" maxWidth="1000.0" minHeight="350.0" minWidth="1000.0" prefHeight="350.0" prefWidth="1000.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
          <children>
-            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="266.0" layoutY="55.0" prefHeight="28.0" prefWidth="74.0" text="Name:" textFill="#ffb703">
+            <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffb703" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
+            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseEntered="#do1" onMouseExited="#exit1" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user_interface/icons8-customer-100.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameLabel" layoutX="412.0" layoutY="50.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="266.0" layoutY="95.0" prefHeight="28.0" prefWidth="112.0" text="Surname:" textFill="#ffb703">
+            <Label fx:id="surnameLabel" layoutX="412.0" layoutY="90.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="266.0" layoutY="135.0" prefHeight="28.0" prefWidth="125.0" text="Username:" textFill="#ffb703">
+            <Label fx:id="usernameLabel" layoutX="412.0" layoutY="130.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="266.0" layoutY="175.0" prefHeight="28.0" prefWidth="98.0" text="Address:" textFill="#ffb703">
+            <Label fx:id="addressLabel" layoutX="412.0" layoutY="170.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="266.0" layoutY="215.0" prefHeight="32.0" prefWidth="80.0" text="Phone:" textFill="#ffb703">
+            <Label fx:id="phoneLabel" layoutX="412.0" layoutY="210.0" prefHeight="32.0" prefWidth="527.0" textFill="#ffb703">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Label>
+            <Label fx:id="nameHelpLabel" layoutX="259.0" layoutY="52.0" prefHeight="28.0" prefWidth="74.0" text="Name:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="surnameHelpLabel" layoutX="259.0" layoutY="92.0" prefHeight="28.0" prefWidth="112.0" text="Surname:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="usernameHelpLabel" layoutX="259.0" layoutY="132.0" prefHeight="28.0" prefWidth="125.0" text="Username:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="addressHelpLabel" layoutX="259.0" layoutY="172.0" prefHeight="28.0" prefWidth="98.0" text="Address:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneHelpLabel" layoutX="259.0" layoutY="212.0" prefHeight="32.0" prefWidth="80.0" text="Phone:" textFill="#ffb703">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="editImageView" fitHeight="28.0" fitWidth="28.0" layoutX="259.0" layoutY="14.0" onMouseClicked="#editProfile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user_interface/icons8-compose-48.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="saveImageView" fitHeight="28.0" fitWidth="28.0" layoutX="259.0" layoutY="14.0" onMouseClicked="#saveProfile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user_interface/icons8-done-48.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="editLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#editProfile" prefHeight="17.0" prefWidth="180.0" text="Modify your profile">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameTextField" layoutX="412.0" layoutY="52.0" visible="false" />
+            <TextField fx:id="surnameTextField" layoutX="412.0" layoutY="92.0" visible="false" />
+            <TextField fx:id="addressTextField" layoutX="412.0" layoutY="174.0" visible="false" />
+            <TextField fx:id="phoneTextField" layoutX="412.0" layoutY="214.0" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="350.0" maxHeight="350.0" maxWidth="1000.0" minHeight="350.0" minWidth="1000.0" prefHeight="350.0" prefWidth="1000.0" style="-fx-background-color: #457b9d; -fx-border-color: ffb703; -fx-border-width: 5;">

@@ -113,6 +113,8 @@ public class Login {
                     Stage stage = (Stage) loginButton.getScene().getWindow();
                     stage.close();
                 }
+            } else{
+                invalidLoginCredentials.setText("User not found or incorrect fields!");
             }
         }
     }
@@ -144,8 +146,19 @@ public class Login {
             invalidLoginCredentials.setText("");
             RadioButton rb = (RadioButton) gender.getSelectedToggle();
             String genderString = rb.getText();
-            UserHandler.insertUser(signUpUsernameTextField.getText(), null, signUpPasswordPasswordField.getText(),
-                    signUpEmailTextField.getText(), Date.valueOf(signUpDateDatePicker.getValue()), genderString, Constants.BUYER_USER);
+            UserHandler.insertUser(signUpUsernameTextField.getText(),
+                    null,
+                    null,
+                    signUpPasswordPasswordField.getText(),
+                    signUpEmailTextField.getText(),
+                    Date.valueOf(signUpDateDatePicker.getValue()),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    genderString,
+                    Constants.BUYER_USER);
         } else {
             invalidSignupCredentials.setText("The Passwords don't match!");
             invalidSignupCredentials.setStyle(errorMessage);

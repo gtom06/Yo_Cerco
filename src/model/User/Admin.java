@@ -3,12 +3,14 @@ package model.User;
 public class Admin implements User {
     private final String username;
     private final String name;
+    private final String surname;
     private final String email;
     private final String password;
 
-    public Admin(String username, String name, String email, String password) {
+    public Admin(String username, String name, String surname, String email, String password) {
         this.username = username;
         this.name = name;
+        this.surname = surname;
         this.email = email;
         this.password = password;
     }
@@ -19,6 +21,8 @@ public class Admin implements User {
     }
     @Override
     public String getName() { return name;}
+    @Override
+    public String getSurname() { return surname;}
     @Override
     public String getPassword() {
         return null;

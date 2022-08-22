@@ -12,7 +12,7 @@ public class DaoHelper {
         return output + ")";
     }
 
-    public static String buildSqlStringFromArrayOfIntegers(ArrayList<Integer> integerArrayList){
+    public static String buildSqlStringFromArrayOfIntegers(ArrayList<Integer> integerArrayList){ // (?,?,?)
         String output = "(";
         int lenght = integerArrayList.size();
         for (int i = 0; i < lenght; i++){

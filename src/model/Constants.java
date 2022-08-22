@@ -1,6 +1,9 @@
 package model;
 
 public interface Constants {
+    String SAVE = "Save";
+    String SAVE_CAPSLOCK = "SAVE";
+
     //for file
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
     String CART_PATH = "src/data/cart.txt";
@@ -25,6 +28,11 @@ public interface Constants {
     String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorite";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITE";
 
+    //Profile
+    String COMPLETE_YOUR_PROFILE = "Complete your profile";
+    String COMPLETE_YOUR_PROFILE_CAPSLOCK = "COMPLETE YOUR PROFILE";
+    String MODIFY_YOUR_PROFILE_STRING = "Modify your profile";
+    String MODIFY_YOUR_PROFILE_STRING_CAPSLOCK = "MODIFY YOUR PROFILE";
 
     //for product type
     String REFRIGERATED = "Freeze";

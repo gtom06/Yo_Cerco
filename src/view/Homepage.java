@@ -17,7 +17,7 @@ public class Homepage {
     @FXML
     Button logoutButton;
     @FXML
-    AnchorPane anchorPane1;
+    AnchorPane anchorPane1, anchorPane2, anchorPane3, anchorPane4;
     @FXML
     Label labelHi;
     @FXML
@@ -66,16 +66,16 @@ public class Homepage {
 
     @FXML
     protected void onClickAnchorPane4() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(" myProfile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
-        myProfile myProfile = loader.getController();
+        MyProfile myProfile = loader.getController();
         System.out.println("user: " + u.toString());
         myProfile.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) anchorPane1.getScene().getWindow();
+        Stage stage = (Stage) anchorPane4.getScene().getWindow();
         stage.close();
     }
 

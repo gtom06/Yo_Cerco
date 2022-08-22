@@ -46,8 +46,19 @@ public class CreateUserAS {
             RadioButton rb = (RadioButton) role.getSelectedToggle();
             String roleText = rb.getText();
             //Admin Buyer Owner
-            UserHandler.insertUser(signUpUsernameTextField.getText(), null, Constants.STANDARD_PASSWORD,
-                    signUpEmailTextField.getText(), null, null, roleText);
+            UserHandler.insertUser(signUpUsernameTextField.getText(),
+                    null,
+                    null,
+                    Constants.STANDARD_PASSWORD,
+                    signUpEmailTextField.getText(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    roleText);
         }
     }
 

@@ -95,13 +95,21 @@ create product_userx(
 
 create sequence user_id_sequence;
 create table userx(
-    username        varchar(100) primary key,
-    pass            varchar(100),
-    email           varchar(200),
-    user_id         numeric(10) default nextval('user_id_sequence'),
-    date_of_birth   date,
-    gender          varchar(1),
-    role            varchar(1)
+    username            varchar(100) primary key,
+    pass                varchar(100),
+    email               varchar(200),
+    user_id             numeric(10) default nextval('user_id_sequence'),
+    date_of_birth       date,
+    gender              varchar(1),
+    role                varchar(1),
+    name                varchar(50),
+    surname             varchar(50),
+    billing_street      varchar(255),
+    billing_city        varchar(50),
+    billing_country     varchar(50),
+    billing_zip         varchar(10),
+    phone               varchar(20),
+    profile_imagepath   varchar(200)
 );
 
 create table shopholder_shop(

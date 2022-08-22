@@ -15,7 +15,7 @@ public class UserDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        String u = null;
+        boolean output = false;
         try {
             conn = dbHelper.openDBConnection();
 
@@ -27,13 +27,14 @@ public class UserDao {
             stmt.setString(2,password);
 
             ResultSet rs = stmt.executeQuery();
-            rs.next();
-            u = rs.getString("username");
+            if (rs.next()) {
+                output = true;
+            }
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return true;
+            return output;
         }
     }
 
@@ -45,7 +46,7 @@ public class UserDao {
         try {
             conn = dbHelper.openDBConnection();
 
-            String sql = "SELECT role, email, date_of_birth, gender " +
+            String sql = "SELECT * " +
                     "FROM userx " +
                     "WHERE username = ?";
             stmt = conn.prepareStatement(sql);
@@ -55,25 +56,39 @@ public class UserDao {
             rs.next();
 
             String role = rs.getString("role");
-            String name = null;
+            String name = rs.getString("name");
             String pass = null;
             String email = rs.getString("email");
             Date dateOfBirth = rs.getDate("date_of_birth");
             String gender = rs.getString("gender");
+            String surname = rs.getString("surname");
+            String billingStreet = rs.getString("billing_street");
+            String billingCity = rs.getString("billing_city");
+            String billingCountry = rs.getString("billing_country");
+            String billingZip = rs.getString("billing_zip");
+            String phone = rs.getString("phone");
+            String profileImagepath = rs.getString("profile_imagepath");
             if (role.equals(Constants.SHOPHOLDER_USER)){
-                user = new ShopHolder(username,null, null, email);
+                user = new ShopHolder(username,null, name, surname, email);
             }
             else if (role.equals(Constants.ADMIN_USER)){
-                user = new Admin(username,null,null, email);
+                user = new Admin(username, name, surname, email, null);
             }
             else if (role.equals(Constants.BUYER_USER)){
                 user = new Buyer(
                         username,
                         name,
+                        surname,
                         pass,
                         email,
                         dateOfBirth,
-                        gender
+                        billingStreet,
+                        billingCity,
+                        billingCountry,
+                        billingZip,
+                        phone,
+                        gender,
+                        profileImagepath
                 );
             }
 
@@ -106,14 +121,15 @@ public class UserDao {
                 String email = rs.getString("email");
                 String username = rs.getString("username");
                 String gender = null;
+                //todo: modify
                 if (role.equals(Constants.BUYER_USER)){
-                    userList.add(new Buyer(username, null, null, email, null, null));
+                    userList.add(new Buyer(username, null, null, null, email, null, null, null,null, null, null, null, null));
                 }
                 else if (role.equals(Constants.ADMIN_USER)){
-                    userList.add(new Admin(username,null, null, email));
+                    userList.add(new Admin(username,null, null, email, null));
                 }
                 else if (role.equals(Constants.SHOPHOLDER_USER)){
-                    userList.add(new ShopHolder(username,null,null, email));
+                    userList.add(new ShopHolder(username,null,null, null, email));
                 }
             }
         } catch(SQLException se){
