@@ -35,4 +35,15 @@ example of json:
         }
         return orderItemArrayList;
     }
+
+    public static ArrayList<String> convertJsonIntoPhonePrefix(String json) {
+        ArrayList<String> phonePrefixArrayList = new ArrayList<>();
+        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+        String prefix;
+        for (JsonElement e : jsonObject.getAsJsonArray()){
+            prefix = ((JsonObject) e).get("dial_code").getAsString();
+            phonePrefixArrayList.add(prefix);
+        }
+        return phonePrefixArrayList;
+    }
 }

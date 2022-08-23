@@ -35,4 +35,24 @@ public class UserHandler {
         System.out.println("insert failed");
         return false;
     }
+
+    public static boolean updateRecord(User user, String name, String surname, String street,
+                                       String city, String country, String zip, String phone) {
+        if (!name.isBlank()) {
+            ((Buyer) user).setName(name);
+        }
+        if (!surname.isBlank()){
+            ((Buyer) user).setSurname(surname);
+        }
+        //todo with each param
+
+        ((Buyer) user).setBillingStreet(street);
+        ((Buyer) user).setBillingCity(city);
+        ((Buyer) user).setBillingCountry(country);
+        ((Buyer) user).setBillingZip(zip);
+        ((Buyer) user).setPhone(phone);
+        ((Buyer) user).setBillingAddress();
+
+        return UserDao.updateBuyerRecord(user);
+    }
 }

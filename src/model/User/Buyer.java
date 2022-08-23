@@ -4,19 +4,19 @@ import java.sql.Date;
 
 public class Buyer implements User {
     private final String username;
-    private final String name;
-    private final String surname;
-    private final String password;
+    private String name;
+    private String surname;
+    private String password;
     private final String email;
     private final Date dateOfBirth;
     private String billingAddress;
-    private final String billingStreet;
-    private final String billingCity;
-    private final String billingCountry;
-    private final String billingZip;
-    private final String phone;
+    private String billingStreet;
+    private String billingCity;
+    private String billingCountry;
+    private String billingZip;
+    private String phone;
     private final String gender; //1 male 2 female 3 other
-    private final String profileImagepath;
+    private String profileImagepath;
 
     public Buyer(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String profileImagepath) {
         this.username = username;
@@ -25,7 +25,6 @@ public class Buyer implements User {
         this.password = password;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.billingAddress = buildBillingAddress(billingStreet, billingCity, billingCountry, billingZip);
         this.billingStreet = billingStreet;
         this.billingCity = billingCity;
         this.billingCountry = billingCountry;
@@ -33,10 +32,7 @@ public class Buyer implements User {
         this.phone = phone;
         this.gender = gender; //0:male 1:female 2:other
         this.profileImagepath = profileImagepath;
-    }
-
-    private String buildBillingAddress(String billingStreet, String billingCity, String billingCountry, String billingZip) {
-        return billingStreet + " - " + billingCity + " - " + billingCountry + " - " + billingZip;
+        setBillingAddress();
     }
 
     public boolean isSomeFieldBlank(){
@@ -78,7 +74,7 @@ public class Buyer implements User {
         return billingAddress;
     }
 
-    public String getbillingStreet() {
+    public String getBillingStreet() {
         return billingStreet;
     }
 
@@ -100,6 +96,46 @@ public class Buyer implements User {
 
     public String getGender() {
         return gender;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String setBillingAddress() {
+        return this.billingAddress = this.billingStreet + " - " + this.billingCity + " - " + this.billingCountry + " - " + this.billingZip;
+    }
+
+    public void setBillingStreet(String billingStreet) {
+        this.billingStreet = billingStreet;
+    }
+
+    public void setBillingCity(String billingCity) {
+        this.billingCity = billingCity;
+    }
+
+    public void setBillingCountry(String billingCountry) {
+        this.billingCountry = billingCountry;
+    }
+
+    public void setBillingZip(String billingZip) {
+        this.billingZip = billingZip;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setProfileImagepath(String profileImagepath) {
+        this.profileImagepath = profileImagepath;
     }
 
     @Override

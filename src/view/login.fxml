@@ -41,8 +41,6 @@
     <right>
         <AnchorPane prefHeight="682.0" prefWidth="588.0" style="-fx-background-color: #a8dadc; -fx-border-color: #ffb703;" BorderPane.alignment="CENTER">
             <children>
-
-                <!-- The Beginning of Logo -->
                 <ImageView fitHeight="57.0" fitWidth="101.0" layoutX="122.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                     </image>
