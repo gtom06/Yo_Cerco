@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BuyProductsFromShop">
     <children>
-        <Rectangle fill="#937565" height="50.0" width="1000.0" />
+        <Rectangle fill="#ffb703" height="50.0" width="1000.0"/>
         <Button fx:id="searchButton" layoutX="885.0" layoutY="58.0" mnemonicParsing="false"  text="Search" textAlignment="CENTER" />
         <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>

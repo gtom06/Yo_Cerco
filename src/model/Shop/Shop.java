@@ -27,6 +27,10 @@ public class Shop {
         this.closingTime = closingTime;
     }
 
+    public String getCompleteAddress(){
+        return address + " - " + city;
+    }
+
     public String getAddress() {
         return address;
     }

@@ -6,7 +6,6 @@ import control.JsonParserCustom;
 import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
-import model.Product.ProductShop;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ public class OrderDao {
             while (rs.next()) {
                 Order order;
                 Integer orderId = rs.getInt("order_id");
+                Integer shopId = rs.getInt("shop_id");
                 String payment = rs.getString("payment");
                 Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
                 double totalAmount = rs.getDouble("total_amount");
@@ -35,7 +35,7 @@ public class OrderDao {
                 String status = rs.getString("status");
                 Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
                 Integer orderTotalQuantity = rs.getInt("total_quantity");
-                order = new Order(orderId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null);
+                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null);
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {

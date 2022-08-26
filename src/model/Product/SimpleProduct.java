@@ -16,6 +16,7 @@ public class SimpleProduct implements Product {
         this.weight = weight;
         this.logoImagepath = logoImagepath;
     }
+
     @Override
     public int getSku() {
         return sku;

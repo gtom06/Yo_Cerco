@@ -5,6 +5,9 @@ import control.UserHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import model.Constants;
 import model.Product.SimpleProduct;
 import model.User.Admin;
@@ -41,7 +45,7 @@ public class MyProfile {
     TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
 
     @FXML
-    ImageView editImageView, saveImageView;
+    ImageView editImageView, saveImageView, homepageImageView;
 
     @FXML
     AnchorPane anchorPane1, anchorPane2;
@@ -49,7 +53,16 @@ public class MyProfile {
 
     @FXML
     protected void onClickAnchorPane2() throws IOException {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("myOrders.fxml"));
+        Parent root = loader.load();
+        MyOrders myOrders = loader.getController();
+        myOrders.passUser(user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
     }
 
     public void passUser(User user) {
@@ -107,6 +120,20 @@ public class MyProfile {
         zipTextField.setText(((Buyer) user).getBillingZip());
         phoneTextField.setText(((Buyer) user).getPhone());
 
+    }
+
+    @FXML
+    protected void onHomepageImageClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root = loader.load();
+        Homepage homepage = loader.getController();
+        homepage.passUser(user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
     }
 
     public void saveProfile() {

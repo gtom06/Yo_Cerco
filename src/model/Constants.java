@@ -6,7 +6,7 @@ public interface Constants {
 
     //for file
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
-    String CART_PATH = "src/data/cart.txt";
+    String CART_PATH = "src/data/cart.json";
     //for images
     String SHOP_IMAGE = "src/images/shop/";
     String DEPARTMENT_IMAGE = "src/images/department/";
@@ -28,6 +28,22 @@ public interface Constants {
     String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorite";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITE";
 
+    //departments
+    String FRUIT_DEPARTMENT = "Fruit";
+    String VEGETABLES_DEPARTMENT = "Vegetables";
+    String CURED_MEAT_DEPARTMENT = "Cured meat"; //salumi
+    String CHEESE_DEPARTMENT = "Cheese";
+    String BEVERAGE_DEPARTMENT = "Beverage";
+    String MEAT_DEPARTMENT = "Meat";
+    String FOODSTUFF_DEPARTMENT = "Foodstuff";
+    String MILK_BUTTER_EGGS_DEPARTMENT = "Milk, butter & eggs";
+    String BREAKFAST_SWEETS_CAKES_DEPARTMENT = "Breakfast, sweets & cakes";
+    String ICECREAM_FROZEN_DEPARTMENT = "Icecream & frozen";
+    String COSMETICS_DEPARTMENT = "Cosmetics";
+    String HOUSEWARE_DEPARTMENT = "Houseware";
+    String PETS_DEPARTMENT = "Pets";
+
+
     //Profile
     String COMPLETE_YOUR_PROFILE = "Complete your profile";
     String COMPLETE_YOUR_PROFILE_CAPSLOCK = "COMPLETE YOUR PROFILE";
@@ -36,6 +52,21 @@ public interface Constants {
 
     //for product type
     String REFRIGERATED = "Freeze";
+
+    //for orders
+    String TOTAL_ORDERS_STRING_CAPSLOCK = "TOTAL ORDERS: ";
+    String TOTAL_ORDERS_STRING = "Total orders: ";
+
+    //order status
+    String CREATED_STATUS = "Created";
+    String IN_PROGRESS_STATUS = "In progress";
+    String READY_TO_PICKUP = "Ready to pickup";
+    String COMPLETED = "Completed";
+
+    //payment name
+    String MASTERCARD_PAYMENT = "Mastercard";
+    String VISA_PAYMENT = "Visa";
+    String CASH_ON_DELIVERY_PAYMENT = "Cash on delivery";
 
     //app logo
     String APP_LOGO = "../images/shop/icons8-shop-local-96.png";

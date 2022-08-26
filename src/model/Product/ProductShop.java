@@ -34,7 +34,7 @@ public class ProductShop implements Product {
 
     @Override
     public int getSku() {
-        return 0;
+        return sku;
     }
 
     @Override
@@ -60,5 +60,20 @@ public class ProductShop implements Product {
     @Override
     public int getType() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductShop{" +
+                "sku=" + sku +
+                ", amount=" + amount +
+                ", discountedAmount=" + discountedAmount +
+                ", currency='" + currency + '\'' +
+                ", percentOfDiscount=" + percentOfDiscount +
+                ", availableQuantity=" + availableQuantity +
+                ", numberOfPurchase=" + numberOfPurchase +
+                ", shopId=" + shopId +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

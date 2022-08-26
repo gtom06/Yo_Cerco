@@ -1,7 +1,6 @@
 package view;
 
 import control.OrderHandler;
-import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Order.Order;
-import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
@@ -26,13 +24,14 @@ public class MyOrders {
     @FXML
     private ImageView homepageImageView;
     @FXML
-    Label labelHi;
+    Label labelHi, numberOfOrdersLabel, totalOrdersLabel;
     @FXML
     TableView<Order> orderTableView = new TableView<>();
     TableColumn<Order, String> orderNumber;
     TableColumn<Order, Integer> orderTotalQuantity;
     TableColumn<Order, String> orderTotalAmount;
     TableColumn<Order, Timestamp> orderTimeStamp;
+    TableColumn<Order, Timestamp> orderStatus;
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -57,39 +56,50 @@ public class MyOrders {
         orderNumber.setMinWidth(10);
         orderNumber.setCellValueFactory(new PropertyValueFactory<>("orderId"));
 
-        orderTotalQuantity = new TableColumn<>("City");
+        orderTotalQuantity = new TableColumn<>("orderTotalQuantity");
         orderTotalQuantity.setMinWidth(10);
-        orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("city"));
+        orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
 
-        orderTotalAmount = new TableColumn<>("ShopName");
+        orderTotalAmount = new TableColumn<>("totalAmount");
         orderTotalAmount.setMinWidth(30);
-        orderTotalAmount.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+        orderTotalAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
 
-        orderTimeStamp = new TableColumn<>("Opening");
+        orderTimeStamp = new TableColumn<>("orderTimestamp");
         orderTimeStamp.setMinWidth(10);
-        orderTimeStamp.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
+        orderTimeStamp.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
 
-        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalAmount, orderTimeStamp);
+        orderStatus = new TableColumn<>("Status");
+        orderStatus.setMinWidth(10);
+        orderStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalAmount, orderTimeStamp, orderStatus);
+
     }
 
     public void fillShopTableView() {
+        int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersWithoutItemsFromUser(u);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);
+                numberOfOrders++;
+                System.out.println(o);
             }
             orderTableView.setItems(orderObservableList);
         }
         else {
             System.out.println("no result");
         }
+        totalOrdersLabel.setText(Constants.TOTAL_ORDERS_STRING);
+        numberOfOrdersLabel.setText(String.valueOf(numberOfOrders));
     }
 
 
     public void passUser(User user) {
         u = user;
         labelHi.setText(user.getUsername());
+        fillShopTableView();
     }
 }

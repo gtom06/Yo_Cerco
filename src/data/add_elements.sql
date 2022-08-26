@@ -77,3 +77,6 @@ values (1, 'nutkao', '500g', 0, 500, '');
 insert into product_shop (sku, shop_id, location, amount, qty_on_stock, discounted_amount, available_quantity, number_of_purchase, currency)
 values (1, 1, 'c', 1.00, 1, 1.00, 1, 1, 'eur');
 
+
+insert into orders(username, payment, total_amount, total_quantity, currency, status)
+values ('abc', 'visa', 1.00, 1, 'usd', 'In progress');

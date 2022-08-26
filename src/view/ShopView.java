@@ -43,6 +43,13 @@ public class ShopView {
     Label labelHi;
     @FXML
     Label labelShopName, labelShopAddress, labelShopOpeningTime, labelFavorite;
+
+    //departmentLabel
+    @FXML
+    Label fruitLabel, vegetablesLabel, curedMeatLabel, cheeseLabel, beverageLabel, meatLabel,
+    foodstuffLabel, milkLabel, breakfastLabel, icecreamLabel, cosmeticsLabel, housewareLabel,
+    petsLabel;
+
     ArrayList<ImageView> imageDep= new ArrayList<>();
     ArrayList<String> dep = new ArrayList<>();
     String shopId = "";
@@ -76,6 +83,22 @@ public class ShopView {
         image = new Image(stream, 200, 200, false, false);
         labelShopName.setText(shop.getShopName());
 
+        fruitLabel.setText(Constants.FRUIT_DEPARTMENT);
+        vegetablesLabel.setText(Constants.VEGETABLES_DEPARTMENT);
+        curedMeatLabel.setText(Constants.CURED_MEAT_DEPARTMENT);
+        cheeseLabel.setText(Constants.CHEESE_DEPARTMENT);
+        beverageLabel.setText(Constants.BEVERAGE_DEPARTMENT);
+        meatLabel.setText(Constants.MEAT_DEPARTMENT);
+        foodstuffLabel.setText(Constants.FOODSTUFF_DEPARTMENT);
+        milkLabel.setText(Constants.MILK_BUTTER_EGGS_DEPARTMENT);
+        breakfastLabel.setText(Constants.BREAKFAST_SWEETS_CAKES_DEPARTMENT);
+        icecreamLabel.setText(Constants.ICECREAM_FROZEN_DEPARTMENT);
+        cosmeticsLabel.setText(Constants.COSMETICS_DEPARTMENT);
+        housewareLabel.setText(Constants.HOUSEWARE_DEPARTMENT);
+        petsLabel.setText(Constants.PETS_DEPARTMENT);
+
+        //todo: mettere X sui departments non presenti
+
         if (ShopHandler.isFavoriteShop(shop, user)) {
             //set to remove
             labelFavorite.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
@@ -90,7 +113,7 @@ public class ShopView {
 
         shopLogo.setImage(image);
         shopId = String.valueOf(shop.getShopId());
-        labelShopAddress.setText(shop.getAddress() +" - " +shop.getCity());
+        labelShopAddress.setText(shop.getCompleteAddress());
         labelShopOpeningTime.setText(shop.getOpeningTime());
     }
 

@@ -118,7 +118,7 @@
             <Image url="@../images/department/icons8-uova-48.png" />
          </image>
       </ImageView>
-      <Label fx:id="openingTimeShop1" layoutX="608.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" text="VERDURA" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="vegetablesLabel" layoutX="608.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
@@ -148,62 +148,62 @@
             <Image url="@../images/department/icons8-torta-48.png" />
          </image>
       </ImageView>
-      <Label fx:id="openingTimeShop11" layoutX="608.0" layoutY="239.0" prefHeight="40.0" prefWidth="110.0" text="FRUTTA" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="fruitLabel" layoutX="608.0" layoutY="239.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop12" layoutX="608.0" layoutY="279.0" prefHeight="40.0" prefWidth="110.0" text="SALUMI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="curedMeatLabel" layoutX="608.0" layoutY="279.0" prefHeight="40.0" prefWidth="110.0" text="SALUMI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop13" layoutX="608.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="FORMAGGI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="cheeseLabel" layoutX="608.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="FORMAGGI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop14" layoutX="608.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="BEVANDE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="beverageLabel" layoutX="608.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="BEVANDE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop15" layoutX="608.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="CARNE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="meatLabel" layoutX="608.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="CARNE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop16" layoutX="608.0" layoutY="439.0" prefHeight="40.0" prefWidth="110.0" text="PRODOTTI ALIMENTARI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="foodstuffLabel" layoutX="608.0" layoutY="439.0" prefHeight="40.0" prefWidth="110.0" text="PRODOTTI ALIMENTARI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop17" layoutX="778.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" text="LATTE, BURRO E UOVA" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="milkLabel" layoutX="778.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" text="LATTE, BURRO E UOVA" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop18" layoutX="778.0" layoutY="239.0" prefHeight="40.0" prefWidth="137.0" text="COLAZIONE, MERENDA E DOLCI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="breakfastLabel" layoutX="778.0" layoutY="239.0" prefHeight="40.0" prefWidth="137.0" text="COLAZIONE, MERENDA E DOLCI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop19" layoutX="778.0" layoutY="279.0" prefHeight="40.0" prefWidth="138.0" text="GELATI E SURGELATI" textFill="#ffb703" wrapText="true">
+      <Label fx:id="icecreamLabel" layoutX="778.0" layoutY="279.0" prefHeight="40.0" prefWidth="138.0" text="GELATI E SURGELATI" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop110" layoutX="778.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="CURA DELLA PERSONA" textFill="#ffb703" wrapText="true">
+      <Label fx:id="cosmeticsLabel" layoutX="778.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="CURA DELLA PERSONA" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop111" layoutX="778.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="TUTTO PER LA CASA" textFill="#ffb703" wrapText="true">
+      <Label fx:id="housewareLabel" layoutX="778.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="TUTTO PER LA CASA" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="openingTimeShop112" layoutX="778.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="AMICI ANIMALI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+      <Label fx:id="petsLabel" layoutX="778.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="AMICI ANIMALI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
