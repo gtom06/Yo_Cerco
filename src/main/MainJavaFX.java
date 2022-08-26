@@ -23,6 +23,8 @@ public class MainJavaFX extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+
+        //todo: remove this lines
         Cart.readOrderItemsFromCart();
         ProductShop productShop = new ProductShop(1,1.0,10,"eur", 1.0, 100, 100,1,"bb");
         Cart.addOrderItemsToCart(productShop, 5);
