@@ -171,7 +171,7 @@ public class Login {
     public void initialize() throws IOException {
         //logo = new ImageView(Constants.APP_LOGO);
         ArrayList<String> userdata;
-        userdata = FileElaboration.readFromFile(Constants.REMEMBER_LOGIN);
+        userdata = FileElaboration.fileLinesToArrayList(Constants.REMEMBER_LOGIN);
         if (userdata.size() == 2){
             loginUsernameTextField.setText(userdata.get(0));
             loginPasswordPasswordField.setText(userdata.get(1));

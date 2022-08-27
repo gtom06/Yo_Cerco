@@ -1,7 +1,6 @@
 package model.Product;
 
-public class ProductShop implements Product {
-    private final int sku;
+public class ProductShop extends SimpleProduct {
     private final double amount;
     private final double discountedAmount;
     private final String currency;
@@ -9,10 +8,15 @@ public class ProductShop implements Product {
     private int availableQuantity;
     private int numberOfPurchase;
     private int shopId;
-    private final String type;
 
-    public ProductShop(int sku, double amount, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId, String type) {
-        this.sku = sku;
+    public ProductShop(double amount, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
+                       int sku, String name, String description, int type, double weight, String logoImagepath) {
+        super(sku,
+                name,
+                description,
+                type,
+                weight,
+                logoImagepath);
         this.amount = amount;
         this.discountedAmount = discountedAmount;
         this.currency = currency;
@@ -20,31 +24,60 @@ public class ProductShop implements Product {
         this.availableQuantity = availableQuantity;
         this.numberOfPurchase = numberOfPurchase;
         this.shopId = shopId;
-        this.type = type;
     }
 
-    //used in OrderItem
-    public ProductShop(int sku, double amount, double discountedAmount, String currency, String type) {
-        this.sku = sku;
-        this.amount = amount;
-        this.discountedAmount = discountedAmount;
-        this.currency = currency;
-        this.type = type;
+    public double getAmount() {
+        return amount;
     }
 
-    @Override
-    public int getSku() {
-        return sku;
+    public double getDiscountedAmount() {
+        return discountedAmount;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public double getPercentOfDiscount() {
+        return percentOfDiscount;
+    }
+
+    public void setPercentOfDiscount(double percentOfDiscount) {
+        this.percentOfDiscount = percentOfDiscount;
+    }
+
+    public int getAvailableQuantity() {
+        return availableQuantity;
+    }
+
+    public void setAvailableQuantity(int availableQuantity) {
+        this.availableQuantity = availableQuantity;
+    }
+
+    public int getNumberOfPurchase() {
+        return numberOfPurchase;
+    }
+
+    public void setNumberOfPurchase(int numberOfPurchase) {
+        this.numberOfPurchase = numberOfPurchase;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
     @Override
     public String getLogoImagepath() {
-        return null;
+        return super.getLogoImagepath();
     }
 
     @Override
     public String getName() {
-        return null;
+        return super.getName();
     }
 
     @Override
@@ -58,22 +91,15 @@ public class ProductShop implements Product {
     }
 
     @Override
-    public int getType() {
-        return 0;
-    }
-
-    @Override
     public String toString() {
         return "ProductShop{" +
-                "sku=" + sku +
-                ", amount=" + amount +
+                "amount=" + amount +
                 ", discountedAmount=" + discountedAmount +
                 ", currency='" + currency + '\'' +
                 ", percentOfDiscount=" + percentOfDiscount +
                 ", availableQuantity=" + availableQuantity +
                 ", numberOfPurchase=" + numberOfPurchase +
                 ", shopId=" + shopId +
-                ", type='" + type + '\'' +
                 '}';
     }
 }

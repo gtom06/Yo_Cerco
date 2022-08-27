@@ -2,10 +2,15 @@ package model.Dao;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import control.JsonParserCustom;
+import model.Constants;
 import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
+import model.User.Admin;
+import model.User.Buyer;
+import model.User.ShopHolder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -68,6 +73,67 @@ public class OrderDao {
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             return orderItemArrayList;
+        }
+    }
+
+    public static Order insertOrder(Order order) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            String sql = "INSERT INTO orders (shop_id, username, payment, total_amount, total_quantity, currency, collection_order_timestamp) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?) " +
+                    "RETURNING *";
+            conn = dbHelper.openDBConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, order.getShopId());
+            stmt.setString(2, order.getUsername());
+            stmt.setString(3, order.getPayment());
+            stmt.setDouble(4, order.getTotalAmount());
+            stmt.setInt(5,order.getOrderTotalQuantity());
+            stmt.setString(6,order.getCurrency());
+            stmt.setTimestamp(7, order.getCollectionTimestamp());
+
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            order.setOrderId(rs.getInt("order_id"));
+            order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
+            order.setStatus(rs.getString("status"));
+        } catch (SQLException se) {
+            se.printStackTrace();
+            dbHelper.closeDBConnection(stmt, conn);
+            return null;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return order;
+        }
+    }
+
+    public static boolean insertOrderItems(int orderId, String jsonOrderItems) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        //boolean output = false;
+        try {
+            String sql = "INSERT INTO order_items (order_id, items) " +
+                    "VALUES (?, ?)";
+            conn = dbHelper.openDBConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, orderId);
+
+            //todo: non funziona l'insert. controllare!!!!!
+            JsonObject jsonObject = new JsonParser().parse(jsonOrderItems).getAsJsonObject();
+            stmt.setObject(2, jsonObject);
+
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            dbHelper.closeDBConnection(stmt, conn);
+            return false;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return true;
         }
     }
 }

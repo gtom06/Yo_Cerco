@@ -3,22 +3,12 @@ package model.Order;
 import model.Product.ProductShop;
 
 public class OrderItem {
-    Integer orderId;
     ProductShop productShop;
     int quantityOrdered;
 
     public OrderItem(Integer orderId, ProductShop productShop, int quantityOrdered) {
-        this.orderId = orderId;
         this.productShop = productShop;
         this.quantityOrdered = quantityOrdered;
-    }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
     }
 
     public ProductShop getProductShop() {
@@ -40,8 +30,7 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "orderId=" + orderId +
-                ", productShop=" + productShop +
+                "productShop=" + productShop +
                 ", quantityOrdered=" + quantityOrdered +
                 '}';
     }

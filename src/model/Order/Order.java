@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Order {
     private int orderId;
-    private int shopId;
+    private int shopId; //todo: forse meglio inserire private Shop shop???
     private String username;
     private String payment;
     private Timestamp orderTimestamp;
@@ -16,7 +16,6 @@ public class Order {
     private int orderTotalQuantity;
     private ArrayList<OrderItem> orderItemArrayList;
 
-    //with OrderItems
     public Order(int orderId, int shopId, String username, String payment, Timestamp orderTimestamp, Double totalAmount, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList) {
         this.orderId = orderId;
         this.shopId = shopId;
@@ -29,20 +28,6 @@ public class Order {
         this.collectionTimestamp = collectionTimestamp;
         this.orderTotalQuantity = orderTotalQuantity;
         this.orderItemArrayList = orderItemArrayList;
-    }
-
-    //without OrderItems
-    public Order(int orderId, int shopId, String username, String payment, Timestamp orderTimestamp, Double totalAmount, String currency, String status, Timestamp collectionTimestamp) {
-        this.orderId = orderId;
-        this.shopId = shopId;
-        this.username = username;
-        this.payment = payment;
-        this.orderTimestamp = orderTimestamp;
-        this.totalAmount = totalAmount;
-        this.currency = currency;
-        this.status = status;
-        this.collectionTimestamp = collectionTimestamp;
-        this.orderTotalQuantity = orderTotalQuantity;
     }
 
     @Override

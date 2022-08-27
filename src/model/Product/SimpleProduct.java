@@ -1,12 +1,12 @@
 package model.Product;
 
 public class SimpleProduct implements Product {
-    private final int sku;
-    private final String name;
-    private final String description;
-    private final int type;
-    private final String logoImagepath;
-    private final double weight;
+    private int sku;
+    private String name;
+    private String description;
+    private int type;
+    private String logoImagepath;
+    private double weight;
 
     public SimpleProduct(int sku, String name, String description, int type, double weight, String logoImagepath) {
         this.sku = sku;

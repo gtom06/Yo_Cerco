@@ -27,16 +27,20 @@ public class ProductDao {
             while (rs.next()) {
                 ProductShop product;
 
-                Integer sku = rs.getInt("sku");
+                int sku = rs.getInt("sku");
                 double amount = rs.getDouble("price");
                 double discountedAmount = rs.getDouble("discounted_amount");
                 String currency = rs.getString("currency");
                 double percentOfDiscount = rs.getDouble("percent_of_discount");
-                Integer availableQuantity = rs.getInt("available_quantity");
-                Integer numberOfPurchase = rs.getInt("number_of_purchase");
-                Integer shopId = rs.getInt("shop_id");
+                int availableQuantity = rs.getInt("available_quantity");
+                int numberOfPurchase = rs.getInt("number_of_purchase");
+                int shopId = rs.getInt("shop_id");
+                String description = null;
+                int type = 0;
+                double weight = 0;
+                String logoImagepath = null;
 
-                product = new ProductShop(sku, amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase, shopId, null);
+                product = new ProductShop(amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase, shopId, sku, name, description,type, weight, logoImagepath);
                 productArrayList.add(product);
             }
         } catch (SQLException se) {
@@ -135,13 +139,17 @@ public class ProductDao {
                 int sku = rs.getInt("sku");
                 String currency = rs.getString("currency");
                 Double amount = rs.getDouble("amount");
-                String type = rs.getString("type");
                 Double discountedAmount = rs.getDouble("discounted_amount");
                 Double percentOfDiscount = 100*((amount-discountedAmount)/amount);
                 int availableQuantity = rs.getInt("available_quantity");
                 int numberOfPurchase = rs.getInt("number_of_purchase");
+                String description = null;
+                String name = rs.getString("name");
+                int type = rs.getInt("type");
+                double weight = 0;
+                String logoImagepath = null;
 
-                productShop = new ProductShop(sku, amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase,shopId,type);
+                productShop = new ProductShop(amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase, shopId, sku, name, description,type, weight, logoImagepath);
                 productArrayList.add(productShop);
             }
         } catch (SQLException se) {

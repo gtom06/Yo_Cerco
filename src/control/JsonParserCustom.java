@@ -8,7 +8,7 @@ import model.Product.ProductShop;
 import java.util.ArrayList;
 
 public class JsonParserCustom {
-
+    //todo: modificare dopo la verifica degli insert
     public static ArrayList<OrderItem> convertJsonIntoOrderItem(String json) {
 /*
 example of json:

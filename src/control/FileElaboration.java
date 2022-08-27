@@ -1,5 +1,7 @@
 package control;
 
+import model.Constants;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ public class FileElaboration {
         writer.close();
     }
 
-    public static ArrayList<String> readFromFile(String filepath) throws IOException {
+    public static ArrayList<String> fileLinesToArrayList(String filepath) throws IOException {
         ArrayList<String> lines = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(filepath));
         String line;
@@ -18,5 +20,18 @@ public class FileElaboration {
             lines.add(line);
         }
         return lines;
+    }
+
+    public static String fileToString(String filepath) {
+        String output = "";
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
+            output = bufferedReader.readLine();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            return output;
+        }
     }
 }
