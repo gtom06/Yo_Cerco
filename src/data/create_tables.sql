@@ -56,7 +56,7 @@ quantity_ordered
 
 create table order_items(
     order_id    NUMERIC(10) REFERENCES orders(order_id),
-    items       json NOT NULL
+    items       VARCHAR
 );
 
 create sequence sku_id_sequence;

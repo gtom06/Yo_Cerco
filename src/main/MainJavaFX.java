@@ -30,14 +30,15 @@ public class MainJavaFX extends Application {
         stage.setResizable(false);
 
         //todo: remove this lines
-
+/*
         Order order = new Order(0, 1, "abc", "visa", null,
                 100.0, "usd", null, Timestamp.from(Instant.now()),1, null);
         System.out.println(order);
         order = OrderDao.insertOrder(order);
         System.out.println(order);
-        OrderDao.insertOrderItems(order.getOrderId(), CartElaboration.convertJsonCartToString());
-
+        OrderDao.insertOrderItems(order.getOrderId(), null);
+        CartElaboration.deleteCart();
+*/
         CartElaboration.deleteCart();
         //Cart.readOrderItemsFromCart();
         ProductShop productShop = new ProductShop(1.0,10,"eur", 1.0, 100, 100,1, 1,"ciao1", null, 0, 1.0,null);

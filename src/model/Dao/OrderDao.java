@@ -3,6 +3,8 @@ package model.Dao;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import control.FileElaboration;
 import control.JsonParserCustom;
 import model.Constants;
 import model.Db.DbHelper;
@@ -12,6 +14,7 @@ import model.User.Admin;
 import model.User.Buyer;
 import model.User.ShopHolder;
 
+import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -121,12 +124,9 @@ public class OrderDao {
             conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderId);
-
-            //todo: non funziona l'insert. controllare!!!!!
-            JsonObject jsonObject = new JsonParser().parse(jsonOrderItems).getAsJsonObject();
-            stmt.setObject(2, jsonObject);
-
-            stmt.executeQuery();
+            String jsonString = FileElaboration.fileToString(Constants.CART_PATH);
+            stmt.setString(2, jsonString);
+            stmt.executeUpdate();
         } catch (SQLException se) {
             se.printStackTrace();
             dbHelper.closeDBConnection(stmt, conn);
