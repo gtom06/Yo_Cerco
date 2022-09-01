@@ -1,8 +1,10 @@
 package control;
+
+import model.Address;
 import model.Constants;
+import model.Dao.ShopDao;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
-import model.Dao.ShopDao;
 import model.User.User;
 
 import java.time.LocalTime;
@@ -20,7 +22,8 @@ public class ShopHandler {
     //retrieve details of a single shop.
     //to be changed with return Shop;
     public static ArrayList<String> findShopForViewShop(int shopId){
-        Shop shop = ShopDao.findShopById(shopId);
+        ArrayList<Shop> shop = ShopDao.findShopById(shopId);
+        /*
         ArrayList<String> out = new ArrayList<>();
         out.add(shop.getLogoImagepath());
         out.add(shop.getCity());
@@ -28,6 +31,8 @@ public class ShopHandler {
         out.add(shop.getShopName());
         out.add(String.valueOf(shop.getShopId()));
         return out;
+        */
+        return null;
     }
 
 
@@ -37,9 +42,14 @@ public class ShopHandler {
         }
         ArrayList<Shop> output;
         if (searchBool == false) {
-            if (searchMethod == Constants.BY_ADDRESS) {
-                output = ShopDao.findShopByAddress(searchParam);
-                return output.size() != 0 ? output : null;
+            if (searchMethod == Constants.NEARBY) {
+                Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
+                System.out.println(address);
+                if (address != null) {
+                    output = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                    output = ComparableHandler.orderByDistance(output, address);
+                    return output.size() != 0 ? output : null;
+                }
             } else if (searchMethod == Constants.BY_CITY) {
                 output = ShopDao.findShopByCity(searchParam);
                 return output.size() != 0 ? output : null;
@@ -51,7 +61,7 @@ public class ShopHandler {
         else {
             Integer now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
             System.out.println(now);
-            if (searchMethod == Constants.BY_ADDRESS) {
+            if (searchMethod == Constants.NEARBY) {
                 output = ShopDao.findShopByAddressAndTime(searchParam, now);
                 return output.size() != 0 ? output : null;
             } else if (searchMethod == Constants.BY_CITY) {
@@ -67,22 +77,6 @@ public class ShopHandler {
 
     public static boolean isFavoriteShop(Shop shop, User user) {
         return ShopDao.isFavoriteShop(shop.getShopId(), user.getUsername());
-    }
-
-    // todo: check the usage and remove it
-    public String getPhotoByShopId(int shopId){
-        return ShopDao.findShopById(shopId).getLogoImagepath();
-    }
-
-    // todo: remove that class and use another way
-    public static int getShopFromString(String s){
-        int tab = s.indexOf(" ");
-        String subString = "";
-        if (tab != -1)
-        {
-            subString= s.substring(0 , tab); //this will give abc
-        }
-        return Integer.valueOf(subString);
     }
 
     public static void removeShopFromFavorite(Shop shop, User user) {

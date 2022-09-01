@@ -1,9 +1,9 @@
 package control;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.Order.OrderItem;
-import model.Product.ProductShop;
 
 import java.util.ArrayList;
 
@@ -47,5 +47,10 @@ example of json:
             phonePrefixArrayList.add(prefix);
         }
         return phonePrefixArrayList;
+    }
+
+    public static JsonObject convertStringToJsonObject(String jsonString) {
+        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
+        return jsonObject;
     }
 }

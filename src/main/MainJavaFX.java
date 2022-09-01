@@ -1,19 +1,16 @@
 package main;
 
 import control.CartElaboration;
+import control.LocationHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Dao.OrderDao;
-import model.Order.Order;
+import model.Address;
 import model.Product.ProductShop;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 
 public class MainJavaFX extends Application {
     public static void main(String[] args) {
@@ -22,6 +19,7 @@ public class MainJavaFX extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        System.out.println("Java version: " + System.getProperty("java.home"));
         Parent root = FXMLLoader.load((getClass().getResource("/view/login.fxml")));
         Scene scene = new Scene(root, 1000, 700);
         stage.setTitle("Login");
@@ -30,6 +28,15 @@ public class MainJavaFX extends Application {
         stage.setResizable(false);
 
         //todo: remove this lines
+
+
+
+        Address address = LocationHandler.calculateLatLongFromAddress("via aldo moro");
+        System.out.println(address);
+        //System.out.println(JsonParserCustom.convertStringToGson(String.valueOf(LocationHandler.calculateLatLongFromAddress("Via Colle Alto"))));
+
+        //System.out.println(InetAddress.getHostAddress());
+
 /*
         Order order = new Order(0, 1, "abc", "visa", null,
                 100.0, "usd", null, Timestamp.from(Instant.now()),1, null);

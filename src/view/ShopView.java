@@ -1,9 +1,6 @@
 package view;
 
-import control.DepartmentHandler;
 import control.ShopHandler;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -26,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import static model.Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK;
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 
@@ -79,6 +74,7 @@ public class ShopView {
 
     public void passShop(Shop shop) throws FileNotFoundException {
         this.shop = shop;
+        System.out.println(shop.getLogoImagepath());
         stream = new FileInputStream(shop.getLogoImagepath());
         image = new Image(stream, 200, 200, false, false);
         labelShopName.setText(shop.getShopName());

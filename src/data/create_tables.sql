@@ -10,7 +10,10 @@ create table shop(
     status                      numeric(1),
     opening_time                varchar(10),
     closing_time                varchar(10),
-    pdf_path                    varchar(200)
+    pdf_path                    varchar(200),
+    franchising                 varchar(100),
+    latitude                    float(10),
+    longitude                   float(10)
 );
 create sequence department_id_sequence;
 create table department(

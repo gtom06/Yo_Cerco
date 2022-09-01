@@ -13,18 +13,17 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Shop.Shop;
+import model.User.Buyer;
 import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static javafx.application.Application.launch;
+public class SearchShop  {
 
-
-public class SearchShop {
     User u = null;
     @FXML
-    private ImageView homepageImageView;
+    private ImageView homepageImageView, userPositionImageView;
     @FXML
     ToggleGroup findValue;
     @FXML
@@ -40,8 +39,6 @@ public class SearchShop {
     @FXML
     Label labelHi;
     @FXML
-    Button vai;
-    @FXML
     TableView<Shop> tableView = new TableView<>();
     TableColumn<Shop, String> addressColumn;
     TableColumn<Shop, String> cityColumn;
@@ -51,21 +48,6 @@ public class SearchShop {
     @FXML
     CheckBox openNow;
 
-/*
-    @FXML
-    protected void onButtonVaiClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("shop_view.fxml"));
-        Parent root = loader.load();
-        ShopView shopView = loader.getController();
-        shopView.passUser(selected.getText());
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) shopListView.getScene().getWindow();
-        stage.close();
-    }
-*/
     @FXML
     protected void onListViewItemClick() throws IOException {
 
@@ -86,6 +68,11 @@ public class SearchShop {
             Stage stage = (Stage) tableView.getScene().getWindow();
             stage.close();
         }
+    }
+
+    @FXML
+    protected void onUserPositionImageViewClick() {
+        requestTextField.setText(((Buyer) u).getBillingAddress());
     }
 
     @FXML
@@ -132,7 +119,7 @@ public class SearchShop {
     public void initialize(){
         param1.setText(Constants.BY_CITY);
         param2.setText(Constants.BY_NAME);
-        param3.setText(Constants.BY_ADDRESS);
+        param3.setText(Constants.NEARBY);
 
         tableView.setEditable(true);
         addressColumn = new TableColumn<>("Address");

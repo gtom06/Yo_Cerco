@@ -2,17 +2,33 @@
 insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
 values ('conad', 'via dei pazzi', 'roma', '', '', '', 1, 10,11);
 
-insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
-values ('todis', 'via dei pazzi', 'roma', '', '', '', 1, 10,11);
+insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time, franchising, latitude, longitude)
+values ('lidl FR', 'via Maria, 85', 'frosinone', '', '', '', 1, 10,11, 'Lidl', 41.6517691,13.3473583 );
 
-insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
-values ('lidl', 'via dei pazzi', 'campobasso', '', '', '', 1, 10,11);
+
+insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time, franchising, latitude, longitude)
+values ('conad ceccano', 'via per frosinone', 'ceccano', '', '', '', 1, 10,11, 'conad', 41.5834142, 13.2649291);
+
+insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time, franchising, latitude, longitude)
+values ('todic frosinone', 'via madonna della neve', 'frosinone', '', '', '', 1, 10,11, 'todis', 41.6522526,13.3417693);
+
+insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time, franchising, latitude, longitude)
+values ('conad le pigne', 'ss per fiuggi', 'alatri', '', '', '', 1, 10,11, 'todis', 41.670086,13.3464945);
+
+
+
+
+
+
 
 insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
 values ('eurospin', 'via mazzini', 'frosinone', '', '', '', 1, 10,11);
 
 insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
-values ('conad', 'via ciao ciao ciao', 'roma', 'src/images/shop_images/conad.png', '', '', 1, 10, 11);
+values ('conad', 'via ciao ciao ciao', 'roma', 'conad.png', '', '', 1, 10, 11);
+
+insert into shop (name, address, city, logo_imagepath, interior_photos_imagepath, planimetry_imagepath, status, opening_time, closing_time)
+values ('conad', 'via ciao ciao ciao', 'roma', 'conad.png', '', '', 1, 10, 11);
 
 insert into department (name, logo_imagepath)
 values ('Bakery','bakery.png');

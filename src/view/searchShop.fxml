@@ -45,6 +45,11 @@
       <TableView fx:id="tableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="563.0" prefWidth="898.0">
       </TableView>
       <TextField fx:id="requestTextField" layoutX="40.0" layoutY="59.0" prefHeight="25.0" prefWidth="463.0" />
-      <CheckBox layoutX="784.0" fx:id="openNow" layoutY="64.0" mnemonicParsing="false" text="Open now" />
+      <CheckBox fx:id="openNow" layoutX="784.0" layoutY="64.0" mnemonicParsing="false" text="Open now" />
+      <ImageView fx:id="userPositionImageView" onMouseClicked="#onUserPositionImageViewClick" fitHeight="40.0" fitWidth="40.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/icons8-user-location-48.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

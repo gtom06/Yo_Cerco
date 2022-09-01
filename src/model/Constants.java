@@ -1,6 +1,9 @@
 package model;
 
 public interface Constants {
+    //for google apis
+    String GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+    String GOOGLE_KEY = "&key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
     String SAVE = "Save";
     String SAVE_CAPSLOCK = "SAVE";
 
@@ -17,6 +20,8 @@ public interface Constants {
     int NEW_OPENING = 0;
     int AVAILABLE = 1;
     int NOT_AVAILABLE = -1;
+    String LOGO_SHOPS_PATH = "src/images/shop_images/";
+    String LOGO_SHOP_NA = "NotAvailablePhoto.png";
     //String
     String AVAILABLE_STRING = "Available";
     String SOON_BACK_STRING = "Soon back";
@@ -82,7 +87,7 @@ public interface Constants {
 
 
 
-    String BY_ADDRESS = "by address";
+    String NEARBY = "nearby";
     String BY_CITY = "by city";
     String BY_NAME = "by name";
 
@@ -104,5 +109,7 @@ public interface Constants {
     String BUYER = "Buyer";
     String OWNER = "Owner";
     String STANDARD_PASSWORD = "12345";
+
+
 }
 
