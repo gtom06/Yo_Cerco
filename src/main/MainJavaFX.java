@@ -26,11 +26,7 @@ public class MainJavaFX extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-
-        //todo: remove this lines
-
-
-
+        
         Address address = LocationHandler.calculateLatLongFromAddress("via aldo moro");
         System.out.println(address);
         //System.out.println(JsonParserCustom.convertStringToGson(String.valueOf(LocationHandler.calculateLatLongFromAddress("Via Colle Alto"))));

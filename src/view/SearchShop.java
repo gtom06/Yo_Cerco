@@ -55,6 +55,13 @@ public class SearchShop  {
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
             System.out.println(shop);
+            /*
+            if (shop.getType == "ferramenta") {
+                carica ferramentaview.fxml
+            }
+            //todo: non chiudere la finestra della searchShop.fxml quando si apre la shopView.fxml
+
+            */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();

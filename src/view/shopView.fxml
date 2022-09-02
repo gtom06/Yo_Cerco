@@ -48,17 +48,27 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelShopAddress" layoutX="311.0" layoutY="99.0" prefHeight="40.0" prefWidth="300.0" textAlignment="JUSTIFY" textFill="#ffb703">
+      <Label fx:id="labelShopAddress" layoutX="311.0" layoutY="99.0" prefHeight="40.0" prefWidth="300.0" textAlignment="JUSTIFY" textFill="#ffb703" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelShopOpeningTime" layoutX="311.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" textAlignment="JUSTIFY" textFill="#ffb703">
+      <Label fx:id="labelShopOpeningTime" layoutX="311.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" textAlignment="CENTER" textFill="#ffb703">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="phoneShop" layoutX="311.0" layoutY="209.0" prefHeight="40.0" prefWidth="150.0" text="PHONE" textAlignment="JUSTIFY" textFill="#ffb703">
+        <Label layoutX="321.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" textAlignment="CENTER" text="-" textFill="#ffb703">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="labelShopClosingTime" layoutX="331.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" textAlignment="CENTER" textFill="#ffb703">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+      <Label fx:id="labelPhoneShop" layoutX="311.0" layoutY="209.0" prefHeight="40.0" prefWidth="150.0" text="PHONE" textAlignment="JUSTIFY" textFill="#ffb703">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>

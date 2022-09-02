@@ -111,5 +111,6 @@ public interface Constants {
     String STANDARD_PASSWORD = "12345";
 
 
+    String GOOGLE_MAPS_LINK_START_STRING = "https://www.google.com/maps/place";
 }
 

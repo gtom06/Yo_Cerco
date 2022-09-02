@@ -270,7 +270,9 @@ public class ShopDao {
             String franchising = rs.getString("franchising");
             double lat = rs.getDouble("latitude");
             double lng = rs.getDouble("longitude");
-            shop = new Shop(address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, franchising);
+            String phone = rs.getString("phone");
+            String gmapsLink = rs.getString("gmaps_string");
+            shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, gmapsLink, franchising);
             System.out.println(shop);
             arrayShop.add(shop);
         }

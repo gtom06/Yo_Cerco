@@ -2,6 +2,7 @@ create sequence shop_id_sequence;
 create table shop(
     shop_id                     numeric(10) primary key default nextval('shop_id_sequence'),
     name                        varchar(100),
+    phone                       varchar(40),
     address                     varchar(200),
     city                        varchar(200),
     logo_imagepath              varchar(200),
@@ -13,7 +14,8 @@ create table shop(
     pdf_path                    varchar(200),
     franchising                 varchar(100),
     latitude                    float(10),
-    longitude                   float(10)
+    longitude                   float(10),
+    gmaps_string                varchar(500)
 );
 create sequence department_id_sequence;
 create table department(

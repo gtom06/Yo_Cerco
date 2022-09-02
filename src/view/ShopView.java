@@ -1,5 +1,6 @@
 package view;
 
+import control.BrowserHandler;
 import control.ShopHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
@@ -20,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
@@ -37,7 +40,7 @@ public class ShopView {
     @FXML
     Label labelHi;
     @FXML
-    Label labelShopName, labelShopAddress, labelShopOpeningTime, labelFavorite;
+    Label labelShopName, labelShopAddress, labelShopOpeningTime, labelShopClosingTime, labelFavorite, labelPhoneShop;
 
     //departmentLabel
     @FXML
@@ -111,6 +114,24 @@ public class ShopView {
         shopId = String.valueOf(shop.getShopId());
         labelShopAddress.setText(shop.getCompleteAddress());
         labelShopOpeningTime.setText(shop.getOpeningTime());
+        labelShopClosingTime.setText(shop.getClosingTime());
+        labelPhoneShop.setText(shop.getPhone());
+
+    }
+
+    @FXML
+    public void onClickGMapsHyperLink(){
+        BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
+    }
+
+    public void onMouseEnteredAddress(){
+        labelShopAddress.setTextFill(Color.web("#ed2224"));
+        labelShopAddress.setUnderline(true);
+    }
+
+    public void onMouseExitedAddress(){
+        labelShopAddress.setTextFill(Color.web("#ffb703"));
+        labelShopAddress.setUnderline(false);
     }
 
     //methods for adding and removing shops from favorite
