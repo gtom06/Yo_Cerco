@@ -48,7 +48,7 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelShopAddress" layoutX="311.0" layoutY="99.0" prefHeight="40.0" prefWidth="300.0" textAlignment="JUSTIFY" textFill="#ffb703" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress">
+      <Label fx:id="labelShopAddress" layoutX="311.0" layoutY="99.0" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress" prefHeight="40.0" prefWidth="300.0" textAlignment="JUSTIFY" textFill="#ffb703">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
@@ -58,7 +58,7 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </Label>
-        <Label layoutX="321.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" textAlignment="CENTER" text="-" textFill="#ffb703">
+        <Label layoutX="321.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" text="-" textAlignment="CENTER" textFill="#ffb703">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
@@ -82,155 +82,104 @@
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
-      </Label>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-formaggio-48.png" />
+        </Label>
+        <Label fx:id="departmentsLabel" layoutX="646.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" text="DEPARTMENTS:" textAlignment="JUSTIFY" textFill="#ffb703">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="dep1" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep2" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep3" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep4" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep5" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep6" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep7" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep8" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep9" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep10" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep11" fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep12" fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep13" fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep14" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="dep1Label" layoutX="608.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep2Label" layoutX="608.0" layoutY="239.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep3Label" layoutX="608.0" layoutY="279.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep4Label" layoutX="608.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep5Label" layoutX="608.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep6Label" layoutX="608.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep7Label" layoutX="608.0" layoutY="439.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep8Label" layoutX="778.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep9Label" layoutX="778.0" layoutY="239.0" prefHeight="40.0" prefWidth="137.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep10Label" layoutX="778.0" layoutY="279.0" prefHeight="40.0" prefWidth="138.0" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep11Label" layoutX="778.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep12Label" layoutX="778.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep13Label" layoutX="778.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="dep14Label" layoutX="792.0" layoutY="439.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="905.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+          <image>
+             <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-salame-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-banana-dolce-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-broccoli-48.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="addressShop1" layoutX="646.0" layoutY="155.0" prefHeight="40.0" prefWidth="150.0" text="DEPARTMENTS:" textAlignment="JUSTIFY" textFill="#ffb703">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-bottiglia-di-vino-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-prosciutto-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-grano-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-uova-48.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="vegetablesLabel" layoutX="608.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-inverno-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-dispenser-di-sapone-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-tubetto-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="725.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-snoopy-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/department/icons8-torta-48.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="fruitLabel" layoutX="608.0" layoutY="239.0" prefHeight="40.0" prefWidth="110.0" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="curedMeatLabel" layoutX="608.0" layoutY="279.0" prefHeight="40.0" prefWidth="110.0" text="SALUMI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="cheeseLabel" layoutX="608.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="FORMAGGI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="beverageLabel" layoutX="608.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="BEVANDE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="meatLabel" layoutX="608.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="CARNE" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="foodstuffLabel" layoutX="608.0" layoutY="439.0" prefHeight="40.0" prefWidth="110.0" text="PRODOTTI ALIMENTARI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="milkLabel" layoutX="778.0" layoutY="199.0" prefHeight="40.0" prefWidth="110.0" text="LATTE, BURRO E UOVA" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="breakfastLabel" layoutX="778.0" layoutY="239.0" prefHeight="40.0" prefWidth="137.0" text="COLAZIONE, MERENDA E DOLCI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="icecreamLabel" layoutX="778.0" layoutY="279.0" prefHeight="40.0" prefWidth="138.0" text="GELATI E SURGELATI" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="cosmeticsLabel" layoutX="778.0" layoutY="319.0" prefHeight="40.0" prefWidth="110.0" text="CURA DELLA PERSONA" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="housewareLabel" layoutX="778.0" layoutY="359.0" prefHeight="40.0" prefWidth="110.0" text="TUTTO PER LA CASA" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="petsLabel" layoutX="778.0" layoutY="399.0" prefHeight="40.0" prefWidth="110.0" text="AMICI ANIMALI" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="14.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="905.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="homepageImageView1" fitHeight="96.0" fitWidth="96.0" layoutX="42.0" layoutY="419.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_interface/icons8-home-48.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="labelShopNow" layoutX="152.0" layoutY="444.0" prefHeight="46.0" prefWidth="224.0" text="SHOP NOW" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
-         <font>
-            <Font name="Tahoma Bold" size="36.0" />
+        <Label fx:id="labelShopNow" layoutX="152.0" layoutY="444.0" prefHeight="46.0" prefWidth="224.0" text="SHOP NOW" textAlignment="JUSTIFY" textFill="#ffb703" wrapText="true">
+          <font>
+             <Font name="Tahoma Bold" size="36.0" />
          </font>
       </Label>
     </children>

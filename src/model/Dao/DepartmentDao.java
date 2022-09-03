@@ -20,26 +20,34 @@ public class DepartmentDao {
         try {
             conn = dbHelper.openDBConnection();
 
-            String sql = "SELECT * FROM department\n" +
-                    "WHERE department_id in(\n" +
-                    "SELECT department_id FROM shop_department WHERE shop_id = ?)";
+            String sql = "SELECT * FROM department D " +
+                    "JOIN shop_department SD " +
+                    "ON D.department_id = SD.department_id " +
+                    "WHERE SD.shop_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
 
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String logoImagepath = rs.getString("logo_imagepath");
-                String name = rs.getString("name");
-                int departmentId = rs.getInt("department_id");
-                shopId = rs.getInt("shop_id");
-                Department department = new Department(shopId, logoImagepath, name, departmentId);
-                arrayDepartment.add(department);
-            }
+            arrayDepartment = convertRSInArrayDepartment(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             return arrayDepartment;
         }
+    }
+
+    public static ArrayList<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
+        Department department;
+        ArrayList<Department> departmentArrayList = new ArrayList<>();
+        while (rs.next()) {
+            String logoImagepath = rs.getString("logo_imagepath");
+            String name = rs.getString("name");
+            int departmentId = rs.getInt("department_id");
+            int shopId = rs.getInt("shop_id");
+            department = new Department(shopId, logoImagepath, name, departmentId);
+            departmentArrayList.add(department);
+        }
+        return departmentArrayList;
     }
 }

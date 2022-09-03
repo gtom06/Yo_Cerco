@@ -16,29 +16,28 @@ values
 
 insert into department (name, logo_imagepath)
 values
-        ('Bakery','bakery.png')
-        ('Frozen','frozen.png')
-        ('Butchery','butchery.png')
-        ('Fishmonger','fishmonger.png')
-        ('Fresh','fresh.png')
-        ('Drinks','drinks.png')
-        ('Care','care.png')
-        ('Fruits&Vegetables','fruits&vegetables.png')
-        ('Pasta','biscuits&pasta.png')
-        ('Biscuits', 'biscuits.png');
+        ('Breakfast, sweets & cakes','icons8-torta-48.png'),
+        ('Cheese','icons8-formaggio-48.png'),
+        ('Cured meat','icons8-salame-48.png'),
+        ('Fruit','icons8-banana-dolce-48.png'),
+        ('Vegetables','icons8-broccoli-48.png'),
+        ('Beverage','icons8-bottiglia-di-vino-48.png'),
+        ('Meat','icons8-prosciutto-48.png'),
+        ('Foodstuff','icons8-grano-48.png'),
+        ('Milk, butter & eggs','icons8-uova-48.png'),
+        ('Icecream & frozen','icons8-inverno-48.png'),
+        ('Houseware','icons8-dispenser-di-sapone-48.png'),
+        ('Cosmetics','icons8-tubetto-48.png'),
+        ('Pets','icons8-snoopy-48.png');
 
 insert into shop_department (shop_id, department_id)
-values (1,1);
-insert into shop_department (shop_id, department_id)
-values (1,3);
-insert into shop_department (shop_id, department_id)
-values (1,4);
-insert into shop_department (shop_id, department_id)
-values (1,6);
-insert into shop_department (shop_id, department_id)
-values (1,8);
-insert into shop_department (shop_id, department_id)
-values (1,9);
+values
+        (1,1),
+        (1,3),
+        (1,4),
+        (1,6),
+        (1,8),
+        (1,9);
 
 insert into shop_department (shop_id, department_id)
 values (6,1);

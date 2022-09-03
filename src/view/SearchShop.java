@@ -72,14 +72,17 @@ public class SearchShop  {
             newStage.setScene(new Scene(root));
             newStage.show();
             newStage.setResizable(false);
+            /*
             Stage stage = (Stage) tableView.getScene().getWindow();
             stage.close();
+            */
         }
     }
 
     @FXML
     protected void onUserPositionImageViewClick() {
         requestTextField.setText(((Buyer) u).getBillingAddress());
+        param3.setSelected(true);
     }
 
     @FXML

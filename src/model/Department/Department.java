@@ -1,5 +1,6 @@
 package model.Department;
 
+import model.Constants;
 import model.Product.ProductShop;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Department {
 
     public Department(int shopId, String logoImagepath, String name, int departmentId) {
         this.shopId = shopId;
-        this.logoImagepath = logoImagepath;
+        this.logoImagepath = Constants.LOGO_DEPARTMENT_PATH + logoImagepath;
         this.name = name;
         this.departmentId = departmentId;
     }
@@ -44,5 +45,16 @@ public class Department {
 
     public ArrayList<ProductShop> getItems() {
         return items;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "shopId=" + shopId +
+                ", logoImagepath='" + logoImagepath + '\'' +
+                ", name='" + name + '\'' +
+                ", departmentId=" + departmentId +
+                ", items=" + items +
+                '}';
     }
 }

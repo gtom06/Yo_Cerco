@@ -17,28 +17,28 @@ create table shop(
     longitude                   float(10),
     gmaps_string                varchar(500)
 );
-create sequence department_id_sequence;
-create table department(
+CREATE SEQUENCE department_id_sequence;
+CREATE TABLE department(
     department_id   numeric(10) primary key default nextval('department_id_sequence'),
     name            varchar(50),
-    logo_imagepath  varchar(200)
+    logo_imagepath  varchar(50)
 );
-create table shop_department(
+CREATE TABLE shop_department(
     shop_id         numeric(10),
     department_id   numeric(10),
-    position_X      numeric(10),
-    position_Y      numeric(10)
+    position_X      numeric(10) DEFAULT 0,
+    position_Y      numeric(10) DEFAULT 0
 );
-create table user_favoriteshop(
+CREATE TABLE user_favoriteshop(
     username        varchar(100)    references userx(username),
     shop_id         numeric(10)     references shop(shop_id)
 );
-create table user_favoriteproduct(
+CREATE TABLE user_favoriteproduct(
     username        varchar(100)    references userx(username),
     sku             numeric(10)     references product(sku)
 );
 create sequence orders_id_sequence;
-create table orders(
+CREATE TABLE orders(
     order_id                    numeric(10)     primary key default nextval('orders_id_sequence'),
     shop_id                     numeric(10)     references shop(shop_id),
     username                    varchar(100)    references userx(username),
@@ -59,13 +59,13 @@ sku
 quantity_ordered
 */
 
-create table order_items(
+CREATE TABLE order_items(
     order_id    NUMERIC(10) REFERENCES orders(order_id),
     items       VARCHAR
 );
 
 create sequence sku_id_sequence;
-create table product(
+CREATE TABLE product(
     sku                 NUMERIC(10) primary key default nextval('sku_id_sequence'),
     name                VARCHAR(100),
     description         VARCHAR(100),
@@ -74,7 +74,7 @@ create table product(
     logo_imagepath      VARCHAR(200)
 );
 
-create table product_shop(
+CREATE TABLE product_shop(
     sku                     NUMERIC(10) REFERENCES product(sku),
     shop_id                 NUMERIC(10) REFERENCES shop(shop_id),
     location                VARCHAR(100),
@@ -95,13 +95,13 @@ era stata creata una table con percent_of_discount nel dbms. inutile creare ques
 'location like scaffale 4 ripiano 5'
 */
 
-create product_userx(
+CREATE TABLE product_userx(
     sku             numeric(10) references product(sku),
     userx           varchar(100) references username
 );
 
 create sequence user_id_sequence;
-create table userx(
+CREATE TABLE userx(
     username            varchar(100) primary key,
     pass                varchar(100),
     email               varchar(200),
@@ -119,7 +119,7 @@ create table userx(
     profile_imagepath   varchar(200)
 );
 
-create table shopholder_shop(
+CREATE TABLE shopholder_shop(
     username        varchar(100),
     shop_id         numeric(10)
 );

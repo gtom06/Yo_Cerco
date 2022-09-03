@@ -12,7 +12,8 @@ public interface Constants {
     String CART_PATH = "src/data/cart.json";
     //for images
     String SHOP_IMAGE = "src/images/shop/";
-    String DEPARTMENT_IMAGE = "src/images/department/";
+
+    String LOGO_DEPARTMENT_PATH = "src/images/department/";
 
 
     //for shop/product_shop
@@ -33,6 +34,8 @@ public interface Constants {
     String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorite";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITE";
 
+
+    /*
     //departments
     String FRUIT_DEPARTMENT = "Fruit";
     String VEGETABLES_DEPARTMENT = "Vegetables";
@@ -47,7 +50,7 @@ public interface Constants {
     String COSMETICS_DEPARTMENT = "Cosmetics";
     String HOUSEWARE_DEPARTMENT = "Houseware";
     String PETS_DEPARTMENT = "Pets";
-
+    */
 
     //Profile
     String COMPLETE_YOUR_PROFILE = "Complete your profile";

@@ -1,13 +1,11 @@
 package main;
 
 import control.CartElaboration;
-import control.LocationHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Address;
 import model.Product.ProductShop;
 
 import java.io.IOException;
@@ -26,7 +24,24 @@ public class MainJavaFX extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-        
+
+
+
+
+        //todo: remove lines
+        /*
+        ArrayList<String> cars = new  ArrayList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+        cars.add("Honda");
+        cars.add("Tesla");
+        System.out.println(cars);
+        cars = new ArrayList<String>(cars.subList(0, 2));
+        System.out.println(cars);
+
+
         Address address = LocationHandler.calculateLatLongFromAddress("via aldo moro");
         System.out.println(address);
         //System.out.println(JsonParserCustom.convertStringToGson(String.valueOf(LocationHandler.calculateLatLongFromAddress("Via Colle Alto"))));
