@@ -17,18 +17,22 @@ create table shop(
     longitude                   float(10),
     gmaps_string                varchar(500)
 );
+
 CREATE SEQUENCE department_id_sequence;
+
 CREATE TABLE department(
     department_id   numeric(10) primary key default nextval('department_id_sequence'),
     name            varchar(50),
     logo_imagepath  varchar(50)
 );
+
 CREATE TABLE shop_department(
     shop_id         numeric(10),
     department_id   numeric(10),
     position_X      numeric(10) DEFAULT 0,
     position_Y      numeric(10) DEFAULT 0
 );
+
 CREATE TABLE user_favoriteshop(
     username        varchar(100)    references userx(username),
     shop_id         numeric(10)     references shop(shop_id)
@@ -64,10 +68,11 @@ CREATE TABLE order_items(
     items       VARCHAR
 );
 
-create sequence sku_id_sequence;
+CREATE SEQUENCE sku_id_sequence;
 CREATE TABLE product(
     sku                 NUMERIC(10) primary key default nextval('sku_id_sequence'),
     name                VARCHAR(100),
+    brand               VARCHAR(20),
     description         VARCHAR(100),
     type                NUMERIC(1),
     weight              FLOAT(10),
@@ -77,6 +82,7 @@ CREATE TABLE product(
 CREATE TABLE product_shop(
     sku                     NUMERIC(10) REFERENCES product(sku),
     shop_id                 NUMERIC(10) REFERENCES shop(shop_id),
+    department_id           NUMERIC(10) REFERENCES department(department_id),
     location                VARCHAR(100),
     amount                  FLOAT(10),
     qty_on_stock            NUMERIC(10),
@@ -85,10 +91,6 @@ CREATE TABLE product_shop(
     number_of_purchase      NUMERIC(100),
     currency                VARCHAR(5)
 );
-
-/*
-    aggiungere department_id refences department(department_id)
-*/
 
 /*
 era stata creata una table con percent_of_discount nel dbms. inutile creare questa field, ma meglio calcolarla a runtime.

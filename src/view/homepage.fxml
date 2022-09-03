@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -8,82 +7,78 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
-<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Homepage">
-
-      <AnchorPane fx:id="anchorPane1" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onClickAnchorPane1" prefHeight="469.0" prefWidth="500.0" style="-fx-background-color: #457b9d; -fx-border-width: 5; -fx-border-color: ffb703;" BorderPane.alignment="BOTTOM_LEFT">
-         <children>
-            <ImageView fx:id="shopsImage" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
-               <image>
-                  <Image url="@../images/shop/icons8-small-business-96.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="238.0" layoutY="140.0" text="SHOPS" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
-               <font>
-                  <Font name="Tahoma Bold" size="36.0" />
-               </font></Label>
-         </children>
-      </AnchorPane>
-
-            
-                  <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #ffb703;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="logoutButton" layoutX="922.0" layoutY="13.0" maxHeight="26.0" maxWidth="64.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: ed2224; -fx-text-fill: white;" text="Logout">
-               <font>
-                  <Font name="Tahoma Bold" size="12.0" />
-               </font>
-         </Button>
-            <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
-            <Label layoutX="395.0" layoutY="-6.0" prefHeight="63.0" prefWidth="209.0" text="YoCerco" textAlignment="CENTER" textFill="#ed2224">
-               <font>
-                  <Font name="Tahoma Bold" size="50.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-
-            <AnchorPane fx:id="anchorPane3" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane3" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #a8dadc; -fx-border-width: 5; -fx-border-color: ffb703;" BorderPane.alignment="BOTTOM_RIGHT">
-         <children>
-            <Label layoutX="227.0" layoutY="140.0" text="FAVORITES" textFill="#ffb703" AnchorPane.leftAnchor="212.0">
-               <font>
-                  <Font name="Tahoma Bold" size="36.0" />
-               </font>
+<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0"
+      xmlns="http://javafx.com/javafx/18"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Homepage">
+   <AnchorPane fx:id="anchorPane1" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onClickAnchorPane1" prefHeight="469.0" prefWidth="500.0" style="-fx-background-color: #457b9d; -fx-border-width: 5; -fx-border-color: ffb703;" BorderPane.alignment="BOTTOM_LEFT">
+      <children>
+         <ImageView fx:id="shopsImage" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+            <image>
+               <Image url="@../images/shop/icons8-small-business-96.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="238.0" layoutY="140.0" text="SHOPS" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
+            <font>
+               <Font name="Tahoma Bold" size="36.0" />
+            </font>
          </Label>
-            <ImageView fx:id="favoritesIamge" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
-               <image>
-                  <Image url="@../images/shop/icons8-favorite-folder-96.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorPane4" layoutX="500.0" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane4" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #457b9d; -fx-border-color: ffb703; -fx-border-width: 5;">
-         <children>
-            <ImageView fx:id="myProfileImage" fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
-               <image>
-                  <Image url="@../images/user_interface/icons8-customer-100.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="238.0" layoutY="140.0" text="MY PROFILE" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
-               <font>
-                  <Font name="Tahoma Bold" size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-
-            <AnchorPane fx:id="anchorPane2" layoutX="500.0" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane2" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
-         <children>
-            <Label layoutX="227.0" layoutY="140.0" text="PRODUCTS" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
-               <font>
-                  <Font name="Tahoma Bold" size="36.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="productsImage" fitHeight="150.0" fitWidth="150.0" layoutX="43.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
-               <image>
-                  <Image url="@../images/shop/icons8-basket-96%20(1).png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   
+      </children>
+   </AnchorPane>
+   <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #ffb703;" BorderPane.alignment="CENTER">
+      <children>
+         <Button fx:id="logoutButton" layoutX="922.0" layoutY="13.0" maxHeight="26.0" maxWidth="64.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: ed2224; -fx-text-fill: white;" text="Logout">
+            <font>
+               <Font name="Tahoma Bold" size="12.0" />
+            </font>
+         </Button>
+         <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
+         <Label layoutX="395.0" layoutY="-6.0" prefHeight="63.0" prefWidth="209.0" text="YoCerco" textAlignment="CENTER" textFill="#ed2224">
+            <font>
+               <Font name="Tahoma Bold" size="50.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="anchorPane3" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane3" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #a8dadc; -fx-border-width: 5; -fx-border-color: ffb703;" BorderPane.alignment="BOTTOM_RIGHT">
+      <children>
+         <Label layoutX="227.0" layoutY="140.0" text="FAVORITES" textFill="#ffb703" AnchorPane.leftAnchor="212.0">
+            <font>
+               <Font name="Tahoma Bold" size="36.0" />
+            </font>
+         </Label>
+         <ImageView fx:id="favoritesIamge" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+            <image>
+               <Image url="@../images/shop/icons8-favorite-folder-96.png" />
+            </image>
+         </ImageView>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="anchorPane4" layoutX="500.0" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane4" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #457b9d; -fx-border-color: ffb703; -fx-border-width: 5;">
+      <children>
+         <ImageView fx:id="myProfileImage" fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+            <image>
+               <Image url="@../images/user_interface/icons8-customer-100.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="238.0" layoutY="140.0" text="MY PROFILE" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
+            <font>
+               <Font name="Tahoma Bold" size="36.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="anchorPane2" layoutX="500.0" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane2" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
+      <children>
+         <Label layoutX="227.0" layoutY="140.0" text="PRODUCTS" textFill="#ffb703" AnchorPane.leftAnchor="200.0">
+            <font>
+               <Font name="Tahoma Bold" size="36.0" />
+            </font>
+         </Label>
+         <ImageView fx:id="productsImage" fitHeight="150.0" fitWidth="150.0" layoutX="43.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+            <image>
+               <Image url="@../images/shop/icons8-basket-96.png" />
+            </image>
+         </ImageView>
+      </children>
+   </AnchorPane>
 </Pane>

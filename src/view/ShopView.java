@@ -17,10 +17,7 @@ import model.Department.Department;
 import model.Shop.Shop;
 import model.User.User;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -35,47 +32,12 @@ public class ShopView {
     ImageView   homepageImageView, shopLogo,
                 addShopToFavorites, removeShopFromFavorites,
                 dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
+
     //departmentLabel
     @FXML
     Label   dep1Label, dep2Label, dep3Label, dep4Label, dep5Label, dep6Label, dep7Label, dep8Label, dep9Label,
             dep10Label, dep11Label, dep12Label, dep13Label, dep14Label;
-    ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
-        {
-            add(dep1);
-            add(dep2);
-            add(dep3);
-            add(dep4);
-            add(dep5);
-            add(dep6);
-            add(dep7);
-            add(dep8);
-            add(dep9);
-            add(dep10);
-            add(dep11);
-            add(dep12);
-            add(dep13);
-            add(dep14);
-        }
-    };
 
-    ArrayList<Label> labelDepartmentsArrayList = new ArrayList<>() {
-        {
-            add(dep1Label);
-            add(dep2Label);
-            add(dep3Label);
-            add(dep4Label);
-            add(dep5Label);
-            add(dep6Label);
-            add(dep7Label);
-            add(dep8Label);
-            add(dep9Label);
-            add(dep10Label);
-            add(dep11Label);
-            add(dep12Label);
-            add(dep13Label);
-            add(dep14Label);
-        }
-    };
     @FXML
     Label   labelHi, labelShopName, labelShopAddress, labelShopOpeningTime, labelShopClosingTime, labelFavorite,
             labelPhoneShop;
@@ -101,15 +63,50 @@ public class ShopView {
 
     public void passShop(Shop shop) throws FileNotFoundException {
         this.shop = shop;
-        System.out.println(shop.getLogoImagepath());
         stream = new FileInputStream(shop.getLogoImagepath());
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
         labelShopName.setText(shop.getShopName());
 
+        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
+            {
+                add(dep1);
+                add(dep2);
+                add(dep3);
+                add(dep4);
+                add(dep5);
+                add(dep6);
+                add(dep7);
+                add(dep8);
+                add(dep9);
+                add(dep10);
+                add(dep11);
+                add(dep12);
+                add(dep13);
+                add(dep14);
+            }
+        };
+
+        ArrayList<Label> labelDepartmentsArrayList = new ArrayList<>() {
+            {
+                add(dep1Label);
+                add(dep2Label);
+                add(dep3Label);
+                add(dep4Label);
+                add(dep5Label);
+                add(dep6Label);
+                add(dep7Label);
+                add(dep8Label);
+                add(dep9Label);
+                add(dep10Label);
+                add(dep11Label);
+                add(dep12Label);
+                add(dep13Label);
+                add(dep14Label);
+            }
+        };
+
         ArrayList<Department> departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
-        System.out.println(imageViewDepartmentsArrayList);
-        System.out.println(labelDepartmentsArrayList);
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
