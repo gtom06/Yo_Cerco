@@ -8,27 +8,16 @@ import java.util.*;
 public class ComparableHandler {
 
     public static ArrayList<Shop> orderByDistance(ArrayList<Shop> shopArrayList, Address address) {
-        HashMap<Shop, Double> map = new HashMap<>();
         for (Shop shop : shopArrayList) {
-            map.put(shop, calculateDistanceFromShopToPoint(shop, address));
+            shop.setDistance(Math.round(calculateDistanceFromShopToPoint(shop,address) * 100.0) / 100.0);
         }
-
-        LinkedHashMap<Shop, Double> sortedMap = new LinkedHashMap<>();
-        ArrayList<Double> list = new ArrayList<>();
-        for (Map.Entry<Shop, Double> entry : map.entrySet()) {
-            list.add(entry.getValue());
-        }
-        Collections.sort(list);
-        for (Double num : list) {
-            for (Map.Entry<Shop, Double> entry : map.entrySet()) {
-                if (entry.getValue().equals(num)) {
-                    sortedMap.put(entry.getKey(), num);
-                }
+        Collections.sort(shopArrayList, new Comparator<Shop>() {
+            @Override
+            public int compare(Shop s1, Shop s2) {
+                return Double.compare(s1.getDistance(), s2.getDistance());
             }
-        }
-        System.out.println(sortedMap);
-        ArrayList<Shop> shopArrayListSorted = new ArrayList<>(sortedMap.keySet());
-        return shopArrayListSorted;
+        });
+        return shopArrayList;
     }
 
     public static double calculateDistanceFromShopToPoint(Shop shop, Address address) {
@@ -43,6 +32,6 @@ public class ComparableHandler {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c * 1000; //in meters
+        return R * c; //in km
     }
 }

@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Constants;
 import model.User.Admin;
 import model.User.Buyer;
 import model.User.ShopHolder;
@@ -29,7 +28,7 @@ public class MyProfile {
     @FXML
     ImageView myProfileImage;
     @FXML
-    Label nameLabel, surnameLabel, usernameLabel, addressLabel, phoneLabel, editLabel, errorLabel;
+    Label nameLabel, surnameLabel, usernameLabel, addressLabel, phoneLabel, saveYourProfileLabel, modifyYourProfileLabel, completeYourProfileLabel, errorLabel;
 
     @FXML
     TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
@@ -61,10 +60,17 @@ public class MyProfile {
 
         if (user instanceof Buyer) {
             if (this.isSomeFieldBlank = ((Buyer) user).isSomeFieldBlank()) {
-                editLabel.setText(Constants.COMPLETE_YOUR_PROFILE_CAPSLOCK);
+
+                saveYourProfileLabel.setVisible(false);
+                completeYourProfileLabel.setVisible(true);
+                modifyYourProfileLabel.setVisible(false);
+                //editLabel.setText(Constants.COMPLETE_YOUR_PROFILE_CAPSLOCK);
             }
             else {
-                editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
+                saveYourProfileLabel.setVisible(false);
+                completeYourProfileLabel.setVisible(false);
+                modifyYourProfileLabel.setVisible(true);
+                //editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
                 nameLabel.setText(user.getName());
                 surnameLabel.setText(user.getSurname());
                 phoneLabel.setText(((Buyer) user).getPhone());
@@ -82,10 +88,26 @@ public class MyProfile {
         //myProfileImage.setImage();
     }
 
+    @FXML
+    protected void onHomepageImageClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root = loader.load();
+        Homepage homepage = loader.getController();
+        homepage.passUser(user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
+    }
+
     public void editProfile() {
         editImageView.setVisible(false);
         saveImageView.setVisible(true);
-        editLabel.setText(Constants.SAVE_CAPSLOCK);
+        saveYourProfileLabel.setVisible(true);
+        completeYourProfileLabel.setVisible(false);
+        modifyYourProfileLabel.setVisible(false);
 
         //hide label
         nameLabel.setVisible(false);
@@ -112,20 +134,6 @@ public class MyProfile {
 
     }
 
-    @FXML
-    protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
-    }
-
     public void saveProfile() {
         if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
                 streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
@@ -146,7 +154,13 @@ public class MyProfile {
                 countryTextField.setVisible(false);
                 zipTextField.setVisible(false);
                 phoneTextField.setVisible(false);
-                editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
+
+
+                saveYourProfileLabel.setVisible(false);
+                completeYourProfileLabel.setVisible(false);
+                modifyYourProfileLabel.setVisible(true);
+
+                //editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
                 editImageView.setVisible(true);
                 saveImageView.setVisible(false);
 
@@ -164,11 +178,11 @@ public class MyProfile {
             }
         }
     }
-    public void do1() {
+    public void enterProfileImage() {
         borderProfileImageRectangle.setVisible(true);
         System.out.println("entered");
     }
-    public void exit1(){
+    public void exitProfileImage(){
         borderProfileImageRectangle.setVisible(false);
         System.out.println("exited");
     }

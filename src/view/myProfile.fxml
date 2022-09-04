@@ -20,7 +20,7 @@
       <AnchorPane layoutY="50.0" maxHeight="350.0" maxWidth="1000.0" minHeight="320.0" minWidth="1000.0" prefHeight="320.0" prefWidth="1000.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
          <children>
             <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffb703" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
-            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseEntered="#do1" onMouseExited="#exit1" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseEntered="#enterProfileImage" onMouseExited="#exitProfileImage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user_interface/icons8-customer-100.png" />
                </image>
@@ -85,7 +85,17 @@
                   <Image url="@../images/user_interface/icons8-done-48.png" />
                </image>
             </ImageView>
-            <Label fx:id="editLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#editProfile" prefHeight="17.0" prefWidth="180.0" text="Modify your profile">
+            <Label fx:id="saveYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#saveProfile" prefHeight="17.0" prefWidth="180.0" text="Save your profile">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="completeYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#saveProfile" prefHeight="17.0" prefWidth="180.0" text="Complete your profile">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="modifyYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#editProfile" prefHeight="17.0" prefWidth="180.0" text="Modify your profile">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>

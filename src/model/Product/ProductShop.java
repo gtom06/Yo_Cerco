@@ -9,8 +9,9 @@ public class ProductShop extends SimpleProduct {
     private int numberOfPurchase;
     private int shopId;
 
-    public ProductShop(double amount, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
-                       int sku, String name, String description, int type, double weight, String logoImagepath) {
+    public ProductShop(double amount, double discountedAmount, String currency, double percentOfDiscount,
+                       int availableQuantity, int numberOfPurchase, int shopId, int sku, String name,
+                       String description, int type, double weight, String logoImagepath) {
         super(sku,
                 name,
                 description,

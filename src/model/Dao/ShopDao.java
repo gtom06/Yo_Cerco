@@ -251,34 +251,6 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {
-        Shop shop;
-        ArrayList<Shop> arrayShop= new ArrayList<>();
-        while (rs.next()) {
-            String address = rs.getString("address").toUpperCase();
-            String city = rs.getString("city").toUpperCase();
-            String shopName = rs.getString("name").toUpperCase();
-            String logoImagepath = rs.getString("logo_imagepath");
-            String interiorPhotosImagepath = rs.getString("interior_photos_imagepath");
-            String planimetryImagePath = rs.getString("planimetry_imagepath");
-            int shopId = rs.getInt("shop_id");
-            ArrayList<Department> department = null;
-            ArrayList<ProductShop> items = null;
-            int status = rs.getInt("status");
-            String openingTime = rs.getString("opening_time");
-            String closingTime = rs.getString("closing_time");
-            String franchising = rs.getString("franchising");
-            double lat = rs.getDouble("latitude");
-            double lng = rs.getDouble("longitude");
-            String phone = rs.getString("phone");
-            String gmapsLink = rs.getString("gmaps_string");
-            shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, gmapsLink, franchising);
-            System.out.println(shop);
-            arrayShop.add(shop);
-        }
-        return arrayShop;
-    }
-
     public static ArrayList<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -394,5 +366,33 @@ public class ShopDao {
             dbHelper.closeDBConnection(stmt, conn);
             return arrayShop;
         }
+    }
+
+    public static ArrayList<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {
+        Shop shop;
+        ArrayList<Shop> arrayShop= new ArrayList<>();
+        while (rs.next()) {
+            String address = rs.getString("address").toUpperCase();
+            String city = rs.getString("city").toUpperCase();
+            String shopName = rs.getString("name").toUpperCase();
+            String logoImagepath = rs.getString("logo_imagepath");
+            String interiorPhotosImagepath = rs.getString("interior_photos_imagepath");
+            String planimetryImagePath = rs.getString("planimetry_imagepath");
+            int shopId = rs.getInt("shop_id");
+            ArrayList<Department> department = null;
+            ArrayList<ProductShop> items = null;
+            int status = rs.getInt("status");
+            String openingTime = rs.getString("opening_time");
+            String closingTime = rs.getString("closing_time");
+            String franchising = rs.getString("franchising");
+            double lat = rs.getDouble("latitude");
+            double lng = rs.getDouble("longitude");
+            String phone = rs.getString("phone");
+            String gmapsLink = rs.getString("gmaps_string");
+            shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, gmapsLink, franchising, 0);
+            System.out.println(shop);
+            arrayShop.add(shop);
+        }
+        return arrayShop;
     }
 }

@@ -47,7 +47,9 @@ public class ShopHandler {
                 System.out.println(address);
                 if (address != null) {
                     output = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                    System.out.println(output);
                     output = ComparableHandler.orderByDistance(output, address);
+                    System.out.println(output);
                     return output.size() != 0 ? output : null;
                 }
             } else if (searchMethod == Constants.BY_CITY) {

@@ -45,6 +45,7 @@ public class SearchShop  {
     TableColumn<Shop, String> nameColumn;
     TableColumn<Shop, String> openingColumn;
     TableColumn<Shop, String> closingColumn;
+    TableColumn<Shop, Double> distanceColumn;
     @FXML
     CheckBox openNow;
 
@@ -60,14 +61,12 @@ public class SearchShop  {
                 carica ferramentaview.fxml
             }
             //todo: non chiudere la finestra della searchShop.fxml quando si apre la shopView.fxml
-
             */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();
             shopView.passUser(u);
             shopView.passShop(shop);
-            //shopView.passDepartments(departments);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
@@ -109,6 +108,7 @@ public class SearchShop  {
         System.out.println(checkboxValue);
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
         ArrayList<Shop> shopArrayList = ShopHandler.findShopBy(paramForSearch, radioButtonValue, checkboxValue);
+
         if (shopArrayList != null) {
             for (Shop s : shopArrayList) {
                 observableListShops.add(s);
@@ -117,6 +117,11 @@ public class SearchShop  {
         }
         else {
             System.out.println("no result");
+        }
+        if (radioButtonValue != Constants.NEARBY) {
+            distanceColumn.setVisible(false);
+        } else {
+            distanceColumn.setVisible(true);
         }
     }
 
@@ -133,15 +138,15 @@ public class SearchShop  {
 
         tableView.setEditable(true);
         addressColumn = new TableColumn<>("Address");
-        addressColumn.setMinWidth(10);
+        addressColumn.setMinWidth(200);
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         cityColumn = new TableColumn<>("City");
-        cityColumn.setMinWidth(10);
+        cityColumn.setMinWidth(50);
         cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
 
         nameColumn = new TableColumn<>("ShopName");
-        nameColumn.setMinWidth(30);
+        nameColumn.setMinWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 
         openingColumn = new TableColumn<>("Opening");
@@ -152,6 +157,12 @@ public class SearchShop  {
         nameColumn.setMinWidth(10);
         closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
 
-        tableView.getColumns().addAll(nameColumn,addressColumn,cityColumn,openingColumn,closingColumn);
+        distanceColumn = new TableColumn<>("Distance");
+        distanceColumn.setMinWidth(10);
+        distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
+
+        tableView.getColumns().addAll(nameColumn, addressColumn, cityColumn, openingColumn, closingColumn, distanceColumn);
+
+        distanceColumn.setVisible(false);
     }
 }
