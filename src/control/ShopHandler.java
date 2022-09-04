@@ -17,24 +17,7 @@ public class ShopHandler {
     public static void deleteShop(Shop shop){
         ShopDao.deleteShopDb(shop);
     }
-    public static void updateShop(Shop shop){ }
-
-    //retrieve details of a single shop.
-    //to be changed with return Shop;
-    public static ArrayList<String> findShopForViewShop(int shopId){
-        ArrayList<Shop> shop = ShopDao.findShopById(shopId);
-        /*
-        ArrayList<String> out = new ArrayList<>();
-        out.add(shop.getLogoImagepath());
-        out.add(shop.getCity());
-        out.add(shop.getAddress());
-        out.add(shop.getShopName());
-        out.add(String.valueOf(shop.getShopId()));
-        return out;
-        */
-        return null;
-    }
-
+    public static void updateShop(Shop shop){}
 
     public static ArrayList<Shop> findShopBy(String searchParam, String searchMethod, boolean searchBool){
         if (searchParam.isBlank() || searchParam.length() > 50) {
@@ -47,9 +30,7 @@ public class ShopHandler {
                 System.out.println(address);
                 if (address != null) {
                     output = ShopDao.findShopNearby(address.getLat(), address.getLng());
-                    System.out.println(output);
                     output = ComparableHandler.orderByDistance(output, address);
-                    System.out.println(output);
                     return output.size() != 0 ? output : null;
                 }
             } else if (searchMethod == Constants.BY_CITY) {
@@ -62,7 +43,6 @@ public class ShopHandler {
         }
         else {
             Integer now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
-            System.out.println(now);
             if (searchMethod == Constants.NEARBY) {
                 output = ShopDao.findShopByAddressAndTime(searchParam, now);
                 return output.size() != 0 ? output : null;
