@@ -1,34 +1,35 @@
 package model.Product;
 
 public class ProductShop extends SimpleProduct {
-    private final double amount;
-    private final double discountedAmount;
+    private final double price;
+    private double discountedAmount;
     private final String currency;
     private double percentOfDiscount;
     private int availableQuantity;
     private int numberOfPurchase;
     private int shopId;
+    private int departmentId;
 
-    public ProductShop(double amount, double discountedAmount, String currency, double percentOfDiscount,
-                       int availableQuantity, int numberOfPurchase, int shopId, int sku, String name,
-                       String description, int type, double weight, String logoImagepath) {
+    public ProductShop(double price, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
+                       int sku, String name, String description, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
         super(sku,
                 name,
                 description,
-                type,
-                weight,
+                size,
+                unitOfMeasure,
                 logoImagepath);
-        this.amount = amount;
+        this.price = price;
         this.discountedAmount = discountedAmount;
         this.currency = currency;
         this.percentOfDiscount = percentOfDiscount;
         this.availableQuantity = availableQuantity;
         this.numberOfPurchase = numberOfPurchase;
         this.shopId = shopId;
+        this.departmentId = departmentId;
     }
 
     public double getAmount() {
-        return amount;
+        return price;
     }
 
     public double getDiscountedAmount() {
@@ -82,7 +83,7 @@ public class ProductShop extends SimpleProduct {
     }
 
     @Override
-    public double getWeight() {
+    public double getSize() {
         return 0;
     }
 
@@ -94,7 +95,7 @@ public class ProductShop extends SimpleProduct {
     @Override
     public String toString() {
         return "ProductShop{" +
-                "amount=" + amount +
+                "amount=" + price +
                 ", discountedAmount=" + discountedAmount +
                 ", currency='" + currency + '\'' +
                 ", percentOfDiscount=" + percentOfDiscount +

@@ -1,6 +1,7 @@
 package model.Dao;
 
 import model.Db.DbHelper;
+import model.Department.Department;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
@@ -24,25 +25,7 @@ public class ProductDao {
             stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                ProductShop product;
-
-                int sku = rs.getInt("sku");
-                double amount = rs.getDouble("price");
-                double discountedAmount = rs.getDouble("discounted_amount");
-                String currency = rs.getString("currency");
-                double percentOfDiscount = rs.getDouble("percent_of_discount");
-                int availableQuantity = rs.getInt("available_quantity");
-                int numberOfPurchase = rs.getInt("number_of_purchase");
-                int shopId = rs.getInt("shop_id");
-                String description = null;
-                int type = 0;
-                double weight = 0;
-                String logoImagepath = null;
-
-                product = new ProductShop(amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase, shopId, sku, name, description,type, weight, logoImagepath);
-                productArrayList.add(product);
-            }
+            productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -65,20 +48,7 @@ public class ProductDao {
             stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                SimpleProduct simpleProduct;
-
-                Integer sku = rs.getInt("sku");
-                name = rs.getString("name");
-                String description = rs.getString("description");
-                Integer type = rs.getInt("type");
-                Double weight = rs.getDouble("weight");
-                String logoImagepath = rs.getString("logo_imagepath");
-
-                simpleProduct = new SimpleProduct(sku, name, description, type, weight, logoImagepath);
-                System.out.println(simpleProduct);
-                productArrayList.add(simpleProduct);
-            }
+            productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -101,17 +71,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                SimpleProduct simpleProduct;
-                Integer sku = rs.getInt("sku");
-                String name = rs.getString("name");
-                String description = rs.getString("description");
-                Integer type = rs.getInt("type");
-                Double weight = rs.getDouble("weight");
-                String logoImagepath = rs.getString("logo_imagepath");
-                simpleProduct = new SimpleProduct(sku, name, description, type, weight, logoImagepath);
-                productArrayList.add(simpleProduct);
-            }
+            productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -134,24 +94,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                ProductShop productShop;
-                int sku = rs.getInt("sku");
-                String currency = rs.getString("currency");
-                Double amount = rs.getDouble("amount");
-                Double discountedAmount = rs.getDouble("discounted_amount");
-                Double percentOfDiscount = 100*((amount-discountedAmount)/amount);
-                int availableQuantity = rs.getInt("available_quantity");
-                int numberOfPurchase = rs.getInt("number_of_purchase");
-                String description = null;
-                String name = rs.getString("name");
-                int type = rs.getInt("type");
-                double weight = 0;
-                String logoImagepath = null;
-
-                productShop = new ProductShop(amount, discountedAmount, currency, percentOfDiscount, availableQuantity, numberOfPurchase, shopId, sku, name, description,type, weight, logoImagepath);
-                productArrayList.add(productShop);
-            }
+            productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -175,17 +118,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                SimpleProduct simpleProduct;
-                Integer sku = rs.getInt("sku");
-                String name = rs.getString("name");
-                String description = rs.getString("description");
-                Integer type = rs.getInt("type");
-                Double weight = rs.getDouble("weight");
-                String logoImagepath = rs.getString("logo_imagepath");
-                simpleProduct = new SimpleProduct(sku, name, description, type, weight, logoImagepath);
-                productArrayList.add(simpleProduct);
-            }
+            productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -193,4 +126,46 @@ public class ProductDao {
             return productArrayList;
         }
     }
+
+    public static ArrayList<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
+        SimpleProduct simpleProduct;
+        ArrayList<SimpleProduct> arraySimpleProduct= new ArrayList<>();
+        while (rs.next()) {
+            Integer sku = rs.getInt("sku");
+            String name = rs.getString("name");
+            String description = rs.getString("description");
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            simpleProduct = new SimpleProduct(sku, name, description, size, unitOfMeasure, logoImagepath);
+            arraySimpleProduct.add(simpleProduct);
+        }
+        return arraySimpleProduct;
+    }
+
+    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+        ProductShop productShop;
+        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
+        while (rs.next()) {
+
+            Double price = rs.getDouble("price");
+            Integer sku = rs.getInt("sku");
+            Double discountedAmount = rs.getDouble("discounted_amount");
+            String currency = rs.getString("currency");
+            Integer availableQuantity = rs.getInt("available_quantity");
+            Integer numberOfPurchase = rs.getInt("number_of_purchase");
+            Integer shopId = rs.getInt("shop_id");
+            String name = rs.getString("name");
+            String description = rs.getString("description");
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            Integer departmentId = rs.getInt("department_id");
+            productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
+                    sku, name, description, size, unitOfMeasure, logoImagepath, departmentId);
+            arrayProductShop.add(productShop);
+        }
+        return arrayProductShop;
+    }
+
 }

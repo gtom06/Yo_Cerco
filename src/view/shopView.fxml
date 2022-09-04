@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="700.0" prefWidth="1000.0"
-            xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
     <children>
         <Rectangle fill="#a8dadc" height="700.0" smooth="false" stroke="BLACK" width="1018.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <Rectangle fill="#457b9d" height="475.0" layoutX="26.0" layoutY="52.0" width="968.0" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
@@ -88,7 +88,7 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Label>
-        <ImageView fx:id="dep1" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep1" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="199.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="dep2" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="dep3" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="dep4" fitHeight="40.0" fitWidth="40.0" layoutX="557.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />

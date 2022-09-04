@@ -2,6 +2,7 @@ package model.Dao;
 
 import model.Db.DbHelper;
 import model.Department.Department;
+import model.Product.ProductShop;
 import model.Shop.Shop;
 
 import java.sql.Connection;
@@ -49,5 +50,59 @@ public class DepartmentDao {
             departmentArrayList.add(department);
         }
         return departmentArrayList;
+    }
+
+    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+        ProductShop productShop;
+        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
+        while (rs.next()) {
+
+            Double price = rs.getDouble("price");
+            Integer sku = rs.getInt("sku");
+            Double discountedAmount = rs.getDouble("discounted_amount");
+            String currency = rs.getString("currency");
+            Integer availableQuantity = rs.getInt("available_quantity");
+            Integer numberOfPurchase = rs.getInt("number_of_purchase");
+            Integer shopId = rs.getInt("shop_id");
+            String name = rs.getString("name");
+            String description = null;
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            Integer departmentId = rs.getInt("department_id");
+            productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
+                    sku, name, description, size, unitOfMeasure, logoImagepath, departmentId);
+            arrayProductShop.add(productShop);
+        }
+        return arrayProductShop;
+    }
+
+    public static ArrayList<ProductShop> findProductByDepartmentAndShop(int shopId, String s) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        Shop shop = null;
+        ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+
+            String sql = "SELECT * FROM product_shop PS " +
+                    "JOIN department D " +
+                    "ON D.department_id = PS.department_id " +
+                    "WHERE PS.shop_id = ? " +
+                    "AND D.name = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setString(2, s);
+
+            ResultSet rs = stmt.executeQuery();
+            arrayProductShop = convertRSInArrayProductShop(rs);
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return arrayProductShop;
+        }
     }
 }

@@ -6,56 +6,72 @@ public class SimpleProduct implements Product {
     private String description;
     private int type;
     private String logoImagepath;
-    private double weight;
+    private double size;
+    private String unitOfMeasure;
 
-    public SimpleProduct(int sku, String name, String description, int type, double weight, String logoImagepath) {
+
+    public SimpleProduct(int sku, String name, String description, double size, String unitOfMeasure, String logoImagepath) {
         this.sku = sku;
         this.name = name;
         this.description = description;
-        this.type = type;
-        this.weight = weight;
+        this.size = size;
+        this.unitOfMeasure = unitOfMeasure;
         this.logoImagepath = logoImagepath;
+    }
+
+
+    public void setSku(int sku) {
+        this.sku = sku;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public void setLogoImagepath(String logoImagepath) {
+        this.logoImagepath = logoImagepath;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public void setUnitOfMeasure(String unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 
     @Override
     public int getSku() {
-        return sku;
+        return 0;
     }
 
     @Override
     public String getLogoImagepath() {
-        return logoImagepath;
+        return null;
     }
 
     @Override
     public String getName() {
-        return name;
-    }
-
-    @Override
-    public double getWeight() {
-        return weight;
+        return null;
     }
 
     @Override
     public String getDescription() {
-        return description;
+        return null;
     }
 
     @Override
-    public int getType() {
-        return type;
+    public double getSize() {
+        return 0;
     }
 
     @Override
-    public String toString() {
-        return "SimpleProduct{" +
-                "sku=" + sku +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type=" + type +
-                ", logoImagepath='" + logoImagepath + '\'' +
-                ", weight=" + weight +
-                '}';
+    public String getUnitOfMeasure() {
+        return null;
     }
 }

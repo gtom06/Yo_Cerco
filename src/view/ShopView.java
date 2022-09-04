@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Constants;
@@ -180,5 +181,18 @@ public class ShopView {
         newStage.setResizable(false);
         Stage stage = (Stage) homepageImageView.getScene().getWindow();
         stage.close();
+    }
+
+    public void onClickDepartmentImage(MouseEvent mouseEvent) {
+        String ref = mouseEvent.getPickResult().getIntersectedNode().getId()+"Label";
+        switch (ref){
+            case "dep1Label":
+                String param = dep1Label.getText();
+                DepartmentHandler.findProductFromDepartmentAndShop(shop,param);
+
+
+        }
+
+
     }
 }
