@@ -32,7 +32,6 @@ public class SimpleProduct implements Product {
         this.description = description;
     }
 
-
     public void setLogoImagepath(String logoImagepath) {
         this.logoImagepath = logoImagepath;
     }
@@ -52,26 +51,26 @@ public class SimpleProduct implements Product {
 
     @Override
     public String getLogoImagepath() {
-        return null;
+        return logoImagepath;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return description;
     }
 
     @Override
     public double getSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public String getUnitOfMeasure() {
-        return null;
+        return unitOfMeasure;
     }
 }

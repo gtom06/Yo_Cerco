@@ -71,7 +71,6 @@ public class ShopView {
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
         labelShopName.setText(shop.getShopName());
-
         ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
             {
                 add(dep1);
@@ -114,7 +113,9 @@ public class ShopView {
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
+                imageViewDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
                 labelDepartmentsArrayList.get(i).setText(departmentArrayList.get(i).getName());
+                labelDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
             }
         }
 
@@ -187,15 +188,8 @@ public class ShopView {
     }
 
     public void onClickDepartmentImage(MouseEvent mouseEvent) {
-        String ref = mouseEvent.getPickResult().getIntersectedNode().getId()+"Label";
-        switch (ref){
-            case "dep1Label":
-                String param = dep1Label.getText();
-                DepartmentHandler.findProductFromDepartmentAndShop(shop,param);
-
-
-        }
-
-
+        int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
+        System.out.println(ref);
+        DepartmentHandler.findProductFromDepartmentAndShop(shop, ref);
     }
 }

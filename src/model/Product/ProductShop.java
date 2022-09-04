@@ -72,36 +72,37 @@ public class ProductShop extends SimpleProduct {
         this.shopId = shopId;
     }
 
-    @Override
     public String getLogoImagepath() {
         return super.getLogoImagepath();
     }
 
-    @Override
     public String getName() {
         return super.getName();
     }
 
-    @Override
     public double getSize() {
-        return 0;
+        return super.getSize();
     }
 
-    @Override
     public String getDescription() {
-        return null;
+        return super.getDescription();
+    }
+
+    public String getUnitOfMeasure() {
+        return super.getUnitOfMeasure();
     }
 
     @Override
     public String toString() {
         return "ProductShop{" +
-                "amount=" + price +
+                "price=" + price +
                 ", discountedAmount=" + discountedAmount +
                 ", currency='" + currency + '\'' +
                 ", percentOfDiscount=" + percentOfDiscount +
                 ", availableQuantity=" + availableQuantity +
                 ", numberOfPurchase=" + numberOfPurchase +
                 ", shopId=" + shopId +
+                ", departmentId=" + departmentId +
                 '}';
     }
 }

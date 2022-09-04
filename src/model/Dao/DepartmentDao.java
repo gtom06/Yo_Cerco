@@ -77,7 +77,7 @@ public class DepartmentDao {
         return arrayProductShop;
     }
 
-    public static ArrayList<ProductShop> findProductByDepartmentAndShop(int shopId, String s) {
+    public static ArrayList<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -86,18 +86,15 @@ public class DepartmentDao {
         try {
             conn = dbHelper.openDBConnection();
 
-            String sql = "SELECT * FROM product_shop PS " +
-                    "JOIN department D " +
-                    "ON D.department_id = PS.department_id " +
-                    "WHERE PS.shop_id = ? " +
-                    "AND D.name = ?";
+            String sql =    "SELECT * FROM product_shop PS " +
+                            "JOIN product P " +
+                            "ON P.sku = PS.sku " +
+                            "WHERE PS.shop_id = ? AND PS.department_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
-            stmt.setString(2, s);
-
+            stmt.setInt(2, departmentId);
             ResultSet rs = stmt.executeQuery();
             arrayProductShop = convertRSInArrayProductShop(rs);
-
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {

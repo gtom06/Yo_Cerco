@@ -18,7 +18,7 @@ insert into department (name, logo_imagepath)
 values
     ('FRUIT','icons8-banana-dolce-48.png'),
     ('DRINKS','icons8-bottiglia-di-vino-48.png'),
-    ('VEGETABLES','icons8-broccoli-48.png"'),
+    ('VEGETABLES','icons8-broccoli-48.png'),
     ('SOAPS AND DETERGENTS','icons8-dispenser-di-sapone-48.png'),
     ('CHEESES AND DAIRY PRODUCTS','icons8-formaggio-48.png'),
     ('CEREALS','icons8-grano-48.png'),
@@ -106,18 +106,34 @@ values
     (6,8),
     (1,8);
 
-insert into shop_department (shop_id, department_id)
-values (6,1);
-insert into shop_department (shop_id, department_id)
-values (6,3);
-insert into shop_department (shop_id, department_id)
-values (6,4);
-insert into shop_department (shop_id, department_id)
-values (6,6);
-insert into shop_department (shop_id, department_id)
-values (6,8);
-insert into shop_department (shop_id, department_id)
-values (6,9);
+insert into product (name, brand, description, size, unit_of_measure, logo_imagepath)
+values
+    ('nutella', 'ferrero', 'ottima scelta', 1, 'kg', 'nutella.png');
+
+insert into product_shop (sku, shop_id, department_id, location, price, qty_on_stock, discounted_price, available_quantity, number_of_purchase, currency)
+values
+    (1, 1);
+
+CREATE TABLE product_shop(
+                             sku                     NUMERIC(10) REFERENCES product(sku),
+                             shop_id                 NUMERIC(10) REFERENCES shop(shop_id),
+                             department_id           NUMERIC(10) REFERENCES department(department_id),
+                             location                VARCHAR(100),
+                             price                   FLOAT(10),
+                             qty_on_stock            NUMERIC(10),
+                             discounted_price        FLOAT(10),
+                             available_quantity      NUMERIC(100),
+                             number_of_purchase      NUMERIC(100),
+                             currency                VARCHAR(5)
+);
+
+
+
+
+
+
+
+
 
 
 
