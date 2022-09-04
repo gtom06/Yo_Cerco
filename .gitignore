@@ -1,3 +1,6 @@
+#Files
+module-info.java
+
 # Directories
 .idea/
 .out/
@@ -24,11 +27,4 @@
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-<<<<<<< .mine
-hs_err_pid*||||||| .r10
 hs_err_pid*
-=======
-hs_err_pid*
-
-
-#acctok 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>>>>>>> .r15
