@@ -19,7 +19,6 @@ public class SimpleProduct implements Product {
         this.logoImagepath = logoImagepath;
     }
 
-
     public void setSku(int sku) {
         this.sku = sku;
     }

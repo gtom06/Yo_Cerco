@@ -59,7 +59,7 @@ public class DepartmentDao {
 
             Double price = rs.getDouble("price");
             Integer sku = rs.getInt("sku");
-            Double discountedAmount = rs.getDouble("discounted_amount");
+            Double discountedAmount = rs.getDouble("discounted_price");
             String currency = rs.getString("currency");
             Integer availableQuantity = rs.getInt("available_quantity");
             Integer numberOfPurchase = rs.getInt("number_of_purchase");

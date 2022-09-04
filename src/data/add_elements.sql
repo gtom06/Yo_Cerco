@@ -114,23 +114,27 @@ insert into product_shop (sku, shop_id, department_id, location, price, qty_on_s
 values
     (1, 1);
 
-CREATE TABLE product_shop(
-                             sku                     NUMERIC(10) REFERENCES product(sku),
-                             shop_id                 NUMERIC(10) REFERENCES shop(shop_id),
-                             department_id           NUMERIC(10) REFERENCES department(department_id),
-                             location                VARCHAR(100),
-                             price                   FLOAT(10),
-                             qty_on_stock            NUMERIC(10),
-                             discounted_price        FLOAT(10),
-                             available_quantity      NUMERIC(100),
-                             number_of_purchase      NUMERIC(100),
-                             currency                VARCHAR(5)
-);
 
 
+insert into product(sku,name,description,logo_imagepath,size,unit_of_measure,brand)
+values
+(1,'ACQUA_TONICA','','ACQUA_TONICA_SPINNER.png',33,'cl','SPINNER'),
+(2,'ANGELI_DI_GRANO','','ANGELI_DI_GRANO_TRE_FORNARI.png',500,'gr','TRE FORNARI'),
+(3,'BIRRA_BOTTIGLIA','','BIRRA_033_BAVARIA.png',33,'cl','BAVARIA'),
+(4,'BOCCONCINI_DI_VITELLO','','BOCCONCINI_DI_VITELLO_TODIS.png',NULL,'kg','TODIS'),
+(5,'MORTADELLA_LA_NOSTRANA','','MORTADELLA_LA_NOSTRANA_ARTE_DELLA-SPECIALITA.jpg',NULL,'kg','ARTE DELLA SPECIALI'),
+(6,'SAPONE_LIQUIDO','','SAPONE_LIQUIDO_BELDAY.png',500,'ml','BELDAY'),
+(7,'UOVA','','UOVA_AIA.png',NULL,NULL,'AIA');
 
-
-
+insert into product_shop(sku,shop_id,department_id,location,qty_on_stock,discounted_price,available_quantity,number_of_purchase,currency,price)
+values
+(1,2,2,'',0,0,0,0,'eur',1),
+(2,2,6,'',0,0,0,0,'eur',2),
+(3,2,2,'',0,0,0,0,'eur',3),
+(4,2,8,'',0,0,0,0,'eur',4),
+(5,2,9,'',0,0,0,0,'eur',5),
+(6,2,4,'',0,0,0,0,'eur',6),
+(7,2,4,'',0,0,0,0,'eur',1.5);
 
 
 

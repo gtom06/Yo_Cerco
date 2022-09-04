@@ -69,7 +69,7 @@ CREATE SEQUENCE sku_id_sequence;
 CREATE TABLE product(
     sku                     NUMERIC(10) PRIMARY KEY DEFAULT nextval('sku_id_sequence'),
     name                    VARCHAR(100),
-    brand                   VARCHAR(20),
+    brand                   VARCHAR(40),
     description             VARCHAR(100),
     size                    FLOAT(10),
     unit_of_measure         VARCHAR(10),
