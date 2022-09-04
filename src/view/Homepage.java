@@ -60,7 +60,7 @@ public class Homepage {
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) anchorPane1.getScene().getWindow();
+        Stage stage = (Stage) anchorPane3.getScene().getWindow();
         stage.close();
     }
 

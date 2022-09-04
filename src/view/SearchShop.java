@@ -145,7 +145,7 @@ public class SearchShop  {
         cityColumn.setMinWidth(50);
         cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
 
-        nameColumn = new TableColumn<>("ShopName");
+        nameColumn = new TableColumn<>("Shop Name");
         nameColumn.setMinWidth(200);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 

@@ -1,14 +1,15 @@
 package view;
 
-import control.ProductHandler;
-import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -18,7 +19,6 @@ import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Favorite {
     User u = null;
@@ -36,6 +36,7 @@ public class Favorite {
     TableColumn<Shop, String> openingColumn;
     TableColumn<Shop, String> closingColumn;
 
+    @FXML
     TableView<SimpleProduct> simpleProductTableView = new TableView<>();
     TableColumn<SimpleProduct, String> descriptionColumn;
     TableColumn<SimpleProduct, Integer> typeColumn;
@@ -140,6 +141,7 @@ public class Favorite {
     public void fillShopTableView() {
         shopTableView.getItems().clear();
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
+        /*
         ArrayList<Shop> shopArrayList = ShopHandler.findFavouriteShopsFromUser(u);
         if (shopArrayList != null) {
             for (Shop s : shopArrayList) {
@@ -150,9 +152,11 @@ public class Favorite {
         else {
             System.out.println("no result");
         }
+        */
     }
 
     public void fillSimpleProductTableView() {
+        /*
         simpleProductTableView.getItems().clear();
         ObservableList<SimpleProduct> simpleProductObservableList = FXCollections.observableArrayList();
         ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findFavoriteShopsFromUser(u);
@@ -165,5 +169,6 @@ public class Favorite {
         else {
             System.out.println("no result");
         }
+         */
     }
 }

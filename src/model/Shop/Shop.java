@@ -18,8 +18,11 @@ public class Shop {
     private double lng;
     private String gmapsLink;
     private String franchising;
+    private double distance;
 
-    public Shop(String phone, String address, String city, String shopName, String logoImagepath, String interiorPhotosImagepath, String planimetryImagePath, int shopId, int status, String openingTime, String closingTime, double lat, double lng, String gmapsLink, String franchising) {
+    public Shop(String phone, String address, String city, String shopName, String logoImagepath,
+                String interiorPhotosImagepath, String planimetryImagePath, int shopId, int status, String openingTime,
+                String closingTime, double lat, double lng, String gmapsLink, String franchising, double distance) {
         this.phone = phone;
         this.address = address;
         this.city = city;
@@ -35,6 +38,7 @@ public class Shop {
         this.lng = lng;
         this.gmapsLink = Constants.GOOGLE_MAPS_LINK_START_STRING + gmapsLink;
         this.franchising = franchising;
+        this.distance = distance;
     }
     // start custom getter
     public String getCompleteAddress(){
@@ -51,8 +55,15 @@ public class Shop {
         return output;
     }
 
+    public double getDistance() {
+        return distance;
+    }
 
-    //end custom getter
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+//end custom getter
 
     public String getGmapsLink() {
         return gmapsLink;

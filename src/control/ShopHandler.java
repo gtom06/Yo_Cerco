@@ -23,35 +23,35 @@ public class ShopHandler {
         if (searchParam.isBlank() || searchParam.length() > 50) {
             return null;
         }
-        ArrayList<Shop> output;
+        ArrayList<Shop> shopArrayList;
         if (searchBool == false) {
             if (searchMethod == Constants.NEARBY) {
                 Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
                 System.out.println(address);
                 if (address != null) {
-                    output = ShopDao.findShopNearby(address.getLat(), address.getLng());
-                    output = ComparableHandler.orderByDistance(output, address);
-                    return output.size() != 0 ? output : null;
+                    shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                    shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
+                    return shopArrayList.size() != 0 ? shopArrayList : null;
                 }
             } else if (searchMethod == Constants.BY_CITY) {
-                output = ShopDao.findShopByCity(searchParam);
-                return output.size() != 0 ? output : null;
+                shopArrayList = ShopDao.findShopByCity(searchParam);
+                return shopArrayList.size() != 0 ? shopArrayList : null;
             } else if (searchMethod == Constants.BY_NAME) {
-                output = ShopDao.findShopByName(searchParam);
-                return output.size() != 0 ? output : null;
+                shopArrayList = ShopDao.findShopByName(searchParam);
+                return shopArrayList.size() != 0 ? shopArrayList : null;
             }
         }
         else {
             Integer now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
             if (searchMethod == Constants.NEARBY) {
-                output = ShopDao.findShopByAddressAndTime(searchParam, now);
-                return output.size() != 0 ? output : null;
+                shopArrayList = ShopDao.findShopByAddressAndTime(searchParam, now);
+                return shopArrayList.size() != 0 ? shopArrayList : null;
             } else if (searchMethod == Constants.BY_CITY) {
-                output = ShopDao.findShopByCityAndTime(searchParam, now);
-                return output.size() != 0 ? output : null;
+                shopArrayList = ShopDao.findShopByCityAndTime(searchParam, now);
+                return shopArrayList.size() != 0 ? shopArrayList : null;
             } else if (searchMethod == Constants.BY_NAME) {
-                output = ShopDao.findShopByNameAndTime(searchParam, now);
-                return output.size() != 0 ? output : null;
+                shopArrayList = ShopDao.findShopByNameAndTime(searchParam, now);
+                return shopArrayList.size() != 0 ? shopArrayList : null;
             }
         }
         return null;
@@ -80,7 +80,7 @@ public class ShopHandler {
         return ShopDao.findShopsWithProducts(productSkuArrayList);
     }
 
-    public static ArrayList<Shop> findFavouriteShopsFromUser(User user){
+    public static ArrayList<Shop> findFavoriteShopsFromUser(User user){
         return ShopDao.findShopByFavouriteUser(user.getUsername());
     }
 }

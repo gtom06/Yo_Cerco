@@ -1,12 +1,10 @@
 package main;
 
-import control.CartElaboration;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Product.ProductShop;
 
 import java.io.IOException;
 
@@ -57,6 +55,7 @@ public class MainJavaFX extends Application {
         OrderDao.insertOrderItems(order.getOrderId(), null);
         CartElaboration.deleteCart();
 */
+        /*
         CartElaboration.deleteCart();
         //Cart.readOrderItemsFromCart();
         ProductShop productShop = new ProductShop(1.0,10,"eur", 1.0, 100, 100,1, 1,"ciao1", null, 0, 1.0,null);
@@ -72,6 +71,6 @@ public class MainJavaFX extends Application {
 
         //System.out.println(readCart());
         CartElaboration.delete0QuantityItemsFromCart();
-
+*/
     }
 }

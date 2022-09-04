@@ -16,4 +16,7 @@ public class DepartmentHandler {
         System.out.println(output);
         return output.size() != 0 ? output : null;
     }
+    public static void findProductFromDepartmentAndShop(Shop shop,String param) {
+
+    }
 }

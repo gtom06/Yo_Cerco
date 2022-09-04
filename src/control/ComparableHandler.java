@@ -7,7 +7,7 @@ import java.util.*;
 
 public class ComparableHandler {
 
-    public static ArrayList<Shop> orderByDistance(ArrayList<Shop> shopArrayList, Address address) {
+    public static ArrayList<Shop> orderShopsByDistance(ArrayList<Shop> shopArrayList, Address address) {
         for (Shop shop : shopArrayList) {
             shop.setDistance(
                     Math.round(LocationHandler.calculateDistancePointToPoint(shop,address) * 100.0) / 100.0
