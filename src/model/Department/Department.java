@@ -21,7 +21,7 @@ public class Department {
 
     public Department(int shopId, String logoImagepath, String name, int departmentId, ArrayList<ProductShop> items) {
         this.shopId = shopId;
-        this.logoImagepath = logoImagepath;
+        this.logoImagepath = Constants.LOGO_DEPARTMENT_PATH + logoImagepath;
         this.name = name;
         this.departmentId = departmentId;
         this.items = items;
