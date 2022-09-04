@@ -107,7 +107,7 @@ public class FavoriteShops {
     public void fillTableView() {
         tableView.getItems().clear();
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        ArrayList<Shop> shopArrayList = ShopHandler.findFavouriteShopsFromUser(u);
+        ArrayList<Shop> shopArrayList = ShopHandler.findFavoriteShopsFromUser(u);
         if (shopArrayList != null) {
             for (Shop s : shopArrayList) {
                 observableListShops.add(s);
