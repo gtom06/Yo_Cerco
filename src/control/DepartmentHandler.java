@@ -2,7 +2,6 @@ package control;
 
 import model.Dao.DepartmentDao;
 import model.Department.Department;
-import model.Product.Product;
 import model.Product.ProductShop;
 import model.Shop.Shop;
 
@@ -28,5 +27,4 @@ public class DepartmentHandler {
         System.out.println(output);
         return output.size() != 0 ? output : null;
     }
-
 }
