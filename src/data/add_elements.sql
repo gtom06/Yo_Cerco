@@ -16,19 +16,18 @@ values
 
 insert into department (name, logo_imagepath)
 values
-        ('Breakfast, sweets & cakes','icons8-torta-48.png'),
-        ('Cheese','icons8-formaggio-48.png'),
-        ('Cured meat','icons8-salame-48.png'),
-        ('Fruit','icons8-banana-dolce-48.png'),
-        ('Vegetables','icons8-broccoli-48.png'),
-        ('Beverage','icons8-bottiglia-di-vino-48.png'),
-        ('Meat','icons8-prosciutto-48.png'),
-        ('Foodstuff','icons8-grano-48.png'),
-        ('Milk, butter & eggs','icons8-uova-48.png'),
-        ('Icecream & frozen','icons8-inverno-48.png'),
-        ('Houseware','icons8-dispenser-di-sapone-48.png'),
-        ('Cosmetics','icons8-tubetto-48.png'),
-        ('Pets','icons8-snoopy-48.png');
+    ('FRUIT','icons8-banana-dolce-48.png'),
+    ('DRINKS','icons8-bottiglia-di-vino-48.png'),
+    ('VEGETABLES','icons8-broccoli-48.png"'),
+    ('SOAPS AND DETERGENTS','icons8-dispenser-di-sapone-48.png'),
+    ('CHEESES AND DAIRY PRODUCTS','icons8-formaggio-48.png'),
+    ('CEREALS','icons8-grano-48.png'),
+    ('FROZEN','icons8-inverno-48.png'),
+    ('BUTCHERY','icons8-prosciutto-48.png'),
+    ('GASTRONOMY','icons8-salame-48.png'),
+    ('PETS', 'icons8-snoopy-48.png'),
+    ('CAKES AND DESSERTS', 'icons8-torta-48.png');
+
 
 insert into shop_department (shop_id, department_id)
 values
