@@ -4,6 +4,7 @@ import model.Dao.OrderDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Order.OrderPreview;
+import model.Order.Payment;
 import model.Shop.Shop;
 import model.User.User;
 
@@ -29,10 +30,6 @@ public class OrderHandler {
     }
 
     public static OrderPreview previewOrder() throws IOException {
-        //todo: in base agli items presenti dentro il cart, calcolare tutti
-        // i vari parametri da inserire nell'ordine
-
-
         CartElaboration.delete0QuantityItemsFromCart();
         ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
         OrderPreview orderPreview = null;
@@ -53,46 +50,78 @@ public class OrderHandler {
         return orderPreview;
     }
 
-    public static boolean createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, int mm, int yy, String cvv) throws IOException {
-        if (!CartElaboration.isValidCart()) {
-            System.out.println("not valid cart");
-            return false;
-        }
+    public static Order createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException {
+        Order order = null;
 
-        //Payment payment = new Payment(0, cardNumber., null,null, null, null, null, null, null);
-
-        //Order = new Order(0, shop.getShopId(), user.getUsername(), 0, null, null, null, null, null, null, null);
-
-        int orderId;
-        int shopId;
-        String username;
-        String payment;
-        Timestamp orderTimestamp;
-        Double totalAmount;
-        String currency;
-        String status;
-        Timestamp collectionTimestamp;
-        int orderTotalQuantity;
-        ArrayList<OrderItem> orderItemArrayList = null;
-
+        ArrayList<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
         orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-
         String orderItemsJson = "";
+        double orderTotalPrice = 0;
+        int orderTotalQuantity = 0;
+        String orderCurrency;
+
         if (orderItemArrayList == null){
-            return false;
+            return null;
         }
         else {
             orderItemsJson = CartElaboration.convertJsonCartToString();
-            //calculate all params to create Order()
+            orderCurrency = orderItemArrayList.get(0).getProductShop().getCurrency();
             for (OrderItem orderItem : orderItemArrayList) {
-                orderItem.getProductShop().getPrice();
-                orderItem.getProductShop().getDiscountedPrice();
-                //todo: only for the first item
-                orderItem.getProductShop().getShopId();
+                orderTotalQuantity += orderItem.getQuantityOrdered();
+                orderTotalPrice += orderItem.getQuantityOrdered() * orderItem.getProductShop().getPrice();
             }
         }
+
+        if (!CartElaboration.isValidCart()) {
+            System.out.println("not valid cart");
+            return null;
+        }
+
+
+        Payment payment = new Payment(
+                0,
+                cardNumber.substring(cardNumber.length() - 4),
+                mm,
+                yy,
+                paymentMethod,
+                cardholder,
+                orderTotalPrice,
+                orderCurrency,
+                null,
+                null
+        );
+
+        payment = OrderDao.insertPayment(payment);
+        if (payment == null) {
+            System.out.println("payment not executed");
+            return null;
+        }
+
+        order = new Order(
+                0,
+                shop.getShopId(),
+                user.getUsername(),
+                payment.getPaymentId(),
+                payment.getPaymentTimestamp(),
+                orderTotalPrice,
+                payment.getCurrency(),
+                null,
+                null,
+                orderTotalQuantity,
+                orderItemArrayList,
+                orderItemsJson
+        );
+
+        order = OrderDao.insertOrder(order);
+        if (order == null) {
+            System.out.println("insertOrder failed");
+            return null;
+        }
+
+        OrderDao.insertOrderItems(order.getOrderId(), orderItemsJson);
+        //deleteCart after order is created
         CartElaboration.deleteCart();
-        return true;
+        return order;
     }
 }

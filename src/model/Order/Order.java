@@ -5,29 +5,31 @@ import java.util.ArrayList;
 
 public class Order {
     private int orderId;
-    private int shopId; //todo: forse meglio inserire private Shop shop???
+    private int shopId;
     private String username;
-    private int payment;
+    private int paymentId;
     private Timestamp orderTimestamp;
-    private Double totalAmount;
+    private double totalPrice;
     private String currency;
     private String status;
     private Timestamp collectionTimestamp;
     private int orderTotalQuantity;
     private ArrayList<OrderItem> orderItemArrayList;
+    private String orderItemString;
 
-    public Order(int orderId, int shopId, String username, int payment, Timestamp orderTimestamp, Double totalAmount, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList) {
+    public Order(int orderId, int shopId, String username, int paymentId, Timestamp orderTimestamp, double totalPrice, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList, String orderItemString) {
         this.orderId = orderId;
         this.shopId = shopId;
         this.username = username;
-        this.payment = payment;
+        this.paymentId = paymentId;
         this.orderTimestamp = orderTimestamp;
-        this.totalAmount = totalAmount;
+        this.totalPrice = totalPrice;
         this.currency = currency;
         this.status = status;
         this.collectionTimestamp = collectionTimestamp;
         this.orderTotalQuantity = orderTotalQuantity;
         this.orderItemArrayList = orderItemArrayList;
+        this.orderItemString = orderItemString;
     }
 
     @Override
@@ -36,15 +38,24 @@ public class Order {
                 "orderId=" + orderId +
                 ", shopId=" + shopId +
                 ", username='" + username + '\'' +
-                ", payment='" + payment + '\'' +
+                ", paymentId=" + paymentId +
                 ", orderTimestamp=" + orderTimestamp +
-                ", totalAmount=" + totalAmount +
+                ", totalPrice=" + totalPrice +
                 ", currency='" + currency + '\'' +
                 ", status='" + status + '\'' +
                 ", collectionTimestamp=" + collectionTimestamp +
                 ", orderTotalQuantity=" + orderTotalQuantity +
                 ", orderItemArrayList=" + orderItemArrayList +
+                ", orderItemString='" + orderItemString + '\'' +
                 '}';
+    }
+
+    public String getOrderItemString() {
+        return orderItemString;
+    }
+
+    public void setOrderItemString(String orderItemString) {
+        this.orderItemString = orderItemString;
     }
 
     public int getOrderId() {
@@ -71,12 +82,12 @@ public class Order {
         this.username = username;
     }
 
-    public int getPayment() {
-        return payment;
+    public int getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment(int payment) {
-        this.payment = payment;
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     public Timestamp getOrderTimestamp() {
@@ -87,12 +98,12 @@ public class Order {
         this.orderTimestamp = orderTimestamp;
     }
 
-    public Double getTotalAmount() {
-        return totalAmount;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalAmount(Double totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public String getCurrency() {

@@ -6,6 +6,7 @@ import model.Constants;
 import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
+import model.Order.Payment;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +36,8 @@ public class OrderDao {
                 String status = rs.getString("status");
                 Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
                 Integer orderTotalQuantity = rs.getInt("total_quantity");
-                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null);
+                String orderItemString = rs.getString("fd");
+                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null, orderItemString);
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {
@@ -76,18 +78,21 @@ public class OrderDao {
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         try {
-            String sql = "INSERT INTO orders (shop_id, username, payment, total_amount, total_quantity, currency, collection_order_timestamp) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?) " +
+
+
+            String sql = "INSERT INTO orders (shop_id, username, payment_id, order_timestamp, total_price, total_quantity, currency, collection_order_timestamp) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
                     "RETURNING *";
             conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order.getShopId());
             stmt.setString(2, order.getUsername());
-            stmt.setInt(3, order.getPayment());
-            stmt.setDouble(4, order.getTotalAmount());
-            stmt.setInt(5,order.getOrderTotalQuantity());
-            stmt.setString(6,order.getCurrency());
-            stmt.setTimestamp(7, order.getCollectionTimestamp());
+            stmt.setInt(3, order.getPaymentId());
+            stmt.setTimestamp(4, order.getOrderTimestamp());
+            stmt.setDouble(5, order.getTotalPrice());
+            stmt.setInt(6,order.getOrderTotalQuantity());
+            stmt.setString(7,order.getCurrency());
+            stmt.setTimestamp(8, order.getCollectionTimestamp());
 
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
@@ -104,6 +109,41 @@ public class OrderDao {
             return order;
         }
     }
+
+    public static Payment insertPayment(Payment payment){
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            String sql = "INSERT INTO payment (last_4_digits, mm, yy, payment_method, cardholder, total_price, currency, payment_timestamp) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
+                    "RETURNING *";
+            conn = dbHelper.openDBConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, payment.getLast4digits());
+            stmt.setString(2, payment.getMm());
+            stmt.setString(3, payment.getYy());
+            stmt.setString(4, payment.getpaymentMethod());
+            stmt.setString(5, payment.getCardholder());
+            stmt.setDouble(6, payment.getTotalPrice());
+            stmt.setString(7, payment.getCurrency());
+            stmt.setTimestamp(8, payment.getPaymentTimestamp());
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            payment.setPaymentId(rs.getInt("payment_id"));
+            payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
+            payment.setStatus(rs.getString("status"));
+        } catch (SQLException se) {
+            se.printStackTrace();
+            dbHelper.closeDBConnection(stmt, conn);
+            return null;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return payment;
+        }
+    }
+
 
     public static boolean insertOrderItems(int orderId, String jsonOrderItems) {
         PreparedStatement stmt = null;

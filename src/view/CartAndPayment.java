@@ -110,8 +110,8 @@ public class CartAndPayment {
         String billingZip = billingZipTextField.getText();
         String cardholder = cardholderTextField.getText();
         String cardNumber = creditcardTextField.getText();
-        int mm = Integer.parseInt(mmTextField.getText());
-        int yy = Integer.parseInt(yyTextField.getText());
+        String mm = mmTextField.getText();
+        String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
 
         user.setName(name);
