@@ -21,7 +21,6 @@
             <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
          </image>
       </ImageView>
-      <ScrollBar layoutX="579.0" layoutY="54.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="14.0" />
       <Text fx:id="departmentNameText" fill="WHITE" layoutX="25.0" layoutY="38.0" stroke="#c40505" strokeType="OUTSIDE" text="DEPARTMENT NAME" textAlignment="CENTER" wrappingWidth="472.5367431640625">
          <font>
             <Font name="Tahoma Bold" size="31.0" />
