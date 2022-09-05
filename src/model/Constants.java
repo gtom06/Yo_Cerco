@@ -72,8 +72,7 @@ public interface Constants {
     String COMPLETED = "Completed";
 
     //payment name
-    String MASTERCARD_PAYMENT = "Mastercard";
-    String VISA_PAYMENT = "Visa";
+    String CREDITCARD_PAYMENT = "Creditcard";
     String CASH_ON_DELIVERY_PAYMENT = "Cash on delivery";
 
     //app logo
@@ -116,4 +115,3 @@ public interface Constants {
 
     String GOOGLE_MAPS_LINK_START_STRING = "https://www.google.com/maps/place";
 }
-
