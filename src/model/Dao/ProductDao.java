@@ -1,13 +1,13 @@
 package model.Dao;
 
 import model.Db.DbHelper;
-import model.Department.Department;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
-import model.Shop.Shop;
-import model.User.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductDao {
@@ -137,7 +137,8 @@ public class ProductDao {
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
-            simpleProduct = new SimpleProduct(sku, name, description, size, unitOfMeasure, logoImagepath);
+            String brand = rs.getString("brand");
+            simpleProduct = new SimpleProduct(sku, name, brand, description, size, unitOfMeasure, logoImagepath);
             arraySimpleProduct.add(simpleProduct);
         }
         return arraySimpleProduct;
@@ -161,8 +162,9 @@ public class ProductDao {
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             Integer departmentId = rs.getInt("department_id");
+            String brand = rs.getString("brand");
             productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
-                    sku, name, description, size, unitOfMeasure, logoImagepath, departmentId);
+                    sku, name, description, brand, size, unitOfMeasure, logoImagepath, departmentId);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;

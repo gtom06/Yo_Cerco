@@ -70,8 +70,9 @@ public class DepartmentDao {
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             Integer departmentId = rs.getInt("department_id");
+            String brand = rs.getString("brand");
             productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
-                    sku, name, description, size, unitOfMeasure, logoImagepath, departmentId);
+                    sku, name, description, brand, size, unitOfMeasure, logoImagepath, departmentId);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;

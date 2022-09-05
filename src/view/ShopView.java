@@ -3,6 +3,8 @@ package view;
 import control.BrowserHandler;
 import control.DepartmentHandler;
 import control.ShopHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
+import model.Product.ProductShop;
 import model.Shop.Shop;
 import model.User.User;
 
@@ -31,6 +34,10 @@ import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 public class ShopView {
     Shop shop = null;
     User user = null;
+
+    ArrayList<Department> departmentArrayList = null;
+
+    Department department = null;
 
     @FXML
     ImageView   homepageImageView, shopLogo,
@@ -109,7 +116,7 @@ public class ShopView {
             }
         };
 
-        ArrayList<Department> departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
+        this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
@@ -187,9 +194,28 @@ public class ShopView {
         stage.close();
     }
 
-    public void onClickDepartmentImage(MouseEvent mouseEvent) {
+    public void onClickDepartmentImage(MouseEvent mouseEvent) throws IOException {
+
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         System.out.println(ref);
-        DepartmentHandler.findProductFromDepartmentAndShop(shop, ref);
+
+        for (Department dep : departmentArrayList){
+            if (dep.getDepartmentId()==ref) {
+                department = dep;
+                break;
+            }
+        }
+        ObservableList<ProductShop> observableListProduct = FXCollections.observableArrayList();
+        department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId()));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
+        Parent root = loader.load();
+        DepartProductView departProductView = loader.getController();
+        departProductView.passParams(user,department,shop);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+
     }
 }

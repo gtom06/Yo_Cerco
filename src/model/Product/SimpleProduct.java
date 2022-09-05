@@ -3,16 +3,17 @@ package model.Product;
 public class SimpleProduct implements Product {
     private int sku;
     private String name;
+    private String brand;
     private String description;
-    private int type;
     private String logoImagepath;
     private double size;
     private String unitOfMeasure;
 
 
-    public SimpleProduct(int sku, String name, String description, double size, String unitOfMeasure, String logoImagepath) {
+    public SimpleProduct(int sku, String name, String brand, String description, double size, String unitOfMeasure, String logoImagepath) {
         this.sku = sku;
         this.name = name;
+        this.brand = brand;
         this.description = description;
         this.size = size;
         this.unitOfMeasure = unitOfMeasure;
@@ -43,9 +44,17 @@ public class SimpleProduct implements Product {
         this.unitOfMeasure = unitOfMeasure;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     @Override
     public int getSku() {
-        return 0;
+        return sku;
     }
 
     @Override

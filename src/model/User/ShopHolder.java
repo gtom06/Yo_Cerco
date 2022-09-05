@@ -1,13 +1,11 @@
 package model.User;
 
-import model.User.User;
-
 public class ShopHolder implements User {
     private final String username;
-    private final String name;
+    private String name;
     private final String email;
     private final String password;
-    private final String surname;
+    private String surname;
 
     public ShopHolder(String username, String password, String name, String surname, String email) {
         this.username = username;
@@ -28,8 +26,18 @@ public class ShopHolder implements User {
     }
 
     @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
     public String getSurname() {
         return surname;
+    }
+
+    @Override
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override

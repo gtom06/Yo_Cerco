@@ -11,9 +11,10 @@ public class ProductShop extends SimpleProduct {
     private int departmentId;
 
     public ProductShop(double price, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
-                       int sku, String name, String description, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
+                       int sku, String name, String description, String brand, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
         super(sku,
                 name,
+                brand,
                 description,
                 size,
                 unitOfMeasure,

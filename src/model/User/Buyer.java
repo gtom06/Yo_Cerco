@@ -62,6 +62,7 @@ public class Buyer implements User {
         return password;
     }
 
+    @Override
     public String getSurname() {
         return surname;
     }
@@ -98,10 +99,12 @@ public class Buyer implements User {
         return gender;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setSurname(String surname) {
         this.surname = surname;
     }

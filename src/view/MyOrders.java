@@ -80,7 +80,7 @@ public class MyOrders {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersWithoutItemsFromUser(u);
+        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(u);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);

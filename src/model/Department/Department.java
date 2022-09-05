@@ -27,6 +27,10 @@ public class Department {
         this.items = items;
     }
 
+    public void setItems(ArrayList<ProductShop> items) {
+        this.items = items;
+    }
+
     public int getShopId() {
         return shopId;
     }

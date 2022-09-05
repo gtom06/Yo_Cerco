@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DepartProductView">
+   <children>
+      <TableView fx:id="productTable" layoutX="20.0" layoutY="100.0" prefHeight="321.0" prefWidth="550.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="53.39999999999998" />
+      <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="535.0" layoutY="6.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="354.0" AnchorPane.topAnchor="6.0">
+         <image>
+            <Image url="@../images/user_interface/icons8-home-48.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="495.0" layoutY="6.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
+         </image>
+      </ImageView>
+      <ScrollBar layoutX="579.0" layoutY="54.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="14.0" />
+      <Text fx:id="departmentNameText" fill="WHITE" layoutX="25.0" layoutY="38.0" stroke="#c40505" strokeType="OUTSIDE" text="DEPARTMENT NAME" textAlignment="CENTER" wrappingWidth="472.5367431640625">
+         <font>
+            <Font name="Tahoma Bold" size="31.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

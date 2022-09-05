@@ -3,8 +3,9 @@ package model.User;
 public interface User {
     String getUsername();
     String getEmail();
-    String getName();
-    //todo: getSurname();
-    String getSurname();
     String getPassword();
+    String getName();
+    void setName(String name);
+    String getSurname();
+    void setSurname(String surname);
 }
