@@ -1,19 +1,31 @@
 package view;
 
+import control.DepartmentHandler;
+import control.ShopHandler;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+
+import javafx.scene.text.Text;
+
+
 import model.Department.Department;
 import model.Product.ProductShop;
+import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
 
@@ -22,6 +34,7 @@ import java.util.ArrayList;
 
 public class DepartProductView {
 
+    User user = null;
 
     @FXML
     ImageView homepageImageView;
@@ -29,21 +42,20 @@ public class DepartProductView {
     Text departmentNameText;
     @FXML
     TableView<ProductShop> productTable = new TableView<>();
+    //TableColumn<ProductShop, Integer> sku;
+    //TableColumn<ProductShop, Integer> shop_id;
+    //TableColumn<ProductShop, Integer> department_id;
     TableColumn<ProductShop,String>nameColumn;
     TableColumn<ProductShop,String> descriptionColumn;
     TableColumn<ProductShop,String> brandColumn;
     TableColumn<ProductShop,Float> sizeColumn;
     TableColumn<ProductShop,String> unitOfMeasureColumn;
-    TableColumn<ProductShop, String> locationColumn;
-    TableColumn<ProductShop, Integer> qtyOnStockColumn;
-    TableColumn<ProductShop, Float> discounted_priceColumn;
-    TableColumn<ProductShop, Integer> available_quantityColumn;
-    TableColumn<ProductShop, Integer> number_of_purchaseColumn;
+
+    TableColumn<ProductShop, Integer> availableQuantityColumn;
     TableColumn<ProductShop, Integer> currencyColumn;
     TableColumn<ProductShop, Integer> priceColumn;
     Department department = null;
     Shop shop = null;
-    User user = null;
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -64,12 +76,17 @@ public class DepartProductView {
         this.user = user;
         this.department = department;
         ArrayList<ProductShop> productShopArrayList = department.getItems();
+        if (productShopArrayList!=null){
+            System.out.println(department.getItems().get(0));
+            ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
+            productTable.setItems(observableListProducts);
+        }
+        else {
+            System.out.println("no result");
+        }
         this.shop = shop;
         departmentNameText.setText(department.getName());
 
-        ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-
-        productTable.setItems(observableListProducts);
     }
 
     public void previousPage() throws IOException {
@@ -81,7 +98,7 @@ public class DepartProductView {
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) departmentNameText.getScene().getWindow();
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
         stage.close();
     }
 
@@ -94,9 +111,9 @@ public class DepartProductView {
         nameColumn.setMinWidth(20);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        descriptionColumn = new TableColumn<>("DESCRIPTION");
-        descriptionColumn.setMinWidth(50);
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        priceColumn = new TableColumn<>("PRICE");
+        priceColumn.setMinWidth(50);
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         brandColumn = new TableColumn<>("BRAND");
         brandColumn.setMinWidth(10);
@@ -110,13 +127,21 @@ public class DepartProductView {
         unitOfMeasureColumn.setMinWidth(10);
         unitOfMeasureColumn.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        qtyOnStockColumn = new TableColumn<>("QTY ON STOCK");
-        qtyOnStockColumn.setMinWidth(10);
-        qtyOnStockColumn.setCellValueFactory(new PropertyValueFactory<>("availableQuantity"));
+        availableQuantityColumn = new TableColumn<>("AVAILABLE QUANTITY");
+        availableQuantityColumn.setMinWidth(10);
+        availableQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("availableQuantity"));
+
+        priceColumn = new TableColumn<>("PRICE");
+        priceColumn.setMinWidth(50);
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        currencyColumn = new TableColumn<>("CURRENCY");
+        currencyColumn.setMinWidth(50);
+        currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
 
 
-        productTable.getColumns().addAll(nameColumn, brandColumn, sizeColumn, unitOfMeasureColumn, qtyOnStockColumn);
+        productTable.getColumns().addAll(nameColumn,brandColumn,sizeColumn,unitOfMeasureColumn,availableQuantityColumn,priceColumn,currencyColumn);
 
 
     }

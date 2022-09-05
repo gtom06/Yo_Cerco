@@ -71,8 +71,10 @@ public class SearchShop  {
             newStage.setScene(new Scene(root));
             newStage.show();
             newStage.setResizable(false);
+            /*
             Stage stage = (Stage) tableView.getScene().getWindow();
             stage.close();
+            */
         }
     }
 

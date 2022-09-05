@@ -50,17 +50,13 @@ CREATE TABLE orders(
     order_id                    NUMERIC(10)     PRIMARY KEY DEFAULT nextval('orders_id_sequence'),
     shop_id                     NUMERIC(10)     REFERENCES shop(shop_id),
     username                    VARCHAR(100)    REFERENCES userx(username),
-    payment_id                  NUMERIC(10)     REFERENCES payment(order_id),
+    payment                     VARCHAR(100),
     order_timestamp             TIMESTAMP       DEFAULT current_timestamp,
     total_amount                FLOAT(10),
     total_quantity              NUMERIC(10),
     currency                    VARCHAR(5),
     status                      VARCHAR(100)    DEFAULT 'Created',
     collection_order_timestamp  TIMESTAMP
-);
-
-CREATE TABLE payment(
-
 );
 
 CREATE TABLE order_items(

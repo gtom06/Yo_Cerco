@@ -4,7 +4,6 @@ import model.Dao.OrderDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Order.OrderPreview;
-import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class OrderHandler {
-    public static ArrayList<Order> findOrdersInfoFromUser(User user) {
+    public static ArrayList<Order> findOrdersWithoutItemsFromUser(User user) {
         ArrayList<Order> orderArrayList = OrderDao.findOrdersFromUser(user.getUsername());
         return orderArrayList.size() != 0 ? orderArrayList : null;
     }
@@ -46,39 +45,40 @@ public class OrderHandler {
             Timestamp collectionTimestamp = Timestamp.from(Instant.now().plus(1, ChronoUnit.DAYS));
             for (OrderItem orderItem : orderItemArrayList) {
                 orderTotalQuantity += orderItem.getQuantityOrdered();
-                totalAmount += orderItem.getProductShop().getDiscountedAmount() * orderItem.getQuantityOrdered();
+                totalAmount += orderItem.getProductShop().getDiscountedPrice() * orderItem.getQuantityOrdered();
             }
             orderPreview = new OrderPreview(shopId, collectionTimestamp, totalAmount,orderTotalQuantity,orderItemArrayList);
         }
         return orderPreview;
+
     }
 
-    public static boolean createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, int mm, int yy, String cvv) throws IOException {
+    public static boolean createOrder() throws IOException {
+        /*
         if (!CartElaboration.isValidCart()) {
             System.out.println("not valid cart");
             return false;
         }
-
-        //Payment payment = new Payment(0, cardNumber., null,null, null, null, null, null, null);
-
-        //Order = new Order(0, shop.getShopId(), user.getUsername(), 0, null, null, null, null, null, null, null);
-
-        int orderId;
-        int shopId;
-        String username;
-        String payment;
-        Timestamp orderTimestamp;
-        Double totalAmount;
-        String currency;
-        String status;
-        Timestamp collectionTimestamp;
-        int orderTotalQuantity;
-        ArrayList<OrderItem> orderItemArrayList = null;
+        */
+        /*
+        private int orderId;
+        private int shopId;
+        private String username;
+        private String payment;
+        private Timestamp orderTimestamp;
+        private Double totalAmount;
+        private String currency;
+        private String status;
+        private Timestamp collectionTimestamp;
+        private int orderTotalQuantity;
+        private ArrayList<OrderItem> orderItemArrayList;
+        */
 
         CartElaboration.delete0QuantityItemsFromCart();
-        orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-
+        ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
+        //todo: pass this string to populate json in DB Order
         String orderItemsJson = "";
+        //if insert ok, return orderId. if orderId != 0, return true;
         if (orderItemArrayList == null){
             return false;
         }
@@ -86,13 +86,17 @@ public class OrderHandler {
             orderItemsJson = CartElaboration.convertJsonCartToString();
             //calculate all params to create Order()
             for (OrderItem orderItem : orderItemArrayList) {
-                orderItem.getProductShop().getAmount();
-                orderItem.getProductShop().getDiscountedAmount();
+                orderItem.getProductShop().getPrice();
+                orderItem.getProductShop().getDiscountedPrice();
                 //todo: only for the first item
                 orderItem.getProductShop().getShopId();
+
             }
         }
-        CartElaboration.deleteCart();
+
+
+
+
         return true;
     }
 }

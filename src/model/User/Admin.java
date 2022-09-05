@@ -2,8 +2,8 @@ package model.User;
 
 public class Admin implements User {
     private final String username;
-    private String name;
-    private String surname;
+    private final String name;
+    private final String surname;
     private final String email;
     private final String password;
 
@@ -21,25 +21,12 @@ public class Admin implements User {
     }
     @Override
     public String getName() { return name;}
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String getSurname() { return surname;}
-
-    @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     @Override
     public String getPassword() {
         return null;
     }
-
     @Override
     public String getEmail() {
         return email;

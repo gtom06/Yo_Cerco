@@ -72,7 +72,8 @@ public interface Constants {
     String COMPLETED = "Completed";
 
     //payment name
-    String CREDITCARD_PAYMENT = "Creditcard";
+    String MASTERCARD_PAYMENT = "Mastercard";
+    String VISA_PAYMENT = "Visa";
     String CASH_ON_DELIVERY_PAYMENT = "Cash on delivery";
 
     //app logo

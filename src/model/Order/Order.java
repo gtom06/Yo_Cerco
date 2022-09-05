@@ -7,7 +7,7 @@ public class Order {
     private int orderId;
     private int shopId; //todo: forse meglio inserire private Shop shop???
     private String username;
-    private int payment;
+    private String payment;
     private Timestamp orderTimestamp;
     private Double totalAmount;
     private String currency;
@@ -16,7 +16,7 @@ public class Order {
     private int orderTotalQuantity;
     private ArrayList<OrderItem> orderItemArrayList;
 
-    public Order(int orderId, int shopId, String username, int payment, Timestamp orderTimestamp, Double totalAmount, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList) {
+    public Order(int orderId, int shopId, String username, String payment, Timestamp orderTimestamp, Double totalAmount, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList) {
         this.orderId = orderId;
         this.shopId = shopId;
         this.username = username;
@@ -71,11 +71,11 @@ public class Order {
         this.username = username;
     }
 
-    public int getPayment() {
+    public String getPayment() {
         return payment;
     }
 
-    public void setPayment(int payment) {
+    public void setPayment(String payment) {
         this.payment = payment;
     }
 

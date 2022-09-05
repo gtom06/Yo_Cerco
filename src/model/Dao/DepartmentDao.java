@@ -59,20 +59,23 @@ public class DepartmentDao {
 
             Double price = rs.getDouble("price");
             Integer sku = rs.getInt("sku");
-            Double discountedAmount = rs.getDouble("discounted_price");
+            Double discountedPrice = rs.getDouble("discounted_price");
             String currency = rs.getString("currency");
             Integer availableQuantity = rs.getInt("available_quantity");
             Integer numberOfPurchase = rs.getInt("number_of_purchase");
             Integer shopId = rs.getInt("shop_id");
             String name = rs.getString("name");
+            String brand = rs.getString("brand");
+            System.out.println("********************************************************");
+            System.out.println(brand);
+            System.out.println("********************************************************");
             String description = null;
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             Integer departmentId = rs.getInt("department_id");
-            String brand = rs.getString("brand");
-            productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
-                    sku, name, description, brand, size, unitOfMeasure, logoImagepath, departmentId);
+            productShop = new ProductShop( price , discountedPrice, currency,0, availableQuantity, numberOfPurchase,shopId,
+                    sku, name,brand, description, size, unitOfMeasure, logoImagepath, departmentId);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;

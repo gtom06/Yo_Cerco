@@ -216,6 +216,8 @@ public class ShopView {
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
 
     }
 }

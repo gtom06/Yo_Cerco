@@ -2,7 +2,7 @@ package model.Product;
 
 public class ProductShop extends SimpleProduct {
     private final double price;
-    private double discountedAmount;
+    private double discountedPrice;
     private final String currency;
     private double percentOfDiscount;
     private int availableQuantity;
@@ -10,8 +10,8 @@ public class ProductShop extends SimpleProduct {
     private int shopId;
     private int departmentId;
 
-    public ProductShop(double price, double discountedAmount, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
-                       int sku, String name, String description, String brand, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
+    public ProductShop(double price, double discountedPrice, String currency, double percentOfDiscount, int availableQuantity, int numberOfPurchase, int shopId,
+                       int sku, String name, String brand,String description, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
         super(sku,
                 name,
                 brand,
@@ -20,7 +20,7 @@ public class ProductShop extends SimpleProduct {
                 unitOfMeasure,
                 logoImagepath);
         this.price = price;
-        this.discountedAmount = discountedAmount;
+        this.discountedPrice = discountedPrice;
         this.currency = currency;
         this.percentOfDiscount = percentOfDiscount;
         this.availableQuantity = availableQuantity;
@@ -29,12 +29,9 @@ public class ProductShop extends SimpleProduct {
         this.departmentId = departmentId;
     }
 
-    public double getAmount() {
-        return price;
-    }
 
-    public double getDiscountedAmount() {
-        return discountedAmount;
+    public double getDiscountedPrice() {
+        return discountedPrice;
     }
 
     public String getCurrency() {
@@ -93,17 +90,34 @@ public class ProductShop extends SimpleProduct {
         return super.getUnitOfMeasure();
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setDiscountedPrice(double discountedPrice) {
+        this.discountedPrice = discountedPrice;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
     @Override
     public String toString() {
         return "ProductShop{" +
                 "price=" + price +
-                ", discountedAmount=" + discountedAmount +
+                ", discountedPrice=" + discountedPrice +
                 ", currency='" + currency + '\'' +
                 ", percentOfDiscount=" + percentOfDiscount +
                 ", availableQuantity=" + availableQuantity +
                 ", numberOfPurchase=" + numberOfPurchase +
                 ", shopId=" + shopId +
                 ", departmentId=" + departmentId +
+                "test=" + super.getBrand() +
                 '}';
     }
 }

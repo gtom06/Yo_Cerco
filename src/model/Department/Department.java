@@ -12,6 +12,7 @@ public class Department {
     private final int departmentId;
     private ArrayList<ProductShop> items;
 
+
     public Department(int shopId, String logoImagepath, String name, int departmentId) {
         this.shopId = shopId;
         this.logoImagepath = Constants.LOGO_DEPARTMENT_PATH + logoImagepath;

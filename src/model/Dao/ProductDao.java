@@ -1,13 +1,13 @@
 package model.Dao;
 
 import model.Db.DbHelper;
+import model.Department.Department;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
+import model.Shop.Shop;
+import model.User.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductDao {
@@ -133,12 +133,12 @@ public class ProductDao {
         while (rs.next()) {
             Integer sku = rs.getInt("sku");
             String name = rs.getString("name");
+            String brand = rs.getString("brand");
             String description = rs.getString("description");
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
-            String brand = rs.getString("brand");
-            simpleProduct = new SimpleProduct(sku, name, brand, description, size, unitOfMeasure, logoImagepath);
+            simpleProduct = new SimpleProduct(sku, name,brand, description, size, unitOfMeasure, logoImagepath);
             arraySimpleProduct.add(simpleProduct);
         }
         return arraySimpleProduct;
@@ -151,20 +151,20 @@ public class ProductDao {
 
             Double price = rs.getDouble("price");
             Integer sku = rs.getInt("sku");
-            Double discountedAmount = rs.getDouble("discounted_amount");
+            Double discountedPrice = rs.getDouble("discounted_price");
             String currency = rs.getString("currency");
             Integer availableQuantity = rs.getInt("available_quantity");
             Integer numberOfPurchase = rs.getInt("number_of_purchase");
             Integer shopId = rs.getInt("shop_id");
             String name = rs.getString("name");
+            String brand = rs.getString("brand");
             String description = rs.getString("description");
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             Integer departmentId = rs.getInt("department_id");
-            String brand = rs.getString("brand");
-            productShop = new ProductShop( price , discountedAmount, currency,0, availableQuantity, numberOfPurchase,shopId,
-                    sku, name, description, brand, size, unitOfMeasure, logoImagepath, departmentId);
+            productShop = new ProductShop( price , discountedPrice, currency,0, availableQuantity, numberOfPurchase,shopId,
+                    sku, name, brand, description, size, unitOfMeasure, logoImagepath, departmentId);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;
