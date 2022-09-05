@@ -1,20 +1,12 @@
 package model.Dao;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 import control.FileElaboration;
 import control.JsonParserCustom;
 import model.Constants;
 import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
-import model.User.Admin;
-import model.User.Buyer;
-import model.User.ShopHolder;
 
-import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -36,7 +28,7 @@ public class OrderDao {
                 Order order;
                 Integer orderId = rs.getInt("order_id");
                 Integer shopId = rs.getInt("shop_id");
-                String payment = rs.getString("payment");
+                int payment = rs.getInt("payment");
                 Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
                 double totalAmount = rs.getDouble("total_amount");
                 String currency = rs.getString("currency");
@@ -91,7 +83,7 @@ public class OrderDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order.getShopId());
             stmt.setString(2, order.getUsername());
-            stmt.setString(3, order.getPayment());
+            stmt.setInt(3, order.getPayment());
             stmt.setDouble(4, order.getTotalAmount());
             stmt.setInt(5,order.getOrderTotalQuantity());
             stmt.setString(6,order.getCurrency());
