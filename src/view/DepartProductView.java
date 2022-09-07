@@ -1,31 +1,21 @@
 package view;
 
-import control.DepartmentHandler;
-import control.ShopHandler;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+import control.CartElaboration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-
 import javafx.scene.text.Text;
-
-
+import javafx.stage.Stage;
 import model.Department.Department;
 import model.Product.ProductShop;
-import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
 
@@ -34,6 +24,8 @@ import java.util.ArrayList;
 
 public class DepartProductView {
 
+    Department department = null;
+    Shop shop = null;
     User user = null;
 
     @FXML
@@ -54,8 +46,9 @@ public class DepartProductView {
     TableColumn<ProductShop, Integer> availableQuantityColumn;
     TableColumn<ProductShop, Integer> currencyColumn;
     TableColumn<ProductShop, Integer> priceColumn;
-    Department department = null;
-    Shop shop = null;
+
+    @FXML
+    Button addToCartButton;
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -69,6 +62,12 @@ public class DepartProductView {
         newStage.setResizable(false);
         Stage stage = (Stage) homepageImageView.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    protected void onAddToCartClick() {
+        ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
+        CartElaboration.addOrderItemsToCart(productShop, 1);
     }
 
     public void passParams(User user, Department department, Shop shop) {

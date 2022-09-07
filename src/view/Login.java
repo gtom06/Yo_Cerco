@@ -1,13 +1,12 @@
 package view;
 
-import control.UserHandler;
 import control.FileElaboration;
+import control.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
 import model.User.Admin;
@@ -20,7 +19,9 @@ import java.util.ArrayList;
 
 public class Login {
 
+    public CheckBox termsConditionsCheckbox;
     // Strings which hold css elements to easily re-use in the application
+
     protected
     String successMessage = String.format("-fx-text-fill: GREEN;");
     String errorMessage = String.format("-fx-text-fill: RED;");
@@ -51,13 +52,9 @@ public class Login {
     @FXML
     private CheckBox rememberMe;
     @FXML
-    private Label yocerco;
-    @FXML
     DatePicker signUpDateDatePicker;
     @FXML
     ToggleGroup gender;
-    @FXML
-    ImageView logo;
 
 
 
@@ -120,7 +117,7 @@ public class Login {
     }
 
     @FXML
-    protected void onSignUpButtonClick() throws InterruptedException {
+    protected void onSignUpButtonClick() {
 
         if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
             invalidSignupCredentials.setText("Please fill in all fields!");
@@ -169,7 +166,6 @@ public class Login {
     }
 
     public void initialize() throws IOException {
-        //logo = new ImageView(Constants.APP_LOGO);
         ArrayList<String> userdata;
         userdata = FileElaboration.fileLinesToArrayList(Constants.REMEMBER_LOGIN);
         if (userdata.size() == 2){

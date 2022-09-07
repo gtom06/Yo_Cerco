@@ -35,8 +35,6 @@ public class SearchShop  {
     @FXML
     TextField requestTextField;
     @FXML
-    Label selected;
-    @FXML
     Label labelHi;
     @FXML
     TableView<Shop> tableView = new TableView<>();

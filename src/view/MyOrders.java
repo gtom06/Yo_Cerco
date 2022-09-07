@@ -29,7 +29,7 @@ public class MyOrders {
     TableView<Order> orderTableView = new TableView<>();
     TableColumn<Order, String> orderNumber;
     TableColumn<Order, Integer> orderTotalQuantity;
-    TableColumn<Order, String> orderTotalAmount;
+    TableColumn<Order, String> orderTotalPrice;
     TableColumn<Order, Timestamp> orderTimeStamp;
     TableColumn<Order, Timestamp> orderStatus;
 
@@ -60,9 +60,9 @@ public class MyOrders {
         orderTotalQuantity.setMinWidth(10);
         orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
 
-        orderTotalAmount = new TableColumn<>("totalAmount");
-        orderTotalAmount.setMinWidth(30);
-        orderTotalAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
+        orderTotalPrice = new TableColumn<>("totalPrice");
+        orderTotalPrice.setMinWidth(30);
+        orderTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
         orderTimeStamp = new TableColumn<>("orderTimestamp");
         orderTimeStamp.setMinWidth(10);
@@ -72,7 +72,7 @@ public class MyOrders {
         orderStatus.setMinWidth(10);
         orderStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalAmount, orderTimeStamp, orderStatus);
+        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalPrice, orderTimeStamp, orderStatus);
 
     }
 

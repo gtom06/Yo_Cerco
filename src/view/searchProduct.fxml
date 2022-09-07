@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SearchProduct">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SearchProduct">
     <children>
-        <Rectangle fill="#937565" height="50.0" width="1000.0" />
-        <Button fx:id="searchButton" layoutX="885.0" layoutY="58.0" mnemonicParsing="false" onAction="#onSearchButtonClick" text="Search" textAlignment="CENTER" />
-        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+        <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
+        <Button fx:id="searchButton" layoutX="736.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false" onAction="#onSearchButtonClick" style="-fx-background-color: #12d39d;" text="Search" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font></Button>
+        <ImageView fx:id="homepageImageView" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="7.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/user_interface/icons8-home-48.png" />
             </image>
         </ImageView>
         <Label fx:id="selected" layoutX="86.0" layoutY="472.0" />
         <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
-        <TableView fx:id="productTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="563.0" prefWidth="898.0">
+        <TableView fx:id="productTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="504.0" prefWidth="919.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="161.0">
         </TableView>
-        <Button fx:id="searchForShop" layoutX="885.0" layoutY="150.0" mnemonicParsing="false" onAction="#onSearchShopButtonClick" text="Search Shop" textAlignment="CENTER" />
-        <TextField fx:id="requestTextField" layoutX="40.0" layoutY="59.0" prefHeight="25.0" prefWidth="463.0" />
+        <Button fx:id="searchForShop" layoutX="798.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false" onAction="#onSearchShopButtonClick" style="-fx-background-color: #12d39d;" text="Search Shop" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font></Button>
+        <TextField fx:id="requestTextField" layoutX="268.0" layoutY="107.0" minHeight="26.0" prefHeight="26.0" prefWidth="463.0" style="-fx-border-color: #12d39d; -fx-border-width: 2;" />
+      <ImageView fitHeight="50.0" fitWidth="529.0" layoutX="236.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/Logos/Logo_Banner.jpeg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="881.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font name="Tahoma Bold" size="18.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

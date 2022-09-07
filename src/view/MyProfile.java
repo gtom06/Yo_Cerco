@@ -38,7 +38,7 @@ public class MyProfile {
 
     @FXML
     AnchorPane anchorPane1, anchorPane2;
-    private boolean isSomeFieldBlank;
+    boolean isSomeFieldBlank;
 
     @FXML
     protected void onClickAnchorPane2() throws IOException {
@@ -60,7 +60,6 @@ public class MyProfile {
 
         if (user instanceof Buyer) {
             if (this.isSomeFieldBlank = ((Buyer) user).isSomeFieldBlank()) {
-
                 saveYourProfileLabel.setVisible(false);
                 completeYourProfileLabel.setVisible(true);
                 modifyYourProfileLabel.setVisible(false);

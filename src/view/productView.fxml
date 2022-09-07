@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+    <children>
+        <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="0.0" />
+        <Rectangle fill="#e6e6e6" height="475.0" layoutY="58.0" width="937.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="50.0" />
+        <ImageView fx:id="productPhoto" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
+         <image>
+            <Image url="@../images/product/ACQUA_TONICA_SPINNER.png" />
+         </image></ImageView>
+        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/icons8-home-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="addShopToFavorites" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="449.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="910.0">
+            <image>
+                <Image url="@../images/shop/icons8-we-heart-it-96.png" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/product/product_interface/icons8-information-96.png" />
+         </image>
+      </ImageView>
+        <ImageView fx:id="removeShopFromFavorites" fitHeight="60.0" fitWidth="60.0" layoutX="40.0" layoutY="439.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="900.0">
+            <image>
+                <Image url="@../images/shop/icons8-close-96.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="cartImage" fitHeight="80.0" fitWidth="80.0" layoutX="857.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/icons8-shopping-cart-96.png" />
+            </image>
+        </ImageView>
+      <Text fx:id="descriptionProd" fill="#fec260" layoutX="294.0" layoutY="143.0" stroke="#2a0944" strokeType="OUTSIDE" strokeWidth="0.75" textAlignment="JUSTIFY" wrappingWidth="643.1998901367188">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="favourtiteText" fill="#12d39d" layoutX="96.0" layoutY="483.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" wrappingWidth="410.88482666015625">
+         <font>
+            <Font name="Tahoma Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#ffb703" layoutX="500.0" layoutY="111.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="4.0" text="DESCRIPTION:">
+         <font>
+            <Font name="Tahoma Bold" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user_interface/Logos/Logo_Banner_2.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/product/product_interface/icons8-tag-window-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="527.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/product/product_interface/icons8-euro-96.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="priceProd" fill="#12d39d" layoutX="575.0" layoutY="480.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.75" text="59,50" textAlignment="JUSTIFY" wrappingWidth="60.0">
+         <font>
+            <Font name="Tahoma" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="brandProd" fill="#12d39d" layoutX="100.0" layoutY="413.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.75" text="59,50" textAlignment="JUSTIFY" wrappingWidth="60.0">
+         <font>
+            <Font name="Tahoma" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="nameProd" fill="#12d39d" layoutX="100.0" layoutY="360.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.75" text="59,50" textAlignment="JUSTIFY" wrappingWidth="60.0">
+         <font>
+            <Font name="Tahoma" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="#ffb703" layoutX="704.0" layoutY="480.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="Add to cart:">
+         <font>
+            <Font name="Tahoma Bold" size="24.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

@@ -48,25 +48,43 @@ public class CartElaboration {
         }
     }
 
-    public static void addOrderItemsToCart(ProductShop productShop, int newQuantity) {
+    public static void addOrderItemsToCart(ProductShop productShop, int quantityToAdd) {
         ArrayList<OrderItem> orderItemArrayList;
+        double priceTotal = 0;
         try {
             orderItemArrayList = readOrderItemsFromCart();
             if (orderItemArrayList != null) {
                 boolean found = false;
                 for (OrderItem orderItem : orderItemArrayList) {
-                    if (orderItem.getProductShop().getSku() == productShop.getSku()) {
-                        //int actualQuantity = orderItem.getQuantityOrdered();
+                    if (orderItem.getSku() == productShop.getSku()) {
+                        int actualQuantity = orderItem.getQuantityOrdered();
                         found = true;
-                        orderItem.setQuantityOrdered(newQuantity);
+                        orderItem.setQuantityOrdered(actualQuantity + quantityToAdd);
+                        orderItem.setPriceTotal(orderItem.getPrice() * orderItem.getQuantityOrdered());
+                        System.out.println(orderItem);
                     }
                 }
                 if (!found) {
-                    orderItemArrayList.add(new OrderItem(null, productShop, newQuantity));
+                    orderItemArrayList.add(
+                            new OrderItem(productShop.getPrice(), quantityToAdd, productShop.getCurrency(),
+                                    productShop.getPercentOfDiscount(), productShop.getAvailableQuantity(),
+                                    productShop.getNumberOfPurchase(),productShop.getShopId(),productShop.getSku(),
+                                    productShop.getName(),productShop.getBrand(),productShop.getDescription(),
+                                    productShop.getSize(), productShop.getUnitOfMeasure(),
+                                    productShop.getLogoImagepath(), productShop.getDepartmentId(),
+                                    quantityToAdd,quantityToAdd * productShop.getPrice()));
                 }
             } else {
                 orderItemArrayList = new ArrayList<>();
-                orderItemArrayList.add(new OrderItem(null, productShop, newQuantity));
+                orderItemArrayList.add(
+                        new OrderItem(productShop.getPrice(), quantityToAdd, productShop.getCurrency(),
+                        productShop.getPercentOfDiscount(), productShop.getAvailableQuantity(),
+                        productShop.getNumberOfPurchase(),productShop.getShopId(),productShop.getSku(),
+                        productShop.getName(),productShop.getBrand(),productShop.getDescription(),
+                        productShop.getSize(), productShop.getUnitOfMeasure(),
+                        productShop.getLogoImagepath(), productShop.getDepartmentId(),
+                        quantityToAdd,quantityToAdd * productShop.getPrice()));
+                System.out.println(orderItemArrayList);
             }
             String json = new Gson().toJson(orderItemArrayList);
             BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
@@ -89,28 +107,48 @@ public class CartElaboration {
         }
     }
 
+    public static boolean isEmptyCart() throws IOException {
+        BufferedReader reader = null;
+        boolean bool = false;
+        try {
+            reader = new BufferedReader(new FileReader(Constants.CART_PATH));
+            if (reader.read() == -1){
+                bool = true;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return bool;
+        } finally {
+            reader.close();
+            return bool;
+        }
+    }
+
     public static boolean delete0QuantityItemsFromCart() {
         //initialize vars
         boolean output = false;
         ArrayList<OrderItem> orderItemArrayList;
         ArrayList<OrderItem> orderItemArrayListToDel = new ArrayList<>();
         try {
-            //read json && convert to arrayList
-            orderItemArrayList = new ArrayList<>(List.of(new Gson().fromJson(new JsonReader(new FileReader(Constants.CART_PATH)), OrderItem[].class)));
-            for (OrderItem orderItem : orderItemArrayList) {
-                if (orderItem.getQuantityOrdered() == 0) {
-                    orderItemArrayListToDel.add(orderItem);
+            if (!isEmptyCart()) {
+                //read json && convert to arrayList
+                orderItemArrayList = new ArrayList<>(List.of(new Gson().fromJson(new JsonReader(new FileReader(Constants.CART_PATH)), OrderItem[].class)));
+                for (OrderItem orderItem : orderItemArrayList) {
+                    if (orderItem.getQuantityOrdered() == 0) {
+                        orderItemArrayListToDel.add(orderItem);
+                    }
                 }
-            }
-            if (orderItemArrayListToDel.size() == 0) {
-                output = true;
-            } else {
-                orderItemArrayList.removeAll(orderItemArrayListToDel);
-                String json = new Gson().toJson(orderItemArrayList);
-                BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
-                out.write(json);
-                out.close();
-                output = true;
+                if (orderItemArrayListToDel.size() == 0) {
+                    output = true;
+                } else {
+                    orderItemArrayList.removeAll(orderItemArrayListToDel);
+                    String json = new Gson().toJson(orderItemArrayList);
+                    BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
+                    out.write(json);
+                    out.close();
+                    output = true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

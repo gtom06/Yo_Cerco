@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CartAndPayment">
    <children>
@@ -29,12 +30,16 @@
       </ImageView>
       <Pane layoutY="50.0" prefHeight="650.0" prefWidth="600.0">
          <children>
-            <TableView layoutX="14.0" layoutY="14.0" prefHeight="626.0" prefWidth="577.0" />
+            <TableView fx:id="orderItemsTableView" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="577.0" />
+            <Text layoutX="15.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total quantity:" />
+            <Text fx:id="totalQuantityText" layoutX="112.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="222" />
+            <Text layoutX="15.0" layoutY="632.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" />
+            <Text fx:id="totalPriceText" layoutX="112.0" layoutY="632.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="222" />
          </children>
       </Pane>
       <Pane layoutX="600.0" layoutY="50.0" prefHeight="650.0" prefWidth="400.0">
          <children>
-            <Button fx:id="payButton" layoutX="174.0" layoutY="546.0" mnemonicParsing="false" onAction="#onPayButtonClick" text="Search" textAlignment="CENTER" />
+            <Button fx:id="payButton" layoutX="284.0" layoutY="557.0" mnemonicParsing="false" onAction="#onPayButtonClick" text="Order now" textAlignment="CENTER" />
             <TextField fx:id="nameTextField" layoutX="43.0" layoutY="75.0" prefHeight="25.0" prefWidth="314.0" promptText="Name" />
             <TextField fx:id="surnameTextField" layoutX="43.0" layoutY="115.0" prefHeight="25.0" prefWidth="314.0" promptText="Surname" />
             <TextField fx:id="phoneNumberTextField" layoutX="43.0" layoutY="156.0" prefHeight="25.0" prefWidth="314.0" promptText="Phone number" />
@@ -42,7 +47,7 @@
             <TextField fx:id="billingCityTextField" layoutX="43.0" layoutY="244.0" prefHeight="25.0" prefWidth="314.0" promptText="Billing city" />
             <TextField fx:id="billingCountryTextField" layoutX="43.0" layoutY="287.0" prefHeight="25.0" prefWidth="314.0" promptText="Billing country" />
             <TextField fx:id="billingZipTextField" layoutX="43.0" layoutY="331.0" prefHeight="25.0" prefWidth="314.0" promptText="Billing zip" />
-            <RadioButton onMouseClicked="#onCardClicked" fx:id="cardRadioButton" layoutX="43.0" layoutY="375.0" mnemonicParsing="false" selected="true" text="By creditcard" textFill="DARKGRAY">
+            <RadioButton fx:id="cardRadioButton" layoutX="43.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onCardClicked" selected="true" text="By creditcard" textFill="DARKGRAY">
                <toggleGroup>
                   <ToggleGroup fx:id="paymentType" />
                </toggleGroup>
@@ -50,7 +55,7 @@
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton onMouseClicked="#onCodClicked" fx:id="codRadioButton" layoutX="162.0" layoutY="375.0" mnemonicParsing="false" text="Cash on delivery" textFill="DARKGRAY" toggleGroup="$paymentType">
+            <RadioButton fx:id="codRadioButton" layoutX="162.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onCodClicked" text="Cash on delivery" textFill="DARKGRAY" toggleGroup="$paymentType">
                <font>
                   <Font size="14.0" />
                </font>
@@ -58,9 +63,12 @@
             <TextField fx:id="cardholderTextField" layoutX="43.0" layoutY="416.0" prefHeight="25.0" prefWidth="314.0" promptText="Card holder" />
             <TextField fx:id="creditcardTextField" layoutX="43.0" layoutY="457.0" prefHeight="25.0" prefWidth="314.0" promptText="Creditcard" />
             <TextField fx:id="mmTextField" layoutX="43.0" layoutY="499.0" prefHeight="25.0" prefWidth="51.0" promptText="MM" />
-            <Label layoutX="96.0" layoutY="503.0" prefHeight="17.0" prefWidth="16.0" text="/" textAlignment="CENTER" />
+            <Label fx:id="slashLabel" layoutX="96.0" layoutY="503.0" prefHeight="17.0" prefWidth="16.0" text="/" textAlignment="CENTER" />
             <TextField fx:id="yyTextField" layoutX="104.0" layoutY="499.0" prefHeight="25.0" prefWidth="51.0" promptText="YY" />
             <TextField fx:id="cvvTextField" layoutX="283.0" layoutY="499.0" prefHeight="25.0" prefWidth="74.0" promptText="CVV" />
+            <Text fx:id="shopNameText" layoutX="43.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop" wrappingWidth="314.0" />
+            <Button fx:id="clearCartButton" layoutX="43.0" layoutY="557.0" mnemonicParsing="false" onMouseClicked="#onClearCartClicked" text="Clear your cart " />
+            <Text fx:id="orderText" text="Order created" layoutX="37.0" layoutY="604.0" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

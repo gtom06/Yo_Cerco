@@ -27,9 +27,9 @@ public class Cart {
         //System.out.println(productShop);
         boolean found = false;
         for (OrderItem orderItem : orderItemArrayList) {
-            System.out.println(orderItem.getProductShop().getSku());
+            System.out.println(orderItem.getSku());
             System.out.println(productShop.getSku());
-            if (orderItem.getProductShop().getSku() == productShop.getSku()) {
+            if (orderItem.getSku() == productShop.getSku()) {
                 int actualQuantity = orderItem.getQuantityOrdered();
                 found = true;
                 System.out.println(actualQuantity);
@@ -40,7 +40,7 @@ public class Cart {
         }
         if (!found){
             System.out.println("ciao");
-            orderItemArrayList.add(new OrderItem(null, productShop, newQuantity));
+            //orderItemArrayList.add(new OrderItem(null, productShop, newQuantity, null));
         }
         String json = new Gson().toJson(orderItemArrayList);
         BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));

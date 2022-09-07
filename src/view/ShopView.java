@@ -9,11 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
@@ -44,14 +43,14 @@ public class ShopView {
                 addShopToFavorites, removeShopFromFavorites,
                 dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
 
-    //departmentLabel
+    //departmentText
     @FXML
-    Label   dep1Label, dep2Label, dep3Label, dep4Label, dep5Label, dep6Label, dep7Label, dep8Label, dep9Label,
-            dep10Label, dep11Label, dep12Label, dep13Label, dep14Label;
+    Text dep1Text, dep2Text, dep3Text, dep4Text, dep5Text, dep6Text, dep7Text, dep8Text, dep9Text,
+            dep10Text, dep11Text, dep12Text, dep13Text, dep14Text;
 
     @FXML
-    Label   labelHi, labelShopName, labelShopAddress, labelShopOpeningTime, labelShopClosingTime, labelFavorite,
-            labelPhoneShop;
+    Text   TextHi, TextShopName, TextShopAddress, TextShopOpeningTime, TextShopClosingTime, TextFavorite,
+            TextPhoneShop;
     InputStream stream = null;
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -69,7 +68,7 @@ public class ShopView {
 
     public void passUser(User user) {
         this.user = user;
-        labelHi.setText(user.getUsername());
+        TextHi.setText(user.getUsername());
     }
 
     public void passShop(Shop shop) throws FileNotFoundException {
@@ -77,7 +76,7 @@ public class ShopView {
         stream = new FileInputStream(shop.getLogoImagepath());
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
-        labelShopName.setText(shop.getShopName());
+        TextShopName.setText(shop.getShopName());
         ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
             {
                 add(dep1);
@@ -97,22 +96,22 @@ public class ShopView {
             }
         };
 
-        ArrayList<Label> labelDepartmentsArrayList = new ArrayList<>() {
+        ArrayList<Text> TextDepartmentsArrayList = new ArrayList<>() {
             {
-                add(dep1Label);
-                add(dep2Label);
-                add(dep3Label);
-                add(dep4Label);
-                add(dep5Label);
-                add(dep6Label);
-                add(dep7Label);
-                add(dep8Label);
-                add(dep9Label);
-                add(dep10Label);
-                add(dep11Label);
-                add(dep12Label);
-                add(dep13Label);
-                add(dep14Label);
+                add(dep1Text);
+                add(dep2Text);
+                add(dep3Text);
+                add(dep4Text);
+                add(dep5Text);
+                add(dep6Text);
+                add(dep7Text);
+                add(dep8Text);
+                add(dep9Text);
+                add(dep10Text);
+                add(dep11Text);
+                add(dep12Text);
+                add(dep13Text);
+                add(dep14Text);
             }
         };
 
@@ -121,27 +120,27 @@ public class ShopView {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
                 imageViewDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
-                labelDepartmentsArrayList.get(i).setText(departmentArrayList.get(i).getName());
-                labelDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
+                TextDepartmentsArrayList.get(i).setText(departmentArrayList.get(i).getName());
+                TextDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
             }
         }
 
         if (ShopHandler.isFavoriteShop(shop, user)) {
             //set to remove
-            labelFavorite.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+            TextFavorite.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
             removeShopFromFavorites.setVisible(true);
             addShopToFavorites.setVisible(false);
         } else {
             //set to add
-            labelFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+            TextFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
             removeShopFromFavorites.setVisible(false);
             addShopToFavorites.setVisible(true);
         }
 
-        labelShopAddress.setText(shop.getCompleteAddress());
-        labelShopOpeningTime.setText(shop.getOpeningTime());
-        labelShopClosingTime.setText(shop.getClosingTime());
-        labelPhoneShop.setText(shop.getPhone());
+        TextShopAddress.setText(shop.getCompleteAddress());
+        TextShopOpeningTime.setText(shop.getOpeningTime());
+        TextShopClosingTime.setText(shop.getClosingTime());
+        TextPhoneShop.setText(shop.getPhone());
     }
 
     @FXML
@@ -150,32 +149,32 @@ public class ShopView {
     }
 
     public void onMouseEnteredAddress(){
-        labelShopAddress.setTextFill(Color.web("#ed2224"));
-        labelShopAddress.setUnderline(true);
+        //TextShopAddress.setTextFill(Color.web("#ed2224"));
+        TextShopAddress.setUnderline(true);
     }
 
     public void onMouseExitedAddress(){
-        labelShopAddress.setTextFill(Color.web("#ffb703"));
-        labelShopAddress.setUnderline(false);
+        //TextShopAddress.setTextFill(Color.web("#ffb703"));
+        TextShopAddress.setUnderline(false);
     }
 
     //methods for adding and removing shops from favorite
     public void addToFavorite() {
         ShopHandler.insertShopIntoFavorite(shop, user);
-        labelFavorite.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+        TextFavorite.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(true);
         addShopToFavorites.setVisible(false);
     }
 
     public void removeFromFavorite(){
         ShopHandler.removeShopFromFavorite(shop, user);
-        labelFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+        TextFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(false);
         addShopToFavorites.setVisible(true);
     }
 
-    public void addRemoveFavoriteFromLabel(){
-        if (labelFavorite.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
+    public void addRemoveFavoriteFromText(){
+        if (TextFavorite.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
             removeFromFavorite();
         } else {
             addToFavorite();

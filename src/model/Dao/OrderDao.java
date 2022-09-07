@@ -9,6 +9,8 @@ import model.Order.OrderItem;
 import model.Order.Payment;
 
 import java.sql.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class OrderDao {
@@ -29,15 +31,14 @@ public class OrderDao {
                 Order order;
                 Integer orderId = rs.getInt("order_id");
                 Integer shopId = rs.getInt("shop_id");
-                int payment = rs.getInt("payment");
+                int payment = rs.getInt("payment_id");
                 Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
-                double totalAmount = rs.getDouble("total_amount");
+                double totalAmount = rs.getDouble("total_price");
                 String currency = rs.getString("currency");
                 String status = rs.getString("status");
                 Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
                 Integer orderTotalQuantity = rs.getInt("total_quantity");
-                String orderItemString = rs.getString("fd");
-                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null, orderItemString);
+                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null, null);
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {
@@ -92,7 +93,7 @@ public class OrderDao {
             stmt.setDouble(5, order.getTotalPrice());
             stmt.setInt(6,order.getOrderTotalQuantity());
             stmt.setString(7,order.getCurrency());
-            stmt.setTimestamp(8, order.getCollectionTimestamp());
+            stmt.setTimestamp(8, Timestamp.from(order.getOrderTimestamp().toInstant().plus(1, ChronoUnit.DAYS)));
 
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
@@ -100,6 +101,7 @@ public class OrderDao {
             order.setOrderId(rs.getInt("order_id"));
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
             order.setStatus(rs.getString("status"));
+            order.setCollectionTimestamp(null);
         } catch (SQLException se) {
             se.printStackTrace();
             dbHelper.closeDBConnection(stmt, conn);
@@ -127,7 +129,7 @@ public class OrderDao {
             stmt.setString(5, payment.getCardholder());
             stmt.setDouble(6, payment.getTotalPrice());
             stmt.setString(7, payment.getCurrency());
-            stmt.setTimestamp(8, payment.getPaymentTimestamp());
+            stmt.setTimestamp(8, Timestamp.from(Instant.now()));
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
             rs.next();

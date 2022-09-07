@@ -38,21 +38,28 @@ public class UserHandler {
 
     public static boolean updateRecord(User user, String name, String surname, String street,
                                        String city, String country, String zip, String phone) {
-        if (!name.isBlank()) {
-            ((Buyer) user).setName(name);
-        }
-        if (!surname.isBlank()){
-            ((Buyer) user).setSurname(surname);
-        }
-        //todo with each param
 
-        ((Buyer) user).setBillingStreet(street);
-        ((Buyer) user).setBillingCity(city);
-        ((Buyer) user).setBillingCountry(country);
-        ((Buyer) user).setBillingZip(zip);
-        ((Buyer) user).setPhone(phone);
-        ((Buyer) user).setBillingAddress();
+        if (name == user.getName() && surname == user.getSurname() && street == ((Buyer) user).getBillingStreet() &&
+                city == ((Buyer) user).getBillingCity() && country == ((Buyer) user).getBillingCountry() && zip == ((Buyer) user).getBillingZip()
+                && phone == ((Buyer) user).getPhone()) {
+            System.out.println("nothing to update in user");
+            return true;
+        }
 
-        return UserDao.updateBuyerRecord(user);
+        if (!name.isBlank() && !surname.isBlank() && !street.isBlank() &&
+                !city.isBlank() && !country.isBlank() &&
+                !zip.isBlank() && !phone.isBlank()) {
+
+            user.setName(name);
+            user.setSurname(surname);
+            ((Buyer) user).setBillingStreet(street);
+            ((Buyer) user).setBillingCity(city);
+            ((Buyer) user).setBillingCountry(country);
+            ((Buyer) user).setBillingZip(zip);
+            ((Buyer) user).setPhone(phone);
+            ((Buyer) user).setBillingAddress();
+            return UserDao.updateBuyerRecord(user);
+        }
+        return false;
     }
 }

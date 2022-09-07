@@ -1,15 +1,22 @@
 package view;
 
+import control.CartElaboration;
 import control.OrderHandler;
+import control.UserHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Department.Department;
+import model.Order.Order;
+import model.Order.OrderItem;
 import model.Shop.Shop;
 import model.User.Buyer;
 import model.User.User;
@@ -22,7 +29,7 @@ public class CartAndPayment {
     @FXML
     Button payButton;
     @FXML
-    Label labelHi;
+    Label labelHi, slashLabel;
     @FXML
     ToggleGroup paymentType;
     @FXML
@@ -37,28 +44,80 @@ public class CartAndPayment {
                 billingStreetTextField,
                 billingCityTextField,
                 billingCountryTextField,
-                billingZipTextField,
+                billingZipTextField;
+    @FXML
+    TextField
                 cardholderTextField,
                 creditcardTextField,
                 mmTextField,
                 yyTextField,
                 cvvTextField;
+    @FXML
+    Text orderText, totalPriceText, shopNameText, totalQuantityText;
+    @FXML
+    TableView<OrderItem> orderItemsTableView = new TableView<>();
+    TableColumn<OrderItem, String> nameColumn;
+    TableColumn<OrderItem, String> quantityOrderedColumn;
+    TableColumn<OrderItem, Double> pricePerItemColumn;
+    TableColumn<OrderItem, Double> priceTotalColumn;
+
 
     User user;
     Shop shop;
 
-    public void passParam(Shop shop, Department department, User user) {
+    public void passParam(Shop shop, User user) {
         this.shop = shop;
         this.user = user;
         labelHi.setText(user.getUsername());
+
+        if (user.getName() != null || user.getName() != "") {
+            nameTextField.setText(user.getName());
+        }
+        if (user.getSurname() != null || user.getUsername() != "") {
+            surnameTextField.setText(user.getSurname());
+        }
+        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+            phoneNumberTextField.setText(((Buyer) user).getPhone());
+        }
+        if (((Buyer) user).getBillingStreet()!= null || (((Buyer) user).getBillingStreet()) != "") {
+            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
+        }
+        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+            billingCityTextField.setText(((Buyer) user).getBillingCity());
+        }
+        if (((Buyer) user).getBillingCountry() != null || ((Buyer) user).getBillingCountry() != "") {
+            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
+        }
+        if (((Buyer) user).getBillingZip() != null || ((Buyer) user).getBillingZip() != "") {
+            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        }
+        //shopNameText.setText("ciao");
+
+        //shopNameText.setText(shop.getShopName() +" " + shop.getAddress());
+
+        ObservableList<OrderItem> observableListProducts =
+                FXCollections.observableArrayList(CartElaboration.readOrderItemsFromCart());
+        System.out.println(CartElaboration.readOrderItemsFromCart());
+        orderItemsTableView.setItems(observableListProducts);
+
+        Order order = OrderHandler.previewOrder();
+        if (order != null){
+            totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
+            totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
+            order = null;
+        } else {
+            totalPriceText.setText("0");
+            totalQuantityText.setText("0");
+        }
+
     }
 
     @FXML
     public void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
-        SearchShop searchShop = loader.getController();
-        searchShop.passUser(user);
+        Homepage homepage = loader.getController();
+        homepage.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -68,17 +127,19 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void previousPage() throws IOException {/*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+    public void previousPage() throws IOException {
+        //todo: verify if is correct
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
-        SearchShop searchShop = loader.getController();
-        searchShop.passUser(user);
+        ShopView shopView = loader.getController();
+        shopView.passUser(user);
+        shopView.passShop(shop);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
         Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();*/
+        stage.close();
     }
 
     @FXML
@@ -88,6 +149,8 @@ public class CartAndPayment {
         mmTextField.setVisible(false);
         yyTextField.setVisible(false);
         cvvTextField.setVisible(false);
+        slashLabel.setVisible(false);
+
     }
 
     @FXML
@@ -97,32 +160,50 @@ public class CartAndPayment {
         mmTextField.setVisible(true);
         yyTextField.setVisible(true);
         cvvTextField.setVisible(true);
+        slashLabel.setVisible(true);
+        if (user.getName() != null || user.getName() != "") {
+            nameTextField.setText(user.getName());
+        }
+        if (user.getSurname() != null || user.getUsername() != "") {
+            surnameTextField.setText(user.getSurname());
+        }
+        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+            phoneNumberTextField.setText(((Buyer) user).getPhone());
+        }
+        if (((Buyer) user).getBillingStreet()!= null || (((Buyer) user).getBillingStreet()) != "") {
+            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
+        }
+        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+            billingCityTextField.setText(((Buyer) user).getBillingCity());
+        }
+        if (((Buyer) user).getBillingCountry() != null || ((Buyer) user).getBillingCountry() != "") {
+            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
+        }
+        if (((Buyer) user).getBillingZip() != null || ((Buyer) user).getBillingZip() != "") {
+            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        }
     }
 
     @FXML
     public void onPayButtonClick() throws IOException {
-        String paymentMethod = "";
         String name = nameTextField.getText();
         String surname = surnameTextField.getText();
+        String phoneNumber = phoneNumberTextField.getText();
         String billingStreet = billingStreetTextField.getText();
         String billingCity = billingCityTextField.getText();
         String billingCountry = billingCountryTextField.getText();
         String billingZip = billingZipTextField.getText();
+
+        String paymentMethod = "";
         String cardholder = cardholderTextField.getText();
         String cardNumber = creditcardTextField.getText();
         String mm = mmTextField.getText();
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
 
-        user.setName(name);
-        user.setSurname(surname);
-        ((Buyer) user).setBillingStreet(billingStreet);
-        ((Buyer) user).setBillingCity(billingCity);
-        ((Buyer) user).setBillingCountry(billingCountry);
-        ((Buyer) user).setBillingZip(billingZip);
-        ((Buyer) user).setBillingAddress();
-        System.out.println(user);
+        //todo: check before cart is empty
 
+        boolean out = false;
         if (cardRadioButton.isSelected()) {
             paymentMethod = Constants.CREDITCARD_PAYMENT;
         }
@@ -130,17 +211,67 @@ public class CartAndPayment {
             paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
         }
 
+        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
+                billingCity.isBlank() || billingCountry.isBlank() ||
+                billingZip.isBlank() || phoneNumber.isBlank()) {
+            if (codRadioButton.isSelected()) {
+                System.out.print("please fill data");
+            } else {
+                if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()){
+                    System.out.println("please fill data & card");
+                }
+            }
+        } else {
+            out = UserHandler.updateRecord(
+                    user, name, surname, billingStreet, billingCity, billingCountry,
+                    billingZip, phoneNumber);
+            System.out.println("test1");
+            System.out.println(out);
+            if (out) {
+                OrderHandler.createOrder(
+                        user,
+                        null,
+                        paymentMethod,
+                        cardholder,
+                        cardNumber,
+                        mm,
+                        yy,
+                        cvv
+                );
+                System.out.println("test2");
+            }
+            orderItemsTableView.setItems(null);
+            totalPriceText.setText("0");
+            totalQuantityText.setText("0");
+        }
+    }
 
-        OrderHandler.createOrder(
-                user,
-                shop,
-                paymentMethod,
-                cardholder,
-                cardNumber,
-                mm,
-                yy,
-                cvv
-        );
+    @FXML
+    public void initialize(){
+        orderItemsTableView.setEditable(true);
 
+        nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(10);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
+        quantityOrderedColumn.setMinWidth(10);
+        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+
+        pricePerItemColumn = new TableColumn<>("Price per item");
+        pricePerItemColumn.setMinWidth(10);
+        pricePerItemColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
+        priceTotalColumn = new TableColumn<>("Total price");
+        priceTotalColumn.setMinWidth(30);
+        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+
+        orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
+    }
+
+    public void onClearCartClicked() {
+        CartElaboration.deleteCart();
+        orderItemsTableView.setItems(null);
     }
 }
