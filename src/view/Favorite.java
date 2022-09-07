@@ -8,14 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
@@ -28,9 +27,7 @@ public class Favorite {
     @FXML
     private ImageView homepageImageView;
     @FXML
-    Label param1;
-    @FXML
-    Label labelHi;
+    Text textHi;
     @FXML
     TableView<Shop> shopTableView = new TableView<>();
     TableColumn<Shop, String> addressColumn;
@@ -83,14 +80,13 @@ public class Favorite {
 
     public void passUser(User user) {
         this.user = user;
-        labelHi.setText(user.getUsername());
+        textHi.setText(user.getUsername());
         fillShopTableView();
         fillSimpleProductTableView();
     }
 
     @FXML
     public void initialize() {
-        param1.setText(Constants.MY_FAVORITE_SHOPS_CAPSLOCK);
         shopTableView.setEditable(true);
         //897
         nameColumn = new TableColumn<>("ShopName");
