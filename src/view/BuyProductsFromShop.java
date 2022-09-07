@@ -72,7 +72,6 @@ public class BuyProductsFromShop {
 
     public void passShop(Shop shop) {
         s = shop;
-        System.out.println(s);
     }
 
     @FXML

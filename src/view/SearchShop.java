@@ -53,7 +53,6 @@ public class SearchShop  {
         Shop shop = tableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
-            System.out.println(shop);
             /*
             if (shop.getType == "ferramenta") {
                 carica ferramentaview.fxml
@@ -101,7 +100,6 @@ public class SearchShop  {
         String radioButtonValue = rb.getText();
         String paramForSearch = requestTextField.getText();
         boolean checkboxValue = openNow.isSelected();
-        System.out.println(checkboxValue);
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
         ArrayList<Shop> shopArrayList = ShopHandler.findShopBy(paramForSearch, radioButtonValue, checkboxValue);
 

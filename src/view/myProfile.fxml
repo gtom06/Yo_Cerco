@@ -20,10 +20,7 @@
       <AnchorPane layoutY="50.0" maxHeight="350.0" maxWidth="1000.0" minHeight="320.0" minWidth="1000.0" prefHeight="320.0" prefWidth="1000.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
          <children>
             <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffb703" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
-            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseEntered="#enterProfileImage" onMouseExited="#exitProfileImage" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/user_interface/icons8-customer-100.png" />
-               </image>
+            <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#onClickProfileImageView" onMouseEntered="#enterProfileImage" onMouseExited="#exitProfileImage" pickOnBounds="true" preserveRatio="true">
             </ImageView>
             <Label fx:id="nameLabel" layoutX="412.0" layoutY="50.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
                <font>

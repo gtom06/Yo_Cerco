@@ -41,7 +41,6 @@ public class OrderHandler {
             for (OrderItem orderItem : orderItemArrayList) {
                 orderTotalQuantity += orderItem.getQuantityOrdered();
                 orderTotalPrice += orderItem.getPriceTotal();
-                System.out.println(orderTotalPrice);
             }
             orderCurrency = orderItemArrayList.get(0).getCurrency();
         }
@@ -74,7 +73,6 @@ public class OrderHandler {
             for (OrderItem orderItem : orderItemArrayList) {
                 orderTotalQuantity += orderItem.getQuantityOrdered();
                 orderTotalPrice += orderItem.getPriceTotal();
-                System.out.println(orderTotalPrice);
             }
             shopId = orderItemArrayList.get(0).getShopId();
             orderCurrency = orderItemArrayList.get(0).getCurrency();

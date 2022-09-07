@@ -23,6 +23,8 @@ public interface Constants {
     int NOT_AVAILABLE = -1;
     String LOGO_SHOPS_PATH = "src/images/shop_images/";
     String LOGO_SHOP_NA = "NotAvailablePhoto.png";
+    String PROFILE_IMAGES_PATH = "src/images/user_profile_images/";
+    String PROFILE_IMAGE_BLANK = "src/images/user_profile_images/icons8-customer-100.png";
     //String
     String AVAILABLE_STRING = "Available";
     String SOON_BACK_STRING = "Soon back";
@@ -31,7 +33,7 @@ public interface Constants {
     String MY_FAVORITE_SHOPS_CAPSLOCK = "MY FAVORITE SHOPS";
     String ADD_TO_FAVORITE_SHOP = "Add to favorite";
     String ADD_TO_FAVORITE_SHOP_CAPSLOCK = "ADD TO FAVORITES";
-    String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorite";
+    String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorites";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
 
 

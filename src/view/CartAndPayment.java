@@ -97,7 +97,6 @@ public class CartAndPayment {
 
         ObservableList<OrderItem> observableListProducts =
                 FXCollections.observableArrayList(CartElaboration.readOrderItemsFromCart());
-        System.out.println(CartElaboration.readOrderItemsFromCart());
         orderItemsTableView.setItems(observableListProducts);
 
         Order order = OrderHandler.previewOrder();
@@ -224,9 +223,8 @@ public class CartAndPayment {
         } else {
             out = UserHandler.updateRecord(
                     user, name, surname, billingStreet, billingCity, billingCountry,
-                    billingZip, phoneNumber);
+                    billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
             System.out.println("test1");
-            System.out.println(out);
             if (out) {
                 OrderHandler.createOrder(
                         user,
@@ -238,7 +236,6 @@ public class CartAndPayment {
                         yy,
                         cvv
                 );
-                System.out.println("test2");
             }
             orderItemsTableView.setItems(null);
             totalPriceText.setText("0");

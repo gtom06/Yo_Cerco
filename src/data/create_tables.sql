@@ -131,7 +131,7 @@ CREATE TABLE userx(
     billing_country         VARCHAR(50),
     billing_zip             VARCHAR(10),
     phone                   VARCHAR(20),
-    profile_imagepath       VARCHAR(200)
+    profile_imagepath       VARCHAR(200) DEFAULT 'icons8-customer-100.png'
 );
 
 CREATE TABLE shopholder_shop(

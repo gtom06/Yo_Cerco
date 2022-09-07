@@ -1,7 +1,5 @@
 package control;
 
-import model.Constants;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -28,10 +26,24 @@ public class FileElaboration {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
             output = bufferedReader.readLine();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         finally {
             return output;
+        }
+    }
+
+    public static boolean copyAndReplaceFile(File file, String pathTo) {
+        try {
+            File fileToDelete = new File(pathTo);
+            if (fileToDelete != null) {
+                file.renameTo(new File(pathTo));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            return true;
         }
     }
 }

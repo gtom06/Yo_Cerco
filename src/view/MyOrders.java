@@ -85,7 +85,6 @@ public class MyOrders {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);
                 numberOfOrders++;
-                System.out.println(o);
             }
             orderTableView.setItems(orderObservableList);
         }

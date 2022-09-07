@@ -1,5 +1,6 @@
 package view;
 
+import control.FileElaboration;
 import control.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,16 +8,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Constants;
 import model.User.Admin;
 import model.User.Buyer;
 import model.User.ShopHolder;
 import model.User.User;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MyProfile {
 
@@ -54,11 +61,15 @@ public class MyProfile {
         stage.close();
     }
 
-    public void passUser(User user) {
+    public void passUser(User user) throws IOException {
         this.user = user;
         usernameLabel.setText(user.getUsername());
 
         if (user instanceof Buyer) {
+            InputStream stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
+            Image profileImage = new Image(stream, 200, 200, false, false);
+            myProfileImage.setImage(profileImage);
+            stream.close();
             if (this.isSomeFieldBlank = ((Buyer) user).isSomeFieldBlank()) {
                 saveYourProfileLabel.setVisible(false);
                 completeYourProfileLabel.setVisible(true);
@@ -130,7 +141,6 @@ public class MyProfile {
         countryTextField.setText(((Buyer) user).getBillingCountry());
         zipTextField.setText(((Buyer) user).getBillingZip());
         phoneTextField.setText(((Buyer) user).getPhone());
-
     }
 
     public void saveProfile() {
@@ -144,7 +154,7 @@ public class MyProfile {
         else{
             if (UserHandler.updateRecord(user, nameTextField.getText(), surnameTextField.getText(),
                     streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
-                    zipTextField.getText(), phoneTextField.getText())) {
+                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath())) {
                 //hide textfields
                 nameTextField.setVisible(false);
                 surnameTextField.setVisible(false);
@@ -177,17 +187,43 @@ public class MyProfile {
             }
         }
     }
+
+    @FXML
     public void enterProfileImage() {
         borderProfileImageRectangle.setVisible(true);
-        System.out.println("entered");
     }
+    @FXML
     public void exitProfileImage(){
         borderProfileImageRectangle.setVisible(false);
-        System.out.println("exited");
     }
-
+    @FXML
     public void initialize(){
         editImageView.setVisible(true);
         saveImageView.setVisible(false);
+    }
+
+    @FXML
+    public void onClickProfileImageView() throws IOException {
+
+        InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
+        Image profileImage = new Image(stream, 200, 200, false, false);
+
+        myProfileImage.setImage(profileImage);
+        String newFileName = user.getUsername() + ".jpg";
+        String newFilepath = Constants.PROFILE_IMAGES_PATH + newFileName;
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG);
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            if (FileElaboration.copyAndReplaceFile(file, newFilepath)) {
+                stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
+                profileImage = new Image(stream, 200, 200, false, false);
+                myProfileImage.setImage(profileImage);
+                stream.close();
+            }
+            UserHandler.updateLogoImagePath(user, file, newFileName);
+        }
     }
 }

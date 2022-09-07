@@ -76,16 +76,13 @@ public class Login {
             String password = loginPasswordPasswordField.getText();
             if (UserHandler.checkUsernameAndPassword(username,password)) {
                 if (rememberMe.isSelected()){
-                    System.out.println("selected");
                     String stringToWrite = username + "\n" + password;
                     FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, stringToWrite);
                 }
                 else {
-                    System.out.println("!selected");
                     FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
                 }
                 User u = UserHandler.selectUserFromUsername(username);
-                System.out.println(u);
                 if (u instanceof Buyer) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
                     Parent root = loader.load();

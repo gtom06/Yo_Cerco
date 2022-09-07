@@ -10,7 +10,6 @@ module Supermarket {
     requires java.sql;
     requires gson;
     requires jdk.jsobject;
-    requires GMapsFX;
     opens view;
     opens model;
     opens model.Product;

@@ -185,7 +185,7 @@ public class UserDao {
         try {
             String sql = "UPDATE userx " +
                     "SET name = ?, surname = ?, billing_street = ?, billing_city = ?, " +
-                    "billing_country = ?, billing_zip = ?, phone = ? " +
+                    "billing_country = ?, billing_zip = ?, phone = ?, profile_imagepath = ? " +
                     "WHERE username = ?";
             conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
@@ -196,7 +196,9 @@ public class UserDao {
             stmt.setString(5, ((Buyer) user).getBillingCountry());
             stmt.setString(6, ((Buyer) user).getBillingZip());
             stmt.setString(7, ((Buyer) user).getPhone());
-            stmt.setString(8, user.getUsername());
+            stmt.setString(8, ((Buyer) user).getProfileImagepath());
+            stmt.setString(9, user.getUsername());
+
             stmt.executeUpdate();
         } catch (SQLException se) {
             se.printStackTrace();

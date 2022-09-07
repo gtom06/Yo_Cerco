@@ -61,7 +61,6 @@ public class CartElaboration {
                         found = true;
                         orderItem.setQuantityOrdered(actualQuantity + quantityToAdd);
                         orderItem.setPriceTotal(orderItem.getPrice() * orderItem.getQuantityOrdered());
-                        System.out.println(orderItem);
                     }
                 }
                 if (!found) {
@@ -84,7 +83,6 @@ public class CartElaboration {
                         productShop.getSize(), productShop.getUnitOfMeasure(),
                         productShop.getLogoImagepath(), productShop.getDepartmentId(),
                         quantityToAdd,quantityToAdd * productShop.getPrice()));
-                System.out.println(orderItemArrayList);
             }
             String json = new Gson().toJson(orderItemArrayList);
             BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));

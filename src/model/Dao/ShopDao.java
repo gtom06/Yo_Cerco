@@ -263,7 +263,6 @@ public class ShopDao {
                     "FROM product_shop PS " +
                     "JOIN shop S on S.shop_id = PS.shop_id " +
                     "WHERE sku IN ";
-            System.out.println(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
             stmt = conn.prepareStatement(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
 
             ResultSet rs = stmt.executeQuery();
@@ -391,7 +390,6 @@ public class ShopDao {
             String gmapsLink = rs.getString("gmaps_string");
             int distance = 0;
             shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, gmapsLink, franchising, distance);
-            System.out.println(shop);
             arrayShop.add(shop);
         }
         return arrayShop;

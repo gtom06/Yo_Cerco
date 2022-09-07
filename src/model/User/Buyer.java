@@ -35,6 +35,11 @@ public class Buyer implements User {
         setBillingAddress();
     }
 
+
+    public String getProfileImagepath() {
+        return profileImagepath;
+    }
+
     public boolean isSomeFieldBlank(){
         if (name == null || surname == null || billingStreet == null || billingCity == null || billingCountry == null || billingZip == null || phone == null){
             return true;
@@ -157,6 +162,7 @@ public class Buyer implements User {
                 ", billingZip='" + billingZip + '\'' +
                 ", phone='" + phone + '\'' +
                 ", gender='" + gender + '\'' +
+                ", profileImagepath='" + profileImagepath + '\'' +
                 '}';
     }
 }

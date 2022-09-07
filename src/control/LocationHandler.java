@@ -31,7 +31,7 @@ public class LocationHandler {
             address = new Address(location.get("lat").getAsDouble(), location.get("lng").getAsDouble(), addressString);
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return address;
     }

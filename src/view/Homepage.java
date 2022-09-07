@@ -39,7 +39,6 @@ public class Homepage {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchProduct.fxml"));
         Parent root = loader.load();
         SearchProduct searchProduct = loader.getController();
-        System.out.println("user " + u.toString());
         searchProduct.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
@@ -56,7 +55,6 @@ public class Homepage {
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
         //Favorite favorite = loader.getController();
-        System.out.println("user: " + u.toString());
         cartAndPayment.passParam(null, u);
         //favorite.passUser(u);
         Stage newStage = new Stage();
@@ -72,7 +70,6 @@ public class Homepage {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
-        System.out.println("user: " + u.toString());
         myProfile.passUser(u);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));

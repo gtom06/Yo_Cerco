@@ -27,7 +27,6 @@ public class ShopHandler {
         if (searchBool == false) {
             if (searchMethod == Constants.NEARBY) {
                 Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
-                System.out.println(address);
                 if (address != null) {
                     shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng());
                     shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
@@ -66,7 +65,7 @@ public class ShopHandler {
     }
 
     public static void insertShopIntoFavorite(Shop shop, User user){
-        ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
+		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername
     }
 
     public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){

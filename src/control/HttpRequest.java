@@ -43,7 +43,6 @@ public class HttpRequest {
                 }
                 reader.close();
             }
-            //System.out.println(status + " " + responseContent.toString());
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
