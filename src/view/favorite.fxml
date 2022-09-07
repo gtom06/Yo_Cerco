@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,9 +18,7 @@
         </ImageView>
         <Label fx:id="param1" layoutX="86.0" layoutY="472.0" />
         <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
-        <TableView fx:id="simpleProductTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="253.0" prefWidth="898.0">
-        </TableView>
-        <TableView fx:id="shopTableView" layoutX="40.0" layoutY="404.0" onMouseClicked="#onListViewItemClick" prefHeight="253.0" prefWidth="898.0">
-        </TableView>
+        <TableView fx:id="simpleProductTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="253.0" prefWidth="898.0" />
+        <TableView fx:id="shopTableView" layoutX="40.0" layoutY="404.0" onMouseClicked="#onListViewItemClick" prefHeight="253.0" prefWidth="898.0" />
     </children>
 </AnchorPane>

@@ -1,13 +1,14 @@
 package model.Dao;
 
 import model.Db.DbHelper;
-import model.Department.Department;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
-import model.Shop.Shop;
 import model.User.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductDao {
@@ -104,7 +105,6 @@ public class ProductDao {
     }
 
     public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(String username) {
-        //todo:
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -235,4 +235,30 @@ public class ProductDao {
         }
     }
 
+    public static ArrayList<SimpleProduct> findSimpleProductFromUser(User user) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+
+
+
+            String sql = "SELECT DISTINCT * " +
+                    "FROM user_favoriteproduct ufp " +
+                    "JOIN product p " +
+                    "ON p.sku = ufp.sku " +
+                    "WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
+            ResultSet rs = stmt.executeQuery();
+            simpleProductArrayList = convertRSInArraySimpleProduct(rs);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return simpleProductArrayList;
+        }
+    }
 }

@@ -1,8 +1,6 @@
 package control;
 
 import model.Dao.ProductDao;
-import model.Dao.ShopDao;
-import model.Product.Product;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
@@ -30,6 +28,10 @@ public class ProductHandler {
             return null;
         }
         return ProductDao.findProductInShop(shop.getShopId());
+    }
+
+    public static ArrayList<SimpleProduct> findFavoriteSimpleProductFromUser(User user){
+        return ProductDao.findSimpleProductFromUser(user);
     }
 
     public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(User user) {
