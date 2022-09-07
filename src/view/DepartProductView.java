@@ -31,7 +31,7 @@ public class DepartProductView {
     @FXML
     ImageView homepageImageView;
     @FXML
-    Text departmentNameText;
+    Text departmentName, shopName, textHi;
     @FXML
     TableView<ProductShop> productTable = new TableView<>();
     //TableColumn<ProductShop, Integer> sku;
@@ -49,6 +49,32 @@ public class DepartProductView {
 
     @FXML
     Button addToCartButton;
+
+    @FXML
+    protected void onListViewItemClick() throws IOException {
+
+        ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
+        //check if shop selected: used to avoid exception when clicking wrong on tableview
+        if (productShop != null){
+            System.out.println(productShop);
+            /*
+            if (shop.getType == "ferramenta") {
+                carica ferramentaview.fxml
+            }
+            //todo: non chiudere la finestra della searchShop.fxml quando si apre la shopView.fxml
+            */
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("productView.fxml"));
+            Parent root = loader.load();
+            ProductView productView = loader.getController();
+            productView.passParams(user, department, productShop, shop);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) productTable.getScene().getWindow();
+            stage.close();
+        }
+    }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -71,9 +97,12 @@ public class DepartProductView {
     }
 
     public void passParams(User user, Department department, Shop shop) {
-
+        this.shop = shop;
         this.user = user;
         this.department = department;
+        System.out.println("**********************************");
+        System.out.println(shop);
+        System.out.println("**********************************");
         ArrayList<ProductShop> productShopArrayList = department.getItems();
         if (productShopArrayList!=null){
             System.out.println(department.getItems().get(0));
@@ -83,8 +112,10 @@ public class DepartProductView {
         else {
             System.out.println("no result");
         }
-        this.shop = shop;
-        departmentNameText.setText(department.getName());
+
+        departmentName.setText(department.getName());
+        shopName.setText(shop.getShopName());
+        textHi.setText(user.getUsername());
 
     }
 
@@ -93,6 +124,7 @@ public class DepartProductView {
         Parent root = loader.load();
         ShopView shopView = loader.getController();
         shopView.passUser(user);
+        shopView.passShop(shop);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();

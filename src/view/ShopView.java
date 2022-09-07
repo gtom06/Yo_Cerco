@@ -66,6 +66,7 @@ public class ShopView {
         stage.close();
     }
 
+
     public void passUser(User user) {
         this.user = user;
         TextHi.setText(user.getUsername());
@@ -204,7 +205,7 @@ public class ShopView {
                 break;
             }
         }
-        ObservableList<ProductShop> observableListProduct = FXCollections.observableArrayList();
+        //ObservableList<ProductShop> observableListProduct = FXCollections.observableArrayList();
         department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId()));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));

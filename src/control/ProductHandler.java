@@ -1,6 +1,8 @@
 package control;
 
 import model.Dao.ProductDao;
+import model.Dao.ShopDao;
+import model.Product.Product;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
@@ -32,5 +34,17 @@ public class ProductHandler {
 
     public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(User user) {
         return ProductDao.findFavoriteShopsFromUser(user.getUsername());
+    }
+
+    public static boolean isFavoriteProduct(ProductShop productShop, User user) {
+        return ProductDao.isFavoriteProduct(user.getUsername(),productShop.getShopId());
+    }
+
+    public static void removeProductFromFavorites(User user, ProductShop productShop) {
+        ProductDao.removeFavoriteProductFromDb(user.getUsername(), productShop.getSku());
+    }
+
+    public static void insertProductIntoFavorites(User user, ProductShop productShop){
+        ProductDao.insertFavoriteProductIntoDb(user.getUsername(), productShop.getSku());
     }
 }

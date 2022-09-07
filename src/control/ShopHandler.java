@@ -66,7 +66,7 @@ public class ShopHandler {
     }
 
     public static void insertShopIntoFavorite(Shop shop, User user){
-        ShopDao.insertFavoriteShopIntoDb(Integer.valueOf(shop.getShopId()), user.getUsername());
+        ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
     public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){

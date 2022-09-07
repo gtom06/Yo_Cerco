@@ -66,7 +66,7 @@ public class DepartmentDao {
             Integer shopId = rs.getInt("shop_id");
             String name = rs.getString("name");
             String brand = rs.getString("brand");
-            String description = null;
+            String description = rs.getString("description");
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");

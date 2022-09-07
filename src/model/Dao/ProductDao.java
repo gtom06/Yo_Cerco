@@ -170,4 +170,69 @@ public class ProductDao {
         return arrayProductShop;
     }
 
+    public static boolean isFavoriteProduct(String username, int sku) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        boolean output = false;
+        ArrayList<ProductShop> arrayProduct= new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM user_favoriteproduct " +
+                    "WHERE sku = ? AND username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, sku);
+            stmt.setString(2, username);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                output = true;
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return output;
+        }
+    }
+
+    public static void removeFavoriteProductFromDb(String username, int sku) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "DELETE FROM user_favoriteproduct " +
+                    "WHERE username = ? AND sku = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, sku);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+    }
+
+    public static void insertFavoriteProductIntoDb(String username, int sku ) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
+                    "VALUES (?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, sku);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+    }
+
 }
