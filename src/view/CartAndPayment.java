@@ -29,7 +29,7 @@ public class CartAndPayment {
     @FXML
     Button payButton;
     @FXML
-    Label labelHi, slashLabel;
+    Text textHi, slashText;
     @FXML
     ToggleGroup paymentType;
     @FXML
@@ -53,7 +53,7 @@ public class CartAndPayment {
                 yyTextField,
                 cvvTextField;
     @FXML
-    Text orderText, totalPriceText, shopNameText, totalQuantityText;
+    Text orderCreatedText, totalPriceText, shopNameText, totalQuantityText;
     @FXML
     TableView<OrderItem> orderItemsTableView = new TableView<>();
     TableColumn<OrderItem, String> nameColumn;
@@ -68,7 +68,7 @@ public class CartAndPayment {
     public void passParam(Shop shop, User user) {
         this.shop = shop;
         this.user = user;
-        labelHi.setText(user.getUsername());
+        textHi.setText(user.getUsername());
 
         if (user.getName() != null || user.getName() != "") {
             nameTextField.setText(user.getName());
@@ -148,7 +148,7 @@ public class CartAndPayment {
         mmTextField.setVisible(false);
         yyTextField.setVisible(false);
         cvvTextField.setVisible(false);
-        slashLabel.setVisible(false);
+        slashText.setVisible(false);
 
     }
 
@@ -159,7 +159,7 @@ public class CartAndPayment {
         mmTextField.setVisible(true);
         yyTextField.setVisible(true);
         cvvTextField.setVisible(true);
-        slashLabel.setVisible(true);
+        slashText.setVisible(true);
         if (user.getName() != null || user.getName() != "") {
             nameTextField.setText(user.getName());
         }
@@ -200,46 +200,46 @@ public class CartAndPayment {
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
 
-        //todo: check before cart is empty
-
-        boolean out = false;
-        if (cardRadioButton.isSelected()) {
-            paymentMethod = Constants.CREDITCARD_PAYMENT;
-        }
-        if (codRadioButton.isSelected()) {
-            paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
-        }
-
-        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                billingCity.isBlank() || billingCountry.isBlank() ||
-                billingZip.isBlank() || phoneNumber.isBlank()) {
+        if (!CartElaboration.isEmptyCart()) {
+            boolean out = false;
+            if (cardRadioButton.isSelected()) {
+                paymentMethod = Constants.CREDITCARD_PAYMENT;
+            }
             if (codRadioButton.isSelected()) {
-                System.out.print("please fill data");
-            } else {
-                if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()){
-                    System.out.println("please fill data & card");
+                paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
+            }
+
+            if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
+                    billingCity.isBlank() || billingCountry.isBlank() ||
+                    billingZip.isBlank() || phoneNumber.isBlank()) {
+                if (codRadioButton.isSelected()) {
+                    System.out.print("please fill data");
+                } else {
+                    if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
+                        System.out.println("please fill data & card");
+                    }
                 }
+            } else {
+                out = UserHandler.updateRecord(
+                        user, name, surname, billingStreet, billingCity, billingCountry,
+                        billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
+                if (out) {
+                    OrderHandler.createOrder(
+                            user,
+                            null,
+                            paymentMethod,
+                            cardholder,
+                            cardNumber,
+                            mm,
+                            yy,
+                            cvv
+                    );
+                }
+                orderItemsTableView.setItems(null);
+                orderCreatedText.setVisible(true);
+                totalPriceText.setText("0");
+                totalQuantityText.setText("0");
             }
-        } else {
-            out = UserHandler.updateRecord(
-                    user, name, surname, billingStreet, billingCity, billingCountry,
-                    billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
-            System.out.println("test1");
-            if (out) {
-                OrderHandler.createOrder(
-                        user,
-                        null,
-                        paymentMethod,
-                        cardholder,
-                        cardNumber,
-                        mm,
-                        yy,
-                        cvv
-                );
-            }
-            orderItemsTableView.setItems(null);
-            totalPriceText.setText("0");
-            totalQuantityText.setText("0");
         }
     }
 
@@ -248,20 +248,20 @@ public class CartAndPayment {
         orderItemsTableView.setEditable(true);
 
         nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(10);
+        nameColumn.setMinWidth(276.0);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         quantityOrderedColumn = new TableColumn<>("Quantity ordered");
-        quantityOrderedColumn.setMinWidth(10);
+        quantityOrderedColumn.setMinWidth(100.0);
         quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
 
         pricePerItemColumn = new TableColumn<>("Price per item");
-        pricePerItemColumn.setMinWidth(10);
+        pricePerItemColumn.setMinWidth(100.0);
         pricePerItemColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
         priceTotalColumn = new TableColumn<>("Total price");
-        priceTotalColumn.setMinWidth(30);
+        priceTotalColumn.setMinWidth(100.0);
         priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
 
         orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);

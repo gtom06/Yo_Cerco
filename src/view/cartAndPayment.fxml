@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,21 +15,21 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CartAndPayment">
    <children>
-      <Rectangle fill="#ffb703" height="50.0" width="1000.0" />
-      <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
+      <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="4.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user_interface/icons8-home-48.png" />
          </image>
       </ImageView>
-      <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
-      <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="905.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
-         </image>
-      </ImageView>
+      <Text fx:id="textHi" fill="WHITE" layoutX="886.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sbt">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Text>
       <Pane layoutY="50.0" prefHeight="650.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="orderItemsTableView" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="577.0" />
+            <TableView fx:id="orderItemsTableView" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="577.0">
+               </TableView>
             <Text layoutX="15.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total quantity:" />
             <Text fx:id="totalQuantityText" layoutX="112.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="222" />
             <Text layoutX="15.0" layoutY="632.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" />
@@ -63,12 +62,12 @@
             <TextField fx:id="cardholderTextField" layoutX="43.0" layoutY="416.0" prefHeight="25.0" prefWidth="314.0" promptText="Card holder" />
             <TextField fx:id="creditcardTextField" layoutX="43.0" layoutY="457.0" prefHeight="25.0" prefWidth="314.0" promptText="Creditcard" />
             <TextField fx:id="mmTextField" layoutX="43.0" layoutY="499.0" prefHeight="25.0" prefWidth="51.0" promptText="MM" />
-            <Label fx:id="slashLabel" layoutX="96.0" layoutY="503.0" prefHeight="17.0" prefWidth="16.0" text="/" textAlignment="CENTER" />
+            <Text fx:id="slashText" layoutX="96.0" layoutY="515.0" text="/" textAlignment="CENTER" />
             <TextField fx:id="yyTextField" layoutX="104.0" layoutY="499.0" prefHeight="25.0" prefWidth="51.0" promptText="YY" />
             <TextField fx:id="cvvTextField" layoutX="283.0" layoutY="499.0" prefHeight="25.0" prefWidth="74.0" promptText="CVV" />
             <Text fx:id="shopNameText" layoutX="43.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop" wrappingWidth="314.0" />
             <Button fx:id="clearCartButton" layoutX="43.0" layoutY="557.0" mnemonicParsing="false" onMouseClicked="#onClearCartClicked" text="Clear your cart " />
-            <Text fx:id="orderText" text="Order created" layoutX="37.0" layoutY="604.0" textAlignment="CENTER" />
+            <Text fx:id="orderCreatedText" layoutX="37.0" layoutY="604.0" text="Order created" textAlignment="CENTER" visible="false" />
          </children>
       </Pane>
    </children>

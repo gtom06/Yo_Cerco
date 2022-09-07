@@ -1,14 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.SpecificOrder"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+    <children>
+        <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/Logos/Logo_Banner_2.jpeg" />
+            </image>
+        </ImageView>
+        <Rectangle fill="#e6e6e6" height="475.0" layoutX="26.0" layoutY="52.0" width="937.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
+        <Text fx:id="TextHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
+            <font>
+                <Font name="Tahoma Bold" size="18.0" />
+            </font>
+        </Text>
+        <ImageView fx:id="shopLogo" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0" />
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="292.0">
+            <image>
+                <Image url="@../images/shop/icons8-google-maps-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/icons8-home-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="120.0">
+            <image>
+                <Image url="@../images/shop/icons8-clock-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/shop/icons8-ringing-phone-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="addShopToFavorites" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="419.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="910.0">
+            <image>
+                <Image url="@../images/shop/icons8-we-heart-it-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="addShopToFavourites1" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/shop/icons8-small-business-48.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="removeShopFromFavorites" fitHeight="59.0" fitWidth="60.0" layoutX="40.0" layoutY="410.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="901.0">
+            <image>
+                <Image url="@../images/shop/icons8-close-96.png" />
+            </image>
+        </ImageView>
+        <Text fx:id="TextFavorite" fill="#ffb703" layoutX="103.0" layoutY="444.0" onMouseClicked="#addRemoveFavoriteFromText" stroke="#2c2c2c" text="test">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fx:id="TextShopAddress" fill="#ffb703" layoutX="103.0" layoutY="317.0" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress" stroke="#2c2c2c" text="test" textAlignment="JUSTIFY">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fx:id="TextShopOpeningTime" fill="#ffb703" layoutX="309.0" layoutY="145.0" stroke="#2c2c2c" text="9AM">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fill="#ffb703" layoutX="349.0" layoutY="145.0" stroke="#2c2c2c" text="-">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fx:id="TextShopClosingTime" fill="#ffb703" layoutX="364.0" layoutY="145.0" stroke="#2c2c2c" text="20PM">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fx:id="TextPhoneShop" fill="#ffb703" layoutX="311.0" layoutY="215.0" stroke="#2c2c2c" text="test">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <Text fx:id="TextShopName" fill="#ffb703" layoutX="103.0" layoutY="381.0" stroke="#2c2c2c" text="test">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font>
+        </Text>
+        <ImageView fx:id="dep1" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="120.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep2" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep3" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep4" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep5" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep6" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep7" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep8" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep9" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep10" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep11" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="292.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep12" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep13" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep14" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/icons8-u-turn-to-left-48.png" />
+            </image>
+        </ImageView>
+        <Text fx:id="dep1Text" fill="#12d39d" layoutX="558.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep2Text" fill="#12d39d" layoutX="558.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep3Text" fill="#12d39d" layoutX="558.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep4Text" fill="#12d39d" layoutX="558.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep5Text" fill="#12d39d" layoutX="558.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep6Text" fill="#12d39d" layoutX="558.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep7Text" fill="#12d39d" layoutX="558.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" textAlignment="JUSTIFY">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep8Text" fill="#12d39d" layoutX="778.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep9Text" fill="#12d39d" layoutX="778.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep10Text" fill="#12d39d" layoutX="778.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep11Text" fill="#12d39d" layoutX="778.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep12Text" fill="#12d39d" layoutX="778.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep13Text" fill="#12d39d" layoutX="778.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fx:id="dep14Text" fill="#12d39d" layoutX="778.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+            <font>
+                <Font name="Tahoma Bold" size="12.0" />
+            </font>
+        </Text>
+        <Text fill="#ffb703" layoutX="472.0" layoutY="493.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text=" Click on the departments icons to view products">
+            <font>
+                <Font name="Tahoma Bold" size="16.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="40.0" fitWidth="614.0" layoutX="296.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/Logos/Logo_Banner.jpeg" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

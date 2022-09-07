@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Product.SimpleProduct;
 import model.User.User;
@@ -25,7 +26,7 @@ public class SearchProduct {
     @FXML
     TextField requestTextField;
     @FXML
-    Label labelHi;
+    Text textHi;
     @FXML
     Button searchForShop;
     @FXML
@@ -99,12 +100,11 @@ public class SearchProduct {
     }
     public void passUser(User user) {
         u = user;
-        labelHi.setText(user.getUsername());
+        textHi.setText(user.getUsername());
     }
 
     @FXML
     public void initialize(){
-
         productTableView.setEditable(true);
         productTableView.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE

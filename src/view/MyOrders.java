@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Order.Order;
@@ -24,7 +26,7 @@ public class MyOrders {
     @FXML
     private ImageView homepageImageView;
     @FXML
-    Label labelHi, numberOfOrdersLabel, totalOrdersLabel;
+    Text textHi, numberOfOrdersText, totalOrdersText;
     @FXML
     TableView<Order> orderTableView = new TableView<>();
     TableColumn<Order, String> orderNumber;
@@ -91,14 +93,14 @@ public class MyOrders {
         else {
             System.out.println("no result");
         }
-        totalOrdersLabel.setText(Constants.TOTAL_ORDERS_STRING);
-        numberOfOrdersLabel.setText(String.valueOf(numberOfOrders));
+        totalOrdersText.setText(Constants.TOTAL_ORDERS_STRING);
+        numberOfOrdersText.setText(String.valueOf(numberOfOrders));
     }
 
 
     public void passUser(User user) {
         u = user;
-        labelHi.setText(user.getUsername());
+        textHi.setText(user.getUsername());
         fillShopTableView();
     }
 }

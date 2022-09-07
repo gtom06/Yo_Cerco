@@ -18,7 +18,7 @@
                <Image url="@../images/shop/icons8-small-business-96.png" />
             </image>
          </ImageView>
-         <Text fill="#12d39d" layoutX="212.0" layoutY="175.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="SHOPS">
+         <Text layoutX="212.0" layoutY="175.0" fill="#12d39d" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="SHOPS">
             <font>
                <Font name="Tahoma Bold" size="36.0" />
             </font>

@@ -43,8 +43,12 @@ public class ShopHandler {
         else {
             Integer now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
             if (searchMethod == Constants.NEARBY) {
-                shopArrayList = ShopDao.findShopByAddressAndTime(searchParam, now);
-                return shopArrayList.size() != 0 ? shopArrayList : null;
+                Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
+                if (address != null) {
+                    shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour());
+                    shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
+                    return shopArrayList.size() != 0 ? shopArrayList : null;
+                }
             } else if (searchMethod == Constants.BY_CITY) {
                 shopArrayList = ShopDao.findShopByCityAndTime(searchParam, now);
                 return shopArrayList.size() != 0 ? shopArrayList : null;
@@ -65,7 +69,7 @@ public class ShopHandler {
     }
 
     public static void insertShopIntoFavorite(Shop shop, User user){
-		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername
+		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
     public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){

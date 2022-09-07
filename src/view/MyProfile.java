@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
@@ -35,7 +35,7 @@ public class MyProfile {
     @FXML
     ImageView myProfileImage;
     @FXML
-    Label nameLabel, surnameLabel, usernameLabel, addressLabel, phoneLabel, saveYourProfileLabel, modifyYourProfileLabel, completeYourProfileLabel, errorLabel;
+    Text nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
 
     @FXML
     TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
@@ -63,7 +63,7 @@ public class MyProfile {
 
     public void passUser(User user) throws IOException {
         this.user = user;
-        usernameLabel.setText(user.getUsername());
+        usernameText.setText(user.getUsername());
 
         if (user instanceof Buyer) {
             InputStream stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
@@ -71,26 +71,26 @@ public class MyProfile {
             myProfileImage.setImage(profileImage);
             stream.close();
             if (this.isSomeFieldBlank = ((Buyer) user).isSomeFieldBlank()) {
-                saveYourProfileLabel.setVisible(false);
-                completeYourProfileLabel.setVisible(true);
-                modifyYourProfileLabel.setVisible(false);
-                //editLabel.setText(Constants.COMPLETE_YOUR_PROFILE_CAPSLOCK);
+                saveYourProfileText.setVisible(false);
+                completeYourProfileText.setVisible(true);
+                modifyYourProfileText.setVisible(false);
+                //editText.setText(Constants.COMPLETE_YOUR_PROFILE_CAPSLOCK);
             }
             else {
-                saveYourProfileLabel.setVisible(false);
-                completeYourProfileLabel.setVisible(false);
-                modifyYourProfileLabel.setVisible(true);
-                //editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
-                nameLabel.setText(user.getName());
-                surnameLabel.setText(user.getSurname());
-                phoneLabel.setText(((Buyer) user).getPhone());
-                addressLabel.setText(((Buyer) user).getBillingAddress());
+                saveYourProfileText.setVisible(false);
+                completeYourProfileText.setVisible(false);
+                modifyYourProfileText.setVisible(true);
+                //editText.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
+                nameText.setText(user.getName());
+                surnameText.setText(user.getSurname());
+                phoneText.setText(((Buyer) user).getPhone());
+                addressText.setText(((Buyer) user).getBillingAddress());
             }
         }
         if (user instanceof Admin) {
             //todo
-            phoneLabel.setVisible(false);
-            addressLabel.setVisible(false);
+            phoneText.setVisible(false);
+            addressText.setVisible(false);
         }
         if (user instanceof ShopHolder){
             //todo
@@ -115,15 +115,15 @@ public class MyProfile {
     public void editProfile() {
         editImageView.setVisible(false);
         saveImageView.setVisible(true);
-        saveYourProfileLabel.setVisible(true);
-        completeYourProfileLabel.setVisible(false);
-        modifyYourProfileLabel.setVisible(false);
+        saveYourProfileText.setVisible(true);
+        completeYourProfileText.setVisible(false);
+        modifyYourProfileText.setVisible(false);
 
-        //hide label
-        nameLabel.setVisible(false);
-        surnameLabel.setVisible(false);
-        addressLabel.setVisible(false);
-        phoneLabel.setVisible(false);
+        //hide Text
+        nameText.setVisible(false);
+        surnameText.setVisible(false);
+        addressText.setVisible(false);
+        phoneText.setVisible(false);
 
         //show textField
         nameTextField.setVisible(true);
@@ -148,7 +148,7 @@ public class MyProfile {
                 streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
                 countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
                 phoneTextField.getText().isBlank()) {
-            errorLabel.setVisible(true);
+            errorText.setVisible(true);
             //todo: se qualche field è blank, bisogna inserire tutte le fields
         }
         else{
@@ -165,24 +165,24 @@ public class MyProfile {
                 phoneTextField.setVisible(false);
 
 
-                saveYourProfileLabel.setVisible(false);
-                completeYourProfileLabel.setVisible(false);
-                modifyYourProfileLabel.setVisible(true);
+                saveYourProfileText.setVisible(false);
+                completeYourProfileText.setVisible(false);
+                modifyYourProfileText.setVisible(true);
 
-                //editLabel.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
+                //editText.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
                 editImageView.setVisible(true);
                 saveImageView.setVisible(false);
 
-                errorLabel.setVisible(false);
-                //show labels
-                nameLabel.setText(user.getName());
-                surnameLabel.setText(user.getSurname());
-                addressLabel.setText(((Buyer) user).getBillingAddress());
-                phoneLabel.setText(((Buyer) user).getPhone());
-                nameLabel.setVisible(true);
-                surnameLabel.setVisible(true);
-                addressLabel.setVisible(true);
-                phoneLabel.setVisible(true);
+                errorText.setVisible(false);
+                //show Texts
+                nameText.setText(user.getName());
+                surnameText.setText(user.getSurname());
+                addressText.setText(((Buyer) user).getBillingAddress());
+                phoneText.setText(((Buyer) user).getPhone());
+                nameText.setVisible(true);
+                surnameText.setVisible(true);
+                addressText.setVisible(true);
+                phoneText.setVisible(true);
 
             }
         }
@@ -223,7 +223,7 @@ public class MyProfile {
                 myProfileImage.setImage(profileImage);
                 stream.close();
             }
-            UserHandler.updateLogoImagePath(user, file, newFileName);
+            UserHandler.updateLogoImagePath(user, newFileName);
         }
     }
 }

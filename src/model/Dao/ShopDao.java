@@ -149,7 +149,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopByAddressAndTime(String address, Integer time) {
+    public static ArrayList<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -160,12 +160,20 @@ public class ShopDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
-                    "WHERE address LIKE ? AND status != ? AND opening_time <= ? AND closing_time > ?";
+                    "WHERE  ? < latitude " +
+                    "AND latitude < ? " +
+                    "AND ? < longitude " +
+                    "AND longitude < ? " +
+                    "AND status != ?" +
+                    "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) > ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + address.toLowerCase() + "%");
-            stmt.setInt(2,Constants.NOT_AVAILABLE);
-            stmt.setInt(3,time);
-            stmt.setInt(4,time);
+            stmt.setDouble(1, lat - 0.5);
+            stmt.setDouble(2, lat + 0.5);
+            stmt.setDouble(3, lng - 0.5);
+            stmt.setDouble(4, lng + 0.5);
+            stmt.setInt(5,Constants.NOT_AVAILABLE);
+            stmt.setInt(6,time);
+            stmt.setInt(7,time);
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -185,7 +193,12 @@ public class ShopDao {
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * FROM shop WHERE city LIKE ? AND status != ? AND opening_time <= ? AND closing_time > ?";
+            String sql = "SELECT DISTINCT * " +
+                    "FROM shop " +
+                    "WHERE city LIKE ? " +
+                    "AND status != ? " +
+                    "AND CAST(opening_time AS INT) <= ? " +
+                    "AND CAST(closing_time AS INT) > ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
@@ -234,7 +247,11 @@ public class ShopDao {
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * FROM shop WHERE name LIKE ? AND status != ? AND opening_time <= ? AND closing_time > ?";
+            String sql = "SELECT DISTINCT * FROM shop " +
+                    "WHERE name LIKE ? " +
+                    "AND status != ? " +
+                    "AND CAST(opening_time AS INT) <= ? " +
+                    "AND CAST(closing_time AS INT) > ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
@@ -337,33 +354,6 @@ public class ShopDao {
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             return output;
-        }
-    }
-
-    public static ArrayList<Shop> returnAllShopsInCircle(double lat, double lon, int distanceKm) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
-        ArrayList<Shop> arrayShop= new ArrayList<>();
-        try {
-            conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * " +
-                    "FROM shop " +
-                    "";
-            int distanceKm2 = (int) Math.pow(distanceKm, 2);
-
-            //if ()
-                //todo:
-                //Math.pow(lat1 - lat2, 2) + Math.pow(lon1 - lon2, 2) < distanceKm2;
-            stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
     }
 

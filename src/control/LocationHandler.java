@@ -4,20 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import model.Address;
 import model.Constants;
-import model.Dao.ShopDao;
 import model.Shop.Shop;
 
-import java.util.ArrayList;
-
 public class LocationHandler {
-
-    public static ArrayList<Shop> findShopByDistanceFromAddress(double lat, double lon, int distanceKm) {
-        if (distanceKm == 0) {
-            return null;
-        }
-        return ShopDao.returnAllShopsInCircle(lat, lon, distanceKm);
-    }
-
     public static Address calculateLatLongFromAddress(String addressString) {
         //uses googleapis
         Address address = null;

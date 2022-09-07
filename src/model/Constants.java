@@ -21,6 +21,7 @@ public interface Constants {
     int NEW_OPENING = 0;
     int AVAILABLE = 1;
     int NOT_AVAILABLE = -1;
+    String LOGO_PRODUCTS_PATH = "src/images/product/";
     String LOGO_SHOPS_PATH = "src/images/shop_images/";
     String LOGO_SHOP_NA = "NotAvailablePhoto.png";
     String PROFILE_IMAGES_PATH = "src/images/user_profile_images/";

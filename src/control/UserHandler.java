@@ -7,7 +7,6 @@ import model.User.Buyer;
 import model.User.ShopHolder;
 import model.User.User;
 
-import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -40,7 +39,7 @@ public class UserHandler {
         return false;
     }
 
-    public static boolean updateLogoImagePath(User user, File file, String profileImagepath) {
+    public static boolean updateLogoImagePath(User user, String profileImagepath) {
         if (user == null || profileImagepath.isBlank()) {
             return false;
         }

@@ -1,8 +1,6 @@
 package view;
 
 import control.FileElaboration;
-import control.ProductHandler;
-import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,12 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Product.ProductShop;
-import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class BuyProductsFromShop {
     User u = null;

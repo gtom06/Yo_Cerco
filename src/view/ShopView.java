@@ -197,15 +197,12 @@ public class ShopView {
     public void onClickDepartmentImage(MouseEvent mouseEvent) throws IOException {
 
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-        System.out.println(ref);
-
         for (Department dep : departmentArrayList){
             if (dep.getDepartmentId()==ref) {
                 department = dep;
                 break;
             }
         }
-        //ObservableList<ProductShop> observableListProduct = FXCollections.observableArrayList();
         department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId()));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));

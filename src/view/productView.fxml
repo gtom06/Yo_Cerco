@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProductView">
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProductView">
     <children>
         <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="0.0" />
       <ImageView fitHeight="48.0" fitWidth="571.0" layoutX="237.0" pickOnBounds="true" preserveRatio="true">
@@ -40,7 +40,7 @@
                 <Image url="@../images/shop/icons8-close-96.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="cartImage" fitHeight="60.0" fitWidth="60.0" layoutX="856.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView onMouseClicked="#addToCartClick" fx:id="cartImage" fitHeight="60.0" fitWidth="60.0" layoutX="856.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/user_interface/icons8-shopping-cart-96.png" />
             </image>
@@ -90,7 +90,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#ffb703" layoutX="702.0" layoutY="479.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text="Add to cart:">
+      <Text fill="#ffb703" layoutX="702.0" layoutY="479.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text="Add to cart">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>

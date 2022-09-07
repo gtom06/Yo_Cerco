@@ -1,10 +1,8 @@
 package view;
 
 
+import control.CartElaboration;
 import control.ProductHandler;
-import control.ShopHandler;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +21,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
@@ -91,16 +88,24 @@ public class ProductView {
     }
 
     public void previousPage() throws IOException {
-        //todo fare l'if per decidere se tornare a searchproduct o a departmentshopproduct
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
-        Parent root = loader.load();
-        DepartProductView departProductView = loader.getController();
-        departProductView.passParams(user, department,shop);
+        Parent root = null;
+        if (shop != null || department != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
+            root = loader.load();
+            DepartProductView departProductView = loader.getController();
+            departProductView.passParams(user, department, shop);
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+            root = loader.load();
+            SearchProduct searchProduct = loader.getController();
+            searchProduct.passUser(user);
+        }
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        Stage stage = (Stage) previousPage.getScene().getWindow();
         stage.close();
     }
 
@@ -125,5 +130,9 @@ public class ProductView {
         }
     }
 
-
+    @FXML
+    public void addToCartClick() {
+        CartElaboration.addOrderItemsToCart(productShop, 1);
+        System.out.println(CartElaboration.readOrderItemsFromCart());
+    }
 }

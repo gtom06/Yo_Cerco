@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
     <children>
         <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
@@ -17,9 +17,10 @@
       </ImageView>
         <Rectangle fill="#e6e6e6" height="475.0" layoutX="26.0" layoutY="52.0" width="937.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
         <Text fx:id="TextHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
-         <font>
-            <Font name="Tahoma Bold" size="18.0" />
-         </font></Text>
+            <font>
+                <Font name="Tahoma Bold" size="18.0" />
+            </font>
+        </Text>
         <ImageView fx:id="shopLogo" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0" />
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="292.0">
             <image>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,70 +7,71 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MyProfile">
    <children>
-      <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style=" -fx-background-color: #ffb703" />
-      <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="953.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" />
+      <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user_interface/icons8-home-48.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutY="50.0" maxHeight="350.0" maxWidth="1000.0" minHeight="320.0" minWidth="1000.0" prefHeight="320.0" prefWidth="1000.0" style="-fx-background-color: #a8dadc; -fx-border-color: ffb703; -fx-border-width: 5;">
+      <AnchorPane layoutY="50.0" maxHeight="350.0" maxWidth="1000.0" minHeight="320.0" minWidth="1000.0" prefHeight="320.0" prefWidth="1000.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
          <children>
             <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffb703" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
             <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#onClickProfileImageView" onMouseEntered="#enterProfileImage" onMouseExited="#exitProfileImage" pickOnBounds="true" preserveRatio="true">
             </ImageView>
-            <Label fx:id="nameLabel" layoutX="412.0" layoutY="50.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
+            <Text fx:id="nameText" fill="#2c2c2c" layoutX="429.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="surnameLabel" layoutX="412.0" layoutY="90.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
+            </Text>
+            <Text fx:id="surnameText" fill="#2c2c2c" layoutX="429.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="usernameLabel" layoutX="412.0" layoutY="130.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
+            </Text>
+            <Text fx:id="usernameText" fill="#2c2c2c" layoutX="429.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="addressLabel" layoutX="412.0" layoutY="170.0" prefHeight="28.0" prefWidth="527.0" textFill="#ffb703">
+            </Text>
+            <Text fx:id="addressText" fill="#2c2c2c" layoutX="429.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="phoneLabel" layoutX="412.0" layoutY="212.0" prefHeight="32.0" prefWidth="527.0" textFill="#ffb703">
+            </Text>
+            <Text fx:id="phoneText" fill="#2c2c2c" layoutX="429.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="nameHelpLabel" layoutX="259.0" layoutY="52.0" prefHeight="28.0" prefWidth="74.0" text="Name:" textFill="#ffb703">
+            </Text>
+            <Text fx:id="nameHelpText" fill="#2c2c2c" layoutX="276.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="surnameHelpLabel" layoutX="259.0" layoutY="92.0" prefHeight="28.0" prefWidth="112.0" text="Surname:" textFill="#ffb703">
+            </Text>
+            <Text fx:id="surnameHelpText" fill="#2c2c2c" layoutX="276.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname:">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="usernameHelpLabel" layoutX="259.0" layoutY="132.0" prefHeight="28.0" prefWidth="125.0" text="Username:" textFill="#ffb703">
+            </Text>
+            <Text fx:id="usernameHelpText" fill="#2c2c2c" layoutX="276.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="addressHelpLabel" layoutX="259.0" layoutY="172.0" prefHeight="28.0" prefWidth="98.0" text="Address:" textFill="#ffb703">
+            </Text>
+            <Text fx:id="addressHelpText" fill="#2c2c2c" layoutX="276.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
-            <Label fx:id="phoneHelpLabel" layoutX="259.0" layoutY="212.0" prefHeight="32.0" prefWidth="80.0" text="Phone:" textFill="#ffb703">
+            </Text>
+            <Text fx:id="phoneHelpText" fill="#2c2c2c" layoutX="276.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
                <font>
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
-            </Label>
+            </Text>
             <ImageView fx:id="editImageView" fitHeight="28.0" fitWidth="28.0" layoutX="259.0" layoutY="14.0" onMouseClicked="#editProfile" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user_interface/icons8-compose-48.png" />
@@ -82,47 +82,47 @@
                   <Image url="@../images/user_interface/icons8-done-48.png" />
                </image>
             </ImageView>
-            <Label fx:id="saveYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#saveProfile" prefHeight="17.0" prefWidth="180.0" text="Save your profile">
+            <Text fx:id="saveYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="32.0" onMouseClicked="#saveProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Save your profile">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
-            </Label>
-            <Label fx:id="completeYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#saveProfile" prefHeight="17.0" prefWidth="180.0" text="Complete your profile">
+            </Text>
+            <Text fx:id="completeYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="33.0" onMouseClicked="#saveProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Complete your profile">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
-            </Label>
-            <Label fx:id="modifyYourProfileLabel" layoutX="301.0" layoutY="20.0" onMouseClicked="#editProfile" prefHeight="17.0" prefWidth="180.0" text="Modify your profile">
+            </Text>
+            <Text fx:id="modifyYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="33.0" onMouseClicked="#editProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify your profile">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
-            </Label>
-            <TextField fx:id="nameTextField" layoutX="412.0" layoutY="52.0" promptText="Name" visible="false" />
-            <TextField fx:id="surnameTextField" layoutX="412.0" layoutY="92.0" promptText="Surname" visible="false" />
-            <TextField fx:id="streetTextField" layoutX="412.0" layoutY="174.0" prefWidth="300.0" promptText="Street" visible="false" />
-            <TextField fx:id="cityTextField" layoutX="712.0" layoutY="174.0" maxWidth="100.0" promptText="City" visible="false" />
-            <TextField fx:id="countryTextField" layoutX="812.0" layoutY="174.0" maxWidth="100.0" promptText="Country" visible="false" />
-            <TextField fx:id="zipTextField" layoutX="912.0" layoutY="174.0" maxWidth="80.0" promptText="Zip code" visible="false" />
-            <TextField fx:id="phoneTextField" layoutX="412.0" layoutY="214.0" promptText="Phone" visible="false" />
-            <Label fx:id="errorLabel" layoutX="259.0" layoutY="255.0" prefHeight="28.0" prefWidth="527.0" text="Please fill all fields!" textFill="RED" visible="false">
+            </Text>
+            <TextField fx:id="nameTextField" layoutX="412.0" layoutY="68.0" promptText="Name" visible="false" />
+            <TextField fx:id="surnameTextField" layoutX="412.0" layoutY="108.0" promptText="Surname" visible="false" />
+            <TextField fx:id="streetTextField" layoutX="412.0" layoutY="190.0" prefWidth="300.0" promptText="Street" visible="false" />
+            <TextField fx:id="cityTextField" layoutX="712.0" layoutY="190.0" maxWidth="100.0" promptText="City" visible="false" />
+            <TextField fx:id="countryTextField" layoutX="812.0" layoutY="190.0" maxWidth="100.0" promptText="Country" visible="false" />
+            <TextField fx:id="zipTextField" layoutX="912.0" layoutY="190.0" maxWidth="80.0" promptText="Zip code" visible="false" />
+            <TextField fx:id="phoneTextField" layoutX="412.0" layoutY="230.0" promptText="Phone" visible="false" />
+            <Text fx:id="errorText" fill="#2c2c2c" layoutX="259.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill all fields!" visible="false" wrappingWidth="497.0045471191406">
                <font>
                   <Font name="Tahoma Bold" size="12.0" />
                </font>
-            </Label>
+            </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPane2" onMouseClicked="#onClickAnchorPane2" layoutY="369.0" maxHeight="350.0" maxWidth="1000.0" minHeight="313.0" minWidth="1000.0" prefHeight="331.0" prefWidth="1000.0" style="-fx-background-color: #457b9d; -fx-border-color: ffb703; -fx-border-width: 5;">
+      <AnchorPane fx:id="anchorPane2" layoutY="369.0" maxHeight="350.0" maxWidth="1000.0" minHeight="313.0" minWidth="1000.0" onMouseClicked="#onClickAnchorPane2" prefHeight="331.0" prefWidth="1000.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
          <children>
             <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="58.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
                <image>
                   <Image url="@../images/user_interface/icons8-in-transit-96.png" />
                </image>
             </ImageView>
-            <Label layoutX="384.0" layoutY="152.0" prefHeight="46.0" prefWidth="231.0" text="MY ORDERS" textFill="#ffb703">
+            <Text fill="#2c2c2c" layoutX="384.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MY ORDERS">
                <font>
                   <Font name="Tahoma Bold" size="36.0" />
                </font>
-            </Label>
+            </Text>
          </children>
       </AnchorPane>
    </children>

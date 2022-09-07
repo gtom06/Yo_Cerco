@@ -56,7 +56,6 @@ public class DepartProductView {
         ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (productShop != null){
-            System.out.println(productShop);
             /*
             if (shop.getType == "ferramenta") {
                 carica ferramentaview.fxml
@@ -100,12 +99,8 @@ public class DepartProductView {
         this.shop = shop;
         this.user = user;
         this.department = department;
-        System.out.println("**********************************");
-        System.out.println(shop);
-        System.out.println("**********************************");
         ArrayList<ProductShop> productShopArrayList = department.getItems();
         if (productShopArrayList!=null){
-            System.out.println(department.getItems().get(0));
             ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
             productTable.setItems(observableListProducts);
         }

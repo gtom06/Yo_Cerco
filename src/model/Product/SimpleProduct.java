@@ -1,5 +1,7 @@
 package model.Product;
 
+import model.Constants;
+
 public class SimpleProduct implements Product {
     private int sku;
     private String name;
@@ -17,7 +19,7 @@ public class SimpleProduct implements Product {
         this.description = description;
         this.size = size;
         this.unitOfMeasure = unitOfMeasure;
-        this.logoImagepath = logoImagepath;
+        this.logoImagepath = Constants.LOGO_PRODUCTS_PATH + logoImagepath;
     }
 
     public void setSku(int sku) {
@@ -33,7 +35,7 @@ public class SimpleProduct implements Product {
     }
 
     public void setLogoImagepath(String logoImagepath) {
-        this.logoImagepath = logoImagepath;
+        this.logoImagepath = Constants.LOGO_PRODUCTS_PATH + logoImagepath;
     }
 
     public void setSize(double size) {
