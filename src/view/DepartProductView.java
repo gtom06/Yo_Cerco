@@ -34,16 +34,10 @@ public class DepartProductView {
     Text departmentName, shopName, textHi;
     @FXML
     TableView<ProductShop> productTable = new TableView<>();
-    //TableColumn<ProductShop, Integer> sku;
-    //TableColumn<ProductShop, Integer> shop_id;
-    //TableColumn<ProductShop, Integer> department_id;
     TableColumn<ProductShop,String>nameColumn;
-    TableColumn<ProductShop,String> descriptionColumn;
     TableColumn<ProductShop,String> brandColumn;
     TableColumn<ProductShop,Float> sizeColumn;
     TableColumn<ProductShop,String> unitOfMeasureColumn;
-
-    TableColumn<ProductShop, Integer> availableQuantityColumn;
     TableColumn<ProductShop, Integer> currencyColumn;
     TableColumn<ProductShop, Integer> priceColumn;
 
@@ -153,10 +147,6 @@ public class DepartProductView {
         unitOfMeasureColumn.setMinWidth(10);
         unitOfMeasureColumn.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        availableQuantityColumn = new TableColumn<>("AVAILABLE QUANTITY");
-        availableQuantityColumn.setMinWidth(10);
-        availableQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("availableQuantity"));
-
         priceColumn = new TableColumn<>("PRICE");
         priceColumn.setMinWidth(50);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -167,7 +157,7 @@ public class DepartProductView {
 
 
 
-        productTable.getColumns().addAll(nameColumn,brandColumn,sizeColumn,unitOfMeasureColumn,availableQuantityColumn,priceColumn,currencyColumn);
+        productTable.getColumns().addAll(nameColumn,brandColumn,sizeColumn,unitOfMeasureColumn,priceColumn,currencyColumn);
 
 
     }

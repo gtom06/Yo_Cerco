@@ -42,18 +42,29 @@ public class CartElaboration {
         }
     }
 
-    public static void addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) {
-        for (int i = 0; i<productShopArrayList.size(); i++) {
-            addOrderItemsToCart(productShopArrayList.get(i), newQuantityArrayList.get(i));
+    public static boolean addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) throws IOException {
+        ArrayList<OrderItem> orderItemArrayList = readOrderItemsFromCart();
+        //backup file
+        if (orderItemArrayList.size() != 0 && orderItemArrayList != null){
+            FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
         }
+        boolean bool = false;
+        for (int i = 0; i<productShopArrayList.size(); i++) {
+            bool = addOrderItemsToCart(productShopArrayList.get(i), newQuantityArrayList.get(i));
+            if (bool == false) {
+                FileElaboration.writeOnFile(Constants.CART_PATH, FileElaboration.fileToString(Constants.CART_PATH2));
+                FileElaboration.writeOnFile(Constants.CART_PATH2, "");
+                return bool;
+            }
+        }
+        return bool;
     }
 
     public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) {
         ArrayList<OrderItem> orderItemArrayList;
-        double priceTotal = 0;
         try {
             orderItemArrayList = readOrderItemsFromCart();
-            if (orderItemArrayList != null) {
+            if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
                 boolean found = false;
                 if (orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
                     return false;

@@ -97,10 +97,6 @@ CREATE TABLE product_shop(
     department_id           NUMERIC(10) REFERENCES department(department_id),
     location                VARCHAR(100),
     price                   FLOAT(10),
-    qty_on_stock            NUMERIC(10),
-    discounted_price        FLOAT(10),
-    available_quantity      NUMERIC(100),
-    number_of_purchase      NUMERIC(100),
     currency                VARCHAR(5)
 );
 

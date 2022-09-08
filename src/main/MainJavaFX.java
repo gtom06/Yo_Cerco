@@ -1,5 +1,6 @@
 package main;
 
+import control.CartElaboration;
 import control.LocationHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,17 +25,19 @@ public class MainJavaFX extends Application {
         stage.show();
         stage.setResizable(false);
 
+        CartElaboration.deleteCart();
+
+
         //todo: remove lines
 
 
-        System.out.println("LocationHandler: "+ LocationHandler.calculateLatLongFromIpAddress());
         /*
         Order order = new Order(0, 1, "abc", "visa", null,
                 100.0, "usd", null, Timestamp.from(Instant.now()),1, null);
         order = OrderDao.insertOrder(order);
 
         OrderDao.insertOrderItems(order.getOrderId(), null);
-        CartElaboration.deleteCart();
+
 
         CartElaboration.deleteCart();
         //Cart.readOrderItemsFromCart();
@@ -56,5 +59,6 @@ public class MainJavaFX extends Application {
                 "124");
 
 */
+        System.out.println("LocationHandler: "+ LocationHandler.calculateLatLongFromIpAddress());
     }
 }

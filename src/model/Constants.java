@@ -13,6 +13,7 @@ public interface Constants {
     //for file
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
     String CART_PATH = "src/data/cart.json";
+    String CART_PATH2 = "src/data/cart2.json";
     //for images
     String SHOP_IMAGE = "src/images/shop/";
 

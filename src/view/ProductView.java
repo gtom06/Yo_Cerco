@@ -132,7 +132,9 @@ public class ProductView {
 
     @FXML
     public void addToCartClick() {
-        CartElaboration.addOrderItemsToCart(productShop, 1);
+        if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
+            System.out.println("item not added in cart");
+        }
         System.out.println(CartElaboration.readOrderItemsFromCart());
     }
 }
