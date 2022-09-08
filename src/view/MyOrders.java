@@ -22,7 +22,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class MyOrders {
-    User u = null;
+    User user = null;
     @FXML
     private ImageView homepageImageView;
     @FXML
@@ -36,11 +36,26 @@ public class MyOrders {
     TableColumn<Order, Timestamp> orderStatus;
 
     @FXML
+    protected void onOrderClicked() throws IOException {
+        Order order = orderTableView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+        Parent root = loader.load();
+        SpecificOrder specificOrder = loader.getController();
+        specificOrder.passParams(user, order);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     protected void onHomepageImageClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(u);
+        homepage.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -82,7 +97,7 @@ public class MyOrders {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(u);
+        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);
@@ -99,7 +114,7 @@ public class MyOrders {
 
 
     public void passUser(User user) {
-        u = user;
+        this.user = user;
         textHi.setText(user.getUsername());
         fillShopTableView();
     }

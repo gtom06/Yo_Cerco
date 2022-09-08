@@ -26,6 +26,21 @@ public class OrderHandler {
         return order;
     }
 
+    public static Order findOrderItemsFromOrder(Order order){
+        System.out.println("order: "+ order);
+        ArrayList<OrderItem> orderItemArrayList = null;
+        order = OrderDao.findOrderItemsFromOrder(order);
+        String orderItemsJson = order.getOrderItemString();
+        System.out.println(orderItemsJson);
+        if (orderItemsJson != "") {
+            orderItemArrayList = JsonParserCustom.convertJsonIntoOrderItem(orderItemsJson);
+        }
+        order.setOrderItemArrayList(orderItemArrayList);
+        order.setOrderItemString(orderItemsJson);
+        System.out.println(order.getOrderItemArrayList());
+        return order;
+    }
+
     public static Order previewOrder() {
         ArrayList<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
@@ -141,7 +156,6 @@ public class OrderHandler {
                 System.out.println("insertOrder failed");
                 return null;
             }
-
             OrderDao.insertOrderItems(order.getOrderId(), orderItemsJson);
             //deleteCart after order is created
             CartElaboration.deleteCart();

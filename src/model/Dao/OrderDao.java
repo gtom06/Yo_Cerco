@@ -1,7 +1,6 @@
 package model.Dao;
 
 import control.FileElaboration;
-import control.JsonParserCustom;
 import model.Constants;
 import model.Db.DbHelper;
 import model.Order.Order;
@@ -49,10 +48,11 @@ public class OrderDao {
         }
     }
 
-    public static ArrayList<OrderItem> findOrderItemsFromOrder(int orderId) {
+    public static Order findOrderItemsFromOrder(Order order) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
+        String orderItemJson = "";
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -60,17 +60,15 @@ public class OrderDao {
                     "FROM order_items " +
                     "WHERE order_id = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderId);
+            stmt.setInt(1, order.getOrderId());
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String json = rs.getString("items");
-                orderItemArrayList = JsonParserCustom.convertJsonIntoOrderItem(json);
-            }
+            rs.next();
+            order.setOrderItemString(rs.getString("items"));
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return orderItemArrayList;
+            return order;
         }
     }
 

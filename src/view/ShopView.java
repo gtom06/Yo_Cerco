@@ -3,8 +3,6 @@ package view;
 import control.BrowserHandler;
 import control.DepartmentHandler;
 import control.ShopHandler;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
-import model.Product.ProductShop;
 import model.Shop.Shop;
 import model.User.User;
 
