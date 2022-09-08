@@ -6,16 +6,11 @@ public class OrderItem extends ProductShop {
     int quantityOrdered;
     double priceTotal;
 
-    public OrderItem(double price, double discountedPrice, String currency, double percentOfDiscount,
-                     int availableQuantity, int numberOfPurchase, int shopId, int sku, String name, String brand,
+    public OrderItem(double price, String currency, int shopId, int sku, String name, String brand,
                      String description, double size, String unitOfMeasure, String logoImagepath, int departmentId,
                      int quantityOrdered, Double priceTotal) {
         super(price,
-                discountedPrice,
                 currency,
-                percentOfDiscount,
-                availableQuantity,
-                numberOfPurchase,
                 shopId,
                 sku,
                 name,
