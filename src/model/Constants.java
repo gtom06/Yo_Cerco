@@ -3,7 +3,10 @@ package model;
 public interface Constants {
     //for google apis
     String GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-    String GOOGLE_KEY = "&key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
+    String GOOGLE_AND_KEY = "&key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
+    String GEOLOCATION_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
+
+
     String SAVE = "Save";
     String SAVE_CAPSLOCK = "SAVE";
 

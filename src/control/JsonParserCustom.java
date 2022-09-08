@@ -1,6 +1,5 @@
 package control;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.Order.OrderItem;
@@ -36,17 +35,6 @@ example of json:
         }
         return orderItemArrayList;*/
         return null;
-    }
-
-    public static ArrayList<String> convertJsonIntoPhonePrefix(String json) {
-        ArrayList<String> phonePrefixArrayList = new ArrayList<>();
-        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
-        String prefix;
-        for (JsonElement e : jsonObject.getAsJsonArray()){
-            prefix = ((JsonObject) e).get("dial_code").getAsString();
-            phonePrefixArrayList.add(prefix);
-        }
-        return phonePrefixArrayList;
     }
 
     public static JsonObject convertStringToJsonObject(String jsonString) {

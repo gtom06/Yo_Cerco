@@ -92,6 +92,21 @@ public class Homepage {
         stage.close();
     }
 
+    @FXML
+    public void openCartAndPayment() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
+        Parent root = loader.load();
+        CartAndPayment cartAndPayment = loader.getController();
+        cartAndPayment.passParam(null, u);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) anchorPane3.getScene().getWindow();
+        stage.close();
+
+    }
+
     public void passUser(User user) {
         u = user;
         labelHi.setText(user.getUsername());

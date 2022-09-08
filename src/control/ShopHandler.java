@@ -20,11 +20,19 @@ public class ShopHandler {
     public static void updateShop(Shop shop){}
 
     public static ArrayList<Shop> findShopBy(String searchParam, String searchMethod, boolean searchBool){
-        if (searchParam.isBlank() || searchParam.length() > 50) {
+        ArrayList<Shop> shopArrayList;
+        if (searchParam.length() > 50) {
             return null;
         }
-        ArrayList<Shop> shopArrayList;
         if (searchBool == false) {
+            if (searchParam.isBlank() && searchMethod == Constants.NEARBY){
+                Address address = LocationHandler.calculateLatLongFromIpAddress();
+                if (address != null) {
+                    shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                    shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
+                    return shopArrayList.size() != 0 ? shopArrayList : null;
+                }
+            }
             if (searchMethod == Constants.NEARBY) {
                 Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
                 if (address != null) {
@@ -42,6 +50,14 @@ public class ShopHandler {
         }
         else {
             Integer now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
+            if (searchParam.isBlank() && searchMethod == Constants.NEARBY){
+                Address address = LocationHandler.calculateLatLongFromIpAddress();
+                if (address != null) {
+                    shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour());
+                    shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
+                    return shopArrayList.size() != 0 ? shopArrayList : null;
+                }
+            }
             if (searchMethod == Constants.NEARBY) {
                 Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
                 if (address != null) {

@@ -7,12 +7,30 @@ import model.Constants;
 import model.Shop.Shop;
 
 public class LocationHandler {
+    public static Address calculateLatLongFromIpAddress(){
+        //uses googleapis
+        Address address = null;
+        try {
+            String httpResponse = HttpRequest.post(Constants.GEOLOCATION_URL, null);
+            JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
+            JsonObject jsonObject1 = (JsonObject) jsonObject.get("location");
+            address = new Address(jsonObject1.get("lat").getAsDouble(), jsonObject1.get("lat").getAsDouble(), null);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            return address;
+        }
+    }
+
+
     public static Address calculateLatLongFromAddress(String addressString) {
         //uses googleapis
         Address address = null;
         try {
-            String httpResponse = HttpRequest.get(Constants.GEOCODE_URL + addressString.replace(" ", "+") + Constants.GOOGLE_KEY);
-            JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(String.valueOf(httpResponse));
+            String httpResponse = HttpRequest.get(Constants.GEOCODE_URL + addressString.replace(" ", "+") + Constants.GOOGLE_AND_KEY);
+            JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
             JsonArray jsonObject1 = (JsonArray) jsonObject.get("results");
             JsonObject jsonObject2 = (JsonObject) jsonObject1.get(0);
             JsonObject jsonObject3 = (JsonObject) jsonObject2.get("geometry");

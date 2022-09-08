@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class SearchShop  {
 
-    User u = null;
+    User user = null;
     @FXML
     private ImageView homepageImageView, userPositionImageView;
     @FXML
@@ -48,7 +48,7 @@ public class SearchShop  {
     CheckBox openNow;
 
     @FXML
-    protected void onListViewItemClick() throws IOException {
+    protected void onTableViewItemClick() throws IOException {
 
         Shop shop = tableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
@@ -57,12 +57,11 @@ public class SearchShop  {
             if (shop.getType == "ferramenta") {
                 carica ferramentaview.fxml
             }
-            //todo: non chiudere la finestra della searchShop.fxml quando si apre la shopView.fxml
             */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();
-            shopView.passUser(u);
+            shopView.passUser(user);
             shopView.passShop(shop);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
@@ -75,8 +74,12 @@ public class SearchShop  {
 
     @FXML
     protected void onUserPositionImageViewClick() {
-        requestTextField.setText(((Buyer) u).getBillingAddress());
-        param3.setSelected(true);
+        if (((Buyer) user).getBillingStreet() != null) {
+            requestTextField.setText(((Buyer) user).getBillingAddress());
+            param3.setSelected(true);
+        } else {
+            requestTextField.setText("");
+        }
     }
 
     @FXML
@@ -84,7 +87,7 @@ public class SearchShop  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(u);
+        homepage.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -120,7 +123,7 @@ public class SearchShop  {
     }
 
     public void passUser(User user) {
-        u = user;
+        this.user = user;
         labelHi.setText(user.getUsername());
     }
 

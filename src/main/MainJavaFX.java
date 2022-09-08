@@ -1,5 +1,6 @@
 package main;
 
+import control.LocationHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,11 +24,10 @@ public class MainJavaFX extends Application {
         stage.show();
         stage.setResizable(false);
 
-
-
-
         //todo: remove lines
 
+
+        System.out.println("LocationHandler: "+ LocationHandler.calculateLatLongFromIpAddress());
         /*
         Order order = new Order(0, 1, "abc", "visa", null,
                 100.0, "usd", null, Timestamp.from(Instant.now()),1, null);

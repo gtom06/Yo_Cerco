@@ -19,7 +19,7 @@
       </ImageView>
       <AnchorPane layoutY="50.0" maxHeight="350.0" maxWidth="1000.0" minHeight="320.0" minWidth="1000.0" prefHeight="320.0" prefWidth="1000.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
          <children>
-            <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffb703" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
+            <Rectangle fx:id="borderProfileImageRectangle" arcHeight="5.0" arcWidth="5.0" fill="#2c2c2c" height="210.0" layoutX="45.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="210.0" />
             <ImageView fx:id="myProfileImage" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#onClickProfileImageView" onMouseEntered="#enterProfileImage" onMouseExited="#exitProfileImage" pickOnBounds="true" preserveRatio="true">
             </ImageView>
             <Text fx:id="nameText" fill="#2c2c2c" layoutX="429.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0">

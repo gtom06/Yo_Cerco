@@ -12,8 +12,8 @@ values
     ('conad torrice', '+393311234567', 'via casilina km 90', 'torrice', 'conad.png', '', '', 1, 8, 20, 'conad', 41.6243219, 13.3823068, '/CONAD/@41.6243219,13.3823068,17z/data=!3m1!4b1!4m5!3m4!1s0x13255b22c9544bed:0xf95056b59d31bd0!8m2!3d41.6243179!4d13.3844955'),
     ('conad roma decemviri', '+393330123456', 'piazza dei decemviri 6', 'roma', 'conad.png', '', '', 1, 8, 21, 'conad', 41.8592646, 12.5686261, '/CONAD/@41.8592686,12.5664374,17z/data=!3m2!4b1!5s0x132589d61fa5d5fd:0xb00d72177a05ad3b!4m5!3m4!1s0x132589002acab7dd:0xc20ee8caef38d3d7!8m2!3d41.8592646!4d12.5686261'),
     ('eurospin roma ciamarra', '+393400123456', 'viale antonio ciamarra, 211', 'roma', 'eurospin.png', '', '', 1, 9, 20, 'eurospin', 41.8540214, 12.5873707, '/Eurospin/@41.8540174,12.5895594,17z/data=!3m2!4b1!5s0x13258827acba62ff:0x70c7eacb3356bf9d!4m5!3m4!1s0x1325882650b7ac39:0x8f596e6e8cf84efb!8m2!3d41.8540174!4d12.5895594'),
-    ('eurospin roma peikov', '+393880123456', 'piazza ilia peikov', 'roma', 'eurospin.png', '', '', 1, 9, 21, 'eurospin', 41.8315352, 12.5827329, '/Eurospin/@41.8315392,12.5805442,17z/data=!4m5!3m4!1s0x1325884e91813ceb:0x30adcdd3b135c851!8m2!3d41.8316001!4d12.5826743');
-
+    ('eurospin roma peikov', '+393880123456', 'piazza ilia peikov', 'roma', 'eurospin.png', '', '', 1, 9, 21, 'eurospin', 41.8315352, 12.5827329, '/Eurospin/@41.8315392,12.5805442,17z/data=!4m5!3m4!1s0x1325884e91813ceb:0x30adcdd3b135c851!8m2!3d41.8316001!4d12.5826743'),
+    ('testIpAddress', '+393880123456', 'piazza ilia peikov', 'roma', 'eurospin.png', '', '', 1, 0, 24, 'eurospin', 41.8696638, 41.8696638, '/Eurospin/@41.8315392,12.5805442,17z/data=!4m5!3m4!1s0x1325884e91813ceb:0x30adcdd3b135c851!8m2!3d41.8316001!4d12.5826743');
 insert into department (name, logo_imagepath)
 values
     ('FRUIT','icons8-banana-dolce-48.png'),

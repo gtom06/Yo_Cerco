@@ -1,8 +1,7 @@
 package control;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -55,5 +54,45 @@ public class HttpRequest {
             return responseContent;
         }
 
+    }
+    public static String post(String urlString, String body) {
+        BufferedReader reader;
+        URL url;
+        String line;
+        String responseContent = "";
+        try {
+            url = new URL(urlString);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+
+            writer.flush();
+            writer.close();
+            os.close();
+            int responseCode=conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while ((line = reader.readLine()) != null) {
+                    responseContent += line;
+                }
+                reader.close();
+            }
+            else {
+                responseContent="Error Registering";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return responseContent;
     }
 }

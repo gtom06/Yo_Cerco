@@ -41,7 +41,7 @@
          <font>
             <Font name="Tahoma Bold" size="18.0" />
          </font></Label>
-      <TableView fx:id="tableView" layoutX="57.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="504.0" prefWidth="919.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="161.0" />
+      <TableView fx:id="tableView" layoutX="57.0" layoutY="94.0" onMouseClicked="#onTableViewItemClick" prefHeight="504.0" prefWidth="919.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="161.0" />
       <TextField fx:id="requestTextField" layoutX="267.0" layoutY="76.0" prefHeight="26.0" prefWidth="468.0" style="-fx-border-color: #12d39d; -fx-border-width: 2;" />
       <CheckBox fx:id="openNow" layoutX="640.0" layoutY="119.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Open now" textFill="WHITE">
          <font>
