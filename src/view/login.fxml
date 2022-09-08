@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,12 +15,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1002.0" style="-fx-background-color: #457b9d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1002.0" style="-fx-background-color: #457b9d;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
     <right>
         <AnchorPane maxHeight="730.0" maxWidth="738.0" minHeight="700.0" minWidth="700.0" prefHeight="730.0" prefWidth="695.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #e6e6e6;" BorderPane.alignment="CENTER">
-            <ImageView fitHeight="57.0" fitWidth="101.0" layoutX="122.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="101.0" layoutX="122.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"></ImageView>
             <Label alignment="CENTER" layoutX="310.0" layoutY="63.0" prefHeight="30.0" prefWidth="90.0" style="-fx-text-fill: #0a7557;" text="Login">
                 <font>
                     <Font name="Tahoma" size="30.0" />
@@ -107,9 +106,10 @@
                 <Image url="@../images/user_interface/icons8-key-48.png" />
             </ImageView>
             <PasswordField fx:id="signUpRepeatPasswordPasswordField" layoutX="205.0" layoutY="471.0" prefHeight="30.0" prefWidth="300.0" promptText="Repeat Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
-            <font>
-               <Font name="Tahoma" size="14.0" />
-            </font></PasswordField>
+                <font>
+                    <Font name="Tahoma" size="14.0" />
+                </font>
+            </PasswordField>
             <Label layoutX="205.0" layoutY="516.0" prefHeight="20.0" prefWidth="105.0" style="-fx-text-fill: #0a7557;" text="Date of Birth">
                 <font>
                     <Font name="Tahoma" size="15.0" />
@@ -161,21 +161,21 @@
             </Button>
         </AnchorPane>
     </right>
-   <center>
+    <center>
         <AnchorPane maxHeight="700.0" maxWidth="300.0" minHeight="700.0" minWidth="300.0" prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #060606;" BorderPane.alignment="CENTER">
-         <ImageView fitHeight="766.0" fitWidth="389.0" layoutX="-25.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/user_interface/Logos/Logo_Verticale.jpeg" />
-            </image>
-         </ImageView>
+            <ImageView fitHeight="766.0" fitWidth="389.0" layoutX="-25.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/user_interface/Logos/Logo_Verticale.jpeg" />
+                </image>
+            </ImageView>
             <Label layoutX="50.0" layoutY="2.0" maxWidth="1.0" minWidth="1.0" prefWidth="1.0" text="yocerco">
                 <font>
                     <Font size="60.0" />
                 </font>
             </Label>
-         <effect>
-            <Blend mode="GREEN" />
-         </effect>
+            <effect>
+                <Blend mode="GREEN" />
+            </effect>
         </AnchorPane>
-   </center>
+    </center>
 </BorderPane>

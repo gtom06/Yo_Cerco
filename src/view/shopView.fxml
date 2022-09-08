@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShopView">
     <children>
         <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_interface/Logos/Logo_Banner_2.jpeg" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/Logos/Logo_Banner_2.jpeg" />
+            </image>
+        </ImageView>
         <Rectangle fill="#e6e6e6" height="475.0" layoutX="26.0" layoutY="52.0" width="937.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
         <Text fx:id="TextHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
             <font>
@@ -181,15 +181,15 @@
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-      <Text fill="#ffb703" layoutX="472.0" layoutY="493.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text=" Click on the departments icons to view products">
-         <font>
-            <Font name="Tahoma Bold" size="16.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="40.0" fitWidth="614.0" layoutX="296.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/user_interface/Logos/Logo_Banner.jpeg" />
-         </image>
-      </ImageView>
+        <Text fill="#ffb703" layoutX="472.0" layoutY="493.0" stroke="#2c2c2c" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text=" Click on the departments icons to view products">
+            <font>
+                <Font name="Tahoma Bold" size="16.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="40.0" fitWidth="614.0" layoutX="296.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/user_interface/Logos/Logo_Banner.jpeg" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
