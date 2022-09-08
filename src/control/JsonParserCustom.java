@@ -9,21 +9,7 @@ import java.util.ArrayList;
 public class JsonParserCustom {
     //todo: modificare dopo la verifica degli insert
     public static ArrayList<OrderItem> convertJsonIntoOrderItem(String json) {
-/*
-example of json:
 
-{
-  "orderId": 111,
-  "orderItems": [
-    {
-      "sku": 12134,
-      "amount": 10,
-      "currency": "eur",
-      "quantityOrdered": 1
-    }
-  ]
-}
-*/
         /*
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         OrderItem orderItem;

@@ -1,5 +1,6 @@
 package control;
 
+import com.google.gson.Gson;
 import model.Constants;
 import model.Dao.OrderDao;
 import model.Order.Order;
@@ -10,35 +11,31 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderHandler {
     public static ArrayList<Order> findOrdersInfoFromUser(User user) {
         ArrayList<Order> orderArrayList = OrderDao.findOrdersFromUser(user.getUsername());
         return orderArrayList.size() != 0 ? orderArrayList : null;
     }
-    public static Order populateOrderWithOrderItems(Order order){
-        /*
-        ArrayList<OrderItem> orderItemArrayList = OrderDao.findOrderItemsFromOrder(order.getOrderId());
-        if (orderItemArrayList.size() != 0) {
-            order.setOrderItemArrayList(orderItemArrayList);
-        }
-        */
-        return order;
-    }
 
-    public static Order findOrderItemsFromOrder(Order order){
-        System.out.println("order: "+ order);
-        ArrayList<OrderItem> orderItemArrayList = null;
-        order = OrderDao.findOrderItemsFromOrder(order);
-        String orderItemsJson = order.getOrderItemString();
-        System.out.println(orderItemsJson);
-        if (orderItemsJson != "") {
-            orderItemArrayList = JsonParserCustom.convertJsonIntoOrderItem(orderItemsJson);
+    public static Order populateOrderWithOrderItems(Order order){
+        ArrayList<OrderItem> orderItemArrayList;
+        try {
+            order = OrderDao.findOrderItemsFromOrder(order);
+            OrderItem[] output = new Gson().fromJson(order.getOrderItemString(), OrderItem[].class);
+            if (output == null) {
+                return null;
+            }
+            orderItemArrayList = new ArrayList<>(List.of(output));
+            System.out.println(orderItemArrayList);
+            order.setOrderItemArrayList(orderItemArrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        order.setOrderItemArrayList(orderItemArrayList);
-        order.setOrderItemString(orderItemsJson);
-        System.out.println(order.getOrderItemArrayList());
-        return order;
+        finally {
+            return order;
+        }
     }
 
     public static Order previewOrder() {

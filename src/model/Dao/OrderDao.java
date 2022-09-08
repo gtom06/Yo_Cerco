@@ -52,7 +52,6 @@ public class OrderDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        String orderItemJson = "";
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();

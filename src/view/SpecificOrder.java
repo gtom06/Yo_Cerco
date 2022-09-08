@@ -18,7 +18,6 @@ import model.Order.OrderItem;
 import model.User.User;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 public class SpecificOrder {
     User user = null;
@@ -29,16 +28,12 @@ public class SpecificOrder {
     Text textHi, numberOfOrdersText, totalOrdersText;
     @FXML
     TableView<OrderItem> orderItemTableView = new TableView<>();
-    TableColumn<OrderItem, String> orderNumber;
-    TableColumn<OrderItem, Integer> orderTotalQuantity;
-    TableColumn<OrderItem, String> orderTotalPrice;
-    TableColumn<OrderItem, Timestamp> orderTimeStamp;
-    TableColumn<OrderItem, Timestamp> orderStatus;
+    TableColumn<OrderItem, String> nameColumn;
+    TableColumn<OrderItem, String> brandColumn;
+    TableColumn<OrderItem, Integer> quantityOrderedColumn;
+    TableColumn<OrderItem, Double> priceTotalColumn;
+    TableColumn<OrderItem, String> currencyColumn;
 
-
-    protected void onOrderClicked() {
-        orderItemTableView.getSelectionModel().getSelectedItem();
-    }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -74,33 +69,31 @@ public class SpecificOrder {
     public void initialize() {
         orderItemTableView.setEditable(true);
 
-        orderNumber = new TableColumn<>("name");
-        orderNumber.setMinWidth(10);
-        orderNumber.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn = new TableColumn<>("Name");
+        brandColumn = new TableColumn<>("Brand");
+        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
+        priceTotalColumn = new TableColumn<>("Price total");
+        currencyColumn = new TableColumn<>("Currency");
 
-        orderTotalQuantity = new TableColumn<>("quantityOrdered");
-        orderTotalQuantity.setMinWidth(10);
-        orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        nameColumn.setMinWidth(10);
+        brandColumn.setMinWidth(10);
+        quantityOrderedColumn.setMinWidth(10);
+        priceTotalColumn.setMinWidth(10);
+        currencyColumn.setMinWidth(10);
 
-        orderTotalPrice = new TableColumn<>("currency");
-        orderTotalPrice.setMinWidth(30);
-        orderTotalPrice.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-        orderTimeStamp = new TableColumn<>("priceTotal");
-        orderTimeStamp.setMinWidth(10);
-        orderTimeStamp.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
-
-        orderStatus = new TableColumn<>("brand");
-        orderStatus.setMinWidth(10);
-        orderStatus.setCellValueFactory(new PropertyValueFactory<>("brand"));
-
-        orderItemTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalPrice, orderTimeStamp, orderStatus);
+        orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
     public void fillOrderTableView() {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
-        order = OrderHandler.findOrderItemsFromOrder(order);
+        order = OrderHandler.populateOrderWithOrderItems(order);
         System.out.println(order.getOrderItemArrayList());
         if (order.getOrderItemArrayList() != null) {
             for (OrderItem orderItem : order.getOrderItemArrayList()) {
