@@ -1,6 +1,5 @@
 #Files
-module-info.java
-
+src/remember_login.txt
 # Directories
 .idea/
 .out/
