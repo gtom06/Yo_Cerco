@@ -53,11 +53,6 @@ public class SearchShop  {
         Shop shop = tableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
-            /*
-            if (shop.getType == "ferramenta") {
-                carica ferramentaview.fxml
-            }
-            */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();
@@ -99,26 +94,31 @@ public class SearchShop  {
     @FXML
     protected void onSearchButtonClick() {
         tableView.getItems().clear();
-        RadioButton rb = (RadioButton) findValue.getSelectedToggle();
-        String radioButtonValue = rb.getText();
-        String paramForSearch = requestTextField.getText();
-        boolean checkboxValue = openNow.isSelected();
-        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        ArrayList<Shop> shopArrayList = ShopHandler.findShopBy(paramForSearch, radioButtonValue, checkboxValue);
+        ArrayList<Shop> shopArrayList = null;
 
-        if (shopArrayList != null) {
-            for (Shop s : shopArrayList) {
-                observableListShops.add(s);
-            }
+        if (requestTextField.getText() == null || requestTextField.getText().length() == 0 || requestTextField.getText().length() > 50) {
+            distanceColumn.setVisible(true);
+            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected());
+        }
+
+        if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.NEARBY) {
+            distanceColumn.setVisible(true);
+            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected());
+        }
+        else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_CITY) {
+            distanceColumn.setVisible(false);
+            shopArrayList = ShopHandler.findShopByCityWithParams(requestTextField.getText(), openNow.isSelected());
+        }
+        else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_NAME){
+            distanceColumn.setVisible(false);
+            shopArrayList = ShopHandler.findShopByNameWithParams(requestTextField.getText(), openNow.isSelected());
+        }
+        if (shopArrayList != null && shopArrayList.size() != 0) {
+            ObservableList<Shop> observableListShops = FXCollections.observableArrayList(shopArrayList);
             tableView.setItems(observableListShops);
         }
         else {
             System.out.println("no result");
-        }
-        if (radioButtonValue != Constants.NEARBY) {
-            distanceColumn.setVisible(false);
-        } else {
-            distanceColumn.setVisible(true);
         }
     }
 

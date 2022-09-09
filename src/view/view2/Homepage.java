@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
 import model.Shop.Shop;
 import model.User.Buyer;
 import model.User.User;
@@ -63,7 +62,7 @@ public class Homepage {
             }
         };
 
-        shopArrayList = ShopHandler.findShopBy(((Buyer) user).getBillingAddress(), Constants.NEARBY, false);
+        shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false);
         if (shopArrayList != null && shopArrayList.size() != 0){
             for (int i = 0; i < 4; i++) {
                 imageViewArrayList.get(i).setImage(new Image(new FileInputStream(shopArrayList.get(i).getLogoImagepath())));

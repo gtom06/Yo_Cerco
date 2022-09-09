@@ -1,6 +1,5 @@
 package view.view1;
 
-import control.ProductHandler;
 import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,14 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
-import model.Department.Department;
-import model.Product.Product;
-import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-import view.SearchProduct;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
