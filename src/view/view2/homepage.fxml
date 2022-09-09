@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.Homepage" >
+   <children>
+        <Pane layoutX="1000.0" maxHeight="720.0" maxWidth="80.0" minHeight="720.0" minWidth="80.0" prefHeight="720.0" prefWidth="80.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #12d39d; -fx-border-width: 2;">
+         <children>
+            <ImageView fitHeight="140.0" fitWidth="676.0" layoutX="-298.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="-270.0">
+               <image>
+                  <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cartImageView" onMouseClicked="#openCartAndPayment" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
+               </image>
+            </ImageView>
+                  <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                    <Image url="@../../images/user_interface/icons8-customer-100.png" />
+                    </image>
+                </ImageView>
+            <ImageView fx:id="homepageImageView" visible="false" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/user_interface/icons8-home-48.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
+         <children>
+            <Pane layoutX="800.0" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <Text layoutX="62.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nearest shops" />
+               </children>
+            </Pane>
+            <Pane layoutX="800.0" layoutY="40.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <ImageView fx:id="shopImageView1" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText1" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="800.0" layoutY="210.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <ImageView fx:id="shopImageView2" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText2" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="800.0" layoutY="380.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <ImageView fx:id="shopImageView3" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText3" layoutX="3.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="800.0" layoutY="550.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <ImageView fx:id="shopImageView4" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText4" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>

@@ -25,8 +25,21 @@ public class UserHandler {
 
     public static boolean insertUser(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String roleString) {
         if (roleString.equals(Constants.BUYER) || roleString.equals(Constants.BUYER_USER)) {
-            //todo: insert new params
-            Buyer buyer = new Buyer(username, name, surname, password, email, dateOfBirth, billingStreet, null, null, null, phone, gender, null);
+            Buyer buyer = new Buyer(
+                    username,
+                    name,
+                    surname,
+                    password,
+					email,
+                    dateOfBirth,
+                    billingStreet,
+                    billingCity,
+                    billingCountry,
+                    billingZip,
+                    phone,
+                    gender,
+                    null
+            );
             return UserDao.insertUser(buyer);
         } else if (roleString.equals(Constants.ADMIN) || roleString.equals(Constants.ADMIN_USER)) {
             Admin admin = new Admin(username, name, surname, email, password);
