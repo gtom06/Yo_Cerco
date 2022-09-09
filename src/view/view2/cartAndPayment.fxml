@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,8 +10,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.CartAndPayment">
    <children>
         <Pane layoutX="1000.0" maxHeight="720.0" maxWidth="80.0" minHeight="720.0" minWidth="80.0" prefHeight="720.0" prefWidth="80.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #12d39d; -fx-border-width: 2;">
          <children>
@@ -19,7 +21,7 @@
                   <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                </image>
             </ImageView>
-                  <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profileImageView" visible="false" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                     <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
@@ -32,30 +34,33 @@
          </children></Pane>
       <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
          <children>
-            <TableView layoutX="14.0" layoutY="25.0" prefHeight="650.0" prefWidth="588.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
-            <TextField layoutX="663.0" layoutY="49.0" prefHeight="25.0" prefWidth="283.0" promptText="Name" />
-            <TextField layoutX="664.0" layoutY="97.0" prefHeight="25.0" prefWidth="283.0" promptText="Surname" />
-            <TextField layoutX="663.0" layoutY="159.0" prefHeight="25.0" prefWidth="283.0" promptText="Phone number" />
-            <TextField layoutX="663.0" layoutY="230.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing street" />
-            <TextField layoutX="663.0" layoutY="283.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing city" />
-            <TextField layoutX="663.0" layoutY="338.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing country" />
-            <TextField layoutX="663.0" layoutY="396.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing zip" />
-            <RadioButton layoutX="663.0" layoutY="461.0" mnemonicParsing="false" text="By card">
+            <TableView layoutX="14.0" layoutY="25.0" prefHeight="650.0" prefWidth="588.0"/>
+            <TextField fx:id="nameTextField" layoutX="663.0" layoutY="49.0" prefHeight="25.0" prefWidth="283.0" promptText="Name" />
+            <TextField fx:id="surnameTextField" layoutX="664.0" layoutY="97.0" prefHeight="25.0" prefWidth="283.0" promptText="Surname" />
+            <TextField fx:id="phoneNumberTextField" layoutX="663.0" layoutY="159.0" prefHeight="25.0" prefWidth="283.0" promptText="Phone number" />
+            <TextField fx:id="billingStreetTextField" layoutX="663.0" layoutY="230.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing street" />
+            <TextField fx:id="billingCityTextField" layoutX="663.0" layoutY="283.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing city" />
+            <TextField fx:id="billingCountryTextField" layoutX="663.0" layoutY="338.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing country" />
+            <TextField fx:id="billingZipTextField" layoutX="663.0" layoutY="396.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing zip" />
+            <RadioButton fx:id="cardRadioButton" layoutX="663.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCardClicked" selected="true" text="By card">
                <toggleGroup>
                   <ToggleGroup fx:id="payment" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="744.0" layoutY="461.0" mnemonicParsing="false" text="Cash on delivery" toggleGroup="$payment" />
-            <TextField layoutX="663.0" layoutY="506.0" prefHeight="25.0" prefWidth="283.0" promptText="Cardholder name" />
-            <TextField layoutX="663.0" layoutY="547.0" prefHeight="25.0" prefWidth="283.0" promptText="Card number" />
-            <TextField layoutX="663.0" layoutY="588.0" prefHeight="25.0" prefWidth="49.0" promptText="MM" />
-            <TextField layoutX="731.0" layoutY="588.0" prefHeight="25.0" prefWidth="49.0" promptText="YY" />
-            <TextField layoutX="798.0" layoutY="588.0" promptText="CVV" />
+            <RadioButton fx:id="codRadioButton" layoutX="744.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCodClicked" text="Cash on delivery" toggleGroup="$payment" />
+            <TextField fx:id="cardholderTextField" layoutX="663.0" layoutY="506.0" prefHeight="25.0" prefWidth="283.0" promptText="Cardholder name" />
+            <TextField fx:id="creditcardTextField" layoutX="663.0" layoutY="547.0" prefHeight="25.0" prefWidth="283.0" promptText="Card number" />
+            <TextField fx:id="mmTextField" layoutX="663.0" layoutY="588.0" prefHeight="25.0" prefWidth="49.0" promptText="MM" />
+             <Text fx:id="slashText" layoutX="719.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
+             <TextField fx:id="yyTextField" layoutX="731.0" layoutY="588.0" prefHeight="25.0" prefWidth="49.0" promptText="YY" />
+             <TextField fx:id="cvvTextField" layoutX="798.0" layoutY="588.0" promptText="CVV" />
+             <Text layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total quantity:" />
+             <Text fx:id="totalQuantityText" layoutX="117.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" />
+             <Text layoutX="447.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" />
+             <Text fx:id="totalPriceText" layoutX="536.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x.xx" />
+             <Button fx:id="payButton" layoutX="872.0" layoutY="650.0" mnemonicParsing="false" text="Place order" />
+             <Button fx:id="clearCartButton" layoutX="664.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#onClearCartClicked" text="Clear cart" />
+             <Text fx:id="orderCreatedText" layoutX="769.0" layoutY="694.0" onMouseClicked="#onPayButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Order created" visible="false" />
          </children></Pane>
    </children>
 </AnchorPane>

@@ -32,6 +32,10 @@ public class Login {
     @FXML
     private Button loginButton;
     @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField surnameTextField;
+    @FXML
     private TextField loginUsernameTextField;
     @FXML
     private TextField loginPasswordPasswordField;
@@ -101,31 +105,49 @@ public class Login {
     @FXML
     protected void onSignUpButtonClick() throws IOException {
 
-        if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
+        if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank() || billingStreetTextField.getText().isBlank() ||
+                billingCityTextField.getText().isBlank() ||                billingCountryTextField.getText().isBlank() ||
+                billingZipTextField.getText().isBlank() ||                phoneTextField.getText().isBlank() || nameTextField.getText().isBlank() || surnameTextField.getText().isBlank()) {
             invalidSignupCredentials.setText("Please fill in all fields!");
             invalidSignupCredentials.setStyle(errorMessage);
             invalidLoginCredentials.setText("");
-
-            if (signUpUsernameTextField.getText().isBlank()) {
+            System.out.println("entered1");
+            if (nameTextField.getText().isBlank()) {
+                System.out.println("entered2");
+                nameTextField.setStyle(errorStyle);
+            } else if (surnameTextField.getText().isBlank()) {
+                System.out.println("entered3");
+                surnameTextField.setStyle(errorStyle);
+            } else if (signUpUsernameTextField.getText().isBlank()) {
+                System.out.println("entered4");
                 signUpUsernameTextField.setStyle(errorStyle);
             } else if (signUpEmailTextField.getText().isBlank()) {
+                System.out.println("entered5");
                 signUpEmailTextField.setStyle(errorStyle);
             } else if (signUpPasswordPasswordField.getText().isBlank()) {
+                System.out.println("entered6");
                 signUpPasswordPasswordField.setStyle(errorStyle);
             } else if (signUpRepeatPasswordPasswordField.getText().isBlank()) {
+                System.out.println("entered7");
                 signUpRepeatPasswordPasswordField.setStyle(errorStyle);
             } else if (billingStreetTextField.getText().isBlank()) {
-
+                System.out.println("entered8");
+                billingStreetTextField.setStyle(errorStyle);
             } else if (billingCityTextField.getText().isBlank()) {
-
-            } else if (billingCountryTextField.getText().isBlank()){
-
-            } else if (billingZipTextField.getText().isBlank()){
-
-            } else if (phoneTextField.getText().isBlank()){
-
+                System.out.println("entered9");
+                billingCityTextField.setStyle(errorStyle);
+            } else if (billingCountryTextField.getText().isBlank()) {
+                System.out.println("entered10");
+                billingCountryTextField.setStyle(errorStyle);
+            } else if (billingZipTextField.getText().isBlank()) {
+                System.out.println("entered11");
+                billingZipTextField.setStyle(errorStyle);
+            } else if (phoneTextField.getText().isBlank()) {
+                System.out.println("entered12");
+                phoneTextField.setStyle(errorStyle);
             }
         } else if (signUpRepeatPasswordPasswordField.getText().equals(signUpPasswordPasswordField.getText())) {
+            System.out.println("entered13");
             invalidSignupCredentials.setText("You are set!");
             invalidSignupCredentials.setStyle(successMessage);
             signUpUsernameTextField.setStyle(successStyle);
@@ -136,8 +158,8 @@ public class Login {
             RadioButton rb = (RadioButton) gender.getSelectedToggle();
             String genderString = rb.getText();
             UserHandler.insertUser(signUpUsernameTextField.getText(),
-                    null,
-                    null,
+                    nameTextField.getText(),
+                    surnameTextField.getText(),
                     signUpPasswordPasswordField.getText(),
                     signUpEmailTextField.getText(),
                     Date.valueOf(signUpDateDatePicker.getValue()),
@@ -150,7 +172,9 @@ public class Login {
                     Constants.BUYER_USER);
             loginUsernameTextField.setText(signUpUsernameTextField.getText());
             loginPasswordPasswordField.setText(signUpPasswordPasswordField.getText());
+            System.out.println("entered14");
         } else {
+            System.out.println("entered15");
             invalidSignupCredentials.setText("The Passwords don't match!");
             invalidSignupCredentials.setStyle(errorMessage);
             signUpPasswordPasswordField.setStyle(errorStyle);

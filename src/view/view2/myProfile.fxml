@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.MyProfile">
+    <children>
+        <Pane layoutX="1000.0" maxHeight="720.0" maxWidth="80.0" minHeight="720.0" minWidth="80.0" prefHeight="720.0" prefWidth="80.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #12d39d; -fx-border-width: 2;">
+            <children>
+                <ImageView fitHeight="140.0" fitWidth="676.0" layoutX="-298.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="-270.0">
+                    <image>
+                        <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-customer-100.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-home-48.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+        <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
+         <children>
+            <Pane maxHeight="720.0" maxWidth="500.0" minHeight="720.0" minWidth="500.0" prefHeight="720.0" prefWidth="500.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <Text layoutX="223.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My orders" wrappingWidth="53.677734375" />
+                  <TableView layoutX="22.0" layoutY="91.0" prefHeight="579.0" prefWidth="456.0" />
+                  <Text layoutX="22.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total orders:" />
+                  <Text layoutX="109.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" />
+               </children>
+            </Pane>
+            <Pane layoutX="500.0" maxHeight="720.0" maxWidth="500.0" minHeight="720.0" minWidth="500.0" prefHeight="720.0" prefWidth="500.0" style="-fx-border-color: #12d39d;">
+               <children>
+                  <Text layoutX="211.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My profile info" />
+                   <Text fx:id="usernameText" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="500.0" />
+                   <Text fx:id="emailText" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" textAlignment="CENTER" wrappingWidth="500.0" />
+                   <TextField fx:id="nameTextField" layoutX="176.0" layoutY="175.0" promptText="Name" />
+                   <TextField fx:id="surnameTextField" layoutX="176.0" layoutY="228.0" promptText="Surname" />
+                   <TextField fx:id="streetTextField" layoutX="176.0" layoutY="288.0" promptText="Billing street" />
+                   <TextField fx:id="cityTextField" layoutX="176.0" layoutY="339.0" promptText="Billing city" />
+                   <TextField fx:id="countryTextField" layoutX="176.0" layoutY="391.0" promptText="Billing country" />
+                   <TextField fx:id="zipTextField" layoutX="176.0" layoutY="443.0" promptText="Billing zip" />
+                   <TextField fx:id="phoneTextField" layoutX="175.0" layoutY="501.0" promptText="Phone number" />
+                   <Text fx:id="errorText" fill="#2c2c2c" layoutX="259.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill all fields!" visible="false" wrappingWidth="497.0045471191406">
+                       <font>
+                           <Font name="Tahoma Bold" size="12.0" />
+                       </font>
+                   </Text>
+                   <Button onMouseClicked="#saveProfile" layoutX="211.0" layoutY="555.0" mnemonicParsing="false" text="Save profile" />
+               </children>
+            </Pane>
+         </children></Pane>
+    </children>
+</AnchorPane>

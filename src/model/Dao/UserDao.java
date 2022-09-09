@@ -145,8 +145,8 @@ public class UserDao {
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         try {
-            String sql = "INSERT INTO userx (username, pass, email, date_of_birth, gender, role, billing_street, billing_city, billing_country, billing_zip, phone) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO userx (username, pass, email, date_of_birth, gender, role, billing_street, billing_city, billing_country, billing_zip, phone, name, surname) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
@@ -161,6 +161,8 @@ public class UserDao {
                 stmt.setString(9, ((Buyer) user).getBillingCountry());
                 stmt.setString(10, ((Buyer) user).getBillingZip());
                 stmt.setString(11, ((Buyer) user).getPhone());
+                stmt.setString(12, ((Buyer) user).getName());
+                stmt.setString(13, ((Buyer) user).getSurname());
             }
             if (user instanceof Admin) {
                 stmt.setDate(4, null);

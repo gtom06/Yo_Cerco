@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.SpecificOrder">
+    <children>
+        <Pane layoutX="1000.0" maxHeight="720.0" maxWidth="80.0" minHeight="720.0" minWidth="80.0" prefHeight="720.0" prefWidth="80.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #12d39d; -fx-border-width: 2;">
+            <children>
+                <ImageView fitHeight="140.0" fitWidth="676.0" layoutX="-298.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="-270.0">
+                    <image>
+                        <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-customer-100.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-home-48.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
+        <children>
+            <TableView fx:id="orderItemTableView" layoutX="50.0" layoutY="77.0" prefHeight="590.0" prefWidth="900.0" />
+            <Text layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order n." wrappingWidth="54.0" />
+            <Text id="orderNumberText" layoutX="127.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="orderN" wrappingWidth="49.79296875" />
+            <Text layoutX="226.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="placed on:" />
+            <Text id="timestampText" layoutX="319.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timestamp" />
+            <Text layoutX="713.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" wrappingWidth="80.0" />
+            <Text id="totalPriceText" layoutX="845.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="totalPrice" />
+        </children>
+        </Pane>
+    </children>
+</AnchorPane>

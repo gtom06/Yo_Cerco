@@ -37,7 +37,7 @@
       </Pane>
       <Pane layoutX="600.0" layoutY="50.0" prefHeight="650.0" prefWidth="400.0">
          <children>
-            <Button fx:id="payButton" layoutX="284.0" layoutY="557.0" mnemonicParsing="false" onAction="#onPayButtonClick" text="Order now" textAlignment="CENTER" />
+            <Button fx:id="payButton" layoutX="284.0" layoutY="557.0" mnemonicParsing="false" onMouseClicked="#onPayButtonClick" text="Order now" textAlignment="CENTER" />
             <TextField fx:id="nameTextField" layoutX="43.0" layoutY="75.0" prefHeight="25.0" prefWidth="314.0" promptText="Name" />
             <TextField fx:id="surnameTextField" layoutX="43.0" layoutY="115.0" prefHeight="25.0" prefWidth="314.0" promptText="Surname" />
             <TextField fx:id="phoneNumberTextField" layoutX="43.0" layoutY="156.0" prefHeight="25.0" prefWidth="314.0" promptText="Phone number" />

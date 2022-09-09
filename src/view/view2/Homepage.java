@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import model.Shop.Shop;
 import model.User.Buyer;
 import model.User.User;
-import view.view1.CartAndPayment;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -72,10 +71,24 @@ public class Homepage {
     }
 
     public void openCartAndPayment() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view2/cartAndPayment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
         cartAndPayment.passParam(null, user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) cartImageView.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void onClickProfileImageView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
+        Parent root = loader.load();
+        MyProfile myProfile = loader.getController();
+        myProfile.passParams(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
