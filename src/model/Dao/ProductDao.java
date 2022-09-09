@@ -23,7 +23,7 @@ public class ProductDao {
                     "FROM product_shop " +
                     "WHERE name LIKE ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + name.toLowerCase() + "%");
+            stmt.setString(1, "%" + name.toUpperCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
@@ -46,7 +46,7 @@ public class ProductDao {
                     "FROM product " +
                     "WHERE name LIKE ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + name.toLowerCase() + "%");
+            stmt.setString(1, "%" + name.toUpperCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
@@ -112,7 +112,7 @@ public class ProductDao {
         try {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
-                    "FROM  s JOIN user_favoriteshop ufs " +
+                    "FROM shop s JOIN user_favoriteshop ufs " +
                     "ON s.shop_id = ufs.shop_id " +
                     "WHERE username = ?";
             stmt = conn.prepareStatement(sql);
@@ -125,6 +125,29 @@ public class ProductDao {
             dbHelper.closeDBConnection(stmt, conn);
             return productArrayList;
         }
+    }
+
+    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+        ProductShop productShop;
+        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
+        while (rs.next()) {
+            Integer sku = rs.getInt("sku");
+            String name = rs.getString("name");
+            Integer shopId = rs.getInt("shop_id");
+            Integer departmentId = rs.getInt("department_id");
+            String location = rs.getString("location");
+            Double price = rs.getDouble("price");
+            String currency = rs.getString("currency");
+            String brand = rs.getString("brand");
+            String description = rs.getString("description");
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            productShop = new ProductShop(price,currency, shopId,sku,name,brand,description,
+                                             size,unitOfMeasure,logoImagepath,departmentId);
+            arrayProductShop.add(productShop);
+        }
+        return arrayProductShop;
     }
 
     public static ArrayList<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
@@ -144,39 +167,6 @@ public class ProductDao {
         return arraySimpleProduct;
     }
 
-    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
-        ProductShop productShop;
-        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
-        while (rs.next()) {
-
-            Double price = rs.getDouble("price");
-            Integer sku = rs.getInt("sku");
-            String currency = rs.getString("currency");
-            Integer shopId = rs.getInt("shop_id");
-            String name = rs.getString("name");
-            String brand = rs.getString("brand");
-            String description = rs.getString("description");
-            Double size = rs.getDouble("size");
-            String unitOfMeasure = rs.getString("unit_of_measure");
-            String logoImagepath = rs.getString("logo_imagepath");
-            Integer departmentId = rs.getInt("department_id");
-            productShop = new ProductShop(
-                    price,
-                    currency,
-                    shopId,
-                    sku,
-                    name,
-                    brand,
-                    description,
-                    size,
-                    unitOfMeasure,
-                    logoImagepath,
-                    departmentId
-            );
-            arrayProductShop.add(productShop);
-        }
-        return arrayProductShop;
-    }
 
     public static boolean isFavoriteProduct(String username, int sku) {
         PreparedStatement stmt = null;

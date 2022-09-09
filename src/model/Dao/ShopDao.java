@@ -4,6 +4,7 @@ import model.Constants;
 import model.Db.DbHelper;
 import model.Department.Department;
 import model.Product.ProductShop;
+import model.Product.SimpleProduct;
 import model.Shop.Shop;
 
 import java.sql.*;
@@ -292,6 +293,33 @@ public class ShopDao {
         }
     }
 
+    public static ArrayList<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        Shop shop = null;
+        ArrayList<Shop> arrayShop= new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM shop S " +
+                    "JOIN product_shop PS " +
+                    "ON S.shop_id = PS.shop_id "+
+                    "JOIN product p " +
+                    "ON PS.sku = p.sku " +
+                    "WHERE p.sku = ?";
+            stmt = conn.prepareStatement(sql );
+            stmt.setInt(1, simpleProduct.getSku());
+            ResultSet rs = stmt.executeQuery();
+            arrayShop = convertRSInArrayShop(rs);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return arrayShop;
+        }
+    }
+
     public static void insertFavoriteShopIntoDb(int shopId, String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -361,9 +389,9 @@ public class ShopDao {
         Shop shop;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         while (rs.next()) {
+            String shopName = rs.getString("name").toUpperCase();
             String address = rs.getString("address").toUpperCase();
             String city = rs.getString("city").toUpperCase();
-            String shopName = rs.getString("name").toUpperCase();
             String logoImagepath = rs.getString("logo_imagepath");
             String interiorPhotosImagepath = rs.getString("interior_photos_imagepath");
             String planimetryImagePath = rs.getString("planimetry_imagepath");

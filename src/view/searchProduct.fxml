@@ -14,7 +14,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SearchProduct">
     <children>
         <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
-        <Button fx:id="searchButton" layoutX="736.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false" onAction="#onSearchButtonClick" style="-fx-background-color: #12d39d;" text="Search" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="searchButton" layoutX="736.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClick"  style="-fx-background-color: #12d39d;" text="Search" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>

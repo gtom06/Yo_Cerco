@@ -14,13 +14,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Product.SimpleProduct;
+import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class SearchProduct {
-    User u = null;
+    User user;
+    ArrayList<Shop> arrayShopsList;
     @FXML
     private ImageView homepageImageView;
     @FXML
@@ -31,31 +33,30 @@ public class SearchProduct {
     Button searchForShop;
     @FXML
     TableView<SimpleProduct> productTableView = new TableView<>();
-    TableColumn<SimpleProduct, String> descriptionColumn;
-    TableColumn<SimpleProduct, Integer> typeColumn;
     TableColumn<SimpleProduct, String> nameColumn;
-    TableColumn<SimpleProduct, Double> weightColumn;
+    TableColumn<SimpleProduct, Double> sizeColumn;
+    TableColumn<SimpleProduct, String> unitOfMeasureColumn;
+    TableColumn<SimpleProduct, String> brandColumn;
 
     @FXML
     protected void onListViewItemClick() throws IOException {
-        /*
 
-        SimpleProduct simpleProduct = tableView.getSelectionModel().getSelectedItem();
+
+        SimpleProduct simpleProduct = productTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (simpleProduct != null){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root = loader.load();
-            ShopView shopView = loader.getController();
-            shopView.passUser(u);
-            //shopView.passShop(shop);
+            GeneralProductView generalProductView = loader.getController();
+            generalProductView.passParams(user, simpleProduct, arrayShopsList);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
             newStage.setResizable(false);
-            Stage stage = (Stage) tableView.getScene().getWindow();
+            Stage stage = (Stage) productTableView.getScene().getWindow();
             stage.close();
         }
-        */
+
     }
 
     @FXML
@@ -63,7 +64,7 @@ public class SearchProduct {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(u);
+        homepage.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -99,33 +100,35 @@ public class SearchProduct {
         ShopHandler.findShopsContainingProductBy(simpleProductArrayList);
     }
     public void passUser(User user) {
-        u = user;
+        this.user = user;
         textHi.setText(user.getUsername());
     }
 
     @FXML
     public void initialize(){
+
         productTableView.setEditable(true);
         productTableView.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
 
-        nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(10);
+        nameColumn = new TableColumn<>("NAME");
+        nameColumn.setMinWidth(50);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        descriptionColumn = new TableColumn<>("Description");
-        descriptionColumn.setMinWidth(10);
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        sizeColumn = new TableColumn<>("SIZE");
+        sizeColumn.setMinWidth(10);
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
 
-        typeColumn = new TableColumn<>("Type");
-        typeColumn.setMinWidth(30);
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        unitOfMeasureColumn = new TableColumn<>("UNIT OF MEASURE");
+        unitOfMeasureColumn.setMinWidth(50);
+        unitOfMeasureColumn.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        weightColumn = new TableColumn<>("Weight");
-        weightColumn.setMinWidth(30);
-        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        brandColumn = new TableColumn<>("BRAND");
+        brandColumn.setMinWidth(70);
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
-        productTableView.getColumns().addAll(nameColumn, descriptionColumn, typeColumn, weightColumn);
+
+       productTableView.getColumns().addAll(nameColumn, sizeColumn, unitOfMeasureColumn,brandColumn);
     }
 }

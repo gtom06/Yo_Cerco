@@ -147,11 +147,11 @@ public class SearchShop  {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 
         openingColumn = new TableColumn<>("Opening");
-        nameColumn.setMinWidth(10);
+        openingColumn.setMinWidth(10);
         openingColumn.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
 
         closingColumn = new TableColumn<>("Closing");
-        nameColumn.setMinWidth(10);
+        closingColumn.setMinWidth(10);
         closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
 
         distanceColumn = new TableColumn<>("Distance");

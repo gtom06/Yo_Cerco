@@ -76,6 +76,12 @@ public class ShopHandler {
         return null;
     }
 
+    public static ArrayList<Shop> findShopByProduct(SimpleProduct product){
+        ArrayList<Shop> shopArrayList;
+        shopArrayList = ShopDao.findShopsByProduct(product);
+        return shopArrayList.size() != 0 ? shopArrayList : null;
+    }
+
     public static boolean isFavoriteShop(Shop shop, User user) {
         return ShopDao.isFavoriteShop(shop.getShopId(), user.getUsername());
     }
