@@ -9,7 +9,8 @@ module Supermarket {
     requires javafx.swt;
     requires java.sql;
     requires gson;
-    opens view;
+    opens view.view1;
+    opens view.view2;
     opens model;
     opens model.Product;
     opens model.User;
