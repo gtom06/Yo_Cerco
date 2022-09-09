@@ -1,5 +1,5 @@
 #Files
-src/remember_login.txt
+.src/data/remember_login.txt
 # Directories
 .idea/
 .out/
