@@ -1,8 +1,8 @@
 #Files
-.src/data/remember_login.txt
+src/data/remember_login.txt
 # Directories
 .idea/
-.out/
+out/
 
 # Compiled class file
 *.class
