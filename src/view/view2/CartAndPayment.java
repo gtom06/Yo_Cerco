@@ -29,9 +29,7 @@ public class CartAndPayment {
     @FXML
     Button payButton;
     @FXML
-    Text textHi, slashText;
-    @FXML
-    ToggleGroup paymentType;
+    Text slashText;
     @FXML
     RadioButton codRadioButton;
     @FXML
@@ -53,14 +51,13 @@ public class CartAndPayment {
             yyTextField,
             cvvTextField;
     @FXML
-    Text orderCreatedText, totalPriceText, shopNameText, totalQuantityText;
+    Text orderCreatedText, totalPriceText, totalQuantityText;
     @FXML
     TableView<OrderItem> orderItemsTableView = new TableView<>();
     TableColumn<OrderItem, String> nameColumn;
     TableColumn<OrderItem, String> quantityOrderedColumn;
     TableColumn<OrderItem, Double> pricePerItemColumn;
     TableColumn<OrderItem, Double> priceTotalColumn;
-
 
     User user;
     Shop shop;

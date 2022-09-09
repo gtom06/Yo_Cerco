@@ -45,7 +45,7 @@
             <Pane maxHeight="720.0" maxWidth="500.0" minHeight="720.0" minWidth="500.0" prefHeight="720.0" prefWidth="500.0" style="-fx-border-color: #12d39d; -fx-border-width: 2;">
                <children>
                   <TextField fx:id="loginUsernameTextField" layoutX="176.0" layoutY="305.0" />
-                  <TextField fx:id="loginPasswordPasswordField" layoutX="176.0" layoutY="373.0" />
+                  <PasswordField fx:id="loginPasswordPasswordField" layoutX="176.0" layoutY="373.0" />
                   <Button fx:id="loginButton" layoutX="227.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" text="Login" />
                   <Text layoutX="120.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="260.443359375" />
                    <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="127.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">

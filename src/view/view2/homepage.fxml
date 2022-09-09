@@ -30,7 +30,13 @@
                   <Image url="@../../images/user_interface/icons8-home-48.png" />
                </image>
             </ImageView>
-         </children></Pane>
+            <ImageView fx:id="logoutImageView" onMouseClicked="#onLogoutButtonClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="true">
+               <image>
+                  <Image url="@../../images/user_interface/icons8-shutdown-96.png" />
+               </image>
+            </ImageView>
+         </children>
+        </Pane>
       <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
          <children>
             <Pane layoutX="800.0" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">

@@ -135,6 +135,6 @@ public class ProductView {
         if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
             System.out.println("item not added in cart");
         }
-        System.out.println(CartElaboration.readOrderItemsFromCart());
+        CartElaboration.readOrderItemsFromCart();
     }
 }

@@ -17,7 +17,6 @@ import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
 import view.view1.Homepage;
-import view.view1.MyOrders;
 
 import java.io.IOException;
 
@@ -25,9 +24,9 @@ public class SpecificOrder {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView, goPreviousPageImageView;
+    private ImageView homepageImageView, goPreviousPageImageView, cartImageView;
     @FXML
-    Text textHi, totalPriceText, timestampText, orderNumberText;
+    Text totalPriceText, timestampText, orderNumberText;
     @FXML
     TableView<OrderItem> orderItemTableView = new TableView<>();
     TableColumn<OrderItem, String> nameColumn;
@@ -53,16 +52,29 @@ public class SpecificOrder {
 
     @FXML
     public void previousPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("myOrders.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
-        MyOrders myOrders = loader.getController();
-        myOrders.passUser(user);
-
+        MyProfile myProfile = loader.getController();
+        myProfile.passParams(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
         Stage stage = (Stage) goPreviousPageImageView.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void openCartAndPayment() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
+        Parent root = loader.load();
+        CartAndPayment cartAndPayment = loader.getController();
+        cartAndPayment.passParam(null, user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) cartImageView.getScene().getWindow();
         stage.close();
     }
 
@@ -97,7 +109,7 @@ public class SpecificOrder {
         order = OrderHandler.populateOrderWithOrderItems(order);
         if (order != null) {
             totalPriceText.setText(String.valueOf(order.getTotalPrice()));
-            timestampText.setText(String.valueOf(order.getOrderTimestamp()));
+            timestampText.setText(String.valueOf(order.getOrderTimestamp().getDay()));
             orderNumberText.setText(String.valueOf(order.getOrderId()));
         }
         if (order.getOrderItemArrayList() != null) {
@@ -113,7 +125,6 @@ public class SpecificOrder {
     public void passParams(User user, Order order) {
         this.user = user;
         this.order = order;
-        textHi.setText(user.getUsername());
         fillOrder();
     }
 }

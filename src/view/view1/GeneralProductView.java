@@ -68,9 +68,6 @@ public class GeneralProductView {
 
         this.user = user;
         this.arrayShopList = arrayShopList;
-        System.out.println("********************************");
-        System.out.println(user.getUsername());
-        System.out.println("********************************");
         textHi.setText(user.getUsername());
         // priceProd.setText(String.valueOf(productShop.getPrice()));
         brandProd.setText(simpleProduct.getBrand());

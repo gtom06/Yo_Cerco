@@ -1,12 +1,18 @@
 package view.view2;
 
 import control.FileElaboration;
+import control.OrderHandler;
 import control.UserHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
@@ -14,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
+import model.Order.Order;
 import model.User.Buyer;
 import model.User.User;
 
@@ -21,6 +28,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class MyProfile {
     User user = null;
@@ -39,20 +48,16 @@ public class MyProfile {
     @FXML
     ImageView homepageImageView;
 
+    @FXML
+    TableView<Order> orderTableView = new TableView<>();
+    TableColumn<Order, String> orderNumber;
+    TableColumn<Order, Integer> orderTotalQuantity;
+    TableColumn<Order, String> orderTotalPrice;
+    TableColumn<Order, Timestamp> orderTimeStamp;
+    TableColumn<Order, Timestamp> orderStatus;
 
-    public void passUser(User user) throws IOException {
-        this.user = user;
-
-        usernameText.setText(user.getUsername());
-        emailText.setText(user.getEmail());
-        nameTextField.setText(user.getName());
-        surnameTextField.setText(user.getSurname());
-        streetTextField.setText(((Buyer) user).getBillingStreet());
-        cityTextField.setText(((Buyer) user).getBillingCity());
-        countryTextField.setText(((Buyer) user).getBillingCountry());
-        zipTextField.setText(((Buyer) user).getBillingZip());
-        phoneTextField.setText(((Buyer) user).getPhone());
-    }
+    @FXML
+    Text numberOfOrdersText;
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -96,7 +101,6 @@ public class MyProfile {
 
     @FXML
     public void onClickProfileImageView() throws IOException {
-
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);
 
@@ -118,7 +122,81 @@ public class MyProfile {
             UserHandler.updateLogoImagePath(user, newFileName);
         }
     }
-    public void passParams(User user){
 
+    @FXML
+    public void initialize() {
+        orderTableView.setEditable(true);
+
+        orderNumber = new TableColumn<>("Order No");
+        orderNumber.setMinWidth(10);
+        orderNumber.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+
+        orderTotalQuantity = new TableColumn<>("Quantity");
+        orderTotalQuantity.setMinWidth(10);
+        orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
+
+        orderTotalPrice = new TableColumn<>("Price");
+        orderTotalPrice.setMinWidth(30);
+        orderTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+
+        orderTimeStamp = new TableColumn<>("Order date");
+        orderTimeStamp.setMinWidth(10);
+        orderTimeStamp.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
+
+        orderStatus = new TableColumn<>("Status");
+        orderStatus.setMinWidth(10);
+        orderStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalPrice, orderTimeStamp, orderStatus);
+
+    }
+
+    public void fillView() {
+        int numberOfOrders = 0;
+        orderTableView.getItems().clear();
+        ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
+        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
+        if (orderArrayList != null) {
+            for (Order o : orderArrayList) {
+                orderObservableList.add(o);
+                numberOfOrders++;
+            }
+            orderTableView.setItems(orderObservableList);
+        }
+        else {
+            System.out.println("no result");
+        }
+        numberOfOrdersText.setText(String.valueOf(numberOfOrders));
+    }
+
+
+    public void passParams(User user){
+        this.user = user;
+        fillView();
+        usernameText.setText(user.getUsername());
+        emailText.setText(user.getEmail());
+        nameTextField.setText(user.getName());
+        surnameTextField.setText(user.getSurname());
+        streetTextField.setText(((Buyer) user).getBillingStreet());
+        cityTextField.setText(((Buyer) user).getBillingCity());
+        countryTextField.setText(((Buyer) user).getBillingCountry());
+        zipTextField.setText(((Buyer) user).getBillingZip());
+        phoneTextField.setText(((Buyer) user).getPhone());
+    }
+
+    @FXML
+    public void onClickOrderTableView() throws IOException {
+        Order order = orderTableView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+        Parent root = loader.load();
+        SpecificOrder specificOrder = loader.getController();
+
+        specificOrder.passParams(user, order);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) orderTableView.getScene().getWindow();
+        stage.close();
     }
 }

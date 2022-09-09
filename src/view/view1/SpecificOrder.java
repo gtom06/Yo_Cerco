@@ -94,7 +94,6 @@ public class SpecificOrder {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);
-        System.out.println(order.getOrderItemArrayList());
         if (order.getOrderItemArrayList() != null) {
             for (OrderItem orderItem : order.getOrderItemArrayList()) {
                 orderItemObservableList.add(orderItem);

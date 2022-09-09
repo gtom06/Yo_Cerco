@@ -82,12 +82,10 @@ public class Login {
                     FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
                 }
                 User u = UserHandler.selectUserFromUsername(username);
-                System.out.println(u);
                 if (u instanceof Buyer) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
                     Parent root = loader.load();
                     Homepage homepage = loader.getController();
-                    System.out.println(u);
                     homepage.passParams(u);
                     Stage newStage = new Stage();
                     newStage.setScene(new Scene(root));
@@ -111,7 +109,6 @@ public class Login {
             invalidSignupCredentials.setText("Please fill in all fields!");
             invalidSignupCredentials.setStyle(errorMessage);
             invalidLoginCredentials.setText("");
-            System.out.println("entered1");
             if (nameTextField.getText().isBlank()) {
                 System.out.println("entered2");
                 nameTextField.setStyle(errorStyle);

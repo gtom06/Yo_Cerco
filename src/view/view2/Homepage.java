@@ -22,7 +22,8 @@ public class Homepage {
 
 
     @FXML
-    ImageView   cartImageView;
+    ImageView   cartImageView,
+                logoutImageView;
 
     @FXML
     ImageView   shopImageView1,
@@ -94,6 +95,19 @@ public class Homepage {
         newStage.show();
         newStage.setResizable(false);
         Stage stage = (Stage) cartImageView.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void onLogoutButtonClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+        Login login = loader.getController();
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) logoutImageView.getScene().getWindow();
         stage.close();
     }
 }

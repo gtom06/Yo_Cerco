@@ -28,7 +28,6 @@ public class OrderHandler {
                 return null;
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
-            System.out.println(orderItemArrayList);
             order.setOrderItemArrayList(orderItemArrayList);
         } catch (Exception e) {
             e.printStackTrace();

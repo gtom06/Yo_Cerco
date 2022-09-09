@@ -161,8 +161,8 @@ public class UserDao {
                 stmt.setString(9, ((Buyer) user).getBillingCountry());
                 stmt.setString(10, ((Buyer) user).getBillingZip());
                 stmt.setString(11, ((Buyer) user).getPhone());
-                stmt.setString(12, ((Buyer) user).getName());
-                stmt.setString(13, ((Buyer) user).getSurname());
+                stmt.setString(12, user.getName());
+                stmt.setString(13, user.getSurname());
             }
             if (user instanceof Admin) {
                 stmt.setDate(4, null);
