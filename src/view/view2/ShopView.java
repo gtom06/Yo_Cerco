@@ -36,7 +36,6 @@ public class ShopView {
     Shop shop = null;
     User user = null;
     ArrayList<Department> departmentArrayList = null;
-    Department department = null;
     @FXML
     Button addToCartButton;
     @FXML
@@ -179,7 +178,9 @@ public class ShopView {
 
     @FXML
     public void onClickDepartmentImage(MouseEvent mouseEvent) {
-        ArrayList<ProductShop> productShopArrayList;
+        productTable.getItems().clear();
+        ArrayList<ProductShop> productShopArrayList = null;
+        Department department = null;
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         for (Department dep : departmentArrayList) {
             if (dep.getDepartmentId() == ref) {
@@ -187,10 +188,13 @@ public class ShopView {
                 break;
             }
         }
-        productTable.setItems(null);
-        productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId());
-        ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-        productTable.setItems(observableListProducts);
+        productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department);
+        if (productShopArrayList != null) {
+            ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
+            productTable.setItems(observableListProducts);
+        } else {
+            System.out.println("no result");
+        }
     }
 
     @FXML

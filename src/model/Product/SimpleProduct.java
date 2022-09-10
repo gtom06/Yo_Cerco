@@ -19,7 +19,7 @@ public class SimpleProduct implements Product {
         this.description = description;
         this.size = size;
         this.unitOfMeasure = unitOfMeasure;
-        this.logoImagepath = Constants.LOGO_PRODUCTS_PATH + logoImagepath;
+        this.logoImagepath = logoImagepath;
     }
 
     public void setSku(int sku) {
@@ -61,7 +61,13 @@ public class SimpleProduct implements Product {
 
     @Override
     public String getLogoImagepath() {
-        return logoImagepath;
+        String output = Constants.LOGO_SHOPS_PATH;
+        if (logoImagepath.isBlank()) {
+            output += Constants.LOGO_SHOP_NA;
+        } else {
+            output += logoImagepath;
+        }
+        return output;
     }
 
     @Override

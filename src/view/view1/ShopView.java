@@ -200,7 +200,7 @@ public class ShopView {
                 break;
             }
         }
-        department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId()));
+        department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
         Parent root = loader.load();

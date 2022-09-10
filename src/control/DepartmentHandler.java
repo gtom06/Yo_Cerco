@@ -17,9 +17,9 @@ public class DepartmentHandler {
         return output.size() != 0 ? output : null;
     }
 
-    public static ArrayList<ProductShop> findProductByDepartmentAndShop(Shop shop, int s){
+    public static ArrayList<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
         ArrayList<ProductShop> output = null;
-        output = DepartmentDao.findProductByDepartmentAndShop(shop.getShopId(), s);
+        output = DepartmentDao.findProductByDepartmentAndShop(shop.getShopId(), department.getDepartmentId());
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }
