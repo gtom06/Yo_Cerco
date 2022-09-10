@@ -181,20 +181,24 @@ public class ShopView {
         productTable.getItems().clear();
         ArrayList<ProductShop> productShopArrayList = null;
         Department department = null;
-        int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-        for (Department dep : departmentArrayList) {
-            if (dep.getDepartmentId() == ref) {
-                department = dep;
-                break;
+        int ref = 0;
+        try {
+            ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
+            for (Department dep : departmentArrayList) {
+                if (dep.getDepartmentId() == ref) {
+                    department = dep;
+                    break;
+                }
             }
-        }
-        productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department);
-        if (productShopArrayList != null) {
-            ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-            productTable.setItems(observableListProducts);
-        } else {
-            System.out.println("no result");
-        }
+
+            productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department);
+            if (productShopArrayList != null) {
+                ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
+                productTable.setItems(observableListProducts);
+            } else {
+                System.out.println("no result");
+            }
+        } catch (Exception e){}
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package view.view2;
 
+import control.ProductHandler;
 import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,16 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-import view.view1.SearchProduct;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,44 +27,32 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class GeneralProductView {
+public class ShopProductView {
     User user;
     SimpleProduct simpleProduct;
 
     @FXML
     ImageView productPhoto, homepageImageView, previousPage, cartImageView;
     @FXML
-    Label nameProd, brandProd;
+    Label nameProd, brandProd, productShopPrice, sizeLabel;
     @FXML
-    TableView<Shop> shopsTableView = new TableView<>();
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
+    TextArea descriptionTextArea;
     InputStream stream = null;
 
 
-    public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {
+    public void passParams(User user, SimpleProduct simpleProduct, Shop shop) throws FileNotFoundException {
         this.user = user;
         this.simpleProduct = simpleProduct;
-        brandProd.setText(simpleProduct.getBrand());
-        nameProd.setText(simpleProduct.getName());
-        ArrayList<Shop> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
 
+        ProductShop productShop = ProductHandler.findProductShopByShopAndSimpleProduct(shop, simpleProduct);
+        brandProd.setText(productShop.getBrand());
+        nameProd.setText(productShop.getName());
+        descriptionTextArea.setText(productShop.getDescription());
+        productShopPrice.setText(productShop.getPrice() + " " + productShop.getCurrency());
+        sizeLabel.setText(productShop.getSize() + " " + productShop.getUnitOfMeasure());
         stream = new FileInputStream(simpleProduct.getLogoImagepath());
         Image productImage = new Image(stream, 200, 200, false, false);
         productPhoto.setImage(productImage);
-        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        if (arrayShopList != null) {
-            for (Shop s : arrayShopList) {
-                observableListShops.add(s);
-            }
-            shopsTableView.setItems(observableListShops);
-        }
-        else {
-            System.out.println("no result");
-        }
     }
 
     @FXML
@@ -110,42 +98,6 @@ public class GeneralProductView {
 
     @FXML
     public void initialize(){
-        shopsTableView.setEditable(true);
 
-        nameColumn = new TableColumn<>("NAME");
-        nameColumn.setMinWidth(200);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
-
-        addressColumn = new TableColumn<>("ADDRESS");
-        addressColumn.setMinWidth(200);
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-
-        cityColumn = new TableColumn<>("CITY");
-        cityColumn.setMinWidth(50);
-        cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
-
-        openingColumn = new TableColumn<>("OPENING TIME");
-        openingColumn.setMinWidth(10);
-        openingColumn.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
-
-        closingColumn = new TableColumn<>("CLOSING TIME");
-        openingColumn.setMinWidth(10);
-        closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
-        shopsTableView.getColumns().addAll(nameColumn, addressColumn, cityColumn, openingColumn, closingColumn);
-    }
-
-    @FXML
-    public void onItemClickedTableView() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
-        Parent root = loader.load();
-        ShopProductView shopProductView = loader.getController();
-        shopProductView.passParams(user, simpleProduct, shopsTableView.getSelectionModel().getSelectedItem());
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
     }
 }

@@ -259,4 +259,28 @@ public class ProductDao {
             return simpleProductArrayList;
         }
     }
+
+    public static ArrayList<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<ProductShop> productArrayList = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT * " +
+                    "FROM product P JOIN product_shop PS " +
+                    "ON P.sku = PS.sku " +
+                    "WHERE shop_id = ? AND PS.sku = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setInt(2, sku);
+            ResultSet rs = stmt.executeQuery();
+            productArrayList = convertRSInArrayProductShop(rs);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+            return productArrayList;
+        }
+    }
 }

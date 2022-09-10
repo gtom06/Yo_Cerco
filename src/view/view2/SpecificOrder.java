@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
-import view.view1.Homepage;
 
 import java.io.IOException;
 
@@ -41,7 +40,7 @@ public class SpecificOrder {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(user);
+        homepage.passParams(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();

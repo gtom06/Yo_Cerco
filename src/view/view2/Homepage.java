@@ -32,13 +32,13 @@ import java.util.ArrayList;
 public class Homepage {
     @FXML
     ImageView   cartImageView,
-                logoutImageView;
+            logoutImageView;
 
     @FXML
     ImageView   shopImageView1,
-                shopImageView2,
-                shopImageView3,
-                shopImageView4;
+            shopImageView2,
+            shopImageView3,
+            shopImageView4;
 
     @FXML
     Text    shopText1,
@@ -190,7 +190,7 @@ public class Homepage {
 
     @FXML
     public void onClickOnLocation() {
-        ArrayList<Shop> searchShopArrayList = null;
+        ArrayList<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
         searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false);
@@ -210,8 +210,6 @@ public class Homepage {
 
     @FXML
     public void onSearchButtonClick() {
-        shopTableView.getItems().clear();
-        productTableView.getItems().clear();
         Object selected = choiceBox.getSelectionModel().getSelectedItem();
         ArrayList<Shop> searchShopArrayList= null;
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
@@ -222,9 +220,11 @@ public class Homepage {
                 if (searchString.equals("My position")) {
                     onClickOnLocation();
                 } else {
+                    shopTableView.getItems().clear();
                     distanceColumn.setVisible(false);
-                    productTableView.setVisible(false);
+                    productTableView.setVisible(true);
                     shopTableView.setVisible(true);
+                    distanceColumn.setVisible(false);
                     searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false);
                     if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
                         ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);

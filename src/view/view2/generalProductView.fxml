@@ -17,7 +17,7 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView" onMouseClicked="#openCartAndPayment" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
@@ -27,12 +27,12 @@
                         <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profileImageView" onMouseClicked="#onClickProfileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView" onMouseClicked="#onHomepageImageClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -65,7 +65,7 @@
                 </Pane>
                 <Pane layoutY="250.0" maxHeight="470.0" maxWidth="1000.0" minHeight="470.0" minWidth="1000.0" prefHeight="470.0" prefWidth="1000.0" style="-fx-border-color: #12d39d;">
                     <children>
-                        <TableView fx:id="shopTableView" layoutX="25.0" layoutY="69.0" prefHeight="367.0" prefWidth="950.0" />
+                        <TableView fx:id="shopsTableView" onMouseClicked="#onItemClickedTableView" layoutX="25.0" layoutY="69.0" prefHeight="367.0" prefWidth="950.0" />
                         <Label layoutX="366.0" layoutY="11.0" text="You can find it in">
                             <font>
                                 <Font size="36.0" />

@@ -22,6 +22,12 @@ public class ProductHandler {
         }
         return ProductDao.findProductByName(productName);
     }
+    public static ProductShop findProductShopByShopAndSimpleProduct(Shop shop, SimpleProduct simpleProduct) {
+        if (shop == null || simpleProduct == null) {
+            return null;
+        }
+        return ProductDao.findProductBySkuAndShopId(shop.getShopId(), simpleProduct.getSku()).get(0);
+    }
 
     public static ArrayList<ProductShop> findProductShopBy(Shop shop) {
         if (shop == null) {
