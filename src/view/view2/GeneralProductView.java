@@ -136,16 +136,18 @@ public class GeneralProductView {
 
     @FXML
     public void onItemClickedTableView() throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
         Parent root = loader.load();
         ShopProductView shopProductView = loader.getController();
-        shopProductView.passParams(user, simpleProduct, shopsTableView.getSelectionModel().getSelectedItem());
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+        Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
+        if (shop != null) {
+            shopProductView.passParams(user, simpleProduct, shop);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) cartImageView.getScene().getWindow();
+            stage.close();
+        }
     }
 }
