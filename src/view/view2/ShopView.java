@@ -179,6 +179,7 @@ public class ShopView {
 
     @FXML
     public void onClickDepartmentImage(MouseEvent mouseEvent) {
+        ArrayList<ProductShop> productShopArrayList;
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         for (Department dep : departmentArrayList) {
             if (dep.getDepartmentId() == ref) {
@@ -186,15 +187,10 @@ public class ShopView {
                 break;
             }
         }
-        department.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId()));
-
-        ArrayList<ProductShop> productShopArrayList = department.getItems();
-        if (productShopArrayList != null) {
-            ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-            productTable.setItems(observableListProducts);
-        } else {
-            System.out.println("no result");
-        }
+        productTable.setItems(null);
+        productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department.getDepartmentId());
+        ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
+        productTable.setItems(observableListProducts);
     }
 
     @FXML

@@ -175,7 +175,7 @@ public class Homepage {
 
     public void onClickOnProductTableView() throws IOException {
         SimpleProduct simpleProduct = productTableView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
         Parent root = loader.load();
         GeneralProductView generalProductView = loader.getController();
         generalProductView.passParams(user, simpleProduct);

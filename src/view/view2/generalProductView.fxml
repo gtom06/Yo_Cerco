@@ -44,17 +44,17 @@
                     <children>
                         <Pane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <ImageView fx:id="productImageView" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fx:id="productPhoto" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
                             </children>
                         </Pane>
                         <Pane layoutX="250.0" maxHeight="250.0" maxWidth="750.0" minHeight="250.0" minWidth="750.0" prefHeight="250.0" prefWidth="750.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <Label fx:id="productNameLabel" layoutX="37.0" layoutY="75.0" text="productName">
+                                <Label fx:id="nameProd" layoutX="37.0" layoutY="75.0" text="productName">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="brandLabel" layoutX="37.0" layoutY="141.0" text="brand">
+                                <Label fx:id="brandProd" layoutX="37.0" layoutY="141.0" text="brand">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
