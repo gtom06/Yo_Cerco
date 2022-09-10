@@ -78,7 +78,7 @@ public class ShopDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
-                    "WHERE city " +
+                    "WHERE LOWER(city) " +
                     "LIKE ? AND status != ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
@@ -104,7 +104,7 @@ public class ShopDao {
 
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
-                    "WHERE name LIKE ? AND status != ?";
+                    "WHERE LOWER(name) LIKE ? AND status != ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
@@ -196,7 +196,7 @@ public class ShopDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
-                    "WHERE city LIKE ? " +
+                    "WHERE LOWER(city) LIKE ? " +
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
                     "AND CAST(closing_time AS INT) > ?";
@@ -227,9 +227,9 @@ public class ShopDao {
             String sql = "SELECT DISTINCT * " +
                     "FROM shop s JOIN user_favoriteshop ufs " +
                     "ON s.shop_id = ufs.shop_id " +
-                    "WHERE username = ?";
+                    "WHERE LOWER(username) = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
+            stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -249,7 +249,7 @@ public class ShopDao {
         try {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * FROM shop " +
-                    "WHERE name LIKE ? " +
+                    "WHERE LOWER(name) LIKE ? " +
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
                     "AND CAST(closing_time AS INT) > ?";
@@ -346,9 +346,9 @@ public class ShopDao {
         try {
             conn = dbHelper.openDBConnection();
             String sql = "DELETE FROM user_favoriteshop " +
-                    "WHERE username = ? AND shop_id = ?";
+                    "WHERE LOWER(username) = ? AND shop_id = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
+            stmt.setString(1, username.toLowerCase());
             stmt.setInt(2, shopId);
             stmt.executeUpdate();
         } catch (SQLException se) {
@@ -368,10 +368,10 @@ public class ShopDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM user_favoriteshop " +
-                    "WHERE shop_id = ? AND username = ?";
+                    "WHERE shop_id = ? AND LOWER(username) = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
-            stmt.setString(2, username);
+            stmt.setString(2, username.toLowerCase());
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

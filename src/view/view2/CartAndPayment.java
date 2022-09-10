@@ -185,67 +185,71 @@ public class CartAndPayment {
         String billingCity = billingCityTextField.getText();
         String billingCountry = billingCountryTextField.getText();
         String billingZip = billingZipTextField.getText();
-
         String paymentMethod = "";
         String cardholder = cardholderTextField.getText();
         String cardNumber = creditcardTextField.getText();
         String mm = mmTextField.getText();
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
-
         Order order = null;
 
-        if (!CartElaboration.isEmptyCart()) {
-            boolean out = false;
-            if (cardRadioButton.isSelected()) {
-                paymentMethod = Constants.CREDITCARD_PAYMENT;
-            }
-            if (codRadioButton.isSelected()) {
-                paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
-            }
+        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
+            System.out.println("review payment");
+        }
+        else {
 
-            if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                    billingCity.isBlank() || billingCountry.isBlank() ||
-                    billingZip.isBlank() || phoneNumber.isBlank()) {
+            if (!CartElaboration.isEmptyCart()) {
+                boolean out = false;
                 if (codRadioButton.isSelected()) {
-                    System.out.print("please fill data");
-                } else {
-                    if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                        System.out.println("please fill data & card");
-                    }
+                    paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
                 }
-            } else {
-                out = UserHandler.updateRecord(
-                        user, name, surname, billingStreet, billingCity, billingCountry,
-                        billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
-                if (out) {
-                    order = OrderHandler.createOrder(
-                            user,
-                            null,
-                            paymentMethod,
-                            cardholder,
-                            cardNumber,
-                            mm,
-                            yy,
-                            cvv
-                    );
-                }
-                orderItemsTableView.setItems(null);
-                orderCreatedText.setVisible(true);
-                totalPriceText.setText("0");
-                totalQuantityText.setText("0");
 
-                //and load specificOrder.fxml
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
-                Parent root = loader.load();
-                SpecificOrder specificOrder = loader.getController();
-                specificOrder.passParams(user, order);
-                Stage newStage = new Stage();
-                newStage.setScene(new Scene(root));
-                newStage.show();
-                newStage.setResizable(false);
-                Stage stage = (Stage) homepageImageView.getScene().getWindow();
-                stage.close();
+                if (cardRadioButton.isSelected()) {
+                    paymentMethod = Constants.CREDITCARD_PAYMENT;
+                }
+                if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
+                        billingCity.isBlank() || billingCountry.isBlank() ||
+                        billingZip.isBlank() || phoneNumber.isBlank()) {
+                    if (codRadioButton.isSelected()) {
+                        System.out.print("please fill data");
+                    } else {
+                        if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
+                            System.out.println("please fill data & card");
+                        }
+                    }
+                } else {
+                    out = UserHandler.updateRecord(
+                            user, name, surname, billingStreet, billingCity, billingCountry,
+                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
+                    if (out) {
+                        order = OrderHandler.createOrder(
+                                user,
+                                null,
+                                paymentMethod,
+                                cardholder,
+                                cardNumber,
+                                mm,
+                                yy,
+                                cvv
+                        );
+                    }
+                    orderItemsTableView.setItems(null);
+                    orderCreatedText.setVisible(true);
+                    totalPriceText.setText("0");
+                    totalQuantityText.setText("0");
+
+                    //and load specificOrder.fxml
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+                    Parent root = loader.load();
+                    SpecificOrder specificOrder = loader.getController();
+                    specificOrder.passParams(user, order);
+                    Stage newStage = new Stage();
+                    newStage.setScene(new Scene(root));
+                    newStage.show();
+                    newStage.setResizable(false);
+                    Stage stage = (Stage) homepageImageView.getScene().getWindow();
+                    stage.close();
+                }
             }
         }
     }

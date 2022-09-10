@@ -200,45 +200,50 @@ public class CartAndPayment {
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
 
-        if (!CartElaboration.isEmptyCart()) {
-            boolean out = false;
-            if (cardRadioButton.isSelected()) {
-                paymentMethod = Constants.CREDITCARD_PAYMENT;
-            }
-            if (codRadioButton.isSelected()) {
-                paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
-            }
-
-            if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                    billingCity.isBlank() || billingCountry.isBlank() ||
-                    billingZip.isBlank() || phoneNumber.isBlank()) {
+        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
+            System.out.println("review payment");
+        }
+        else{
+            if (!CartElaboration.isEmptyCart()) {
+                boolean out = false;
+                if (cardRadioButton.isSelected()) {
+                    paymentMethod = Constants.CREDITCARD_PAYMENT;
+                }
                 if (codRadioButton.isSelected()) {
-                    throw new Exception("please fill data");
-                } else {
-                    if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                        throw new Exception("please fill data & card");
+                    paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
+                }
+
+                if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
+                        billingCity.isBlank() || billingCountry.isBlank() ||
+                        billingZip.isBlank() || phoneNumber.isBlank()) {
+                    if (codRadioButton.isSelected()) {
+                        throw new Exception("please fill data");
+                    } else {
+                        if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
+                            System.out.println("please fill data & card");
+                        }
                     }
+                } else {
+                    out = UserHandler.updateRecord(
+                            user, name, surname, billingStreet, billingCity, billingCountry,
+                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
+                    if (out) {
+                        OrderHandler.createOrder(
+                                user,
+                                null,
+                                paymentMethod,
+                                cardholder,
+                                cardNumber,
+                                mm,
+                                yy,
+                                cvv
+                        );
+                    }
+                    orderItemsTableView.setItems(null);
+                    orderCreatedText.setVisible(true);
+                    totalPriceText.setText("0");
+                    totalQuantityText.setText("0");
                 }
-            } else {
-                out = UserHandler.updateRecord(
-                        user, name, surname, billingStreet, billingCity, billingCountry,
-                        billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
-                if (out) {
-                    OrderHandler.createOrder(
-                            user,
-                            null,
-                            paymentMethod,
-                            cardholder,
-                            cardNumber,
-                            mm,
-                            yy,
-                            cvv
-                    );
-                }
-                orderItemsTableView.setItems(null);
-                orderCreatedText.setVisible(true);
-                totalPriceText.setText("0");
-                totalQuantityText.setText("0");
             }
         }
     }

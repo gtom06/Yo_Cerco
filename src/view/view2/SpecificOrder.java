@@ -118,7 +118,7 @@ public class SpecificOrder {
             }
             orderItemTableView.setItems(orderItemObservableList);
         } else {
-            throw new Exception("no result");
+            System.out.println("no result");
         }
     }
 

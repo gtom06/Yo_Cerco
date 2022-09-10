@@ -19,6 +19,11 @@
                   <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                </image>
             </ImageView>
+             <ImageView fx:id="goPreviousPageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                 <image>
+                     <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
+                 </image>
+             </ImageView>
                   <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                     <Image url="@../../images/user_interface/icons8-customer-100.png" />

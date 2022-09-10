@@ -44,6 +44,7 @@ public class LocationHandler {
     }
 
     public static double calculateDistancePointToPoint(Shop shop, Address address) {
+        /*
         final int R = 6371; // Radius of the earth
         double lat1 = shop.getLat();
         double lng1 = shop.getLng();
@@ -56,5 +57,7 @@ public class LocationHandler {
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c; //in km
+        */
+        return Math.sqrt(Math.pow(shop.getLat() - address.getLat(), 2) + Math.pow(shop.getLng() - address.getLng(), 2)) * 111;
     }
 }

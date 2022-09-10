@@ -6,6 +6,15 @@ public interface Constants {
     String GOOGLE_AND_KEY = "&key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
     String GEOLOCATION_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
 
+    String NO_RESULT = "no result";
+    String SHOP = "Shop";
+    String PRODUCT = "Product";
+    String ADDRESS = "Address";
+    String CITY = "City";
+    String SHOP_NAME = "Shop name";
+    String OPENING = "Opening";
+    String CLOSING = "Closing";
+    String DISTANCE = "Distance";
 
     String SAVE = "Save";
     String SAVE_CAPSLOCK = "SAVE";

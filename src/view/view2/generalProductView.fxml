@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.GeneralProductView">
+    <children>
+        <Pane layoutX="1000.0" maxHeight="720.0" maxWidth="80.0" minHeight="720.0" minWidth="80.0" prefHeight="720.0" prefWidth="80.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #12d39d; -fx-border-width: 2;">
+            <children>
+                <ImageView fitHeight="140.0" fitWidth="676.0" layoutX="-298.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="-270.0">
+                    <image>
+                        <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="goPreviousPageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-customer-100.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/user_interface/icons8-home-48.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+        <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0" style="-fx-border-color: #12d39d;">
+            <children>
+                <Pane prefHeight="250.0" prefWidth="1000.0" style="-fx-border-color: #12d39d;">
+                    <children>
+                        <Pane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-border-color: #12d39d;">
+                            <children>
+                                <ImageView fx:id="productImageView" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                            </children>
+                        </Pane>
+                        <Pane layoutX="250.0" maxHeight="250.0" maxWidth="750.0" minHeight="250.0" minWidth="750.0" prefHeight="250.0" prefWidth="750.0" style="-fx-border-color: #12d39d;">
+                            <children>
+                                <Label fx:id="productNameLabel" layoutX="37.0" layoutY="75.0" text="productName">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="brandLabel" layoutX="37.0" layoutY="141.0" text="brand">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+                <Pane layoutY="250.0" maxHeight="470.0" maxWidth="1000.0" minHeight="470.0" minWidth="1000.0" prefHeight="470.0" prefWidth="1000.0" style="-fx-border-color: #12d39d;">
+                    <children>
+                        <TableView fx:id="shopTableView" layoutX="25.0" layoutY="69.0" prefHeight="367.0" prefWidth="950.0" />
+                        <Label layoutX="366.0" layoutY="11.0" text="You can find it in">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children></Pane>
+    </children>
+</AnchorPane>

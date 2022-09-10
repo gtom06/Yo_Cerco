@@ -128,11 +128,11 @@ values
 
 insert into product_shop(sku,shop_id,department_id,location,qty_on_stock,discounted_price,available_quantity,number_of_purchase,currency,price)
 values
-(4,4,8,'',0,0,0,0,'eur',7),
-(1,4,2,'',0,0,0,0,'eur',5),
-(1,3,2,'',0,0,0,0,'eur',2),
-(1,2,2,'',0,0,0,0,'eur',1),
-(2,2,6,'',0,0,0,0,'eur',2),
+(4,7,8,'',0,0,0,0,'eur',7),
+(1,7,2,'',0,0,0,0,'eur',5),
+(1,7,2,'',0,0,0,0,'eur',2),
+(1,7,2,'',0,0,0,0,'eur',1),
+(2,7,6,'',0,0,0,0,'eur',2),
 (3,2,2,'',0,0,0,0,'eur',3),
 (4,2,8,'',0,0,0,0,'eur',4),
 (5,2,9,'',0,0,0,0,'eur',5),

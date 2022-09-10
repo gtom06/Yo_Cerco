@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #0a7557; -fx-border-color: #12d39d; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view2.ShopView">
     <children>
@@ -18,17 +19,17 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" onMouseClicked="#openCartAndPayment" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" onMouseClicked="#onClickProfileImageView" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -38,117 +39,135 @@
          <children>
             <Pane maxHeight="720.0" maxWidth="200.0" minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <Pane maxHeight="200.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+                  <Pane layoutY="-1.0" maxHeight="720.0" maxWidth="200.0" minHeight="520.0" minWidth="200.0" prefHeight="720.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                      <children>
-                        <ImageView id="shopLogo" fitHeight="170.0" fitWidth="170.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </Pane>
-                  <Pane layoutY="199.0" maxHeight="520.0" maxWidth="200.0" minHeight="520.0" minWidth="200.0" prefHeight="520.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
-                     <children>
-                        <Label id="shopNameLabel" layoutX="14.0" layoutY="14.0" text="ShopName" />
-                        <Label id="addressLabel" layoutX="14.0" layoutY="49.0" text="Address" />
-                        <Label id="phoneNumberLabel" layoutX="14.0" layoutY="85.0" text="phonenumber" />
-                        <Label id="hourLabel" layoutX="14.0" layoutY="122.0" text="hour" />
-                        <ImageView id="addToFavoriteImageView" fitHeight="62.0" fitWidth="63.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView id="removeFromFavoriteImageView" fitHeight="62.0" fitWidth="63.0" layoutX="4.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" />
+                        <Pane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep1" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep2" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep3" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep4" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="200.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep5" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="200.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep6" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="300.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep7" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="300.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep8" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="400.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep9" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="400.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep10" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="7.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="500.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep11" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="500.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep12" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="600.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep13" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="100.0" layoutY="600.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <ImageView fx:id="dep14" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="700.0" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+                           <children>
+                              <Label layoutX="60.0" text="Departments" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
                </children>
             </Pane>
             <Pane layoutX="200.0" maxHeight="720.0" maxWidth="800.0" minHeight="720.0" minWidth="800.0" prefHeight="720.0" prefWidth="800.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <Pane layoutX="100.0" maxHeight="200.0" maxWidth="700.0" minHeight="200.0" minWidth="700.0" prefHeight="200.0" prefWidth="700.0" style="-fx-border-color: #12d39d;">
+                  <Pane layoutX="200.0" maxHeight="200.0" maxWidth="600.0" minHeight="200.0" minWidth="600.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: #12d39d;">
                      <children>
-                        <Pane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep1" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep2" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane  layoutX="200.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep3" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="300.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep4" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="400.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep5" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="500.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep6" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="600.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep7" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep8" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="100.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep9" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="200.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep10" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="300.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep11" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="400.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep12" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="500.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep13" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="600.0" layoutY="100.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                           <children>
-                              <ImageView onMouseClicked="#onClickDepartmentImage" id="dep14" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Pane maxHeight="200.0" maxWidth="100.0" minHeight="200.0" minWidth="100.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #12d39d;">
-                     <children>
-                        <Label layoutX="-39.0" layoutY="77.0" rotate="-90.0" text="Departments" textAlignment="CENTER">
+                        <ImageView fx:id="addShopToFavorites" fitHeight="62.0" fitWidth="63.0" layoutX="518.0" layoutY="129.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/shop/icons8-we-heart-it-96.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="removeShopFromFavorites" fitHeight="62.0" fitWidth="63.0" layoutX="518.0" layoutY="129.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/shop/icons8-close-96.png" />
+                           </image></ImageView>
+                        <Text fx:id="TextShopName" layoutX="14.0" layoutY="44.0" text="ShopName">
                            <font>
-                              <Font size="31.0" />
-                           </font>
-                        </Label>
+                              <Font size="30.0" />
+                           </font></Text>
+                        <Text fx:id="TextShopAddress" layoutX="14.0" layoutY="85.0" onMouseClicked="#onClickGMapsHyperLink" text="Address">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Text>
+                        <Text fx:id="TextPhoneShop" layoutX="14.0" layoutY="130.0" text="phonenumber">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Text>
+                        <Text fx:id="TextShopTime" layoutX="14.0" layoutY="176.0" text="hour">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Text>
                      </children>
                   </Pane>
                   <Pane layoutY="200.0" prefHeight="520.0" prefWidth="800.0" style="-fx-border-color: #12d39d;">
                      <children>
-                        <TableView fx:id="shopProducTableView" layoutX="23.0" layoutY="41.0" prefHeight="412.0" prefWidth="754.0" />
-                        <Button layoutX="701.0" layoutY="467.0" mnemonicParsing="false" text="Add to cart" />
+                        <TableView fx:id="productTable" layoutX="23.0" layoutY="41.0" prefHeight="412.0" prefWidth="754.0" />
+                        <Button fx:id="addToCartButton" layoutX="701.0" layoutY="467.0" mnemonicParsing="false" onMouseClicked="#onAddToCartClick" text="Add to cart" />
                         <Label layoutX="217.0" layoutY="9.0" text="Click on departments to buy products">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="200.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
+                     <children>
+                        <ImageView fx:id="shopLogo" fitHeight="170.0" fitWidth="170.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
                </children>
