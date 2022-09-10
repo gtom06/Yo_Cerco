@@ -103,7 +103,7 @@ public class SpecificOrder {
         orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
-    public void fillOrder() {
+    public void fillOrder() throws Exception {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);
@@ -118,11 +118,11 @@ public class SpecificOrder {
             }
             orderItemTableView.setItems(orderItemObservableList);
         } else {
-            System.out.println("no result");
+            throw new Exception("no result");
         }
     }
 
-    public void passParams(User user, Order order) {
+    public void passParams(User user, Order order) throws Exception {
         this.user = user;
         this.order = order;
         fillOrder();

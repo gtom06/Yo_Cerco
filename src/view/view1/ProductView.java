@@ -131,9 +131,9 @@ public class ProductView {
     }
 
     @FXML
-    public void addToCartClick() {
+    public void addToCartClick() throws Exception {
         if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
-            System.out.println("item not added in cart");
+            throw new Exception("item not added in cart");
         }
         CartElaboration.readOrderItemsFromCart();
     }

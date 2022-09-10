@@ -184,7 +184,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onPayButtonClick() throws IOException {
+    public void onPayButtonClick() throws Exception {
         String name = nameTextField.getText();
         String surname = surnameTextField.getText();
         String phoneNumber = phoneNumberTextField.getText();
@@ -213,10 +213,10 @@ public class CartAndPayment {
                     billingCity.isBlank() || billingCountry.isBlank() ||
                     billingZip.isBlank() || phoneNumber.isBlank()) {
                 if (codRadioButton.isSelected()) {
-                    System.out.print("please fill data");
+                    throw new Exception("please fill data");
                 } else {
                     if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                        System.out.println("please fill data & card");
+                        throw new Exception("please fill data & card");
                     }
                 }
             } else {

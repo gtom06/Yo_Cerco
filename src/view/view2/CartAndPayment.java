@@ -177,7 +177,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onPayButtonClick() throws IOException {
+    public void onPayButtonClick() throws Exception {
         String name = nameTextField.getText();
         String surname = surnameTextField.getText();
         String phoneNumber = phoneNumberTextField.getText();

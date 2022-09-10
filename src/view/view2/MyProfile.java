@@ -185,7 +185,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void onClickOrderTableView() throws IOException {
+    public void onClickOrderTableView() throws Exception {
         Order order = orderTableView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
         Parent root = loader.load();

@@ -26,9 +26,7 @@ public class DbHelper {
         try {
             Class.forName(DRIVER_CLASS_NAME);
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connection ok");
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Connection failed");
             e.printStackTrace();
         }
         return connection;
