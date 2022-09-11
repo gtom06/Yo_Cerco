@@ -1,16 +1,13 @@
 package model.Db;
 
+import model.Constants;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DbHelper {
-    private static final String USER = "postgres";
-    private static final String P = "postgres";
-    private static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/yocerco";
-    private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-
     private static DbHelper dbHelper = null;
     private static Connection connection = null;
 
@@ -24,8 +21,8 @@ public class DbHelper {
 
     public Connection openDBConnection() {
         try {
-            Class.forName(DRIVER_CLASS_NAME);
-            connection = DriverManager.getConnection(DB_URL, USER, P);
+            Class.forName(Constants.DRIVER_CLASS_NAME);
+            connection = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

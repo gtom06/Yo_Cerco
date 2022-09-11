@@ -7,6 +7,12 @@ public interface Constants {
     String GEOLOCATION_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
     String GOOGLE_MAPS_LINK_START_STRING = "https://www.google.com/maps/place";
 
+    //for postgres
+    String USER = "postgres";
+    String PASS = "postgres";
+    String DB_URL = "jdbc:postgresql://127.0.0.1:5432/yocerco";
+    String DRIVER_CLASS_NAME = "org.postgresql.Driver";
+
     //some strings
     String NO_RESULT = "no result";
     String SHOP = "Shop";

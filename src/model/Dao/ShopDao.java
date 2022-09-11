@@ -16,33 +16,6 @@ public class ShopDao {
     }
 
     public static void deleteShopDb(Shop shop) {
-
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        try {
-            conn = dbHelper.openDBConnection();
-
-            String sql = "DELETE FROM shop " +
-                    "WHERE shop_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shop.getShopId());
-            stmt.executeUpdate();
-            sql = "DELETE FROM shop_department " +
-                    "WHERE shop_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shop.getShopId());
-            stmt.executeUpdate();
-            sql = "DELETE FROM shop_item " +
-                    "WHERE shop_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shop.getShopId());
-            stmt.executeUpdate();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
-        }
     }
 
     public static ArrayList<Shop> findShopById(int shopId) {
