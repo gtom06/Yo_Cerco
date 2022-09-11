@@ -220,7 +220,7 @@ public class ShopView {
 
     public void checkOffersFlyer(Shop shop){
         if (shop.getOffersFlyerPath() == null){
-            if (shop.getOffersFlyerPath().isBlank() || shop.getOffersFlyerPath().isBlank()){
+            if (shop.getOffersFlyerPath().isBlank()){
                 {
                     offersFlyerShop.setVisible(false);
                     offersFlyerTagShop.setVisible(false);
