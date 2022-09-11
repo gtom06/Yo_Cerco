@@ -16,7 +16,8 @@ CREATE TABLE shop(
     franchising                 VARCHAR(100),
     latitude                    FLOAT(10),
     longitude                   FLOAT(10),
-    gmaps_string                VARCHAR(500)
+    gmaps_string                VARCHAR(500),
+    type                        VARCHAR(30)
 );
 
 CREATE SEQUENCE department_id_sequence;
@@ -97,6 +98,7 @@ CREATE TABLE product_shop(
     department_id           NUMERIC(10) REFERENCES department(department_id),
     location                VARCHAR(100),
     price                   FLOAT(10),
+    discounted_price        FLOAT(10),
     currency                VARCHAR(5)
 );
 
