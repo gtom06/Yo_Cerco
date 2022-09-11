@@ -108,7 +108,7 @@ public class SpecificOrder {
         order = OrderHandler.populateOrderWithOrderItems(order);
         if (order != null) {
             totalPriceText.setText(String.valueOf(order.getTotalPrice()));
-            timestampText.setText(String.valueOf(order.getOrderTimestamp().getDay()));
+            timestampText.setText(String.valueOf(order.getOrderTimestamp()));
             orderNumberText.setText(String.valueOf(order.getOrderId()));
         }
         if (order.getOrderItemArrayList() != null) {

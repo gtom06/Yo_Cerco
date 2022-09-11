@@ -20,12 +20,11 @@ public class CartElaboration {
                 return null;
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return orderItemArrayList;
-        }
+        return orderItemArrayList;
     }
 
     public static boolean isValidCart() {
@@ -35,11 +34,11 @@ public class CartElaboration {
             if (output == null) {
                 return false;
             }
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+        return true;
     }
 
     public static boolean addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) throws IOException {
@@ -48,16 +47,14 @@ public class CartElaboration {
         if (orderItemArrayList.size() != 0 && orderItemArrayList != null){
             FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
         }
-        boolean bool = false;
         for (int i = 0; i<productShopArrayList.size(); i++) {
-            bool = addOrderItemsToCart(productShopArrayList.get(i), newQuantityArrayList.get(i));
-            if (bool == false) {
+            if (addOrderItemsToCart(productShopArrayList.get(i), newQuantityArrayList.get(i)) == false) {
                 FileElaboration.writeOnFile(Constants.CART_PATH, FileElaboration.fileToString(Constants.CART_PATH2));
                 FileElaboration.writeOnFile(Constants.CART_PATH2, "");
-                return bool;
+                return false;
             }
         }
-        return bool;
+        return true;
     }
 
     public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) {
@@ -119,6 +116,7 @@ public class CartElaboration {
                 else {
                     orderItemToAdd.setPriceTotal(productShop.getDiscountedPrice() * quantityToAdd);
                 }
+                orderItemArrayList = new ArrayList<>();
                 orderItemArrayList.add(orderItemToAdd);
             }
             String json = new Gson().toJson(orderItemArrayList);
@@ -127,9 +125,8 @@ public class CartElaboration {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return true;
         }
+        return true;
     }
 
     public static void deleteCart() {
@@ -155,10 +152,9 @@ public class CartElaboration {
         }
         catch (Exception e) {
             e.printStackTrace();
-            return bool;
-        } finally {
-            return bool;
+            return false;
         }
+        return bool;
     }
 
     public static boolean delete0QuantityItemsFromCart() {
@@ -189,9 +185,7 @@ public class CartElaboration {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return output;
-        }
+        return output;
     }
 
     public static String convertJsonCartToString() throws IOException {
