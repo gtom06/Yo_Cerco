@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="searchshop.java" default="all">
+<project name="Supermarket" default="all">
   
   
   <property file="build.properties"/>
