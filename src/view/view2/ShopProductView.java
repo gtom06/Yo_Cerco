@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
@@ -34,7 +35,7 @@ public class ShopProductView {
     @FXML
     ImageView productPhoto, homepageImageView, previousPage, cartImageView;
     @FXML
-    Label nameProd, brandProd, productShopPrice, sizeLabel;
+    Text nameProd, brandProd, productShopPrice1, productShopPrice2, sizeLabel;
     @FXML
     TextArea descriptionTextArea;
     InputStream stream = null;
@@ -48,11 +49,13 @@ public class ShopProductView {
         brandProd.setText(productShop.getBrand());
         nameProd.setText(productShop.getName());
         descriptionTextArea.setText(productShop.getDescription());
-        productShopPrice.setText(productShop.getPrice() + " " + productShop.getCurrency());
+        productShopPrice1.setText(productShop.getPrice() + " " + productShop.getCurrency());
+        productShopPrice2.setText(productShop.getDiscountedPrice() + " " + productShop.getCurrency());
         sizeLabel.setText(productShop.getSize() + " " + productShop.getUnitOfMeasure());
         stream = new FileInputStream(simpleProduct.getLogoImagepath());
         Image productImage = new Image(stream, 200, 200, false, false);
         productPhoto.setImage(productImage);
+        checkDiscount(productShop);
     }
 
     @FXML
@@ -97,7 +100,14 @@ public class ShopProductView {
     }
 
     @FXML
-    public void initialize(){
-
+    public void checkDiscount(ProductShop productShop){
+        System.out.println(productShop.getDiscountedPrice());
+        System.out.println(productShop.getPrice());
+        if (productShop.getDiscountedPrice() != 0){
+            productShopPrice1.setStrikethrough(true);
+        }
+        else {
+            productShopPrice2.setVisible(false);
+        }
     }
 }
