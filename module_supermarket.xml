@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_supermarket" default="compile.module.supermarket">
+  <dirname property="module.supermarket.basedir" file="${ant.file.module_supermarket}"/>
+  
+  <property name="module.jdk.home.supermarket" value="${jdk.home.11}"/>
+  <property name="module.jdk.bin.supermarket" value="${jdk.bin.11}"/>
+  <property name="module.jdk.classpath.supermarket" value="jdk.classpath.11"/>
+  
+  <property name="compiler.args.supermarket" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="supermarket.output.dir" value="${module.supermarket.basedir}/out/production/Supermarket"/>
+  <property name="supermarket.testoutput.dir" value="${module.supermarket.basedir}/out/test/Supermarket"/>
+  
+  <path id="supermarket.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="supermarket.module.production.classpath">
+    <path refid="${module.jdk.classpath.supermarket}"/>
+    <path refid="library.javafx-swt.classpath"/>
+    <pathelement location="${basedir}/../jdbc/postgresql-42.3.1.jar"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.google.code.gson.classpath"/>
+    <path refid="library.jakarta.xml.bind-api-2.3.3.classpath"/>
+    <path refid="library.jakarta.activation-api-1.2.2.classpath"/>
+    <path refid="library.poi-excelant-5.2.2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.13.1.jar"/>
+    <pathelement location="${basedir}/lib/apiguardian-api-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-api-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-engine-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-params-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-commons-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-engine-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/opentest4j-1.2.0.jar"/>
+    <path refid="library.gmapsfx-11.0.2.classpath"/>
+    <path refid="library.slf4j-api-1.7.36-sources.classpath"/>
+  </path>
+  
+  <path id="supermarket.runtime.production.module.classpath">
+    <pathelement location="${supermarket.output.dir}"/>
+    <path refid="library.javafx-swt.classpath"/>
+    <pathelement location="${basedir}/../jdbc/postgresql-42.3.1.jar"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.google.code.gson.classpath"/>
+    <path refid="library.jakarta.xml.bind-api-2.3.3.classpath"/>
+    <path refid="library.jakarta.activation-api-1.2.2.classpath"/>
+    <path refid="library.poi-excelant-5.2.2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.13.1.jar"/>
+    <pathelement location="${basedir}/lib/apiguardian-api-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-api-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-engine-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-params-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-commons-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-engine-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/opentest4j-1.2.0.jar"/>
+    <path refid="library.gmapsfx-11.0.2.classpath"/>
+    <path refid="library.slf4j-api-1.7.36-sources.classpath"/>
+  </path>
+  
+  <path id="supermarket.module.classpath">
+    <path refid="${module.jdk.classpath.supermarket}"/>
+    <pathelement location="${supermarket.output.dir}"/>
+    <path refid="library.javafx-swt.classpath"/>
+    <pathelement location="${basedir}/../jdbc/postgresql-42.3.1.jar"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.google.code.gson.classpath"/>
+    <path refid="library.jakarta.xml.bind-api-2.3.3.classpath"/>
+    <path refid="library.jakarta.activation-api-1.2.2.classpath"/>
+    <path refid="library.poi-excelant-5.2.2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.13.1.jar"/>
+    <pathelement location="${basedir}/lib/apiguardian-api-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-api-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-engine-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-params-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-commons-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-engine-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/opentest4j-1.2.0.jar"/>
+    <path refid="library.gmapsfx-11.0.2.classpath"/>
+    <path refid="library.slf4j-api-1.7.36-sources.classpath"/>
+  </path>
+  
+  <path id="supermarket.runtime.module.classpath">
+    <pathelement location="${supermarket.testoutput.dir}"/>
+    <pathelement location="${supermarket.output.dir}"/>
+    <path refid="library.javafx-swt.classpath"/>
+    <pathelement location="${basedir}/../jdbc/postgresql-42.3.1.jar"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.google.code.gson.classpath"/>
+    <path refid="library.jakarta.xml.bind-api-2.3.3.classpath"/>
+    <path refid="library.jakarta.activation-api-1.2.2.classpath"/>
+    <path refid="library.poi-excelant-5.2.2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.13.1.jar"/>
+    <pathelement location="${basedir}/lib/apiguardian-api-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-api-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-engine-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-jupiter-params-5.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-commons-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-platform-engine-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/opentest4j-1.2.0.jar"/>
+    <path refid="library.gmapsfx-11.0.2.classpath"/>
+    <path refid="library.slf4j-api-1.7.36-sources.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.supermarket">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.supermarket">
+    <patternset refid="excluded.from.module.supermarket"/>
+  </patternset>
+  
+  <path id="supermarket.module.sourcepath">
+    <dirset dir="${module.supermarket.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.supermarket" depends="compile.module.supermarket.production,compile.module.supermarket.tests" description="Compile module Supermarket"/>
+  
+  <target name="compile.module.supermarket.production" depends="register.custom.compilers" description="Compile module Supermarket; production classes">
+    <mkdir dir="${supermarket.output.dir}"/>
+    <javac2 destdir="${supermarket.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.supermarket}/javac">
+      <compilerarg line="${compiler.args.supermarket}"/>
+      <bootclasspath refid="supermarket.module.bootclasspath"/>
+      <classpath refid="supermarket.module.production.classpath"/>
+      <src refid="supermarket.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.supermarket"/>
+    </javac2>
+    
+    <copy todir="${supermarket.output.dir}">
+      <fileset dir="${module.supermarket.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.supermarket.tests" depends="register.custom.compilers,compile.module.supermarket.production" description="compile module Supermarket; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.supermarket" description="cleanup module">
+    <delete dir="${supermarket.output.dir}"/>
+    <delete dir="${supermarket.testoutput.dir}"/>
+  </target>
+</project>
