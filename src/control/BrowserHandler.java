@@ -6,7 +6,7 @@ import java.net.URI;
 public class BrowserHandler {
     public static boolean openWebpage(URI uri) {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE) && !uri.toString().isBlank()) {
             try {
                 desktop.browse(uri);
                 return true;

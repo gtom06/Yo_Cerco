@@ -114,7 +114,6 @@ public class ShopView {
                 add(dep14Text);
             }
         };
-
         this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
@@ -124,7 +123,6 @@ public class ShopView {
                 TextDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
             }
         }
-
         if (ShopHandler.isFavoriteShop(shop, user)) {
             //set to remove
             TextFavorite.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
@@ -136,7 +134,6 @@ public class ShopView {
             removeShopFromFavorites.setVisible(false);
             addShopToFavorites.setVisible(true);
         }
-
         TextShopAddress.setText(shop.getCompleteAddress());
         TextShopOpeningTime.setText(shop.getOpeningTime());
         TextShopClosingTime.setText(shop.getClosingTime());
@@ -149,12 +146,10 @@ public class ShopView {
     }
 
     public void onMouseEnteredAddress(){
-        //TextShopAddress.setTextFill(Color.web("#ed2224"));
         TextShopAddress.setUnderline(true);
     }
 
     public void onMouseExitedAddress(){
-        //TextShopAddress.setTextFill(Color.web("#ffb703"));
         TextShopAddress.setUnderline(false);
     }
 
@@ -218,14 +213,13 @@ public class ShopView {
     }
 
     public void onClickOnOffersFlyer(){
-        BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()));
+        if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
+            System.out.println("failed to open webpage");
+        }
     }
 
     public void checkOffersFlyer(Shop shop){
-        System.out.println("***************");
-        System.out.println(shop.getOffersFlyerPath());
-        System.out.println("***************");
-        if (shop.getOffersFlyerPath().isEmpty()){
+        if (shop.getOffersFlyerPath() == null || shop.getOffersFlyerPath().isBlank() || shop.getOffersFlyerPath().isBlank()){
             offersFlyerShop.setVisible(false);
             offersFlyerTagShop.setVisible(false);
         }

@@ -39,7 +39,7 @@ public class ProductView {
     ImageView productPhoto, homepageImageView, addShopToFavorites,
             removeShopFromFavorites, cartImage, previousPage, discountedTagProd;
     @FXML
-    Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPrice;
+    Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd;
 
     InputStream stream = null;
 
@@ -141,14 +141,15 @@ public class ProductView {
 
     @FXML
     public void checkDiscount(ProductShop productShop){
+        System.out.println(productShop.getDiscountedPrice());
         productShop.setDiscountedPrice(0.50);
         if (productShop.getDiscountedPrice() != 0){
-            discountedPrice.setText(String.valueOf(productShop.getDiscountedPrice()));
+            discountedPriceProd.setText(String.valueOf(productShop.getDiscountedPrice()));
             priceProd.setStrikethrough(true);
         }
         else {
             discountedTagProd.setVisible(false);
-            discountedPrice.setVisible(false);
+            discountedPriceProd.setVisible(false);
         }
     }
 }
