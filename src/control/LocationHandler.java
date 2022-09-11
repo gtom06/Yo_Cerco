@@ -19,9 +19,7 @@ public class LocationHandler {
         catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return address;
-        }
+        return address;
     }
 
 

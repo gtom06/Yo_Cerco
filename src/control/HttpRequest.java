@@ -51,8 +51,8 @@ public class HttpRequest {
             e.printStackTrace();
         } finally {
             conn.disconnect();
-            return responseContent;
         }
+        return responseContent;
 
     }
     public static String post(String urlString, String body) {

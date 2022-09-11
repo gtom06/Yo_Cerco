@@ -44,8 +44,10 @@ public class CartElaboration {
     public static boolean addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) throws IOException {
         ArrayList<OrderItem> orderItemArrayList = readOrderItemsFromCart();
         //backup file
-        if (orderItemArrayList.size() != 0 && orderItemArrayList != null){
-            FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
+        if (orderItemArrayList != null) {
+            if (orderItemArrayList.size() != 0) {
+                FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
+            }
         }
         for (int i = 0; i<productShopArrayList.size(); i++) {
             if (addOrderItemsToCart(productShopArrayList.get(i), newQuantityArrayList.get(i)) == false) {

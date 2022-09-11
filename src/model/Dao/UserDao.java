@@ -91,7 +91,6 @@ public class UserDao {
                         profileImagepath
                 );
             }
-
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -99,45 +98,6 @@ public class UserDao {
         }
         return user;
 
-    }
-
-    public static ArrayList<User> retriveUserFrom(String keyword) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<User> userList = null;
-        try {
-            conn = dbHelper.openDBConnection();
-
-            String sql = "SELECT role, email, username " +
-                    "FROM userx " +
-                    "WHERE username LIKE %?% " +
-                    "AND (role = 'B' OR role = 'S')";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, keyword);
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                String role = rs.getString("role");
-                String email = rs.getString("email");
-                String username = rs.getString("username");
-                String gender = null;
-                //todo: modify
-                if (role.equals(Constants.BUYER_USER)){
-                    userList.add(new Buyer(username, null, null, null, email, null, null, null,null, null, null, null, null));
-                }
-                else if (role.equals(Constants.ADMIN_USER)){
-                    userList.add(new Admin(username,null, null, email, null));
-                }
-                else if (role.equals(Constants.SHOPHOLDER_USER)){
-                    userList.add(new ShopHolder(username,null,null, null, email));
-                }
-            }
-        } catch(SQLException se){
-                se.printStackTrace();
-        } finally{
-            dbHelper.closeDBConnection(stmt, conn);
-        }
-        return userList;
     }
 
     public static boolean insertUser(User user){

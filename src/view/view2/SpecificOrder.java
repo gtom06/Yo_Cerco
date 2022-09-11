@@ -110,14 +110,17 @@ public class SpecificOrder {
             totalPriceText.setText(String.valueOf(order.getTotalPrice()));
             timestampText.setText(String.valueOf(order.getOrderTimestamp()));
             orderNumberText.setText(String.valueOf(order.getOrderId()));
-        }
-        if (order.getOrderItemArrayList() != null) {
-            for (OrderItem orderItem : order.getOrderItemArrayList()) {
-                orderItemObservableList.add(orderItem);
+            if (order.getOrderItemArrayList() != null) {
+                for (OrderItem orderItem : order.getOrderItemArrayList()) {
+                    orderItemObservableList.add(orderItem);
+                }
+                orderItemTableView.setItems(orderItemObservableList);
+            } else {
+                System.out.println("no result order items");
             }
-            orderItemTableView.setItems(orderItemObservableList);
-        } else {
-            System.out.println("no result");
+        }
+        else {
+            System.out.println("no result order");
         }
     }
 

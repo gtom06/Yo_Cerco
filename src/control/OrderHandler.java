@@ -32,9 +32,7 @@ public class OrderHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return order;
-        }
+        return order;
     }
 
     public static Order previewOrder() {

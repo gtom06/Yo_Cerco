@@ -215,7 +215,7 @@ public class Homepage {
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
 
         if (selected != null){
-            if (selected.toString() == "Shop"){
+            if (selected.toString().equals("Shop")){
                 String searchString = searchParam.getText();
                 if (searchString.equals("My position")) {
                     onClickOnLocation();
@@ -236,7 +236,7 @@ public class Homepage {
                     }
                 }
             }
-            if (selected.toString() == "Product") {
+            if (selected.toString().equals("Product")) {
                 productTableView.setVisible(true);
                 productTableView.getItems().clear();
                 shopTableView.setVisible(false);

@@ -19,10 +19,6 @@ public class UserHandler {
         return UserDao.retrieveUserFrom(username);
     }
 
-    public static ArrayList<User> selectUsernamesFromKeyword(String keyword) {
-        return UserDao.retriveUserFrom(keyword);
-    }
-
     public static boolean insertUser(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String roleString) {
         if (roleString.equals(Constants.BUYER) || roleString.equals(Constants.BUYER_USER)) {
             Buyer buyer = new Buyer(
@@ -69,9 +65,9 @@ public class UserHandler {
     public static boolean updateRecord(User user, String name, String surname, String street,
                                        String city, String country, String zip, String phone, String profileImagePath) {
 
-        if (name == user.getName() && surname == user.getSurname() && street == ((Buyer) user).getBillingStreet() &&
-                city == ((Buyer) user).getBillingCity() && country == ((Buyer) user).getBillingCountry() && zip == ((Buyer) user).getBillingZip()
-                && phone == ((Buyer) user).getPhone() && profileImagePath == ((Buyer) user).getProfileImagepath()) {
+        if (name.equals(user.getName()) && surname.equals(user.getSurname()) && street.equals(((Buyer) user).getBillingStreet()) &&
+                city.equals(((Buyer) user).getBillingCity()) && country.equals(((Buyer) user).getBillingCountry()) && zip.equals(((Buyer) user).getBillingZip())
+                && phone.equals(((Buyer) user).getPhone()) && profileImagePath.equals(((Buyer) user).getProfileImagepath())) {
             System.out.println("nothing to update in user");
             return true;
         }
