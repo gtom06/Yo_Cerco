@@ -24,4 +24,5 @@ module Supermarket {
     opens model.Dao;
     opens main;
     opens model.Order;
+    exports test;
 }
