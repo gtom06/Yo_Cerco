@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileElaboration {
+    private FileElaboration(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void writeOnFile(String filepath, String stringToWrite) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
         try {

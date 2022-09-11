@@ -7,6 +7,10 @@ import model.Constants;
 import model.Shop.Shop;
 
 public class LocationHandler {
+    private LocationHandler(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Address calculateLatLongFromIpAddress(){
         //uses googleapis
         Address address = null;

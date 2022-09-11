@@ -8,6 +8,9 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class HttpRequest {
+    private HttpRequest(){
+        throw new IllegalStateException("Utility class");
+    }
 
     private static HttpURLConnection conn;
 

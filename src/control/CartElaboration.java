@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartElaboration {
+
+    private CartElaboration(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static ArrayList<OrderItem> readOrderItemsFromCart() {
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         try {

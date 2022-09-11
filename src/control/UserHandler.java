@@ -11,6 +11,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class UserHandler {
+    private UserHandler(){
+        throw new IllegalStateException("Utility class");
+    }
     public static boolean checkUsernameAndPassword(String username, String password){
         return UserDao.validateLogin(username, password);
     }

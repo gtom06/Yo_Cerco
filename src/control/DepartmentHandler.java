@@ -8,6 +8,10 @@ import model.Shop.Shop;
 import java.util.ArrayList;
 
 public class DepartmentHandler {
+    private DepartmentHandler(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static ArrayList<Department> findDepartmentByShop(Shop shop) {
         ArrayList<Department> output = null;
         output = DepartmentDao.findDepartmentByShop(shop.getShopId());

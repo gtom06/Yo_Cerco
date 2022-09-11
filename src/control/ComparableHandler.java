@@ -6,6 +6,9 @@ import model.Shop.Shop;
 import java.util.*;
 
 public class ComparableHandler {
+    private ComparableHandler(){
+        throw new IllegalStateException("Utility class");
+    }
 
     public static ArrayList<Shop> orderShopsByDistance(ArrayList<Shop> shopArrayList, Address address) {
         for (Shop shop : shopArrayList) {

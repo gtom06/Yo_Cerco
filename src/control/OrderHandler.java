@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHandler {
+    private OrderHandler(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static ArrayList<Order> findOrdersInfoFromUser(User user) {
         ArrayList<Order> orderArrayList = OrderDao.findOrdersFromUser(user.getUsername());
         return orderArrayList.size() != 0 ? orderArrayList : null;

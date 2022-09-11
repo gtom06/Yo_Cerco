@@ -10,6 +10,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class ShopHandler {
+    private ShopHandler(){
+        throw new IllegalStateException("Utility class");
+    }
     public static void insertShop(Shop shop){
         ShopDao.insertShopDb(shop);
     }

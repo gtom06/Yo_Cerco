@@ -9,6 +9,10 @@ import model.User.User;
 import java.util.ArrayList;
 
 public class ProductHandler {
+    private ProductHandler(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static ArrayList<ProductShop> findProductBy(String productName){
         if (productName.isBlank() || productName.length() > 100) {
             return null;
