@@ -1,7 +1,1 @@
-jdk:
-  - openjdk11
-  - openjdk-ea
-
-matrix:
-  allow_failures:
-    - jdk: openjdk-ea
+language: java
