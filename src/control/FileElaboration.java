@@ -6,7 +6,11 @@ import java.util.ArrayList;
 public class FileElaboration {
     public static void writeOnFile(String filepath, String stringToWrite) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
-        writer.write(stringToWrite);
+        try {
+            writer.write(stringToWrite);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         writer.close();
     }
 
