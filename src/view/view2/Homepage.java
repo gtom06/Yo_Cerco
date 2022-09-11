@@ -225,7 +225,7 @@ public class Homepage {
                     productTableView.setVisible(true);
                     shopTableView.setVisible(true);
                     distanceColumn.setVisible(false);
-                    searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false, "All types");
+                    searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
                     if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
                         ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
                         if (observableListShop.size() != 0 && observableListShop != null) {

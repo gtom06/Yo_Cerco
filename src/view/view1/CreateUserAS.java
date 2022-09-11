@@ -48,7 +48,7 @@ public class CreateUserAS {
             UserHandler.insertUser(signUpUsernameTextField.getText(),
                     null,
                     null,
-                    Constants.STANDARD_PASSWORD,
+                    Constants.STANDARD_TO_USE,
                     signUpEmailTextField.getText(),
                     null,
                     null,

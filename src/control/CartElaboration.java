@@ -150,16 +150,23 @@ public class CartElaboration {
 
     public static boolean isEmptyCart() throws IOException {
         boolean bool = false;
+        BufferedReader reader = null;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(Constants.CART_PATH));
+            reader = new BufferedReader(new FileReader(Constants.CART_PATH));
             if (reader.read() == -1){
                 bool = true;
             }
-            reader.close();
         }
         catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+        finally{
+            try {
+                reader.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return bool;
     }
@@ -167,6 +174,7 @@ public class CartElaboration {
     public static boolean delete0QuantityItemsFromCart() {
         //initialize vars
         boolean output = false;
+        BufferedWriter out = null;
         ArrayList<OrderItem> orderItemArrayList;
         ArrayList<OrderItem> orderItemArrayListToDel = new ArrayList<>();
         try {
@@ -183,14 +191,23 @@ public class CartElaboration {
                 } else {
                     orderItemArrayList.removeAll(orderItemArrayListToDel);
                     String json = new Gson().toJson(orderItemArrayList);
-                    BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
+                    out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
                     out.write(json);
-                    out.close();
                     output = true;
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return output;
     }

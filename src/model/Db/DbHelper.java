@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DbHelper {
     private static final String USER = "postgres";
-    private static final String PASS = "postgres";
+    private static final String P = "postgres";
     private static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/yocerco";
     private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
@@ -25,7 +25,7 @@ public class DbHelper {
     public Connection openDBConnection() {
         try {
             Class.forName(DRIVER_CLASS_NAME);
-            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            connection = DriverManager.getConnection(DB_URL, USER, P);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
