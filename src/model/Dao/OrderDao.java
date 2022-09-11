@@ -44,8 +44,8 @@ public class OrderDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return orderArrayList;
         }
+        return orderArrayList;
     }
 
     public static Order findOrderItemsFromOrder(Order order) {
@@ -67,8 +67,8 @@ public class OrderDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return order;
         }
+        return order;
     }
 
     public static Order insertOrder(Order order) {
@@ -105,8 +105,8 @@ public class OrderDao {
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return order;
         }
+        return order;
     }
 
     public static Payment insertPayment(Payment payment){
@@ -139,8 +139,8 @@ public class OrderDao {
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return payment;
         }
+        return payment;
     }
 
 
@@ -164,7 +164,7 @@ public class OrderDao {
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return true;
         }
+        return true;
     }
 }

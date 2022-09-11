@@ -65,8 +65,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopByCity(String city, String type) {
@@ -95,8 +95,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopByName(String name, String type) {
@@ -126,8 +126,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopNearby(double lat, double lng, String type) {
@@ -163,8 +163,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time, String type) {
@@ -204,8 +204,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopByCityAndTime(String city, Integer time, String type) {
@@ -240,8 +240,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopByFavouriteUser(String username) {
@@ -265,8 +265,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopByNameAndTime(String name, Integer time, String type) {
@@ -300,8 +300,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
@@ -324,8 +324,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static ArrayList<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
@@ -351,8 +351,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayShop;
         }
+        return arrayShop;
     }
 
     public static void insertFavoriteShopIntoDb(int shopId, String username) {
@@ -416,8 +416,8 @@ public class ShopDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return output;
         }
+        return output;
     }
 
     public static ArrayList<String> findTypeShop() {
@@ -440,8 +440,8 @@ public class ShopDao {
         } finally {
 
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayTypeShop;
         }
+        return arrayTypeShop;
     }
 
     public static ArrayList<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {

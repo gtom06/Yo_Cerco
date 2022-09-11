@@ -34,8 +34,8 @@ public class UserDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return output;
         }
+        return output;
     }
 
     public static User retrieveUserFrom(String username) {
@@ -96,8 +96,8 @@ public class UserDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return user;
         }
+        return user;
 
     }
 
@@ -136,8 +136,8 @@ public class UserDao {
                 se.printStackTrace();
         } finally{
             dbHelper.closeDBConnection(stmt, conn);
-            return userList;
         }
+        return userList;
     }
 
     public static boolean insertUser(User user){
@@ -181,8 +181,8 @@ public class UserDao {
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return true;
         }
+        return true;
     }
 
     public static boolean updateBuyerRecord(User user) {
@@ -213,8 +213,7 @@ public class UserDao {
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return true;
         }
-
+        return true;
     }
 }

@@ -31,8 +31,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 
     public static ArrayList<SimpleProduct> findProductByName(String name) {
@@ -54,8 +54,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 
     public static ArrayList<SimpleProduct> findProductByShopId(int shopId) {
@@ -77,8 +77,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 
     public static ArrayList<ProductShop> findProductInShop(int shopId) {
@@ -100,8 +100,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 
     public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(String username) {
@@ -123,8 +123,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 
     public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
@@ -193,8 +193,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return output;
         }
+        return output;
     }
 
     public static void removeFavoriteProductFromDb(String username, int sku) {
@@ -258,8 +258,8 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return simpleProductArrayList;
         }
+        return simpleProductArrayList;
     }
 
     public static ArrayList<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
@@ -282,7 +282,7 @@ public class ProductDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return productArrayList;
         }
+        return productArrayList;
     }
 }

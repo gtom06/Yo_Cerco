@@ -28,8 +28,8 @@ public class BuyerDao {
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             System.out.println("insert ok");
-            return true;
         }
+        return true;
     }
 
 }

@@ -34,8 +34,8 @@ public class DepartmentDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayDepartment;
         }
+        return arrayDepartment;
     }
 
     public static ArrayList<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
@@ -109,7 +109,7 @@ public class DepartmentDao {
             se.printStackTrace();
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            return arrayProductShop;
         }
+        return arrayProductShop;
     }
 }
