@@ -37,9 +37,9 @@ public class ProductView {
 
     @FXML
     ImageView productPhoto, homepageImageView, addShopToFavorites,
-            removeShopFromFavorites, cartImage, previousPage;
+            removeShopFromFavorites, cartImage, previousPage, discountedTagProd;
     @FXML
-    Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText;
+    Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPrice;
 
     InputStream stream = null;
 
@@ -55,6 +55,7 @@ public class ProductView {
         priceProd.setText(String.valueOf(productShop.getPrice()));
         brandProd.setText(productShop.getBrand());
         nameProd.setText(productShop.getName());
+        checkDiscount(productShop);
 
         stream = new FileInputStream(productShop.getLogoImagepath());
         Image productImage = new Image(stream, 200, 200, false, false);
@@ -136,5 +137,18 @@ public class ProductView {
             throw new Exception("item not added in cart");
         }
         CartElaboration.readOrderItemsFromCart();
+    }
+
+    @FXML
+    public void checkDiscount(ProductShop productShop){
+        productShop.setDiscountedPrice(0.50);
+        if (productShop.getDiscountedPrice() != 0){
+            discountedPrice.setText(String.valueOf(productShop.getDiscountedPrice()));
+            priceProd.setStrikethrough(true);
+        }
+        else {
+            discountedTagProd.setVisible(false);
+            discountedPrice.setVisible(false);
+        }
     }
 }

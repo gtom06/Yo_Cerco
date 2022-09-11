@@ -18,11 +18,13 @@ public class Shop {
     private double lng;
     private String gmapsLink;
     private String franchising;
+    private String offersFlyerPath;
     private double distance;
+
 
     public Shop(String phone, String address, String city, String shopName, String logoImagepath,
                 String interiorPhotosImagepath, String planimetryImagePath, int shopId, int status, String openingTime,
-                String closingTime, double lat, double lng, String gmapsLink, String franchising, double distance) {
+                String closingTime, double lat, double lng, String gmapsLink, String franchising, String offersFlyerPath, double distance) {
         this.phone = phone;
         this.address = address;
         this.city = city;
@@ -38,6 +40,7 @@ public class Shop {
         this.lng = lng;
         this.gmapsLink = Constants.GOOGLE_MAPS_LINK_START_STRING + gmapsLink;
         this.franchising = franchising;
+        this.offersFlyerPath = offersFlyerPath;
         this.distance = distance;
     }
     // start custom getter
@@ -155,6 +158,14 @@ public class Shop {
 
     public void setFranchising(String franchising) {
         this.franchising = franchising;
+    }
+
+    public String getOffersFlyerPath() {
+        return offersFlyerPath;
+    }
+
+    public void setOffersFlyerPath(String offersFlyerPath) {
+        this.offersFlyerPath = offersFlyerPath;
     }
 
     @Override

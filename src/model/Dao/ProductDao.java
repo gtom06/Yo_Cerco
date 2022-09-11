@@ -143,8 +143,10 @@ public class ProductDao {
             Double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
+            Double discountedPrice = rs.getDouble("discounted_price");
+
             productShop = new ProductShop(price,currency, shopId,sku,name,brand,description,
-                                             size,unitOfMeasure,logoImagepath,departmentId);
+                                             size,unitOfMeasure,logoImagepath,departmentId, discountedPrice);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;

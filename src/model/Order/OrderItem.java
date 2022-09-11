@@ -8,7 +8,7 @@ public class OrderItem extends ProductShop {
 
     public OrderItem(double price, String currency, int shopId, int sku, String name, String brand,
                      String description, double size, String unitOfMeasure, String logoImagepath, int departmentId,
-                     int quantityOrdered, Double priceTotal) {
+                     int quantityOrdered, Double priceTotal, double discountedPrice) {
         super(price,
                 currency,
                 shopId,
@@ -19,8 +19,8 @@ public class OrderItem extends ProductShop {
                 size,
                 unitOfMeasure,
                 logoImagepath,
-                departmentId
-                );
+                departmentId,
+                discountedPrice);
         this.quantityOrdered = quantityOrdered;
         this.priceTotal = priceTotal;
     }

@@ -3,6 +3,7 @@ package view.view1;
 import control.BrowserHandler;
 import control.DepartmentHandler;
 import control.ShopHandler;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,16 +12,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
 import model.Shop.Shop;
 import model.User.User;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
+import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public class ShopView {
 
     @FXML
     ImageView   homepageImageView, shopLogo,
-                addShopToFavorites, removeShopFromFavorites,
+                addShopToFavorites, removeShopFromFavorites, offersFlyerTagShop,
                 dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
 
     //departmentText
@@ -47,7 +48,7 @@ public class ShopView {
 
     @FXML
     Text   TextHi, TextShopName, TextShopAddress, TextShopOpeningTime, TextShopClosingTime, TextFavorite,
-            TextPhoneShop;
+            TextPhoneShop, offersFlyerShop;
     InputStream stream = null;
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -75,6 +76,7 @@ public class ShopView {
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
         TextShopName.setText(shop.getShopName());
+        checkOffersFlyer(shop);
         ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
             {
                 add(dep1);
@@ -213,5 +215,23 @@ public class ShopView {
         Stage stage = (Stage) homepageImageView.getScene().getWindow();
         stage.close();
 
+    }
+
+    public void onClickOnOffersFlyer(){
+        BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()));
+    }
+
+    public void checkOffersFlyer(Shop shop){
+        System.out.println("***************");
+        System.out.println(shop.getOffersFlyerPath());
+        System.out.println("***************");
+        if (shop.getOffersFlyerPath().isEmpty()){
+            offersFlyerShop.setVisible(false);
+            offersFlyerTagShop.setVisible(false);
+        }
+        else {
+            offersFlyerShop.setVisible(true);
+            offersFlyerTagShop.setVisible(true);
+        }
     }
 }

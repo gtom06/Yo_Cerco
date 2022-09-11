@@ -6,8 +6,12 @@ public class ProductShop extends SimpleProduct {
     private int shopId;
     private int departmentId;
 
+
+    private double discountedPrice;
+
+
     public ProductShop(double price, String currency, int shopId,
-                       int sku, String name, String brand,String description, double size, String unitOfMeasure, String logoImagepath, int departmentId) {
+                       int sku, String name, String brand, String description, double size, String unitOfMeasure, String logoImagepath, int departmentId, double discountedPrice) {
         super(sku,
                 name,
                 brand,
@@ -19,6 +23,7 @@ public class ProductShop extends SimpleProduct {
         this.currency = currency;
         this.shopId = shopId;
         this.departmentId = departmentId;
+        this.discountedPrice = discountedPrice;
     }
 
     public String getCurrency() {
@@ -63,6 +68,14 @@ public class ProductShop extends SimpleProduct {
 
     public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(double discountedPrice) {
+        this.discountedPrice = discountedPrice;
     }
 
     @Override

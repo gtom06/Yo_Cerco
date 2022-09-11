@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;"
-            xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.ShopView">
+
+<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e2e2e2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.ShopView">
     <children>
         <Rectangle fill="#2c2c2c" height="700.0" smooth="false" stroke="BLACK" width="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <ImageView fitHeight="160.0" fitWidth="320.0" layoutX="341.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +21,10 @@
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
         </Text>
-        <ImageView fx:id="shopLogo" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0" />
+        <ImageView fx:id="shopLogo" fitHeight="200.0" fitWidth="200.0" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
+         <image>
+            <Image url="@../../images/shop_images/lidl.png" />
+         </image></ImageView>
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="292.0">
             <image>
                 <Image url="@../../images/shop/icons8-google-maps-48.png" />
@@ -32,12 +35,12 @@
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="120.0">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="80.0">
             <image>
                 <Image url="@../../images/shop/icons8-clock-48.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/shop/icons8-ringing-phone-48.png" />
             </image>
@@ -67,22 +70,22 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopOpeningTime" fill="#ffb703" layoutX="309.0" layoutY="145.0" stroke="#2c2c2c" text="9AM">
+        <Text fx:id="TextShopOpeningTime" fill="#ffb703" layoutX="315.0" layoutY="105.0" stroke="#2c2c2c" text="18AM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fill="#ffb703" layoutX="349.0" layoutY="145.0" stroke="#2c2c2c" text="-">
+        <Text fill="#ffb703" layoutX="361.0" layoutY="105.0" stroke="#2c2c2c" text="-">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopClosingTime" fill="#ffb703" layoutX="364.0" layoutY="145.0" stroke="#2c2c2c" text="20PM">
+        <Text fx:id="TextShopClosingTime" fill="#ffb703" layoutX="373.0" layoutY="105.0" stroke="#2c2c2c" text="20PM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextPhoneShop" fill="#ffb703" layoutX="311.0" layoutY="215.0" stroke="#2c2c2c" text="test">
+        <Text fx:id="TextPhoneShop" fill="#ffb703" layoutX="315.0" layoutY="175.0" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
@@ -191,5 +194,15 @@
                 <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
             </image>
         </ImageView>
+      <ImageView fx:id="offersFlyerTagShop" fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/shop/icons8-discount-96.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="offersFlyerShop" fill="#ffb703" layoutX="315.0" layoutY="245.0" stroke="#2c2c2c" onMouseClicked="#onClickOnOffersFlyer" text="Offers Flyer">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

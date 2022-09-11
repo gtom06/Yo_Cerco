@@ -68,6 +68,7 @@ public class DepartmentDao {
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             Integer departmentId = rs.getInt("department_id");
+            Double discountedPrice = rs.getDouble("discounted_price");
             productShop = new ProductShop(
                 price,
                 currency,
@@ -79,8 +80,8 @@ public class DepartmentDao {
                 size,
                 unitOfMeasure,
                 logoImagepath,
-                departmentId
-            );
+                departmentId,
+                    discountedPrice);
             arrayProductShop.add(productShop);
         }
         return arrayProductShop;

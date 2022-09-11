@@ -35,7 +35,7 @@ public class SimpleProduct implements Product {
     }
 
     public void setLogoImagepath(String logoImagepath) {
-        this.logoImagepath = Constants.LOGO_PRODUCTS_PATH + logoImagepath;
+        this.logoImagepath = /*Constants.LOGO_PRODUCTS_PATH +*/ logoImagepath;
     }
 
     public void setSize(double size) {
@@ -61,6 +61,7 @@ public class SimpleProduct implements Product {
 
     @Override
     public String getLogoImagepath() {
+        /*
         String output = Constants.LOGO_PRODUCTS_PATH;
         if (logoImagepath.isBlank()) {
             output += Constants.LOGO_SHOP_NA;
@@ -68,6 +69,8 @@ public class SimpleProduct implements Product {
             output += logoImagepath;
         }
         return output;
+        */
+        return logoImagepath;
     }
 
     @Override

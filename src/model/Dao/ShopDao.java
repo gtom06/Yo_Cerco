@@ -406,8 +406,10 @@ public class ShopDao {
             double lng = rs.getDouble("longitude");
             String phone = rs.getString("phone");
             String gmapsLink = rs.getString("gmaps_string");
+            String offersFlyerPath = rs.getString("offers_flyer_link");
             int distance = 0;
-            shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status, openingTime, closingTime, lat, lng, gmapsLink, franchising, distance);
+            shop = new Shop(phone, address, city, shopName, logoImagepath, interiorPhotosImagepath, planimetryImagePath, shopId,  status,
+                    openingTime, closingTime, lat, lng, gmapsLink, franchising, offersFlyerPath, distance);
             arrayShop.add(shop);
         }
         return arrayShop;
