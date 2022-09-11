@@ -10,8 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DepartmentDao {
+    static Logger logger = Logger.getLogger(DepartmentDao.class.getName());
     public static ArrayList<Department> findDepartmentByShop(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -31,7 +34,7 @@ public class DepartmentDao {
             ResultSet rs = stmt.executeQuery();
             arrayDepartment = convertRSInArrayDepartment(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in department");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -106,7 +109,7 @@ public class DepartmentDao {
             ResultSet rs = stmt.executeQuery();
             arrayProductShop = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in department");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }

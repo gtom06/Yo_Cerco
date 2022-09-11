@@ -1,9 +1,14 @@
 package control;
 
+import model.Dao.BuyerDao;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileElaboration {
+    static Logger logger = Logger.getLogger(FileElaboration.class.getName());
     private FileElaboration(){
         throw new IllegalStateException("Utility class");
     }
@@ -14,7 +19,7 @@ public class FileElaboration {
             writer = new BufferedWriter(new FileWriter(filepath));
             writer.write(stringToWrite);
         } catch (Exception e){
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in FileElaboration");
         } finally{
             try {
                 if (writer != null) {
@@ -22,7 +27,7 @@ public class FileElaboration {
                 }
             }
             catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in FileElaboration");
             }
         }
     }
@@ -37,14 +42,14 @@ public class FileElaboration {
                 lines.add(line);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in FileElaboration");
         } finally {
             try {
                 if (br != null){
                     br.close();
                 }
             } catch (Exception e){
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in FileElaboration");
             }
         }
         return lines;
@@ -57,7 +62,7 @@ public class FileElaboration {
             bufferedReader = new BufferedReader(new FileReader(filepath));
             output = bufferedReader.readLine();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in FileElaboration");
         }
         finally {
             try {
@@ -65,7 +70,7 @@ public class FileElaboration {
                     bufferedReader.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in FileElaboration");
             }
         }
         return output;
@@ -80,7 +85,7 @@ public class FileElaboration {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in FileElaboration");
             return false;
         }
         return true;

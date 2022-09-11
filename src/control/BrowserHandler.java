@@ -2,8 +2,11 @@ package control;
 
 import java.awt.*;
 import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BrowserHandler {
+    static Logger logger = Logger.getLogger(BrowserHandler.class.getName());
     private BrowserHandler(){
         throw new IllegalStateException("Utility class");
     }
@@ -14,7 +17,7 @@ public class BrowserHandler {
                 desktop.browse(uri);
                 return true;
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in BrowserHandler");
             }
         }
         return false;

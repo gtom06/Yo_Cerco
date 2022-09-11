@@ -1,15 +1,19 @@
 package model.Db;
 
+import control.OrderHandler;
 import model.Constants;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DbHelper {
     private static DbHelper dbHelper = null;
     private static Connection connection = null;
+    static Logger logger = Logger.getLogger(DbHelper.class.getName());
 
     private DbHelper() {}
 
@@ -24,7 +28,7 @@ public class DbHelper {
             Class.forName(Constants.DRIVER_CLASS_NAME);
             connection = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.OFF, "error in openDBConnection");
         }
         return connection;
     }
@@ -34,13 +38,13 @@ public class DbHelper {
             if (statement != null)
                 statement.close();
         } catch (SQLException se2) {
-            se2.printStackTrace();
+            logger.log(Level.SEVERE, "error while closing statement");
         }
         try {
             if (connection != null)
                 connection.close();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.SEVERE, "error while closing connection");
         }
     }
 }

@@ -9,9 +9,11 @@ import model.Product.ProductShop;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartElaboration {
-
+    static Logger logger = Logger.getLogger(CartElaboration.class.getName());
     private CartElaboration(){
         throw new IllegalStateException("Utility class");
     }
@@ -28,14 +30,14 @@ public class CartElaboration {
             orderItemArrayList = new ArrayList<>(List.of(output));
             reader.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
         } finally {
             try{
                 if (reader != null){
                     reader.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in CartElaboration");
             }
         }
         return orderItemArrayList;
@@ -49,7 +51,7 @@ public class CartElaboration {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
             return false;
         }
         return true;
@@ -141,7 +143,7 @@ public class CartElaboration {
             out.write(json);
             out.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
         } finally{
             try{
                 if (out != null){
@@ -149,7 +151,7 @@ public class CartElaboration {
                 }
             }
             catch (Exception e ) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in CartElaboration");
             }
         }
         return true;
@@ -163,7 +165,7 @@ public class CartElaboration {
             out.write(emptyString);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
         }
         finally {
             try{
@@ -171,7 +173,7 @@ public class CartElaboration {
                     out.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in CartElaboration");
             }
         }
     }
@@ -186,7 +188,7 @@ public class CartElaboration {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
             return false;
         }
         finally{
@@ -195,7 +197,7 @@ public class CartElaboration {
                     reader.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in CartElaboration");
             }
         }
         return bool;
@@ -228,7 +230,7 @@ public class CartElaboration {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in CartElaboration");
         }
         finally {
             try {
@@ -236,7 +238,7 @@ public class CartElaboration {
                     out.close();
                 }
             } catch (Exception e){
-                e.printStackTrace();
+                logger.log(Level.WARNING, "error in CartElaboration");
             }
         }
         return output;

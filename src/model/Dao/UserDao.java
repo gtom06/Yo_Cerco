@@ -9,8 +9,12 @@ import model.User.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserDao {
+    static Logger logger = Logger.getLogger(UserDao.class.getName());
+
     public static boolean validateLogin(String username, String password) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -31,7 +35,7 @@ public class UserDao {
                 output = true;
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding user");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -92,7 +96,7 @@ public class UserDao {
                 );
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding user");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -136,8 +140,7 @@ public class UserDao {
             }
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
-            dbHelper.closeDBConnection(stmt, conn);
+            logger.log(Level.WARNING, "error while finding user");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -168,8 +171,7 @@ public class UserDao {
 
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
-            dbHelper.closeDBConnection(stmt, conn);
+            logger.log(Level.WARNING, "error while finding user");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);

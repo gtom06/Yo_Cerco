@@ -6,14 +6,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HttpRequest {
+    static Logger logger = Logger.getLogger(HttpRequest.class.getName());
     private HttpRequest(){
         throw new IllegalStateException("Utility class");
     }
-
     private static HttpURLConnection conn;
-
     public static String get(String urlString) {
 
         BufferedReader reader;
@@ -47,11 +48,11 @@ public class HttpRequest {
             }
         }
         catch (MalformedURLException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in HttpRequest");
         } catch (ProtocolException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in HttpRequest");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in HttpRequest");
         } finally {
             conn.disconnect();
         }
@@ -94,7 +95,7 @@ public class HttpRequest {
                 responseContent="Error Registering";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in HttpRequest");
         }
         return responseContent;
     }

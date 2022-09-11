@@ -11,8 +11,11 @@ import java.sql.*;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrderDao {
+    static Logger logger = Logger.getLogger(OrderDao.class.getName());
     public static ArrayList<Order> findOrdersFromUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -41,7 +44,7 @@ public class OrderDao {
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in order");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -64,7 +67,7 @@ public class OrderDao {
             rs.next();
             order.setOrderItemString(rs.getString("items"));
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in order");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -100,8 +103,7 @@ public class OrderDao {
             order.setStatus(rs.getString("status"));
             order.setCollectionTimestamp(null);
         } catch (SQLException se) {
-            se.printStackTrace();
-            dbHelper.closeDBConnection(stmt, conn);
+            logger.log(Level.WARNING, "error in order");
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -134,8 +136,7 @@ public class OrderDao {
             payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
             payment.setStatus(rs.getString("status"));
         } catch (SQLException se) {
-            se.printStackTrace();
-            dbHelper.closeDBConnection(stmt, conn);
+            logger.log(Level.WARNING, "error in order");
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -159,8 +160,7 @@ public class OrderDao {
             stmt.setString(2, jsonString);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
-            dbHelper.closeDBConnection(stmt, conn);
+            logger.log(Level.WARNING, "error in order");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);

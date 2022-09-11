@@ -12,8 +12,11 @@ import model.User.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrderHandler {
+    static Logger logger = Logger.getLogger(OrderHandler.class.getName());
     private OrderHandler(){
         throw new IllegalStateException("Utility class");
     }
@@ -34,7 +37,7 @@ public class OrderHandler {
             orderItemArrayList = new ArrayList<>(List.of(output));
             order.setOrderItemArrayList(orderItemArrayList);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in OrderHandler");
         }
         return order;
     }

@@ -4,8 +4,11 @@ import model.Db.DbHelper;
 import model.User.Buyer;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BuyerDao {
+    static Logger logger = Logger.getLogger(BuyerDao.class.getName());
     public static boolean insertBuyer(Buyer buyer){
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -24,7 +27,7 @@ public class BuyerDao {
             stmt.setString(6,null);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in buyer");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             System.out.println("insert ok");

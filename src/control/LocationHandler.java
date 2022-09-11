@@ -6,7 +6,11 @@ import model.Address;
 import model.Constants;
 import model.Shop.Shop;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class LocationHandler {
+    static Logger logger = Logger.getLogger(LocationHandler.class.getName());
     private LocationHandler(){
         throw new IllegalStateException("Utility class");
     }
@@ -21,7 +25,7 @@ public class LocationHandler {
             address = new Address(jsonObject1.get("lat").getAsDouble(), jsonObject1.get("lat").getAsDouble(), null);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in LocationHandler");
         }
         return address;
     }
@@ -40,7 +44,7 @@ public class LocationHandler {
             address = new Address(location.get("lat").getAsDouble(), location.get("lng").getAsDouble(), addressString);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "error in LocationHandler");
         }
         return address;
     }
