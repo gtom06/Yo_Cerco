@@ -61,7 +61,7 @@ public class SimpleProduct implements Product {
 
     @Override
     public String getLogoImagepath() {
-        /*
+
         String output = Constants.LOGO_PRODUCTS_PATH;
         if (logoImagepath.isBlank()) {
             output += Constants.LOGO_SHOP_NA;
@@ -69,8 +69,6 @@ public class SimpleProduct implements Product {
             output += logoImagepath;
         }
         return output;
-        */
-        return logoImagepath;
     }
 
     @Override

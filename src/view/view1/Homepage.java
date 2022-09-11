@@ -50,12 +50,9 @@ public class Homepage {
 
     @FXML
     protected void onClickAnchorPane3() throws IOException {
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("favorite.fxml"));
         Parent root = loader.load();
-        //CartAndPayment cartAndPayment = loader.getController();
         Favorite favorite = loader.getController();
-        //cartAndPayment.passParam(null, u);
         favorite.passUser(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
@@ -94,7 +91,7 @@ public class Homepage {
 
     @FXML
     public void openCartAndPayment() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view1/cartAndPayment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
         cartAndPayment.passParam(null, user);
@@ -109,7 +106,5 @@ public class Homepage {
     public void passUser(User user) {
         this.user = user;
         labelHi.setText(user.getUsername());
-        user.toString();
     }
-
 }

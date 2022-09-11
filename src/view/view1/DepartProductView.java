@@ -38,8 +38,9 @@ public class DepartProductView {
     TableColumn<ProductShop,String> brandColumn;
     TableColumn<ProductShop,Float> sizeColumn;
     TableColumn<ProductShop,String> unitOfMeasureColumn;
-    TableColumn<ProductShop, Integer> currencyColumn;
-    TableColumn<ProductShop, Integer> priceColumn;
+    TableColumn<ProductShop, String> currencyColumn;
+    TableColumn<ProductShop, Double> discountedPriceColumn;
+    TableColumn<ProductShop, Double> priceColumn;
 
     @FXML
     Button addToCartButton;
@@ -145,14 +146,15 @@ public class DepartProductView {
         priceColumn.setMinWidth(50);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        discountedPriceColumn = new TableColumn<>("DISCOUNTED PRICE");
+        discountedPriceColumn.setMinWidth(50);
+        discountedPriceColumn.setCellValueFactory(new PropertyValueFactory<>("discountedPrice"));
+
         currencyColumn = new TableColumn<>("CURRENCY");
         currencyColumn.setMinWidth(50);
         currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-
-
-        productTable.getColumns().addAll(nameColumn,brandColumn,sizeColumn,unitOfMeasureColumn,priceColumn,currencyColumn);
-
+        productTable.getColumns().addAll(nameColumn,brandColumn,sizeColumn,unitOfMeasureColumn,priceColumn, discountedPriceColumn, currencyColumn);
 
     }
 

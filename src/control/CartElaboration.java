@@ -74,50 +74,101 @@ public class CartElaboration {
                         int actualQuantity = orderItem.getQuantityOrdered();
                         found = true;
                         orderItem.setQuantityOrdered(actualQuantity + quantityToAdd);
-                        orderItem.setPriceTotal(orderItem.getPrice() * orderItem.getQuantityOrdered());
+                        if (orderItem.getDiscountedPrice() == 0) {
+                            orderItem.setPriceTotal(orderItem.getPrice() * orderItem.getQuantityOrdered());
+                        }
+                        else {
+                            orderItem.setPriceTotal(orderItem.getDiscountedPrice() * orderItem.getQuantityOrdered());
+                        }
                     }
                 }
+                /*
                 if (!found) {
-                    orderItemArrayList.add(
-                        new OrderItem(
-                            productShop.getPrice(),
-                            productShop.getCurrency(),
-                            productShop.getShopId(),
-                            productShop.getSku(),
-                            productShop.getName(),
-                            productShop.getBrand(),
-                            productShop.getDescription(),
-                            productShop.getSize(),
-                            productShop.getUnitOfMeasure(),
-                            productShop.getLogoImagepath(),
-                            productShop.getDepartmentId(),
-                            quantityToAdd,
-                            productShop.getPrice() * quantityToAdd,
-                                productShop.getDiscountedPrice()
-                        )
-                    );
-
-                }
+                    //not discounted
+                    if (productShop.getDiscountedPrice() == 0) {
+                        orderItemArrayList.add(
+                                new OrderItem(
+                                        productShop.getPrice(),
+                                        productShop.getCurrency(),
+                                        productShop.getShopId(),
+                                        productShop.getSku(),
+                                        productShop.getName(),
+                                        productShop.getBrand(),
+                                        productShop.getDescription(),
+                                        productShop.getSize(),
+                                        productShop.getUnitOfMeasure(),
+                                        productShop.getLogoImagepath(),
+                                        productShop.getDepartmentId(),
+                                        quantityToAdd,
+                                        productShop.getPrice() * quantityToAdd,
+                                        productShop.getDiscountedPrice()
+                                )
+                        );
+                    }
+                    //discounted
+                    else {
+                        orderItemArrayList.add(
+                                new OrderItem(
+                                        productShop.getPrice(),
+                                        productShop.getCurrency(),
+                                        productShop.getShopId(),
+                                        productShop.getSku(),
+                                        productShop.getName(),
+                                        productShop.getBrand(),
+                                        productShop.getDescription(),
+                                        productShop.getSize(),
+                                        productShop.getUnitOfMeasure(),
+                                        productShop.getLogoImagepath(),
+                                        productShop.getDepartmentId(),
+                                        quantityToAdd,
+                                        productShop.getDiscountedPrice() * quantityToAdd,
+                                        productShop.getDiscountedPrice()
+                                )
+                        );
+                    }
+                }*/
             } else {
-                orderItemArrayList = new ArrayList<>();
-                orderItemArrayList.add(
-                    new OrderItem(
-                        productShop.getPrice(),
-                        productShop.getCurrency(),
-                        productShop.getShopId(),
-                        productShop.getSku(),
-                        productShop.getName(),
-                        productShop.getBrand(),
-                        productShop.getDescription(),
-                        productShop.getSize(),
-                        productShop.getUnitOfMeasure(),
-                        productShop.getLogoImagepath(),
-                        productShop.getDepartmentId(),
-                        quantityToAdd,
-                        productShop.getPrice() * quantityToAdd,
-                            productShop.getDiscountedPrice()
-                    )
-                );
+                if (productShop.getDiscountedPrice() == 0) {
+                    orderItemArrayList.add(
+                            new OrderItem(
+                                    productShop.getPrice(),
+                                    productShop.getCurrency(),
+                                    productShop.getShopId(),
+                                    productShop.getSku(),
+                                    productShop.getName(),
+                                    productShop.getBrand(),
+                                    productShop.getDescription(),
+                                    productShop.getSize(),
+                                    productShop.getUnitOfMeasure(),
+                                    productShop.getLogoImagepath(),
+                                    productShop.getDepartmentId(),
+                                    quantityToAdd,
+                                    productShop.getPrice() * quantityToAdd,
+                                    productShop.getDiscountedPrice()
+                            )
+                    );
+                }
+                //discounted
+                else {
+                    orderItemArrayList.add(
+                            new OrderItem(
+                                    productShop.getPrice(),
+                                    productShop.getCurrency(),
+                                    productShop.getShopId(),
+                                    productShop.getSku(),
+                                    productShop.getName(),
+                                    productShop.getBrand(),
+                                    productShop.getDescription(),
+                                    productShop.getSize(),
+                                    productShop.getUnitOfMeasure(),
+                                    productShop.getLogoImagepath(),
+                                    productShop.getDepartmentId(),
+                                    quantityToAdd,
+                                    productShop.getDiscountedPrice() * quantityToAdd,
+                                    productShop.getDiscountedPrice()
+                            )
+                    );
+                }
             }
             String json = new Gson().toJson(orderItemArrayList);
             BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
