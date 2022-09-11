@@ -77,7 +77,7 @@ CREATE TABLE payment(
 
 CREATE TABLE order_items(
     order_id                NUMERIC(10) REFERENCES orders(order_id),
-    items                   VARCHAR
+    items                   VARCHAR(10485760)
 );
 
 CREATE SEQUENCE sku_id_sequence;
