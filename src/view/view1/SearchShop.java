@@ -37,6 +37,8 @@ public class SearchShop  {
     @FXML
     Label labelHi;
     @FXML
+    ChoiceBox choiceBoxTypeShop;
+    @FXML
     TableView<Shop> tableView = new TableView<>();
     TableColumn<Shop, String> addressColumn;
     TableColumn<Shop, String> cityColumn;
@@ -47,6 +49,7 @@ public class SearchShop  {
     @FXML
     CheckBox openNow;
 
+    ArrayList<String>arrayTypeShop = null;
     @FXML
     protected void onTableViewItemClick() throws IOException {
 
@@ -95,23 +98,25 @@ public class SearchShop  {
     protected void onSearchButtonClick() {
         tableView.getItems().clear();
         ArrayList<Shop> shopArrayList = null;
+        String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();
+
 
         if (requestTextField.getText() == null || requestTextField.getText().length() == 0 || requestTextField.getText().length() > 50) {
             distanceColumn.setVisible(true);
-            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected());
+            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }
 
         if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.NEARBY) {
             distanceColumn.setVisible(true);
-            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected());
+            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }
         else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_CITY) {
             distanceColumn.setVisible(false);
-            shopArrayList = ShopHandler.findShopByCityWithParams(requestTextField.getText(), openNow.isSelected());
+            shopArrayList = ShopHandler.findShopByCityWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }
         else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_NAME){
             distanceColumn.setVisible(false);
-            shopArrayList = ShopHandler.findShopByNameWithParams(requestTextField.getText(), openNow.isSelected());
+            shopArrayList = ShopHandler.findShopByNameWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }
         if (shopArrayList != null && shopArrayList.size() != 0) {
             ObservableList<Shop> observableListShops = FXCollections.observableArrayList(shopArrayList);
@@ -125,6 +130,11 @@ public class SearchShop  {
     public void passUser(User user) {
         this.user = user;
         labelHi.setText(user.getUsername());
+
+        arrayTypeShop = ShopHandler.findTypeShop();
+        ObservableList<String> observableListTypeShop = FXCollections.observableArrayList(arrayTypeShop);
+        choiceBoxTypeShop.setItems(observableListTypeShop);
+        choiceBoxTypeShop.setValue(observableListTypeShop.get(0));
     }
 
     @FXML

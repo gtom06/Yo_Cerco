@@ -18,12 +18,12 @@ public class ShopHandler {
     }
     public static void updateShop(Shop shop){}
 
-    public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow) {
+    public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
         if (searchParam == null || searchParam.length() == 0 || searchParam.length() > 50){
             Address address = LocationHandler.calculateLatLongFromIpAddress();
             if (address != null) {
-                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
                 return shopArrayList.size() != 0 ? shopArrayList : null;
             }
@@ -32,7 +32,7 @@ public class ShopHandler {
         if (!onlyOpenNow){
             Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
             if (address != null) {
-                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng());
+                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
                 return shopArrayList.size() != 0 ? shopArrayList : null;
             }
@@ -40,7 +40,7 @@ public class ShopHandler {
         else {
             Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
             if (address != null) {
-                shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour());
+                shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
                 return shopArrayList.size() != 0 ? shopArrayList : null;
             }
@@ -48,30 +48,30 @@ public class ShopHandler {
         return null;
     }
 
-    public static ArrayList<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow) {
+    public static ArrayList<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
         if (city == null || city.length() == 0 || city.length() > 50){
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = ShopDao.findShopByCity(city);
+            shopArrayList = ShopDao.findShopByCity(city,type);
         }
         else {
-            shopArrayList = ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour());
+            shopArrayList = ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour(), type);
         }
         return shopArrayList.size() != 0 ? shopArrayList : null;
     }
 
-    public static ArrayList<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow) {
+    public static ArrayList<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
         if (name == null || name.length() == 0 || name.length() >= 50){
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = ShopDao.findShopByName(name);
+            shopArrayList = ShopDao.findShopByName(name, type);
         }
         else {
-            shopArrayList = ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour());
+            shopArrayList = ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour(), type);
         }
         return shopArrayList.size() != 0 ? shopArrayList : null;
     }
@@ -107,5 +107,12 @@ public class ShopHandler {
 
     public static ArrayList<Shop> findFavoriteShopsFromUser(User user){
         return ShopDao.findShopByFavouriteUser(user.getUsername());
+    }
+
+    public static ArrayList<String> findTypeShop(){
+        ArrayList<String> arrayTypeShop;
+        arrayTypeShop = ShopDao.findTypeShop();
+        arrayTypeShop.add(0, "All types");
+        return arrayTypeShop;
     }
 }

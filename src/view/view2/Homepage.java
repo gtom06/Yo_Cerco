@@ -91,7 +91,7 @@ public class Homepage {
             }
         };
 
-        shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false);
+        shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, "All types");
         if (shopArrayList != null && shopArrayList.size() != 0){
             for (int i = 0; i < 4; i++) {
                 imageViewArrayList.get(i).setImage(new Image(new FileInputStream(shopArrayList.get(i).getLogoImagepath())));
@@ -193,7 +193,7 @@ public class Homepage {
         ArrayList<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
-        searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false);
+        searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, "All types");
         productTableView.setVisible(true);
         shopTableView.setVisible(true);
         choiceBox.setValue(Constants.SHOP);
@@ -225,7 +225,7 @@ public class Homepage {
                     productTableView.setVisible(true);
                     shopTableView.setVisible(true);
                     distanceColumn.setVisible(false);
-                    searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false);
+                    searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false, "All types");
                     if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
                         ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
                         if (observableListShop.size() != 0 && observableListShop != null) {

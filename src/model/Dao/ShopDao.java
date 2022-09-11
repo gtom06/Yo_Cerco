@@ -69,7 +69,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopByCity(String city) {
+    public static ArrayList<Shop> findShopByCity(String city, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -79,10 +79,16 @@ public class ShopDao {
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
                     "WHERE LOWER(city) " +
-                    "LIKE ? AND status != ?";
+                    "LIKE ? AND status != ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
             stmt.setInt(2, Constants.NOT_AVAILABLE);
+            if (!type.equals("All types")){
+                stmt.setString(3,type);
+            }
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -93,7 +99,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopByName(String name) {
+    public static ArrayList<Shop> findShopByName(String name, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -104,11 +110,16 @@ public class ShopDao {
 
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
-                    "WHERE LOWER(name) LIKE ? AND status != ?";
+                    "WHERE LOWER(name) LIKE ? AND status != ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
-
+            if (!type.equals("All types")){
+                stmt.setString(3,type);
+            }
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -119,7 +130,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopNearby(double lat, double lng) {
+    public static ArrayList<Shop> findShopNearby(double lat, double lng, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -133,13 +144,19 @@ public class ShopDao {
                     "AND latitude < ? " +
                     "AND ? < longitude " +
                     "AND longitude < ? " +
-                    "AND status != ?";
+                    "AND status != ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, lat - 0.5);
             stmt.setDouble(2, lat + 0.5);
             stmt.setDouble(3, lng - 0.5);
             stmt.setDouble(4, lng + 0.5);
             stmt.setInt(5,Constants.NOT_AVAILABLE);
+            if (!type.equals("All types")){
+                stmt.setString(6,type);
+            }
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -150,7 +167,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time) {
+    public static ArrayList<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -166,7 +183,10 @@ public class ShopDao {
                     "AND ? < longitude " +
                     "AND longitude < ? " +
                     "AND status != ?" +
-                    "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) > ?";
+                    "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) > ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, lat - 0.5);
             stmt.setDouble(2, lat + 0.5);
@@ -175,6 +195,9 @@ public class ShopDao {
             stmt.setInt(5,Constants.NOT_AVAILABLE);
             stmt.setInt(6,time);
             stmt.setInt(7,time);
+            if (!type.equals("All types")){
+                stmt.setString(8,type);
+            }
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -185,7 +208,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopByCityAndTime(String city, Integer time) {
+    public static ArrayList<Shop> findShopByCityAndTime(String city, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -199,12 +222,18 @@ public class ShopDao {
                     "WHERE LOWER(city) LIKE ? " +
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
-                    "AND CAST(closing_time AS INT) > ?";
+                    "AND CAST(closing_time AS INT) > ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
             stmt.setInt(3,time);
             stmt.setInt(4,time);
+            if (!type.equals("All types")){
+                stmt.setString(5,type);
+            }
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -240,7 +269,7 @@ public class ShopDao {
         }
     }
 
-    public static ArrayList<Shop> findShopByNameAndTime(String name, Integer time) {
+    public static ArrayList<Shop> findShopByNameAndTime(String name, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -252,12 +281,18 @@ public class ShopDao {
                     "WHERE LOWER(name) LIKE ? " +
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
-                    "AND CAST(closing_time AS INT) > ?";
+                    "AND CAST(closing_time AS INT) > ? ";
+            if (!type.equals("All types")){
+                sql += "AND type = ?";
+            }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
             stmt.setInt(3,time);
             stmt.setInt(4,time);
+            if (!type.equals("All types")){
+                stmt.setString(5,type);
+            }
 
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
@@ -382,6 +417,30 @@ public class ShopDao {
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
             return output;
+        }
+    }
+
+    public static ArrayList<String> findTypeShop() {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<String> arrayTypeShop= new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+            String sql = "SELECT DISTINCT type " +
+                    "FROM shop " +
+                    "WHERE type IS NOT NULL ";
+            stmt = conn.prepareStatement(sql );
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                arrayTypeShop.add(rs.getString("type"));
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+
+            dbHelper.closeDBConnection(stmt, conn);
+            return arrayTypeShop;
         }
     }
 
