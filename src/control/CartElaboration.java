@@ -145,19 +145,18 @@ public class CartElaboration {
     }
 
     public static boolean isEmptyCart() throws IOException {
-        BufferedReader reader = null;
         boolean bool = false;
         try {
-            reader = new BufferedReader(new FileReader(Constants.CART_PATH));
+            BufferedReader reader = new BufferedReader(new FileReader(Constants.CART_PATH));
             if (reader.read() == -1){
                 bool = true;
             }
+            reader.close();
         }
         catch (Exception e) {
             e.printStackTrace();
             return bool;
         } finally {
-            reader.close();
             return bool;
         }
     }
@@ -195,7 +194,7 @@ public class CartElaboration {
         }
     }
 
-    public static String convertJsonCartToString() {
+    public static String convertJsonCartToString() throws IOException {
         return FileElaboration.fileToString(Constants.CART_PATH);
     }
 }

@@ -17,6 +17,7 @@ public class FileElaboration {
         while ((line = br.readLine()) != null) {
             lines.add(line);
         }
+        br.close();
         return lines;
     }
 
@@ -25,6 +26,7 @@ public class FileElaboration {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
             output = bufferedReader.readLine();
+            bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
