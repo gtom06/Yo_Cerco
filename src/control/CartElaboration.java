@@ -64,6 +64,23 @@ public class CartElaboration {
         ArrayList<OrderItem> orderItemArrayList;
         try {
             orderItemArrayList = readOrderItemsFromCart();
+            OrderItem orderItemToAdd = new OrderItem(
+                    productShop.getPrice(),
+                    productShop.getCurrency(),
+                    productShop.getShopId(),
+                    productShop.getSku(),
+                    productShop.getName(),
+                    productShop.getBrand(),
+                    productShop.getDescription(),
+                    productShop.getSize(),
+                    productShop.getUnitOfMeasure(),
+                    productShop.getLogoImagepath(),
+                    productShop.getDepartmentId(),
+                    quantityToAdd,
+                    productShop.getPrice() * quantityToAdd,
+                    productShop.getDiscountedPrice()
+            );
+
             if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
                 boolean found = false;
                 if (orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
@@ -82,93 +99,27 @@ public class CartElaboration {
                         }
                     }
                 }
-                /*
                 if (!found) {
                     //not discounted
                     if (productShop.getDiscountedPrice() == 0) {
-                        orderItemArrayList.add(
-                                new OrderItem(
-                                        productShop.getPrice(),
-                                        productShop.getCurrency(),
-                                        productShop.getShopId(),
-                                        productShop.getSku(),
-                                        productShop.getName(),
-                                        productShop.getBrand(),
-                                        productShop.getDescription(),
-                                        productShop.getSize(),
-                                        productShop.getUnitOfMeasure(),
-                                        productShop.getLogoImagepath(),
-                                        productShop.getDepartmentId(),
-                                        quantityToAdd,
-                                        productShop.getPrice() * quantityToAdd,
-                                        productShop.getDiscountedPrice()
-                                )
-                        );
+                        orderItemToAdd.setPriceTotal(productShop.getPrice() * quantityToAdd);
                     }
                     //discounted
                     else {
-                        orderItemArrayList.add(
-                                new OrderItem(
-                                        productShop.getPrice(),
-                                        productShop.getCurrency(),
-                                        productShop.getShopId(),
-                                        productShop.getSku(),
-                                        productShop.getName(),
-                                        productShop.getBrand(),
-                                        productShop.getDescription(),
-                                        productShop.getSize(),
-                                        productShop.getUnitOfMeasure(),
-                                        productShop.getLogoImagepath(),
-                                        productShop.getDepartmentId(),
-                                        quantityToAdd,
-                                        productShop.getDiscountedPrice() * quantityToAdd,
-                                        productShop.getDiscountedPrice()
-                                )
-                        );
+                        orderItemToAdd.setPriceTotal(productShop.getDiscountedPrice() * quantityToAdd);
                     }
-                }*/
+                    orderItemArrayList.add(orderItemToAdd);
+                }
             } else {
+                //not discounted
                 if (productShop.getDiscountedPrice() == 0) {
-                    orderItemArrayList.add(
-                            new OrderItem(
-                                    productShop.getPrice(),
-                                    productShop.getCurrency(),
-                                    productShop.getShopId(),
-                                    productShop.getSku(),
-                                    productShop.getName(),
-                                    productShop.getBrand(),
-                                    productShop.getDescription(),
-                                    productShop.getSize(),
-                                    productShop.getUnitOfMeasure(),
-                                    productShop.getLogoImagepath(),
-                                    productShop.getDepartmentId(),
-                                    quantityToAdd,
-                                    productShop.getPrice() * quantityToAdd,
-                                    productShop.getDiscountedPrice()
-                            )
-                    );
+                    orderItemToAdd.setPriceTotal(productShop.getPrice() * quantityToAdd);
                 }
                 //discounted
                 else {
-                    orderItemArrayList.add(
-                            new OrderItem(
-                                    productShop.getPrice(),
-                                    productShop.getCurrency(),
-                                    productShop.getShopId(),
-                                    productShop.getSku(),
-                                    productShop.getName(),
-                                    productShop.getBrand(),
-                                    productShop.getDescription(),
-                                    productShop.getSize(),
-                                    productShop.getUnitOfMeasure(),
-                                    productShop.getLogoImagepath(),
-                                    productShop.getDepartmentId(),
-                                    quantityToAdd,
-                                    productShop.getDiscountedPrice() * quantityToAdd,
-                                    productShop.getDiscountedPrice()
-                            )
-                    );
+                    orderItemToAdd.setPriceTotal(productShop.getDiscountedPrice() * quantityToAdd);
                 }
+                orderItemArrayList.add(orderItemToAdd);
             }
             String json = new Gson().toJson(orderItemArrayList);
             BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
