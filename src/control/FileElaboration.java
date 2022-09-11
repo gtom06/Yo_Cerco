@@ -13,7 +13,7 @@ public class FileElaboration {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void writeOnFile(String filepath, String stringToWrite) throws IOException {
+    public static void writeOnFile(String filepath, String stringToWrite) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(filepath));
