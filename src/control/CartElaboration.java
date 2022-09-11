@@ -92,7 +92,8 @@ public class CartElaboration {
                             productShop.getLogoImagepath(),
                             productShop.getDepartmentId(),
                             quantityToAdd,
-                            productShop.getPrice() * quantityToAdd
+                            productShop.getPrice() * quantityToAdd,
+                                productShop.getDiscountedPrice()
                         )
                     );
 
@@ -113,7 +114,8 @@ public class CartElaboration {
                         productShop.getLogoImagepath(),
                         productShop.getDepartmentId(),
                         quantityToAdd,
-                        productShop.getPrice() * quantityToAdd
+                        productShop.getPrice() * quantityToAdd,
+                            productShop.getDiscountedPrice()
                     )
                 );
             }
