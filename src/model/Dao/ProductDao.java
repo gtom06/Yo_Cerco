@@ -10,8 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductDao {
+    static Logger logger = Logger.getLogger(ProductDao.class.getName());
+
     public static ArrayList<ProductShop> findProductShopByName(String name) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -28,7 +32,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -51,7 +55,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -74,7 +78,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -97,7 +101,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -120,7 +124,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -190,7 +194,7 @@ public class ProductDao {
                 output = true;
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -210,7 +214,7 @@ public class ProductDao {
             stmt.setInt(2, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -229,7 +233,7 @@ public class ProductDao {
             stmt.setInt(2, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -255,7 +259,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             simpleProductArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -279,7 +283,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error while finding product");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
