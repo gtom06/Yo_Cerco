@@ -18,8 +18,9 @@ public class CartElaboration {
 
     public static ArrayList<OrderItem> readOrderItemsFromCart() {
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
+        JsonReader reader = null;
         try {
-            JsonReader reader = new JsonReader(new FileReader(Constants.CART_PATH));
+            reader = new JsonReader(new FileReader(Constants.CART_PATH));
             OrderItem[] output = new Gson().fromJson(reader, OrderItem[].class);
             if (output == null) {
                 return null;
@@ -28,6 +29,14 @@ public class CartElaboration {
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try{
+                if (reader != null){
+                    reader.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return orderItemArrayList;
     }
@@ -66,6 +75,7 @@ public class CartElaboration {
 
     public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) {
         ArrayList<OrderItem> orderItemArrayList;
+        BufferedWriter out = null;
         try {
             orderItemArrayList = readOrderItemsFromCart();
             OrderItem orderItemToAdd = new OrderItem(
@@ -127,24 +137,42 @@ public class CartElaboration {
                 orderItemArrayList.add(orderItemToAdd);
             }
             String json = new Gson().toJson(orderItemArrayList);
-            BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
+            out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
             out.write(json);
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally{
+            try{
+                if (out != null){
+                    out.close();
+                }
+            }
+            catch (Exception e ) {
+                e.printStackTrace();
+            }
         }
         return true;
     }
 
     public static void deleteCart() {
+        BufferedWriter out = null;
         try {
             String emptyString = "";
-            BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
+            out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
             out.write(emptyString);
-            out.close();
         }
         catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            try{
+                if (out != null){
+                    out.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -163,7 +191,9 @@ public class CartElaboration {
         }
         finally{
             try {
-                reader.close();
+                if (reader != null) {
+                    reader.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
