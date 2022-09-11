@@ -9,8 +9,11 @@ import model.Shop.Shop;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShopDao {
+    static Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static void insertShopDb(Shop shop) {
     }
@@ -35,7 +38,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -65,7 +68,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -96,7 +99,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -133,7 +136,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -174,7 +177,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -210,7 +213,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -235,7 +238,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -270,7 +273,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -294,7 +297,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -321,7 +324,7 @@ public class ShopDao {
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -341,7 +344,7 @@ public class ShopDao {
             stmt.setInt(2, shopId);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -360,7 +363,7 @@ public class ShopDao {
             stmt.setInt(2, shopId);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -386,7 +389,7 @@ public class ShopDao {
                 output = true;
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -409,7 +412,7 @@ public class ShopDao {
                 arrayTypeShop.add(rs.getString("type"));
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            logger.log(Level.WARNING, "error in findShop");
         } finally {
 
             dbHelper.closeDBConnection(stmt, conn);
