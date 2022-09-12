@@ -158,25 +158,25 @@ public class CartAndPayment {
         yyTextField.setVisible(true);
         cvvTextField.setVisible(true);
         slashText.setVisible(true);
-        if (user.getName() != null || user.getName() != "") {
+        if (user.getName() != null || !user.getName().equals("")) {
             nameTextField.setText(user.getName());
         }
-        if (user.getSurname() != null || user.getUsername() != "") {
+        if (user.getSurname() != null || !user.getUsername().equals("")) {
             surnameTextField.setText(user.getSurname());
         }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
             phoneNumberTextField.setText(((Buyer) user).getPhone());
         }
-        if (((Buyer) user).getBillingStreet()!= null || (((Buyer) user).getBillingStreet()) != "") {
+        if (((Buyer) user).getBillingStreet()!= null || !(((Buyer) user).getBillingStreet()).equals("")) {
             billingStreetTextField.setText(((Buyer) user).getBillingStreet());
         }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
+        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
             billingCityTextField.setText(((Buyer) user).getBillingCity());
         }
-        if (((Buyer) user).getBillingCountry() != null || ((Buyer) user).getBillingCountry() != "") {
+        if (((Buyer) user).getBillingCountry() != null || !((Buyer) user).getBillingCountry().equals("")) {
             billingCountryTextField.setText(((Buyer) user).getBillingCountry());
         }
-        if (((Buyer) user).getBillingZip() != null || ((Buyer) user).getBillingZip() != "") {
+        if (((Buyer) user).getBillingZip() != null || !((Buyer) user).getBillingZip().equals("")) {
             billingZipTextField.setText(((Buyer) user).getBillingZip());
         }
     }
