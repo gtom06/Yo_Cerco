@@ -297,4 +297,17 @@ public class Homepage {
         productTableView.getColumns().addAll(nameProductColumn, sizeColumn, unitOfMeasureColumn,brandColumn);
         distanceColumn.setVisible(false);
     }
+
+    public void openFavorites() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("favorite.fxml"));
+        Parent root = loader.load();
+        Favorite favorite = loader.getController();
+        favorite.passParams(user);
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.show();
+        newStage.setResizable(false);
+        Stage stage = (Stage) logoutImageView.getScene().getWindow();
+        stage.close();
+    }
 }

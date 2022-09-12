@@ -1,4 +1,4 @@
-package view.view1;
+package view.view2;
 
 import control.ProductHandler;
 import control.ShopHandler;
@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-import view.view2.GeneralProductView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,16 +44,14 @@ public class Favorite {
     TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
 
     @FXML
-    protected void onListViewItemClick() throws IOException {
+    protected void onTableViewShopClick() throws IOException {
         Shop shop = shopTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();
-            shopView.passUser(user);
-            shopView.passShop(shop);
-            //shopView.passDepartments(departments);
+            shopView.passParams(user, shop);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
@@ -63,18 +60,16 @@ public class Favorite {
             stage.close();
         }
     }
-
 
     @FXML
     protected void onTableViewProductClick() throws IOException {
-        /*
         SimpleProduct product = simpleProductTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (product != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("productView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root = loader.load();
-            ProductView productView = loader.getController();
-            productView.passParams(user);
+            GeneralProductView generalProductView = loader.getController();
+            generalProductView.passParams(user, product);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
@@ -82,15 +77,15 @@ public class Favorite {
             Stage stage = (Stage) shopTableView.getScene().getWindow();
             stage.close();
         }
-        */
     }
+
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(user);
+        homepage.passParams(user);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
@@ -99,9 +94,8 @@ public class Favorite {
         stage.close();
     }
 
-    public void passUser(User user) {
+    public void passParams(User user) {
         this.user = user;
-        textHi.setText(user.getUsername());
         fillShopTableView();
         fillSimpleProductTableView();
     }

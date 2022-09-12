@@ -6,6 +6,7 @@ import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Order.Payment;
+import model.User.Buyer;
 
 import java.sql.*;
 import java.time.Instant;
@@ -161,6 +162,68 @@ public class OrderDao {
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in order");
+            return false;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+        return true;
+    }
+
+    public static ArrayList<Order> findOrdersByAdmin(String username) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<Order> orderArrayList = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+
+
+            String sql =    "SELECT o.order_id, o.shop_id, o.payment_id, o.order_timestamp, o.total_price, o.currency, o.status, o.collection_order_timestamp, o.total_quantity " +
+                            "FROM shop S join shopholder_shop shs " +
+                            "ON s.shop_id = shs.shop_id " +
+                            "JOIN orders o " +
+                            "ON o.shop_id = shs.shop_id " +
+                            "WHERE shs.username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Order order;
+                Integer orderId = rs.getInt("order_id");
+                Integer shopId = rs.getInt("shop_id");
+                int payment = rs.getInt("payment_id");
+                Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
+                double totalAmount = rs.getDouble("total_price");
+                String currency = rs.getString("currency");
+                String status = rs.getString("status");
+                Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
+                Integer orderTotalQuantity = rs.getInt("total_quantity");
+                order = new Order(orderId, shopId, username, payment, orderTimestamp, totalAmount, currency, status, collectionTimestamp, orderTotalQuantity, null, null);
+                orderArrayList.add(order);
+            }
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, "error in order");
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+        return orderArrayList;
+    }
+
+    public static boolean setStatusOrder(int orderId, String status) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        try {
+            String sql = "UPDATE orders " +
+                    "SET status = ? " +
+                    "WHERE order_id = ?";
+            conn = dbHelper.openDBConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, status);
+            stmt.setInt(2, orderId);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, "error while finding order");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);

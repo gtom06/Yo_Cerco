@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0"
-            xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.HomepageAdmin">
-    <left>
-        <AnchorPane fx:id="anchorPane1" maxHeight="650.0" maxWidth="333.0" minHeight="650.0" minWidth="333.0" onMouseClicked="#onClickAnchorPane1" prefHeight="650.0" prefWidth="333.0" style="-fx-background-color: #830514;" BorderPane.alignment="CENTER" />
-    </left>
-    <center>
-        <AnchorPane fx:id="anchorPane2" maxHeight="650.0" maxWidth="334.0" minHeight="650.0" minWidth="334.0" onMouseClicked="#onClickAnchorPane2" prefHeight="650.0" prefWidth="334.0" BorderPane.alignment="CENTER">
-            <children>
-                <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="132.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../images/shop/icons8-aggiungi-ai-preferiti-96.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="137.0" layoutY="173.0" text="Create user" />
-            </children>
-        </AnchorPane>
-    </center>
-    <right>
-        <AnchorPane maxHeight="650.0" maxWidth="333.0" minHeight="650.0" minWidth="333.0" prefHeight="650.0" prefWidth="333.0" style="-fx-background-color: #830514;" BorderPane.alignment="CENTER" />
-    </right>
-    <top>
-        <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #937565;" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="logoutButton" layoutX="932.0" layoutY="13.0" maxHeight="25.0" maxWidth="54.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="25.0" prefWidth="54.0" text="Logout" />
-                <Label fx:id="labelHi" layoutX="14.0" layoutY="17.0" />
-            </children>
-        </AnchorPane>
-    </top>
-</BorderPane>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.HomepageAdmin">
+    <AnchorPane fx:id="anchorPane1" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#openOrders" prefHeight="469.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_LEFT">
+        <children>
+            <ImageView fx:id="shopsImage" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+                <image>
+                    <Image url="@../../images/user_interface/icons8-in-transit-96.png" />
+                </image>
+            </ImageView>
+            <Text fill="#12d39d" layoutX="212.0" layoutY="175.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="ORDERS">
+                <font>
+                    <Font name="Tahoma Bold" size="36.0" />
+                </font>
+            </Text>
+        </children>
+    </AnchorPane>
+    <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #2c2c2c; -fx-border-radius: 2; -fx-border-width: 2;" BorderPane.alignment="CENTER">
+        <children>
+            <Button fx:id="logoutButton" alignment="CENTER" layoutX="922.0" layoutY="13.0" maxHeight="26.0" maxWidth="64.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: #12d39d; -fx-text-fill: white;" text="Logout" textAlignment="JUSTIFY" wrapText="true">
+                <font>
+                    <Font name="Tahoma Bold" size="12.0" />
+                </font>
+            </Button>
+            <ImageView fitHeight="50.0" fitWidth="529.0" layoutX="236.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
+                </image>
+            </ImageView>
+            <Label fx:id="labelHi" alignment="CENTER" layoutX="14.0" layoutY="17.0" style="-fx-text-fill: #e6e6e6;" textAlignment="JUSTIFY" textFill="#2c2c2c" wrapText="true">
+                <font>
+                    <Font name="Tahoma Bold" size="18.0" />
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="anchorPane3" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0"  prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_RIGHT" />
+    <AnchorPane fx:id="anchorPane4" layoutX="500.0" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;" />
+    <AnchorPane fx:id="anchorPane2" layoutX="500.0" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0"  prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;" />
+</Pane>

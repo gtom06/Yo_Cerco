@@ -27,6 +27,11 @@ public class OrderHandler {
         return orderArrayList.size() != 0 ? orderArrayList : null;
     }
 
+    public static ArrayList<Order> findOrdersByAdmin(User user){
+        ArrayList<Order> orderArrayList = OrderDao.findOrdersByAdmin(user.getUsername());
+        return orderArrayList.size() != 0 ? orderArrayList : null;
+    }
+
     public static Order populateOrderWithOrderItems(Order order){
         ArrayList<OrderItem> orderItemArrayList;
         try {
@@ -164,5 +169,10 @@ public class OrderHandler {
             return order;
         }
         return null;
+    }
+
+    public static boolean setStatusOrder(Order order, String status) {
+        System.out.println(order.getOrderId());
+        return OrderDao.setStatusOrder(order.getOrderId(), status);
     }
 }
