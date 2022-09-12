@@ -213,19 +213,17 @@ public class ShopView {
     }
 
     public void onClickOnOffersFlyer(){
-        if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
-            System.out.println("failed to open webpage");
+        if (shop.getOffersFlyerPath() != null ) {
+            if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
+                System.out.println("failed to open webpage");
+            }
         }
     }
 
     public void checkOffersFlyer(Shop shop){
         if (shop.getOffersFlyerPath() == null){
-            if (shop.getOffersFlyerPath().isBlank()){
-                {
-                    offersFlyerShop.setVisible(false);
-                    offersFlyerTagShop.setVisible(false);
-                }
-            }
+            offersFlyerShop.setVisible(false);
+            offersFlyerTagShop.setVisible(false);
         }
         else {
             offersFlyerShop.setVisible(true);

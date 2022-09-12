@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
@@ -28,34 +29,48 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
+
 public class ShopProductView {
     User user;
     SimpleProduct simpleProduct;
 
     @FXML
-    ImageView productPhoto, homepageImageView, previousPage, cartImageView;
+    ImageView productPhoto, homepageImageView, previousPage, cartImageView, addShopToFavorites, removeShopFromFavorites;
     @FXML
     Text nameProd, brandProd, productShopPrice1, productShopPrice2, sizeLabel;
     @FXML
     TextArea descriptionTextArea;
     InputStream stream = null;
+    ProductShop productShop = null;
 
 
     public void passParams(User user, SimpleProduct simpleProduct, Shop shop) throws FileNotFoundException {
         this.user = user;
         this.simpleProduct = simpleProduct;
 
-        ProductShop productShop = ProductHandler.findProductShopByShopAndSimpleProduct(shop, simpleProduct);
-        brandProd.setText(productShop.getBrand());
-        nameProd.setText(productShop.getName());
-        descriptionTextArea.setText(productShop.getDescription());
-        productShopPrice1.setText(productShop.getPrice() + " " + productShop.getCurrency());
-        productShopPrice2.setText(productShop.getDiscountedPrice() + " " + productShop.getCurrency());
-        sizeLabel.setText(productShop.getSize() + " " + productShop.getUnitOfMeasure());
-        stream = new FileInputStream(simpleProduct.getLogoImagepath());
-        Image productImage = new Image(stream, 200, 200, false, false);
-        productPhoto.setImage(productImage);
-        checkDiscount(productShop);
+        this.productShop = ProductHandler.findProductShopByShopAndSimpleProduct(shop, simpleProduct);
+        if (productShop != null) {
+            brandProd.setText(productShop.getBrand());
+            nameProd.setText(productShop.getName());
+            descriptionTextArea.setText(productShop.getDescription());
+            productShopPrice1.setText(productShop.getPrice() + " " + productShop.getCurrency());
+            productShopPrice2.setText(productShop.getDiscountedPrice() + " " + productShop.getCurrency());
+            sizeLabel.setText(productShop.getSize() + " " + productShop.getUnitOfMeasure());
+            stream = new FileInputStream(simpleProduct.getLogoImagepath());
+            Image productImage = new Image(stream, 200, 200, false, false);
+            productPhoto.setImage(productImage);
+            checkDiscount(productShop);
+            if (ProductHandler.isFavoriteProduct(productShop, user)){
+                //set to remove
+                removeShopFromFavorites.setVisible(true);
+                addShopToFavorites.setVisible(false);
+            } else {
+                //set to add
+                removeShopFromFavorites.setVisible(false);
+                addShopToFavorites.setVisible(true);
+            }
+        }
     }
 
     @FXML
@@ -84,6 +99,17 @@ public class ShopProductView {
         newStage.setResizable(false);
         Stage stage = (Stage) homepageImageView.getScene().getWindow();
         stage.close();
+    }
+
+    public void addToFavorite() {
+        ProductHandler.insertProductIntoFavorites(user,productShop);
+        removeShopFromFavorites.setVisible(true);
+        addShopToFavorites.setVisible(false);
+    }
+    public void removeFromFavorite(){
+        ProductHandler.removeProductFromFavorites(user,productShop);
+        removeShopFromFavorites.setVisible(false);
+        addShopToFavorites.setVisible(true);
     }
 
     public void openCartAndPayment() throws IOException {

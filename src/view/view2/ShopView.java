@@ -258,6 +258,15 @@ public class ShopView {
     }
     */
     @FXML
+    public void onClickOnOffersFlyer(){
+        if (shop.getOffersFlyerPath() != null ) {
+            if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
+                System.out.println("failed to open webpage");
+            }
+        }
+    }
+
+    @FXML
     protected void onAddToCartClick() {
         ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
         if (productShop != null) {

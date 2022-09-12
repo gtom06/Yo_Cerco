@@ -152,6 +152,16 @@
                            <font>
                               <Font size="30.0" />
                            </font></Text>
+                        <ImageView onMouseClicked="#onClickOnOffersFlyer" fitHeight="62.0" fitWidth="63.0" layoutX="518.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/shop/icons8-discount-96.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="505.0" layoutY="12.0" text="Offer flyer" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Pane layoutY="200.0" prefHeight="520.0" prefWidth="800.0" style="-fx-border-color: #12d39d;">
