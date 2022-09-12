@@ -3,6 +3,8 @@ package view.view2;
 import control.FileElaboration;
 import control.OrderHandler;
 import control.UserHandler;
+import exceptions.AddressException;
+import exceptions.FileElaborationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -60,7 +62,7 @@ public class MyProfile {
     Text numberOfOrdersText;
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
+    protected void onHomepageImageClick() throws IOException, AddressException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
@@ -100,7 +102,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    public void onClickProfileImageView() throws IOException, FileElaborationException {
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);
 

@@ -1,6 +1,7 @@
 package view.view1;
 
 import control.CartElaboration;
+import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -79,7 +80,7 @@ public class DepartProductView {
     }
 
     @FXML
-    protected void onAddToCartClick() {
+    protected void onAddToCartClick() throws ExceptionCart {
         ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
         CartElaboration.addOrderItemsToCart(productShop, 1);
     }

@@ -2,6 +2,8 @@ package control;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import exceptions.ExceptionCart;
+import exceptions.FileElaborationException;
 import model.Constants;
 import model.Order.OrderItem;
 import model.Product.ProductShop;
@@ -18,7 +20,7 @@ public class CartElaboration {
         throw new IllegalStateException("Utility class");
     }
 
-    public static ArrayList<OrderItem> readOrderItemsFromCart() {
+    public static ArrayList<OrderItem> readOrderItemsFromCart() throws ExceptionCart {
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         JsonReader reader = null;
         try {
@@ -29,15 +31,17 @@ public class CartElaboration {
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
             reader.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             logger.log(Level.WARNING, "error in CartElaboration");
+            throw new ExceptionCart("Exception while closing file for reading from cart");
         } finally {
             try{
                 if (reader != null){
                     reader.close();
                 }
-            } catch (Exception e) {
+            } catch (IOException e) {
                 logger.log(Level.WARNING, "error in CartElaboration");
+                throw new ExceptionCart("Exception while closing file for reading from cart");
             }
         }
         return orderItemArrayList;
@@ -57,7 +61,7 @@ public class CartElaboration {
         return true;
     }
 
-    public static boolean addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) throws IOException {
+    public static boolean addArrayListOrderItemsToCart(ArrayList<ProductShop> productShopArrayList, ArrayList<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
         ArrayList<OrderItem> orderItemArrayList = readOrderItemsFromCart();
         //backup file
         if (orderItemArrayList != null) {
@@ -75,7 +79,7 @@ public class CartElaboration {
         return true;
     }
 
-    public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) {
+    public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) throws ExceptionCart {
         ArrayList<OrderItem> orderItemArrayList;
         BufferedWriter out = null;
         try {
@@ -144,6 +148,7 @@ public class CartElaboration {
             out.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, "error in CartElaboration");
+            throw new ExceptionCart("Exception while closing file for writing into cart");
         } finally{
             try{
                 if (out != null){
@@ -152,12 +157,13 @@ public class CartElaboration {
             }
             catch (Exception e ) {
                 logger.log(Level.WARNING, "error in CartElaboration");
+                throw new ExceptionCart("Exception while closing file for writing into cart");
             }
         }
         return true;
     }
 
-    public static void deleteCart() {
+    public static void deleteCart() throws ExceptionCart {
         BufferedWriter out = null;
         try {
             String emptyString = "";
@@ -166,6 +172,7 @@ public class CartElaboration {
         }
         catch (Exception e) {
             logger.log(Level.WARNING, "error in CartElaboration");
+            throw new ExceptionCart("Exception while closing file for writing into cart");
         }
         finally {
             try{
@@ -174,6 +181,7 @@ public class CartElaboration {
                 }
             } catch (Exception e) {
                 logger.log(Level.WARNING, "error in CartElaboration");
+                throw new ExceptionCart("Exception while closing file for writing into cart");
             }
         }
     }
@@ -244,7 +252,7 @@ public class CartElaboration {
         return output;
     }
 
-    public static String convertJsonCartToString() throws IOException {
+    public static String convertJsonCartToString() throws FileElaborationException {
         return FileElaboration.fileToString(Constants.CART_PATH);
     }
 }

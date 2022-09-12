@@ -1,5 +1,6 @@
 package control;
 
+import exceptions.AddressException;
 import model.Address;
 import model.Dao.ShopDao;
 import model.Product.SimpleProduct;
@@ -21,7 +22,7 @@ public class ShopHandler {
     }
     public static void updateShop(Shop shop){}
 
-    public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) {
+    public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
         ArrayList<Shop> shopArrayList;
         if (searchParam == null || searchParam.length() == 0 || searchParam.length() > 50){
             Address address = LocationHandler.calculateLatLongFromIpAddress();

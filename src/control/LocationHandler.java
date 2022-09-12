@@ -2,6 +2,7 @@ package control;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import exceptions.AddressException;
 import model.Address;
 import model.Constants;
 import model.Shop.Shop;
@@ -15,7 +16,7 @@ public class LocationHandler {
         throw new IllegalStateException("Utility class");
     }
 
-    public static Address calculateLatLongFromIpAddress(){
+    public static Address calculateLatLongFromIpAddress() throws AddressException {
         //uses googleapis
         Address address = null;
         try {
@@ -26,12 +27,13 @@ public class LocationHandler {
         }
         catch (Exception e) {
             logger.log(Level.WARNING, "error in LocationHandler");
+            throw new AddressException("error while parsing response from google");
         }
         return address;
     }
 
 
-    public static Address calculateLatLongFromAddress(String addressString) {
+    public static Address calculateLatLongFromAddress(String addressString) throws AddressException {
         //uses googleapis
         Address address = null;
         try {
@@ -45,6 +47,7 @@ public class LocationHandler {
         }
         catch (Exception e) {
             logger.log(Level.WARNING, "error in LocationHandler");
+            throw new AddressException("error while parsing response from google");
         }
         return address;
     }

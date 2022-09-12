@@ -3,6 +3,8 @@ package view.view2;
 import control.CartElaboration;
 import control.OrderHandler;
 import control.UserHandler;
+import exceptions.AddressException;
+import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -62,7 +64,7 @@ public class CartAndPayment {
     User user;
     Shop shop;
 
-    public void passParam(Shop shop, User user) {
+    public void passParam(Shop shop, User user) throws ExceptionCart {
         this.shop = shop;
         this.user = user;
 
@@ -105,7 +107,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onHomepageImageClick() throws IOException {
+    public void onHomepageImageClick() throws IOException, AddressException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
@@ -278,7 +280,7 @@ public class CartAndPayment {
         orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
     }
 
-    public void onClearCartClicked() {
+    public void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
         orderItemsTableView.setItems(null);
     }

@@ -1,6 +1,7 @@
 package model.Dao;
 
 import control.FileElaboration;
+import exceptions.FileElaborationException;
 import model.Constants;
 import model.Db.DbHelper;
 import model.Order.Order;
@@ -161,6 +162,9 @@ public class OrderDao {
             stmt.setString(2, jsonString);
             stmt.executeUpdate();
         } catch (SQLException se) {
+            logger.log(Level.WARNING, "error in order");
+            return false;
+        } catch (FileElaborationException e) {
             logger.log(Level.WARNING, "error in order");
             return false;
         } finally {

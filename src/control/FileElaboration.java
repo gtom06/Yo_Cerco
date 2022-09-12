@@ -1,6 +1,6 @@
 package control;
 
-import model.Dao.BuyerDao;
+import exceptions.FileElaborationException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,13 +13,14 @@ public class FileElaboration {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void writeOnFile(String filepath, String stringToWrite) {
+    public static void writeOnFile(String filepath, String stringToWrite) throws FileElaborationException {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(filepath));
             writer.write(stringToWrite);
         } catch (Exception e){
             logger.log(Level.WARNING, "error in FileElaboration");
+            throw new FileElaborationException("Exception while writing on file");
         } finally{
             try {
                 if (writer != null) {
@@ -28,11 +29,12 @@ public class FileElaboration {
             }
             catch (Exception e) {
                 logger.log(Level.WARNING, "error in FileElaboration");
+                throw new FileElaborationException("Exception while writing on file");
             }
         }
     }
 
-    public static ArrayList<String> fileLinesToArrayList(String filepath) throws IOException {
+    public static ArrayList<String> fileLinesToArrayList(String filepath) throws IOException, FileElaborationException {
         ArrayList<String> lines = new ArrayList<>();
         BufferedReader br = null;
         try {
@@ -43,6 +45,7 @@ public class FileElaboration {
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "error in FileElaboration");
+            throw new FileElaborationException("Exception while writing on file");
         } finally {
             try {
                 if (br != null){
@@ -50,12 +53,13 @@ public class FileElaboration {
                 }
             } catch (Exception e){
                 logger.log(Level.WARNING, "error in FileElaboration");
+                throw new FileElaborationException("Exception while writing on file");
             }
         }
         return lines;
     }
 
-    public static String fileToString(String filepath) {
+    public static String fileToString(String filepath) throws FileElaborationException {
         String output = "";
         BufferedReader bufferedReader = null;
         try {
@@ -63,6 +67,7 @@ public class FileElaboration {
             output = bufferedReader.readLine();
         } catch (Exception e) {
             logger.log(Level.WARNING, "error in FileElaboration");
+            throw new FileElaborationException("Exception while reading from file");
         }
         finally {
             try {
@@ -71,12 +76,13 @@ public class FileElaboration {
                 }
             } catch (Exception e) {
                 logger.log(Level.WARNING, "error in FileElaboration");
+                throw new FileElaborationException("Exception while reading from file");
             }
         }
         return output;
     }
 
-    public static boolean copyAndReplaceFile(File file, String pathTo) {
+    public static boolean copyAndReplaceFile(File file, String pathTo) throws FileElaborationException {
         try {
             File fileToDelete = new File(pathTo);
             if (fileToDelete != null) {
@@ -86,7 +92,7 @@ public class FileElaboration {
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "error in FileElaboration");
-            return false;
+            throw new FileElaborationException("Exception while writing on file");
         }
         return true;
     }

@@ -1,6 +1,9 @@
 package control;
 
+import exceptions.ExceptionBrowser;
+
 import java.awt.*;
+import java.io.IOException;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,14 +13,15 @@ public class BrowserHandler {
     private BrowserHandler(){
         throw new IllegalStateException("Utility class");
     }
-    public static boolean openWebpage(URI uri) {
+    public static boolean openWebpage(URI uri) throws ExceptionBrowser {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE) && !uri.toString().isBlank()) {
             try {
                 desktop.browse(uri);
                 return true;
-            } catch (Exception e) {
+            } catch (IOException e) {
                 logger.log(Level.WARNING, "error in BrowserHandler");
+                throw new ExceptionBrowser("Not able to open browser");
             }
         }
         return false;

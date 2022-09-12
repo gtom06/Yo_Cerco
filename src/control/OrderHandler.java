@@ -1,6 +1,8 @@
 package control;
 
 import com.google.gson.Gson;
+import exceptions.ExceptionCart;
+import exceptions.FileElaborationException;
 import model.Constants;
 import model.Dao.OrderDao;
 import model.Order.Order;
@@ -48,7 +50,7 @@ public class OrderHandler {
         return order;
     }
 
-    public static Order previewOrder() {
+    public static Order previewOrder() throws ExceptionCart {
         ArrayList<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
         orderItemArrayList = CartElaboration.readOrderItemsFromCart();
@@ -71,7 +73,7 @@ public class OrderHandler {
                 null, null);
     }
 
-    public static Order createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException {
+    public static Order createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
         Order order = null;
         Payment payment = null;
         int shopId = 0;
@@ -172,7 +174,6 @@ public class OrderHandler {
     }
 
     public static boolean setStatusOrder(Order order, String status) {
-        System.out.println(order.getOrderId());
         return OrderDao.setStatusOrder(order.getOrderId(), status);
     }
 }

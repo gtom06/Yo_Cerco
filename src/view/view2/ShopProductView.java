@@ -2,6 +2,7 @@ package view.view2;
 
 import control.ProductHandler;
 import control.ShopHandler;
+import exceptions.AddressException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -88,7 +89,7 @@ public class ShopProductView {
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
+    protected void onHomepageImageClick() throws IOException, AddressException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();

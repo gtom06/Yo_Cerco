@@ -2,6 +2,8 @@ package view.view2;
 
 import control.FileElaboration;
 import control.UserHandler;
+import exceptions.AddressException;
+import exceptions.FileElaborationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -66,7 +68,7 @@ public class Login {
     ToggleGroup gender;
 
     @FXML
-    protected void onLoginButtonClick() throws IOException {
+    protected void onLoginButtonClick() throws IOException, AddressException, FileElaborationException {
         if (loginUsernameTextField.getText().isBlank() || loginPasswordPasswordField.getText().isBlank()) {
             invalidLoginCredentials.setText("The Login fields are required!");
             invalidLoginCredentials.setStyle(errorMessage);
@@ -193,7 +195,7 @@ public class Login {
         }
     }
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, FileElaborationException {
         ArrayList<String> userdata;
         userdata = FileElaboration.fileLinesToArrayList(Constants.REMEMBER_LOGIN);
         if (userdata.size() == 2){

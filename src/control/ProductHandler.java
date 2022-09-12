@@ -13,13 +13,6 @@ public class ProductHandler {
         throw new IllegalStateException("Utility class");
     }
 
-    public static ArrayList<ProductShop> findProductBy(String productName){
-        if (productName.isBlank() || productName.length() > 100) {
-            return null;
-        }
-        return ProductDao.findProductShopByName(productName);
-    }
-
     public static ArrayList<SimpleProduct> findSimpleProductBy(String productName) {
         if (productName.isBlank() || productName.length() > 100) {
             return null;
@@ -33,19 +26,8 @@ public class ProductHandler {
         return ProductDao.findProductBySkuAndShopId(shop.getShopId(), simpleProduct.getSku()).get(0);
     }
 
-    public static ArrayList<ProductShop> findProductShopBy(Shop shop) {
-        if (shop == null) {
-            return null;
-        }
-        return ProductDao.findProductInShop(shop.getShopId());
-    }
-
     public static ArrayList<SimpleProduct> findFavoriteSimpleProductFromUser(User user){
         return ProductDao.findSimpleProductFromUser(user);
-    }
-
-    public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(User user) {
-        return ProductDao.findFavoriteShopsFromUser(user.getUsername());
     }
 
     public static boolean isFavoriteProduct(ProductShop productShop, User user) {

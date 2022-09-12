@@ -3,6 +3,7 @@ package view.view1;
 import control.CartElaboration;
 import control.OrderHandler;
 import control.UserHandler;
+import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -65,7 +66,7 @@ public class CartAndPayment {
     User user;
     Shop shop;
 
-    public void passParam(Shop shop, User user) {
+    public void passParam(Shop shop, User user) throws ExceptionCart {
         this.shop = shop;
         this.user = user;
         textHi.setText(user.getUsername());
@@ -270,7 +271,7 @@ public class CartAndPayment {
         orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
     }
 
-    public void onClearCartClicked() {
+    public void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
         orderItemsTableView.setItems(null);
     }

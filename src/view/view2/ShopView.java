@@ -4,6 +4,9 @@ import control.BrowserHandler;
 import control.CartElaboration;
 import control.DepartmentHandler;
 import control.ShopHandler;
+import exceptions.AddressException;
+import exceptions.ExceptionBrowser;
+import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -55,7 +58,7 @@ public class ShopView {
     TableColumn<ProductShop, Integer> priceColumn;
     InputStream stream = null;
     @FXML
-    protected void onHomepageImageClick() throws IOException {
+    protected void onHomepageImageClick() throws IOException, AddressException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
@@ -144,7 +147,7 @@ public class ShopView {
     }
 
     @FXML
-    public void onClickGMapsHyperLink() {
+    public void onClickGMapsHyperLink() throws ExceptionBrowser {
         BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
     }
 
@@ -258,7 +261,7 @@ public class ShopView {
     }
     */
     @FXML
-    public void onClickOnOffersFlyer(){
+    public void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {
             if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
                 System.out.println("failed to open webpage");
@@ -267,7 +270,7 @@ public class ShopView {
     }
 
     @FXML
-    protected void onAddToCartClick() {
+    protected void onAddToCartClick() throws ExceptionCart {
         ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
         if (productShop != null) {
             CartElaboration.addOrderItemsToCart(productShop, 1);

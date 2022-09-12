@@ -5,6 +5,8 @@ import control.CartElaboration;
 import control.HttpRequest;
 import control.LocationHandler;
 import control.OrderHandler;
+import exceptions.AddressException;
+import exceptions.ExceptionCart;
 import model.Address;
 import model.Dao.OrderDao;
 import model.Order.Order;
@@ -23,7 +25,7 @@ import static org.junit.Assert.*;
 
 public class TomassiTestJUnit {
     @Test
-    public void calculateLatLongFromAddressTest() {
+    public void calculateLatLongFromAddressTest() throws AddressException {
         String addressString = "via colle alto ripi 03027";
         Address address = LocationHandler.calculateLatLongFromAddress(addressString);
         assertEquals( 41.5951003,address.getLat(), 0.5);
@@ -54,7 +56,6 @@ public class TomassiTestJUnit {
     @Test
     public void populateOrderWithOrderItemsTest() {
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(new Buyer("abc", null, null, null, null, null, null, null, null, null, null, null, null));
-        System.out.println(orderArrayList.get(0));
         assertEquals(2, orderArrayList.get(0).getShopId());
         assertEquals(44, orderArrayList.get(0).getOrderId());
         assertEquals("eur", orderArrayList.get(0).getCurrency());
@@ -62,13 +63,9 @@ public class TomassiTestJUnit {
         Order order = OrderHandler.populateOrderWithOrderItems(orderArrayList.get(0));
         assertNotNull(order.getOrderItemArrayList());
     }
-    @Test
-    public void createOrderTest() {
-
-    }
 
     @Test
-    public void addOrderItemsToCartTest() {
+    public void addOrderItemsToCartTest() throws ExceptionCart {
         ProductShop productShop = new ProductShop(150.0,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
         boolean bool = CartElaboration.addOrderItemsToCart(productShop, 5);
         assertEquals(true, bool);

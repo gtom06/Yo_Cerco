@@ -1,6 +1,7 @@
 package view.view1;
 
 import control.ShopHandler;
+import exceptions.AddressException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -95,7 +96,7 @@ public class SearchShop  {
     }
 
     @FXML
-    protected void onSearchButtonClick() {
+    protected void onSearchButtonClick() throws AddressException {
         tableView.getItems().clear();
         ArrayList<Shop> shopArrayList = null;
         String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();

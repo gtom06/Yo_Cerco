@@ -2,6 +2,7 @@ package view.view2;
 
 import control.ProductHandler;
 import control.ShopHandler;
+import exceptions.AddressException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,7 +72,7 @@ public class Homepage {
     User user = null;
     ArrayList<Shop> shopArrayList;
 
-    public void passParams(User user) throws FileNotFoundException {
+    public void passParams(User user) throws FileNotFoundException, AddressException {
         this.user = user;
 
         ArrayList<Text> textArrayList = new ArrayList<>(){
@@ -189,7 +190,7 @@ public class Homepage {
 
 
     @FXML
-    public void onClickOnLocation() {
+    public void onClickOnLocation() throws AddressException {
         ArrayList<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
@@ -209,7 +210,7 @@ public class Homepage {
     }
 
     @FXML
-    public void onSearchButtonClick() {
+    public void onSearchButtonClick() throws AddressException {
         Object selected = choiceBox.getSelectionModel().getSelectedItem();
         ArrayList<Shop> searchShopArrayList= null;
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;

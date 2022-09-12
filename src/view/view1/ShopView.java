@@ -3,6 +3,7 @@ package view.view1;
 import control.BrowserHandler;
 import control.DepartmentHandler;
 import control.ShopHandler;
+import exceptions.ExceptionBrowser;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -141,7 +142,7 @@ public class ShopView {
     }
 
     @FXML
-    public void onClickGMapsHyperLink(){
+    public void onClickGMapsHyperLink() throws ExceptionBrowser {
         BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
     }
 
@@ -212,7 +213,7 @@ public class ShopView {
 
     }
 
-    public void onClickOnOffersFlyer(){
+    public void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {
             if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
                 System.out.println("failed to open webpage");

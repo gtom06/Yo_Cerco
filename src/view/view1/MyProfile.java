@@ -2,6 +2,7 @@ package view.view1;
 
 import control.FileElaboration;
 import control.UserHandler;
+import exceptions.FileElaborationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -203,7 +204,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    public void onClickProfileImageView() throws IOException, FileElaborationException {
 
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);
