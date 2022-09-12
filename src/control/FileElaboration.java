@@ -29,7 +29,6 @@ public class FileElaboration {
             }
             catch (Exception e) {
                 logger.log(Level.WARNING, "error in FileElaboration");
-                throw new FileElaborationException("Exception while writing on file");
             }
         }
     }
@@ -53,7 +52,6 @@ public class FileElaboration {
                 }
             } catch (Exception e){
                 logger.log(Level.WARNING, "error in FileElaboration");
-                throw new FileElaborationException("Exception while writing on file");
             }
         }
         return lines;
@@ -76,7 +74,6 @@ public class FileElaboration {
                 }
             } catch (Exception e) {
                 logger.log(Level.WARNING, "error in FileElaboration");
-                throw new FileElaborationException("Exception while reading from file");
             }
         }
         return output;

@@ -41,7 +41,6 @@ public class CartElaboration {
                 }
             } catch (IOException e) {
                 logger.log(Level.WARNING, "error in CartElaboration");
-                throw new ExceptionCart("Exception while closing file for reading from cart");
             }
         }
         return orderItemArrayList;
@@ -157,7 +156,6 @@ public class CartElaboration {
             }
             catch (Exception e ) {
                 logger.log(Level.WARNING, "error in CartElaboration");
-                throw new ExceptionCart("Exception while closing file for writing into cart");
             }
         }
         return true;
@@ -181,7 +179,6 @@ public class CartElaboration {
                 }
             } catch (Exception e) {
                 logger.log(Level.WARNING, "error in CartElaboration");
-                throw new ExceptionCart("Exception while closing file for writing into cart");
             }
         }
     }
