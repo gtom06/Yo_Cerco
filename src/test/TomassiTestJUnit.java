@@ -1,22 +1,25 @@
 package test;
 
 import com.google.gson.Gson;
-import control.CartElaboration;
-import control.HttpRequest;
-import control.LocationHandler;
-import control.OrderHandler;
+import control.*;
 import exceptions.AddressException;
+import exceptions.ExceptionBrowser;
 import exceptions.ExceptionCart;
 import model.Address;
+import model.Constants;
 import model.Dao.OrderDao;
+import model.Dao.ShopDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Product.ProductShop;
+import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.Buyer;
 import model.User.User;
 import org.junit.Test;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;

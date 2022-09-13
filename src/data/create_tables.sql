@@ -36,16 +36,6 @@ CREATE TABLE shop_department(
     position_Y      NUMERIC(10) DEFAULT 0
 );
 
-CREATE TABLE user_favoriteshop(
-    username        VARCHAR(100)    REFERENCES userx(username),
-    shop_id         NUMERIC(10)     REFERENCES shop(shop_id)
-);
-
-CREATE TABLE user_favoriteproduct(
-    username                    VARCHAR(100)    REFERENCES userx(username),
-    sku                         NUMERIC(10)     REFERENCES product(sku)
-);
-
 CREATE SEQUENCE orders_id_sequence;
 
 CREATE TABLE orders(
@@ -128,7 +118,17 @@ CREATE TABLE userx(
     profile_imagepath       VARCHAR(200) DEFAULT 'icons8-customer-100.png'
 );
 
-CREATE TABLE shopholder_shop(
+CREATE TABLE admin_shop(
     username                VARCHAR(100),
     shop_id                 NUMERIC(10)
+);
+
+CREATE TABLE user_favoriteshop(
+                                  username        VARCHAR(100)    REFERENCES userx(username),
+                                  shop_id         NUMERIC(10)     REFERENCES shop(shop_id)
+);
+
+CREATE TABLE user_favoriteproduct(
+                                     username                    VARCHAR(100)    REFERENCES userx(username),
+                                     sku                         NUMERIC(10)     REFERENCES product(sku)
 );

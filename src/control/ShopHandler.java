@@ -2,7 +2,9 @@ package control;
 
 import exceptions.AddressException;
 import model.Address;
+import model.Dao.OrderDao;
 import model.Dao.ShopDao;
+import model.Order.Order;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
@@ -21,6 +23,13 @@ public class ShopHandler {
         ShopDao.deleteShopDb(shop);
     }
     public static void updateShop(Shop shop){}
+
+    public static Shop findShopByOrder(Order order) {
+        ArrayList<Shop> shopArrayList = null;
+        shopArrayList = ShopDao.findShopById(order.getShopId());
+        return shopArrayList.size() != 0 ? shopArrayList.get(0) : null;
+    }
+
 
     public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
         ArrayList<Shop> shopArrayList;

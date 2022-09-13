@@ -11,7 +11,6 @@ module Supermarket {
     requires com.google.gson;
     requires java.desktop;
     requires junit;
-    requires org.testng;
     exports control;
     opens view.view1;
     opens view.view2;

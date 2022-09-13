@@ -284,5 +284,7 @@ public class CartAndPayment {
     protected void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
         orderItemsTableView.setItems(null);
+        totalPriceText.setText("0");
+        totalQuantityText.setText("0");
     }
 }

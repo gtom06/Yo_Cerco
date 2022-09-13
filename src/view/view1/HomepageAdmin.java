@@ -38,6 +38,7 @@ public class HomepageAdmin {
         this.user = user;
     }
 
+    @FXML
     protected void openOrders() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ordersAdmin.fxml"));
         Parent root = loader.load();
