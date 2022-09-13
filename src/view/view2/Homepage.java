@@ -92,7 +92,7 @@ public class Homepage {
             }
         };
 
-        shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, "All types");
+        shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
         if (shopArrayList != null && shopArrayList.size() != 0){
             for (int i = 0; i < 4; i++) {
                 imageViewArrayList.get(i).setImage(new Image(new FileInputStream(shopArrayList.get(i).getLogoImagepath())));
@@ -194,7 +194,7 @@ public class Homepage {
         ArrayList<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
-        searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, "All types");
+        searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
         productTableView.setVisible(true);
         shopTableView.setVisible(true);
         choiceBox.setValue(Constants.SHOP);

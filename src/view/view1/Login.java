@@ -114,7 +114,6 @@ public class Login {
 
     @FXML
     protected void onSignUpButtonClick() {
-
         if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
             invalidSignupCredentials.setText("Please fill in all fields!");
             invalidSignupCredentials.setStyle(errorMessage);
@@ -139,7 +138,7 @@ public class Login {
             invalidLoginCredentials.setText("");
             RadioButton rb = (RadioButton) gender.getSelectedToggle();
             String genderString = rb.getText();
-            UserHandler.insertUser(signUpUsernameTextField.getText(),
+            if (!UserHandler.insertUser(signUpUsernameTextField.getText(),
                     null,
                     null,
                     signUpPasswordPasswordField.getText(),
@@ -151,7 +150,15 @@ public class Login {
                     null,
                     null,
                     genderString,
-                    Constants.BUYER_USER);
+                    Constants.BUYER_USER)){
+                invalidSignupCredentials.setText("Please use another username!");
+                invalidSignupCredentials.setStyle(errorMessage);
+                signUpEmailTextField.setStyle(errorStyle);
+                signUpUsernameTextField.setStyle(errorStyle);
+                signUpPasswordPasswordField.setStyle(errorStyle);
+                signUpRepeatPasswordPasswordField.setStyle(errorStyle);
+                invalidLoginCredentials.setText("");
+            }
         } else {
             invalidSignupCredentials.setText("The Passwords don't match!");
             invalidSignupCredentials.setStyle(errorMessage);

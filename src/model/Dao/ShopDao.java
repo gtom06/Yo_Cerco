@@ -56,13 +56,13 @@ public class ShopDao {
                     "FROM shop " +
                     "WHERE LOWER(city) " +
                     "LIKE ? AND status != ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
             stmt.setInt(2, Constants.NOT_AVAILABLE);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(3,type);
             }
             ResultSet rs = stmt.executeQuery();
@@ -87,13 +87,13 @@ public class ShopDao {
             String sql = "SELECT DISTINCT * " +
                     "FROM shop " +
                     "WHERE LOWER(name) LIKE ? AND status != ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2,Constants.NOT_AVAILABLE);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(3,type);
             }
             ResultSet rs = stmt.executeQuery();
@@ -121,7 +121,7 @@ public class ShopDao {
                     "AND ? < longitude " +
                     "AND longitude < ? " +
                     "AND status != ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class ShopDao {
             stmt.setDouble(3, lng - 0.5);
             stmt.setDouble(4, lng + 0.5);
             stmt.setInt(5,Constants.NOT_AVAILABLE);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(6,type);
             }
             ResultSet rs = stmt.executeQuery();
@@ -160,7 +160,7 @@ public class ShopDao {
                     "AND longitude < ? " +
                     "AND status != ?" +
                     "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) > ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
@@ -171,7 +171,7 @@ public class ShopDao {
             stmt.setInt(5,Constants.NOT_AVAILABLE);
             stmt.setInt(6,time);
             stmt.setInt(7,time);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(8,type);
             }
             ResultSet rs = stmt.executeQuery();
@@ -199,7 +199,7 @@ public class ShopDao {
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
                     "AND CAST(closing_time AS INT) > ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
@@ -207,7 +207,7 @@ public class ShopDao {
             stmt.setInt(2,Constants.NOT_AVAILABLE);
             stmt.setInt(3,time);
             stmt.setInt(4,time);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(5,type);
             }
             ResultSet rs = stmt.executeQuery();
@@ -258,7 +258,7 @@ public class ShopDao {
                     "AND status != ? " +
                     "AND CAST(opening_time AS INT) <= ? " +
                     "AND CAST(closing_time AS INT) > ? ";
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql += "AND type = ?";
             }
             stmt = conn.prepareStatement(sql);
@@ -266,7 +266,7 @@ public class ShopDao {
             stmt.setInt(2,Constants.NOT_AVAILABLE);
             stmt.setInt(3,time);
             stmt.setInt(4,time);
-            if (!type.equals("All types")){
+            if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(5,type);
             }
 

@@ -140,7 +140,7 @@ public class UserDao {
             }
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding user");
+            logger.log(Level.WARNING, "error in insert user");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -171,7 +171,7 @@ public class UserDao {
 
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding user");
+            logger.log(Level.WARNING, "error while updating user");
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);

@@ -25,23 +25,17 @@ import java.io.InputStream;
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ProductView {
-
     Shop shop = null;
-
     User user = null;
-
     ProductShop productShop = null;
-
     Department department = null;
-
-
     @FXML
-    ImageView productPhoto, homepageImageView, addShopToFavorites,
+    protected ImageView productPhoto, homepageImageView, addShopToFavorites,
             removeShopFromFavorites, cartImage, previousPage, discountedTagProd;
     @FXML
-    Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd;
+    protected Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd;
 
-    InputStream stream = null;
+    protected InputStream stream = null;
 
     public void passParams(User user, Department department, ProductShop productShop, Shop shop) throws FileNotFoundException {
 
@@ -110,20 +104,23 @@ public class ProductView {
         stage.close();
     }
 
-    public void addToFavorite() {
+    @FXML
+    protected void addToFavorite() {
         ProductHandler.insertProductIntoFavorites(user,productShop);
         favoriteText.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(true);
         addShopToFavorites.setVisible(false);
     }
-    public void removeFromFavorite(){
+    @FXML
+    protected void removeFromFavorite(){
         ProductHandler.removeProductFromFavorites(user,productShop);
         favoriteText.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(false);
         addShopToFavorites.setVisible(true);
     }
 
-    public void addRemoveFavoriteFromText(){
+    @FXML
+    protected void addRemoveFavoriteFromText(){
         if (favoriteText.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
             removeFromFavorite();
         } else {
@@ -132,7 +129,7 @@ public class ProductView {
     }
 
     @FXML
-    public void addToCartClick() throws Exception {
+    protected void addToCartClick() throws Exception {
         if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
             throw new Exception("item not added in cart");
         }
@@ -140,7 +137,7 @@ public class ProductView {
     }
 
     @FXML
-    public void checkDiscount(ProductShop productShop){
+    protected void checkDiscount(ProductShop productShop){
         System.out.println(productShop.getDiscountedPrice());
         productShop.setDiscountedPrice(0.50);
         if (productShop.getDiscountedPrice() != 0){

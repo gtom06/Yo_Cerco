@@ -28,7 +28,7 @@
             </Label>
             <Button fx:id="cancelButton" layoutX="618.0" layoutY="17.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-text-fill: #e6e6e6; -fx-border-width: 2; -fx-border-color: #0a7557; -fx-border-radius: 2; -fx-background-color: #12d39d;" text="Cancel">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
             <TextField fx:id="loginUsernameTextField" layoutX="205.0" layoutY="103.0" prefHeight="30.0" prefWidth="300.0" promptText="Username / Email" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
@@ -52,12 +52,12 @@
             </ImageView>
             <CheckBox fx:id="rememberMe" layoutX="205.0" layoutY="193.0" mnemonicParsing="false" style="-fx-text-fill: #0a7557;" text="Remember Me">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </CheckBox>
             <Button layoutX="269.0" layoutY="243.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #0a7557;" text="Forgot your Password?" underline="true">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
             <Label fx:id="invalidLoginCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="220.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
@@ -67,7 +67,7 @@
             </Label>
             <Button fx:id="loginButton" layoutX="444.0" layoutY="186.0" mnemonicParsing="false" onAction="#onLoginButtonClick" style="-fx-background-color: #12d39d; -fx-text-fill: #e6e6e6; -fx-border-radius: 2; -fx-border-width: 2; -fx-border-color: #0a7557;" text="Login">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
             <Label layoutX="303.0" layoutY="307.0" prefHeight="36.0" prefWidth="130.0" style="-fx-text-fill: #0a7557;" text="Sign-Up">
@@ -112,13 +112,13 @@
             </PasswordField>
             <Label layoutX="205.0" layoutY="516.0" prefHeight="20.0" prefWidth="105.0" style="-fx-text-fill: #0a7557;" text="Date of Birth">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Label>
             <DatePicker fx:id="signUpDateDatePicker" layoutX="332.0" layoutY="512.0" promptText="mm/dd/yyyy" showWeekNumbers="true" style="-fx-border-color: #12d39d;" />
             <Label layoutX="205.0" layoutY="545.0" prefHeight="20.0" prefWidth="90.0" style="-fx-text-fill: #0a7557;" text="Gender">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Label>
             <RadioButton layoutX="330.0" layoutY="545.0" mnemonicParsing="false" selected="true" style="-fx-text-fill: #0a7557;" text="M" textFill="DARKGRAY">
@@ -141,7 +141,7 @@
             </RadioButton>
             <CheckBox fx:id="termsConditionsCheckbox" layoutX="215.0" layoutY="574.0" mnemonicParsing="false" selected="true" style="-fx-text-fill: #0a7557;" text="I have read the Terms and Conditions">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </CheckBox>
             <Label fx:id="invalidSignupCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="595.0" prefHeight="19.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
@@ -151,12 +151,12 @@
             </Label>
             <Button layoutX="285.0" layoutY="620.0" mnemonicParsing="false" onAction="#onSignUpButtonClick" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #12d39d; -fx-text-fill: #e6e6e6; -fx-border-radius: 2; -fx-border-width: 2; -fx-border-color: #0a7557;" text="Sign-Up">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
             <Button layoutX="267.0" layoutY="655.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #0a7557;" text="Terms and Conditions" underline="true">
                 <font>
-                    <Font name="Tahoma" size="15.0" />
+                    <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
         </AnchorPane>

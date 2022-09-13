@@ -28,16 +28,16 @@ public class GeneralProductView {
     User user ;
     ArrayList<Shop> arrayShopList;
     @FXML
-    ImageView productPhoto, homepageImageView, previousPage;
+    protected ImageView productPhoto, homepageImageView, previousPage;
     @FXML
-    Text textHi, nameProd, brandProd;
+    protected Text textHi, nameProd, brandProd;
     @FXML
-    TableView<Shop> shopsTableView = new TableView<>();
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
+    protected TableView<Shop> shopsTableView = new TableView<>();
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
 
     @FXML
@@ -106,7 +106,7 @@ public class GeneralProductView {
     }
 
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchProduct.fxml"));
         Parent root = loader.load();
         SearchProduct searchProduct = loader.getController();
@@ -144,8 +144,6 @@ public class GeneralProductView {
         openingColumn.setMinWidth(10);
         closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
 
-
         shopsTableView.getColumns().addAll(nameColumn, addressColumn, cityColumn, openingColumn, closingColumn);
-
     }
 }

@@ -26,19 +26,19 @@ import java.io.IOException;
 
 public class CartAndPayment {
     @FXML
-    ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    Button payButton;
+    protected Button payButton;
     @FXML
-    Text textHi, slashText;
+    protected Text textHi, slashText;
     @FXML
-    ToggleGroup paymentType;
+    protected ToggleGroup paymentType;
     @FXML
-    RadioButton codRadioButton;
+    protected RadioButton codRadioButton;
     @FXML
-    RadioButton cardRadioButton;
+    protected RadioButton cardRadioButton;
     @FXML
-    TextField
+    protected TextField
                 nameTextField,
                 surnameTextField,
                 phoneNumberTextField,
@@ -47,20 +47,20 @@ public class CartAndPayment {
                 billingCountryTextField,
                 billingZipTextField;
     @FXML
-    TextField
+    protected TextField
                 cardholderTextField,
                 creditcardTextField,
                 mmTextField,
                 yyTextField,
                 cvvTextField;
     @FXML
-    Text orderCreatedText, totalPriceText, shopNameText, totalQuantityText;
+    protected Text orderCreatedText, totalPriceText, shopNameText, totalQuantityText;
     @FXML
-    TableView<OrderItem> orderItemsTableView = new TableView<>();
-    TableColumn<OrderItem, String> nameColumn;
-    TableColumn<OrderItem, String> quantityOrderedColumn;
-    TableColumn<OrderItem, Double> pricePerItemColumn;
-    TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableView<OrderItem> orderItemsTableView = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn;
+    protected TableColumn<OrderItem, String> quantityOrderedColumn;
+    protected TableColumn<OrderItem, Double> pricePerItemColumn;
+    protected TableColumn<OrderItem, Double> priceTotalColumn;
 
 
     User user;
@@ -111,7 +111,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onHomepageImageClick() throws IOException {
+    protected void onHomepageImageClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
@@ -125,7 +125,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         //todo: verify if is correct
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
@@ -141,7 +141,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onCodClicked() {
+    protected void onCodClicked() {
         cardholderTextField.setVisible(false);
         creditcardTextField.setVisible(false);
         mmTextField.setVisible(false);
@@ -152,7 +152,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onCardClicked() {
+    protected void onCardClicked() {
         cardholderTextField.setVisible(true);
         creditcardTextField.setVisible(true);
         mmTextField.setVisible(true);
@@ -183,7 +183,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onPayButtonClick() throws Exception {
+    protected void onPayButtonClick() throws Exception {
         String name = nameTextField.getText();
         String surname = surnameTextField.getText();
         String phoneNumber = phoneNumberTextField.getText();

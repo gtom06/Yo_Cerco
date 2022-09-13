@@ -26,23 +26,23 @@ import java.util.ArrayList;
 public class Favorite {
     User user = null;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    Text textHi;
+    protected Text textHi;
     @FXML
-    TableView<Shop> shopTableView = new TableView<>();
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
+    protected TableView<Shop> shopTableView = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
 
     @FXML
-    TableView<SimpleProduct> simpleProductTableView = new TableView<>();
-    TableColumn<SimpleProduct, String> brandColumn;
-    TableColumn<SimpleProduct, Integer> sizeColumn;
-    TableColumn<SimpleProduct, String> nameProductColumn;
-    TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
+    protected TableView<SimpleProduct> simpleProductTableView = new TableView<>();
+    protected TableColumn<SimpleProduct, String> brandColumn;
+    protected TableColumn<SimpleProduct, Integer> sizeColumn;
+    protected TableColumn<SimpleProduct, String> nameProductColumn;
+    protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
 
     @FXML
     protected void onListViewItemClick() throws IOException {
@@ -153,7 +153,7 @@ public class Favorite {
         simpleProductTableView.getColumns().addAll(nameProductColumn, brandColumn, sizeColumn, unitOfMeasureColumn);
     }
 
-    public void fillShopTableView() {
+    protected void fillShopTableView() {
         shopTableView.getItems().clear();
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
         ArrayList<Shop> shopArrayList = ShopHandler.findFavoriteShopsFromUser(user);
@@ -168,7 +168,7 @@ public class Favorite {
         }
     }
 
-    public void fillSimpleProductTableView() {
+    protected void fillSimpleProductTableView() {
         simpleProductTableView.getItems().clear();
         ObservableList<SimpleProduct> simpleProductObservableList = FXCollections.observableArrayList();
         ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findFavoriteSimpleProductFromUser(user);

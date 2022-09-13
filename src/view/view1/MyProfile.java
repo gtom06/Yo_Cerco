@@ -29,23 +29,19 @@ import java.io.InputStream;
 public class MyProfile {
 
     User user = null;
+    @FXML
+    protected Rectangle borderProfileImageRectangle;
+    @FXML
+    protected ImageView myProfileImage;
+    @FXML
+    protected Text nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
+    @FXML
+    protected TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
+    @FXML
+    protected ImageView editImageView, saveImageView, homepageImageView;
+    @FXML
+    protected AnchorPane anchorPane2;
 
-    @FXML
-    Rectangle borderProfileImageRectangle;
-
-    @FXML
-    ImageView myProfileImage;
-    @FXML
-    Text nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
-
-    @FXML
-    TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
-
-    @FXML
-    ImageView editImageView, saveImageView, homepageImageView;
-
-    @FXML
-    AnchorPane anchorPane1, anchorPane2;
     boolean isSomeFieldBlank;
 
     @FXML
@@ -89,14 +85,11 @@ public class MyProfile {
             }
         }
         if (user instanceof Admin) {
-            //todo
             phoneText.setVisible(false);
             addressText.setVisible(false);
         }
         if (user instanceof ShopHolder){
-            //todo
         }
-        //myProfileImage.setImage();
     }
 
     @FXML
@@ -113,7 +106,8 @@ public class MyProfile {
         stage.close();
     }
 
-    public void editProfile() {
+    @FXML
+    protected void editProfile() {
         editImageView.setVisible(false);
         saveImageView.setVisible(true);
         saveYourProfileText.setVisible(true);
@@ -144,7 +138,8 @@ public class MyProfile {
         phoneTextField.setText(((Buyer) user).getPhone());
     }
 
-    public void saveProfile() {
+    @FXML
+    protected void saveProfile() {
         if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
                 streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
                 countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
@@ -190,11 +185,11 @@ public class MyProfile {
     }
 
     @FXML
-    public void enterProfileImage() {
+    protected void enterProfileImage() {
         borderProfileImageRectangle.setVisible(true);
     }
     @FXML
-    public void exitProfileImage(){
+    protected void exitProfileImage(){
         borderProfileImageRectangle.setVisible(false);
     }
     @FXML
@@ -204,7 +199,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException, FileElaborationException {
+    protected void onClickProfileImageView() throws IOException, FileElaborationException {
 
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);

@@ -50,7 +50,6 @@ public class SearchShop  {
     @FXML
     CheckBox openNow;
 
-    ArrayList<String>arrayTypeShop = null;
     @FXML
     protected void onTableViewItemClick() throws IOException {
 
@@ -132,14 +131,15 @@ public class SearchShop  {
         this.user = user;
         labelHi.setText(user.getUsername());
 
-        arrayTypeShop = ShopHandler.findTypeShop();
-        ObservableList<String> observableListTypeShop = FXCollections.observableArrayList(arrayTypeShop);
-        choiceBoxTypeShop.setItems(observableListTypeShop);
-        choiceBoxTypeShop.setValue(observableListTypeShop.get(0));
+
     }
 
     @FXML
     public void initialize(){
+        ObservableList<String> observableListTypeShop = FXCollections.observableArrayList(Constants.SHOP_TYPE);
+        choiceBoxTypeShop.setItems(FXCollections.observableArrayList(observableListTypeShop));
+        choiceBoxTypeShop.setValue(observableListTypeShop.get(0));
+
         param1.setText(Constants.BY_CITY);
         param2.setText(Constants.BY_NAME);
         param3.setText(Constants.NEARBY);

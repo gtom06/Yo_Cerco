@@ -112,11 +112,4 @@ public class ShopHandler {
     public static ArrayList<Shop> findFavoriteShopsFromUser(User user){
         return ShopDao.findShopByFavouriteUser(user.getUsername());
     }
-
-    public static ArrayList<String> findTypeShop(){
-        ArrayList<String> arrayTypeShop;
-        arrayTypeShop = ShopDao.findTypeShop();
-        arrayTypeShop.add(0, "All types");
-        return arrayTypeShop;
-    }
 }

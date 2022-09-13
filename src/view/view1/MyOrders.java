@@ -24,16 +24,16 @@ import java.util.ArrayList;
 public class MyOrders {
     User user = null;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    Text textHi, numberOfOrdersText, totalOrdersText;
+    protected Text textHi, numberOfOrdersText, totalOrdersText;
     @FXML
-    TableView<Order> orderTableView = new TableView<>();
-    TableColumn<Order, String> orderNumber;
-    TableColumn<Order, Integer> orderTotalQuantity;
-    TableColumn<Order, String> orderTotalPrice;
-    TableColumn<Order, Timestamp> orderTimeStamp;
-    TableColumn<Order, Timestamp> orderStatus;
+    protected TableView<Order> orderTableView = new TableView<>();
+    protected TableColumn<Order, String> orderNumber;
+    protected TableColumn<Order, Integer> orderTotalQuantity;
+    protected TableColumn<Order, String> orderTotalPrice;
+    protected TableColumn<Order, Timestamp> orderTimeStamp;
+    protected TableColumn<Order, Timestamp> orderStatus;
 
     @FXML
     protected void onOrderClicked() throws IOException {
@@ -93,7 +93,7 @@ public class MyOrders {
 
     }
 
-    public void fillShopTableView() {
+    protected void fillShopTableView() {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();

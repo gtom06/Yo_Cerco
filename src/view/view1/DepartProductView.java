@@ -24,27 +24,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DepartProductView {
-
     Department department = null;
     Shop shop = null;
     User user = null;
 
     @FXML
-    ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    Text departmentName, shopName, textHi;
+    protected Text departmentName, shopName, textHi;
     @FXML
-    TableView<ProductShop> productTable = new TableView<>();
-    TableColumn<ProductShop,String>nameColumn;
-    TableColumn<ProductShop,String> brandColumn;
-    TableColumn<ProductShop,Float> sizeColumn;
-    TableColumn<ProductShop,String> unitOfMeasureColumn;
-    TableColumn<ProductShop, String> currencyColumn;
-    TableColumn<ProductShop, Double> discountedPriceColumn;
-    TableColumn<ProductShop, Double> priceColumn;
+    protected TableView<ProductShop> productTable = new TableView<>();
+    protected TableColumn<ProductShop,String>nameColumn;
+    protected TableColumn<ProductShop,String> brandColumn;
+    protected TableColumn<ProductShop,Float> sizeColumn;
+    protected TableColumn<ProductShop,String> unitOfMeasureColumn;
+    protected TableColumn<ProductShop, String> currencyColumn;
+    protected TableColumn<ProductShop, Double> discountedPriceColumn;
+    protected TableColumn<ProductShop, Double> priceColumn;
 
     @FXML
-    Button addToCartButton;
+    protected Button addToCartButton;
 
     @FXML
     protected void onListViewItemClick() throws IOException {
@@ -104,7 +103,8 @@ public class DepartProductView {
 
     }
 
-    public void previousPage() throws IOException {
+    @FXML
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
         ShopView shopView = loader.getController();

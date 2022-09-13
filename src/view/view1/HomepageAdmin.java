@@ -17,9 +17,9 @@ public class HomepageAdmin {
     User user = null;
     // Import the application's controls
     @FXML
-    Button logoutButton;
+    protected Button logoutButton;
     @FXML
-    AnchorPane anchorPane1;
+    protected AnchorPane anchorPane1;
 
     @FXML
     protected void onLogoutButtonClick() throws IOException {
@@ -38,7 +38,7 @@ public class HomepageAdmin {
         this.user = user;
     }
 
-    public void openOrders() throws IOException {
+    protected void openOrders() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ordersAdmin.fxml"));
         Parent root = loader.load();
         OrdersAdmin ordersAdmin = loader.getController();

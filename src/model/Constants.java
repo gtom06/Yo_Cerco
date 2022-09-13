@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public interface Constants {
     //for google apis
     String GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
@@ -35,6 +37,15 @@ public interface Constants {
     String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorites";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
 
+    //use that ArrayList to populate filters
+    ArrayList<String> SHOP_TYPE = new ArrayList<>() {
+        {
+            add("All shops");
+            add("Supermarket");
+            add("Clothing");
+        }
+    };
+
     //for files
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
     String CART_PATH = "src/data/cart.json";
@@ -48,7 +59,7 @@ public interface Constants {
     String SHOP_IMAGE = "src/images/shop/";
     String LOGO_DEPARTMENT_PATH = "src/images/department/";
     //for shop/product_shop
-    String ALL_TYPES = "All types";
+
 
     //values
     int NEW_OPENING = 0;

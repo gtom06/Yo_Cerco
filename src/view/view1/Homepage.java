@@ -16,11 +16,11 @@ import java.io.IOException;
 public class Homepage {
     User user = null;
     @FXML
-    Button logoutButton;
+    protected Button logoutButton;
     @FXML
-    AnchorPane anchorPane1, anchorPane2, anchorPane3, anchorPane4;
+    protected AnchorPane anchorPane1, anchorPane2, anchorPane3, anchorPane4;
     @FXML
-    Label labelHi;
+    protected Label labelHi;
     @FXML
     protected void onClickAnchorPane1() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
@@ -91,7 +91,7 @@ public class Homepage {
     }
 
     @FXML
-    public void openCartAndPayment() throws IOException {
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
