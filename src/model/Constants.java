@@ -1,6 +1,8 @@
 package model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public interface Constants {
     //for google apis
@@ -38,13 +40,7 @@ public interface Constants {
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
 
     //use that ArrayList to populate filters
-    ArrayList<String> SHOP_TYPE = new ArrayList<>() {
-        {
-            add("All shops");
-            add("Supermarket");
-            add("Clothing");
-        }
-    };
+    ArrayList<String> SHOP_TYPE = new ArrayList<>(Arrays.asList("All shops","Supermarket","Clothing"));
 
     //for files
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
@@ -59,7 +55,7 @@ public interface Constants {
     String SHOP_IMAGE = "src/images/shop/";
     String LOGO_DEPARTMENT_PATH = "src/images/department/";
     //for shop/product_shop
-
+    String ALL_TYPES = Constants.SHOP_TYPE.get(0);
 
     //values
     int NEW_OPENING = 0;
