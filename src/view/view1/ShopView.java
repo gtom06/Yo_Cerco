@@ -152,8 +152,18 @@ public class ShopView {
     }
 
     @FXML
+    protected void onMouseEnteredFlyer(){
+        offersFlyerShop.setUnderline(true);
+    }
+
+    @FXML
     protected void onMouseExitedAddress(){
         TextShopAddress.setUnderline(false);
+    }
+
+    @FXML
+    protected void onMouseExitedFlyer(){
+        offersFlyerShop.setUnderline(false);
     }
 
     //methods for adding and removing shops from favorite
@@ -230,7 +240,8 @@ public class ShopView {
     }
 
     public void checkOffersFlyer(Shop shop){
-        if (shop.getOffersFlyerPath() == null){
+        System.out.println(shop.getOffersFlyerPath()+ "sono qui");
+        if (shop.getOffersFlyerPath().equals("") || shop.getOffersFlyerPath() == null ){
             offersFlyerShop.setVisible(false);
             offersFlyerTagShop.setVisible(false);
         }

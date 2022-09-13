@@ -22,7 +22,7 @@
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
         </Text>
-        <TableView fx:id="simpleProductTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="253.0" prefWidth="898.0" />
-        <TableView fx:id="shopTableView" layoutX="40.0" layoutY="404.0" onMouseClicked="#onTableViewProductClick" prefHeight="253.0" prefWidth="898.0" />
+        <TableView fx:id="simpleProductTableView" layoutX="40.0" layoutY="94.0" onMouseClicked="#onProductTableViewClick" prefHeight="253.0" prefWidth="898.0" />
+        <TableView fx:id="shopTableView" layoutX="40.0" layoutY="404.0" onMouseClicked="#onShopTableViewClick" prefHeight="253.0" prefWidth="898.0" />
     </children>
 </AnchorPane>

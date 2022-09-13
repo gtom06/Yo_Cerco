@@ -33,7 +33,7 @@ public class ProductView {
     protected ImageView productPhoto, homepageImageView, addShopToFavorites,
             removeShopFromFavorites, cartImage, previousPage, discountedTagProd;
     @FXML
-    protected Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd;
+    protected Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd, itemAddedText;
 
     protected InputStream stream = null;
 
@@ -44,6 +44,7 @@ public class ProductView {
         this.productShop = productShop;
         this.shop = shop;
 
+        itemAddedText.setVisible(false);
         textHi.setText(user.getUsername());
         descriptionProd.setText(productShop.getDescription());
         priceProd.setText(String.valueOf(productShop.getPrice()));
@@ -134,6 +135,7 @@ public class ProductView {
             throw new Exception("item not added in cart");
         }
         CartElaboration.readOrderItemsFromCart();
+        itemAddedText.setVisible(true);
     }
 
     @FXML

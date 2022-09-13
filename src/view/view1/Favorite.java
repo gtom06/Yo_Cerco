@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-import view.view2.GeneralProductView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +44,8 @@ public class Favorite {
     protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
 
     @FXML
-    protected void onListViewItemClick() throws IOException {
+    protected void onShopTableViewClick() throws IOException {
+
         Shop shop = shopTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null) {
@@ -54,7 +54,6 @@ public class Favorite {
             ShopView shopView = loader.getController();
             shopView.passUser(user);
             shopView.passShop(shop);
-            //shopView.passDepartments(departments);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
@@ -66,23 +65,24 @@ public class Favorite {
 
 
     @FXML
-    protected void onTableViewProductClick() throws IOException {
-        /*
+    protected void onProductTableViewClick() throws IOException {
+
         SimpleProduct product = simpleProductTableView.getSelectionModel().getSelectedItem();
+        ArrayList<Shop> arrayShopList = null;
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (product != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("productView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root = loader.load();
-            ProductView productView = loader.getController();
-            productView.passParams(user);
+            GeneralProductView generalProductView = loader.getController();
+            generalProductView.passParams(user, product, arrayShopList);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
             newStage.setResizable(false);
-            Stage stage = (Stage) shopTableView.getScene().getWindow();
+            Stage stage = (Stage) simpleProductTableView.getScene().getWindow();
             stage.close();
         }
-        */
+
     }
 
     @FXML

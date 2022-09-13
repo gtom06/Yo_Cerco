@@ -199,7 +199,7 @@
             <Image url="@../../images/shop/icons8-discount-96.png" />
          </image>
       </ImageView>
-      <Text fx:id="offersFlyerShop" fill="#ffb703" layoutX="315.0" layoutY="245.0" stroke="#2c2c2c" onMouseClicked="#onClickOnOffersFlyer" text="Offers Flyer">
+      <Text fx:id="offersFlyerShop" fill="#ffb703" layoutX="315.0" layoutY="245.0" onMouseEntered="#onMouseEnteredFlyer" onMouseExited="#onMouseExitedFlyer" stroke="#2c2c2c" onMouseClicked="#onClickOnOffersFlyer" text="Offers Flyer">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
