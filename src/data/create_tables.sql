@@ -12,7 +12,6 @@ CREATE TABLE shop(
     status                      NUMERIC(1),
     opening_time                VARCHAR(10),
     closing_time                VARCHAR(10),
-    pdf_path                    VARCHAR(200),
     franchising                 VARCHAR(100),
     latitude                    FLOAT(10),
     longitude                   FLOAT(10),
