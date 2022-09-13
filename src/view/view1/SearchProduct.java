@@ -40,8 +40,6 @@ public class SearchProduct {
 
     @FXML
     protected void onListViewItemClick() throws IOException {
-
-
         SimpleProduct simpleProduct = productTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (simpleProduct != null){
