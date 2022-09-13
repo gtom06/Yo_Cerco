@@ -12,6 +12,21 @@ values
     ('eurospin ciamarra', 'Supermarket', '+393400123456', 'v. antonio ciamarra', 'roma', 'eurospin.png', '', '', 1, 9, 20, 'eurospin', 41.8540214, 12.5873707, '/Eurospin/@41.8540174,12.5895594,17z/data=!3m2!4b1!5s0x13258827acba62ff:0x70c7eacb3356bf9d!4m5!3m4!1s0x1325882650b7ac39:0x8f596e6e8cf84efb!8m2!3d41.8540174!4d12.5895594', ''),
     ('eurospin peikov', 'Supermarket', '+393880123456', 'pzz ilia peikov', 'roma', 'eurospin.png', '', '', 1, 9, 21, 'eurospin', 41.8315352, 12.5827329, '/Eurospin/@41.8315392,12.5805442,17z/data=!4m5!3m4!1s0x1325884e91813ceb:0x30adcdd3b135c851!8m2!3d41.8316001!4d12.5826743', ''),
     ('testIpAddress', 'Supermarket', '+393880123456', 'pzz ilia peikov', 'roma', 'eurospin.png', '', '', 1, 0, 24, 'eurospin', 41.8696638, 41.8696638, '/Eurospin/@41.8315392,12.5805442,17z/data=!4m5!3m4!1s0x1325884e91813ceb:0x30adcdd3b135c851!8m2!3d41.8316001!4d12.5826743', '');
+
+insert into department (name, logo_imagepath)
+values
+    ('FRUIT','icons8-banana-dolce-48.png'),
+    ('DRINKS','icons8-bottiglia-di-vino-48.png'),
+    ('VEGETABLES','icons8-broccoli-48.png'),
+    ('SOAPS','icons8-dispenser-di-sapone-48.png'),
+    ('CHEESES','icons8-formaggio-48.png'),
+    ('CEREALS','icons8-grano-48.png'),
+    ('FROZEN','icons8-inverno-48.png'),
+    ('BUTCHERY','icons8-prosciutto-48.png'),
+    ('GASTRONOMY','icons8-salame-48.png'),
+    ('PETS', 'icons8-snoopy-48.png'),
+    ('DESSERTS', 'icons8-torta-48.png');
+
 insert into shop_department (shop_id, department_id)
 values
     (6,11),
@@ -79,20 +94,6 @@ values
     (7,11),
     (6,8),
     (1,8);
-
-insert into department (name, logo_imagepath)
-values
-    ('FRUIT','icons8-banana-dolce-48.png'),
-    ('DRINKS','icons8-bottiglia-di-vino-48.png'),
-    ('VEGETABLES','icons8-broccoli-48.png'),
-    ('SOAPS','icons8-dispenser-di-sapone-48.png'),
-    ('CHEESES','icons8-formaggio-48.png'),
-    ('CEREALS','icons8-grano-48.png'),
-    ('FROZEN','icons8-inverno-48.png'),
-    ('BUTCHERY','icons8-prosciutto-48.png'),
-    ('GASTRONOMY','icons8-salame-48.png'),
-    ('PETS', 'icons8-snoopy-48.png'),
-    ('DESSERTS', 'icons8-torta-48.png');
 
 insert into product(sku,name,description,logo_imagepath,size,unit_of_measure,brand)
 values
