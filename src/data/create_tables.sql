@@ -102,11 +102,6 @@ CREATE TABLE product_shop(
     currency                VARCHAR(5)
 );
 
-/*
-era stata creata una table con percent_of_discount nel dbms. inutile creare questa field, ma meglio calcolarla a runtime.
-'location like scaffale 4 ripiano 5'
-*/
-
 CREATE TABLE product_userx(
     sku                     NUMERIC(10) REFERENCES product(sku),
     username                VARCHAR(100) REFERENCES userx(username)

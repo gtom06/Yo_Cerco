@@ -146,15 +146,18 @@ public class ShopView {
         BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
     }
 
+    @FXML
     protected void onMouseEnteredAddress(){
         TextShopAddress.setUnderline(true);
     }
 
+    @FXML
     protected void onMouseExitedAddress(){
         TextShopAddress.setUnderline(false);
     }
 
     //methods for adding and removing shops from favorite
+    @FXML
     protected void addToFavorite() {
         ShopHandler.insertShopIntoFavorite(shop, user);
         TextFavorite.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
@@ -162,6 +165,7 @@ public class ShopView {
         addShopToFavorites.setVisible(false);
     }
 
+    @FXML
     protected void removeFromFavorite(){
         ShopHandler.removeShopFromFavorite(shop, user);
         TextFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
@@ -169,6 +173,7 @@ public class ShopView {
         addShopToFavorites.setVisible(true);
     }
 
+    @FXML
     protected void addRemoveFavoriteFromText(){
         if (TextFavorite.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
             removeFromFavorite();
@@ -176,6 +181,7 @@ public class ShopView {
             addToFavorite();
         }
     }
+    @FXML
     protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
         Parent root = loader.load();
@@ -189,6 +195,7 @@ public class ShopView {
         stage.close();
     }
 
+    @FXML
     protected void onClickDepartmentImage(MouseEvent mouseEvent) throws IOException {
 
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());

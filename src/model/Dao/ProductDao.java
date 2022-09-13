@@ -25,9 +25,9 @@ public class ProductDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM product_shop " +
-                    "WHERE name LIKE ?";
+                    "WHERE LOWER(name) LIKE ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + name.toUpperCase() + "%");
+            stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
@@ -48,9 +48,9 @@ public class ProductDao {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
                     "FROM product " +
-                    "WHERE name LIKE ?";
+                    "WHERE LOWER(name) LIKE ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + name.toUpperCase() + "%");
+            stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
