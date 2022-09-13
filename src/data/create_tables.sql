@@ -17,7 +17,8 @@ CREATE TABLE shop(
     latitude                    FLOAT(10),
     longitude                   FLOAT(10),
     gmaps_string                VARCHAR(500),
-    type                        VARCHAR(30)
+    type                        VARCHAR(30),
+    offers_flyer_link           VARCHAR(500)
 );
 
 CREATE SEQUENCE department_id_sequence;
