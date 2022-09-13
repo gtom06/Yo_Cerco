@@ -54,7 +54,7 @@ public class SpecificOrderAdmin {
     }
 
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ordersAdmin.fxml"));
         Parent root = loader.load();
         OrdersAdmin ordersAdmin = loader.getController();
@@ -93,7 +93,7 @@ public class SpecificOrderAdmin {
         orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
-    public void fillOrderTableView() {
+    protected void fillOrderTableView() {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);
@@ -107,14 +107,15 @@ public class SpecificOrderAdmin {
         }
     }
 
-    public void passParams(User user, Order order) {
+    protected void passParams(User user, Order order) {
         this.user = user;
         this.order = order;
         textHi.setText(user.getUsername());
         fillOrderTableView();
     }
 
-    public void completeOrder() {
+    @FXML
+    protected void completeOrder() {
         if (OrderHandler.setStatusOrder(order, "Completed")) {
             completedLabel.setVisible(true);
         }

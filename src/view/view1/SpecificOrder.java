@@ -50,7 +50,7 @@ public class SpecificOrder {
     }
 
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myOrders.fxml"));
         Parent root = loader.load();
@@ -90,7 +90,7 @@ public class SpecificOrder {
         orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
-    public void fillOrderTableView() {
+    protected void fillOrderTableView() {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);

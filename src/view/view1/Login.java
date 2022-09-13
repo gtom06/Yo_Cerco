@@ -115,7 +115,7 @@ public class Login {
     @FXML
     protected void onSignUpButtonClick() {
         if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
-            invalidSignupCredentials.setText("Please fill in all fields!");
+            invalidSignupCredentials.setText("Please fill all fields!");
             invalidSignupCredentials.setStyle(errorMessage);
             invalidLoginCredentials.setText("");
 
@@ -158,6 +158,11 @@ public class Login {
                 signUpPasswordPasswordField.setStyle(errorStyle);
                 signUpRepeatPasswordPasswordField.setStyle(errorStyle);
                 invalidLoginCredentials.setText("");
+            } else {
+                invalidSignupCredentials.setText("You are set!");
+                invalidSignupCredentials.setStyle(successMessage);
+                loginUsernameTextField.setText(signUpUsernameTextField.getText());
+                loginPasswordPasswordField.setText(signUpPasswordPasswordField.getText());
             }
         } else {
             invalidSignupCredentials.setText("The Passwords don't match!");

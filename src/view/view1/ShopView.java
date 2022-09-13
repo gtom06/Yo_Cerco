@@ -142,41 +142,41 @@ public class ShopView {
     }
 
     @FXML
-    public void onClickGMapsHyperLink() throws ExceptionBrowser {
+    protected void onClickGMapsHyperLink() throws ExceptionBrowser {
         BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
     }
 
-    public void onMouseEnteredAddress(){
+    protected void onMouseEnteredAddress(){
         TextShopAddress.setUnderline(true);
     }
 
-    public void onMouseExitedAddress(){
+    protected void onMouseExitedAddress(){
         TextShopAddress.setUnderline(false);
     }
 
     //methods for adding and removing shops from favorite
-    public void addToFavorite() {
+    protected void addToFavorite() {
         ShopHandler.insertShopIntoFavorite(shop, user);
         TextFavorite.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(true);
         addShopToFavorites.setVisible(false);
     }
 
-    public void removeFromFavorite(){
+    protected void removeFromFavorite(){
         ShopHandler.removeShopFromFavorite(shop, user);
         TextFavorite.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
         removeShopFromFavorites.setVisible(false);
         addShopToFavorites.setVisible(true);
     }
 
-    public void addRemoveFavoriteFromText(){
+    protected void addRemoveFavoriteFromText(){
         if (TextFavorite.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
             removeFromFavorite();
         } else {
             addToFavorite();
         }
     }
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
         Parent root = loader.load();
         SearchShop searchShop = loader.getController();
@@ -189,7 +189,7 @@ public class ShopView {
         stage.close();
     }
 
-    public void onClickDepartmentImage(MouseEvent mouseEvent) throws IOException {
+    protected void onClickDepartmentImage(MouseEvent mouseEvent) throws IOException {
 
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         for (Department dep : departmentArrayList){
@@ -213,7 +213,8 @@ public class ShopView {
 
     }
 
-    public void onClickOnOffersFlyer() throws ExceptionBrowser {
+    @FXML
+    protected void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {
             if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
                 System.out.println("failed to open webpage");

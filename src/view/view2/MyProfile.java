@@ -37,29 +37,29 @@ public class MyProfile {
     User user = null;
 
     @FXML
-    Rectangle borderProfileImageRectangle;
+    protected Rectangle borderProfileImageRectangle;
 
     @FXML
-    ImageView myProfileImage;
+    protected ImageView myProfileImage;
     @FXML
-    Text emailText, nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
+    protected Text emailText, nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
 
     @FXML
-    TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
+    protected TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
 
     @FXML
-    ImageView homepageImageView;
+    protected ImageView homepageImageView;
 
     @FXML
-    TableView<Order> orderTableView = new TableView<>();
-    TableColumn<Order, String> orderNumber;
-    TableColumn<Order, Integer> orderTotalQuantity;
-    TableColumn<Order, String> orderTotalPrice;
-    TableColumn<Order, Timestamp> orderTimeStamp;
-    TableColumn<Order, Timestamp> orderStatus;
+    protected TableView<Order> orderTableView = new TableView<>();
+    protected TableColumn<Order, String> orderNumber;
+    protected TableColumn<Order, Integer> orderTotalQuantity;
+    protected TableColumn<Order, String> orderTotalPrice;
+    protected TableColumn<Order, Timestamp> orderTimeStamp;
+    protected TableColumn<Order, Timestamp> orderStatus;
 
     @FXML
-    Text numberOfOrdersText;
+    protected Text numberOfOrdersText;
 
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {
@@ -76,7 +76,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void saveProfile() {
+    protected void saveProfile() {
         if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
                 streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
                 countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
@@ -93,16 +93,16 @@ public class MyProfile {
     }
 
     @FXML
-    public void enterProfileImage() {
+    protected void enterProfileImage() {
         borderProfileImageRectangle.setVisible(true);
     }
     @FXML
-    public void exitProfileImage(){
+    protected void exitProfileImage(){
         borderProfileImageRectangle.setVisible(false);
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException, FileElaborationException {
+    protected void onClickProfileImageView() throws IOException, FileElaborationException {
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);
 
@@ -153,7 +153,7 @@ public class MyProfile {
 
     }
 
-    public void fillView() {
+    protected void fillView() {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
@@ -187,7 +187,7 @@ public class MyProfile {
     }
 
     @FXML
-    public void onClickOrderTableView() throws Exception {
+    protected void onClickOrderTableView() throws Exception {
         Order order = orderTableView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
         Parent root = loader.load();

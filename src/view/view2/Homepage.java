@@ -32,42 +32,42 @@ import java.util.ArrayList;
 
 public class Homepage {
     @FXML
-    ImageView   cartImageView,
-            logoutImageView;
+    protected ImageView cartImageView,
+                        logoutImageView;
 
     @FXML
-    ImageView   shopImageView1,
-            shopImageView2,
-            shopImageView3,
-            shopImageView4;
+    protected ImageView shopImageView1,
+                        shopImageView2,
+                        shopImageView3,
+                        shopImageView4;
 
     @FXML
-    Text    shopText1,
-            shopText2,
-            shopText3,
-            shopText4;
+    protected Text  shopText1,
+                    shopText2,
+                    shopText3,
+                    shopText4;
 
     @FXML
-    ChoiceBox choiceBox;
+    protected ChoiceBox choiceBox;
 
     @FXML
-    TextField searchParam;
+    protected TextField searchParam;
 
     @FXML
-    TableView<Shop> shopTableView = new TableView<>();
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
-    TableColumn<Shop, Double> distanceColumn;
+    protected TableView<Shop> shopTableView = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
+    protected TableColumn<Shop, Double> distanceColumn;
 
     @FXML
-    TableView<SimpleProduct> productTableView = new TableView<>();
-    TableColumn<SimpleProduct, String> nameProductColumn;
-    TableColumn<SimpleProduct, Double> sizeColumn;
-    TableColumn<SimpleProduct, String> unitOfMeasureColumn;
-    TableColumn<SimpleProduct, String> brandColumn;
+    protected TableView<SimpleProduct> productTableView = new TableView<>();
+    protected TableColumn<SimpleProduct, String> nameProductColumn;
+    protected TableColumn<SimpleProduct, Double> sizeColumn;
+    protected TableColumn<SimpleProduct, String> unitOfMeasureColumn;
+    protected TableColumn<SimpleProduct, String> brandColumn;
 
     User user = null;
     ArrayList<Shop> shopArrayList;
@@ -102,7 +102,8 @@ public class Homepage {
         }
     }
 
-    public void openCartAndPayment() throws IOException {
+    @FXML
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
@@ -116,7 +117,7 @@ public class Homepage {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    protected void onClickProfileImageView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
@@ -130,7 +131,7 @@ public class Homepage {
     }
 
     @FXML
-    public void onLogoutButtonClick() throws IOException {
+    protected void onLogoutButtonClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loader.load();
         Login login = loader.getController();
@@ -142,7 +143,8 @@ public class Homepage {
         stage.close();
     }
 
-    public void onClickOnShop(MouseEvent mouseEvent) throws IOException {
+    @FXML
+    protected void onClickOnShop(MouseEvent mouseEvent) throws IOException {
         Shop shop = null;
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         for (Shop s : shopArrayList){
@@ -154,14 +156,16 @@ public class Homepage {
         goToShop(shop);
     }
 
-    public void onClickOnShopTableView() throws IOException {
+    @FXML
+    protected void onClickOnShopTableView() throws IOException {
         Shop shop = shopTableView.getSelectionModel().getSelectedItem();
         if (shop != null) {
             goToShop(shop);
         }
     }
 
-    public void goToShop(Shop shop) throws IOException {
+    @FXML
+    protected void goToShop(Shop shop) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
         ShopView shopView = loader.getController();
@@ -174,7 +178,8 @@ public class Homepage {
         stage.close();
     }
 
-    public void onClickOnProductTableView() throws IOException {
+    @FXML
+    protected void onClickOnProductTableView() throws IOException {
         SimpleProduct simpleProduct = productTableView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
         Parent root = loader.load();
@@ -190,7 +195,7 @@ public class Homepage {
 
 
     @FXML
-    public void onClickOnLocation() throws AddressException {
+    protected void onClickOnLocation() throws AddressException {
         ArrayList<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
@@ -210,7 +215,7 @@ public class Homepage {
     }
 
     @FXML
-    public void onSearchButtonClick() throws AddressException {
+    protected void onSearchButtonClick() throws AddressException {
         Object selected = choiceBox.getSelectionModel().getSelectedItem();
         ArrayList<Shop> searchShopArrayList= null;
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;

@@ -24,16 +24,16 @@ public class SpecificOrder {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView, goPreviousPageImageView, cartImageView;
+    protected ImageView homepageImageView, goPreviousPageImageView, cartImageView;
     @FXML
-    Text totalPriceText, timestampText, orderNumberText;
+    protected Text totalPriceText, timestampText, orderNumberText;
     @FXML
-    TableView<OrderItem> orderItemTableView = new TableView<>();
-    TableColumn<OrderItem, String> nameColumn;
-    TableColumn<OrderItem, String> brandColumn;
-    TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    TableColumn<OrderItem, Double> priceTotalColumn;
-    TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn;
+    protected TableColumn<OrderItem, String> brandColumn;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
+    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableColumn<OrderItem, String> currencyColumn;
 
 
     @FXML
@@ -51,7 +51,7 @@ public class SpecificOrder {
     }
 
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
@@ -65,7 +65,7 @@ public class SpecificOrder {
     }
 
     @FXML
-    public void openCartAndPayment() throws IOException {
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
@@ -103,7 +103,7 @@ public class SpecificOrder {
         orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
-    public void fillOrder() throws Exception {
+    protected void fillOrder() throws Exception {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);

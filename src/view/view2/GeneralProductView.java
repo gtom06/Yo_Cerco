@@ -33,16 +33,16 @@ public class GeneralProductView {
     SimpleProduct simpleProduct;
 
     @FXML
-    ImageView productPhoto, homepageImageView, previousPage, cartImageView;
+    protected ImageView productPhoto, homepageImageView, previousPage, cartImageView;
     @FXML
-    Label nameProd, brandProd;
+    protected Label nameProd, brandProd;
     @FXML
-    TableView<Shop> shopsTableView = new TableView<>();
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
+    protected TableView<Shop> shopsTableView = new TableView<>();
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
 
 
@@ -69,7 +69,7 @@ public class GeneralProductView {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    protected void onClickProfileImageView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
@@ -96,7 +96,8 @@ public class GeneralProductView {
         stage.close();
     }
 
-    public void openCartAndPayment() throws IOException {
+    @FXML
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
@@ -136,7 +137,7 @@ public class GeneralProductView {
     }
 
     @FXML
-    public void onItemClickedTableView() throws IOException {
+    protected void onItemClickedTableView() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
         Parent root = loader.load();

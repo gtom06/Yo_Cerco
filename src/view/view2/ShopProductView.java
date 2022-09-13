@@ -37,11 +37,11 @@ public class ShopProductView {
     SimpleProduct simpleProduct;
 
     @FXML
-    ImageView productPhoto, homepageImageView, previousPage, cartImageView, addShopToFavorites, removeShopFromFavorites;
+    protected ImageView productPhoto, homepageImageView, previousPage, cartImageView, addShopToFavorites, removeShopFromFavorites;
     @FXML
-    Text nameProd, brandProd, productShopPrice1, productShopPrice2, sizeLabel;
+    protected Text nameProd, brandProd, productShopPrice1, productShopPrice2, sizeLabel;
     @FXML
-    TextArea descriptionTextArea;
+    protected TextArea descriptionTextArea;
     InputStream stream = null;
     ProductShop productShop = null;
 
@@ -75,7 +75,7 @@ public class ShopProductView {
     }
 
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    protected void onClickProfileImageView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
@@ -102,18 +102,21 @@ public class ShopProductView {
         stage.close();
     }
 
-    public void addToFavorite() {
+    @FXML
+    protected void addToFavorite() {
         ProductHandler.insertProductIntoFavorites(user,productShop);
         removeShopFromFavorites.setVisible(true);
         addShopToFavorites.setVisible(false);
     }
-    public void removeFromFavorite(){
+    @FXML
+    protected void removeFromFavorite(){
         ProductHandler.removeProductFromFavorites(user,productShop);
         removeShopFromFavorites.setVisible(false);
         addShopToFavorites.setVisible(true);
     }
 
-    public void openCartAndPayment() throws IOException {
+    @FXML
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
@@ -126,10 +129,7 @@ public class ShopProductView {
         stage.close();
     }
 
-    @FXML
-    public void checkDiscount(ProductShop productShop){
-        System.out.println(productShop.getDiscountedPrice());
-        System.out.println(productShop.getPrice());
+    protected void checkDiscount(ProductShop productShop){
         if (productShop.getDiscountedPrice() != 0){
             productShopPrice1.setStrikethrough(true);
         }

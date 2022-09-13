@@ -23,16 +23,16 @@ public class SpecificOrderAdmin {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView, goPreviousPageImageView, cartImageView;
+    protected ImageView homepageImageView, goPreviousPageImageView, cartImageView;
     @FXML
-    Text totalPriceText, timestampText, orderNumberText, completedText;
+    protected Text totalPriceText, timestampText, orderNumberText, completedText;
     @FXML
-    TableView<OrderItem> orderItemTableView = new TableView<>();
-    TableColumn<OrderItem, String> nameColumn;
-    TableColumn<OrderItem, String> brandColumn;
-    TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    TableColumn<OrderItem, Double> priceTotalColumn;
-    TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn;
+    protected TableColumn<OrderItem, String> brandColumn;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
+    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableColumn<OrderItem, String> currencyColumn;
 
 
     @FXML
@@ -74,7 +74,7 @@ public class SpecificOrderAdmin {
         orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
     }
 
-    public void fillOrder() {
+    protected void fillOrder() {
         orderItemTableView.getItems().clear();
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);
@@ -102,7 +102,7 @@ public class SpecificOrderAdmin {
         fillOrder();
     }
     @FXML
-    public void completeOrder() {
+    protected void completeOrder() {
         if (OrderHandler.setStatusOrder(order, "Completed")) {
             completedText.setVisible(true);
         }

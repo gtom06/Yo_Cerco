@@ -26,12 +26,12 @@ public class HomepageAdmin {
     User user = null;
     // Import the application's controls
     @FXML
-    TableView<Order> orderTableView = new TableView<>();
-    TableColumn<Order, String> orderNumber;
-    TableColumn<Order, Integer> orderTotalQuantity;
-    TableColumn<Order, String> orderTotalPrice;
-    TableColumn<Order, Timestamp> orderTimeStamp;
-    TableColumn<Order, String> orderStatus;
+    protected TableView<Order> orderTableView = new TableView<>();
+    protected TableColumn<Order, String> orderNumber;
+    protected TableColumn<Order, Integer> orderTotalQuantity;
+    protected TableColumn<Order, String> orderTotalPrice;
+    protected TableColumn<Order, Timestamp> orderTimeStamp;
+    protected TableColumn<Order, String> orderStatus;
 
     @FXML
     protected void onLogoutButtonClick() throws IOException {
@@ -88,7 +88,7 @@ public class HomepageAdmin {
         orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalPrice, orderTimeStamp, orderStatus);
     }
 
-    public void fillTableView() {
+    protected void fillTableView() {
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);

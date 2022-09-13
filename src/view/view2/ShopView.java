@@ -40,23 +40,24 @@ public class ShopView {
     User user = null;
     ArrayList<Department> departmentArrayList = null;
     @FXML
-    Button addToCartButton;
+    protected Button addToCartButton;
     @FXML
-    ImageView homepageImageView, shopLogo, profileImageView, cartImageView,
-            addShopToFavorites, removeShopFromFavorites,
-            dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
+    protected ImageView homepageImageView, shopLogo, profileImageView, cartImageView,
+                        addShopToFavorites, removeShopFromFavorites,
+                        dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
 
     @FXML
-    Text TextShopName, TextShopAddress, TextShopTime, TextPhoneShop;
+    protected Text TextShopName, TextShopAddress, TextShopTime, TextPhoneShop;
     @FXML
-    TableView<ProductShop> productTable = new TableView<>();
-    TableColumn<ProductShop, String> nameColumn;
-    TableColumn<ProductShop, String> brandColumn;
-    TableColumn<ProductShop, Float> sizeColumn;
-    TableColumn<ProductShop, String> unitOfMeasureColumn;
-    TableColumn<ProductShop, Integer> currencyColumn;
-    TableColumn<ProductShop, Integer> priceColumn;
+    protected TableView<ProductShop> productTable = new TableView<>();
+    protected TableColumn<ProductShop, String> nameColumn;
+    protected TableColumn<ProductShop, String> brandColumn;
+    protected TableColumn<ProductShop, Float> sizeColumn;
+    protected TableColumn<ProductShop, String> unitOfMeasureColumn;
+    protected TableColumn<ProductShop, Integer> currencyColumn;
+    protected TableColumn<ProductShop, Integer> priceColumn;
     InputStream stream = null;
+
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
@@ -72,7 +73,7 @@ public class ShopView {
     }
 
     @FXML
-    public void openCartAndPayment() throws IOException {
+    protected void openCartAndPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
         Parent root = loader.load();
         CartAndPayment cartAndPayment = loader.getController();
@@ -85,7 +86,7 @@ public class ShopView {
         stage.close();
     }
     @FXML
-    public void onClickProfileImageView() throws IOException {
+    protected void onClickProfileImageView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
         Parent root = loader.load();
         MyProfile myProfile = loader.getController();
@@ -147,26 +148,27 @@ public class ShopView {
     }
 
     @FXML
-    public void onClickGMapsHyperLink() throws ExceptionBrowser {
+    protected void onClickGMapsHyperLink() throws ExceptionBrowser {
         BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
     }
 
     //methods for adding and removing shops from favorite
     @FXML
-    public void addToFavorite() {
+    protected void addToFavorite() {
         ShopHandler.insertShopIntoFavorite(shop, user);
         removeShopFromFavorites.setVisible(true);
         addShopToFavorites.setVisible(false);
     }
 
     @FXML
-    public void removeFromFavorite() {
+    protected void removeFromFavorite() {
         ShopHandler.removeShopFromFavorite(shop, user);
         removeShopFromFavorites.setVisible(false);
         addShopToFavorites.setVisible(true);
     }
+
     @FXML
-    public void previousPage() throws IOException {
+    protected void previousPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
         Parent root = loader.load();
         SearchShop searchShop = loader.getController();
@@ -180,7 +182,7 @@ public class ShopView {
     }
 
     @FXML
-    public void onClickDepartmentImage(MouseEvent mouseEvent) {
+    protected void onClickDepartmentImage(MouseEvent mouseEvent) {
         productTable.getItems().clear();
         ArrayList<ProductShop> productShopArrayList = null;
         Department department = null;
@@ -261,7 +263,7 @@ public class ShopView {
     }
     */
     @FXML
-    public void onClickOnOffersFlyer() throws ExceptionBrowser {
+    protected void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {
             if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
                 System.out.println("failed to open webpage");
