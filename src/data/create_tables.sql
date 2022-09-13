@@ -9,7 +9,7 @@ CREATE TABLE shop(
     logo_imagepath              VARCHAR(200),
     interior_photos_imagepath   VARCHAR(200),
     planimetry_imagepath        VARCHAR(200),
-    status                      VARCHAR(1),
+    status                      NUMERIC(1),
     opening_time                VARCHAR(10),
     closing_time                VARCHAR(10),
     pdf_path                    VARCHAR(200),
