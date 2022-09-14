@@ -24,6 +24,7 @@ import model.User.Buyer;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CartAndPayment {
     @FXML
@@ -68,31 +69,22 @@ public class CartAndPayment {
         this.shop = shop;
         this.user = user;
 
-        if (user.getName() != null || user.getName() != "") {
+        if (user != null) {
             nameTextField.setText(user.getName());
-        }
-        if (user.getSurname() != null || user.getUsername() != "") {
             surnameTextField.setText(user.getSurname());
-        }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
             phoneNumberTextField.setText(((Buyer) user).getPhone());
-        }
-        if (((Buyer) user).getBillingStreet()!= null || (((Buyer) user).getBillingStreet()) != "") {
             billingStreetTextField.setText(((Buyer) user).getBillingStreet());
-        }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone() != "") {
             billingCityTextField.setText(((Buyer) user).getBillingCity());
-        }
-        if (((Buyer) user).getBillingCountry() != null || ((Buyer) user).getBillingCountry() != "") {
             billingCountryTextField.setText(((Buyer) user).getBillingCountry());
-        }
-        if (((Buyer) user).getBillingZip() != null || ((Buyer) user).getBillingZip() != "") {
             billingZipTextField.setText(((Buyer) user).getBillingZip());
         }
 
-        ObservableList<OrderItem> observableListProducts =
-                FXCollections.observableArrayList(CartElaboration.readOrderItemsFromCart());
-        orderItemsTableView.setItems(observableListProducts);
+        ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
+        if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+            ObservableList<OrderItem> observableListProducts =
+                    FXCollections.observableArrayList(orderItemArrayList);
+            orderItemsTableView.setItems(observableListProducts);
+        }
 
         Order order = OrderHandler.previewOrder();
         if (order != null){

@@ -83,6 +83,7 @@ public class ProductView {
         stage.close();
     }
 
+    @FXML
     public void previousPage() throws IOException {
         Parent root = null;
         if (shop != null || department != null) {

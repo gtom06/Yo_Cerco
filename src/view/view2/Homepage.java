@@ -3,6 +3,7 @@ package view.view2;
 import control.ProductHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
+import exceptions.ExceptionBrowser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -146,6 +147,7 @@ public class Homepage {
     @FXML
     protected void onClickOnShop(MouseEvent mouseEvent) throws IOException {
         Shop shop = null;
+        try {
         int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
         for (Shop s : shopArrayList){
             if (s.getShopId() == ref) {
@@ -154,13 +156,18 @@ public class Homepage {
             }
         }
         goToShop(shop);
+        } catch (Exception e) {}
     }
 
     @FXML
     protected void onClickOnShopTableView() throws IOException {
-        Shop shop = shopTableView.getSelectionModel().getSelectedItem();
-        if (shop != null) {
-            goToShop(shop);
+        try {
+            Shop shop = shopTableView.getSelectionModel().getSelectedItem();
+            if (shop != null) {
+                goToShop(shop);
+            }
+        } catch (Exception e){
+
         }
     }
 

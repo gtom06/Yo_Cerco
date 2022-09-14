@@ -34,12 +34,19 @@ public class DepartProductView {
     protected Text departmentName, shopName, textHi;
     @FXML
     protected TableView<ProductShop> productTable = new TableView<>();
+    @FXML
     protected TableColumn<ProductShop,String>nameColumn;
+    @FXML
     protected TableColumn<ProductShop,String> brandColumn;
+    @FXML
     protected TableColumn<ProductShop,Float> sizeColumn;
+    @FXML
     protected TableColumn<ProductShop,String> unitOfMeasureColumn;
+    @FXML
     protected TableColumn<ProductShop, String> currencyColumn;
+    @FXML
     protected TableColumn<ProductShop, Double> discountedPriceColumn;
+    @FXML
     protected TableColumn<ProductShop, Double> priceColumn;
 
     @FXML
@@ -47,7 +54,6 @@ public class DepartProductView {
 
     @FXML
     protected void onListViewItemClick() throws IOException {
-
         ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (productShop != null){

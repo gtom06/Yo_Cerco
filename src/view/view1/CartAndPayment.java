@@ -23,6 +23,7 @@ import model.User.Buyer;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CartAndPayment {
     @FXML
@@ -63,40 +64,31 @@ public class CartAndPayment {
     protected TableColumn<OrderItem, Double> priceTotalColumn;
 
 
-    User user;
-    Shop shop;
+    User user = null;
+    Shop shop = null;
 
     public void passParam(Shop shop, User user) throws ExceptionCart {
         this.shop = shop;
         this.user = user;
         textHi.setText(user.getUsername());
 
-        if (user.getName() != null || !user.getName().equals("")) {
+        if (user != null) {
             nameTextField.setText(user.getName());
-        }
-        if (user.getSurname() != null || !user.getUsername().equals("")) {
             surnameTextField.setText(user.getSurname());
-        }
-        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
             phoneNumberTextField.setText(((Buyer) user).getPhone());
-        }
-        if (((Buyer) user).getBillingStreet()!= null || !(((Buyer) user).getBillingStreet()).equals("")) {
             billingStreetTextField.setText(((Buyer) user).getBillingStreet());
-        }
-        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
             billingCityTextField.setText(((Buyer) user).getBillingCity());
-        }
-        if (((Buyer) user).getBillingCountry() != null || !((Buyer) user).getBillingCountry().equals("")) {
             billingCountryTextField.setText(((Buyer) user).getBillingCountry());
-        }
-        if (((Buyer) user).getBillingZip() != null || !((Buyer) user).getBillingZip().equals("")) {
             billingZipTextField.setText(((Buyer) user).getBillingZip());
         }
 
 
-        ObservableList<OrderItem> observableListProducts =
-                FXCollections.observableArrayList(CartElaboration.readOrderItemsFromCart());
-        orderItemsTableView.setItems(observableListProducts);
+        ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
+        if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+            ObservableList<OrderItem> observableListProducts =
+                    FXCollections.observableArrayList(orderItemArrayList);
+            orderItemsTableView.setItems(observableListProducts);
+        }
 
         Order order = OrderHandler.previewOrder();
         if (order != null){
@@ -271,6 +263,7 @@ public class CartAndPayment {
         orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
     }
 
+    @FXML
     public void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
         orderItemsTableView.setItems(null);
