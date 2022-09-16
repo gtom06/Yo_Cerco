@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
+import model.Dao.BuyerDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Shop.Shop;
@@ -24,6 +25,8 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartAndPayment {
     @FXML
@@ -62,7 +65,7 @@ public class CartAndPayment {
     protected TableColumn<OrderItem, String> quantityOrderedColumn;
     protected TableColumn<OrderItem, Double> pricePerItemColumn;
     protected TableColumn<OrderItem, Double> priceTotalColumn;
-
+    static Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
     User user = null;
     Shop shop = null;
@@ -191,7 +194,7 @@ public class CartAndPayment {
         String cvv = cvvTextField.getText();
 
         if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
-            System.out.println("review payment");
+            logger.log(Level.INFO, "review payment");
         }
         else{
             if (!CartElaboration.isEmptyCart()) {
@@ -210,7 +213,7 @@ public class CartAndPayment {
                         throw new Exception("please fill data");
                     } else {
                         if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                            System.out.println("please fill data & card");
+                            logger.log(Level.INFO, "please fill data & card");
                         }
                     }
                 } else {
@@ -220,7 +223,6 @@ public class CartAndPayment {
                     if (out) {
                         OrderHandler.createOrder(
                                 user,
-                                null,
                                 paymentMethod,
                                 cardholder,
                                 cardNumber,

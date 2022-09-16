@@ -57,7 +57,7 @@ public class HttpRequest {
         return bld.toString();
 
     }
-    public static String post(String urlString, String body) {
+    public static String post(String urlString) {
         BufferedReader reader;
         URL url;
         String line;

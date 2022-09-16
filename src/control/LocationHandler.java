@@ -21,7 +21,7 @@ public class LocationHandler {
         //uses googleapis
         Address address = null;
         try {
-            String httpResponse = HttpRequest.post(Constants.GEOLOCATION_URL, null);
+            String httpResponse = HttpRequest.post(Constants.GEOLOCATION_URL);
             JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
             JsonObject jsonObject1 = (JsonObject) jsonObject.get("location");
             address = new Address(jsonObject1.get("lat").getAsDouble(), jsonObject1.get("lat").getAsDouble(), null);
@@ -54,20 +54,6 @@ public class LocationHandler {
     }
 
     public static double calculateDistancePointToPoint(Shop shop, Address address) {
-        /*
-        final int R = 6371; // Radius of the earth
-        double lat1 = shop.getLat();
-        double lng1 = shop.getLng();
-        double lat2 = address.getLat();
-        double lng2 = address.getLng();
-        double latDistance = Math.toRadians(lat2 - lat1);
-        double lonDistance = Math.toRadians(lng2 - lng1);
-        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c; //in km
-        */
         return Math.sqrt(Math.pow(shop.getLat() - address.getLat(), 2) + Math.pow(shop.getLng() - address.getLng(), 2)) * 111;
     }
 }

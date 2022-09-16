@@ -22,6 +22,8 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DepartProductView {
     Department department = null;
@@ -48,9 +50,7 @@ public class DepartProductView {
     protected TableColumn<ProductShop, Double> discountedPriceColumn;
     @FXML
     protected TableColumn<ProductShop, Double> priceColumn;
-
-    @FXML
-    protected Button addToCartButton;
+    static Logger logger = Logger.getLogger(DepartProductView.class.getName());
 
     @FXML
     protected void onListViewItemClick() throws IOException {
@@ -100,7 +100,7 @@ public class DepartProductView {
             productTable.setItems(observableListProducts);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, "no result");
         }
 
         departmentName.setText(department.getName());

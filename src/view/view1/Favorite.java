@@ -21,6 +21,8 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Favorite {
     User user = null;
@@ -42,6 +44,7 @@ public class Favorite {
     protected TableColumn<SimpleProduct, Integer> sizeColumn;
     protected TableColumn<SimpleProduct, String> nameProductColumn;
     protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
+    static Logger logger = Logger.getLogger(Favorite.class.getName());
 
     @FXML
     protected void onShopTableViewClick() throws IOException {
@@ -164,7 +167,7 @@ public class Favorite {
             shopTableView.setItems(observableListShops);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, "no result");
         }
     }
 
@@ -179,7 +182,7 @@ public class Favorite {
             simpleProductTableView.setItems(simpleProductObservableList);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, "no result");
         }
     }
 }

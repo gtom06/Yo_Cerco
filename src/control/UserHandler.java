@@ -10,8 +10,11 @@ import model.User.User;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserHandler {
+    static Logger logger = Logger.getLogger(UserHandler.class.getName());
     private UserHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -48,7 +51,7 @@ public class UserHandler {
             ShopHolder shopHolder = new ShopHolder(username, password, name, surname, email);
             return UserDao.insertUser(shopHolder);
         }
-        System.out.println("insert failed");
+        logger.log(Level.WARNING, "insert failed");
         return false;
     }
 
@@ -72,7 +75,7 @@ public class UserHandler {
         if (name.equals(user.getName()) && surname.equals(user.getSurname()) && street.equals(((Buyer) user).getBillingStreet()) &&
                 city.equals(((Buyer) user).getBillingCity()) && country.equals(((Buyer) user).getBillingCountry()) && zip.equals(((Buyer) user).getBillingZip())
                 && phone.equals(((Buyer) user).getPhone()) && profileImagePath.equals(((Buyer) user).getProfileImagepath())) {
-            System.out.println("nothing to update in user");
+            logger.log(Level.INFO, "nothing to update in user");
             return true;
         }
 

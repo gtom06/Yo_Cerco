@@ -23,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GeneralProductView {
     User user ;
@@ -39,6 +41,7 @@ public class GeneralProductView {
     protected TableColumn<Shop, String> openingColumn;
     protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
+    static Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
     @FXML
     protected void onTableViewItemClick() throws IOException {
@@ -69,7 +72,6 @@ public class GeneralProductView {
         this.user = user;
         this.arrayShopList = arrayShopList;
         textHi.setText(user.getUsername());
-        // priceProd.setText(String.valueOf(productShop.getPrice()));
         brandProd.setText(simpleProduct.getBrand());
         nameProd.setText(simpleProduct.getName());
 
@@ -87,7 +89,7 @@ public class GeneralProductView {
             shopsTableView.setItems(observableListShops);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, "no result");
         }
     }
 

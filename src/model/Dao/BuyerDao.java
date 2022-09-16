@@ -30,7 +30,7 @@ public class BuyerDao {
             logger.log(Level.WARNING, "error in buyer");
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
-            System.out.println("insert ok");
+            logger.log(Level.INFO, "insert ok");
         }
         return true;
     }

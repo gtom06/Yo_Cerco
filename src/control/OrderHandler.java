@@ -74,7 +74,7 @@ public class OrderHandler {
                 null, null);
     }
 
-    public static Order createOrder(User user, Shop shop, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
+    public static Order createOrder(User user, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
         Order order = null;
         Payment payment = null;
         int shopId = 0;
@@ -104,7 +104,7 @@ public class OrderHandler {
         }
 
         if (!CartElaboration.isValidCart()) {
-            System.out.println("not valid cart");
+            logger.log(Level.SEVERE, "not valid cart");
             return null;
         }
 
@@ -141,7 +141,7 @@ public class OrderHandler {
             payment = OrderDao.insertPayment(payment);
             //check on payment
             if (payment == null) {
-                System.out.println("payment not executed");
+                logger.log(Level.SEVERE, "payment not executed");
                 return null;
             }
 
@@ -163,7 +163,7 @@ public class OrderHandler {
             order = OrderDao.insertOrder(order);
             //check on order
             if (order == null) {
-                System.out.println("insertOrder failed");
+                logger.log(Level.SEVERE, "insertOrder failed");
                 return null;
             }
             OrderDao.insertOrderItems(order.getOrderId(), orderItemsJson);

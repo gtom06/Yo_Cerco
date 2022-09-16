@@ -18,6 +18,8 @@ import model.Order.OrderItem;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
     User user = null;
@@ -33,7 +35,7 @@ public class SpecificOrderAdmin {
     protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
     protected TableColumn<OrderItem, Double> priceTotalColumn;
     protected TableColumn<OrderItem, String> currencyColumn;
-
+    static Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -88,11 +90,11 @@ public class SpecificOrderAdmin {
                 }
                 orderItemTableView.setItems(orderItemObservableList);
             } else {
-                System.out.println("no result order items");
+                logger.log(Level.INFO, "no result order items");
             }
         }
         else {
-            System.out.println("no result order");
+            logger.log(Level.INFO, "no result order");
         }
     }
 

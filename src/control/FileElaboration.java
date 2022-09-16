@@ -84,10 +84,8 @@ public class FileElaboration {
     public static boolean copyAndReplaceFile(File file, String pathTo) throws FileElaborationException {
         try {
             File fileToDelete = new File(pathTo);
-            if (fileToDelete != null) {
-                if (!file.renameTo(new File(pathTo))){
-                    return false;
-                }
+            if (fileToDelete != null && !file.renameTo(new File(pathTo))){
+                return false;
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
