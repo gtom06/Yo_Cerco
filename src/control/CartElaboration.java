@@ -5,6 +5,7 @@ import com.google.gson.stream.JsonReader;
 import exceptions.ExceptionCart;
 import exceptions.FileElaborationException;
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Order.OrderItem;
 import model.Product.ProductShop;
 
@@ -32,15 +33,15 @@ public class CartElaboration {
             orderItemArrayList = new ArrayList<>(List.of(output));
             reader.close();
         } catch (IOException e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
-            throw new ExceptionCart("Exception while closing file for reading from cart");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
+            throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_READING_FILE);
         } finally {
             try{
                 if (reader != null){
                     reader.close();
                 }
             } catch (IOException e) {
-                logger.log(Level.WARNING, "error in CartElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             }
         }
         return orderItemArrayList;
@@ -54,7 +55,7 @@ public class CartElaboration {
                 return false;
             }
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             return false;
         }
         return true;
@@ -146,8 +147,8 @@ public class CartElaboration {
             out.write(json);
             out.close();
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
-            throw new ExceptionCart("Exception while closing file for writing into cart");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
+            throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
         } finally{
             try{
                 if (out != null){
@@ -155,7 +156,7 @@ public class CartElaboration {
                 }
             }
             catch (Exception e ) {
-                logger.log(Level.WARNING, "error in CartElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             }
         }
         return true;
@@ -169,8 +170,8 @@ public class CartElaboration {
             out.write(emptyString);
         }
         catch (Exception e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
-            throw new ExceptionCart("Exception while closing file for writing into cart");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
+            throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
         }
         finally {
             try{
@@ -178,7 +179,7 @@ public class CartElaboration {
                     out.close();
                 }
             } catch (Exception e) {
-                logger.log(Level.WARNING, "error in CartElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             }
         }
     }
@@ -193,7 +194,7 @@ public class CartElaboration {
             }
         }
         catch (Exception e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             return false;
         }
         finally{
@@ -202,7 +203,7 @@ public class CartElaboration {
                     reader.close();
                 }
             } catch (Exception e) {
-                logger.log(Level.WARNING, "error in CartElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             }
         }
         return bool;
@@ -235,7 +236,7 @@ public class CartElaboration {
             }
 
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in CartElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
         }
         finally {
             try {
@@ -243,7 +244,7 @@ public class CartElaboration {
                     out.close();
                 }
             } catch (Exception e){
-                logger.log(Level.WARNING, "error in CartElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             }
         }
         return output;

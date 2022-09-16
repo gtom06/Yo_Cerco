@@ -1,6 +1,8 @@
 package control;
 
 import exceptions.FileElaborationException;
+import model.Constants;
+import model.ConstantsExceptions;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class FileElaboration {
             writer = new BufferedWriter(new FileWriter(filepath));
             writer.write(stringToWrite);
         } catch (Exception e){
-            logger.log(Level.WARNING, "error in FileElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException("Exception while writing on file");
         } finally{
             try {
@@ -28,7 +30,7 @@ public class FileElaboration {
                 }
             }
             catch (Exception e) {
-                logger.log(Level.WARNING, "error in FileElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             }
         }
     }
@@ -43,7 +45,7 @@ public class FileElaboration {
                 lines.add(line);
             }
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in FileElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException("Exception while writing on file");
         } finally {
             try {
@@ -51,7 +53,7 @@ public class FileElaboration {
                     br.close();
                 }
             } catch (Exception e){
-                logger.log(Level.WARNING, "error in FileElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             }
         }
         return lines;
@@ -64,8 +66,8 @@ public class FileElaboration {
             bufferedReader = new BufferedReader(new FileReader(filepath));
             output = bufferedReader.readLine();
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in FileElaboration");
-            throw new FileElaborationException("Exception while reading from file");
+            logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
+            throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_READING_FILE);
         }
         finally {
             try {
@@ -73,7 +75,7 @@ public class FileElaboration {
                     bufferedReader.close();
                 }
             } catch (Exception e) {
-                logger.log(Level.WARNING, "error in FileElaboration");
+                logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             }
         }
         return output;
@@ -88,7 +90,7 @@ public class FileElaboration {
                 }
             }
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in FileElaboration");
+            logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException("Exception while writing on file");
         }
         return true;

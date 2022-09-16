@@ -115,4 +115,6 @@ public interface Constants {
     String BUYER = "Buyer";
     String OWNER = "Owner";
     String STANDARD_TO_USE = "12345";
+
+    String BLANK_STRING = "";
 }
