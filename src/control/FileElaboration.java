@@ -23,15 +23,6 @@ public class FileElaboration {
         } catch (Exception e){
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
-        } finally{
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            }
-            catch (Exception e) {
-                logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
-            }
         }
     }
 
