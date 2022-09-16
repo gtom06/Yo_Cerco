@@ -126,7 +126,7 @@ public class OrderDao {
             stmt.setString(1, payment.getLast4digits());
             stmt.setString(2, payment.getMm());
             stmt.setString(3, payment.getYy());
-            stmt.setString(4, payment.getpaymentMethod());
+            stmt.setString(4, payment.getPaymentMethod());
             stmt.setString(5, payment.getCardholder());
             stmt.setDouble(6, payment.getTotalPrice());
             stmt.setString(7, payment.getCurrency());

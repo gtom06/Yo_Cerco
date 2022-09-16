@@ -19,7 +19,7 @@ public class HttpRequest {
 
         BufferedReader reader;
         String line;
-        String responseContent = "";
+        StringBuilder bld = new StringBuilder();
         try{
             URL url = new URL(urlString);
             conn = (HttpURLConnection) url.openConnection();
@@ -35,14 +35,14 @@ public class HttpRequest {
             if (status >= 300) {
                 reader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
                 while ((line = reader.readLine()) != null) {
-                    responseContent += line;
+                    bld.append(line);
                 }
                 reader.close();
             }
             else {
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 while ((line = reader.readLine()) != null) {
-                    responseContent += line;
+                    bld.append(line);
                 }
                 reader.close();
             }
@@ -56,14 +56,14 @@ public class HttpRequest {
         } finally {
             conn.disconnect();
         }
-        return responseContent;
+        return bld.toString();
 
     }
     public static String post(String urlString, String body) {
         BufferedReader reader;
         URL url;
         String line;
-        String responseContent = "";
+        StringBuilder bld = new StringBuilder();
         try {
             url = new URL(urlString);
 
@@ -87,16 +87,16 @@ public class HttpRequest {
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 while ((line = reader.readLine()) != null) {
-                    responseContent += line;
+                    bld.append(line);
                 }
                 reader.close();
             }
             else {
-                responseContent="Error Registering";
+                bld.append("Error Registering");
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "error in HttpRequest");
         }
-        return responseContent;
+        return bld.toString();
     }
 }
