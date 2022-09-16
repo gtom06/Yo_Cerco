@@ -7,9 +7,7 @@ import model.User.Admin;
 import model.User.Buyer;
 import model.User.ShopHolder;
 import model.User.User;
-
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

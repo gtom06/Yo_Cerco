@@ -2,7 +2,6 @@ package control;
 
 import exceptions.ExceptionBrowser;
 import model.ConstantsExceptions;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;

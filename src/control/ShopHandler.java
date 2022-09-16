@@ -8,7 +8,6 @@ import model.Order.Order;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,9 @@ public class ShopHandler {
     public static void deleteShop(Shop shop){
         ShopDao.deleteShopDb(shop);
     }
-    public static void updateShop(Shop shop){}
+    public static void updateShop(Shop shop){
+        //for future implementation
+    }
 
     public static Shop findShopByOrder(Order order) {
         ArrayList<Shop> shopArrayList = null;

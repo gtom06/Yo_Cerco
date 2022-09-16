@@ -9,10 +9,7 @@ import model.Dao.OrderDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Order.Payment;
-import model.Shop.Shop;
 import model.User.User;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
