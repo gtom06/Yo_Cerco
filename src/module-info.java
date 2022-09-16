@@ -24,4 +24,5 @@ module Supermarket {
     opens main;
     opens model.Order;
     exports test;
+    exports exceptions;
 }

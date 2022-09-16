@@ -1,11 +1,11 @@
 package control;
 
 import exceptions.FileElaborationException;
-import model.Constants;
 import model.ConstantsExceptions;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,8 +35,8 @@ public class FileElaboration {
         }
     }
 
-    public static ArrayList<String> fileLinesToArrayList(String filepath) throws IOException, FileElaborationException {
-        ArrayList<String> lines = new ArrayList<>();
+    public static ArrayList<String> fileLinesToArrayList(String filepath) throws FileElaborationException {
+        List<String> lines = new ArrayList<>();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(filepath));
@@ -56,11 +56,11 @@ public class FileElaboration {
                 logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             }
         }
-        return lines;
+        return (ArrayList<String>) lines;
     }
 
     public static String fileToString(String filepath) throws FileElaborationException {
-        String output = "";
+        String output;
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(filepath));
@@ -83,8 +83,7 @@ public class FileElaboration {
 
     public static boolean copyAndReplaceFile(File file, String pathTo) throws FileElaborationException {
         try {
-            File fileToDelete = new File(pathTo);
-            if (fileToDelete != null && !file.renameTo(new File(pathTo))){
+            if (!file.renameTo(new File(pathTo))){
                 return false;
             }
         } catch (Exception e) {
