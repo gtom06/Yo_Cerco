@@ -9,15 +9,16 @@ public class DaoHelper {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     public static String buildSqlStringFromArrayOfIntegers(ArrayList<Integer> integerArrayList){ // (?,?,?)
-        String output = "(";
+        StringBuilder sb= new StringBuilder();
+        sb.append("(");
         int lenght = integerArrayList.size();
         for (int i = 0; i < lenght; i++){
             if (i == lenght - 1) {
-                output += integerArrayList.get(i);
+                sb.append(integerArrayList.get(i));
                 break;
             }
-            output += integerArrayList.get(i) + ",";
+            sb.append(integerArrayList.get(i) + ",");
         }
-        return output + ")";
+        return sb.append(")").toString();
     }
 }
