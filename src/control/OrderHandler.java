@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import exceptions.ExceptionCart;
 import exceptions.FileElaborationException;
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Dao.OrderDao;
 import model.Order.Order;
 import model.Order.OrderItem;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 public class OrderHandler {
     static Logger logger = Logger.getLogger(OrderHandler.class.getName());
     private OrderHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static ArrayList<Order> findOrdersInfoFromUser(User user) {

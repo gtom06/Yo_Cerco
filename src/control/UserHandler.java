@@ -1,6 +1,7 @@
 package control;
 
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Dao.UserDao;
 import model.User.Admin;
 import model.User.Buyer;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class UserHandler {
     private UserHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     public static boolean checkUsernameAndPassword(String username, String password){
         return UserDao.validateLogin(username, password);

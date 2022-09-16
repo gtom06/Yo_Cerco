@@ -1,5 +1,6 @@
 package control;
 
+import model.ConstantsExceptions;
 import model.Dao.ProductDao;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class ProductHandler {
     private ProductHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static ArrayList<SimpleProduct> findSimpleProductBy(String productName) {

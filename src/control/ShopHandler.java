@@ -2,6 +2,7 @@ package control;
 
 import exceptions.AddressException;
 import model.Address;
+import model.ConstantsExceptions;
 import model.Dao.OrderDao;
 import model.Dao.ShopDao;
 import model.Order.Order;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class ShopHandler {
     private ShopHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     public static void insertShop(Shop shop){
         ShopDao.insertShopDb(shop);

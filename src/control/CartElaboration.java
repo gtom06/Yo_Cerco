@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class CartElaboration {
     static Logger logger = Logger.getLogger(CartElaboration.class.getName());
     private CartElaboration(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static ArrayList<OrderItem> readOrderItemsFromCart() throws ExceptionCart {

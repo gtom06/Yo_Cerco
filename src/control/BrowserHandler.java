@@ -1,6 +1,7 @@
 package control;
 
 import exceptions.ExceptionBrowser;
+import model.ConstantsExceptions;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
 public class BrowserHandler {
     static Logger logger = Logger.getLogger(BrowserHandler.class.getName());
     private BrowserHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     public static boolean openWebpage(URI uri) throws ExceptionBrowser {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;

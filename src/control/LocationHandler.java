@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import exceptions.AddressException;
 import model.Address;
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Shop.Shop;
 
 import java.util.logging.Level;
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
 public class LocationHandler {
     static Logger logger = Logger.getLogger(LocationHandler.class.getName());
     private LocationHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static Address calculateLatLongFromIpAddress() throws AddressException {

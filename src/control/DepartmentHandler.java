@@ -1,5 +1,6 @@
 package control;
 
+import model.ConstantsExceptions;
 import model.Dao.DepartmentDao;
 import model.Department.Department;
 import model.Product.ProductShop;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class DepartmentHandler {
     private DepartmentHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static ArrayList<Department> findDepartmentByShop(Shop shop) {

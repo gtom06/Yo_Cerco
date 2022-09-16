@@ -1,13 +1,14 @@
 package control;
 
 import model.Address;
+import model.ConstantsExceptions;
 import model.Shop.Shop;
 
 import java.util.*;
 
 public class ComparableHandler {
     private ComparableHandler(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static ArrayList<Shop> orderShopsByDistance(List<Shop> shopList, Address address) {

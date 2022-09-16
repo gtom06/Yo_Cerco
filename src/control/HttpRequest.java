@@ -1,5 +1,7 @@
 package control;
 
+import model.ConstantsExceptions;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -12,7 +14,7 @@ import java.util.logging.Logger;
 public class HttpRequest {
     static Logger logger = Logger.getLogger(HttpRequest.class.getName());
     private HttpRequest(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     private static HttpURLConnection conn;
     public static String get(String urlString) {
@@ -47,12 +49,8 @@ public class HttpRequest {
                 reader.close();
             }
         }
-        catch (MalformedURLException e) {
-            logger.log(Level.WARNING, "error in HttpRequest");
-        } catch (ProtocolException e) {
-            logger.log(Level.WARNING, "error in HttpRequest");
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "error in HttpRequest");
+        catch (IOException e) {
+            logger.log(Level.WARNING, ConstantsExceptions.HTTP_REQUEST_INFO);
         } finally {
             conn.disconnect();
         }
@@ -95,7 +93,7 @@ public class HttpRequest {
                 bld.append("Error Registering");
             }
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in HttpRequest");
+            logger.log(Level.WARNING, ConstantsExceptions.HTTP_REQUEST_INFO);
         }
         return bld.toString();
     }

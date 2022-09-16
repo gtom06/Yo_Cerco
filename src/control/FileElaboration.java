@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class FileElaboration {
     static Logger logger = Logger.getLogger(FileElaboration.class.getName());
     private FileElaboration(){
-        throw new IllegalStateException("Utility class");
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
     public static void writeOnFile(String filepath, String stringToWrite) throws FileElaborationException {
