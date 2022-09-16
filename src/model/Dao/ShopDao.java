@@ -152,8 +152,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-
-        Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -193,8 +191,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-
-        Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -406,8 +402,6 @@ public class ShopDao {
             String interiorPhotosImagepath = rs.getString("interior_photos_imagepath");
             String planimetryImagePath = rs.getString("planimetry_imagepath");
             int shopId = rs.getInt("shop_id");
-            ArrayList<Department> department = null;
-            ArrayList<ProductShop> items = null;
             int status = rs.getInt("status");
             String openingTime = rs.getString("opening_time");
             String closingTime = rs.getString("closing_time");
