@@ -34,11 +34,43 @@ public class MyProfile {
     @FXML
     protected ImageView myProfileImage;
     @FXML
-    protected Text nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
+    protected Text nameText;
     @FXML
-    protected TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
+    protected Text surnameText;
     @FXML
-    protected ImageView editImageView, saveImageView, homepageImageView;
+    protected Text usernameText;
+    @FXML
+    protected Text addressText;
+    @FXML
+    protected Text phoneText;
+    @FXML
+    protected Text saveYourProfileText;
+    @FXML
+    protected Text modifyYourProfileText;
+    @FXML
+    protected Text completeYourProfileText;
+    @FXML
+    protected Text errorText;
+    @FXML
+    protected TextField nameTextField;
+    @FXML
+    protected TextField surnameTextField;
+    @FXML
+    protected TextField streetTextField;
+    @FXML
+    protected TextField cityTextField;
+    @FXML
+    protected TextField countryTextField;
+    @FXML
+    protected TextField zipTextField;
+    @FXML
+    protected TextField phoneTextField;
+    @FXML
+    protected ImageView editImageView;
+    @FXML
+    protected ImageView saveImageView;
+    @FXML
+    protected ImageView homepageImageView;
     @FXML
     protected AnchorPane anchorPane2;
 

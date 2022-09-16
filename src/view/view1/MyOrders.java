@@ -28,7 +28,11 @@ public class MyOrders {
     @FXML
     protected ImageView homepageImageView;
     @FXML
-    protected Text textHi, numberOfOrdersText, totalOrdersText;
+    protected Text textHi;
+    @FXML
+    protected Text numberOfOrdersText;
+    @FXML
+    protected Text totalOrdersText;
     @FXML
     protected TableView<Order> orderTableView = new TableView<>();
     protected TableColumn<Order, String> orderNumber;

@@ -17,7 +17,6 @@ import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -27,13 +26,11 @@ public class SearchProduct {
     User user;
     ArrayList<Shop> arrayShopsList;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    TextField requestTextField;
+    protected TextField requestTextField;
     @FXML
-    Text textHi;
-    @FXML
-    Button searchForShop;
+    protected Text textHi;
     @FXML
     TableView<SimpleProduct> productTableView = new TableView<>();
     TableColumn<SimpleProduct, String> nameColumn;
@@ -130,7 +127,6 @@ public class SearchProduct {
         brandColumn.setMinWidth(70);
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
-
-       productTableView.getColumns().addAll(nameColumn, sizeColumn, unitOfMeasureColumn,brandColumn);
+        productTableView.getColumns().addAll(nameColumn, sizeColumn, unitOfMeasureColumn,brandColumn);
     }
 }

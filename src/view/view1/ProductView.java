@@ -16,7 +16,6 @@ import model.Department.Department;
 import model.Product.ProductShop;
 import model.Shop.Shop;
 import model.User.User;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,10 +29,35 @@ public class ProductView {
     ProductShop productShop = null;
     Department department = null;
     @FXML
-    protected ImageView productPhoto, homepageImageView, addShopToFavorites,
-            removeShopFromFavorites, cartImage, previousPage, discountedTagProd;
+    protected ImageView productPhoto;
     @FXML
-    protected Text textHi, nameProd, descriptionProd, priceProd, brandProd, favoriteText, discountedPriceProd, itemAddedText;
+    protected ImageView homepageImageView;
+    @FXML
+    protected ImageView addShopToFavorites;
+    @FXML
+    protected ImageView removeShopFromFavorites;
+    @FXML
+    protected ImageView cartImage;
+    @FXML
+    protected ImageView previousPage;
+    @FXML
+    protected ImageView discountedTagProd;
+    @FXML
+    protected Text textHi;
+    @FXML
+    protected Text nameProd;
+    @FXML
+    protected Text descriptionProd;
+    @FXML
+    protected Text priceProd;
+    @FXML
+    protected Text brandProd;
+    @FXML
+    protected Text favoriteText;
+    @FXML
+    protected Text discountedPriceProd;
+    @FXML
+    protected Text itemAddedText;
 
     protected InputStream stream = null;
 

@@ -16,10 +16,8 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.Order.Order;
 import model.User.User;
-
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +27,11 @@ public class OrdersAdmin {
     @FXML
     protected ImageView homepageImageView;
     @FXML
-    protected Text textHi, numberOfOrdersText, totalOrdersText;
+    protected Text textHi;
+    @FXML
+    protected Text numberOfOrdersText;
+    @FXML
+    protected Text totalOrdersText;
     @FXML
     protected TableView<Order> orderTableView = new TableView<>();
     protected TableColumn<Order, String> orderNumber;

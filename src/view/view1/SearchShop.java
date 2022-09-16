@@ -26,7 +26,7 @@ public class SearchShop  {
 
     User user = null;
     @FXML
-    private ImageView homepageImageView, userPositionImageView;
+    private ImageView homepageImageView;
     @FXML
     ToggleGroup findValue;
     @FXML
