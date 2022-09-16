@@ -41,7 +41,7 @@ public class Buyer implements User {
     }
 
     public boolean isSomeFieldBlank(){
-        if (name == null || surname == null || billingStreet == null || billingCity == null || billingCountry == null || billingZip == null || phone == null){
+        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() || billingCountry.isBlank() || billingZip.isBlank() || phone.isBlank()){
             return true;
         }
         return false;
