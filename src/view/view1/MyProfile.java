@@ -145,7 +145,6 @@ public class MyProfile {
                 countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
                 phoneTextField.getText().isBlank()) {
             errorText.setVisible(true);
-            //todo: se qualche field è blank, bisogna inserire tutte le fields
         }
         else{
             if (UserHandler.updateRecord(user, nameTextField.getText(), surnameTextField.getText(),

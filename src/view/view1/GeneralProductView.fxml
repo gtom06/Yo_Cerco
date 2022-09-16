@@ -63,7 +63,7 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <ImageView fx:id="previousPage" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="4.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="previousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="4.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
             </image>

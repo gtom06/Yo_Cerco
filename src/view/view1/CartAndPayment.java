@@ -118,7 +118,6 @@ public class CartAndPayment {
 
     @FXML
     protected void previousPage() throws IOException {
-        //todo: verify if is correct
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
         ShopView shopView = loader.getController();

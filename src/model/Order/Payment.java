@@ -37,25 +37,10 @@ public class Payment {
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", cardholder='" + cardholder + '\'' +
                 ", totalPrice=" + totalPrice +
+                ", currency='" + currency + '\'' +
                 ", paymentTimestamp=" + paymentTimestamp +
                 ", status='" + status + '\'' +
                 '}';
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     public int getPaymentId() {
@@ -90,11 +75,11 @@ public class Payment {
         this.yy = yy;
     }
 
-    public String getpaymentMethod() {
+    public String getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setpaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
@@ -112,6 +97,14 @@ public class Payment {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Timestamp getPaymentTimestamp() {

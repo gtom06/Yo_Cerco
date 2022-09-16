@@ -28,7 +28,7 @@ public class GeneralProductView {
     User user ;
     ArrayList<Shop> arrayShopList;
     @FXML
-    protected ImageView productPhoto, homepageImageView, previousPage;
+    protected ImageView productPhoto, homepageImageView, previousPageImageView;
     @FXML
     protected Text textHi, nameProd, brandProd;
     @FXML
