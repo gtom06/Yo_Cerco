@@ -8,16 +8,6 @@ public class DaoHelper {
     private DaoHelper(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-
-    public static String buildSqlStringFromArrayOfStrings(ArrayList<String> stringArrayList){
-        String output = "(";
-        int lenght = stringArrayList.size();
-        for (String s : stringArrayList){
-
-        }
-        return output + ")";
-    }
-
     public static String buildSqlStringFromArrayOfIntegers(ArrayList<Integer> integerArrayList){ // (?,?,?)
         String output = "(";
         int lenght = integerArrayList.size();
