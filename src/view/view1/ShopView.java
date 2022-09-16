@@ -26,6 +26,7 @@ import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
@@ -34,7 +35,7 @@ public class ShopView {
     Shop shop = null;
     User user = null;
 
-    ArrayList<Department> departmentArrayList = null;
+    List<Department> departmentArrayList = null;
 
     Department department = null;
 

@@ -36,13 +36,14 @@ import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShopView {
     Shop shop = null;
     User user = null;
-    ArrayList<Department> departmentArrayList = null;
+    List<Department> departmentArrayList = null;
     @FXML
     protected Button addToCartButton;
     @FXML
@@ -175,7 +176,7 @@ public class ShopView {
     @FXML
     protected void onClickDepartmentImage(MouseEvent mouseEvent) {
         productTable.getItems().clear();
-        ArrayList<ProductShop> productShopArrayList = null;
+        List<ProductShop> productShopArrayList = null;
         Department department = null;
         int ref = 0;
         try {

@@ -23,6 +23,7 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,7 +96,7 @@ public class DepartProductView {
         this.shop = shop;
         this.user = user;
         this.department = department;
-        ArrayList<ProductShop> productShopArrayList = department.getItems();
+        List<ProductShop> productShopArrayList = department.getItems();
         if (productShopArrayList!=null){
             ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
             productTable.setItems(observableListProducts);

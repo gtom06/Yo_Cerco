@@ -7,13 +7,14 @@ import model.Product.ProductShop;
 import model.Shop.Shop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DepartmentHandler {
     private DepartmentHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static ArrayList<Department> findDepartmentByShop(Shop shop) {
+    public static List<Department> findDepartmentByShop(Shop shop) {
         ArrayList<Department> output = null;
         output = DepartmentDao.findDepartmentByShop(shop.getShopId());
         if (output.size() > 14) {
@@ -22,7 +23,7 @@ public class DepartmentHandler {
         return !output.isEmpty() ? output : null;
     }
 
-    public static ArrayList<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
+    public static List<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
         ArrayList<ProductShop> output = null;
         output = DepartmentDao.findProductByDepartmentAndShop(shop.getShopId(), department.getDepartmentId());
         if (output.size() > 14) {

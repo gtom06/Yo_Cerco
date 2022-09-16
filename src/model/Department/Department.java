@@ -4,13 +4,14 @@ import model.Constants;
 import model.Product.ProductShop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Department {
     private final int shopId;
     private final String logoImagepath;
     private final String name;
     private final int departmentId;
-    private ArrayList<ProductShop> items;
+    private List<ProductShop> items;
 
 
     public Department(int shopId, String logoImagepath, String name, int departmentId) {
@@ -28,7 +29,7 @@ public class Department {
         this.items = items;
     }
 
-    public void setItems(ArrayList<ProductShop> items) {
+    public void setItems(List<ProductShop> items) {
         this.items = items;
     }
 
@@ -48,7 +49,7 @@ public class Department {
         return departmentId;
     }
 
-    public ArrayList<ProductShop> getItems() {
+    public List<ProductShop> getItems() {
         return items;
     }
 
