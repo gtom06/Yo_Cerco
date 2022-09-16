@@ -212,7 +212,6 @@ public class ShopView {
     }
 
     public void checkOffersFlyer(Shop shop){
-        System.out.println(shop.getOffersFlyerPath()+ "sono qui");
         if (shop.getOffersFlyerPath().equals("") || shop.getOffersFlyerPath() == null ){
             offersFlyerShop.setVisible(false);
             offersFlyerTagShop.setVisible(false);

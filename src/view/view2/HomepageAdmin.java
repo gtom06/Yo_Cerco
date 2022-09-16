@@ -92,7 +92,6 @@ public class HomepageAdmin {
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);
-        System.out.println(orderArrayList);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);
@@ -106,7 +105,6 @@ public class HomepageAdmin {
 
     public void passParams(User user) {
         this.user = user;
-        System.out.println(user);
         fillTableView();
     }
 }

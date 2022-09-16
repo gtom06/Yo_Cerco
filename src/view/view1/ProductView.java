@@ -141,7 +141,6 @@ public class ProductView {
 
     @FXML
     protected void checkDiscount(ProductShop productShop){
-        System.out.println(productShop.getDiscountedPrice());
         productShop.setDiscountedPrice(0.50);
         if (productShop.getDiscountedPrice() != 0){
             discountedPriceProd.setText(String.valueOf(productShop.getDiscountedPrice()));
