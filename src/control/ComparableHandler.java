@@ -10,19 +10,19 @@ public class ComparableHandler {
         throw new IllegalStateException("Utility class");
     }
 
-    public static ArrayList<Shop> orderShopsByDistance(ArrayList<Shop> shopArrayList, Address address) {
-        for (Shop shop : shopArrayList) {
+    public static ArrayList<Shop> orderShopsByDistance(List<Shop> shopList, Address address) {
+        for (Shop shop : shopList) {
             shop.setDistance(
                     Math.round(LocationHandler.calculateDistancePointToPoint(shop,address) * 100.0) / 100.0
             );
         }
-        Collections.sort(shopArrayList, new Comparator<Shop>() {
+        Collections.sort(shopList, new Comparator<Shop>() {
             @Override
             public int compare(Shop s1, Shop s2) {
                 return Double.compare(s1.getDistance(), s2.getDistance());
             }
         });
-        return shopArrayList;
+        return new ArrayList<>(shopList);
     }
 
 
