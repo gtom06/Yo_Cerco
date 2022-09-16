@@ -151,7 +151,6 @@ public class OrderDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        //boolean output = false;
         try {
             String sql = "INSERT INTO order_items (order_id, items) " +
                     "VALUES (?, ?)";

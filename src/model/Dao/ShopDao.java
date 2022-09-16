@@ -224,8 +224,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-
-        //Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -249,7 +247,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -284,7 +281,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -308,7 +304,6 @@ public class ShopDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -374,7 +369,6 @@ public class ShopDao {
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         boolean output = false;
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +
@@ -394,30 +388,6 @@ public class ShopDao {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return output;
-    }
-
-    public static ArrayList<String> findTypeShop() {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<String> arrayTypeShop= new ArrayList<>();
-        try {
-            conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT type " +
-                    "FROM shop " +
-                    "WHERE type IS NOT NULL ";
-            stmt = conn.prepareStatement(sql );
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){
-                arrayTypeShop.add(rs.getString("type"));
-            }
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in findShop");
-        } finally {
-
-            dbHelper.closeDBConnection(stmt, conn);
-        }
-        return arrayTypeShop;
     }
 
     public static ArrayList<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {

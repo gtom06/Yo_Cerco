@@ -19,7 +19,6 @@ public class DepartmentDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
         ArrayList<Department> arrayDepartment= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -39,20 +38,6 @@ public class DepartmentDao {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return arrayDepartment;
-    }
-
-    public static ArrayList<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
-        Department department;
-        ArrayList<Department> departmentArrayList = new ArrayList<>();
-        while (rs.next()) {
-            String logoImagepath = rs.getString("logo_imagepath");
-            String name = rs.getString("name");
-            int departmentId = rs.getInt("department_id");
-            int shopId = rs.getInt("shop_id");
-            department = new Department(shopId, logoImagepath, name, departmentId);
-            departmentArrayList.add(department);
-        }
-        return departmentArrayList;
     }
 
     public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
@@ -94,7 +79,6 @@ public class DepartmentDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        Shop shop = null;
         ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
@@ -114,5 +98,19 @@ public class DepartmentDao {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return arrayProductShop;
+    }
+
+    public static ArrayList<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
+        Department department;
+        ArrayList<Department> departmentArrayList = new ArrayList<>();
+        while (rs.next()) {
+            String logoImagepath = rs.getString("logo_imagepath");
+            String name = rs.getString("name");
+            int departmentId = rs.getInt("department_id");
+            int shopId = rs.getInt("shop_id");
+            department = new Department(shopId, logoImagepath, name, departmentId);
+            departmentArrayList.add(department);
+        }
+        return departmentArrayList;
     }
 }

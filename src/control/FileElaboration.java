@@ -22,7 +22,7 @@ public class FileElaboration {
             writer.write(stringToWrite);
         } catch (Exception e){
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
-            throw new FileElaborationException("Exception while writing on file");
+            throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
         } finally{
             try {
                 if (writer != null) {
@@ -46,7 +46,7 @@ public class FileElaboration {
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
-            throw new FileElaborationException("Exception while writing on file");
+            throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
         } finally {
             try {
                 if (br != null){
@@ -91,7 +91,7 @@ public class FileElaboration {
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
-            throw new FileElaborationException("Exception while writing on file");
+            throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
         }
         return true;
     }
