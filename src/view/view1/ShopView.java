@@ -4,7 +4,6 @@ import control.BrowserHandler;
 import control.DepartmentHandler;
 import control.ShopHandler;
 import exceptions.ExceptionBrowser;
-import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,45 +12,106 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
 import model.Department.Department;
 import model.Shop.Shop;
 import model.User.User;
-
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
 import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
-
 
 public class ShopView {
     Shop shop = null;
     User user = null;
-
     List<Department> departmentArrayList = null;
-
     Department department = null;
-
     @FXML
-    ImageView   homepageImageView, shopLogo,
-                addShopToFavorites, removeShopFromFavorites, offersFlyerTagShop,
-                dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
-
+    ImageView homepageImageView;
+    @FXML
+    ImageView shopLogo;
+    @FXML
+    ImageView addShopToFavorites;
+    @FXML
+    ImageView removeShopFromFavorites;
+    @FXML
+    ImageView offersFlyerTagShop;
+    @FXML
+    ImageView dep1;
+    @FXML
+    ImageView dep2;
+    @FXML
+    ImageView dep3;
+    @FXML
+    ImageView dep4;
+    @FXML
+    ImageView dep5;
+    @FXML
+    ImageView dep6;
+    @FXML
+    ImageView dep7;
+    @FXML
+    ImageView dep8;
+    @FXML
+    ImageView dep9;
+    @FXML
+    ImageView dep10;
+    @FXML
+    ImageView dep11;
+    @FXML
+    ImageView dep12;
+    @FXML
+    ImageView dep13;
+    @FXML
+    ImageView dep14;
     //departmentText
     @FXML
-    Text dep1Text, dep2Text, dep3Text, dep4Text, dep5Text, dep6Text, dep7Text, dep8Text, dep9Text,
-            dep10Text, dep11Text, dep12Text, dep13Text, dep14Text;
-
+    Text dep1Text;
     @FXML
-    Text   TextHi, TextShopName, TextShopAddress, TextShopOpeningTime, TextShopClosingTime, TextFavorite,
-            TextPhoneShop, offersFlyerShop;
+    Text dep2Text;
+    @FXML
+    Text dep3Text;
+    @FXML
+    Text dep4Text;
+    @FXML
+    Text dep5Text;
+    @FXML
+    Text dep6Text;
+    @FXML
+    Text dep7Text;
+    @FXML
+    Text dep8Text;
+    @FXML
+    Text dep9Text;
+    @FXML
+    Text dep10Text;
+    @FXML
+    Text dep11Text;
+    @FXML
+    Text dep12Text;
+    @FXML
+    Text dep13Text;
+    @FXML
+    Text dep14Text;
+    @FXML
+    Text TextHi;
+    @FXML
+    Text TextShopName;
+    @FXML
+    Text TextShopAddress;
+    @FXML
+    Text TextShopOpeningTime;
+    @FXML
+    Text TextShopClosingTime;
+    @FXML
+    Text TextFavorite;
+    @FXML
+    Text TextPhoneShop;
+    @FXML
+    Text offersFlyerShop;
     InputStream stream = null;
     @FXML
     protected void onHomepageImageClick() throws IOException {

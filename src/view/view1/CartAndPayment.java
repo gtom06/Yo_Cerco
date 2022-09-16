@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Dao.BuyerDao;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.Shop.Shop;
@@ -24,7 +23,6 @@ import model.User.Buyer;
 import model.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +33,9 @@ public class CartAndPayment {
     @FXML
     protected Button payButton;
     @FXML
-    protected Text textHi, slashText;
+    protected Text textHi;
+    @FXML
+    protected Text slashText;
     @FXML
     protected ToggleGroup paymentType;
     @FXML
@@ -43,23 +43,37 @@ public class CartAndPayment {
     @FXML
     protected RadioButton cardRadioButton;
     @FXML
-    protected TextField
-                nameTextField,
-                surnameTextField,
-                phoneNumberTextField,
-                billingStreetTextField,
-                billingCityTextField,
-                billingCountryTextField,
-                billingZipTextField;
+    protected Text orderCreatedText;
     @FXML
-    protected TextField
-                cardholderTextField,
-                creditcardTextField,
-                mmTextField,
-                yyTextField,
-                cvvTextField;
+    protected TextField nameTextField;
     @FXML
-    protected Text orderCreatedText, totalPriceText, shopNameText, totalQuantityText;
+    protected TextField surnameTextField;
+    @FXML
+    protected TextField phoneNumberTextField;
+    @FXML
+    protected TextField billingStreetTextField;
+    @FXML
+    protected TextField billingCityTextField;
+    @FXML
+    protected TextField billingCountryTextField;
+    @FXML
+    protected TextField billingZipTextField;
+    @FXML
+    protected TextField cardholderTextField;
+    @FXML
+    protected TextField creditcardTextField;
+    @FXML
+    protected TextField mmTextField;
+    @FXML
+    protected TextField yyTextField;
+    @FXML
+    protected TextField cvvTextField;
+    @FXML
+    protected Text totalPriceText;
+    @FXML
+    protected Text shopNameText;
+    @FXML
+    protected Text totalQuantityText;
     @FXML
     protected TableView<OrderItem> orderItemsTableView = new TableView<>();
     protected TableColumn<OrderItem, String> nameColumn;
@@ -98,7 +112,6 @@ public class CartAndPayment {
         if (order != null){
             totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
             totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
-            order = null;
         } else {
             totalPriceText.setText("0");
             totalQuantityText.setText("0");
@@ -199,7 +212,6 @@ public class CartAndPayment {
         }
         else{
             if (!CartElaboration.isEmptyCart()) {
-                boolean out = false;
                 if (cardRadioButton.isSelected()) {
                     paymentMethod = Constants.CREDITCARD_PAYMENT;
                 }
@@ -218,7 +230,7 @@ public class CartAndPayment {
                         }
                     }
                 } else {
-                    out = UserHandler.updateRecord(
+                    boolean out = UserHandler.updateRecord(
                             user, name, surname, billingStreet, billingCity, billingCountry,
                             billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
                     if (out) {

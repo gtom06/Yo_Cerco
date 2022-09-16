@@ -28,7 +28,9 @@ public class SpecificOrderAdmin {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView, goPreviousPageImageView;
+    private ImageView homepageImageView;
+    @FXML
+    private ImageView goPreviousPageImageView;
     @FXML
     Text textHi;
     @FXML

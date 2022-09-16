@@ -26,9 +26,15 @@ public class SpecificOrder {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView, goPreviousPageImageView;
+    private ImageView homepageImageView;
     @FXML
-    Text textHi, numberOfOrdersText, totalOrdersText;
+    private ImageView goPreviousPageImageView;
+    @FXML
+    Text textHi;
+    @FXML
+    Text numberOfOrdersText;
+    @FXML
+    Text totalOrdersText;
     @FXML
     TableView<OrderItem> orderItemTableView = new TableView<>();
     TableColumn<OrderItem, String> nameColumn;
