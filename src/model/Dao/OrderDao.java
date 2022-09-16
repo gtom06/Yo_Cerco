@@ -14,6 +14,7 @@ import java.sql.*;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class OrderDao {
     }
 
     static final Logger logger = Logger.getLogger(OrderDao.class.getName());
-    public static ArrayList<Order> findOrdersFromUser(String username) {
+    public static List<Order> findOrdersFromUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -51,7 +52,7 @@ public class OrderDao {
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -74,7 +75,7 @@ public class OrderDao {
             rs.next();
             order.setOrderItemString(rs.getString("items"));
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -110,7 +111,7 @@ public class OrderDao {
             order.setStatus(rs.getString("status"));
             order.setCollectionTimestamp(null);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -143,7 +144,7 @@ public class OrderDao {
             payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
             payment.setStatus(rs.getString("status"));
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
             return null;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -165,7 +166,7 @@ public class OrderDao {
             stmt.setString(2, jsonOrderItems);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
             return false;
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
@@ -173,7 +174,7 @@ public class OrderDao {
         return true;
     }
 
-    public static ArrayList<Order> findOrdersByAdmin(String username) {
+    public static List<Order> findOrdersByAdmin(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -206,7 +207,7 @@ public class OrderDao {
                 orderArrayList.add(order);
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }

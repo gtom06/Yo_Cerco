@@ -18,7 +18,7 @@ public class ProductHandler {
         if (productName.isBlank() || productName.length() > 100) {
             return null;
         }
-        return ProductDao.findProductByName(productName);
+        return (ArrayList<SimpleProduct>) ProductDao.findProductByName(productName);
     }
     public static ProductShop findProductShopByShopAndSimpleProduct(Shop shop, SimpleProduct simpleProduct) {
         if (shop == null || simpleProduct == null) {
@@ -28,7 +28,7 @@ public class ProductHandler {
     }
 
     public static ArrayList<SimpleProduct> findFavoriteSimpleProductFromUser(User user){
-        return ProductDao.findSimpleProductFromUser(user);
+        return (ArrayList<SimpleProduct>) ProductDao.findSimpleProductFromUser(user);
     }
 
     public static boolean isFavoriteProduct(ProductShop productShop, User user) {

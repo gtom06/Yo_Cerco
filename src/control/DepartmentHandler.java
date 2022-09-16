@@ -15,8 +15,7 @@ public class DepartmentHandler {
     }
 
     public static List<Department> findDepartmentByShop(Shop shop) {
-        ArrayList<Department> output = null;
-        output = DepartmentDao.findDepartmentByShop(shop.getShopId());
+        ArrayList<Department> output = (ArrayList<Department>) DepartmentDao.findDepartmentByShop(shop.getShopId());
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }
@@ -24,8 +23,7 @@ public class DepartmentHandler {
     }
 
     public static List<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
-        ArrayList<ProductShop> output = null;
-        output = DepartmentDao.findProductByDepartmentAndShop(shop.getShopId(), department.getDepartmentId());
+        ArrayList<ProductShop> output = (ArrayList<ProductShop>) DepartmentDao.findProductByDepartmentAndShop(shop.getShopId(), department.getDepartmentId());
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }

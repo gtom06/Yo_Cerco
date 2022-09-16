@@ -35,7 +35,7 @@ public final class Constants {
     public static final String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
 
     //use that ArrayList to populate filters
-    public static List<String> SHOP_TYPE = new ArrayList<>(Arrays.asList("All shops","Supermarket","Clothing"));
+    public static final List<String> SHOP_TYPE = new ArrayList<>(Arrays.asList("All shops","Supermarket","Clothing"));
     //for shop/product_shop
     public static final String ALL_TYPES = Constants.SHOP_TYPE.get(0);
 

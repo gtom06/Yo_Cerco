@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ public class DepartmentDao {
     }
 
     static final Logger logger = Logger.getLogger(DepartmentDao.class.getName());
-    public static ArrayList<Department> findDepartmentByShop(int shopId) {
+    public static List<Department> findDepartmentByShop(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -45,7 +46,7 @@ public class DepartmentDao {
         return arrayDepartment;
     }
 
-    public static ArrayList<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
+    public static List<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();

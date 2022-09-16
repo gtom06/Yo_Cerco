@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ public class ProductDao {
 
     static final Logger logger = Logger.getLogger(ProductDao.class.getName());
 
-    public static ArrayList<ProductShop> findProductShopByName(String name) {
+    public static List<ProductShop> findProductShopByName(String name) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -36,7 +37,7 @@ public class ProductDao {
             stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArrayProductShop(rs);
+            productArrayList = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -45,7 +46,7 @@ public class ProductDao {
         return productArrayList;
     }
 
-    public static ArrayList<SimpleProduct> findProductByName(String name) {
+    public static List<SimpleProduct> findProductByName(String name) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -59,7 +60,7 @@ public class ProductDao {
             stmt.setString(1, "%" + name.toLowerCase() + "%");
 
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArraySimpleProduct(rs);
+            productArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -68,7 +69,7 @@ public class ProductDao {
         return productArrayList;
     }
 
-    public static ArrayList<SimpleProduct> findProductByShopId(int shopId) {
+    public static List<SimpleProduct> findProductByShopId(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -82,7 +83,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArraySimpleProduct(rs);
+            productArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -91,7 +92,7 @@ public class ProductDao {
         return productArrayList;
     }
 
-    public static ArrayList<ProductShop> findProductInShop(int shopId) {
+    public static List<ProductShop> findProductInShop(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -105,7 +106,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArrayProductShop(rs);
+            productArrayList = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -114,7 +115,7 @@ public class ProductDao {
         return productArrayList;
     }
 
-    public static ArrayList<SimpleProduct> findFavoriteShopsFromUser(String username) {
+    public static List<SimpleProduct> findFavoriteShopsFromUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -128,7 +129,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArraySimpleProduct(rs);
+            productArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -201,7 +202,7 @@ public class ProductDao {
         }
     }
 
-    public static ArrayList<SimpleProduct> findSimpleProductFromUser(User user) {
+    public static List<SimpleProduct> findSimpleProductFromUser(User user) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -219,7 +220,7 @@ public class ProductDao {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             ResultSet rs = stmt.executeQuery();
-            simpleProductArrayList = convertRSInArraySimpleProduct(rs);
+            simpleProductArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -228,7 +229,7 @@ public class ProductDao {
         return simpleProductArrayList;
     }
 
-    public static ArrayList<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
+    public static List<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -243,7 +244,7 @@ public class ProductDao {
             stmt.setInt(1, shopId);
             stmt.setInt(2, sku);
             ResultSet rs = stmt.executeQuery();
-            productArrayList = convertRSInArrayProductShop(rs);
+            productArrayList = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
@@ -252,7 +253,7 @@ public class ProductDao {
         return productArrayList;
     }
 
-    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+    public static List<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
         ProductShop productShop;
         ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
         while (rs.next()) {
@@ -277,7 +278,7 @@ public class ProductDao {
         return arrayProductShop;
     }
 
-    public static ArrayList<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
+    public static List<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
         SimpleProduct simpleProduct;
         ArrayList<SimpleProduct> arraySimpleProduct= new ArrayList<>();
         while (rs.next()) {
