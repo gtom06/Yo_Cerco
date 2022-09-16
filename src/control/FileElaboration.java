@@ -48,9 +48,7 @@ public class FileElaboration {
         try {
             bufferedReader = new BufferedReader(new FileReader(filepath));
             output = bufferedReader.readLine();
-            if (bufferedReader != null){
-                bufferedReader.close();
-            }
+            bufferedReader.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_READING_FILE);
