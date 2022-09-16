@@ -31,18 +31,9 @@ public class CartElaboration {
                 return null;
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
-            reader.close();
         } catch (IOException e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_READING_FILE);
-        } finally {
-            try{
-                if (reader != null){
-                    reader.close();
-                }
-            } catch (IOException e) {
-                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            }
         }
         return orderItemArrayList;
     }
@@ -143,7 +134,6 @@ public class CartElaboration {
             String json = new Gson().toJson(orderItemArrayList);
             out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
             out.write(json);
-            out.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
@@ -172,7 +162,6 @@ public class CartElaboration {
             if (reader.read() == -1) {
                 bool = true;
             }
-            reader.close();
         }
         catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
@@ -206,7 +195,6 @@ public class CartElaboration {
                     output = true;
                 }
             }
-            out.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
         }
