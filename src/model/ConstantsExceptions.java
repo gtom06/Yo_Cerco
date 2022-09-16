@@ -17,7 +17,4 @@ public final class ConstantsExceptions {
     public static final String USER_DAO_ERROR = "error while finding user";
     public static final String SHOP_DAO_ERROR = "error in finding shop";
     public static final String DEPARTMENT_DAO_ERROR = "error in finding department";
-
-    public static final String SHOP_DAO_ERROR = "error in findShop";
-    public static final String SHOP_DAO_ERROR = "error in findShop";
 }

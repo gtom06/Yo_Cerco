@@ -13,11 +13,10 @@ public class DaoHelper {
         sb.append("(");
         int lenght = integerArrayList.size();
         for (int i = 0; i < lenght; i++){
-            if (i == lenght - 1) {
-                sb.append(integerArrayList.get(i));
-                break;
+            sb.append(integerArrayList.get(i));
+            if (i != lenght - 1) {
+                sb.append(",");
             }
-            sb.append(integerArrayList.get(i) + ",");
         }
         return sb.append(")").toString();
     }
