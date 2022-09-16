@@ -64,7 +64,7 @@ public class CartElaboration {
     public static boolean addArrayListOrderItemsToCart(List<ProductShop> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
         List<OrderItem> orderItemArrayList = readOrderItemsFromCart();
         //backup file
-        if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+        if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
             FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
         }
         for (int i = 0; i<productShopList.size(); i++) {
@@ -99,7 +99,7 @@ public class CartElaboration {
                     productShop.getDiscountedPrice()
             );
 
-            if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+            if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
                 boolean found = false;
                 if (orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
                     return false;

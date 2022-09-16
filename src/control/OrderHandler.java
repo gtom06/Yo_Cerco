@@ -27,12 +27,12 @@ public class OrderHandler {
 
     public static ArrayList<Order> findOrdersInfoFromUser(User user) {
         ArrayList<Order> orderArrayList = OrderDao.findOrdersFromUser(user.getUsername());
-        return orderArrayList.size() != 0 ? orderArrayList : null;
+        return !orderArrayList.isEmpty() ? orderArrayList : null;
     }
 
     public static ArrayList<Order> findOrdersByAdmin(User user){
         ArrayList<Order> orderArrayList = OrderDao.findOrdersByAdmin(user.getUsername());
-        return orderArrayList.size() != 0 ? orderArrayList : null;
+        return !orderArrayList.isEmpty() ? orderArrayList : null;
     }
 
     public static Order populateOrderWithOrderItems(Order order){

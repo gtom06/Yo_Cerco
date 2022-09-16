@@ -28,7 +28,7 @@ public class ShopHandler {
     public static Shop findShopByOrder(Order order) {
         ArrayList<Shop> shopArrayList = null;
         shopArrayList = ShopDao.findShopById(order.getShopId());
-        return shopArrayList.size() != 0 ? shopArrayList.get(0) : null;
+        return !shopArrayList.isEmpty() ? shopArrayList.get(0) : null;
     }
 
 
@@ -39,7 +39,7 @@ public class ShopHandler {
             if (address != null) {
                 shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return shopArrayList.size() != 0 ? shopArrayList : null;
+                return !shopArrayList.isEmpty() ? shopArrayList : null;
             }
             return null;
         }
@@ -48,7 +48,7 @@ public class ShopHandler {
             if (address != null) {
                 shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return shopArrayList.size() != 0 ? shopArrayList : null;
+                return !shopArrayList.isEmpty() ? shopArrayList : null;
             }
         }
         else {
@@ -56,7 +56,7 @@ public class ShopHandler {
             if (address != null) {
                 shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour(), type);
                 shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return shopArrayList.size() != 0 ? shopArrayList : null;
+                return !shopArrayList.isEmpty() ? shopArrayList : null;
             }
         }
         return null;
@@ -73,7 +73,7 @@ public class ShopHandler {
         else {
             shopArrayList = ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour(), type);
         }
-        return shopArrayList.size() != 0 ? shopArrayList : null;
+        return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
     public static ArrayList<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
@@ -87,13 +87,13 @@ public class ShopHandler {
         else {
             shopArrayList = ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour(), type);
         }
-        return shopArrayList.size() != 0 ? shopArrayList : null;
+        return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
     public static ArrayList<Shop> findShopByProduct(SimpleProduct product){
         ArrayList<Shop> shopArrayList;
         shopArrayList = ShopDao.findShopsByProduct(product);
-        return shopArrayList.size() != 0 ? shopArrayList : null;
+        return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
     public static boolean isFavoriteShop(Shop shop, User user) {

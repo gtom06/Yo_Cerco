@@ -19,7 +19,7 @@ public class DepartmentHandler {
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }
-        return output.size() != 0 ? output : null;
+        return !output.isEmpty() ? output : null;
     }
 
     public static ArrayList<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
@@ -28,6 +28,6 @@ public class DepartmentHandler {
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }
-        return output.size() != 0 ? output : null;
+        return !output.isEmpty() ? output : null;
     }
 }
