@@ -25,6 +25,7 @@ import java.beans.EventHandler;
 import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
@@ -78,43 +79,14 @@ public class ShopView {
         shopLogo.setImage(shopImage);
         TextShopName.setText(shop.getShopName());
         checkOffersFlyer(shop);
-        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
-            {
-                add(dep1);
-                add(dep2);
-                add(dep3);
-                add(dep4);
-                add(dep5);
-                add(dep6);
-                add(dep7);
-                add(dep8);
-                add(dep9);
-                add(dep10);
-                add(dep11);
-                add(dep12);
-                add(dep13);
-                add(dep14);
-            }
-        };
+        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>(
+                Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
+        );
 
-        ArrayList<Text> TextDepartmentsArrayList = new ArrayList<>() {
-            {
-                add(dep1Text);
-                add(dep2Text);
-                add(dep3Text);
-                add(dep4Text);
-                add(dep5Text);
-                add(dep6Text);
-                add(dep7Text);
-                add(dep8Text);
-                add(dep9Text);
-                add(dep10Text);
-                add(dep11Text);
-                add(dep12Text);
-                add(dep13Text);
-                add(dep14Text);
-            }
-        };
+        ArrayList<Text> TextDepartmentsArrayList = new ArrayList<>(
+                Arrays.asList(dep1Text,dep2Text,dep3Text,dep4Text,dep5Text,dep6Text,dep7Text,dep8Text,dep9Text,
+                        dep10Text, dep11Text,dep12Text,dep13Text,dep14Text)
+        );
         this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {

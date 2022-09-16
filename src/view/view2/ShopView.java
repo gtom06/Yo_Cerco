@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ShopView {
     Shop shop = null;
@@ -107,24 +108,9 @@ public class ShopView {
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
         TextShopName.setText(shop.getShopName());
-        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>() {
-            {
-                add(dep1);
-                add(dep2);
-                add(dep3);
-                add(dep4);
-                add(dep5);
-                add(dep6);
-                add(dep7);
-                add(dep8);
-                add(dep9);
-                add(dep10);
-                add(dep11);
-                add(dep12);
-                add(dep13);
-                add(dep14);
-            }
-        };
+        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>(
+                Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
+        );
         this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
         if (departmentArrayList != null && departmentArrayList.size() != 0) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
