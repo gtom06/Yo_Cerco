@@ -169,12 +169,10 @@ public class CartElaboration {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(Constants.CART_PATH));
-            if (reader.read() == -1){
+            if (reader.read() == -1) {
                 bool = true;
             }
-            if (reader != null) {
-                reader.close();
-            }
+            reader.close();
         }
         catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
@@ -208,10 +206,7 @@ public class CartElaboration {
                     output = true;
                 }
             }
-            if (out != null) {
-                out.close();
-            }
-
+            out.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
         }
