@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Homepage {
     @FXML
@@ -76,23 +77,12 @@ public class Homepage {
     public void passParams(User user) throws FileNotFoundException, AddressException {
         this.user = user;
 
-        ArrayList<Text> textArrayList = new ArrayList<>(){
-            {
-                add(shopText1);
-                add(shopText2);
-                add(shopText3);
-                add(shopText4);
-            }
-        };
-        ArrayList<ImageView> imageViewArrayList = new ArrayList<>() {
-            {
-                add(shopImageView1);
-                add(shopImageView2);
-                add(shopImageView3);
-                add(shopImageView4);
-            }
-        };
-
+        ArrayList<Text> textArrayList = new ArrayList<>(
+                Arrays.asList(shopText1, shopText2, shopText3, shopText4)
+        );
+        ArrayList<ImageView> imageViewArrayList = new ArrayList<>(
+                Arrays.asList(shopImageView1, shopImageView2, shopImageView3, shopImageView4)
+        );
         shopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
         if (shopArrayList != null && shopArrayList.size() != 0){
             for (int i = 0; i < 4; i++) {
