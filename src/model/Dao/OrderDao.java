@@ -162,10 +162,9 @@ public class OrderDao {
             conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderId);
-            String jsonString = FileElaboration.fileToString(Constants.CART_PATH);
-            stmt.setString(2, jsonString);
+            stmt.setString(2, jsonOrderItems);
             stmt.executeUpdate();
-        } catch (SQLException|FileElaborationException e) {
+        } catch (SQLException e) {
             logger.log(Level.WARNING, "error in order");
             return false;
         } finally {

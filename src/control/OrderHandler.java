@@ -163,7 +163,7 @@ public class OrderHandler {
                 logger.log(Level.SEVERE, "insertOrder failed");
                 return null;
             }
-            OrderDao.insertOrderItems(order.getOrderId(), orderItemsJson);
+            OrderDao.insertOrderItems(order.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
             //deleteCart after order is created
             CartElaboration.deleteCart();
             return order;

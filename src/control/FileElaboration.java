@@ -39,7 +39,7 @@ public class FileElaboration {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
         }
-        return (ArrayList<String>) lines;
+        return lines;
     }
 
     public static String fileToString(String filepath) throws FileElaborationException {

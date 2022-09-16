@@ -23,7 +23,7 @@ public class ShopHandler {
         ShopDao.deleteShopDb(shop);
     }
     public static void updateShop(Shop shop){
-        //for future implementation
+        throw new UnsupportedOperationException();
     }
 
     public static Shop findShopByOrder(Order order) {
