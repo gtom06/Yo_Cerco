@@ -3,7 +3,6 @@ package control;
 import exceptions.AddressException;
 import model.Address;
 import model.ConstantsExceptions;
-import model.Dao.OrderDao;
 import model.Dao.ShopDao;
 import model.Order.Order;
 import model.Product.SimpleProduct;
@@ -12,6 +11,7 @@ import model.User.User;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopHandler {
     private ShopHandler(){
@@ -32,8 +32,8 @@ public class ShopHandler {
     }
 
 
-    public static ArrayList<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
-        ArrayList<Shop> shopArrayList;
+    public static List<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
+        List<Shop> shopArrayList;
         if (searchParam == null || searchParam.length() == 0 || searchParam.length() > 50){
             Address address = LocationHandler.calculateLatLongFromIpAddress();
             if (address != null) {

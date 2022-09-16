@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -29,7 +30,7 @@ public class SabatoTestJUnit {
 
     @Test
     public void findShopNearbyWithParamsTest() throws AddressException {
-        ArrayList<Shop> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
+        List<Shop> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
         assertNotNull(shopArrayList);
         assertEquals("LIDL FR", shopArrayList.get(0).getShopName());
         assertEquals("+393881234567", shopArrayList.get(0).getPhone());

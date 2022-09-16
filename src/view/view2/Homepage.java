@@ -3,7 +3,6 @@ package view.view2;
 import control.ProductHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
-import exceptions.ExceptionBrowser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,6 +30,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Homepage {
     @FXML
@@ -72,7 +72,7 @@ public class Homepage {
     protected TableColumn<SimpleProduct, String> brandColumn;
 
     User user = null;
-    ArrayList<Shop> shopArrayList;
+    List<Shop> shopArrayList;
 
     public void passParams(User user) throws FileNotFoundException, AddressException {
         this.user = user;
@@ -193,7 +193,7 @@ public class Homepage {
 
     @FXML
     protected void onClickOnLocation() throws AddressException {
-        ArrayList<Shop> searchShopArrayList= null;
+        List<Shop> searchShopArrayList= null;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
         searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));

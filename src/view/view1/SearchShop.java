@@ -18,7 +18,7 @@ import model.User.Buyer;
 import model.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -100,7 +100,7 @@ public class SearchShop  {
     @FXML
     protected void onSearchButtonClick() throws AddressException {
         tableView.getItems().clear();
-        ArrayList<Shop> shopArrayList = null;
+        List<Shop> shopArrayList = null;
         String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();
 
 
