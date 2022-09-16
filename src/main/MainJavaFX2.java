@@ -19,7 +19,6 @@ public class MainJavaFX2 extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        logger.log(Level.INFO, "Java version: " + System.getProperty("java.home"));
         Parent root = FXMLLoader.load((getClass().getResource("/view/view2/login.fxml")));
         Scene scene = new Scene(root, 1080, 720);
         stage.setTitle("Login");

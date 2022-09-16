@@ -3,12 +3,12 @@ package model;
 public class Address {
     private final double lat;
     private final double lng;
-    private final String address;
+    private final String addressString;
 
-    public Address(double lat, double lng, String address) {
+    public Address(double lat, double lng, String addressString) {
         this.lat = lat;
         this.lng = lng;
-        this.address = address;
+        this.addressString = addressString;
     }
 
     public double getLat() {
@@ -19,8 +19,8 @@ public class Address {
         return lng;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressString() {
+        return addressString;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Address {
         return "Address{" +
                 "lat=" + lat +
                 ", lng=" + lng +
-                ", address='" + address + '\'' +
+                ", address='" + addressString + '\'' +
                 '}';
     }
 }

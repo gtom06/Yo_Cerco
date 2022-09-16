@@ -10,11 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HttpRequest {
+    private static HttpURLConnection conn;
     static Logger logger = Logger.getLogger(HttpRequest.class.getName());
     private HttpRequest(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-    private static HttpURLConnection conn;
     public static String get(String urlString) {
 
         BufferedReader reader;

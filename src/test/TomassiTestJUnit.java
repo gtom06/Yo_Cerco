@@ -33,7 +33,7 @@ public class TomassiTestJUnit {
         Address address = LocationHandler.calculateLatLongFromAddress(addressString);
         assertEquals( 41.5951003,address.getLat(), 0.5);
         assertEquals(13.4262861, address.getLng(),  0.5);
-        assertEquals(addressString, address.getAddress());
+        assertEquals(addressString, address.getAddressString());
     }
 
     @Test
