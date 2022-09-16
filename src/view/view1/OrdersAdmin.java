@@ -20,6 +20,8 @@ import model.User.User;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrdersAdmin {
     User user = null;
@@ -34,6 +36,7 @@ public class OrdersAdmin {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
+    static Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
 
     @FXML
     protected void onOrderClicked() throws IOException {
@@ -106,7 +109,7 @@ public class OrdersAdmin {
             orderTableView.setItems(orderObservableList);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
         totalOrdersText.setText(Constants.TOTAL_ORDERS_STRING);
         numberOfOrdersText.setText(String.valueOf(numberOfOrders));

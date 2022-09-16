@@ -16,12 +16,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
+import view.view1.CartAndPayment;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Favorite {
     User user = null;
@@ -41,6 +45,8 @@ public class Favorite {
     protected TableColumn<SimpleProduct, Integer> sizeColumn;
     protected TableColumn<SimpleProduct, String> nameProductColumn;
     protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
+
+    static Logger logger = Logger.getLogger(Favorite.class.getName());
 
     @FXML
     protected void onTableViewShopClick() throws IOException {
@@ -157,7 +163,7 @@ public class Favorite {
             shopTableView.setItems(observableListShops);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
@@ -172,7 +178,7 @@ public class Favorite {
             simpleProductTableView.setItems(simpleProductObservableList);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 }

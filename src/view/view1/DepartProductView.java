@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Department.Department;
 import model.Product.ProductShop;
 import model.Shop.Shop;
@@ -100,7 +101,7 @@ public class DepartProductView {
             productTable.setItems(observableListProducts);
         }
         else {
-            logger.log(Level.INFO, "no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
 
         departmentName.setText(department.getName());

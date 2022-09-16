@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Department.Department;
 import model.Product.ProductShop;
 import model.Shop.Shop;
@@ -35,6 +36,8 @@ import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShopView {
     Shop shop = null;
@@ -58,6 +61,8 @@ public class ShopView {
     protected TableColumn<ProductShop, Integer> currencyColumn;
     protected TableColumn<ProductShop, Integer> priceColumn;
     InputStream stream = null;
+
+    static Logger logger = Logger.getLogger(ShopView.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {
@@ -187,7 +192,7 @@ public class ShopView {
                 ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
                 productTable.setItems(observableListProducts);
             } else {
-                System.out.println("no result");
+                logger.log(Level.INFO, Constants.NO_RESULT);
             }
         } catch (Exception e){}
     }
@@ -252,7 +257,7 @@ public class ShopView {
     protected void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {
             if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
-                System.out.println("failed to open webpage");
+                logger.log(Level.WARNING, "failed to open webpage");
             }
         }
     }

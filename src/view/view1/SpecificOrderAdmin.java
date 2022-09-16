@@ -15,11 +15,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
     User user = null;
@@ -38,6 +41,7 @@ public class SpecificOrderAdmin {
     TableColumn<OrderItem, Double> priceTotalColumn;
     TableColumn<OrderItem, String> currencyColumn;
 
+    static Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
@@ -103,7 +107,7 @@ public class SpecificOrderAdmin {
             }
             orderItemTableView.setItems(orderItemObservableList);
         } else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

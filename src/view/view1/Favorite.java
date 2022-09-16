@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
@@ -167,7 +168,7 @@ public class Favorite {
             shopTableView.setItems(observableListShops);
         }
         else {
-            logger.log(Level.INFO, "no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
@@ -182,7 +183,7 @@ public class Favorite {
             simpleProductTableView.setItems(simpleProductObservableList);
         }
         else {
-            logger.log(Level.INFO, "no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 }

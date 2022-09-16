@@ -13,11 +13,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SpecificOrder {
     User user = null;
@@ -33,6 +36,8 @@ public class SpecificOrder {
     TableColumn<OrderItem, Integer> quantityOrderedColumn;
     TableColumn<OrderItem, Double> priceTotalColumn;
     TableColumn<OrderItem, String> currencyColumn;
+
+    static Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
 
     @FXML
@@ -100,7 +105,7 @@ public class SpecificOrder {
             }
             orderItemTableView.setItems(orderItemObservableList);
         } else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

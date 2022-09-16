@@ -109,7 +109,7 @@ public class MyOrders {
             orderTableView.setItems(orderObservableList);
         }
         else {
-            logger.log(Level.INFO, "no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
         totalOrdersText.setText(Constants.TOTAL_ORDERS_STRING);
         numberOfOrdersText.setText(String.valueOf(numberOfOrders));

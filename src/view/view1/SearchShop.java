@@ -19,6 +19,8 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SearchShop  {
 
@@ -49,6 +51,7 @@ public class SearchShop  {
     TableColumn<Shop, Double> distanceColumn;
     @FXML
     CheckBox openNow;
+    static Logger logger = Logger.getLogger(SearchShop.class.getName());
 
     @FXML
     protected void onTableViewItemClick() throws IOException {
@@ -123,7 +126,7 @@ public class SearchShop  {
             tableView.setItems(observableListShops);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

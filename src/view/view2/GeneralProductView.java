@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
@@ -27,6 +28,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GeneralProductView {
     User user;
@@ -44,6 +47,7 @@ public class GeneralProductView {
     protected TableColumn<Shop, String> openingColumn;
     protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
+    static Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
 
     public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {
@@ -64,7 +68,7 @@ public class GeneralProductView {
             shopsTableView.setItems(observableListShops);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

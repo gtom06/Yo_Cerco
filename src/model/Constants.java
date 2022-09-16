@@ -18,7 +18,7 @@ public interface Constants {
     String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
     //some strings
-    String NO_RESULT = "no result";
+    String NO_RESULT = Constants.NO_RESULT;
     String SHOP = "Shop";
     String PRODUCT = "Product";
     String ADDRESS = "Address";

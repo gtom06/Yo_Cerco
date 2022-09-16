@@ -16,11 +16,14 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.Order.Order;
 import model.User.User;
+import view.view1.CartAndPayment;
 
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HomepageAdmin {
     User user = null;
@@ -32,6 +35,7 @@ public class HomepageAdmin {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, String> orderStatus;
+    static Logger logger = Logger.getLogger(HomepageAdmin.class.getName());
 
     @FXML
     protected void onLogoutButtonClick() throws IOException {
@@ -99,7 +103,7 @@ public class HomepageAdmin {
             orderTableView.setItems(orderObservableList);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

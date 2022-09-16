@@ -14,11 +14,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SpecificOrder {
     User user = null;
@@ -35,6 +38,7 @@ public class SpecificOrder {
     protected TableColumn<OrderItem, Double> priceTotalColumn;
     protected TableColumn<OrderItem, String> currencyColumn;
 
+    static Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {
@@ -117,11 +121,11 @@ public class SpecificOrder {
                 }
                 orderItemTableView.setItems(orderItemObservableList);
             } else {
-                System.out.println("no result order items");
+                logger.log(Level.INFO, Constants.NO_RESULT);
             }
         }
         else {
-            System.out.println("no result order");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

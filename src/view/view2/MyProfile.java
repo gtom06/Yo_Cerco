@@ -25,6 +25,7 @@ import model.Constants;
 import model.Order.Order;
 import model.User.Buyer;
 import model.User.User;
+import view.view1.CartAndPayment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MyProfile {
     User user = null;
@@ -58,6 +61,7 @@ public class MyProfile {
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
 
+    static Logger logger = Logger.getLogger(MyProfile.class.getName());
     @FXML
     protected Text numberOfOrdersText;
 
@@ -88,6 +92,7 @@ public class MyProfile {
                     streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
                     zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath())) {
                 System.out.println("update effettuato");
+                logger.log(Level.INFO, "update ok");
             }
         }
     }
@@ -166,7 +171,7 @@ public class MyProfile {
             orderTableView.setItems(orderObservableList);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
         numberOfOrdersText.setText(String.valueOf(numberOfOrders));
     }

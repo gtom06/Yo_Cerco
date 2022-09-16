@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
@@ -89,7 +90,7 @@ public class GeneralProductView {
             shopsTableView.setItems(observableListShops);
         }
         else {
-            logger.log(Level.INFO, "no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

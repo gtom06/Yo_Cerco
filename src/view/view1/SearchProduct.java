@@ -13,12 +13,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SearchProduct {
     User user;
@@ -37,6 +40,7 @@ public class SearchProduct {
     TableColumn<SimpleProduct, Double> sizeColumn;
     TableColumn<SimpleProduct, String> unitOfMeasureColumn;
     TableColumn<SimpleProduct, String> brandColumn;
+    static Logger logger = Logger.getLogger(SearchProduct.class.getName());
 
     @FXML
     protected void onListViewItemClick() throws IOException {
@@ -85,7 +89,7 @@ public class SearchProduct {
             productTableView.setItems(observableListProducts);
         }
         else {
-            System.out.println("no result");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
