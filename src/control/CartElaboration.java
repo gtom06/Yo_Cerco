@@ -21,7 +21,7 @@ public class CartElaboration {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static ArrayList<OrderItem> readOrderItemsFromCart() throws ExceptionCart {
+    public static List<OrderItem> readOrderItemsFromCart() throws ExceptionCart {
         ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         JsonReader reader = null;
         try {
@@ -61,8 +61,8 @@ public class CartElaboration {
         return true;
     }
 
-    public static boolean addArrayListOrderItemsToCart(List<ProductShop> productShopList, ArrayList<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
-        ArrayList<OrderItem> orderItemArrayList = readOrderItemsFromCart();
+    public static boolean addArrayListOrderItemsToCart(List<ProductShop> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
+        List<OrderItem> orderItemArrayList = readOrderItemsFromCart();
         //backup file
         if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
             FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
@@ -78,7 +78,7 @@ public class CartElaboration {
     }
 
     public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) throws ExceptionCart {
-        ArrayList<OrderItem> orderItemArrayList;
+        List<OrderItem> orderItemArrayList;
         BufferedWriter out = null;
         try {
             orderItemArrayList = readOrderItemsFromCart();

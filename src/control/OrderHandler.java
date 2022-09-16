@@ -52,7 +52,7 @@ public class OrderHandler {
     }
 
     public static Order previewOrder() throws ExceptionCart {
-        ArrayList<OrderItem> orderItemArrayList;
+        List<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
         orderItemArrayList = CartElaboration.readOrderItemsFromCart();
         double orderTotalPrice = 0;
@@ -78,7 +78,7 @@ public class OrderHandler {
         Order order = null;
         Payment payment = null;
         int shopId = 0;
-        ArrayList<OrderItem> orderItemArrayList;
+        List<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
         orderItemArrayList = CartElaboration.readOrderItemsFromCart();
         String orderItemsJson = "";

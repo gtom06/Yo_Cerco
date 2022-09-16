@@ -25,6 +25,7 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CartAndPayment {
     @FXML
@@ -79,7 +80,7 @@ public class CartAndPayment {
             billingZipTextField.setText(((Buyer) user).getBillingZip());
         }
 
-        ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
+        List<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
         if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
             ObservableList<OrderItem> observableListProducts =
                     FXCollections.observableArrayList(orderItemArrayList);

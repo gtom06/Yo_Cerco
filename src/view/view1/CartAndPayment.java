@@ -25,6 +25,7 @@ import model.User.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -86,8 +87,8 @@ public class CartAndPayment {
         }
 
 
-        ArrayList<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-        if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+        List<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
+        if (orderItemArrayList != null && (orderItemArrayList).size() != 0) {
             ObservableList<OrderItem> observableListProducts =
                     FXCollections.observableArrayList(orderItemArrayList);
             orderItemsTableView.setItems(observableListProducts);

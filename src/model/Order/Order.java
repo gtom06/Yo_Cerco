@@ -2,6 +2,7 @@ package model.Order;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
     private int orderId;
@@ -14,10 +15,10 @@ public class Order {
     private String status;
     private Timestamp collectionTimestamp;
     private int orderTotalQuantity;
-    private ArrayList<OrderItem> orderItemArrayList;
+    private List<OrderItem> orderItemArrayList;
     private String orderItemString;
 
-    public Order(int orderId, int shopId, String username, int paymentId, Timestamp orderTimestamp, double totalPrice, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, ArrayList<OrderItem> orderItemArrayList, String orderItemString) {
+    public Order(int orderId, int shopId, String username, int paymentId, Timestamp orderTimestamp, double totalPrice, String currency, String status, Timestamp collectionTimestamp, int orderTotalQuantity, List<OrderItem> orderItemArrayList, String orderItemString) {
         this.orderId = orderId;
         this.shopId = shopId;
         this.username = username;
@@ -138,7 +139,7 @@ public class Order {
         this.orderTotalQuantity = orderTotalQuantity;
     }
 
-    public ArrayList<OrderItem> getOrderItemArrayList() {
+    public List<OrderItem> getOrderItemArrayList() {
         return orderItemArrayList;
     }
 
