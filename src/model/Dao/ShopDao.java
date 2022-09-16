@@ -1,6 +1,7 @@
 package model.Dao;
 
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Db.DbHelper;
 import model.Department.Department;
 import model.Product.ProductShop;
@@ -13,6 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShopDao {
+    private ShopDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
+
     static Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static void insertShopDb(Shop shop) {

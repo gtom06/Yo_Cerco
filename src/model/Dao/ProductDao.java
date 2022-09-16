@@ -1,5 +1,6 @@
 package model.Dao;
 
+import model.ConstantsExceptions;
 import model.Db.DbHelper;
 import model.Product.ProductShop;
 import model.Product.SimpleProduct;
@@ -14,6 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProductDao {
+    private ProductDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
+
     static Logger logger = Logger.getLogger(ProductDao.class.getName());
 
     public static ArrayList<ProductShop> findProductShopByName(String name) {

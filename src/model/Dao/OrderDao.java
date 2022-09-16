@@ -3,6 +3,7 @@ package model.Dao;
 import control.FileElaboration;
 import exceptions.FileElaborationException;
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Db.DbHelper;
 import model.Order.Order;
 import model.Order.OrderItem;
@@ -17,6 +18,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderDao {
+    private OrderDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
+
     static Logger logger = Logger.getLogger(OrderDao.class.getName());
     public static ArrayList<Order> findOrdersFromUser(String username) {
         PreparedStatement stmt = null;

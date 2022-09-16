@@ -1,5 +1,6 @@
 package model.Dao;
 
+import model.ConstantsExceptions;
 import model.Db.DbHelper;
 import model.User.Buyer;
 
@@ -8,6 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BuyerDao {
+    private BuyerDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
+
     static Logger logger = Logger.getLogger(BuyerDao.class.getName());
     public static boolean insertBuyer(Buyer buyer){
         PreparedStatement stmt = null;

@@ -1,6 +1,7 @@
 package model.Dao;
 
 import model.Constants;
+import model.ConstantsExceptions;
 import model.Db.DbHelper;
 import model.User.Admin;
 import model.User.Buyer;
@@ -13,6 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserDao {
+    private UserDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
+
     static Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public static boolean validateLogin(String username, String password) {
