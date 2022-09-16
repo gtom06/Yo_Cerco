@@ -3,13 +3,12 @@ package model.Dao;
 import model.Constants;
 import model.ConstantsExceptions;
 import model.Db.DbHelper;
-import model.Department.Department;
-import model.Product.ProductShop;
 import model.Product.SimpleProduct;
 import model.Shop.Shop;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +19,7 @@ public class ShopDao {
 
     static final Logger logger = Logger.getLogger(ShopDao.class.getName());
 
-    public static void insertShopDb(Shop shop) {
-    }
-
-    public static void deleteShopDb(Shop shop) {
-    }
-
-    public static ArrayList<Shop> findShopById(int shopId) {
+    public static List<Shop> findShopById(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -41,7 +34,7 @@ public class ShopDao {
             stmt.setInt(1, shopId);
 
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -50,7 +43,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopByCity(String city, String type) {
+    public static List<Shop> findShopByCity(String city, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -71,7 +64,7 @@ public class ShopDao {
                 stmt.setString(3,type);
             }
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -80,7 +73,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopByName(String name, String type) {
+    public static List<Shop> findShopByName(String name, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -102,7 +95,7 @@ public class ShopDao {
                 stmt.setString(3,type);
             }
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -111,7 +104,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopNearby(double lat, double lng, String type) {
+    public static List<Shop> findShopNearby(double lat, double lng, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -139,7 +132,7 @@ public class ShopDao {
                 stmt.setString(6,type);
             }
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -148,7 +141,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time, String type) {
+    public static List<Shop> findShoNearbyAndTime(Double lat, Double lng, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -178,7 +171,7 @@ public class ShopDao {
                 stmt.setString(8,type);
             }
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -187,7 +180,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopByCityAndTime(String city, Integer time, String type) {
+    public static List<Shop> findShopByCityAndTime(String city, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -212,7 +205,7 @@ public class ShopDao {
                 stmt.setString(5,type);
             }
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -221,7 +214,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopByFavouriteUser(String username) {
+    public static List<Shop> findShopByFavouriteUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -235,7 +228,7 @@ public class ShopDao {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -244,7 +237,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopByNameAndTime(String name, Integer time, String type) {
+    public static List<Shop> findShopByNameAndTime(String name, Integer time, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -269,7 +262,7 @@ public class ShopDao {
             }
 
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -278,7 +271,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
+    public static List<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -292,7 +285,7 @@ public class ShopDao {
             stmt = conn.prepareStatement(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
 
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -301,7 +294,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static ArrayList<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
+    public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
@@ -318,7 +311,7 @@ public class ShopDao {
             stmt = conn.prepareStatement(sql );
             stmt.setInt(1, simpleProduct.getSku());
             ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
+            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
@@ -391,7 +384,7 @@ public class ShopDao {
         return output;
     }
 
-    public static ArrayList<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {
+    public static List<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {
         Shop shop;
         ArrayList<Shop> arrayShop= new ArrayList<>();
         while (rs.next()) {

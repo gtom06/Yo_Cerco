@@ -17,10 +17,10 @@ public class ShopHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
     public static void insertShop(Shop shop){
-        ShopDao.insertShopDb(shop);
+        throw new UnsupportedOperationException();
     }
     public static void deleteShop(Shop shop){
-        ShopDao.deleteShopDb(shop);
+        throw new UnsupportedOperationException();
     }
     public static void updateShop(Shop shop){
         throw new UnsupportedOperationException();
@@ -28,7 +28,7 @@ public class ShopHandler {
 
     public static Shop findShopByOrder(Order order) {
         ArrayList<Shop> shopArrayList = null;
-        shopArrayList = ShopDao.findShopById(order.getShopId());
+        shopArrayList = (ArrayList<Shop>) ShopDao.findShopById(order.getShopId());
         return !shopArrayList.isEmpty() ? shopArrayList.get(0) : null;
     }
 
@@ -69,10 +69,10 @@ public class ShopHandler {
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = ShopDao.findShopByCity(city,type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCity(city,type);
         }
         else {
-            shopArrayList = ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour(), type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour(), type);
         }
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
@@ -83,17 +83,17 @@ public class ShopHandler {
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = ShopDao.findShopByName(name, type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByName(name, type);
         }
         else {
-            shopArrayList = ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour(), type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour(), type);
         }
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
     public static ArrayList<Shop> findShopByProduct(SimpleProduct product){
         ArrayList<Shop> shopArrayList;
-        shopArrayList = ShopDao.findShopsByProduct(product);
+        shopArrayList = (ArrayList<Shop>) ShopDao.findShopsByProduct(product);
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
@@ -117,10 +117,10 @@ public class ShopHandler {
         for (SimpleProduct sp : productArrayList){
             productSkuArrayList.add(sp.getSku());
         }
-        return ShopDao.findShopsWithProducts(productSkuArrayList);
+        return (ArrayList<Shop>) ShopDao.findShopsWithProducts(productSkuArrayList);
     }
 
     public static ArrayList<Shop> findFavoriteShopsFromUser(User user){
-        return ShopDao.findShopByFavouriteUser(user.getUsername());
+        return (ArrayList<Shop>) ShopDao.findShopByFavouriteUser(user.getUsername());
     }
 }
