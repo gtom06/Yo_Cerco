@@ -5,8 +5,6 @@ import model.ConstantsExceptions;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
@@ -49,11 +47,10 @@ public class HttpRequest {
                 }
                 reader.close();
             }
+            conn.disconnect();
         }
         catch (IOException e) {
             logger.log(Level.WARNING, ConstantsExceptions.HTTP_REQUEST_INFO);
-        } finally {
-            conn.disconnect();
         }
         return bld.toString();
 
@@ -83,7 +80,7 @@ public class HttpRequest {
             os.close();
             int responseCode=conn.getResponseCode();
 
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
+            if (responseCode >= 300) {
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 while ((line = reader.readLine()) != null) {
                     bld.append(line);
