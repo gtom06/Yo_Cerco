@@ -13,4 +13,11 @@ public final class ConstantsExceptions {
     public static final String FILE_ELABORATION_FAILURE_READING_FILE = "Exception while reading from file";
     public static final String FILE_ELABORATION_FAILURE_WRITING_FILE = "Exception while writing on file";
     public static final String HTTP_REQUEST_INFO = "error in HttpRequest";
+    public static final String PRODUCT_DAO_ERROR = "error while finding product";
+    public static final String USER_DAO_ERROR = "error while finding user";
+    public static final String SHOP_DAO_ERROR = "error in finding shop";
+    public static final String DEPARTMENT_DAO_ERROR = "error in finding department";
+
+    public static final String SHOP_DAO_ERROR = "error in findShop";
+    public static final String SHOP_DAO_ERROR = "error in findShop";
 }

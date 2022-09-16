@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProductDao {
+
     private ProductDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -37,7 +38,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -60,7 +61,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -83,7 +84,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -106,7 +107,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -129,55 +130,12 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return productArrayList;
     }
-
-    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
-        ProductShop productShop;
-        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
-        while (rs.next()) {
-            int sku = rs.getInt("sku");
-            String name = rs.getString("name");
-            int shopId = rs.getInt("shop_id");
-            int departmentId = rs.getInt("department_id");
-            String location = rs.getString("location");
-            double price = rs.getDouble("price");
-            String currency = rs.getString("currency");
-            String brand = rs.getString("brand");
-            String description = rs.getString("description");
-            double size = rs.getDouble("size");
-            String unitOfMeasure = rs.getString("unit_of_measure");
-            String logoImagepath = rs.getString("logo_imagepath");
-            double discountedPrice = rs.getDouble("discounted_price");
-
-            productShop = new ProductShop(price,currency, shopId,sku,name,brand,description,
-                                             size,unitOfMeasure,logoImagepath,departmentId, discountedPrice);
-            arrayProductShop.add(productShop);
-        }
-        return arrayProductShop;
-    }
-
-    public static ArrayList<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
-        SimpleProduct simpleProduct;
-        ArrayList<SimpleProduct> arraySimpleProduct= new ArrayList<>();
-        while (rs.next()) {
-            Integer sku = rs.getInt("sku");
-            String name = rs.getString("name");
-            String brand = rs.getString("brand");
-            String description = rs.getString("description");
-            Double size = rs.getDouble("size");
-            String unitOfMeasure = rs.getString("unit_of_measure");
-            String logoImagepath = rs.getString("logo_imagepath");
-            simpleProduct = new SimpleProduct(sku, name,brand, description, size, unitOfMeasure, logoImagepath);
-            arraySimpleProduct.add(simpleProduct);
-        }
-        return arraySimpleProduct;
-    }
-
 
     public static boolean isFavoriteProduct(String username, int sku) {
         PreparedStatement stmt = null;
@@ -198,7 +156,7 @@ public class ProductDao {
                 output = true;
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -218,7 +176,7 @@ public class ProductDao {
             stmt.setInt(2, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -237,7 +195,7 @@ public class ProductDao {
             stmt.setInt(2, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -263,7 +221,7 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             simpleProductArrayList = convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -287,10 +245,52 @@ public class ProductDao {
             ResultSet rs = stmt.executeQuery();
             productArrayList = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding product");
+            logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return productArrayList;
+    }
+
+    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+        ProductShop productShop;
+        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
+        while (rs.next()) {
+            int sku = rs.getInt("sku");
+            String name = rs.getString("name");
+            int shopId = rs.getInt("shop_id");
+            int departmentId = rs.getInt("department_id");
+            String location = rs.getString("location");
+            double price = rs.getDouble("price");
+            String currency = rs.getString("currency");
+            String brand = rs.getString("brand");
+            String description = rs.getString("description");
+            double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            double discountedPrice = rs.getDouble("discounted_price");
+
+            productShop = new ProductShop(price,currency, shopId,sku,name,brand,description,
+                    size,unitOfMeasure,logoImagepath,departmentId, discountedPrice);
+            arrayProductShop.add(productShop);
+        }
+        return arrayProductShop;
+    }
+
+    public static ArrayList<SimpleProduct> convertRSInArraySimpleProduct(ResultSet rs) throws SQLException {
+        SimpleProduct simpleProduct;
+        ArrayList<SimpleProduct> arraySimpleProduct= new ArrayList<>();
+        while (rs.next()) {
+            Integer sku = rs.getInt("sku");
+            String name = rs.getString("name");
+            String brand = rs.getString("brand");
+            String description = rs.getString("description");
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            simpleProduct = new SimpleProduct(sku, name,brand, description, size, unitOfMeasure, logoImagepath);
+            arraySimpleProduct.add(simpleProduct);
+        }
+        return arraySimpleProduct;
     }
 }

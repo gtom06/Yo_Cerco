@@ -38,46 +38,11 @@ public class DepartmentDao {
             ResultSet rs = stmt.executeQuery();
             arrayDepartment = convertRSInArrayDepartment(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in department");
+            logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
         return arrayDepartment;
-    }
-
-    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
-        ProductShop productShop;
-        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
-        while (rs.next()) {
-
-            Double price = rs.getDouble("price");
-            Integer sku = rs.getInt("sku");
-            String currency = rs.getString("currency");
-            Integer shopId = rs.getInt("shop_id");
-            String name = rs.getString("name");
-            String brand = rs.getString("brand");
-            String description = rs.getString("description");
-            Double size = rs.getDouble("size");
-            String unitOfMeasure = rs.getString("unit_of_measure");
-            String logoImagepath = rs.getString("logo_imagepath");
-            Integer departmentId = rs.getInt("department_id");
-            Double discountedPrice = rs.getDouble("discounted_price");
-            productShop = new ProductShop(
-                price,
-                currency,
-                shopId,
-                sku,
-                name,
-                brand,
-                description,
-                size,
-                unitOfMeasure,
-                logoImagepath,
-                departmentId,
-                    discountedPrice);
-            arrayProductShop.add(productShop);
-        }
-        return arrayProductShop;
     }
 
     public static ArrayList<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
@@ -98,7 +63,7 @@ public class DepartmentDao {
             ResultSet rs = stmt.executeQuery();
             arrayProductShop = convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in department");
+            logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -117,5 +82,40 @@ public class DepartmentDao {
             departmentArrayList.add(department);
         }
         return departmentArrayList;
+    }
+
+    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+        ProductShop productShop;
+        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
+        while (rs.next()) {
+
+            Double price = rs.getDouble("price");
+            Integer sku = rs.getInt("sku");
+            String currency = rs.getString("currency");
+            Integer shopId = rs.getInt("shop_id");
+            String name = rs.getString("name");
+            String brand = rs.getString("brand");
+            String description = rs.getString("description");
+            Double size = rs.getDouble("size");
+            String unitOfMeasure = rs.getString("unit_of_measure");
+            String logoImagepath = rs.getString("logo_imagepath");
+            Integer departmentId = rs.getInt("department_id");
+            Double discountedPrice = rs.getDouble("discounted_price");
+            productShop = new ProductShop(
+                    price,
+                    currency,
+                    shopId,
+                    sku,
+                    name,
+                    brand,
+                    description,
+                    size,
+                    unitOfMeasure,
+                    logoImagepath,
+                    departmentId,
+                    discountedPrice);
+            arrayProductShop.add(productShop);
+        }
+        return arrayProductShop;
     }
 }

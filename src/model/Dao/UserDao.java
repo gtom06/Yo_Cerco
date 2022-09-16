@@ -40,7 +40,7 @@ public class UserDao {
                 output = true;
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding user");
+            logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
@@ -101,7 +101,7 @@ public class UserDao {
                 );
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding user");
+            logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
         } finally {
             dbHelper.closeDBConnection(stmt, conn);
         }
