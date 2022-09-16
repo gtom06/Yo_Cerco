@@ -147,15 +147,6 @@ public class CartElaboration {
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
-        } finally{
-            try{
-                if (out != null){
-                    out.close();
-                }
-            }
-            catch (Exception e ) {
-                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            }
         }
         return true;
     }
@@ -171,15 +162,6 @@ public class CartElaboration {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
         }
-        finally {
-            try{
-                if (out != null){
-                    out.close();
-                }
-            } catch (Exception e) {
-                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            }
-        }
     }
 
     public static boolean isEmptyCart() throws IOException {
@@ -190,19 +172,13 @@ public class CartElaboration {
             if (reader.read() == -1){
                 bool = true;
             }
+            if (reader != null) {
+                reader.close();
+            }
         }
         catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             return false;
-        }
-        finally{
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (Exception e) {
-                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            }
         }
         return bool;
     }
@@ -232,18 +208,12 @@ public class CartElaboration {
                     output = true;
                 }
             }
+            if (out != null) {
+                out.close();
+            }
 
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-        }
-        finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (Exception e){
-                logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            }
         }
         return output;
     }
