@@ -22,6 +22,7 @@ import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,7 +96,7 @@ public class HomepageAdmin {
     protected void fillTableView() {
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);
+        List<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);

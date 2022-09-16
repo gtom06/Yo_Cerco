@@ -30,7 +30,7 @@ public class OrderHandler {
         return !orderArrayList.isEmpty() ? orderArrayList : null;
     }
 
-    public static ArrayList<Order> findOrdersByAdmin(User user){
+    public static List<Order> findOrdersByAdmin(User user){
         ArrayList<Order> orderArrayList = OrderDao.findOrdersByAdmin(user.getUsername());
         return !orderArrayList.isEmpty() ? orderArrayList : null;
     }

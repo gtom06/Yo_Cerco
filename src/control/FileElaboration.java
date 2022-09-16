@@ -35,9 +35,6 @@ public class FileElaboration {
             while ((line = br.readLine()) != null) {
                 lines.add(line);
             }
-            if (br != null){
-                br.close();
-            }
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.FILE_ELABORATION_FAILURE_INFO);
             throw new FileElaborationException(ConstantsExceptions.FILE_ELABORATION_FAILURE_WRITING_FILE);
