@@ -27,20 +27,13 @@ public interface Constants {
     String OPENING = "Opening";
     String CLOSING = "Closing";
     String DISTANCE = "Distance";
-    String SAVE = "Save";
-    String SAVE_CAPSLOCK = "SAVE";
-    String AVAILABLE_STRING = "Available";
-    String SOON_BACK_STRING = "Soon back";
-    String NOT_AVAILABLE_STRING = "Not available";
-    String MY_FAVORITE_SHOPS = "My favorite shops";
-    String MY_FAVORITE_SHOPS_CAPSLOCK = "MY FAVORITE SHOPS";
-    String ADD_TO_FAVORITE_SHOP = "Add to favorite";
     String ADD_TO_FAVORITE_SHOP_CAPSLOCK = "ADD TO FAVORITES";
-    String REMOVE_FROM_FAVORITE_SHOP = "Remove from favorites";
     String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
 
     //use that ArrayList to populate filters
     ArrayList<String> SHOP_TYPE = new ArrayList<>(Arrays.asList("All shops","Supermarket","Clothing"));
+    //for shop/product_shop
+    String ALL_TYPES = Constants.SHOP_TYPE.get(0);
 
     //for files
     String REMEMBER_LOGIN = "src/data/remember_login.txt";
@@ -54,20 +47,13 @@ public interface Constants {
     String PROFILE_IMAGE_BLANK = "src/images/user_profile_images/icons8-customer-100.png";
     String SHOP_IMAGE = "src/images/shop/";
     String LOGO_DEPARTMENT_PATH = "src/images/department/";
-    //for shop/product_shop
-    String ALL_TYPES = Constants.SHOP_TYPE.get(0);
 
     //values
     int NEW_OPENING = 0;
     int AVAILABLE = 1;
     int NOT_AVAILABLE = -1;
-    //Profile
-    String COMPLETE_YOUR_PROFILE = "Complete your profile";
-    String COMPLETE_YOUR_PROFILE_CAPSLOCK = "COMPLETE YOUR PROFILE";
-    String MODIFY_YOUR_PROFILE_STRING = "Modify your profile";
-    String MODIFY_YOUR_PROFILE_STRING_CAPSLOCK = "MODIFY YOUR PROFILE";
+
     //for orders
-    String TOTAL_ORDERS_STRING_CAPSLOCK = "TOTAL ORDERS: ";
     String TOTAL_ORDERS_STRING = "Total orders: ";
     //order status
     String CREATED_STATUS = "Created";
@@ -81,15 +67,6 @@ public interface Constants {
     String NEARBY = "nearby";
     String BY_CITY = "by city";
     String BY_NAME = "by name";
-    //for currencies
-    String EUR = "EUR"; //euro
-    String EUR_SYMBOL = "€";
-    String USD = "USD"; //us dollar
-    String USD_SYMBOL = "$";
-    String GBP = "GBP"; //sterling
-    String GBP_SYMBOL = "£";
-    String BTC = "BTC"; //bitcoin
-    String BTC_SYMBOL = "₿";
     //for users
     String ADMIN_USER = "A";
     String BUYER_USER = "B";
@@ -97,7 +74,4 @@ public interface Constants {
     String ADMIN = "Admin";
     String BUYER = "Buyer";
     String OWNER = "Owner";
-    String STANDARD_TO_USE = "12345";
-
-    String BLANK_STRING = "";
 }

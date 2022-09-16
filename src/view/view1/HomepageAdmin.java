@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class HomepageAdmin {
     User user = null;
-    // Import the application's controls
     @FXML
     protected Button logoutButton;
     @FXML

@@ -120,7 +120,7 @@ public class SpecificOrderAdmin {
 
     @FXML
     protected void completeOrder() {
-        if (OrderHandler.setStatusOrder(order, "Completed")) {
+        if (OrderHandler.setStatusOrder(order, Constants.COMPLETED)) {
             completedLabel.setVisible(true);
         }
     }

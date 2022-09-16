@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Constants;
+import model.ConstantsExceptions;
 import model.Order.Order;
 import model.Order.OrderItem;
 import model.User.User;
@@ -90,11 +92,11 @@ public class SpecificOrderAdmin {
                 }
                 orderItemTableView.setItems(orderItemObservableList);
             } else {
-                logger.log(Level.INFO, "no result order items");
+                logger.log(Level.INFO, Constants.NO_RESULT);
             }
         }
         else {
-            logger.log(Level.INFO, "no result order");
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
@@ -105,7 +107,7 @@ public class SpecificOrderAdmin {
     }
     @FXML
     protected void completeOrder() {
-        if (OrderHandler.setStatusOrder(order, "Completed")) {
+        if (OrderHandler.setStatusOrder(order, Constants.COMPLETED)) {
             completedText.setVisible(true);
         }
     }
