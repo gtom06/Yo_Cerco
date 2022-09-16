@@ -19,7 +19,7 @@ public class ProductDao {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    static Logger logger = Logger.getLogger(ProductDao.class.getName());
+    static final Logger logger = Logger.getLogger(ProductDao.class.getName());
 
     public static ArrayList<ProductShop> findProductShopByName(String name) {
         PreparedStatement stmt = null;
@@ -140,19 +140,19 @@ public class ProductDao {
         ProductShop productShop;
         ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
         while (rs.next()) {
-            Integer sku = rs.getInt("sku");
+            int sku = rs.getInt("sku");
             String name = rs.getString("name");
-            Integer shopId = rs.getInt("shop_id");
-            Integer departmentId = rs.getInt("department_id");
+            int shopId = rs.getInt("shop_id");
+            int departmentId = rs.getInt("department_id");
             String location = rs.getString("location");
-            Double price = rs.getDouble("price");
+            double price = rs.getDouble("price");
             String currency = rs.getString("currency");
             String brand = rs.getString("brand");
             String description = rs.getString("description");
-            Double size = rs.getDouble("size");
+            double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
-            Double discountedPrice = rs.getDouble("discounted_price");
+            double discountedPrice = rs.getDouble("discounted_price");
 
             productShop = new ProductShop(price,currency, shopId,sku,name,brand,description,
                                              size,unitOfMeasure,logoImagepath,departmentId, discountedPrice);
@@ -184,7 +184,6 @@ public class ProductDao {
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         boolean output = false;
-        ArrayList<ProductShop> arrayProduct= new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +

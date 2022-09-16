@@ -18,14 +18,15 @@ import model.User.User;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Login {
 
-    protected
+    protected final
     String successMessage = String.format("-fx-text-fill: WHITE;");
-    String errorMessage = String.format("-fx-text-fill: RED;");
-    String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
-    String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
+    final String errorMessage = String.format("-fx-text-fill: RED;");
+    final String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+    final String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
 
 
     @FXML
@@ -193,8 +194,7 @@ public class Login {
     }
 
     public void initialize() throws IOException, FileElaborationException {
-        ArrayList<String> userdata;
-        userdata = FileElaboration.fileLinesToArrayList(Constants.REMEMBER_LOGIN);
+        List<String> userdata = FileElaboration.fileLinesToArrayList(Constants.REMEMBER_LOGIN);
         if (userdata.size() == 2){
             loginUsernameTextField.setText(userdata.get(0));
             loginPasswordPasswordField.setText(userdata.get(1));

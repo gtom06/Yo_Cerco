@@ -37,7 +37,7 @@ public class SpecificOrderAdmin {
     protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
     protected TableColumn<OrderItem, Double> priceTotalColumn;
     protected TableColumn<OrderItem, String> currencyColumn;
-    static Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
+    static final Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException {

@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderHandler {
-    static Logger logger = Logger.getLogger(OrderHandler.class.getName());
+    static final Logger logger = Logger.getLogger(OrderHandler.class.getName());
     private OrderHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }

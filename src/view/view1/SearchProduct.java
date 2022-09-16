@@ -40,7 +40,7 @@ public class SearchProduct {
     TableColumn<SimpleProduct, Double> sizeColumn;
     TableColumn<SimpleProduct, String> unitOfMeasureColumn;
     TableColumn<SimpleProduct, String> brandColumn;
-    static Logger logger = Logger.getLogger(SearchProduct.class.getName());
+    static final Logger logger = Logger.getLogger(SearchProduct.class.getName());
 
     @FXML
     protected void onListViewItemClick() throws IOException {

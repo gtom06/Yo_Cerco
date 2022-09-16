@@ -22,7 +22,7 @@ public class OrderDao {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    static Logger logger = Logger.getLogger(OrderDao.class.getName());
+    static final Logger logger = Logger.getLogger(OrderDao.class.getName());
     public static ArrayList<Order> findOrdersFromUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -165,10 +165,7 @@ public class OrderDao {
             String jsonString = FileElaboration.fileToString(Constants.CART_PATH);
             stmt.setString(2, jsonString);
             stmt.executeUpdate();
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in order");
-            return false;
-        } catch (FileElaborationException e) {
+        } catch (SQLException|FileElaborationException e) {
             logger.log(Level.WARNING, "error in order");
             return false;
         } finally {

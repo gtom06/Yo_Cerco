@@ -18,7 +18,7 @@ public class ShopDao {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    static Logger logger = Logger.getLogger(ShopDao.class.getName());
+    static final Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static void insertShopDb(Shop shop) {
     }

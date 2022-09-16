@@ -47,7 +47,7 @@ public class GeneralProductView {
     protected TableColumn<Shop, String> openingColumn;
     protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
-    static Logger logger = Logger.getLogger(GeneralProductView.class.getName());
+    static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
 
     public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {

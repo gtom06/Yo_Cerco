@@ -36,7 +36,7 @@ public class MyOrders {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
-    static Logger logger = Logger.getLogger(MyOrders.class.getName());
+    static final Logger logger = Logger.getLogger(MyOrders.class.getName());
 
     @FXML
     protected void onOrderClicked() throws IOException {

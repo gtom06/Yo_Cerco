@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileElaboration {
-    static Logger logger = Logger.getLogger(FileElaboration.class.getName());
+    static final Logger logger = Logger.getLogger(FileElaboration.class.getName());
     private FileElaboration(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -26,7 +26,7 @@ public class FileElaboration {
         }
     }
 
-    public static ArrayList<String> fileLinesToArrayList(String filepath) throws FileElaborationException {
+    public static List<String> fileLinesToArrayList(String filepath) throws FileElaborationException {
         List<String> lines = new ArrayList<>();
         BufferedReader br = null;
         try {

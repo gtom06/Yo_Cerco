@@ -63,7 +63,7 @@ public class ShopView {
     protected TableColumn<ProductShop, Integer> priceColumn;
     InputStream stream = null;
 
-    static Logger logger = Logger.getLogger(ShopView.class.getName());
+    static final Logger logger = Logger.getLogger(ShopView.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {

@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LocationHandler {
-    static Logger logger = Logger.getLogger(LocationHandler.class.getName());
+    static final Logger logger = Logger.getLogger(LocationHandler.class.getName());
     private LocationHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }

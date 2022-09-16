@@ -46,7 +46,7 @@ public class Favorite {
     protected TableColumn<SimpleProduct, String> nameProductColumn;
     protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn;
 
-    static Logger logger = Logger.getLogger(Favorite.class.getName());
+    static final Logger logger = Logger.getLogger(Favorite.class.getName());
 
     @FXML
     protected void onTableViewShopClick() throws IOException {

@@ -37,7 +37,7 @@ public class OrdersAdmin {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
-    static Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
+    static final Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
 
     @FXML
     protected void onOrderClicked() throws IOException {

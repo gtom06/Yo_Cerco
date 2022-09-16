@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserHandler {
-    static Logger logger = Logger.getLogger(UserHandler.class.getName());
+    static final Logger logger = Logger.getLogger(UserHandler.class.getName());
     private UserHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }

@@ -37,7 +37,7 @@ public class SpecificOrder {
     TableColumn<OrderItem, Double> priceTotalColumn;
     TableColumn<OrderItem, String> currencyColumn;
 
-    static Logger logger = Logger.getLogger(SpecificOrder.class.getName());
+    static final Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
 
     @FXML

@@ -19,7 +19,7 @@ public class DepartmentDao {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    static Logger logger = Logger.getLogger(DepartmentDao.class.getName());
+    static final Logger logger = Logger.getLogger(DepartmentDao.class.getName());
     public static ArrayList<Department> findDepartmentByShop(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;

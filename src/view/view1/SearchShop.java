@@ -51,7 +51,7 @@ public class SearchShop  {
     TableColumn<Shop, Double> distanceColumn;
     @FXML
     CheckBox openNow;
-    static Logger logger = Logger.getLogger(SearchShop.class.getName());
+    static final Logger logger = Logger.getLogger(SearchShop.class.getName());
 
     @FXML
     protected void onTableViewItemClick() throws IOException {

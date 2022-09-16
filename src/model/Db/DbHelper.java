@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class DbHelper {
     private static DbHelper dbHelper = null;
     private static Connection connection = null;
-    static Logger logger = Logger.getLogger(DbHelper.class.getName());
+    static final Logger logger = Logger.getLogger(DbHelper.class.getName());
 
     private DbHelper() {}
 

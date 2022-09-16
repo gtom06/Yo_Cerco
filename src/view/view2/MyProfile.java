@@ -61,7 +61,7 @@ public class MyProfile {
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
 
-    static Logger logger = Logger.getLogger(MyProfile.class.getName());
+    static final Logger logger = Logger.getLogger(MyProfile.class.getName());
     @FXML
     protected Text numberOfOrdersText;
 

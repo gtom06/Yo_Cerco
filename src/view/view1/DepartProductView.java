@@ -52,7 +52,7 @@ public class DepartProductView {
     protected TableColumn<ProductShop, Double> discountedPriceColumn;
     @FXML
     protected TableColumn<ProductShop, Double> priceColumn;
-    static Logger logger = Logger.getLogger(DepartProductView.class.getName());
+    static final Logger logger = Logger.getLogger(DepartProductView.class.getName());
 
     @FXML
     protected void onListViewItemClick() throws IOException {

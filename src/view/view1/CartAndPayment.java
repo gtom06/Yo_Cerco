@@ -66,7 +66,7 @@ public class CartAndPayment {
     protected TableColumn<OrderItem, String> quantityOrderedColumn;
     protected TableColumn<OrderItem, Double> pricePerItemColumn;
     protected TableColumn<OrderItem, Double> priceTotalColumn;
-    static Logger logger = Logger.getLogger(CartAndPayment.class.getName());
+    static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
     User user = null;
     Shop shop = null;

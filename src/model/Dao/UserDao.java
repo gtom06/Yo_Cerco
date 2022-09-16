@@ -18,7 +18,7 @@ public class UserDao {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    static Logger logger = Logger.getLogger(UserDao.class.getName());
+    static final Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public static boolean validateLogin(String username, String password) {
         PreparedStatement stmt = null;

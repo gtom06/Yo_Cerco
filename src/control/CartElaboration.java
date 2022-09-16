@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CartElaboration {
-    static Logger logger = Logger.getLogger(CartElaboration.class.getName());
+    static final Logger logger = Logger.getLogger(CartElaboration.class.getName());
     private CartElaboration(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }

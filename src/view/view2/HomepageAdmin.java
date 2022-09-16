@@ -36,7 +36,7 @@ public class HomepageAdmin {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, String> orderStatus;
-    static Logger logger = Logger.getLogger(HomepageAdmin.class.getName());
+    static final Logger logger = Logger.getLogger(HomepageAdmin.class.getName());
 
     @FXML
     protected void onLogoutButtonClick() throws IOException {

@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BrowserHandler {
-    static Logger logger = Logger.getLogger(BrowserHandler.class.getName());
+    static final Logger logger = Logger.getLogger(BrowserHandler.class.getName());
     private BrowserHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
