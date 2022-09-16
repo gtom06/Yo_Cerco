@@ -1,9 +1,9 @@
 package model;
 
 public class Address {
-    private double lat;
-    private double lng;
-    private String address;
+    private final double lat;
+    private final double lng;
+    private final String address;
 
     public Address(double lat, double lng, String address) {
         this.lat = lat;

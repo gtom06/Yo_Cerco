@@ -232,27 +232,6 @@ public class ShopView {
         productTable.getColumns().addAll(nameColumn, brandColumn, sizeColumn, unitOfMeasureColumn, priceColumn, currencyColumn);
     }
 
-
-    /*
-    @FXML
-    protected void onListViewItemClick() throws IOException {
-
-        ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
-        //check if shop selected: used to avoid exception when clicking wrong on tableview
-        if (productShop != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("productView.fxml"));
-            Parent root = loader.load();
-            ProductView productView = loader.getController();
-            productView.passParams(user, department, productShop, shop);
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.show();
-            newStage.setResizable(false);
-            Stage stage = (Stage) productTable.getScene().getWindow();
-            stage.close();
-        }
-    }
-    */
     @FXML
     protected void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null ) {

@@ -61,23 +61,6 @@ public interface Constants {
     int NEW_OPENING = 0;
     int AVAILABLE = 1;
     int NOT_AVAILABLE = -1;
-    //String
-    /*
-    //departments
-    String FRUIT_DEPARTMENT = "Fruit";
-    String VEGETABLES_DEPARTMENT = "Vegetables";
-    String CURED_MEAT_DEPARTMENT = "Cured meat"; //salumi
-    String CHEESE_DEPARTMENT = "Cheese";
-    String BEVERAGE_DEPARTMENT = "Beverage";
-    String MEAT_DEPARTMENT = "Meat";
-    String FOODSTUFF_DEPARTMENT = "Foodstuff";
-    String MILK_BUTTER_EGGS_DEPARTMENT = "Milk, butter & eggs";
-    String BREAKFAST_SWEETS_CAKES_DEPARTMENT = "Breakfast, sweets & cakes";
-    String ICECREAM_FROZEN_DEPARTMENT = "Icecream & frozen";
-    String COSMETICS_DEPARTMENT = "Cosmetics";
-    String HOUSEWARE_DEPARTMENT = "Houseware";
-    String PETS_DEPARTMENT = "Pets";
-    */
     //Profile
     String COMPLETE_YOUR_PROFILE = "Complete your profile";
     String COMPLETE_YOUR_PROFILE_CAPSLOCK = "COMPLETE YOUR PROFILE";

@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,7 +76,7 @@ public class HttpRequest {
 
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
+                    new OutputStreamWriter(os, StandardCharsets.UTF_8));
 
             writer.flush();
             writer.close();

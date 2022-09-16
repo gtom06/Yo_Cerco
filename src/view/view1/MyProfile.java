@@ -67,7 +67,7 @@ public class MyProfile {
             Image profileImage = new Image(stream, 200, 200, false, false);
             myProfileImage.setImage(profileImage);
             stream.close();
-            if (this.isSomeFieldBlank = ((Buyer) user).isSomeFieldBlank()) {
+            if (this.isSomeFieldBlank == ((Buyer) user).isSomeFieldBlank()) {
                 saveYourProfileText.setVisible(false);
                 completeYourProfileText.setVisible(true);
                 modifyYourProfileText.setVisible(false);

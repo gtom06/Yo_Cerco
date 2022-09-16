@@ -17,7 +17,7 @@ public class ComparableHandler {
                     Math.round(LocationHandler.calculateDistancePointToPoint(shop,address) * 100.0) / 100.0
             );
         }
-        Collections.sort(shopList, new Comparator<Shop>() {
+        Collections.sort(shopList, new Comparator<>() {
             @Override
             public int compare(Shop s1, Shop s2) {
                 return Double.compare(s1.getDistance(), s2.getDistance());
