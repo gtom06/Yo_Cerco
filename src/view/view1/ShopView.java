@@ -116,7 +116,7 @@ public class ShopView {
     @FXML
     protected Text offersFlyerShop;
     InputStream stream = null;
-    static final Logger logger = Logger.getLogger(view.view2.ShopView.class.getName());
+    static final Logger logger = Logger.getLogger(view.view1.ShopView.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
