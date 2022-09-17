@@ -127,7 +127,6 @@ public class Homepage {
     protected void onLogoutButtonClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loader.load();
-        Login login = loader.getController();
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();

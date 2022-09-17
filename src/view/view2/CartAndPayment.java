@@ -102,7 +102,6 @@ public class CartAndPayment {
         if (order != null){
             totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
             totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
-            order = null;
         } else {
             totalPriceText.setText("0");
             totalQuantityText.setText("0");

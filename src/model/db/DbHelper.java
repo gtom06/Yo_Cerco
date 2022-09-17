@@ -11,9 +11,8 @@ import java.util.logging.Logger;
 
 public class DbHelper {
     private static DbHelper dbHelper = null;
-    private static Connection connection = null;
-    static final Logger logger = Logger.getLogger(DbHelper.class.getName());
-
+    private static Connection connection;
+    static Logger logger = Logger.getLogger(DbHelper.class.getName());
     private DbHelper() {}
 
     public static DbHelper getInstance() {
@@ -24,9 +23,9 @@ public class DbHelper {
 
     public Connection openDBConnection() {
         try {
-            //Class.forName(Constants.DRIVER_CLASS_NAME);
+            Class.forName(Constants.DRIVER_CLASS_NAME);
             connection = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             logger.log(Level.OFF, "error in openDBConnection");
         }
         return connection;

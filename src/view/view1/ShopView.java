@@ -265,10 +265,8 @@ public class ShopView {
 
     @FXML
     protected void onClickOnOffersFlyer() throws ExceptionBrowser {
-        if (shop.getOffersFlyerPath() != null ) {
-            if (!BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
-                System.out.println("failed to open webpage");
-            }
+        if (shop.getOffersFlyerPath() != null && !BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
+            System.out.println("failed to open webpage");
         }
     }
 
