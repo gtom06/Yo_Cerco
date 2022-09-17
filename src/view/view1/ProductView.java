@@ -20,6 +20,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
@@ -60,6 +62,9 @@ public class ProductView {
     protected Text itemAddedText;
 
     protected InputStream stream = null;
+
+    static final Logger logger = Logger.getLogger(ProductView.class.getName());
+
 
     public void passParams(User user, Department department, ProductShop productShop, Shop shop) throws FileNotFoundException {
 
@@ -157,7 +162,7 @@ public class ProductView {
     @FXML
     protected void addToCartClick() throws Exception {
         if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
-            throw new Exception("item not added in cart");
+            logger.log(Level.WARNING, "item not added to cart");
         }
         CartElaboration.readOrderItemsFromCart();
         itemAddedText.setVisible(true);

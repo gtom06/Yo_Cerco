@@ -223,10 +223,10 @@ public class CartAndPayment {
                         billingCity.isBlank() || billingCountry.isBlank() ||
                         billingZip.isBlank() || phoneNumber.isBlank()) {
                     if (codRadioButton.isSelected()) {
-                        throw new Exception("please fill data");
+                        logger.log(Level.WARNING, "please fill data");
                     } else {
                         if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                            logger.log(Level.INFO, "please fill data & card");
+                            logger.log(Level.WARNING, "please fill data & card");
                         }
                     }
                 } else {
