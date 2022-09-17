@@ -16,7 +16,7 @@
             </image>
         </ImageView>
         <Rectangle fill="#e6e6e6" height="475.0" layoutX="26.0" layoutY="52.0" width="937.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
-        <Text fx:id="TextHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
+        <Text fx:id="textHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
             <font>
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
@@ -60,17 +60,17 @@
                 <Image url="@../../images/shop/icons8-close-96.png" />
             </image>
         </ImageView>
-        <Text fx:id="TextFavorite" fill="#ffb703" layoutX="103.0" layoutY="444.0" onMouseClicked="#addRemoveFavoriteFromText" stroke="#2c2c2c" text="test">
+        <Text fx:id="textFavorite" fill="#ffb703" layoutX="103.0" layoutY="444.0" onMouseClicked="#addRemoveFavoriteFromText" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopAddress" fill="#ffb703" layoutX="103.0" layoutY="317.0" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress" stroke="#2c2c2c" text="test" textAlignment="JUSTIFY">
+        <Text fx:id="textShopAddress" fill="#ffb703" layoutX="103.0" layoutY="317.0" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress" stroke="#2c2c2c" text="test" textAlignment="JUSTIFY">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopOpeningTime" fill="#ffb703" layoutX="315.0" layoutY="105.0" stroke="#2c2c2c" text="18AM">
+        <Text fx:id="textShopOpeningTime" fill="#ffb703" layoutX="315.0" layoutY="105.0" stroke="#2c2c2c" text="18AM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
@@ -80,17 +80,17 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopClosingTime" fill="#ffb703" layoutX="373.0" layoutY="105.0" stroke="#2c2c2c" text="20PM">
+        <Text fx:id="textShopClosingTime" fill="#ffb703" layoutX="373.0" layoutY="105.0" stroke="#2c2c2c" text="20PM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextPhoneShop" fill="#ffb703" layoutX="315.0" layoutY="175.0" stroke="#2c2c2c" text="test">
+        <Text fx:id="textPhoneShop" fill="#ffb703" layoutX="315.0" layoutY="175.0" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="TextShopName" fill="#ffb703" layoutX="103.0" layoutY="381.0" stroke="#2c2c2c" text="test">
+        <Text fx:id="textShopName" fill="#ffb703" layoutX="103.0" layoutY="381.0" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>

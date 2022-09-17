@@ -136,22 +136,25 @@
                            <image>
                               <Image url="@../../images/shop/icons8-close-96.png" />
                            </image></ImageView>
-                        <Text fx:id="TextShopName" layoutX="14.0" layoutY="44.0" text="ShopName">
+                        <Text fx:id="textShopName" layoutX="14.0" layoutY="44.0" text="ShopName">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="textShopAddress" layoutX="14.0" layoutY="85.0" onMouseClicked="#onClickGMapsHyperLink" text="Address">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="textPhoneShop" layoutX="14.0" layoutY="130.0" text="phonenumber">
                            <font>
                               <Font size="30.0" />
                            </font></Text>
-                        <Text fx:id="TextShopAddress" layoutX="14.0" layoutY="85.0" onMouseClicked="#onClickGMapsHyperLink" text="Address">
+                        <Text fx:id="textShopTime" layoutX="14.0" layoutY="176.0" text="hour">
                            <font>
                               <Font size="30.0" />
-                           </font></Text>
-                        <Text fx:id="TextPhoneShop" layoutX="14.0" layoutY="130.0" text="phonenumber">
-                           <font>
-                              <Font size="30.0" />
-                           </font></Text>
-                        <Text fx:id="TextShopTime" layoutX="14.0" layoutY="176.0" text="hour">
-                           <font>
-                              <Font size="30.0" />
-                           </font></Text>
+                           </font>
+                        </Text>
                         <ImageView onMouseClicked="#onClickOnOffersFlyer" fitHeight="62.0" fitWidth="63.0" layoutX="518.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/shop/icons8-discount-96.png" />

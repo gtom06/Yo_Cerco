@@ -88,13 +88,13 @@ public class ShopView {
     @FXML
     protected ImageView dep14;
     @FXML
-    protected Text TextShopName;
+    protected Text textShopName;
     @FXML
-    protected Text TextShopAddress;
+    protected Text textShopAddress;
     @FXML
-    protected Text TextShopTime;
+    protected Text textShopTime;
     @FXML
-    protected Text TextPhoneShop;
+    protected Text textPhoneShop;
     @FXML
     protected TableView<ProductShop> productTable = new TableView<>();
     protected TableColumn<ProductShop, String> nameColumn;
@@ -154,7 +154,7 @@ public class ShopView {
         stream = new FileInputStream(shop.getLogoImagepath());
         Image shopImage = new Image(stream, 200, 200, false, false);
         shopLogo.setImage(shopImage);
-        TextShopName.setText(shop.getShopName());
+        textShopName.setText(shop.getShopName());
         ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>(
                 Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
         );
@@ -175,9 +175,9 @@ public class ShopView {
             addShopToFavorites.setVisible(true);
         }
 
-        TextShopAddress.setText(shop.getCompleteAddress());
-        TextShopTime.setText(shop.getOpeningTime() + " - " + shop.getClosingTime());
-        TextPhoneShop.setText(shop.getPhone());
+        textShopAddress.setText(shop.getCompleteAddress());
+        textShopTime.setText(shop.getOpeningTime() + " - " + shop.getClosingTime());
+        textPhoneShop.setText(shop.getPhone());
     }
 
     @FXML
