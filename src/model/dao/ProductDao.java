@@ -261,7 +261,6 @@ public class ProductDao {
             String name = rs.getString("name");
             int shopId = rs.getInt("shop_id");
             int departmentId = rs.getInt("department_id");
-            String location = rs.getString("location");
             double price = rs.getDouble("price");
             String currency = rs.getString("currency");
             String brand = rs.getString("brand");

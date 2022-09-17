@@ -24,9 +24,9 @@ public class DbHelper {
 
     public Connection openDBConnection() {
         try {
-            Class.forName(Constants.DRIVER_CLASS_NAME);
+            //Class.forName(Constants.DRIVER_CLASS_NAME);
             connection = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             logger.log(Level.OFF, "error in openDBConnection");
         }
         return connection;

@@ -186,7 +186,7 @@ public class CartElaboration {
                         orderItemArrayListToDel.add(orderItem);
                     }
                 }
-                if (orderItemArrayListToDel.size() == 0) {
+                if (orderItemArrayListToDel.isEmpty()) {
                     output = true;
                 } else {
                     orderItemArrayList.removeAll(orderItemArrayListToDel);

@@ -271,7 +271,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static List<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
+    public static List<Shop> findShopsWithProducts(List<Integer> productSkuArrayList) {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();

@@ -1,6 +1,6 @@
 package control;
 
-import model.Address;
+import model.address.Address;
 import model.ConstantsExceptions;
 import model.shop.Shop;
 

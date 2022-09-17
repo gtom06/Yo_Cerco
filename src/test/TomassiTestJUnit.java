@@ -3,7 +3,7 @@ package test;
 import control.*;
 import exceptions.AddressException;
 import exceptions.ExceptionCart;
-import model.Address;
+import model.address.Address;
 import model.order.Order;
 import model.product.ProductShop;
 import model.shop.Shop;

@@ -37,27 +37,7 @@ public class ProductShop extends SimpleProduct {
     public void setShopId(int shopId) {
         this.shopId = shopId;
     }
-
-    public String getLogoImagepath() {
-        return super.getLogoImagepath();
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
-    public double getSize() {
-        return super.getSize();
-    }
-
-    public String getDescription() {
-        return super.getDescription();
-    }
-
-    public String getUnitOfMeasure() {
-        return super.getUnitOfMeasure();
-    }
-
+    
     public double getPrice() {
         return price;
     }

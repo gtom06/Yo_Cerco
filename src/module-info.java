@@ -24,4 +24,5 @@ module Supermarket {
     opens main;
     opens model.order;
     exports test;
+    opens model.address;
 }

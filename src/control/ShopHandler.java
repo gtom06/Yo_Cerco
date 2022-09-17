@@ -1,7 +1,7 @@
 package control;
 
 import exceptions.AddressException;
-import model.Address;
+import model.address.Address;
 import model.ConstantsExceptions;
 import model.dao.ShopDao;
 import model.order.Order;

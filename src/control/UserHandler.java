@@ -24,7 +24,10 @@ public class UserHandler {
         return UserDao.retrieveUserFrom(username);
     }
 
-    public static boolean insertUser(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String roleString) {
+    public static boolean insertUser(String username, String name, String surname, String password, String email,
+                                     Date dateOfBirth, String billingStreet, String billingCity,
+                                     String billingCountry, String billingZip, String phone, String gender,
+                                     String roleString) {
         if (roleString.equals(Constants.BUYER) || roleString.equals(Constants.BUYER_USER)) {
             Buyer buyer = new Buyer(
                     username,

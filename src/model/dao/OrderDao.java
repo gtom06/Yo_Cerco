@@ -59,7 +59,6 @@ public class OrderDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
         try {
             conn = dbHelper.openDBConnection();
             String sql = "SELECT DISTINCT * " +

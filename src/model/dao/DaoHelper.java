@@ -1,14 +1,13 @@
 package model.dao;
 
 import model.ConstantsExceptions;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class DaoHelper {
     private DaoHelper(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-    public static String buildSqlStringFromArrayOfIntegers(ArrayList<Integer> integerArrayList){ // (?,?,?)
+    public static String buildSqlStringFromArrayOfIntegers(List<Integer> integerArrayList){ // (?,?,?)
         StringBuilder sb= new StringBuilder();
         sb.append("(");
         int lenght = integerArrayList.size();

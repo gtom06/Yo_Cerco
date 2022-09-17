@@ -36,7 +36,7 @@ public class DepartmentDao {
             stmt.setInt(1, shopId);
 
             ResultSet rs = stmt.executeQuery();
-            arrayDepartment = convertRSInArrayDepartment(rs);
+            arrayDepartment = (ArrayList<Department>) convertRSInArrayDepartment(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
@@ -61,7 +61,7 @@ public class DepartmentDao {
             stmt.setInt(1, shopId);
             stmt.setInt(2, departmentId);
             ResultSet rs = stmt.executeQuery();
-            arrayProductShop = convertRSInArrayProductShop(rs);
+            arrayProductShop = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
@@ -70,7 +70,7 @@ public class DepartmentDao {
         return arrayProductShop;
     }
 
-    public static ArrayList<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
+    public static List<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
         Department department;
         ArrayList<Department> departmentArrayList = new ArrayList<>();
         while (rs.next()) {
@@ -84,7 +84,7 @@ public class DepartmentDao {
         return departmentArrayList;
     }
 
-    public static ArrayList<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
+    public static List<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
         ProductShop productShop;
         ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
         while (rs.next()) {
