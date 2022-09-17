@@ -31,9 +31,17 @@ public class GeneralProductView {
     User user ;
     ArrayList<Shop> arrayShopList;
     @FXML
-    protected ImageView productPhoto, homepageImageView, previousPageImageView;
+    protected ImageView productPhoto;
     @FXML
-    protected Text textHi, nameProd, brandProd;
+    protected ImageView homepageImageView;
+    @FXML
+    protected ImageView previousPageImageView;
+    @FXML
+    protected Text textHi;
+    @FXML
+    protected Text nameProd;
+    @FXML
+    protected Text brandProd;
     @FXML
     protected TableView<Shop> shopsTableView = new TableView<>();
     protected TableColumn<Shop, String> nameColumn;
