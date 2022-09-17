@@ -11,6 +11,7 @@ import model.user.Buyer;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -44,7 +45,7 @@ public class TomassiTestJUnit {
     }
     @Test
     public void populateOrderWithOrderItemsTest() {
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(new Buyer("abc", null, null, null, null, null, null, null, null, null, null, null, null));
+        List<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(new Buyer("abc", null, null, null, null, null, null, null, null, null, null, null, null));
         assertEquals(2, orderArrayList.get(0).getShopId());
         assertEquals(44, orderArrayList.get(0).getOrderId());
         assertEquals("eur", orderArrayList.get(0).getCurrency());

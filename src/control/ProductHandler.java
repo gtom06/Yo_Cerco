@@ -8,13 +8,14 @@ import model.shop.Shop;
 import model.user.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductHandler {
     private ProductHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static ArrayList<SimpleProduct> findSimpleProductBy(String productName) {
+    public static List<SimpleProduct> findSimpleProductBy(String productName) {
         if (productName.isBlank() || productName.length() > 100) {
             return null;
         }
@@ -27,8 +28,8 @@ public class ProductHandler {
         return ProductDao.findProductBySkuAndShopId(shop.getShopId(), simpleProduct.getSku()).get(0);
     }
 
-    public static ArrayList<SimpleProduct> findFavoriteSimpleProductFromUser(User user){
-        return (ArrayList<SimpleProduct>) ProductDao.findSimpleProductFromUser(user);
+    public static List<SimpleProduct> findFavoriteSimpleProductFromUser(User user){
+        return ProductDao.findSimpleProductFromUser(user);
     }
 
     public static boolean isFavoriteProduct(ProductShop productShop, User user) {

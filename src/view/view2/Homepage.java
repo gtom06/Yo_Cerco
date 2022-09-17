@@ -235,7 +235,7 @@ public class Homepage {
                     productTableView.setVisible(true);
                     shopTableView.setVisible(true);
                     distanceColumn.setVisible(false);
-                    searchShopArrayList = ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
+                    searchShopArrayList = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
                     if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
                         ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
                         if (observableListShop.size() != 0 && observableListShop != null) {
@@ -250,7 +250,7 @@ public class Homepage {
                 productTableView.setVisible(true);
                 productTableView.getItems().clear();
                 shopTableView.setVisible(false);
-                searchSimpleProductArrayList = ProductHandler.findSimpleProductBy(searchParam.getText());
+                searchSimpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(searchParam.getText());
                 if (searchSimpleProductArrayList != null && !searchSimpleProductArrayList.isEmpty()) {
                     ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
                     if (observableListProducts.size()!= 0 && observableListProducts != null){

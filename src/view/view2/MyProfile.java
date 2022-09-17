@@ -32,12 +32,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyProfile {
     User user = null;
-    
+
     @FXML
     protected ImageView myProfileImage;
     @FXML
@@ -161,7 +162,7 @@ public class MyProfile {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
+        List<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
         if (orderArrayList != null) {
             orderObservableList.addAll(orderArrayList);
             orderTableView.setItems(orderObservableList);

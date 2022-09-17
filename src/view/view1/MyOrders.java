@@ -20,6 +20,7 @@ import model.user.User;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -104,7 +105,7 @@ public class MyOrders {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
+        List<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
         if (orderArrayList != null) {
             for (Order o : orderArrayList) {
                 orderObservableList.add(o);

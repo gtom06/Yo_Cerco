@@ -173,7 +173,7 @@ public class Favorite {
     protected void fillSimpleProductTableView() {
         simpleProductTableView.getItems().clear();
         ObservableList<SimpleProduct> simpleProductObservableList = FXCollections.observableArrayList();
-        ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findFavoriteSimpleProductFromUser(user);
+        ArrayList<SimpleProduct> simpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findFavoriteSimpleProductFromUser(user);
         if (simpleProductArrayList != null) {
             simpleProductObservableList.addAll(simpleProductArrayList);
             simpleProductTableView.setItems(simpleProductObservableList);

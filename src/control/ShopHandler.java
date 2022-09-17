@@ -63,7 +63,7 @@ public class ShopHandler {
         return null;
     }
 
-    public static ArrayList<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
+    public static List<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
         if (city.isBlank() || city.length() > 50){
             return null;
@@ -77,7 +77,7 @@ public class ShopHandler {
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
-    public static ArrayList<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
+    public static List<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
         if (name.isBlank() || name.length() >= 50){
             return null;
@@ -109,7 +109,7 @@ public class ShopHandler {
 		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
-    public static List<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){
+    public static List<Shop> findShopsContainingProductBy(List<SimpleProduct> productArrayList){
         if (productArrayList.isEmpty()) {
             return null;
         }

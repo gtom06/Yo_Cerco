@@ -22,7 +22,7 @@ public class OrderHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static ArrayList<Order> findOrdersInfoFromUser(User user) {
+    public static List<Order> findOrdersInfoFromUser(User user) {
         ArrayList<Order> orderArrayList = (ArrayList<Order>) OrderDao.findOrdersFromUser(user.getUsername());
         return !orderArrayList.isEmpty() ? orderArrayList : null;
     }

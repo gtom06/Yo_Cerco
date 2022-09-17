@@ -143,7 +143,7 @@ public class Order {
         return orderItemArrayList;
     }
 
-    public void setOrderItemArrayList(ArrayList<OrderItem> orderItemArrayList) {
+    public void setOrderItemArrayList(List<OrderItem> orderItemArrayList) {
         this.orderItemArrayList = orderItemArrayList;
     }
 }

@@ -78,7 +78,7 @@ public class SearchProduct {
         productTableView.getItems().clear();
         String paramForSearch = requestTextField.getText();
         ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList();
-        ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findSimpleProductBy(paramForSearch);
+        ArrayList<SimpleProduct> simpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(paramForSearch);
 
         if (simpleProductArrayList != null) {
             for (SimpleProduct sp : simpleProductArrayList) {
