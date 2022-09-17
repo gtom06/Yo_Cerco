@@ -50,11 +50,6 @@ public class GeneralProductView {
         Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
-            /*
-            if (shop.getType == "ferramenta") {
-                carica ferramentaview.fxml
-            }
-            */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
             Parent root = loader.load();
             ShopView shopView = loader.getController();

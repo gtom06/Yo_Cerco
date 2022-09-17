@@ -35,7 +35,7 @@ public class ShopHandler {
 
     public static List<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
         List<Shop> shopArrayList;
-        if (searchParam == null || searchParam.length() == 0 || searchParam.length() > 50){
+        if (searchParam == null || searchParam.isBlank() || searchParam.length() > 50){
             Address address = LocationHandler.calculateLatLongFromIpAddress();
             if (address != null) {
                 shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
@@ -65,7 +65,7 @@ public class ShopHandler {
 
     public static ArrayList<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
-        if (city == null || city.length() == 0 || city.length() > 50){
+        if (city.isBlank() || city.length() > 50){
             return null;
         }
         if (!onlyOpenNow) {
@@ -79,7 +79,7 @@ public class ShopHandler {
 
     public static ArrayList<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
         ArrayList<Shop> shopArrayList;
-        if (name == null || name.length() == 0 || name.length() >= 50){
+        if (name.isBlank() || name.length() >= 50){
             return null;
         }
         if (!onlyOpenNow) {
@@ -110,7 +110,7 @@ public class ShopHandler {
     }
 
     public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){
-        if (productArrayList.size() == 0) {
+        if (productArrayList.isEmpty()) {
             return null;
         }
         ArrayList<Integer> productSkuArrayList = new ArrayList<>();

@@ -104,7 +104,7 @@ public class SearchShop  {
         String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();
 
 
-        if (requestTextField.getText() == null || requestTextField.getText().length() == 0 || requestTextField.getText().length() > 50) {
+        if (requestTextField.getText() == null || requestTextField.getText().isBlank() || requestTextField.getText().length() > 50) {
             distanceColumn.setVisible(true);
             shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }

@@ -56,7 +56,7 @@ public class OrderHandler {
         int orderTotalQuantity = 0;
         String orderCurrency;
         int shopId = 0;
-        if (orderItemArrayList == null || orderItemArrayList.size() == 0){
+        if (orderItemArrayList.isEmpty() || orderItemArrayList.size() == 0){
             return null;
         }
         else {
@@ -87,7 +87,7 @@ public class OrderHandler {
             return null;
         }
 
-        if (orderItemArrayList == null){
+        if (orderItemArrayList.isEmpty()){
             return null;
         }
         else {

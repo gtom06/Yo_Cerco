@@ -57,7 +57,7 @@ public class UserHandler {
         if (user == null || profileImagepath.isBlank()) {
             return false;
         }
-        if (profileImagepath == ((Buyer) user).getProfileImagepath()) {
+        if (profileImagepath.equals(((Buyer) user).getProfileImagepath())) {
             return true;
         }
         String newFileName = user.getUsername() + ".jpg";

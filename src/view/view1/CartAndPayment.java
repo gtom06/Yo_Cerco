@@ -207,7 +207,7 @@ public class CartAndPayment {
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
 
-        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
+        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.isBlank() && yy.isBlank() && cvv.length() < 3) {
             logger.log(Level.INFO, "review payment");
         }
         else{
