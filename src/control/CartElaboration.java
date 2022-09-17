@@ -11,6 +11,7 @@ import model.product.ProductShop;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class CartElaboration {
             reader = new JsonReader(new FileReader(Constants.CART_PATH));
             OrderItem[] output = new Gson().fromJson(reader, OrderItem[].class);
             if (output == null) {
-                return null;
+                return Collections.emptyList();
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
         } catch (IOException e) {

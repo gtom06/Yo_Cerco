@@ -34,8 +34,9 @@ public class OrderHandler {
 
     public static Order populateOrderWithOrderItems(Order order){
         ArrayList<OrderItem> orderItemArrayList;
+        Order orderOutput = null;
         try {
-            order = OrderDao.findOrderItemsFromOrder(order);
+            orderOutput = OrderDao.findOrderItemsFromOrder(order);
             OrderItem[] output = new Gson().fromJson(order.getOrderItemString(), OrderItem[].class);
             if (output == null) {
                 return null;
@@ -43,9 +44,9 @@ public class OrderHandler {
             orderItemArrayList = new ArrayList<>(List.of(output));
             order.setOrderItemArrayList(orderItemArrayList);
         } catch (Exception e) {
-            logger.log(Level.WARNING, "error in OrderHandler");
+            logger.log(Level.WARNING, ConstantsExceptions.ORDER_HANDLER_ERROR);
         }
-        return order;
+        return orderOutput;
     }
 
     public static Order previewOrder() throws ExceptionCart {
@@ -56,7 +57,7 @@ public class OrderHandler {
         int orderTotalQuantity = 0;
         String orderCurrency;
         int shopId = 0;
-        if (orderItemArrayList.isEmpty() || orderItemArrayList.size() == 0){
+        if (orderItemArrayList == null || orderItemArrayList.isEmpty()){
             return null;
         }
         else {
@@ -87,7 +88,7 @@ public class OrderHandler {
             return null;
         }
 
-        if (orderItemArrayList.isEmpty()){
+        if (orderItemArrayList == null || orderItemArrayList.isEmpty()){
             return null;
         }
         else {
@@ -107,7 +108,7 @@ public class OrderHandler {
 
         //check params passed from UX/UI
         if (user != null && !paymentMethod.isBlank()) {
-            if (paymentMethod == Constants.CASH_ON_DELIVERY_PAYMENT && cardNumber.isBlank() && cardholder.isBlank() && mm.isBlank() && yy.isBlank() && cvv.isBlank()) {
+            if (paymentMethod.equals(Constants.CASH_ON_DELIVERY_PAYMENT) && cardNumber.isBlank() && cardholder.isBlank() && mm.isBlank() && yy.isBlank() && cvv.isBlank()) {
                 payment = new Payment(
                         0,
                         null,
