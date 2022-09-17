@@ -11,7 +11,6 @@ module Supermarket {
     requires com.google.gson;
     requires java.desktop;
     requires junit;
-    exports control;
     opens view.view1;
     opens view.view2;
     opens model;
@@ -23,6 +22,10 @@ module Supermarket {
     opens model.dao;
     opens main;
     opens model.order;
-    exports test;
     opens model.address;
+    exports control;
+    exports test;
+    exports model;
+    exports view.view1;
+    exports view.view2;
 }

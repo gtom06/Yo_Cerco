@@ -69,6 +69,31 @@ public class ProductDao {
         return productArrayList;
     }
 
+    public static List<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        DbHelper dbHelper = DbHelper.getInstance();
+        ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
+        try {
+            conn = dbHelper.openDBConnection();
+
+            String sql =    "SELECT * FROM product_shop PS " +
+                    "JOIN product P " +
+                    "ON P.sku = PS.sku " +
+                    "WHERE PS.shop_id = ? AND PS.department_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setInt(2, departmentId);
+            ResultSet rs = stmt.executeQuery();
+            arrayProductShop = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
+        }
+        return arrayProductShop;
+    }
+
     public static List<SimpleProduct> findProductByShopId(int shopId) {
         PreparedStatement stmt = null;
         Connection conn = null;

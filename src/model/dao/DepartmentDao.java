@@ -3,7 +3,6 @@ package model.dao;
 import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.department.Department;
-import model.product.ProductShop;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,31 +44,6 @@ public class DepartmentDao {
         return arrayDepartment;
     }
 
-    public static List<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
-        try {
-            conn = dbHelper.openDBConnection();
-
-            String sql =    "SELECT * FROM product_shop PS " +
-                            "JOIN product P " +
-                            "ON P.sku = PS.sku " +
-                            "WHERE PS.shop_id = ? AND PS.department_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shopId);
-            stmt.setInt(2, departmentId);
-            ResultSet rs = stmt.executeQuery();
-            arrayProductShop = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
-        }
-        return arrayProductShop;
-    }
-
     public static List<Department> convertRSInArrayDepartment(ResultSet rs) throws SQLException {
         Department department;
         ArrayList<Department> departmentArrayList = new ArrayList<>();
@@ -82,40 +56,5 @@ public class DepartmentDao {
             departmentArrayList.add(department);
         }
         return departmentArrayList;
-    }
-
-    public static List<ProductShop> convertRSInArrayProductShop(ResultSet rs) throws SQLException {
-        ProductShop productShop;
-        ArrayList<ProductShop> arrayProductShop= new ArrayList<>();
-        while (rs.next()) {
-
-            Double price = rs.getDouble("price");
-            Integer sku = rs.getInt("sku");
-            String currency = rs.getString("currency");
-            Integer shopId = rs.getInt("shop_id");
-            String name = rs.getString("name");
-            String brand = rs.getString("brand");
-            String description = rs.getString("description");
-            Double size = rs.getDouble("size");
-            String unitOfMeasure = rs.getString("unit_of_measure");
-            String logoImagepath = rs.getString("logo_imagepath");
-            Integer departmentId = rs.getInt("department_id");
-            Double discountedPrice = rs.getDouble("discounted_price");
-            productShop = new ProductShop(
-                    price,
-                    currency,
-                    shopId,
-                    sku,
-                    name,
-                    brand,
-                    description,
-                    size,
-                    unitOfMeasure,
-                    logoImagepath,
-                    departmentId,
-                    discountedPrice);
-            arrayProductShop.add(productShop);
-        }
-        return arrayProductShop;
     }
 }
