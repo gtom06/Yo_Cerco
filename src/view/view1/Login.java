@@ -20,15 +20,8 @@ import java.util.List;
 
 public class Login {
 
+    @FXML
     public CheckBox termsConditionsCheckbox;
-    // Strings which hold css elements to easily re-use in the application
-
-    protected final String successMessage = String.format("-fx-text-fill: GREEN;");
-    final String errorMessage = String.format("-fx-text-fill: RED;");
-    final String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
-    final String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
-
-    // Import the application's controls
     @FXML
     protected Label invalidLoginCredentials;
     @FXML
@@ -67,7 +60,6 @@ public class Login {
     protected void onLoginButtonClick() throws IOException, FileElaborationException {
         if (loginUsernameTextField.getText().isBlank() || loginPasswordPasswordField.getText().isBlank()) {
             invalidLoginCredentials.setText("The Login fields are required!");
-            invalidLoginCredentials.setStyle(errorMessage);
             invalidSignupCredentials.setText("");
         } else {
             String username = loginUsernameTextField.getText();
@@ -115,25 +107,9 @@ public class Login {
     protected void onSignUpButtonClick() {
         if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
             invalidSignupCredentials.setText("Please fill all fields!");
-            invalidSignupCredentials.setStyle(errorMessage);
             invalidLoginCredentials.setText("");
-
-            if (signUpUsernameTextField.getText().isBlank()) {
-                signUpUsernameTextField.setStyle(errorStyle);
-            } else if (signUpEmailTextField.getText().isBlank()) {
-                signUpEmailTextField.setStyle(errorStyle);
-            } else if (signUpPasswordPasswordField.getText().isBlank()) {
-                signUpPasswordPasswordField.setStyle(errorStyle);
-            } else if (signUpRepeatPasswordPasswordField.getText().isBlank()) {
-                signUpRepeatPasswordPasswordField.setStyle(errorStyle);
-            }
         } else if (signUpRepeatPasswordPasswordField.getText().equals(signUpPasswordPasswordField.getText())) {
             invalidSignupCredentials.setText("You are set!");
-            invalidSignupCredentials.setStyle(successMessage);
-            signUpUsernameTextField.setStyle(successStyle);
-            signUpEmailTextField.setStyle(successStyle);
-            signUpPasswordPasswordField.setStyle(successStyle);
-            signUpRepeatPasswordPasswordField.setStyle(successStyle);
             invalidLoginCredentials.setText("");
             RadioButton rb = (RadioButton) gender.getSelectedToggle();
             String genderString = rb.getText();
@@ -151,23 +127,14 @@ public class Login {
                     genderString,
                     Constants.BUYER_USER)){
                 invalidSignupCredentials.setText("Please use another username!");
-                invalidSignupCredentials.setStyle(errorMessage);
-                signUpEmailTextField.setStyle(errorStyle);
-                signUpUsernameTextField.setStyle(errorStyle);
-                signUpPasswordPasswordField.setStyle(errorStyle);
-                signUpRepeatPasswordPasswordField.setStyle(errorStyle);
                 invalidLoginCredentials.setText("");
             } else {
                 invalidSignupCredentials.setText("You are set!");
-                invalidSignupCredentials.setStyle(successMessage);
                 loginUsernameTextField.setText(signUpUsernameTextField.getText());
                 loginPasswordPasswordField.setText(signUpPasswordPasswordField.getText());
             }
         } else {
             invalidSignupCredentials.setText("The Passwords don't match!");
-            invalidSignupCredentials.setStyle(errorMessage);
-            signUpPasswordPasswordField.setStyle(errorStyle);
-            signUpRepeatPasswordPasswordField.setStyle(errorStyle);
             invalidLoginCredentials.setText("");
         }
     }
