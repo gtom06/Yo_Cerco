@@ -1,4 +1,4 @@
-package model.Order;
+package model.order;
 
 import java.sql.Timestamp;
 

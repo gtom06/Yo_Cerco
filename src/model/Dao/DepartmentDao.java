@@ -1,10 +1,9 @@
-package model.Dao;
+package model.dao;
 
 import model.ConstantsExceptions;
-import model.Db.DbHelper;
-import model.Department.Department;
-import model.Product.ProductShop;
-import model.Shop.Shop;
+import model.db.DbHelper;
+import model.department.Department;
+import model.product.ProductShop;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

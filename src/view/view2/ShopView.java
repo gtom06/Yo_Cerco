@@ -23,10 +23,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Department.Department;
-import model.Product.ProductShop;
-import model.Shop.Shop;
-import model.User.User;
+import model.department.Department;
+import model.product.ProductShop;
+import model.shop.Shop;
+import model.user.User;
 import view.view1.SearchShop;
 
 import java.io.FileInputStream;

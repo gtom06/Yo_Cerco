@@ -1,10 +1,10 @@
 package control;
 
 import model.ConstantsExceptions;
-import model.Dao.DepartmentDao;
-import model.Department.Department;
-import model.Product.ProductShop;
-import model.Shop.Shop;
+import model.dao.DepartmentDao;
+import model.department.Department;
+import model.product.ProductShop;
+import model.shop.Shop;
 
 import java.util.ArrayList;
 import java.util.List;

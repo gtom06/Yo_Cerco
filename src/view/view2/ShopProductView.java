@@ -1,36 +1,25 @@
 package view.view2;
 
 import control.ProductHandler;
-import control.ShopHandler;
 import exceptions.AddressException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
-import model.Product.ProductShop;
-import model.Product.SimpleProduct;
-import model.Shop.Shop;
-import model.User.User;
+import model.product.ProductShop;
+import model.product.SimpleProduct;
+import model.shop.Shop;
+import model.user.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-
-import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ShopProductView {
     User user;

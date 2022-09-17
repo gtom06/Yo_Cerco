@@ -1,14 +1,10 @@
-package model.Dao;
+package model.dao;
 
-import control.FileElaboration;
-import exceptions.FileElaborationException;
-import model.Constants;
 import model.ConstantsExceptions;
-import model.Db.DbHelper;
-import model.Order.Order;
-import model.Order.OrderItem;
-import model.Order.Payment;
-import model.User.Buyer;
+import model.db.DbHelper;
+import model.order.Order;
+import model.order.OrderItem;
+import model.order.Payment;
 
 import java.sql.*;
 import java.time.Instant;

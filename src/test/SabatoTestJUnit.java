@@ -5,8 +5,8 @@ import control.ShopHandler;
 import exceptions.AddressException;
 import exceptions.ExceptionBrowser;
 import model.Constants;
-import model.Product.SimpleProduct;
-import model.Shop.Shop;
+import model.product.SimpleProduct;
+import model.shop.Shop;
 import org.junit.Test;
 
 import java.net.URI;

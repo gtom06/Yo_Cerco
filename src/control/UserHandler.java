@@ -2,11 +2,11 @@ package control;
 
 import model.Constants;
 import model.ConstantsExceptions;
-import model.Dao.UserDao;
-import model.User.Admin;
-import model.User.Buyer;
-import model.User.ShopHolder;
-import model.User.User;
+import model.dao.UserDao;
+import model.user.Admin;
+import model.user.Buyer;
+import model.user.ShopHolder;
+import model.user.User;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

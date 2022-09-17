@@ -13,9 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Shop.Shop;
-import model.User.Buyer;
-import model.User.User;
+import model.shop.Shop;
+import model.user.Buyer;
+import model.user.User;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,15 +1,14 @@
-package model.Dao;
+package model.dao;
 
 import model.Constants;
 import model.ConstantsExceptions;
-import model.Db.DbHelper;
-import model.User.Admin;
-import model.User.Buyer;
-import model.User.ShopHolder;
-import model.User.User;
+import model.db.DbHelper;
+import model.user.Admin;
+import model.user.Buyer;
+import model.user.ShopHolder;
+import model.user.User;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

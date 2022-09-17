@@ -1,11 +1,11 @@
 package control;
 
 import model.ConstantsExceptions;
-import model.Dao.ProductDao;
-import model.Product.ProductShop;
-import model.Product.SimpleProduct;
-import model.Shop.Shop;
-import model.User.User;
+import model.dao.ProductDao;
+import model.product.ProductShop;
+import model.product.SimpleProduct;
+import model.shop.Shop;
+import model.user.User;
 
 import java.util.ArrayList;
 

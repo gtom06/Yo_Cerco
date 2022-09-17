@@ -16,10 +16,10 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
-import model.User.Admin;
-import model.User.Buyer;
-import model.User.ShopHolder;
-import model.User.User;
+import model.user.Admin;
+import model.user.Buyer;
+import model.user.ShopHolder;
+import model.user.User;
 
 import java.io.File;
 import java.io.FileInputStream;

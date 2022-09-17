@@ -6,8 +6,8 @@ import exceptions.ExceptionCart;
 import exceptions.FileElaborationException;
 import model.Constants;
 import model.ConstantsExceptions;
-import model.Order.OrderItem;
-import model.Product.ProductShop;
+import model.order.OrderItem;
+import model.product.ProductShop;
 
 import java.io.*;
 import java.util.ArrayList;

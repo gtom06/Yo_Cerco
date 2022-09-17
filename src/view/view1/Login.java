@@ -10,13 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Constants;
-import model.User.Admin;
-import model.User.Buyer;
-import model.User.User;
+import model.user.Admin;
+import model.user.Buyer;
+import model.user.User;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Login {

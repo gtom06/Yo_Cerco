@@ -2,7 +2,7 @@ package control;
 
 import model.Address;
 import model.ConstantsExceptions;
-import model.Shop.Shop;
+import model.shop.Shop;
 
 import java.util.*;
 

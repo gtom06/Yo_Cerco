@@ -15,13 +15,13 @@ module Supermarket {
     opens view.view1;
     opens view.view2;
     opens model;
-    opens model.Product;
-    opens model.User;
-    opens model.Shop;
-    opens model.Department;
-    opens model.Db;
-    opens model.Dao;
+    opens model.product;
+    opens model.user;
+    opens model.shop;
+    opens model.department;
+    opens model.db;
+    opens model.dao;
     opens main;
-    opens model.Order;
+    opens model.order;
     exports test;
 }

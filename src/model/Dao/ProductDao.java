@@ -1,10 +1,10 @@
-package model.Dao;
+package model.dao;
 
 import model.ConstantsExceptions;
-import model.Db.DbHelper;
-import model.Product.ProductShop;
-import model.Product.SimpleProduct;
-import model.User.User;
+import model.db.DbHelper;
+import model.product.ProductShop;
+import model.product.SimpleProduct;
+import model.user.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

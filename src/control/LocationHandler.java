@@ -6,7 +6,7 @@ import exceptions.AddressException;
 import model.Address;
 import model.Constants;
 import model.ConstantsExceptions;
-import model.Shop.Shop;
+import model.shop.Shop;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

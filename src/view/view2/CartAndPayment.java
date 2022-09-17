@@ -17,14 +17,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Order.Order;
-import model.Order.OrderItem;
-import model.Shop.Shop;
-import model.User.Buyer;
-import model.User.User;
+import model.order.Order;
+import model.order.OrderItem;
+import model.shop.Shop;
+import model.user.Buyer;
+import model.user.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartAndPayment {

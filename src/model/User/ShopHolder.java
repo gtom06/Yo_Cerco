@@ -1,4 +1,4 @@
-package model.User;
+package model.user;
 
 public class ShopHolder implements User {
     private final String username;

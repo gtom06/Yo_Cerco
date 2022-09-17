@@ -1,7 +1,7 @@
-package model.Department;
+package model.department;
 
 import model.Constants;
-import model.Product.ProductShop;
+import model.product.ProductShop;
 
 import java.util.ArrayList;
 import java.util.List;

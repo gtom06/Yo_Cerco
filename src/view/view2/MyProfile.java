@@ -22,10 +22,9 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Order.Order;
-import model.User.Buyer;
-import model.User.User;
-import view.view1.CartAndPayment;
+import model.order.Order;
+import model.user.Buyer;
+import model.user.User;
 
 import java.io.File;
 import java.io.FileInputStream;

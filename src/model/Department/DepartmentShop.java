@@ -1,4 +1,4 @@
-package model.Department;
+package model.department;
 
 public class DepartmentShop {
     private final int shopId;

@@ -14,9 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Order.Order;
-import model.Order.OrderItem;
-import model.User.User;
+import model.order.Order;
+import model.order.OrderItem;
+import model.user.User;
 
 import java.io.IOException;
 import java.util.logging.Level;

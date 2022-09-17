@@ -1,6 +1,5 @@
-package model.Db;
+package model.db;
 
-import control.OrderHandler;
 import model.Constants;
 
 import java.sql.Connection;

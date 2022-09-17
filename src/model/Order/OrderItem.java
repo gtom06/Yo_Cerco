@@ -1,6 +1,6 @@
-package model.Order;
+package model.order;
 
-import model.Product.ProductShop;
+import model.product.ProductShop;
 
 public class OrderItem extends ProductShop {
     int quantityOrdered;

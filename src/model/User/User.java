@@ -1,4 +1,4 @@
-package model.User;
+package model.user;
 
 public interface User {
     String getUsername();

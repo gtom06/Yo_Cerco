@@ -1,4 +1,4 @@
-package model.Shop;
+package model.shop;
 
 import model.Constants;
 

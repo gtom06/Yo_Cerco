@@ -4,7 +4,7 @@ public final class ConstantsExceptions {
     private ConstantsExceptions(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-    
+
     public static final String UTILITY_CLASS_INFO = "Utility class";
     public static final String CART_ELABORATION_FAILURE_INFO = "Cart elaboration failure";
     public static final String CART_ELABORATION_FAILURE_CLOSING_READING_FILE = "Exception while closing file for reading from cart";

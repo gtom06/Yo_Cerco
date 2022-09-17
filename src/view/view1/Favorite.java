@@ -16,9 +16,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.Product.SimpleProduct;
-import model.Shop.Shop;
-import model.User.User;
+import model.product.SimpleProduct;
+import model.shop.Shop;
+import model.user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
