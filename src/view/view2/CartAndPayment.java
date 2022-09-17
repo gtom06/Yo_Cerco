@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
+import model.ConstantsExceptions;
 import model.order.Order;
 import model.order.OrderItem;
 import model.shop.Shop;
@@ -25,6 +26,8 @@ import model.user.User;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartAndPayment {
     @FXML
@@ -76,6 +79,8 @@ public class CartAndPayment {
 
     User user;
     Shop shop;
+
+    static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
     public void passParam(Shop shop, User user) throws ExceptionCart {
         this.shop = shop;
@@ -183,7 +188,7 @@ public class CartAndPayment {
         Order order = null;
 
         if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
-            System.out.println("review payment");
+            logger.log(Level.INFO, "reviewPayment");
         }
         else {
 
@@ -200,10 +205,10 @@ public class CartAndPayment {
                         billingCity.isBlank() || billingCountry.isBlank() ||
                         billingZip.isBlank() || phoneNumber.isBlank()) {
                     if (codRadioButton.isSelected()) {
-                        System.out.print("please fill data");
+                        logger.log(Level.INFO, "please fill data");
                     } else {
                         if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                            System.out.println("please fill data & card");
+                            logger.log(Level.INFO, "please fill data & card");
                         }
                     }
                 } else {

@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Homepage {
     @FXML
@@ -72,6 +74,8 @@ public class Homepage {
     protected TableColumn<SimpleProduct, Double> sizeColumn;
     protected TableColumn<SimpleProduct, String> unitOfMeasureColumn;
     protected TableColumn<SimpleProduct, String> brandColumn;
+
+    static final Logger logger = Logger.getLogger(Homepage.class.getName());
 
     User user = null;
     List<Shop> shopArrayList;
@@ -208,7 +212,7 @@ public class Homepage {
                 shopTableView.setItems(observableListShop);
             }
         } else {
-            System.out.println(Constants.NO_RESULT);
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
@@ -236,7 +240,7 @@ public class Homepage {
                             shopTableView.setItems(observableListShop);
                         }
                     } else {
-                        System.out.println(Constants.NO_RESULT);
+                        logger.log(Level.INFO, Constants.NO_RESULT);
                     }
                 }
             }
@@ -251,12 +255,12 @@ public class Homepage {
                         productTableView.setItems(observableListProducts);
                     }
                 } else {
-                    System.out.println(Constants.NO_RESULT);
+                    logger.log(Level.INFO, Constants.NO_RESULT);
                 }
             }
         }
         else {
-            System.out.println(Constants.NO_RESULT);
+            logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 

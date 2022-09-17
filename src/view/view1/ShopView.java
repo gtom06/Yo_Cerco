@@ -22,6 +22,9 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ShopView {
@@ -113,6 +116,8 @@ public class ShopView {
     @FXML
     protected Text offersFlyerShop;
     InputStream stream = null;
+    static final Logger logger = Logger.getLogger(view.view2.ShopView.class.getName());
+
     @FXML
     protected void onHomepageImageClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
@@ -266,7 +271,7 @@ public class ShopView {
     @FXML
     protected void onClickOnOffersFlyer() throws ExceptionBrowser {
         if (shop.getOffersFlyerPath() != null && !BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
-            System.out.println("failed to open webpage");
+            logger.log(Level.WARNING, "failed to open webpage");
         }
     }
 

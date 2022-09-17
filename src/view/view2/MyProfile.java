@@ -73,6 +73,7 @@ public class MyProfile {
     protected TableColumn<Order, Timestamp> orderStatus;
     @FXML
     protected Text numberOfOrdersText;
+
     static final Logger logger = Logger.getLogger(MyProfile.class.getName());
 
     @FXML
@@ -101,7 +102,6 @@ public class MyProfile {
             if (UserHandler.updateRecord(user, nameTextField.getText(), surnameTextField.getText(),
                     streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
                     zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath())) {
-                System.out.println("update effettuato");
                 logger.log(Level.INFO, "update ok");
             }
         }
