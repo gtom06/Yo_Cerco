@@ -249,7 +249,7 @@ public class Homepage {
                 productTableView.getItems().clear();
                 shopTableView.setVisible(false);
                 searchSimpleProductArrayList = ProductHandler.findSimpleProductBy(searchParam.getText());
-                if (searchSimpleProductArrayList != null && searchSimpleProductArrayList.size() != 0) {
+                if (searchSimpleProductArrayList != null && searchSimpleProductArrayList.isEmpty()) {
                     ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
                     if (observableListProducts.size()!= 0 && observableListProducts != null){
                         productTableView.setItems(observableListProducts);

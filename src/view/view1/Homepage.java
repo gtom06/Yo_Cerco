@@ -17,7 +17,13 @@ public class Homepage {
     @FXML
     protected Button logoutButton;
     @FXML
-    protected AnchorPane anchorPane1, anchorPane2, anchorPane3, anchorPane4;
+    protected AnchorPane anchorPane1;
+    @FXML
+    protected AnchorPane anchorPane2;
+    @FXML
+    protected AnchorPane anchorPane3;
+    @FXML
+    protected AnchorPane anchorPane4;
     @FXML
     protected Label labelHi;
     @FXML

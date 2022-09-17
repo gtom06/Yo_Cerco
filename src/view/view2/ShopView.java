@@ -159,7 +159,7 @@ public class ShopView {
                 Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
         );
         this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
-        if (departmentArrayList != null && departmentArrayList.size() != 0) {
+        if (departmentArrayList != null && departmentArrayList.isEmpty()) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
                 imageViewDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
