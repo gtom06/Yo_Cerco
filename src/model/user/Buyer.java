@@ -118,8 +118,7 @@ public class Buyer implements User {
     public String setBillingAddress() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.billingStreet).append(" - ").append(this.billingCity).append(" - ")
-                .append(this.billingCity).append(" - ").append(this.billingCountry)
-                .append(" - ").append(this.billingZip);
+                .append(this.billingCountry).append(" - ").append(this.billingZip);
         return sb.toString();
     }
 
