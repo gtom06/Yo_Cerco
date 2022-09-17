@@ -57,13 +57,13 @@ public class TomassiTestJUnit {
 
     @Test
     public void addOrderItemsToCartTest() throws ExceptionCart {
-        ProductShop productShop = new ProductShop(150.0,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
+        ProductShop productShop = new ProductShop(150.00,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
         boolean bool = CartElaboration.addOrderItemsToCart(productShop, 5);
         assertEquals(true, bool);
-        ProductShop productShop2 = new ProductShop(150.0,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
+        ProductShop productShop2 = new ProductShop(1.00,"eur",1, 2, "name2", "brand2", "description2", 1.0,"kg", "null", 1, 0);
         bool = CartElaboration.addOrderItemsToCart(productShop2, 5);
         assertEquals(true, bool);
-        ProductShop productShop3 = new ProductShop(150.0,"eur",2, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
+        ProductShop productShop3 = new ProductShop(100.00,"eur",1, 3, "name3", "brand3", "description3", 1.0,"m", "null", 1, 0);
         bool = CartElaboration.addOrderItemsToCart(productShop3, 5);
         assertEquals(false, bool);
     }
