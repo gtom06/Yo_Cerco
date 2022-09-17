@@ -37,9 +37,7 @@ import java.util.logging.Logger;
 
 public class MyProfile {
     User user = null;
-
-    @FXML
-    protected Rectangle borderProfileImageRectangle;
+    
     @FXML
     protected ImageView myProfileImage;
     @FXML
@@ -108,15 +106,6 @@ public class MyProfile {
     }
 
     @FXML
-    protected void enterProfileImage() {
-        borderProfileImageRectangle.setVisible(true);
-    }
-    @FXML
-    protected void exitProfileImage(){
-        borderProfileImageRectangle.setVisible(false);
-    }
-
-    @FXML
     protected void onClickProfileImageView() throws IOException, FileElaborationException {
         InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
         Image profileImage = new Image(stream, 200, 200, false, false);
@@ -174,11 +163,9 @@ public class MyProfile {
         ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
         if (orderArrayList != null) {
-            for (Order o : orderArrayList) {
-                orderObservableList.add(o);
-                numberOfOrders++;
-            }
+            orderObservableList.addAll(orderArrayList);
             orderTableView.setItems(orderObservableList);
+            numberOfOrders = orderArrayList.size();
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);

@@ -103,13 +103,11 @@ public class MyProfile {
                 saveYourProfileText.setVisible(false);
                 completeYourProfileText.setVisible(true);
                 modifyYourProfileText.setVisible(false);
-                //editText.setText(Constants.COMPLETE_YOUR_PROFILE_CAPSLOCK);
             }
             else {
                 saveYourProfileText.setVisible(false);
                 completeYourProfileText.setVisible(false);
                 modifyYourProfileText.setVisible(true);
-                //editText.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
                 nameText.setText(user.getName());
                 surnameText.setText(user.getSurname());
                 phoneText.setText(((Buyer) user).getPhone());
@@ -119,8 +117,6 @@ public class MyProfile {
         if (user instanceof Admin) {
             phoneText.setVisible(false);
             addressText.setVisible(false);
-        }
-        if (user instanceof ShopHolder){
         }
     }
 
@@ -190,16 +186,11 @@ public class MyProfile {
                 countryTextField.setVisible(false);
                 zipTextField.setVisible(false);
                 phoneTextField.setVisible(false);
-
-
                 saveYourProfileText.setVisible(false);
                 completeYourProfileText.setVisible(false);
                 modifyYourProfileText.setVisible(true);
-
-                //editText.setText(Constants.MODIFY_YOUR_PROFILE_STRING_CAPSLOCK);
                 editImageView.setVisible(true);
                 saveImageView.setVisible(false);
-
                 errorText.setVisible(false);
                 //show Texts
                 nameText.setText(user.getName());
@@ -210,7 +201,6 @@ public class MyProfile {
                 surnameText.setVisible(true);
                 addressText.setVisible(true);
                 phoneText.setVisible(true);
-
             }
         }
     }
