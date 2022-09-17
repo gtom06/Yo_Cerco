@@ -24,12 +24,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GeneralProductView {
     User user ;
-    ArrayList<Shop> arrayShopList;
+    List<Shop> arrayShopList;
     @FXML
     protected ImageView productPhoto;
     @FXML
@@ -71,7 +72,7 @@ public class GeneralProductView {
             stage.close();
         }
     }
-    public void passParams(User user, SimpleProduct simpleProduct, ArrayList<Shop> arrayShopList) throws FileNotFoundException {
+    public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {
 
         this.user = user;
         this.arrayShopList = arrayShopList;

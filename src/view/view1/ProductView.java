@@ -114,7 +114,7 @@ public class ProductView {
 
     @FXML
     public void previousPage() throws IOException {
-        Parent root = null;
+        Parent root;
         if (shop != null || department != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
             root = loader.load();
@@ -152,7 +152,7 @@ public class ProductView {
 
     @FXML
     protected void addRemoveFavoriteFromText(){
-        if (favoriteText.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
+        if (favoriteText.getText().equals(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK)) {
             removeFromFavorite();
         } else {
             addToFavorite();

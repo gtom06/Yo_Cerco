@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 public class SabatoTestJUnit {
     @Test
     public void findShopByProductTest() {
-        ArrayList<Shop> shopArrayList = ShopHandler.findShopByProduct(
+        List<Shop> shopArrayList = ShopHandler.findShopByProduct(
                 new SimpleProduct(1, null, null, null, 0, null, null));
 
         assertNotNull(shopArrayList);

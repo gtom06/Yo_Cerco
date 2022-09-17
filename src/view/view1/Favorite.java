@@ -22,6 +22,7 @@ import model.user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,13 +73,12 @@ public class Favorite {
     protected void onProductTableViewClick() throws IOException {
 
         SimpleProduct product = simpleProductTableView.getSelectionModel().getSelectedItem();
-        ArrayList<Shop> arrayShopList = null;
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (product != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root = loader.load();
             GeneralProductView generalProductView = loader.getController();
-            generalProductView.passParams(user, product, arrayShopList);
+            generalProductView.passParams(user, product);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();
@@ -160,11 +160,9 @@ public class Favorite {
     protected void fillShopTableView() {
         shopTableView.getItems().clear();
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        ArrayList<Shop> shopArrayList = ShopHandler.findFavoriteShopsFromUser(user);
+        List<Shop> shopArrayList = ShopHandler.findFavoriteShopsFromUser(user);
         if (shopArrayList != null) {
-            for (Shop s : shopArrayList) {
-                observableListShops.add(s);
-            }
+            observableListShops.addAll(shopArrayList);
             shopTableView.setItems(observableListShops);
         }
         else {
@@ -177,9 +175,7 @@ public class Favorite {
         ObservableList<SimpleProduct> simpleProductObservableList = FXCollections.observableArrayList();
         ArrayList<SimpleProduct> simpleProductArrayList = ProductHandler.findFavoriteSimpleProductFromUser(user);
         if (simpleProductArrayList != null) {
-            for (SimpleProduct sp : simpleProductArrayList) {
-                simpleProductObservableList.add(sp);
-            }
+            simpleProductObservableList.addAll(simpleProductArrayList);
             simpleProductTableView.setItems(simpleProductObservableList);
         }
         else {

@@ -115,11 +115,11 @@ public class Buyer implements User {
         this.password = password;
     }
 
-    public String setBillingAddress() {
+    public void setBillingAddress() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.billingStreet).append(" - ").append(this.billingCity).append(" - ")
                 .append(this.billingCountry).append(" - ").append(this.billingZip);
-        return sb.toString();
+        this.billingAddress = sb.toString();
     }
 
     public void setBillingStreet(String billingStreet) {

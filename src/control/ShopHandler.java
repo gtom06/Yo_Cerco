@@ -91,7 +91,7 @@ public class ShopHandler {
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
-    public static ArrayList<Shop> findShopByProduct(SimpleProduct product){
+    public static List<Shop> findShopByProduct(SimpleProduct product){
         ArrayList<Shop> shopArrayList;
         shopArrayList = (ArrayList<Shop>) ShopDao.findShopsByProduct(product);
         return !shopArrayList.isEmpty() ? shopArrayList : null;
@@ -109,7 +109,7 @@ public class ShopHandler {
 		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
-    public static ArrayList<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){
+    public static List<Shop> findShopsContainingProductBy(ArrayList<SimpleProduct> productArrayList){
         if (productArrayList.isEmpty()) {
             return null;
         }
@@ -117,10 +117,10 @@ public class ShopHandler {
         for (SimpleProduct sp : productArrayList){
             productSkuArrayList.add(sp.getSku());
         }
-        return (ArrayList<Shop>) ShopDao.findShopsWithProducts(productSkuArrayList);
+        return ShopDao.findShopsWithProducts(productSkuArrayList);
     }
 
-    public static ArrayList<Shop> findFavoriteShopsFromUser(User user){
-        return (ArrayList<Shop>) ShopDao.findShopByFavouriteUser(user.getUsername());
+    public static List<Shop> findFavoriteShopsFromUser(User user){
+        return ShopDao.findShopByFavouriteUser(user.getUsername());
     }
 }

@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,16 +61,14 @@ public class GeneralProductView {
         this.simpleProduct = simpleProduct;
         brandProd.setText(simpleProduct.getBrand());
         nameProd.setText(simpleProduct.getName());
-        ArrayList<Shop> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
+        List<Shop> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
 
         stream = new FileInputStream(simpleProduct.getLogoImagepath());
         Image productImage = new Image(stream, 200, 200, false, false);
         productPhoto.setImage(productImage);
         ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
         if (arrayShopList != null) {
-            for (Shop s : arrayShopList) {
-                observableListShops.add(s);
-            }
+            observableListShops.addAll(arrayShopList);
             shopsTableView.setItems(observableListShops);
         }
         else {
@@ -148,16 +146,18 @@ public class GeneralProductView {
 
     @FXML
     protected void onItemClickedTableView() throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
         Parent root = loader.load();
-        ShopProductView shopProductView = loader.getController();
-        shopProductView.passParams(user, simpleProduct, shopsTableView.getSelectionModel().getSelectedItem());
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+        Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
+        if (shop != null) {
+            ShopProductView shopProductView = loader.getController();
+            shopProductView.passParams(user, simpleProduct, shop);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) cartImageView.getScene().getWindow();
+            stage.close();
+        }
     }
 }

@@ -48,7 +48,7 @@ public class SearchProduct {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root = loader.load();
             GeneralProductView generalProductView = loader.getController();
-            generalProductView.passParams(user, simpleProduct, arrayShopsList);
+            generalProductView.passParams(user, simpleProduct);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.show();

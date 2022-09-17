@@ -183,16 +183,18 @@ public class Homepage {
     @FXML
     protected void onClickOnProductTableView() throws IOException {
         SimpleProduct simpleProduct = productTableView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
-        Parent root = loader.load();
-        GeneralProductView generalProductView = loader.getController();
-        generalProductView.passParams(user, simpleProduct);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) logoutImageView.getScene().getWindow();
-        stage.close();
+        if (simpleProduct != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
+            Parent root = loader.load();
+            GeneralProductView generalProductView = loader.getController();
+            generalProductView.passParams(user, simpleProduct);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) logoutImageView.getScene().getWindow();
+            stage.close();
+        }
     }
 
 
@@ -249,7 +251,7 @@ public class Homepage {
                 productTableView.getItems().clear();
                 shopTableView.setVisible(false);
                 searchSimpleProductArrayList = ProductHandler.findSimpleProductBy(searchParam.getText());
-                if (searchSimpleProductArrayList != null && searchSimpleProductArrayList.isEmpty()) {
+                if (searchSimpleProductArrayList != null && !searchSimpleProductArrayList.isEmpty()) {
                     ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
                     if (observableListProducts.size()!= 0 && observableListProducts != null){
                         productTableView.setItems(observableListProducts);
