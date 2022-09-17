@@ -32,11 +32,12 @@ public class SearchProduct {
     @FXML
     protected Text textHi;
     @FXML
-    TableView<SimpleProduct> productTableView = new TableView<>();
-    TableColumn<SimpleProduct, String> nameColumn;
-    TableColumn<SimpleProduct, Double> sizeColumn;
-    TableColumn<SimpleProduct, String> unitOfMeasureColumn;
-    TableColumn<SimpleProduct, String> brandColumn;
+    protected TableView<SimpleProduct> productTableView = new TableView<>();
+    protected TableColumn<SimpleProduct, String> nameColumn;
+    protected TableColumn<SimpleProduct, Double> sizeColumn;
+    protected TableColumn<SimpleProduct, String> unitOfMeasureColumn;
+    protected TableColumn<SimpleProduct, String> brandColumn;
+
     static final Logger logger = Logger.getLogger(SearchProduct.class.getName());
 
     @FXML

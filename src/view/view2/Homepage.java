@@ -34,27 +34,29 @@ import java.util.List;
 
 public class Homepage {
     @FXML
-    protected ImageView cartImageView,
-                        logoutImageView;
-
+    protected ImageView cartImageView;
     @FXML
-    protected ImageView shopImageView1,
-                        shopImageView2,
-                        shopImageView3,
-                        shopImageView4;
-
+    protected ImageView logoutImageView;
     @FXML
-    protected Text  shopText1,
-                    shopText2,
-                    shopText3,
-                    shopText4;
-
+    protected ImageView shopImageView1;
+    @FXML
+    protected ImageView shopImageView2;
+    @FXML
+    protected ImageView shopImageView3;
+    @FXML
+    protected ImageView shopImageView4;
+    @FXML
+    protected Text shopText1;
+    @FXML
+    protected Text shopText2;
+    @FXML
+    protected Text shopText3;
+    @FXML
+    protected Text shopText4;
     @FXML
     protected ChoiceBox choiceBox;
-
     @FXML
     protected TextField searchParam;
-
     @FXML
     protected TableView<Shop> shopTableView = new TableView<>();
     protected TableColumn<Shop, String> addressColumn;

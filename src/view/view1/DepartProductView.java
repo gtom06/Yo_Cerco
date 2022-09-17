@@ -33,7 +33,11 @@ public class DepartProductView {
     @FXML
     protected ImageView homepageImageView;
     @FXML
-    protected Text departmentName, shopName, textHi;
+    protected Text departmentName;
+    @FXML
+    protected Text shopName;
+    @FXML
+    protected Text textHi;
     @FXML
     protected TableView<ProductShop> productTable = new TableView<>();
     @FXML

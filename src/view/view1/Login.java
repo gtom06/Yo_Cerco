@@ -23,39 +23,38 @@ public class Login {
     public CheckBox termsConditionsCheckbox;
     // Strings which hold css elements to easily re-use in the application
 
-    protected final
-    String successMessage = String.format("-fx-text-fill: GREEN;");
+    protected final String successMessage = String.format("-fx-text-fill: GREEN;");
     final String errorMessage = String.format("-fx-text-fill: RED;");
     final String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
     final String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
 
     // Import the application's controls
     @FXML
-    private Label invalidLoginCredentials;
+    protected Label invalidLoginCredentials;
     @FXML
-    private Label invalidSignupCredentials;
+    protected Label invalidSignupCredentials;
     @FXML
-    private Button cancelButton;
+    protected Button cancelButton;
     @FXML
-    private Button loginButton;
+    protected Button loginButton;
     @FXML
-    private TextField loginUsernameTextField;
+    protected TextField loginUsernameTextField;
     @FXML
-    private TextField loginPasswordPasswordField;
+    protected TextField loginPasswordPasswordField;
     @FXML
-    private TextField signUpUsernameTextField;
+    protected TextField signUpUsernameTextField;
     @FXML
-    private TextField signUpEmailTextField;
+    protected TextField signUpEmailTextField;
     @FXML
-    private TextField signUpPasswordPasswordField;
+    protected TextField signUpPasswordPasswordField;
     @FXML
-    private TextField signUpRepeatPasswordPasswordField;
+    protected TextField signUpRepeatPasswordPasswordField;
     @FXML
-    private CheckBox rememberMe;
+    protected CheckBox rememberMe;
     @FXML
-    private DatePicker signUpDateDatePicker;
+    protected DatePicker signUpDateDatePicker;
     @FXML
-    private ToggleGroup gender;
+    protected ToggleGroup gender;
 
 
     @FXML

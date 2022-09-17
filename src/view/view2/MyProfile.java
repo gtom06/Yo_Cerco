@@ -40,18 +40,30 @@ public class MyProfile {
 
     @FXML
     protected Rectangle borderProfileImageRectangle;
-
     @FXML
     protected ImageView myProfileImage;
     @FXML
-    protected Text emailText, nameText, surnameText, usernameText, addressText, phoneText, saveYourProfileText, modifyYourProfileText, completeYourProfileText, errorText;
-
+    protected Text emailText;
     @FXML
-    protected TextField nameTextField, surnameTextField, streetTextField, cityTextField, countryTextField, zipTextField, phoneTextField;
-
+    protected Text usernameText;
+    @FXML
+    protected Text errorText;
+    @FXML
+    protected TextField nameTextField;
+    @FXML
+    protected TextField surnameTextField;
+    @FXML
+    protected TextField streetTextField;
+    @FXML
+    protected TextField cityTextField;
+    @FXML
+    protected TextField countryTextField;
+    @FXML
+    protected TextField zipTextField;
+    @FXML
+    protected TextField phoneTextField;
     @FXML
     protected ImageView homepageImageView;
-
     @FXML
     protected TableView<Order> orderTableView = new TableView<>();
     protected TableColumn<Order, String> orderNumber;
@@ -59,10 +71,9 @@ public class MyProfile {
     protected TableColumn<Order, String> orderTotalPrice;
     protected TableColumn<Order, Timestamp> orderTimeStamp;
     protected TableColumn<Order, Timestamp> orderStatus;
-
-    static final Logger logger = Logger.getLogger(MyProfile.class.getName());
     @FXML
     protected Text numberOfOrdersText;
+    static final Logger logger = Logger.getLogger(MyProfile.class.getName());
 
     @FXML
     protected void onHomepageImageClick() throws IOException, AddressException {

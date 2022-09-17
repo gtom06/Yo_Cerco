@@ -26,31 +26,32 @@ public class SearchShop  {
 
     User user = null;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    ToggleGroup findValue;
+    protected ToggleGroup findValue;
     @FXML
-    RadioButton param1;
+    protected RadioButton param1;
     @FXML
-    RadioButton param2;
+    protected RadioButton param2;
     @FXML
-    RadioButton param3;
+    protected RadioButton param3;
     @FXML
-    TextField requestTextField;
+    protected TextField requestTextField;
     @FXML
-    Label labelHi;
+    protected Label labelHi;
     @FXML
-    ChoiceBox choiceBoxTypeShop;
+    protected ChoiceBox choiceBoxTypeShop;
     @FXML
-    TableView<Shop> tableView = new TableView<>();
-    TableColumn<Shop, String> addressColumn;
-    TableColumn<Shop, String> cityColumn;
-    TableColumn<Shop, String> nameColumn;
-    TableColumn<Shop, String> openingColumn;
-    TableColumn<Shop, String> closingColumn;
-    TableColumn<Shop, Double> distanceColumn;
+    protected TableView<Shop> tableView = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
+    protected TableColumn<Shop, Double> distanceColumn;
     @FXML
-    CheckBox openNow;
+    protected CheckBox openNow;
+
     static final Logger logger = Logger.getLogger(SearchShop.class.getName());
 
     @FXML

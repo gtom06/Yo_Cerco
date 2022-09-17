@@ -26,22 +26,18 @@ public class SpecificOrder {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    private ImageView goPreviousPageImageView;
+    protected ImageView goPreviousPageImageView;
     @FXML
-    Text textHi;
+    protected Text textHi;
     @FXML
-    Text numberOfOrdersText;
-    @FXML
-    Text totalOrdersText;
-    @FXML
-    TableView<OrderItem> orderItemTableView = new TableView<>();
-    TableColumn<OrderItem, String> nameColumn;
-    TableColumn<OrderItem, String> brandColumn;
-    TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    TableColumn<OrderItem, Double> priceTotalColumn;
-    TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn;
+    protected TableColumn<OrderItem, String> brandColumn;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
+    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableColumn<OrderItem, String> currencyColumn;
 
     static final Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 

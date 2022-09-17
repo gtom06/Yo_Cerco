@@ -24,16 +24,33 @@ import java.io.InputStream;
 public class ShopProductView {
     User user;
     SimpleProduct simpleProduct;
-
-    @FXML
-    protected ImageView productPhoto, homepageImageView, previousPage, cartImageView, addShopToFavorites, removeShopFromFavorites;
-    @FXML
-    protected Text nameProd, brandProd, productShopPrice1, productShopPrice2, sizeLabel;
-    @FXML
-    protected TextArea descriptionTextArea;
     InputStream stream = null;
     ProductShop productShop = null;
 
+    @FXML
+    protected ImageView productPhoto;
+    @FXML
+    protected ImageView homepageImageView;
+    @FXML
+    protected ImageView previousPage;
+    @FXML
+    protected ImageView cartImageView;
+    @FXML
+    protected ImageView addShopToFavorites;
+    @FXML
+    protected ImageView removeShopFromFavorites;
+    @FXML
+    protected Text nameProd;
+    @FXML
+    protected Text brandProd;
+    @FXML
+    protected Text productShopPrice1;
+    @FXML
+    protected Text productShopPrice2;
+    @FXML
+    protected Text sizeLabel;
+    @FXML
+    protected TextArea descriptionTextArea;
 
     public void passParams(User user, SimpleProduct simpleProduct, Shop shop) throws FileNotFoundException {
         this.user = user;

@@ -33,9 +33,17 @@ public class GeneralProductView {
     SimpleProduct simpleProduct;
 
     @FXML
-    protected ImageView productPhoto, homepageImageView, previousPage, cartImageView;
+    protected ImageView productPhoto;
     @FXML
-    protected Label nameProd, brandProd;
+    protected ImageView homepageImageView;
+    @FXML
+    protected ImageView previousPage;
+    @FXML
+    protected ImageView  cartImageView;
+    @FXML
+    protected Label nameProd;
+    @FXML
+    protected Label brandProd;
     @FXML
     protected TableView<Shop> shopsTableView = new TableView<>();
     protected TableColumn<Shop, String> nameColumn;
@@ -43,6 +51,7 @@ public class GeneralProductView {
     protected TableColumn<Shop, String> cityColumn;
     protected TableColumn<Shop, String> openingColumn;
     protected TableColumn<Shop, String> closingColumn;
+
     InputStream stream = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 

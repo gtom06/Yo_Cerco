@@ -21,11 +21,10 @@ import java.util.List;
 
 public class Login {
 
-    protected final
-    String successMessage = String.format("-fx-text-fill: WHITE;");
-    final String errorMessage = String.format("-fx-text-fill: RED;");
-    final String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
-    final String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
+    protected final String successMessage = String.format("-fx-text-fill: WHITE;");
+    protected final String errorMessage = String.format("-fx-text-fill: RED;");
+    protected final String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+    protected final String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
 
 
     @FXML

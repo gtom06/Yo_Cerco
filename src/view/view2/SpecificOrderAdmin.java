@@ -26,9 +26,19 @@ public class SpecificOrderAdmin {
     User user = null;
     Order order = null;
     @FXML
-    protected ImageView homepageImageView, goPreviousPageImageView, cartImageView;
+    protected ImageView homepageImageView;
     @FXML
-    protected Text totalPriceText, timestampText, orderNumberText, completedText;
+    protected ImageView goPreviousPageImageView;
+    @FXML
+    protected ImageView cartImageView;
+    @FXML
+    protected Text totalPriceText;
+    @FXML
+    protected Text timestampText;
+    @FXML
+    protected Text orderNumberText;
+    @FXML
+    protected Text completedText;
     @FXML
     protected TableView<OrderItem> orderItemTableView = new TableView<>();
     protected TableColumn<OrderItem, String> nameColumn;

@@ -41,18 +41,60 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShopView {
+    InputStream stream = null;
     Shop shop = null;
     User user = null;
     List<Department> departmentArrayList = null;
     @FXML
     protected Button addToCartButton;
     @FXML
-    protected ImageView homepageImageView, shopLogo, profileImageView, cartImageView,
-                        addShopToFavorites, removeShopFromFavorites,
-                        dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9, dep10, dep11, dep12, dep13, dep14;
-
+    protected ImageView homepageImageView;
     @FXML
-    protected Text TextShopName, TextShopAddress, TextShopTime, TextPhoneShop;
+    protected ImageView shopLogo;
+    @FXML
+    protected ImageView profileImageView;
+    @FXML
+    protected ImageView cartImageView;
+    @FXML
+    protected ImageView addShopToFavorites;
+    @FXML
+    protected ImageView removeShopFromFavorites;
+    @FXML
+    protected ImageView dep1;
+    @FXML
+    protected ImageView dep2;
+    @FXML
+    protected ImageView dep3;
+    @FXML
+    protected ImageView dep4;
+    @FXML
+    protected ImageView dep5;
+    @FXML
+    protected ImageView dep6;
+    @FXML
+    protected ImageView dep7;
+    @FXML
+    protected ImageView dep8;
+    @FXML
+    protected ImageView dep9;
+    @FXML
+    protected ImageView dep10;
+    @FXML
+    protected ImageView dep11;
+    @FXML
+    protected ImageView dep12;
+    @FXML
+    protected ImageView dep13;
+    @FXML
+    protected ImageView dep14;
+    @FXML
+    protected Text TextShopName;
+    @FXML
+    protected Text TextShopAddress;
+    @FXML
+    protected Text TextShopTime;
+    @FXML
+    protected Text TextPhoneShop;
     @FXML
     protected TableView<ProductShop> productTable = new TableView<>();
     protected TableColumn<ProductShop, String> nameColumn;
@@ -61,7 +103,6 @@ public class ShopView {
     protected TableColumn<ProductShop, String> unitOfMeasureColumn;
     protected TableColumn<ProductShop, Integer> currencyColumn;
     protected TableColumn<ProductShop, Integer> priceColumn;
-    InputStream stream = null;
 
     static final Logger logger = Logger.getLogger(ShopView.class.getName());
 

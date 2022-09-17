@@ -30,88 +30,88 @@ public class ShopView {
     List<Department> departmentArrayList = null;
     Department department = null;
     @FXML
-    ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    ImageView shopLogo;
+    protected ImageView shopLogo;
     @FXML
-    ImageView addShopToFavorites;
+    protected ImageView addShopToFavorites;
     @FXML
-    ImageView removeShopFromFavorites;
+    protected ImageView removeShopFromFavorites;
     @FXML
-    ImageView offersFlyerTagShop;
+    protected ImageView offersFlyerTagShop;
     @FXML
-    ImageView dep1;
+    protected ImageView dep1;
     @FXML
-    ImageView dep2;
+    protected ImageView dep2;
     @FXML
-    ImageView dep3;
+    protected ImageView dep3;
     @FXML
-    ImageView dep4;
+    protected ImageView dep4;
     @FXML
-    ImageView dep5;
+    protected ImageView dep5;
     @FXML
-    ImageView dep6;
+    protected ImageView dep6;
     @FXML
-    ImageView dep7;
+    protected ImageView dep7;
     @FXML
-    ImageView dep8;
+    protected ImageView dep8;
     @FXML
-    ImageView dep9;
+    protected ImageView dep9;
     @FXML
-    ImageView dep10;
+    protected ImageView dep10;
     @FXML
-    ImageView dep11;
+    protected ImageView dep11;
     @FXML
-    ImageView dep12;
+    protected ImageView dep12;
     @FXML
-    ImageView dep13;
+    protected ImageView dep13;
     @FXML
-    ImageView dep14;
+    protected ImageView dep14;
     //departmentText
     @FXML
-    Text dep1Text;
+    protected Text dep1Text;
     @FXML
-    Text dep2Text;
+    protected Text dep2Text;
     @FXML
-    Text dep3Text;
+    protected Text dep3Text;
     @FXML
-    Text dep4Text;
+    protected Text dep4Text;
     @FXML
-    Text dep5Text;
+    protected Text dep5Text;
     @FXML
-    Text dep6Text;
+    protected Text dep6Text;
     @FXML
-    Text dep7Text;
+    protected Text dep7Text;
     @FXML
-    Text dep8Text;
+    protected Text dep8Text;
     @FXML
-    Text dep9Text;
+    protected Text dep9Text;
     @FXML
-    Text dep10Text;
+    protected Text dep10Text;
     @FXML
-    Text dep11Text;
+    protected Text dep11Text;
     @FXML
-    Text dep12Text;
+    protected Text dep12Text;
     @FXML
-    Text dep13Text;
+    protected Text dep13Text;
     @FXML
-    Text dep14Text;
+    protected Text dep14Text;
     @FXML
-    Text TextHi;
+    protected Text TextHi;
     @FXML
-    Text TextShopName;
+    protected Text TextShopName;
     @FXML
-    Text TextShopAddress;
+    protected Text TextShopAddress;
     @FXML
-    Text TextShopOpeningTime;
+    protected Text TextShopOpeningTime;
     @FXML
-    Text TextShopClosingTime;
+    protected Text TextShopClosingTime;
     @FXML
-    Text TextFavorite;
+    protected Text TextFavorite;
     @FXML
-    Text TextPhoneShop;
+    protected Text TextPhoneShop;
     @FXML
-    Text offersFlyerShop;
+    protected Text offersFlyerShop;
     InputStream stream = null;
     @FXML
     protected void onHomepageImageClick() throws IOException {

@@ -38,23 +38,35 @@ public class CartAndPayment {
     @FXML
     protected RadioButton cardRadioButton;
     @FXML
-    protected TextField
-            nameTextField,
-            surnameTextField,
-            phoneNumberTextField,
-            billingStreetTextField,
-            billingCityTextField,
-            billingCountryTextField,
-            billingZipTextField;
+    protected TextField nameTextField;
     @FXML
-    protected TextField
-            cardholderTextField,
-            creditcardTextField,
-            mmTextField,
-            yyTextField,
-            cvvTextField;
+    protected TextField surnameTextField;
     @FXML
-    protected Text orderCreatedText, totalPriceText, totalQuantityText;
+    protected TextField phoneNumberTextField;
+    @FXML
+    protected TextField billingStreetTextField;
+    @FXML
+    protected TextField billingCityTextField;
+    @FXML
+    protected TextField billingCountryTextField;
+    @FXML
+    protected TextField billingZipTextField;
+    @FXML
+    protected TextField cardholderTextField;
+    @FXML
+    protected TextField creditcardTextField;
+    @FXML
+    protected TextField mmTextField;
+    @FXML
+    protected TextField yyTextField;
+    @FXML
+    protected TextField cvvTextField;
+    @FXML
+    protected Text orderCreatedText;
+    @FXML
+    protected Text totalPriceText;
+    @FXML
+    protected Text totalQuantityText;
     @FXML
     protected TableView<OrderItem> orderItemsTableView = new TableView<>();
     protected TableColumn<OrderItem, String> nameColumn;

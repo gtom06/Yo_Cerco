@@ -27,20 +27,20 @@ public class SpecificOrderAdmin {
     User user = null;
     Order order = null;
     @FXML
-    private ImageView homepageImageView;
+    protected ImageView homepageImageView;
     @FXML
-    private ImageView goPreviousPageImageView;
+    protected ImageView goPreviousPageImageView;
     @FXML
-    Text textHi;
+    protected Text textHi;
     @FXML
-    Label completedLabel;
+    protected Label completedLabel;
     @FXML
-    TableView<OrderItem> orderItemTableView = new TableView<>();
-    TableColumn<OrderItem, String> nameColumn;
-    TableColumn<OrderItem, String> brandColumn;
-    TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    TableColumn<OrderItem, Double> priceTotalColumn;
-    TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn;
+    protected TableColumn<OrderItem, String> brandColumn;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
+    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableColumn<OrderItem, String> currencyColumn;
 
     static final Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
@@ -103,9 +103,7 @@ public class SpecificOrderAdmin {
         ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
         order = OrderHandler.populateOrderWithOrderItems(order);
         if (order.getOrderItemArrayList() != null) {
-            for (OrderItem orderItem : order.getOrderItemArrayList()) {
-                orderItemObservableList.add(orderItem);
-            }
+            orderItemObservableList.addAll(order.getOrderItemArrayList());
             orderItemTableView.setItems(orderItemObservableList);
         } else {
             logger.log(Level.INFO, Constants.NO_RESULT);
