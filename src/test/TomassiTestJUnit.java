@@ -23,7 +23,6 @@ public class TomassiTestJUnit {
         assertEquals(13.4262861, address.getLng(),  0.5);
         assertEquals(addressString, address.getAddressString());
     }
-
     @Test
     public void calculateDistancePointToPointTest() {
         Shop shop = new Shop(null, null, null,null, null,null,
@@ -43,7 +42,6 @@ public class TomassiTestJUnit {
         s = HttpRequest.get("https://apis.woptima.com/cf/TMSGPP96S06D810K");
         assertEquals(expected, s);
     }
-
     @Test
     public void populateOrderWithOrderItemsTest() {
         ArrayList<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(new Buyer("abc", null, null, null, null, null, null, null, null, null, null, null, null));
@@ -54,7 +52,6 @@ public class TomassiTestJUnit {
         Order order = OrderHandler.populateOrderWithOrderItems(orderArrayList.get(0));
         assertNotNull(order.getOrderItemArrayList());
     }
-
     @Test
     public void addOrderItemsToCartTest() throws ExceptionCart {
         ProductShop productShop = new ProductShop(150.00,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
