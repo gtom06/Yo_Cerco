@@ -151,7 +151,6 @@ public class Homepage {
             }
             goToShop(shop);
         } catch (Exception e) {
-            e.printStackTrace();
             logger.log(Level.INFO, "no selected shop");
         }
     }
@@ -164,7 +163,6 @@ public class Homepage {
                 goToShop(shop);
             }
         } catch (Exception e){
-            e.printStackTrace();
             logger.log(Level.INFO, "no selected shop");
         }
     }
