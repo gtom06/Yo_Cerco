@@ -34,7 +34,7 @@ public class ShopHandler {
         else {
             shopList = useSearchByLatLong(searchParam, onlyOpenNow, type);
         }
-        return !shopList.isEmpty() ? shopList : null;
+        return shopList != null ? shopList : null;
     }
 
     public static List<Shop> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
@@ -49,7 +49,7 @@ public class ShopHandler {
             }
             shopList = ComparableHandler.orderShopsByDistance(shopList, address);
         }
-        return !shopList.isEmpty() ? shopList : null;
+        return shopList != null ? shopList : null;
     }
 
     public static List<Shop> useSearchByIpAddress(String type) throws AddressException {
@@ -59,7 +59,7 @@ public class ShopHandler {
             shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
             shopList = ComparableHandler.orderShopsByDistance(shopList, address);
         }
-        return !shopList.isEmpty() ? shopList : null;
+        return shopList != null ? shopList : null;
     }
 
     public static List<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
