@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.user.Admin;
 import model.user.Buyer;
-import model.user.ShopHolder;
 import model.user.User;
 
 import java.io.File;

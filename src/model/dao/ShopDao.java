@@ -16,10 +16,10 @@ public class ShopDao {
     static Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static List<Shop> findShopByCity(String city, String type, Integer hour) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopByCityQuery(city, type, hour);
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
@@ -27,10 +27,10 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopByName(String name, String type, Integer hour) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopByNameQuery(name, type, hour);
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
@@ -38,10 +38,10 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopNearby(double lat, double lng, String type, Integer hour) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopNearbyQuery(lat, lng, type, hour);
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
@@ -49,21 +49,21 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopByFavoriteUser(String username) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopByFavoriteUserQuery(username);
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
         return arrayShop;
     }
 
-    public static List<Shop> findShopsWithProducts(ArrayList<Integer> productSkuArrayList) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+    public static List<Shop> findShopsWithProducts(List<Integer> productSkuArrayList) {
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopsWithProductsQuery(productSkuArrayList);
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
@@ -71,10 +71,10 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
+        List<Shop> arrayShop= new ArrayList<>();
         try {
             ResultSet rs = Queries.findShopsByProductQuery(simpleProduct.getSku());
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
+            arrayShop = convertRSInArrayShop(rs);
 
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);

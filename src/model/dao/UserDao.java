@@ -6,7 +6,6 @@ import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
-import model.user.ShopHolder;
 import model.user.User;
 
 import java.sql.*;
@@ -72,11 +71,6 @@ public class UserDao {
                 stmt.setString(5, null);
                 stmt.setString(6, Constants.ADMIN_USER);
             }
-            if (user instanceof ShopHolder) {
-                stmt.setDate(4, null);
-                stmt.setString(5, null);
-                stmt.setString(6, Constants.SHOPHOLDER_USER);
-            }
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert user");
@@ -131,10 +125,7 @@ public class UserDao {
         String billingZip = rs.getString("billing_zip");
         String phone = rs.getString("phone");
         String profileImagepath = rs.getString("profile_imagepath");
-        if (role.equals(Constants.SHOPHOLDER_USER)){
-            user = new ShopHolder(username,null, name, surname, email);
-        }
-        else if (role.equals(Constants.ADMIN_USER)){
+        if (role.equals(Constants.ADMIN_USER)){
             user = new Admin(username, name, surname, email, null);
         }
         else if (role.equals(Constants.BUYER_USER)) {

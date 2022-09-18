@@ -5,7 +5,6 @@ import model.ConstantsExceptions;
 import model.dao.UserDao;
 import model.user.Admin;
 import model.user.Buyer;
-import model.user.ShopHolder;
 import model.user.User;
 import java.sql.Date;
 import java.util.logging.Level;
@@ -48,9 +47,6 @@ public class UserHandler {
         } else if (roleString.equals(Constants.ADMIN) || roleString.equals(Constants.ADMIN_USER)) {
             Admin admin = new Admin(username, name, surname, email, password);
             return UserDao.insertUser(admin);
-        } else if (roleString.equals(Constants.OWNER) || roleString.equals(Constants.SHOPHOLDER_USER)) {
-            ShopHolder shopHolder = new ShopHolder(username, password, name, surname, email);
-            return UserDao.insertUser(shopHolder);
         }
         logger.log(Level.WARNING, "insert failed");
         return false;
