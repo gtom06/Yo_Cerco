@@ -140,29 +140,31 @@ public class Homepage {
     }
 
     @FXML
-    protected void onClickOnShop(MouseEvent mouseEvent) throws IOException {
+    protected void onClickOnShop(MouseEvent mouseEvent) {
         Shop shop = null;
         try {
-        int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-        for (Shop s : shopArrayList){
-            if (s.getShopId() == ref) {
-                shop = s;
-                break;
+            int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
+            for (Shop s : shopArrayList){
+                if (s.getShopId() == ref) {
+                    shop = s;
+                    break;
+                }
             }
+            goToShop(shop);
+        } catch (Exception e) {
+            logger.log(Level.INFO, "no selected shop");
         }
-        goToShop(shop);
-        } catch (Exception e) {}
     }
 
     @FXML
-    protected void onClickOnShopTableView() throws IOException {
+    protected void onClickOnShopTableView() {
         try {
             Shop shop = shopTableView.getSelectionModel().getSelectedItem();
             if (shop != null) {
                 goToShop(shop);
             }
         } catch (Exception e){
-
+            logger.log(Level.INFO, "no selected shop");
         }
     }
 
@@ -200,7 +202,7 @@ public class Homepage {
 
     @FXML
     protected void onClickOnLocation() throws AddressException {
-        List<Shop> searchShopArrayList= null;
+        List<Shop> searchShopArrayList;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
         searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
@@ -210,7 +212,7 @@ public class Homepage {
         searchParam.setText("My position");
         if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
             ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
-            if (observableListShop.size()!= 0 && observableListShop != null){
+            if (observableListShop.size()!= 0){
                 shopTableView.setItems(observableListShop);
             }
         } else {
@@ -221,7 +223,7 @@ public class Homepage {
     @FXML
     protected void onSearchButtonClick() throws AddressException {
         Object selected = choiceBox.getSelectionModel().getSelectedItem();
-        ArrayList<Shop> searchShopArrayList= null;
+        ArrayList<Shop> searchShopArrayList;
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
 
         if (selected != null){
@@ -236,9 +238,9 @@ public class Homepage {
                     shopTableView.setVisible(true);
                     distanceColumn.setVisible(false);
                     searchShopArrayList = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
-                    if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
+                    if (searchShopArrayList != null) {
                         ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
-                        if (observableListShop.size() != 0 && observableListShop != null) {
+                        if (!observableListShop.isEmpty()) {
                             shopTableView.setItems(observableListShop);
                         }
                     } else {
@@ -253,7 +255,7 @@ public class Homepage {
                 searchSimpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(searchParam.getText());
                 if (searchSimpleProductArrayList != null && !searchSimpleProductArrayList.isEmpty()) {
                     ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
-                    if (observableListProducts.size()!= 0 && observableListProducts != null){
+                    if (observableListProducts.size()!= 0){
                         productTableView.setItems(observableListProducts);
                     }
                 } else {
