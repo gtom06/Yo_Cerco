@@ -20,47 +20,26 @@ public class UserDao {
     static final Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public static boolean validateLogin(String username, String password) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         boolean output = false;
         try {
-            conn = dbHelper.openDBConnection();
-
-            String sql = "SELECT username, pass " +
-                    "FROM userx " +
-                    "WHERE username = ? AND pass = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2,password);
-
-            ResultSet rs = stmt.executeQuery();
+            Statement stmt = dbHelper.getConnection().createStatement();
+            ResultSet rs = Queries.validateLoginQuery(stmt, username, password);
             if (rs.next()) {
                 output = true;
             }
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return output;
     }
 
     public static User retrieveUserFrom(String username) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
         DbHelper dbHelper = DbHelper.getInstance();
         User user = null;
         try {
-            conn = dbHelper.openDBConnection();
-
-            String sql = "SELECT * " +
-                    "FROM userx " +
-                    "WHERE username = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
+            Statement stmt = dbHelper.getConnection().createStatement();
+            ResultSet rs = Queries.retrieveUserFromQuery(stmt, username);
             rs.next();
 
             String role = rs.getString("role");
@@ -101,8 +80,6 @@ public class UserDao {
             }
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return user;
 
@@ -146,8 +123,6 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert user");
             return false;
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
     }
@@ -177,8 +152,6 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while updating user");
             return false;
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
     }

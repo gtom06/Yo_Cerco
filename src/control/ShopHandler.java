@@ -4,7 +4,6 @@ import exceptions.AddressException;
 import model.address.Address;
 import model.ConstantsExceptions;
 import model.dao.ShopDao;
-import model.order.Order;
 import model.product.SimpleProduct;
 import model.shop.Shop;
 import model.user.User;
@@ -27,7 +26,7 @@ public class ShopHandler {
     }
 
     public static List<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
-        List<Shop> shopList = new ArrayList<>();
+        List<Shop> shopList;
         if (searchParam == null || searchParam.isBlank() || searchParam.length() > 50){
             shopList = useSearchByIpAddress(type);
         }
@@ -40,14 +39,23 @@ public class ShopHandler {
     public static List<Shop> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
         List<Shop> shopList = new ArrayList<>();
         Address address = LocationHandler.calculateLatLongFromAddress(addressString);
-        if (address != null){
-            if (!onlyOpenNow){
-                shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
-            }
-            else{
-                shopList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour(), type);
-            }
-            shopList = ComparableHandler.orderShopsByDistance(shopList, address);
+        if (address != null && onlyOpenNow){
+            shopList = ComparableHandler.orderShopsByDistance(
+                    ShopDao.findShopNearby(
+                            address.getLat(),
+                            address.getLng(),
+                            type,
+                            LocalTime.now().getHour()),
+                    address);
+        }
+        else if (address != null){
+            shopList = ComparableHandler.orderShopsByDistance(
+                    ShopDao.findShopNearby(
+                            address.getLat(),
+                            address.getLng(),
+                            type,
+                            null),
+                    address);
         }
         return shopList != null ? shopList : null;
     }
@@ -56,7 +64,7 @@ public class ShopHandler {
         List<Shop> shopList = new ArrayList<>();
         Address address = LocationHandler.calculateLatLongFromIpAddress();
         if (address != null) {
-            shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
+            shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type, null);
             shopList = ComparableHandler.orderShopsByDistance(shopList, address);
         }
         return shopList != null ? shopList : null;
@@ -68,10 +76,10 @@ public class ShopHandler {
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCity(city,type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCity(city, type, null);
         }
         else {
-            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCityAndTime(city, LocalTime.now().getHour(), type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByCity(city, type, LocalTime.now().getHour());
         }
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
@@ -82,10 +90,10 @@ public class ShopHandler {
             return null;
         }
         if (!onlyOpenNow) {
-            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByName(name, type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByName(name, type, null);
         }
         else {
-            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByNameAndTime(name, LocalTime.now().getHour(), type);
+            shopArrayList = (ArrayList<Shop>) ShopDao.findShopByName(name, type, LocalTime.now().getHour());
         }
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
@@ -120,6 +128,8 @@ public class ShopHandler {
     }
 
     public static List<Shop> findFavoriteShopsFromUser(User user){
-        return ShopDao.findShopByFavouriteUser(user.getUsername());
+        ArrayList<Shop> shopArrayList;
+        shopArrayList = (ArrayList<Shop>) ShopDao.findShopByFavoriteUser(user.getUsername());
+        return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 }

@@ -20,6 +20,8 @@ public class OrderDao {
     }
 
     static final Logger logger = Logger.getLogger(OrderDao.class.getName());
+
+
     public static List<Order> findOrdersFromUser(String username) {
         PreparedStatement stmt = null;
         Connection conn = null;

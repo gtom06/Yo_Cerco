@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.db.DbHelper;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ public class MainJavaFX2 extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        DbHelper dbHelper = DbHelper.getInstance();
         Parent root = FXMLLoader.load((getClass().getResource("/view/view2/login.fxml")));
         Scene scene = new Scene(root, 1080, 720);
         stage.setTitle("Login");
