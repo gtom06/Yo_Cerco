@@ -1,6 +1,5 @@
 package model.dao;
 
-import model.Constants;
 import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.product.SimpleProduct;
@@ -16,13 +15,21 @@ public class ShopDao {
     private ShopDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
+    static ArrayList<Shop> arrayShop = new ArrayList<>();
+    static Statement stmt;
+
+    static {
+        try {
+            stmt = DbHelper.getInstance().getConnection().createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     static final Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static List<Shop> findShopByCity(String city, String type, Integer time) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
             ResultSet rs = Queries.findShopByCityQuery(stmt, city, type, time);
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -32,9 +39,7 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopByName(String name, String type, Integer time) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
             ResultSet rs = Queries.findShopByNameQuery(stmt, name, type, time);
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -44,9 +49,7 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopNearby(Double lat, Double lng, String type, Integer time) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
             ResultSet rs = Queries.findShopNearbyQuery(stmt, lat, lng, type, time);
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
@@ -56,10 +59,8 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopByFavoriteUser(String username) {
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
-            ResultSet rs = Queries.findShopByFavoriteUser(stmt, username);
+            ResultSet rs = Queries.findShopByFavoriteUserQuery(stmt, username);
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
@@ -68,100 +69,29 @@ public class ShopDao {
     }
 
     public static List<Shop> findShopsWithProducts(List<Integer> productSkuArrayList) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-            conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * " +
-                    "FROM product_shop PS " +
-                    "JOIN shop S on S.shop_id = PS.shop_id " +
-                    "WHERE sku IN ";
-            stmt = conn.prepareStatement(sql + DaoHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
-
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = Queries.findShopsWithProductsQuery(stmt, productSkuArrayList);
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
         return arrayShop;
     }
-    /*
 
     public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<Shop> arrayShop= new ArrayList<>();
         try {
-            conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * " +
-                    "FROM shop S " +
-                    "JOIN product_shop PS " +
-                    "ON S.shop_id = PS.shop_id "+
-                    "JOIN product p " +
-                    "ON PS.sku = p.sku " +
-                    "WHERE p.sku = ?";
-            stmt = conn.prepareStatement(sql );
-            stmt.setInt(1, simpleProduct.getSku());
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = Queries.findShopsByProductQuery(stmt, simpleProduct.getSku());
             arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
         return arrayShop;
-    }
-
-    public static void insertFavoriteShopIntoDb(int shopId, String username) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        try {
-            conn = dbHelper.openDBConnection();
-            String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
-                    "VALUES (?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setInt(2, shopId);
-            stmt.executeUpdate();
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
-        }
-    }
-
-    public static void removeFavoriteShopFromDb(int shopId, String username) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        try {
-            conn = dbHelper.openDBConnection();
-            String sql = "DELETE FROM user_favoriteshop " +
-                    "WHERE LOWER(username) = ? AND shop_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username.toLowerCase());
-            stmt.setInt(2, shopId);
-            stmt.executeUpdate();
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
-        }
     }
 
     public static boolean isFavoriteShop(int shopId, String username) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
         boolean output = false;
         try {
-            conn = dbHelper.openDBConnection();
-            String sql = "SELECT DISTINCT * " +
-                    "FROM user_favoriteshop " +
-                    "WHERE shop_id = ? AND LOWER(username) = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shopId);
-            stmt.setString(2, username.toLowerCase());
-
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = Queries.isFavoriteShopQuery(stmt, shopId, username);
             if (rs.next()) {
                 output = true;
             }
@@ -169,7 +99,23 @@ public class ShopDao {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         }
         return output;
-    }*/
+    }
+
+    public static void insertFavoriteShopIntoDb(int shopId, String username) {
+        try {
+            Queries.insertFavoriteShopIntoDbQuery(stmt, shopId, username);
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        }
+    }
+
+    public static void removeFavoriteShopFromDb(int shopId, String username) {
+        try {
+            Queries.removeFavoriteShopFromDbQuery(stmt, shopId, username);
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        }
+    }
 
     public static List<Shop> convertRSInArrayShop(ResultSet rs) throws SQLException {
         Shop shop;

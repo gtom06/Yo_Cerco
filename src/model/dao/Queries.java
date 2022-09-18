@@ -1,12 +1,18 @@
 package model.dao;
 
 import model.Constants;
+import model.ConstantsExceptions;
+import model.db.DbHelper;
+import model.order.Order;
+import model.shop.Shop;
 
 import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class Queries {
     private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
@@ -61,8 +67,8 @@ public class Queries {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet findShopByFavoriteUser(Statement stmt, String username) throws SQLException {
-        String sql = "SELECT DISTINCT * " +
+    public static ResultSet findShopByFavoriteUserQuery(Statement stmt, String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
                 "FROM shop s JOIN user_favoriteshop ufs " +
                 "ON s.shop_id = ufs.shop_id " +
                 "WHERE LOWER(username) = '" + username.toLowerCase() + "'";
@@ -70,6 +76,53 @@ public class Queries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet findShopsByProductQuery(Statement stmt, int sku) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM shop S " +
+                "JOIN product_shop PS " +
+                "ON S.shop_id = PS.shop_id "+
+                "JOIN product p " +
+                "ON PS.sku = p.sku " +
+                "WHERE p.sku = " + sku;
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet findShopsWithProductsQuery(Statement stmt, List<Integer> productSkuArrayList) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM product_shop PS " +
+                "JOIN shop S on S.shop_id = PS.shop_id " +
+                "WHERE sku IN " +
+                QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList);
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
+    public static void insertFavoriteShopIntoDbQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+        String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
+                "VALUES (" +"'" + username + "'," + shopId +")";
+        System.out.println(sql);
+        stmt.executeUpdate(sql);
+    }
+    public static void removeFavoriteShopFromDbQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+        String sql = "DELETE FROM user_favoriteshop " +
+                "WHERE username =" +"'" + username + "' AND shop_id = " + shopId;
+        System.out.println(sql);
+        stmt.executeUpdate(sql);
+    }
+
+    public static ResultSet isFavoriteShopQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                " FROM user_favoriteshop " +
+                " WHERE username =" +"'" + username + "' AND shop_id = " + shopId;
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet findOrderItemsFromOrderQuery(Statement stmt, Order order){
+        return null;
+
+
+    }
 
     private static String addLatLng(Double lat, double lng){
         double latInf = lat - 0.5;

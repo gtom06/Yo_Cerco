@@ -21,7 +21,6 @@ public class MainJavaFX1 extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        DbHelper dbHelper = DbHelper.getInstance();
         Parent root = FXMLLoader.load((getClass().getResource("/view/view1/login.fxml")));
         Scene scene = new Scene(root, 1000, 700);
         stage.setTitle("Login");

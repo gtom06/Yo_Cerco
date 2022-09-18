@@ -20,10 +20,9 @@ public class UserDao {
     static final Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public static boolean validateLogin(String username, String password) {
-        DbHelper dbHelper = DbHelper.getInstance();
         boolean output = false;
         try {
-            Statement stmt = dbHelper.getConnection().createStatement();
+            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
             ResultSet rs = Queries.validateLoginQuery(stmt, username, password);
             if (rs.next()) {
                 output = true;
@@ -35,10 +34,9 @@ public class UserDao {
     }
 
     public static User retrieveUserFrom(String username) {
-        DbHelper dbHelper = DbHelper.getInstance();
         User user = null;
         try {
-            Statement stmt = dbHelper.getConnection().createStatement();
+            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
             ResultSet rs = Queries.retrieveUserFromQuery(stmt, username);
             rs.next();
 
