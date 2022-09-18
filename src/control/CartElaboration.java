@@ -69,30 +69,29 @@ public class CartElaboration {
         return true;
     }
 
-    public static boolean addNewOrderItemToCart() {
-
-
+    public static boolean addOrderItemToList() {
+        /*
+        //not discounted
+        if (productShop.getDiscountedPrice() == 0) {
+            orderItemToAdd.setPriceTotal(productShop.getPrice() * quantityToAdd);
+        }
+        //discounted
+        else {
+            orderItemToAdd.setPriceTotal(productShop.getDiscountedPrice() * quantityToAdd);
+        }
+        orderItemArrayList.add(orderItemToAdd);
+            */
         return true;
     }
 
 
-    protected static boolean writeOrderItemOnCart(List<OrderItem> orderItemList) throws ExceptionCart {
-        BufferedWriter out = null;
-        try {
-            String json = new Gson().toJson(orderItemList);
-            out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
-            out.write(json);
-            out.close();
-        } catch (Exception e){
-            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
-            throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
-        }
+    public static boolean modifyOrderItemInList(){
+
         return true;
     }
 
     public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) throws ExceptionCart {
         List<OrderItem> orderItemArrayList;
-        BufferedWriter out = null;
         try {
             orderItemArrayList = readOrderItemsFromCart();
             OrderItem orderItemToAdd = new OrderItem(
@@ -111,7 +110,6 @@ public class CartElaboration {
                     productShop.getPrice() * quantityToAdd,
                     productShop.getDiscountedPrice()
             );
-
             if (!orderItemArrayList.isEmpty()) {
                 boolean found = false;
                 if (orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
@@ -124,6 +122,7 @@ public class CartElaboration {
                         orderItem.setQuantityOrdered(actualQuantity + quantityToAdd);
                         if (orderItem.getDiscountedPrice() == 0) {
                             orderItem.setPriceTotal(orderItem.getPrice() * orderItem.getQuantityOrdered());
+                            break;
                         }
                         else {
                             orderItem.setPriceTotal(orderItem.getDiscountedPrice() * orderItem.getQuantityOrdered());
@@ -161,12 +160,27 @@ public class CartElaboration {
         return true;
     }
 
+    protected static boolean writeOrderItemOnCart(List<OrderItem> orderItemList) throws ExceptionCart {
+        BufferedWriter out = null;
+        try {
+            String json = new Gson().toJson(orderItemList);
+            out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
+            out.write(json);
+            out.close();
+        } catch (Exception e){
+            logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
+            throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);
+        }
+        return true;
+    }
+
     public static void deleteCart() throws ExceptionCart {
         BufferedWriter out = null;
         try {
             String emptyString = "";
             out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
             out.write(emptyString);
+            out.close();
         }
         catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);

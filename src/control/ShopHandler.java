@@ -26,41 +26,40 @@ public class ShopHandler {
         throw new UnsupportedOperationException();
     }
 
-    public static Shop findShopByOrder(Order order) {
-        ArrayList<Shop> shopArrayList = null;
-        shopArrayList = (ArrayList<Shop>) ShopDao.findShopById(order.getShopId());
-        return !shopArrayList.isEmpty() ? shopArrayList.get(0) : null;
-    }
-
-
     public static List<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
-        List<Shop> shopArrayList;
+        List<Shop> shopList = new ArrayList<>();
         if (searchParam == null || searchParam.isBlank() || searchParam.length() > 50){
-            Address address = LocationHandler.calculateLatLongFromIpAddress();
-            if (address != null) {
-                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
-                shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return !shopArrayList.isEmpty() ? shopArrayList : null;
-            }
-            return null;
-        }
-        if (!onlyOpenNow){
-            Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
-            if (address != null) {
-                shopArrayList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
-                shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return !shopArrayList.isEmpty() ? shopArrayList : null;
-            }
+            shopList = useSearchByIpAddress(type);
         }
         else {
-            Address address = LocationHandler.calculateLatLongFromAddress(searchParam);
-            if (address != null) {
-                shopArrayList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour(), type);
-                shopArrayList = ComparableHandler.orderShopsByDistance(shopArrayList, address);
-                return !shopArrayList.isEmpty() ? shopArrayList : null;
-            }
+            shopList = useSearchByLatLong(searchParam, onlyOpenNow, type);
         }
-        return null;
+        return !shopList.isEmpty() ? shopList : null;
+    }
+
+    public static List<Shop> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
+        List<Shop> shopList = new ArrayList<>();
+        Address address = LocationHandler.calculateLatLongFromAddress(addressString);
+        if (address != null){
+            if (!onlyOpenNow){
+                shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
+            }
+            else{
+                shopList = ShopDao.findShoNearbyAndTime(address.getLat(), address.getLng(), LocalTime.now().getHour(), type);
+            }
+            shopList = ComparableHandler.orderShopsByDistance(shopList, address);
+        }
+        return !shopList.isEmpty() ? shopList : null;
+    }
+
+    public static List<Shop> useSearchByIpAddress(String type) throws AddressException {
+        List<Shop> shopList = new ArrayList<>();
+        Address address = LocationHandler.calculateLatLongFromIpAddress();
+        if (address != null) {
+            shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type);
+            shopList = ComparableHandler.orderShopsByDistance(shopList, address);
+        }
+        return !shopList.isEmpty() ? shopList : null;
     }
 
     public static List<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {

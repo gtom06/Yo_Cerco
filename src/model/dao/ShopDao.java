@@ -19,30 +19,6 @@ public class ShopDao {
 
     static final Logger logger = Logger.getLogger(ShopDao.class.getName());
 
-    public static List<Shop> findShopById(int shopId) {
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
-        ArrayList<Shop> arrayShop= new ArrayList<>();
-        try {
-            conn = dbHelper.openDBConnection();
-
-            String sql = "SELECT DISTINCT * " +
-                    "FROM shop " +
-                    "WHERE shop_id = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, shopId);
-
-            ResultSet rs = stmt.executeQuery();
-            arrayShop = (ArrayList<Shop>) convertRSInArrayShop(rs);
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
-        }
-        return arrayShop;
-    }
-
     public static List<Shop> findShopByCity(String city, String type) {
         PreparedStatement stmt = null;
         Connection conn = null;
