@@ -82,7 +82,6 @@ public class Homepage {
 
     public void passParams(User user) throws FileNotFoundException, AddressException {
         this.user = user;
-
         ArrayList<Text> textArrayList = new ArrayList<>(
                 Arrays.asList(shopText1, shopText2, shopText3, shopText4)
         );
@@ -152,6 +151,7 @@ public class Homepage {
             }
             goToShop(shop);
         } catch (Exception e) {
+            e.printStackTrace();
             logger.log(Level.INFO, "no selected shop");
         }
     }
@@ -164,6 +164,7 @@ public class Homepage {
                 goToShop(shop);
             }
         } catch (Exception e){
+            e.printStackTrace();
             logger.log(Level.INFO, "no selected shop");
         }
     }

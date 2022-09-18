@@ -1,7 +1,7 @@
 package model.dao;
 
 import model.Constants;
-import model.ConstantsExceptions;
+
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
@@ -13,22 +13,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserDao {
-    private UserDao(){
-        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
-    }
-
-    static final Logger logger = Logger.getLogger(UserDao.class.getName());
+    static Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public static boolean validateLogin(String username, String password) {
         boolean output = false;
         try {
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
-            ResultSet rs = Queries.validateLoginQuery(stmt, username, password);
+            ResultSet rs = Queries.validateLoginQuery(username, password);
             if (rs.next()) {
                 output = true;
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
+            logger.log(Level.WARNING, "error while finding user");
         }
         return output;
     }
@@ -36,48 +31,10 @@ public class UserDao {
     public static User retrieveUserFrom(String username) {
         User user = null;
         try {
-            Statement stmt = DbHelper.getInstance().getConnection().createStatement();
-            ResultSet rs = Queries.retrieveUserFromQuery(stmt, username);
-            rs.next();
-
-            String role = rs.getString("role");
-            String name = rs.getString("name");
-            String pass = null;
-            String email = rs.getString("email");
-            Date dateOfBirth = rs.getDate("date_of_birth");
-            String gender = rs.getString("gender");
-            String surname = rs.getString("surname");
-            String billingStreet = rs.getString("billing_street");
-            String billingCity = rs.getString("billing_city");
-            String billingCountry = rs.getString("billing_country");
-            String billingZip = rs.getString("billing_zip");
-            String phone = rs.getString("phone");
-            String profileImagepath = rs.getString("profile_imagepath");
-            if (role.equals(Constants.SHOPHOLDER_USER)){
-                user = new ShopHolder(username,null, name, surname, email);
-            }
-            else if (role.equals(Constants.ADMIN_USER)){
-                user = new Admin(username, name, surname, email, null);
-            }
-            else if (role.equals(Constants.BUYER_USER)){
-                user = new Buyer(
-                        username,
-                        name,
-                        surname,
-                        pass,
-                        email,
-                        dateOfBirth,
-                        billingStreet,
-                        billingCity,
-                        billingCountry,
-                        billingZip,
-                        phone,
-                        gender,
-                        profileImagepath
-                );
-            }
+            ResultSet rs = Queries.retrieveUserFromQuery(username);
+            user = convertRSInUser(rs);
         } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
+            logger.log(Level.WARNING, "error while finding user");
         }
         return user;
 
@@ -121,6 +78,8 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert user");
             return false;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
     }
@@ -150,7 +109,52 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while updating user");
             return false;
+        } finally {
+            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
+    }
+
+    private static User convertRSInUser(ResultSet rs) throws SQLException {
+        User user = null;
+        rs.next();
+        String role = rs.getString("role");
+        String name = rs.getString("name");
+        String username = rs.getString("username");
+        String pass = null;
+        String email = rs.getString("email");
+        Date dateOfBirth = rs.getDate("date_of_birth");
+        String gender = rs.getString("gender");
+        String surname = rs.getString("surname");
+        String billingStreet = rs.getString("billing_street");
+        String billingCity = rs.getString("billing_city");
+        String billingCountry = rs.getString("billing_country");
+        String billingZip = rs.getString("billing_zip");
+        String phone = rs.getString("phone");
+        String profileImagepath = rs.getString("profile_imagepath");
+        if (role.equals(Constants.SHOPHOLDER_USER)){
+            user = new ShopHolder(username,null, name, surname, email);
+        }
+        else if (role.equals(Constants.ADMIN_USER)){
+            user = new Admin(username, name, surname, email, null);
+        }
+        else if (role.equals(Constants.BUYER_USER)) {
+            user = new Buyer(
+                    username,
+                    name,
+                    surname,
+                    pass,
+                    email,
+                    dateOfBirth,
+                    billingStreet,
+                    billingCity,
+                    billingCountry,
+                    billingZip,
+                    phone,
+                    gender,
+                    profileImagepath
+            );
+        }
+        return user;
     }
 }

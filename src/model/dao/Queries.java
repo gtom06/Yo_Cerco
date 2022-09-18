@@ -1,156 +1,366 @@
 package model.dao;
 
+import exceptions.FileElaborationException;
 import model.Constants;
-import model.ConstantsExceptions;
+
 import model.db.DbHelper;
 import model.order.Order;
-import model.shop.Shop;
-
-import javax.xml.transform.Result;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import model.order.Payment;
+import java.sql.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 
 public class Queries {
     private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
-    private static final String FROM_SHOP = "FROM SHOP ";
-    private static final String WHERE_USERNAME = "WHERE username = '";
-    private static final String WHERE_STATUS = " AND status != " + Constants.NOT_AVAILABLE;
+    private static final String SELECT_DISTINCT_ALL_FROM_SHOP = "SELECT DISTINCT * FROM shop ";
+    private static final String WHERE_USERNAME = "WHERE username = ?";
+    private static final String AND_STATUS = " AND status != " + Constants.NOT_AVAILABLE;
+    private static final Connection conn = DbHelper.getInstance().getConnection();
 
-    public static ResultSet validateLoginQuery(Statement stmt, String username, String password) throws SQLException {
-        String sql =    "SELECT username, pass FROM userx " +
-                        WHERE_USERNAME + username +
-                        "' AND pass = '" + password +
-                        "'";
-        return stmt.executeQuery(sql);
-    }
-    public static ResultSet retrieveUserFromQuery(Statement stmt, String username) throws SQLException {
-        String sql =    "SELECT * " +
-                        "FROM userx " +
-                        WHERE_USERNAME + username + "'";
-        return stmt.executeQuery(sql);
-    }
-
-    public static ResultSet findShopNearbyQuery(Statement stmt, double lat, double lng, String type, Integer time) throws SQLException {
-        String sql = SELECT_DISTINCT_ALL +
-                FROM_SHOP +
-                addLatLng(lat,lng) +
-                addTimeShop(time)+
-                addTypeShop(type)+
-                WHERE_STATUS;
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
+    private static List<Integer> checkHour(Integer hour){
+        Integer hour1 = 0;
+        Integer hour2;
+        if (hour == null) {
+            hour2 = 24;
+        }
+        else {
+            hour1 = hour2 = hour;
+        }
+        return new ArrayList<>(Arrays.asList(hour1, hour2));
     }
 
-    public static ResultSet findShopByNameQuery(Statement stmt, String name, String type, Integer time) throws SQLException {
-        String sql = SELECT_DISTINCT_ALL +
-                FROM_SHOP +
-                " WHERE LOWER(name) LIKE " + "'%"+name.toLowerCase()+"%'" +
-                WHERE_STATUS +
-                addTypeShop(type) +
-                addTimeShop(time);
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
+    public static ResultSet findShopByCityQuery(String city, String type, Integer hour) throws SQLException {
+        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
+        String sql = SELECT_DISTINCT_ALL_FROM_SHOP +
+                "WHERE LOWER(city) " +
+                "LIKE ? AND status != ? "+
+                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            sql.concat("AND type = ?");
+        }
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "%" + city.toLowerCase() + "%");
+        stmt.setInt(2, Constants.NOT_AVAILABLE);
+        stmt.setInt(3, hours.get(1));
+        stmt.setInt(4, hours.get(0));
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            stmt.setString(5,type);
+        }
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    public static ResultSet findShopByCityQuery(Statement stmt, String city, String type, Integer time) throws SQLException {
-        String sql = SELECT_DISTINCT_ALL +
-                FROM_SHOP +
-                " WHERE LOWER(city) LIKE " + "'%"+city.toLowerCase()+"%'" +
-                WHERE_STATUS +
-                addTypeShop(type) +
-                addTimeShop(time);
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
+    public static ResultSet findShopByNameQuery(String name, String type, Integer hour) throws SQLException {
+        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
+        String sql = SELECT_DISTINCT_ALL_FROM_SHOP +
+                "WHERE LOWER(name) " +
+                "LIKE ? AND status != ? " +
+                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            sql.concat("AND type = ?");
+        }
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "%" + name.toLowerCase() + "%");
+        stmt.setInt(2, Constants.NOT_AVAILABLE);
+        stmt.setInt(3, hours.get(1));
+        stmt.setInt(4, hours.get(0));
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            stmt.setString(5,type);
+        }
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    public static ResultSet findShopByFavoriteUserQuery(Statement stmt, String username) throws SQLException {
-        String sql = SELECT_DISTINCT_ALL +
-                "FROM shop s JOIN user_favoriteshop ufs " +
+    public static ResultSet findShopNearbyQuery(Double lat, Double lng, String type, Integer hour) throws SQLException {
+        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
+        String sql = SELECT_DISTINCT_ALL_FROM_SHOP +
+                "WHERE  ? < latitude " +
+                "AND latitude < ? " +
+                "AND ? < longitude " +
+                "AND longitude < ? " +
+                "AND status != ? "+
+                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            sql.concat("AND type = ?");
+        }
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setDouble(1, lat - 0.5);
+        stmt.setDouble(2, lat + 0.5);
+        stmt.setDouble(3, lng - 0.5);
+        stmt.setDouble(4, lng + 0.5);
+        stmt.setInt(5,Constants.NOT_AVAILABLE);
+        stmt.setInt(6, hours.get(1));
+        stmt.setInt(7, hours.get(0));
+        if (!type.equals(Constants.SHOP_TYPE.get(0))){
+            stmt.setString(8,type);
+        }
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static ResultSet findShopByFavoriteUserQuery(String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL_FROM_SHOP + " s JOIN user_favoriteshop ufs " +
                 "ON s.shop_id = ufs.shop_id " +
-                "WHERE LOWER(username) = '" + username.toLowerCase() + "'";
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
+                "WHERE LOWER(username) = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username.toLowerCase());
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    public static ResultSet findShopsByProductQuery(Statement stmt, int sku) throws SQLException {
+    public static ResultSet findShopsWithProductsQuery(ArrayList<Integer> productSkuArrayList) throws SQLException {
         String sql = SELECT_DISTINCT_ALL +
-                "FROM shop S " +
+                "FROM product_shop PS " +
+                "JOIN shop S on S.shop_id = PS.shop_id " +
+                "WHERE sku IN ";
+        PreparedStatement stmt = conn.prepareStatement(sql + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static void findShopsByProductQuery(Integer sku) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL_FROM_SHOP + " S " +
                 "JOIN product_shop PS " +
                 "ON S.shop_id = PS.shop_id "+
                 "JOIN product p " +
                 "ON PS.sku = p.sku " +
-                "WHERE p.sku = " + sku;
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
+                "WHERE p.sku = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql );
+        stmt.setInt(1, sku);
+        stmt.executeQuery();
     }
 
-    public static ResultSet findShopsWithProductsQuery(Statement stmt, List<Integer> productSkuArrayList) throws SQLException {
-        String sql = SELECT_DISTINCT_ALL +
-                "FROM product_shop PS " +
-                "JOIN shop S on S.shop_id = PS.shop_id " +
-                "WHERE sku IN " +
-                QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList);
-        System.out.println(sql);
-        return stmt.executeQuery(sql);
-    }
-
-    public static void insertFavoriteShopIntoDbQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+    public static void insertFavoriteShopIntoDbQuery(int shopId, String username) throws SQLException {
         String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
-                "VALUES (" +"'" + username + "'," + shopId +")";
-        System.out.println(sql);
-        stmt.executeUpdate(sql);
+                "VALUES (?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.setInt(2, shopId);
+        stmt.executeUpdate();
     }
-    public static void removeFavoriteShopFromDbQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+
+    public static void removeFavoriteShopFromDbQuery(int shopId, String username) throws SQLException {
         String sql = "DELETE FROM user_favoriteshop " +
-                "WHERE username =" +"'" + username + "' AND shop_id = " + shopId;
-        System.out.println(sql);
-        stmt.executeUpdate(sql);
+                "WHERE LOWER(username) = ? AND shop_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username.toLowerCase());
+        stmt.setInt(2, shopId);
+        stmt.executeUpdate();
     }
 
-    public static ResultSet isFavoriteShopQuery(Statement stmt, Integer shopId, String username) throws SQLException {
+    public static ResultSet isFavoriteShopQuery(int shopId, String username) throws SQLException {
         String sql = SELECT_DISTINCT_ALL +
-                " FROM user_favoriteshop " +
-                " WHERE username =" +"'" + username + "' AND shop_id = " + shopId;
-        return stmt.executeQuery(sql);
+                "FROM user_favoriteshop " +
+                "WHERE shop_id = ? AND LOWER(username) = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, shopId);
+        stmt.setString(2, username.toLowerCase());
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    public static ResultSet findOrderItemsFromOrderQuery(Statement stmt, Order order){
-        return null;
-
-
+    //departments
+    public static ResultSet findDepartmentByShopQuery(int shopId) throws SQLException {
+        String sql = "SELECT * FROM department D " +
+                "JOIN shop_department SD " +
+                "ON D.department_id = SD.department_id " +
+                "WHERE SD.shop_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, shopId);
+        stmt.executeQuery();
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    private static String addLatLng(Double lat, double lng){
-        double latInf = lat - 0.5;
-        double latSup = lat + 0.5;
-        double lngInf = lng - 0.5;
-        double lngSup = lng + 0.5;
-        return  " WHERE "+ latInf + "< latitude " +
-                " AND latitude < " + latSup +
-                " AND " + lngInf + " < longitude " +
-                " AND longitude < " + lngSup;
+    //products
+    public static ResultSet findProductByNameQuery(String name) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM product " +
+                "WHERE LOWER(name) LIKE ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "%" + name.toLowerCase() + "%");
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    private static String addTimeShop(Integer time) {
-        if (time != null){
-            return  " AND CAST(opening_time AS INT) <= " + time +
-                    " AND CAST(closing_time AS INT) > " + time;
-        }
-        else {
-            return "";
-        }
+    public static ResultSet findProductByDepartmentAndShopQuery(Integer shopId, Integer departmentId) throws SQLException {
+        String sql =    "SELECT * FROM product_shop PS " +
+                        "JOIN product P " +
+                        "ON P.sku = PS.sku " +
+                        "WHERE PS.shop_id = ? AND PS.department_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, shopId);
+        stmt.setInt(2, departmentId);
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
-    private static String addTypeShop(String type) {
-        if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            return " AND type = " + type;
-        }
-        else {
-            return "";
-        }
+    public static ResultSet isFavoriteProductQuery(String username, Integer sku) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM user_favoriteproduct " +
+                "WHERE sku = ? AND username = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, sku);
+        stmt.setString(2, username);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static void removeFavoriteProductFromDbQuery(String username, Integer sku) throws SQLException {
+        String sql = "DELETE FROM user_favoriteproduct " +
+                "WHERE username = ? AND sku = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.setInt(2, sku);
+        stmt.executeUpdate();
+    }
+
+    public static void insertFavoriteProductIntoDbQuery(String username, Integer sku) throws SQLException {
+        String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
+                "VALUES (?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.setInt(2, sku);
+        stmt.executeUpdate();
+    }
+
+    public static ResultSet findSimpleProductFromUserQuery(String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM user_favoriteproduct ufp " +
+                "JOIN product p " +
+                "ON p.sku = ufp.sku " +
+                "WHERE username = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static ResultSet findProductBySkuAndShopIdQuery(Integer shopId, Integer sku) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM product P JOIN product_shop PS " +
+                "ON P.sku = PS.sku " +
+                "WHERE shop_id = ? AND PS.sku = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, shopId);
+        stmt.setInt(2, sku);
+        stmt.executeQuery();
+        return stmt.executeQuery();
+    }
+
+
+    //orders
+    public static ResultSet findOrdersFromUserQuery(String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM orders " +
+                "WHERE username = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+
+    public static ResultSet findOrderItemsFromOrderQuery(Integer orderId) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM order_items " +
+                "WHERE order_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, orderId);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static ResultSet insertOrderQuery(Order order) throws SQLException {
+        String sql = "INSERT INTO orders (shop_id, username, payment_id, order_timestamp, total_price, total_quantity, currency, collection_order_timestamp) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
+                "RETURNING *";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, order.getShopId());
+        stmt.setString(2, order.getUsername());
+        stmt.setInt(3, order.getPaymentId());
+        stmt.setTimestamp(4, order.getOrderTimestamp());
+        stmt.setDouble(5, order.getTotalPrice());
+        stmt.setInt(6, order.getOrderTotalQuantity());
+        stmt.setString(7, order.getCurrency());
+        stmt.setTimestamp(8, Timestamp.from(order.getOrderTimestamp().toInstant().plus(1, ChronoUnit.DAYS)));
+
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static ResultSet insertPaymentQuery(Payment payment) throws SQLException {
+        String sql = "INSERT INTO payment (last_4_digits, mm, yy, payment_method, cardholder, total_price, currency, payment_timestamp) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
+                "RETURNING *";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, payment.getLast4digits());
+        stmt.setString(2, payment.getMm());
+        stmt.setString(3, payment.getYy());
+        stmt.setString(4, payment.getPaymentMethod());
+        stmt.setString(5, payment.getCardholder());
+        stmt.setDouble(6, payment.getTotalPrice());
+        stmt.setString(7, payment.getCurrency());
+        stmt.setTimestamp(8, Timestamp.from(Instant.now()));
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+    public static void insertOrderItemsQuery(int orderId, String jsonOrderItems) throws SQLException, FileElaborationException {
+        String sql = "INSERT INTO order_items (order_id, items) " +
+                "VALUES (?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, orderId);
+        stmt.setString(2, jsonOrderItems);
+        stmt.executeUpdate();
+    }
+
+    public static ResultSet findOrdersByAdminQuery(String username) throws SQLException {
+        String sql =    "SELECT o.order_id, o.shop_id, o.payment_id, o.order_timestamp, o.total_price, o.currency, o.status, o.collection_order_timestamp, o.total_quantity " +
+                "FROM shop S join shopholder_shop shs " +
+                "ON s.shop_id = shs.shop_id " +
+                "JOIN orders o " +
+                "ON o.shop_id = shs.shop_id " +
+                "WHERE shs.username = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+
+    public static void setStatusOrderQuery(int orderId, String status) throws SQLException {
+
+        String sql = "UPDATE orders " +
+                "SET status = ? " +
+                "WHERE order_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, status);
+        stmt.setInt(2, orderId);
+        stmt.executeUpdate();
+    }
+
+    //user
+    public static ResultSet validateLoginQuery(String username, String password) throws SQLException {
+        String sql = "SELECT username, pass " +
+                "FROM userx " +
+                "WHERE username = ? AND pass = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.setString(2,password);
+        stmt.executeQuery();
+        return stmt.getResultSet();
+    }
+
+    public static ResultSet retrieveUserFromQuery(String username) throws SQLException {
+        String sql = SELECT_DISTINCT_ALL +
+                "FROM userx " +
+                "WHERE username = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.executeQuery();
+        return stmt.getResultSet();
     }
 }
