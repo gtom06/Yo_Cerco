@@ -84,11 +84,9 @@ public class OrderHandler {
         int orderTotalQuantity = 0;
         String orderCurrency;
 
-        if (CartElaboration.isEmptyCart()) {
-            return null;
-        }
-
-        if (orderItemArrayList == null || orderItemArrayList.isEmpty()){
+        if (CartElaboration.isEmptyCart() || orderItemArrayList == null
+                || orderItemArrayList.isEmpty() || !CartElaboration.isValidCart()){
+            logger.log(Level.INFO, "not valid cart or empty cart");
             return null;
         }
         else {
@@ -101,10 +99,6 @@ public class OrderHandler {
             orderCurrency = orderItemArrayList.get(0).getCurrency();
         }
 
-        if (!CartElaboration.isValidCart()) {
-            logger.log(Level.SEVERE, "not valid cart");
-            return null;
-        }
 
         //check params passed from UX/UI
         if (user != null && !paymentMethod.isBlank()) {
