@@ -46,17 +46,17 @@
                <children>
                   <TextField fx:id="loginUsernameTextField" layoutX="176.0" layoutY="305.0" />
                   <PasswordField fx:id="loginPasswordPasswordField" layoutX="176.0" layoutY="373.0" />
-                  <Button fx:id="loginButton" layoutX="227.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" text="Login" />
-                  <Text layoutX="120.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="260.443359375" />
+                   <CheckBox fx:id="rememberMe" layoutX="200.0" layoutY="422.0" mnemonicParsing="false" selected="true" text="Remember me" />
+                   <Button fx:id="loginButton" layoutX="227.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" text="Login" />
+                   <Text layoutX="120.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="260.443359375" />
                    <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="127.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
                        <Image url="@../../images/user_interface/icons8-key-48.png" />
                    </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="127.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/user_interface/icons8-customer-100.png" />
+                   <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="127.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                      </image>
                   </ImageView>
-                  <CheckBox fx:id="rememberMe" layoutX="200.0" layoutY="422.0" mnemonicParsing="false" selected="true" text="Remember me" />
                    <Label fx:id="invalidLoginCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="508.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED" />
 
                </children>

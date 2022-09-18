@@ -90,8 +90,7 @@ public class CartElaboration {
                     productShop.getPrice() * quantityToAdd,
                     productShop.getDiscountedPrice()
             );
-
-            if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
+            if (!orderItemArrayList.isEmpty()) {
                 boolean found = false;
                 if (orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
                     return false;
@@ -135,6 +134,7 @@ public class CartElaboration {
             String json = new Gson().toJson(orderItemArrayList);
             out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
             out.write(json);
+            out.close();
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.CART_ELABORATION_FAILURE_INFO);
             throw new ExceptionCart(ConstantsExceptions.CART_ELABORATION_FAILURE_CLOSING_WRITING_FILE);

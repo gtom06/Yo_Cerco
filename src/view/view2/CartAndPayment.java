@@ -97,7 +97,7 @@ public class CartAndPayment {
         }
 
         List<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-        if (orderItemArrayList != null && orderItemArrayList.size() != 0) {
+        if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
             ObservableList<OrderItem> observableListProducts =
                     FXCollections.observableArrayList(orderItemArrayList);
             orderItemsTableView.setItems(observableListProducts);

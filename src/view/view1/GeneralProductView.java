@@ -75,7 +75,6 @@ public class GeneralProductView {
     public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {
 
         this.user = user;
-        this.arrayShopList = arrayShopList;
         textHi.setText(user.getUsername());
         brandProd.setText(simpleProduct.getBrand());
         nameProd.setText(simpleProduct.getName());

@@ -159,7 +159,7 @@ public class ShopView {
                 Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
         );
         this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
-        if (departmentArrayList != null && departmentArrayList.isEmpty()) {
+        if (departmentArrayList != null && !departmentArrayList.isEmpty()) {
             for (int i = 0; i < departmentArrayList.size(); i++) {
                 imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
                 imageViewDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
@@ -219,7 +219,7 @@ public class ShopView {
         productTable.getItems().clear();
         List<ProductShop> productShopArrayList = null;
         Department department = null;
-        int ref = 0;
+        int ref;
         try {
             ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
             for (Department dep : departmentArrayList) {
@@ -236,7 +236,9 @@ public class ShopView {
             } else {
                 logger.log(Level.INFO, Constants.NO_RESULT);
             }
-        } catch (Exception e){}
+        } catch (Exception e){
+            logger.log(Level.INFO, Constants.NO_RESULT);
+        }
     }
 
     @FXML
