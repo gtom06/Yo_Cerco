@@ -71,7 +71,7 @@ public class ShopHandler {
     }
 
     public static List<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
-        ArrayList<Shop> shopArrayList;
+        List<Shop> shopArrayList;
         if (city.isBlank() || city.length() > 50){
             return null;
         }
@@ -99,8 +99,8 @@ public class ShopHandler {
     }
 
     public static List<Shop> findShopByProduct(SimpleProduct product){
-        ArrayList<Shop> shopArrayList;
-        shopArrayList = (ArrayList<Shop>) ShopDao.findShopsByProduct(product);
+        List<Shop> shopArrayList;
+        shopArrayList = ShopDao.findShopsByProduct(product);
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 

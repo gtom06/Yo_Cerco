@@ -2,6 +2,7 @@ package model.dao;
 
 import model.Constants;
 
+import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
@@ -14,7 +15,9 @@ import java.util.logging.Logger;
 
 public class UserDao {
     static Logger logger = Logger.getLogger(UserDao.class.getName());
-
+    private UserDao(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
     public static boolean validateLogin(String username, String password) {
         boolean output = false;
         try {
@@ -78,8 +81,6 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert user");
             return false;
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
     }
@@ -109,8 +110,6 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while updating user");
             return false;
-        } finally {
-            dbHelper.closeDBConnection(stmt, conn);
         }
         return true;
     }

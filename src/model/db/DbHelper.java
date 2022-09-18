@@ -13,7 +13,6 @@ public class DbHelper {
 
     private DbHelper() {
         try {
-            Class.forName(Constants.DRIVER_CLASS_NAME);
             connection = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
         } catch (Exception e) {
             logger.log(Level.OFF, "error in openDBConnection");
@@ -28,15 +27,6 @@ public class DbHelper {
 
     public Connection getConnection() {
         return this.connection;
-    }
-
-    public void closeDBConnection(Statement statement, Connection conn) {
-        try {
-            if (connection != null)
-                connection.close();
-        } catch (SQLException se) {
-            logger.log(Level.SEVERE, "error while closing connection");
-        }
     }
 
     public static Connection openDBConnection() {

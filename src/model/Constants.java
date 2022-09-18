@@ -32,6 +32,7 @@ public final class Constants {
     public static final String DISTANCE = "Distance";
     public static final String ADD_TO_FAVORITE_SHOP_CAPSLOCK = "ADD TO FAVORITES";
     public static final String REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK = "REMOVE FROM FAVORITES";
+    public static final String STATUS = "status";
 
     //use that ArrayList to populate filters
     public static final List<String> SHOP_TYPE = new ArrayList<>(Arrays.asList("All shops","Supermarket","Clothing"));

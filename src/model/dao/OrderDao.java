@@ -1,13 +1,13 @@
 package model.dao;
 
 import exceptions.FileElaborationException;
+import model.Constants;
 import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;
 
 import java.sql.*;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,7 +20,7 @@ public class OrderDao {
     static final Logger logger = Logger.getLogger(OrderDao.class.getName());
 
     public static List<Order> findOrdersFromUser(String username) {
-        ArrayList<Order> orderArrayList = new ArrayList<>();
+        List<Order> orderArrayList = new ArrayList<>();
         try {
             ResultSet rs = Queries.findOrdersFromUserQuery(username);
             orderArrayList = convertRSInArrayOrder(rs);
@@ -47,8 +47,8 @@ public class OrderDao {
             rs.next();
             order.setOrderId(rs.getInt("order_id"));
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
-            order.setStatus(rs.getString("status"));
-            order.setCollectionTimestamp(Timestamp.valueOf("collection_order_timestamp"));
+            order.setStatus(rs.getString(Constants.STATUS));
+            order.setCollectionTimestamp(rs.getTimestamp("collection_order_timestamp"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         }
@@ -61,7 +61,7 @@ public class OrderDao {
             rs.next();
             payment.setPaymentId(rs.getInt("payment_id"));
             payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
-            payment.setStatus(rs.getString("status"));
+            payment.setStatus(rs.getString(Constants.STATUS));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         }
@@ -79,7 +79,7 @@ public class OrderDao {
     }
 
     public static List<Order> findOrdersByAdmin(String username) {
-        ArrayList<Order> orderArrayList = new ArrayList<>();
+        List<Order> orderArrayList = new ArrayList<>();
         try {
             ResultSet rs = Queries.findOrdersByAdminQuery(username);
             orderArrayList = convertRSInArrayOrder(rs);
@@ -98,7 +98,7 @@ public class OrderDao {
         return true;
     }
 
-    public static ArrayList<Order> convertRSInArrayOrder(ResultSet rs) throws SQLException {
+    public static List<Order> convertRSInArrayOrder(ResultSet rs) throws SQLException {
         Order order;
         ArrayList<Order> arrayOrder= new ArrayList<>();
         while (rs.next()) {
@@ -108,7 +108,7 @@ public class OrderDao {
             Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
             double totalAmount = rs.getDouble("total_price");
             String currency = rs.getString("currency");
-            String status = rs.getString("status");
+            String status = rs.getString(Constants.STATUS);
             Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
             Integer orderTotalQuantity = rs.getInt("total_quantity");
             String username = rs.getString("username");

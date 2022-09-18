@@ -88,9 +88,9 @@ public class CartAndPayment {
     public void passParam(Shop shop, User user) throws ExceptionCart {
         this.shop = shop;
         this.user = user;
-        textHi.setText(user.getUsername());
 
         if (user != null) {
+            textHi.setText(user.getUsername());
             nameTextField.setText(user.getName());
             surnameTextField.setText(user.getSurname());
             phoneNumberTextField.setText(((Buyer) user).getPhone());

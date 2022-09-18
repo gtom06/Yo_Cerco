@@ -3,6 +3,7 @@ package model.dao;
 import exceptions.FileElaborationException;
 import model.Constants;
 
+import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;
@@ -16,9 +17,15 @@ import java.util.List;
 public class Queries {
     private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
     private static final String SELECT_DISTINCT_ALL_FROM_SHOP = "SELECT DISTINCT * FROM shop ";
+    private static final String AND_TYPE ="AND type = ?";
+    private static final String TWO_VALUES = "VALUES (?, ?)";
     private static final String WHERE_USERNAME = "WHERE username = ?";
-    private static final String AND_STATUS = " AND status != " + Constants.NOT_AVAILABLE;
+    private static final String AND_TIME = "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
     private static final Connection conn = DbHelper.getInstance().getConnection();
+
+    private Queries(){
+        throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
+    }
 
     private static List<Integer> checkHour(Integer hour){
         Integer hour1 = 0;
@@ -37,9 +44,9 @@ public class Queries {
         String sql = SELECT_DISTINCT_ALL_FROM_SHOP +
                 "WHERE LOWER(city) " +
                 "LIKE ? AND status != ? "+
-                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+                AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat("AND type = ?");
+            sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, "%" + city.toLowerCase() + "%");
@@ -58,9 +65,9 @@ public class Queries {
         String sql = SELECT_DISTINCT_ALL_FROM_SHOP +
                 "WHERE LOWER(name) " +
                 "LIKE ? AND status != ? " +
-                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+                AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat("AND type = ?");
+            sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, "%" + name.toLowerCase() + "%");
@@ -82,9 +89,9 @@ public class Queries {
                 "AND ? < longitude " +
                 "AND longitude < ? " +
                 "AND status != ? "+
-                "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+                AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat("AND type = ?");
+            sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setDouble(1, lat - 0.5);
@@ -111,7 +118,7 @@ public class Queries {
         return stmt.getResultSet();
     }
 
-    public static ResultSet findShopsWithProductsQuery(ArrayList<Integer> productSkuArrayList) throws SQLException {
+    public static ResultSet findShopsWithProductsQuery(List<Integer> productSkuArrayList) throws SQLException {
         String sql = SELECT_DISTINCT_ALL +
                 "FROM product_shop PS " +
                 "JOIN shop S on S.shop_id = PS.shop_id " +
@@ -121,21 +128,22 @@ public class Queries {
         return stmt.getResultSet();
     }
 
-    public static void findShopsByProductQuery(Integer sku) throws SQLException {
+    public static ResultSet findShopsByProductQuery(Integer sku) throws SQLException {
         String sql = SELECT_DISTINCT_ALL_FROM_SHOP + " S " +
                 "JOIN product_shop PS " +
                 "ON S.shop_id = PS.shop_id "+
                 "JOIN product p " +
                 "ON PS.sku = p.sku " +
                 "WHERE p.sku = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql );
+        PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, sku);
         stmt.executeQuery();
+        return stmt.getResultSet();
     }
 
     public static void insertFavoriteShopIntoDbQuery(int shopId, String username) throws SQLException {
         String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
-                "VALUES (?, ?)";
+                TWO_VALUES;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.setInt(2, shopId);
@@ -220,7 +228,7 @@ public class Queries {
 
     public static void insertFavoriteProductIntoDbQuery(String username, Integer sku) throws SQLException {
         String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
-                "VALUES (?, ?)";
+                TWO_VALUES;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.setInt(2, sku);
@@ -232,7 +240,7 @@ public class Queries {
                 "FROM user_favoriteproduct ufp " +
                 "JOIN product p " +
                 "ON p.sku = ufp.sku " +
-                "WHERE username = ?";
+                WHERE_USERNAME;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.executeQuery();
@@ -256,7 +264,7 @@ public class Queries {
     public static ResultSet findOrdersFromUserQuery(String username) throws SQLException {
         String sql = SELECT_DISTINCT_ALL +
                 "FROM orders " +
-                "WHERE username = ?";
+                WHERE_USERNAME;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.executeQuery();
@@ -310,7 +318,7 @@ public class Queries {
     }
     public static void insertOrderItemsQuery(int orderId, String jsonOrderItems) throws SQLException, FileElaborationException {
         String sql = "INSERT INTO order_items (order_id, items) " +
-                "VALUES (?, ?)";
+                TWO_VALUES;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, orderId);
         stmt.setString(2, jsonOrderItems);
@@ -357,7 +365,7 @@ public class Queries {
     public static ResultSet retrieveUserFromQuery(String username) throws SQLException {
         String sql = SELECT_DISTINCT_ALL +
                 "FROM userx " +
-                "WHERE username = ?";
+                WHERE_USERNAME;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.executeQuery();

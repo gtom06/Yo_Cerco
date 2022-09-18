@@ -8,6 +8,7 @@ import model.shop.Shop;
 import model.user.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductHandler {
@@ -17,13 +18,13 @@ public class ProductHandler {
 
     public static List<SimpleProduct> findSimpleProductBy(String productName) {
         if (productName.isBlank() || productName.length() > 100) {
-            return null;
+            return Collections.emptyList();
         }
-        return (ArrayList<SimpleProduct>) ProductDao.findProductByName(productName);
+        return ProductDao.findProductByName(productName);
     }
     public static ProductShop findProductShopByShopAndSimpleProduct(Shop shop, SimpleProduct simpleProduct) {
         if (shop == null || simpleProduct == null) {
-            return null;
+            return (ProductShop) Collections.emptyList();
         }
         return ProductDao.findProductBySkuAndShopId(shop.getShopId(), simpleProduct.getSku()).get(0);
     }
