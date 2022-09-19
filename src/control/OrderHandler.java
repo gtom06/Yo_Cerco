@@ -105,9 +105,6 @@ public class OrderHandler {
             if (paymentMethod.equals(Constants.CASH_ON_DELIVERY_PAYMENT) && cardNumber.isBlank() && cardholder.isBlank() && mm.isBlank() && yy.isBlank() && cvv.isBlank()) {
                 payment = new Payment(
                         0,
-                        null,
-                        null,
-                        null,
                         paymentMethod,
                         null,
                         orderTotalPrice,
@@ -118,9 +115,6 @@ public class OrderHandler {
             } else {
                 payment = new Payment(
                         0,
-                        cardNumber.substring(cardNumber.length() - 4),
-                        mm,
-                        yy,
                         paymentMethod,
                         cardholder,
                         orderTotalPrice,

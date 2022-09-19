@@ -9,7 +9,6 @@ public class Shop {
     private final String shopName;
     private String logoImagepath;
     private final int shopId;
-    private int status; //shop available or closed forever
     private String openingTime;
     private String closingTime;
     private double lat;
@@ -22,7 +21,7 @@ public class Shop {
 
     public Shop(String phone, String address, String city, String shopName, String logoImagepath,
                 int shopId, String openingTime,
-                String closingTime, double lat, double lng, String gmapsLink, String franchising, String offersFlyerPath, double distance) {
+                String closingTime, double lat, double lng, String gmapsLink, String franchising, String offersFlyerPath) {
         this.phone = phone;
         this.address = address;
         this.city = city;
@@ -36,7 +35,6 @@ public class Shop {
         this.gmapsLink = Constants.GOOGLE_MAPS_LINK_START_STRING + gmapsLink;
         this.franchising = franchising;
         this.offersFlyerPath = offersFlyerPath;
-        this.distance = distance;
     }
     // start custom getter
     public String getCompleteAddress(){
@@ -53,6 +51,7 @@ public class Shop {
         return output;
     }
 
+    //end custom getter
     public double getDistance() {
         return distance;
     }
@@ -60,8 +59,6 @@ public class Shop {
     public void setDistance(double distance) {
         this.distance = distance;
     }
-
-    //end custom getter
 
     public String getGmapsLink() {
         return gmapsLink;
@@ -89,14 +86,6 @@ public class Shop {
 
     public int getShopId() {
         return shopId;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public String getOpeningTime() {
@@ -160,7 +149,6 @@ public class Shop {
                 ", shopName='" + shopName + '\'' +
                 ", logoImagepath='" + logoImagepath + '\'' +
                 ", shopId=" + shopId +
-                ", status=" + status +
                 ", openingTime='" + openingTime + '\'' +
                 ", closingTime='" + closingTime + '\'' +
                 ", lat=" + lat +

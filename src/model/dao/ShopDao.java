@@ -130,7 +130,7 @@ public class ShopDao {
             String offersFlyerPath = rs.getString("offers_flyer_link");
             int distance = 0;
             shop = new Shop(phone, address, city, shopName, logoImagepath, shopId,
-                    openingTime, closingTime, lat, lng, gmapsLink, franchising, offersFlyerPath, distance);
+                    openingTime, closingTime, lat, lng, gmapsLink, franchising, offersFlyerPath);
             arrayShop.add(shop);
         }
         return arrayShop;

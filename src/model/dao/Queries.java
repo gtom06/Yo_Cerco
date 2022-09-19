@@ -301,18 +301,15 @@ public class Queries {
     }
 
     public static ResultSet insertPaymentQuery(Payment payment) throws SQLException {
-        String sql = "INSERT INTO payment (last_4_digits, mm, yy, payment_method, cardholder, total_price, currency, payment_timestamp) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
+        String sql = "INSERT INTO payment (payment_method, cardholder, total_price, currency, payment_timestamp) " +
+                "VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING *";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, payment.getLast4digits());
-        stmt.setString(2, payment.getMm());
-        stmt.setString(3, payment.getYy());
-        stmt.setString(4, payment.getPaymentMethod());
-        stmt.setString(5, payment.getCardholder());
-        stmt.setDouble(6, payment.getTotalPrice());
-        stmt.setString(7, payment.getCurrency());
-        stmt.setTimestamp(8, Timestamp.from(Instant.now()));
+        stmt.setString(1, payment.getPaymentMethod());
+        stmt.setString(2, payment.getCardholder());
+        stmt.setDouble(3, payment.getTotalPrice());
+        stmt.setString(4, payment.getCurrency());
+        stmt.setTimestamp(5, Timestamp.from(Instant.now()));
         stmt.executeQuery();
         return stmt.getResultSet();
     }

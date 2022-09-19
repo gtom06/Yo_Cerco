@@ -4,9 +4,6 @@ import java.sql.Timestamp;
 
 public class Payment {
     private int paymentId;
-    private String last4digits;
-    private String mm;
-    private String yy;
     private String paymentMethod; //card or cod
     private String cardholder; //name + surname
     private double totalPrice;
@@ -14,11 +11,8 @@ public class Payment {
     private Timestamp paymentTimestamp;
     private String status;
 
-    public Payment(int paymentId, String last4digits, String mm, String yy, String paymentMethod, String cardholder, double totalPrice, String currency, Timestamp paymentTimestamp, String status) {
+    public Payment(int paymentId, String paymentMethod, String cardholder, double totalPrice, String currency, Timestamp paymentTimestamp, String status) {
         this.paymentId = paymentId;
-        this.last4digits = last4digits;
-        this.mm = mm;
-        this.yy = yy;
         this.paymentMethod = paymentMethod;
         this.cardholder = cardholder;
         this.totalPrice = totalPrice;
@@ -31,9 +25,6 @@ public class Payment {
     public String toString() {
         return "Payment{" +
                 "paymentId=" + paymentId +
-                ", last4digits='" + last4digits + '\'' +
-                ", mm='" + mm + '\'' +
-                ", yy='" + yy + '\'' +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", cardholder='" + cardholder + '\'' +
                 ", totalPrice=" + totalPrice +
@@ -49,30 +40,6 @@ public class Payment {
 
     public void setPaymentId(int paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public String getLast4digits() {
-        return last4digits;
-    }
-
-    public void setLast4digits(String last4digits) {
-        this.last4digits = last4digits;
-    }
-
-    public String getMm() {
-        return mm;
-    }
-
-    public void setMm(String mm) {
-        this.mm = mm;
-    }
-
-    public String getYy() {
-        return yy;
-    }
-
-    public void setYy(String yy) {
-        this.yy = yy;
     }
 
     public String getPaymentMethod() {
