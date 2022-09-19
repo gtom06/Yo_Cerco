@@ -120,7 +120,6 @@ public class ShopDao {
             String city = rs.getString("city").toUpperCase();
             String logoImagepath = rs.getString("logo_imagepath");
             int shopId = rs.getInt("shop_id");
-            int status = rs.getInt("status");
             String openingTime = rs.getString("opening_time");
             String closingTime = rs.getString("closing_time");
             String franchising = rs.getString("franchising");
@@ -130,7 +129,7 @@ public class ShopDao {
             String gmapsLink = rs.getString("gmaps_string");
             String offersFlyerPath = rs.getString("offers_flyer_link");
             int distance = 0;
-            shop = new Shop(phone, address, city, shopName, logoImagepath, shopId,  status,
+            shop = new Shop(phone, address, city, shopName, logoImagepath, shopId,
                     openingTime, closingTime, lat, lng, gmapsLink, franchising, offersFlyerPath, distance);
             arrayShop.add(shop);
         }

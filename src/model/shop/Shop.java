@@ -21,7 +21,7 @@ public class Shop {
 
 
     public Shop(String phone, String address, String city, String shopName, String logoImagepath,
-                int shopId, int status, String openingTime,
+                int shopId, String openingTime,
                 String closingTime, double lat, double lng, String gmapsLink, String franchising, String offersFlyerPath, double distance) {
         this.phone = phone;
         this.address = address;
@@ -29,7 +29,6 @@ public class Shop {
         this.shopName = shopName;
         this.logoImagepath = logoImagepath;
         this.shopId = shopId;
-        this.status = status;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
         this.lat = lat;
