@@ -8,8 +8,6 @@ public class Shop {
     private final String city;
     private final String shopName;
     private String logoImagepath;
-    private String interiorPhotosImagepath;
-    private final String planimetryImagePath;
     private final int shopId;
     private int status; //shop available or closed forever
     private String openingTime;
@@ -23,15 +21,13 @@ public class Shop {
 
 
     public Shop(String phone, String address, String city, String shopName, String logoImagepath,
-                String interiorPhotosImagepath, String planimetryImagePath, int shopId, int status, String openingTime,
+                int shopId, int status, String openingTime,
                 String closingTime, double lat, double lng, String gmapsLink, String franchising, String offersFlyerPath, double distance) {
         this.phone = phone;
         this.address = address;
         this.city = city;
         this.shopName = shopName;
         this.logoImagepath = logoImagepath;
-        this.interiorPhotosImagepath = interiorPhotosImagepath;
-        this.planimetryImagePath = planimetryImagePath;
         this.shopId = shopId;
         this.status = status;
         this.openingTime = openingTime;
@@ -66,7 +62,7 @@ public class Shop {
         this.distance = distance;
     }
 
-//end custom getter
+    //end custom getter
 
     public String getGmapsLink() {
         return gmapsLink;
@@ -90,18 +86,6 @@ public class Shop {
 
     public void setLogoImagepath(String logoImagepath) {
         this.logoImagepath = logoImagepath;
-    }
-
-    public String getInteriorPhotosImagepath() {
-        return interiorPhotosImagepath;
-    }
-
-    public void setInteriorPhotosImagepath(String interiorPhotosImagepath) {
-        this.interiorPhotosImagepath = interiorPhotosImagepath;
-    }
-
-    public String getPlanimetryImagePath() {
-        return planimetryImagePath;
     }
 
     public int getShopId() {
@@ -176,8 +160,6 @@ public class Shop {
                 ", city='" + city + '\'' +
                 ", shopName='" + shopName + '\'' +
                 ", logoImagepath='" + logoImagepath + '\'' +
-                ", interiorPhotosImagepath='" + interiorPhotosImagepath + '\'' +
-                ", planimetryImagePath='" + planimetryImagePath + '\'' +
                 ", shopId=" + shopId +
                 ", status=" + status +
                 ", openingTime='" + openingTime + '\'' +

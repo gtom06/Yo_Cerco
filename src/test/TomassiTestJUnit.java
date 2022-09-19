@@ -26,7 +26,7 @@ public class TomassiTestJUnit {
     }
     @Test
     public void calculateDistancePointToPointTest() {
-        Shop shop = new Shop(null, null, null,null, null,null,
+        Shop shop = new Shop(null, null, null,null,
                 null,0,0,null,null,0, 0,
                 null,null,null,0);
         Address address = new Address(1, 1, null);
