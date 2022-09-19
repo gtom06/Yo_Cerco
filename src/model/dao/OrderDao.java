@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderDao {
+    public static final String STATUS = "status";
     private OrderDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -47,7 +48,7 @@ public class OrderDao {
             rs.next();
             order.setOrderId(rs.getInt("order_id"));
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
-            order.setStatus(rs.getString(Constants.STATUS));
+            order.setStatus(rs.getString(STATUS));
             order.setCollectionTimestamp(rs.getTimestamp("collection_order_timestamp"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
@@ -61,7 +62,7 @@ public class OrderDao {
             rs.next();
             payment.setPaymentId(rs.getInt("payment_id"));
             payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
-            payment.setStatus(rs.getString(Constants.STATUS));
+            payment.setStatus(rs.getString(STATUS));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         }
@@ -108,7 +109,7 @@ public class OrderDao {
             Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
             double totalAmount = rs.getDouble("total_price");
             String currency = rs.getString("currency");
-            String status = rs.getString(Constants.STATUS);
+            String status = rs.getString(STATUS);
             Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
             Integer orderTotalQuantity = rs.getInt("total_quantity");
             String username = rs.getString("username");
