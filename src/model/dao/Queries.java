@@ -46,7 +46,7 @@ public class Queries {
                 "LIKE ? AND status != ? "+
                 AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat(AND_TYPE);
+            sql = sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, "%" + city.toLowerCase() + "%");
@@ -67,7 +67,7 @@ public class Queries {
                 "LIKE ? AND status != ? " +
                 AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat(AND_TYPE);
+            sql = sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, "%" + name.toLowerCase() + "%");
@@ -91,7 +91,7 @@ public class Queries {
                 "AND status != ? "+
                 AND_TIME;
         if (!type.equals(Constants.SHOP_TYPE.get(0))){
-            sql.concat(AND_TYPE);
+            sql = sql.concat(AND_TYPE);
         }
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setDouble(1, lat - 0.5);
