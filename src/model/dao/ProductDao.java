@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.Constants;
 import model.ConstantsExceptions;
 import model.db.DbHelper;
 import model.product.ProductShop;
@@ -16,7 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProductDao {
-
+    private static final Connection conn = DbHelper.getInstance().getConnection();
+    private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
+    private static final String SELECT_DISTINCT_ALL_FROM_SHOP = "SELECT DISTINCT * FROM shop ";
+    private static final String AND_TYPE ="AND type = ?";
+    private static final String TWO_VALUES = "VALUES (?, ?)";
+    private static final String WHERE_USERNAME = "WHERE username = ?";
+    private static final String AND_TIME = "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
     private ProductDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -24,12 +31,24 @@ public class ProductDao {
     static final Logger logger = Logger.getLogger(ProductDao.class.getName());
 
     public static List<SimpleProduct> findProductByName(String name) {
+
         ArrayList<SimpleProduct> productArrayList = new ArrayList<>();
         try {
-            ResultSet rs = Queries.findProductByNameQuery(name);
+            String sql = SELECT_DISTINCT_ALL +
+                    "FROM product " +
+                    "WHERE LOWER(name) LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + name.toLowerCase() + "%");
+            ResultSet rs = stmt.executeQuery();
             productArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return productArrayList;
     }
@@ -37,7 +56,14 @@ public class ProductDao {
     public static List<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
         ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
         try {
-            ResultSet rs = Queries.findProductByDepartmentAndShopQuery(shopId, departmentId);
+            String sql =    "SELECT * FROM product_shop PS " +
+                    "JOIN product P " +
+                    "ON P.sku = PS.sku " +
+                    "WHERE PS.shop_id = ? AND PS.department_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setInt(2, departmentId);
+            ResultSet rs = stmt.executeQuery();
             arrayProductShop = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
@@ -48,7 +74,13 @@ public class ProductDao {
     public static boolean isFavoriteProduct(String username, int sku) {
         boolean output = false;
         try {
-            ResultSet rs = Queries.isFavoriteProductQuery(username, sku);
+            String sql = SELECT_DISTINCT_ALL +
+                    "FROM user_favoriteproduct " +
+                    "WHERE sku = ? AND username = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, sku);
+            stmt.setString(2, username);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 output = true;
             }
@@ -60,7 +92,12 @@ public class ProductDao {
 
     public static void removeFavoriteProductFromDb(String username, int sku) {
         try {
-            Queries.removeFavoriteProductFromDbQuery(username,sku);
+            String sql = "DELETE FROM user_favoriteproduct " +
+                    "WHERE username = ? AND sku = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, sku);
+            stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         }
@@ -68,7 +105,12 @@ public class ProductDao {
 
     public static void insertFavoriteProductIntoDb(String username, int sku ) {
         try {
-            Queries.insertFavoriteProductIntoDbQuery(username, sku);
+            String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
+                    TWO_VALUES;
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setInt(2, sku);
+            stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         }
@@ -77,7 +119,14 @@ public class ProductDao {
     public static List<SimpleProduct> findSimpleProductFromUser(User user) {
         ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
         try {
-            ResultSet rs = Queries.findSimpleProductFromUserQuery(user.getUsername());
+            String sql = SELECT_DISTINCT_ALL +
+                    "FROM user_favoriteproduct ufp " +
+                    "JOIN product p " +
+                    "ON p.sku = ufp.sku " +
+                    WHERE_USERNAME;
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
+            ResultSet rs = stmt.executeQuery();
             simpleProductArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
@@ -88,7 +137,14 @@ public class ProductDao {
     public static List<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
         ArrayList<ProductShop> productArrayList = new ArrayList<>();
         try {
-            ResultSet rs = Queries.findProductBySkuAndShopIdQuery(shopId, sku);
+            String sql = SELECT_DISTINCT_ALL +
+                    "FROM product P JOIN product_shop PS " +
+                    "ON P.sku = PS.sku " +
+                    "WHERE shop_id = ? AND PS.sku = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, shopId);
+            stmt.setInt(2, sku);
+            ResultSet rs = stmt.executeQuery();
             productArrayList = (ArrayList<ProductShop>) convertRSInArrayProductShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
