@@ -1,6 +1,5 @@
 package model.dao;
 
-import model.Constants;
 import model.ConstantsExceptions;
 import model.ConstantsQueries;
 import model.db.DbHelper;
@@ -231,11 +230,11 @@ public class ProductDao {
         SimpleProduct simpleProduct;
         ArrayList<SimpleProduct> arraySimpleProduct= new ArrayList<>();
         while (rs.next()) {
-            Integer sku = rs.getInt("sku");
+            int sku = rs.getInt("sku");
             String name = rs.getString("name");
             String brand = rs.getString("brand");
             String description = rs.getString("description");
-            Double size = rs.getDouble("size");
+            double size = rs.getDouble("size");
             String unitOfMeasure = rs.getString("unit_of_measure");
             String logoImagepath = rs.getString("logo_imagepath");
             simpleProduct = new SimpleProduct(sku, name,brand, description, size, unitOfMeasure, logoImagepath);

@@ -1,6 +1,5 @@
 package model.dao;
 
-import exceptions.FileElaborationException;
 import model.ConstantsExceptions;
 import model.ConstantsQueries;
 import model.db.DbHelper;
@@ -139,7 +138,7 @@ public class OrderDao {
     }
 
 
-    public static boolean insertOrderItems(int orderId, String jsonOrderItems) {
+    public static void insertOrderItems(int orderId, String jsonOrderItems) {
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO order_items (order_id, items) " +
@@ -159,7 +158,6 @@ public class OrderDao {
                 logger.log(Level.OFF, "conn close error");
             }
         }
-        return true;
     }
 
     public static List<Order> findOrdersByAdmin(String username) {
@@ -218,13 +216,13 @@ public class OrderDao {
         Order order;
         ArrayList<Order> arrayOrder= new ArrayList<>();
         while (rs.next()) {
-            Integer orderId = rs.getInt("order_id");
-            Integer shopId = rs.getInt("shop_id");
+            int orderId = rs.getInt("order_id");
+            int shopId = rs.getInt("shop_id");
             int paymentId = rs.getInt("payment_id");
             Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
             double totalPrice = rs.getDouble("total_price");
             String currency = rs.getString("currency");
-            Integer orderTotalQuantity = rs.getInt("total_quantity");
+            int orderTotalQuantity = rs.getInt("total_quantity");
             String username = rs.getString("username");
             order = new Order(orderId, shopId, username, new Payment(paymentId, null, null, totalPrice, currency, orderTimestamp, null), orderTotalQuantity, null, null);
             arrayOrder.add(order);

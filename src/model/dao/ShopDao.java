@@ -314,8 +314,8 @@ public class ShopDao {
     }
 
     private static List<Integer> checkHour(Integer hour){
-        Integer hour1 = 0;
-        Integer hour2;
+        int hour1 = 0;
+        int hour2;
         if (hour == null) {
             hour2 = 24;
         }
