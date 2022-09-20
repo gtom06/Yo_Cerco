@@ -1,6 +1,6 @@
 package model.product;
 
-import model.Constants;
+import constants.Constants;
 
 public class SimpleProduct implements Product {
     private int sku;

@@ -1,7 +1,7 @@
 package control;
 
-import model.ConstantsExceptions;
-import model.dao.ProductDao;
+import constants.ConstantsExceptions;
+import dao.ProductDao;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
 import model.shop.Shop;

@@ -11,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.order.Order;
 import model.user.User;
 

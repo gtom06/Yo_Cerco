@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.product.SimpleProduct;
 import model.shop.Shop;
 import model.user.User;

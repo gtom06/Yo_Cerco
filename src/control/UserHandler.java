@@ -1,8 +1,8 @@
 package control;
 
-import model.Constants;
-import model.ConstantsExceptions;
-import model.dao.UserDao;
+import constants.Constants;
+import constants.ConstantsExceptions;
+import dao.UserDao;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;
@@ -45,7 +45,7 @@ public class UserHandler {
             );
             return UserDao.insertUser(buyer);
         } else if (roleString.equals(Constants.ADMIN) || roleString.equals(Constants.ADMIN_USER)) {
-            Admin admin = new Admin(username, name, surname, email, password);
+            Admin admin = new Admin(username, name, surname, email, null);
             return UserDao.insertUser(admin);
         }
         logger.log(Level.WARNING, "insert failed");

@@ -1,6 +1,6 @@
-package model.dao;
+package dao;
 
-import model.ConstantsExceptions;
+import constants.ConstantsExceptions;
 import java.util.List;
 
 public class QueriesHelper {

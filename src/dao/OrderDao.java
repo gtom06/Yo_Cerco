@@ -1,7 +1,7 @@
-package model.dao;
+package dao;
 
-import model.ConstantsExceptions;
-import model.ConstantsQueries;
+import constants.ConstantsExceptions;
+import constants.ConstantsQueries;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;

@@ -1,9 +1,4 @@
-package model;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+package constants;
 
 public final class ConstantsQueries {
     public static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";

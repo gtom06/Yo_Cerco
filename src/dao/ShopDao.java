@@ -1,8 +1,8 @@
-package model.dao;
+package dao;
 
-import model.Constants;
-import model.ConstantsExceptions;
-import model.ConstantsQueries;
+import constants.Constants;
+import constants.ConstantsExceptions;
+import constants.ConstantsQueries;
 import model.address.Address;
 import model.db.DbHelper;
 import model.product.SimpleProduct;

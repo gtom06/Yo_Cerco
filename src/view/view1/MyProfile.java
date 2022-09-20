@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;

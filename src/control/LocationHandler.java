@@ -4,8 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import exceptions.AddressException;
 import model.address.Address;
-import model.Constants;
-import model.ConstantsExceptions;
+import constants.Constants;
+import constants.ConstantsExceptions;
 import model.shop.Shop;
 
 import java.util.logging.Level;

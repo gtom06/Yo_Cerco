@@ -4,7 +4,7 @@ import control.BrowserHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
 import exceptions.ExceptionBrowser;
-import model.Constants;
+import constants.Constants;
 import model.product.SimpleProduct;
 import model.shop.Shop;
 import org.junit.Test;

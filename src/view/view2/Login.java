@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;

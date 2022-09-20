@@ -1,7 +1,7 @@
 package control;
 
 import model.address.Address;
-import model.ConstantsExceptions;
+import constants.ConstantsExceptions;
 import model.shop.Shop;
 
 import java.util.*;

@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.order.Order;
 import model.order.OrderItem;
 import model.user.User;

@@ -1,6 +1,6 @@
 package control;
 
-import model.ConstantsExceptions;
+import constants.ConstantsExceptions;
 
 import java.io.*;
 import java.net.HttpURLConnection;

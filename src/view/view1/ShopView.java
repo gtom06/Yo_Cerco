@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.department.Department;
 import model.shop.Shop;
 import model.user.User;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
+import static constants.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ShopView {
     Shop shop = null;

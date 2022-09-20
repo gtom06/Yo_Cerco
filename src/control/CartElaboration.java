@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import exceptions.ExceptionCart;
 import exceptions.FileElaborationException;
-import model.Constants;
-import model.ConstantsExceptions;
+import constants.Constants;
+import constants.ConstantsExceptions;
 import model.order.OrderItem;
 import model.product.ProductShop;
 

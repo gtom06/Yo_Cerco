@@ -1,6 +1,6 @@
-package model.dao;
+package dao;
 
-import model.ConstantsExceptions;
+import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.department.Department;
 

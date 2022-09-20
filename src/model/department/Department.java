@@ -1,9 +1,8 @@
 package model.department;
 
-import model.Constants;
+import constants.Constants;
 import model.product.ProductShop;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Department {

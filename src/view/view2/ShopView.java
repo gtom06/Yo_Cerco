@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.department.Department;
 import model.product.ProductShop;
 import model.shop.Shop;

@@ -1,6 +1,6 @@
 package model.shop;
 
-import model.Constants;
+import constants.Constants;
 import model.address.Address;
 
 import java.util.List;

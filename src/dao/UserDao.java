@@ -1,9 +1,10 @@
-package model.dao;
+package dao;
 
-import model.Constants;
+import constants.Constants;
 
-import model.ConstantsExceptions;
-import model.ConstantsQueries;
+import constants.ConstantsExceptions;
+import constants.ConstantsQueries;
+import constants.Queries;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
@@ -24,9 +25,7 @@ public class UserDao {
         PreparedStatement stmt = null;
         boolean output = false;
         try {
-            String sql = "SELECT username, pass " +
-                    "FROM userx " +
-                    "WHERE username = ? AND pass = ?";
+            String sql = Queries.VALIDATE_LOGIN;
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2,password);
@@ -76,12 +75,9 @@ public class UserDao {
 
     public static boolean insertUser(User user){
         PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
         try {
             String sql = "INSERT INTO userx (username, pass, email, date_of_birth, gender, role, billing_street, billing_city, billing_country, billing_zip, phone, name, surname) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            conn = dbHelper.openDBConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
@@ -121,14 +117,8 @@ public class UserDao {
 
     public static boolean updateBuyerRecord(User user) {
         PreparedStatement stmt = null;
-        Connection conn = null;
-        DbHelper dbHelper = DbHelper.getInstance();
         try {
-            String sql = "UPDATE userx " +
-                    "SET name = ?, surname = ?, billing_street = ?, billing_city = ?, " +
-                    "billing_country = ?, billing_zip = ?, phone = ?, profile_imagepath = ? " +
-                    "WHERE username = ?";
-            conn = dbHelper.openDBConnection();
+            String sql = Queries.UPDATE_BUYER_RECORD;
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getSurname());
@@ -181,7 +171,7 @@ public class UserDao {
                     username,
                     name,
                     surname,
-                    pass,
+                    null,
                     email,
                     dateOfBirth,
                     billingStreet,

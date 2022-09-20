@@ -2,8 +2,8 @@ package control;
 
 import exceptions.AddressException;
 import model.address.Address;
-import model.ConstantsExceptions;
-import model.dao.ShopDao;
+import constants.ConstantsExceptions;
+import dao.ShopDao;
 import model.product.SimpleProduct;
 import model.shop.Shop;
 import model.user.User;

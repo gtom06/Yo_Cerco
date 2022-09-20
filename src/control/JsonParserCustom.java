@@ -2,7 +2,7 @@ package control;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import model.ConstantsExceptions;
+import constants.ConstantsExceptions;
 
 public class JsonParserCustom {
     private JsonParserCustom(){

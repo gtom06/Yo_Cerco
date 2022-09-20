@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.order.Order;
 import model.user.Buyer;
 import model.user.User;

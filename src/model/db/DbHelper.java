@@ -1,6 +1,6 @@
 package model.db;
 
-import model.Constants;
+import constants.Constants;
 
 import java.sql.*;
 import java.util.logging.Level;

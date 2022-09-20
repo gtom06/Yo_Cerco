@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.Constants;
+import constants.Constants;
 import model.shop.Shop;
 import model.user.Buyer;
 import model.user.User;
