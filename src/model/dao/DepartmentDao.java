@@ -37,7 +37,9 @@ public class DepartmentDao {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }

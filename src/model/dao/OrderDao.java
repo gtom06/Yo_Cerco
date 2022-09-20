@@ -37,7 +37,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -60,7 +62,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -93,7 +97,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -122,7 +128,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -144,7 +152,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -170,7 +180,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -192,7 +204,9 @@ public class OrderDao {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             try {
-                stmt.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
