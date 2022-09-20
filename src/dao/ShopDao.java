@@ -151,8 +151,8 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            String sql = "SELECT DISTINCT * FROM product_shop PS JOIN shop S on S.shop_id = PS.shop_id WHERE sku IN ";
-            stmt = conn.prepareStatement(sql + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
+            String sql = "SELECT DISTINCT * FROM product_shop PS JOIN shop S on S.shop_id = PS.shop_id WHERE sku IN " + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList);
+            stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
