@@ -48,7 +48,7 @@ public class TomassiTestJUnit {
                 addressShop2,
                 null,
                 null,
-                Arrays.asList(new String[]{"1", "10"}),
+                Arrays.asList("1", "10"),
                 null,
                 null
         );
