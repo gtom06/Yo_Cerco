@@ -43,7 +43,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return productArrayList;
@@ -70,7 +70,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayProductShop;
@@ -98,7 +98,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return output;
@@ -121,7 +121,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
     }
@@ -143,7 +143,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
     }
@@ -169,7 +169,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return simpleProductArrayList;
@@ -196,7 +196,7 @@ public class ProductDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return productArrayList;

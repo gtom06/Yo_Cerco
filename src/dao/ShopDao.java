@@ -53,7 +53,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -89,7 +89,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -131,7 +131,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -156,7 +156,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -181,7 +181,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -210,7 +210,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayShop;
@@ -233,7 +233,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
     }
@@ -255,7 +255,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
     }
@@ -282,7 +282,7 @@ public class ShopDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return output;

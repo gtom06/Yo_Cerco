@@ -40,7 +40,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return orderArrayList;
@@ -65,7 +65,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return order;
@@ -100,7 +100,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return order;
@@ -131,7 +131,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return payment;
@@ -155,7 +155,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
     }
@@ -182,7 +182,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return orderArrayList;
@@ -206,7 +206,7 @@ public class OrderDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return true;

@@ -41,7 +41,7 @@ public class DepartmentDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return arrayDepartment;

@@ -34,14 +34,14 @@ public class UserDao {
                 output = true;
             }
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error while finding user");
+            logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
         } finally {
             try {
                 if (stmt != null) {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return output;
@@ -66,7 +66,7 @@ public class UserDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return user;
@@ -109,7 +109,7 @@ public class UserDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return true;
@@ -140,7 +140,7 @@ public class UserDao {
                     stmt.close();
                 }
             } catch (SQLException e){
-                logger.log(Level.OFF, "conn close error");
+                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
         return true;
