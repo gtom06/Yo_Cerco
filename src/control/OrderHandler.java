@@ -22,6 +22,8 @@ public class OrderHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
+
+
     public static List<Order> findOrdersInfoFromUser(User user) {
         ArrayList<Order> orderArrayList = (ArrayList<Order>) OrderDao.findOrdersFromUser(user.getUsername());
         return !orderArrayList.isEmpty() ? orderArrayList : null;
@@ -160,5 +162,14 @@ public class OrderHandler {
 
     public static boolean setStatusOrder(Order order, String status) {
         return OrderDao.setStatusOrder(order.getOrderId(), status);
+    }
+
+    public static boolean validateDataUser(String name, String surname, String billingStreet, String billingCity, String billingCountry, String billingZip, String phoneNumber) {
+        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
+                billingCity.isBlank() || billingCountry.isBlank() ||
+                billingZip.isBlank() || phoneNumber.isBlank()) {
+            return false;
+        }
+        return true;
     }
 }

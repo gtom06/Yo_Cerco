@@ -44,10 +44,10 @@
             <TextField fx:id="billingZipTextField" layoutX="663.0" layoutY="396.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing zip" />
             <RadioButton fx:id="cardRadioButton" layoutX="663.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCardClicked" selected="true" text="By card">
                <toggleGroup>
-                  <ToggleGroup fx:id="payment" />
+                  <ToggleGroup fx:id="paymentType" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="codRadioButton" layoutX="744.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCodClicked" text="Cash on delivery" toggleGroup="$payment" />
+            <RadioButton fx:id="codRadioButton" layoutX="744.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCodClicked" text="Cash on delivery" toggleGroup="$paymentType" />
             <TextField fx:id="cardholderTextField" layoutX="663.0" layoutY="506.0" prefHeight="25.0" prefWidth="283.0" promptText="Cardholder name" />
             <TextField fx:id="creditcardTextField" layoutX="663.0" layoutY="547.0" prefHeight="25.0" prefWidth="283.0" promptText="Card number" />
             <TextField fx:id="mmTextField" layoutX="663.0" layoutY="588.0" prefHeight="25.0" prefWidth="49.0" promptText="MM" />

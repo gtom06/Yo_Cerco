@@ -62,6 +62,9 @@ public final class Constants {
 
     //for orders
     public static final String TOTAL_ORDERS_STRING = "Total orders: ";
+    public static final String BY_CARD = "By card";
+    public static final String COD = "Cash on delivery";
+
     //order status
     public static final String CREATED_STATUS = "Created";
     public static final String IN_PROGRESS_STATUS = "In progress";

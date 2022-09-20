@@ -2,6 +2,7 @@ package view.view2;
 
 import control.CartElaboration;
 import control.OrderHandler;
+import control.PaymentHandler;
 import control.UserHandler;
 import exceptions.AddressException;
 import exceptions.ExceptionCart;
@@ -39,6 +40,8 @@ public class CartAndPayment {
     protected RadioButton codRadioButton;
     @FXML
     protected RadioButton cardRadioButton;
+    @FXML
+    protected ToggleGroup paymentType;
     @FXML
     protected TextField nameTextField;
     @FXML
@@ -178,7 +181,7 @@ public class CartAndPayment {
         String billingCity = billingCityTextField.getText();
         String billingCountry = billingCountryTextField.getText();
         String billingZip = billingZipTextField.getText();
-        String paymentMethod = "";
+        String paymentMethod = ((RadioButton) paymentType.getSelectedToggle()).getText();
         String cardholder = cardholderTextField.getText();
         String cardNumber = creditcardTextField.getText();
         String mm = mmTextField.getText();
@@ -186,45 +189,33 @@ public class CartAndPayment {
         String cvv = cvvTextField.getText();
         Order order = null;
 
-        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
+        if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
+            System.out.println(paymentMethod);
+            System.out.println(cardNumber);
+            System.out.println(mm);
+            System.out.println(yy);
             logger.log(Level.INFO, "reviewPayment");
         }
         else {
-
+            System.out.println("1");
             if (!CartElaboration.isEmptyCart()) {
-                boolean out = false;
-                if (codRadioButton.isSelected()) {
-                    paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
-                }
-
-                if (cardRadioButton.isSelected()) {
-                    paymentMethod = Constants.CREDITCARD_PAYMENT;
-                }
-                if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                        billingCity.isBlank() || billingCountry.isBlank() ||
-                        billingZip.isBlank() || phoneNumber.isBlank()) {
-                    if (codRadioButton.isSelected()) {
+                System.out.println("1");
+                if (!OrderHandler.validateDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
                         logger.log(Level.INFO, "please fill data");
-                    } else {
-                        if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                            logger.log(Level.INFO, "please fill data & card");
-                        }
-                    }
                 } else {
-                    out = UserHandler.updateRecord(
+                    UserHandler.updateRecord(
                             user, name, surname, billingStreet, billingCity, billingCountry,
                             billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
-                    if (out) {
-                        order = OrderHandler.createOrder(
-                                user,
-                                paymentMethod,
-                                cardholder,
-                                cardNumber,
-                                mm,
-                                yy,
-                                cvv
-                        );
-                    }
+
+                    order = OrderHandler.createOrder(
+                            user,
+                            paymentMethod,
+                            cardholder,
+                            cardNumber,
+                            mm,
+                            yy,
+                            cvv
+                    );
                     orderItemsTableView.setItems(null);
                     orderCreatedText.setVisible(true);
                     totalPriceText.setText("0");
