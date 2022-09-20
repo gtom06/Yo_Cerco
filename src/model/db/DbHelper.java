@@ -30,7 +30,7 @@ public class DbHelper {
     }
 
     public Connection getConnection() {
-        return this.connection;
+        return connection;
     }
 
     public static Connection openDBConnection() {
