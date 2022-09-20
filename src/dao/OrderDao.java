@@ -25,9 +25,7 @@ public class OrderDao {
         PreparedStatement stmt = null;
         List<Order> orderArrayList = new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM orders " +
-                    ConstantsQueries.WHERE_USERNAME;
+            String sql = "SELECT DISTINCT * FROM orders WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
@@ -49,9 +47,7 @@ public class OrderDao {
     public static Order findOrderItemsFromOrder(Order order) {
         PreparedStatement stmt = null;
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM order_items " +
-                    "WHERE order_id = ?";
+            String sql = "SELECT DISTINCT * FROM order_items WHERE order_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order.getOrderId());
             ResultSet rs = stmt.executeQuery();
@@ -109,9 +105,7 @@ public class OrderDao {
     public static Payment insertPayment(Payment payment){
         PreparedStatement stmt = null;
         try {
-            String sql = "INSERT INTO payment (payment_method, cardholder, total_price, currency, payment_timestamp) " +
-                    "VALUES (?, ?, ?, ?, ?) " +
-                    "RETURNING *";
+            String sql = "INSERT INTO payment (payment_method, cardholder, total_price, currency, payment_timestamp) VALUES (?, ?, ?, ?, ?) RETURNING *";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, payment.getPaymentMethod());
             stmt.setString(2, payment.getCardholder());
@@ -141,8 +135,7 @@ public class OrderDao {
     public static void insertOrderItems(int orderId, String jsonOrderItems) {
         PreparedStatement stmt = null;
         try {
-            String sql = "INSERT INTO order_items (order_id, items) " +
-                    ConstantsQueries.TWO_VALUES;
+            String sql = "INSERT INTO order_items (order_id, items) VALUES (?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderId);
             stmt.setString(2, jsonOrderItems);
@@ -164,12 +157,8 @@ public class OrderDao {
         PreparedStatement stmt = null;
         List<Order> orderArrayList = new ArrayList<>();
         try {
-            String sql =    "SELECT o.order_id, o.shop_id, o.payment_id, o.order_timestamp, o.total_price, o.currency, o.status, o.collection_order_timestamp, o.total_quantity " +
-                    "FROM shop S join shopholder_shop shs " +
-                    "ON s.shop_id = shs.shop_id " +
-                    "JOIN orders o " +
-                    "ON o.shop_id = shs.shop_id " +
-                    "WHERE shs.username = ?";
+            String sql = "SELECT O.order_id, O.shop_id, O.payment_id, O.order_timestamp, O.total_price, O.currency, O.status, O.collection_order_timestamp, O.total_quantity " +
+                    "FROM shop S join shopholder_shop SHS ON S.shop_id = SHS.shop_id JOIN orders O ON O.shop_id = SHS.shop_id WHERE SHS.username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
@@ -191,9 +180,7 @@ public class OrderDao {
     public static boolean setStatusOrder(int orderId, String status) {
         PreparedStatement stmt = null;
         try {
-            String sql = "UPDATE orders " +
-                    "SET status = ? " +
-                    "WHERE order_id = ?";
+            String sql = "UPDATE orders SET status = ? WHERE order_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, status);
             stmt.setInt(2, orderId);

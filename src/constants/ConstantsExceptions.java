@@ -19,5 +19,5 @@ public final class ConstantsExceptions {
     public static final String DEPARTMENT_DAO_ERROR = "error in finding department";
     public static final String ORDER_DAO_ERROR = "error in order";
     public static final String ORDER_HANDLER_ERROR = "error in order handler";
-    public static final String CLOSING_CONNECTION_ERROR = "error while closing stmt";
+    public static final String CLOSING_STMT_ERROR = "error while closing stmt";
 }

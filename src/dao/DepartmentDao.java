@@ -24,10 +24,7 @@ public class DepartmentDao {
         PreparedStatement stmt = null;
         ArrayList<Department> arrayDepartment= new ArrayList<>();
         try {
-            String sql = "SELECT * FROM department D " +
-                    "JOIN shop_department SD " +
-                    "ON D.department_id = SD.department_id " +
-                    "WHERE SD.shop_id = ?";
+            String sql = "SELECT * FROM department D JOIN shop_department SD ON D.department_id = SD.department_id WHERE SD.shop_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();

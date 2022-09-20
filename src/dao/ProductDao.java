@@ -28,9 +28,7 @@ public class ProductDao {
         PreparedStatement stmt = null;
         ArrayList<SimpleProduct> productArrayList = new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM product " +
-                    "WHERE LOWER(name) LIKE ?";
+            String sql = "SELECT DISTINCT * FROM product WHERE LOWER(name) LIKE ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             ResultSet rs = stmt.executeQuery();
@@ -53,10 +51,7 @@ public class ProductDao {
         PreparedStatement stmt = null;
         ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
         try {
-            String sql =    "SELECT * FROM product_shop PS " +
-                    "JOIN product P " +
-                    "ON P.sku = PS.sku " +
-                    "WHERE PS.shop_id = ? AND PS.department_id = ?";
+            String sql = "SELECT * FROM product_shop PS JOIN product P ON P.sku = PS.sku WHERE PS.shop_id = ? AND PS.department_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             stmt.setInt(2, departmentId);
@@ -80,9 +75,7 @@ public class ProductDao {
         PreparedStatement stmt = null;
         boolean output = false;
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM user_favoriteproduct " +
-                    "WHERE sku = ? AND username = ?";
+            String sql = "SELECT DISTINCT * FROM user_favoriteproduct WHERE sku = ? AND username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, sku);
             stmt.setString(2, username);
@@ -107,8 +100,7 @@ public class ProductDao {
     public static void removeFavoriteProductFromDb(String username, int sku) {
         PreparedStatement stmt = null;
         try {
-            String sql = "DELETE FROM user_favoriteproduct " +
-                    "WHERE username = ? AND sku = ?";
+            String sql = "DELETE FROM user_favoriteproduct WHERE username = ? AND sku = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, sku);
@@ -152,11 +144,7 @@ public class ProductDao {
         PreparedStatement stmt = null;
         ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM user_favoriteproduct ufp " +
-                    "JOIN product p " +
-                    "ON p.sku = ufp.sku " +
-                    ConstantsQueries.WHERE_USERNAME;
+            String sql = "SELECT DISTINCT * FROM user_favoriteproduct UFP JOIN product P ON P.sku = UFP.sku WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             ResultSet rs = stmt.executeQuery();
