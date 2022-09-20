@@ -19,10 +19,10 @@ module Supermarket {
     opens model.department;
     opens model.db;
     opens dao;
+    opens constants;
     opens main;
     opens model.order;
     opens model.address;
-    opens constants;
     exports control;
     exports test;
     exports view.view1;

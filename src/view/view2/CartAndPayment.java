@@ -17,7 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import constants.Constants;
 import model.order.Order;
 import model.order.OrderItem;
 import model.shop.Shop;
@@ -187,7 +186,7 @@ public class CartAndPayment {
         String mm = mmTextField.getText();
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
-        Order order = null;
+        Order order;
 
         if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
             logger.log(Level.INFO, "reviewPayment");

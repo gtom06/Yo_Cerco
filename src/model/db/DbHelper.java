@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class DbHelper {
     private static DbHelper dbHelper = null;
-    static Connection connection;
+    private Connection connection;
     static Logger logger = Logger.getLogger(DbHelper.class.getName());
 
     private DbHelper() {
