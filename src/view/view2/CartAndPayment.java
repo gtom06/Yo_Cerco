@@ -190,16 +190,10 @@ public class CartAndPayment {
         Order order = null;
 
         if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
-            System.out.println(paymentMethod);
-            System.out.println(cardNumber);
-            System.out.println(mm);
-            System.out.println(yy);
             logger.log(Level.INFO, "reviewPayment");
         }
         else {
-            System.out.println("1");
             if (!CartElaboration.isEmptyCart()) {
-                System.out.println("1");
                 if (!OrderHandler.validateDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
                         logger.log(Level.INFO, "please fill data");
                 } else {

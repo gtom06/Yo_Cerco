@@ -147,11 +147,6 @@ public class OrderHandler {
 
             //insert order
             order = OrderDao.insertOrder(order);
-            //check on order
-            if (order == null) {
-                logger.log(Level.SEVERE, "insertOrder failed");
-                return null;
-            }
             OrderDao.insertOrderItems(order.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
             //deleteCart after order is created
             CartElaboration.deleteCart();
@@ -170,6 +165,8 @@ public class OrderHandler {
                 billingZip.isBlank() || phoneNumber.isBlank()) {
             return false;
         }
-        return true;
+        else {
+            return true;
+        }
     }
 }

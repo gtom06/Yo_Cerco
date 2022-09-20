@@ -2,6 +2,7 @@ package view.view1;
 
 import control.CartElaboration;
 import control.OrderHandler;
+import control.PaymentHandler;
 import control.UserHandler;
 import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
@@ -206,48 +207,45 @@ public class CartAndPayment {
         String mm = mmTextField.getText();
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
+        Order order = null;
 
-        if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.isBlank() && yy.isBlank() && cvv.length() < 3) {
-            logger.log(Level.INFO, "review payment");
+        if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
+            logger.log(Level.INFO, "reviewPayment");
         }
-        else{
+        else {
             if (!CartElaboration.isEmptyCart()) {
-                if (cardRadioButton.isSelected()) {
-                    paymentMethod = Constants.CREDITCARD_PAYMENT;
-                }
-                if (codRadioButton.isSelected()) {
-                    paymentMethod = Constants.CASH_ON_DELIVERY_PAYMENT;
-                }
-
-                if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                        billingCity.isBlank() || billingCountry.isBlank() ||
-                        billingZip.isBlank() || phoneNumber.isBlank()) {
-                    if (codRadioButton.isSelected()) {
-                        logger.log(Level.WARNING, "please fill data");
-                    } else {
-                        if (cardholder.isBlank() || cardNumber.isBlank() || mm.isBlank() || yy.isBlank() || cvv.isBlank()) {
-                            logger.log(Level.WARNING, "please fill data & card");
-                        }
-                    }
+                if (!OrderHandler.validateDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
+                    logger.log(Level.INFO, "please fill data");
                 } else {
-                    boolean out = UserHandler.updateRecord(
+                    UserHandler.updateRecord(
                             user, name, surname, billingStreet, billingCity, billingCountry,
                             billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
-                    if (out) {
-                        OrderHandler.createOrder(
-                                user,
-                                paymentMethod,
-                                cardholder,
-                                cardNumber,
-                                mm,
-                                yy,
-                                cvv
-                        );
-                    }
+
+                    order = OrderHandler.createOrder(
+                            user,
+                            paymentMethod,
+                            cardholder,
+                            cardNumber,
+                            mm,
+                            yy,
+                            cvv
+                    );
                     orderItemsTableView.setItems(null);
                     orderCreatedText.setVisible(true);
                     totalPriceText.setText("0");
                     totalQuantityText.setText("0");
+
+                    //and load specificOrder.fxml
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+                    Parent root = loader.load();
+                    SpecificOrder specificOrder = loader.getController();
+                    specificOrder.passParams(user, order);
+                    Stage newStage = new Stage();
+                    newStage.setScene(new Scene(root));
+                    newStage.show();
+                    newStage.setResizable(false);
+                    Stage stage = (Stage) homepageImageView.getScene().getWindow();
+                    stage.close();
                 }
             }
         }
