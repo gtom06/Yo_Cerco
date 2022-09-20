@@ -55,6 +55,40 @@ public class Login {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+    protected void changePage() throws FileElaborationException, IOException {
+        if (rememberMe.isSelected()){
+            String stringToWrite = loginUsernameTextField.getText() + "\n" + loginPasswordPasswordField.getText();
+            FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, stringToWrite);
+        }
+        else {
+            FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
+        }
+        User u = UserHandler.selectUserFromUsername(loginUsernameTextField.getText());
+        if (u instanceof Buyer) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+            Parent root = loader.load();
+            Homepage homepage = loader.getController();
+            homepage.passUser(u);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.close();
+        }
+        if (u instanceof Admin) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
+            Parent root = loader.load();
+            HomepageAdmin homepage = loader.getController();
+            homepage.passUser(u);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.close();
+        }
+    }
 
     @FXML
     protected void onLoginButtonClick() throws IOException, FileElaborationException {
@@ -65,38 +99,7 @@ public class Login {
             String username = loginUsernameTextField.getText();
             String password = loginPasswordPasswordField.getText();
             if (UserHandler.checkUsernameAndPassword(username,password)) {
-                if (rememberMe.isSelected()){
-                    String stringToWrite = username + "\n" + password;
-                    FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, stringToWrite);
-                }
-                else {
-                    FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
-                }
-                User u = UserHandler.selectUserFromUsername(username);
-                if (u instanceof Buyer) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-                    Parent root = loader.load();
-                    Homepage homepage = loader.getController();
-                    homepage.passUser(u);
-                    Stage newStage = new Stage();
-                    newStage.setScene(new Scene(root));
-                    newStage.show();
-                    newStage.setResizable(false);
-                    Stage stage = (Stage) loginButton.getScene().getWindow();
-                    stage.close();
-                }
-                if (u instanceof Admin) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
-                    Parent root = loader.load();
-                    HomepageAdmin homepage = loader.getController();
-                    homepage.passUser(u);
-                    Stage newStage = new Stage();
-                    newStage.setScene(new Scene(root));
-                    newStage.show();
-                    newStage.setResizable(false);
-                    Stage stage = (Stage) loginButton.getScene().getWindow();
-                    stage.close();
-                }
+                changePage();
             } else{
                 invalidLoginCredentials.setText("User not found or incorrect fields!");
             }

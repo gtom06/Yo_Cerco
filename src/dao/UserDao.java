@@ -148,7 +148,6 @@ public class UserDao {
         String role = rs.getString("role");
         String name = rs.getString("name");
         String username = rs.getString("username");
-        String pass = null;
         String email = rs.getString("email");
         Date dateOfBirth = rs.getDate("date_of_birth");
         String gender = rs.getString("gender");

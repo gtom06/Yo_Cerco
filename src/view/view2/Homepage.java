@@ -219,47 +219,61 @@ public class Homepage {
         }
     }
 
-    @FXML
-    protected void onSearchButtonClick() throws AddressException {
-        Object selected = choiceBox.getSelectionModel().getSelectedItem();
-        ArrayList<Shop> searchShopArrayList;
+    protected void fillShopTableView() throws AddressException {
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
-
-        if (selected != null){
-            if (selected.toString().equals("Shop")){
-                String searchString = searchParam.getText();
-                if (searchString.equals("My position")) {
-                    onClickOnLocation();
-                } else {
-                    shopTableView.getItems().clear();
-                    distanceColumn.setVisible(false);
-                    productTableView.setVisible(true);
-                    shopTableView.setVisible(true);
-                    distanceColumn.setVisible(false);
-                    searchShopArrayList = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
-                    if (searchShopArrayList != null) {
-                        ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
-                        if (!observableListShop.isEmpty()) {
-                            shopTableView.setItems(observableListShop);
-                        }
-                    } else {
-                        logger.log(Level.INFO, Constants.NO_RESULT);
-                    }
-                }
-            }
-            if (selected.toString().equals("Product")) {
+        ArrayList<Shop> searchShopArrayList;
+        if (choiceBox.getSelectionModel().getSelectedItem().toString().equals("Shop")){
+            String searchString = searchParam.getText();
+            if (searchString.equals("My position")) {
+                onClickOnLocation();
+            } else {
+                shopTableView.getItems().clear();
+                distanceColumn.setVisible(false);
                 productTableView.setVisible(true);
-                productTableView.getItems().clear();
-                shopTableView.setVisible(false);
-                searchSimpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(searchParam.getText());
-                if (searchSimpleProductArrayList != null && !searchSimpleProductArrayList.isEmpty()) {
-                    ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
-                    if (observableListProducts.size()!= 0){
-                        productTableView.setItems(observableListProducts);
+                shopTableView.setVisible(true);
+                distanceColumn.setVisible(false);
+                searchShopArrayList = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
+                if (searchShopArrayList != null) {
+                    ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
+                    if (!observableListShop.isEmpty()) {
+                        shopTableView.setItems(observableListShop);
                     }
                 } else {
                     logger.log(Level.INFO, Constants.NO_RESULT);
                 }
+            }
+        }
+    }
+
+    protected void fillProductTableView(){
+        ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
+        if (choiceBox.getSelectionModel().getSelectedItem().toString().equals("Product")) {
+            productTableView.setVisible(true);
+            productTableView.getItems().clear();
+            shopTableView.setVisible(false);
+            searchSimpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(searchParam.getText());
+            if (searchSimpleProductArrayList != null && !searchSimpleProductArrayList.isEmpty()) {
+                ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList);
+                if (observableListProducts.size()!= 0){
+                    productTableView.setItems(observableListProducts);
+                }
+            } else {
+                logger.log(Level.INFO, Constants.NO_RESULT);
+            }
+        }
+    }
+
+    @FXML
+    protected void onSearchButtonClick() throws AddressException {
+        Object selected = choiceBox.getSelectionModel().getSelectedItem();
+        if (selected != null){
+            if (selected == "Product"){
+                fillProductTableView();
+            }
+            else if (selected == "Shop"){
+                fillShopTableView();
+            } else {
+                logger.log(Level.INFO, Constants.NO_RESULT);
             }
         }
         else {
@@ -294,7 +308,7 @@ public class Homepage {
         sizeColumn.setMinWidth(10);
         unitOfMeasureColumn.setMinWidth(50);
         brandColumn.setMinWidth(70);
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("completeAddress"));
         cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
         openingColumn.setCellValueFactory(new PropertyValueFactory<>("openingTime"));

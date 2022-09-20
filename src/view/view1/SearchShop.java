@@ -151,7 +151,7 @@ public class SearchShop  {
         tableView.setEditable(true);
         addressColumn = new TableColumn<>("Address");
         addressColumn.setMinWidth(200);
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("completeAddress"));
 
         cityColumn = new TableColumn<>("City");
         cityColumn.setMinWidth(50);
