@@ -21,13 +21,14 @@ public class DepartmentDao {
 
     static final Logger logger = Logger.getLogger(DepartmentDao.class.getName());
     public static List<Department> findDepartmentByShop(int shopId) {
+        PreparedStatement stmt = null;
         ArrayList<Department> arrayDepartment= new ArrayList<>();
         try {
             String sql = "SELECT * FROM department D " +
                     "JOIN shop_department SD " +
                     "ON D.department_id = SD.department_id " +
                     "WHERE SD.shop_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             ResultSet rs = stmt.executeQuery();
 
@@ -36,7 +37,7 @@ public class DepartmentDao {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }

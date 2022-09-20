@@ -21,12 +21,13 @@ public class UserDao {
     }
 
     public static boolean validateLogin(String username, String password) {
+        PreparedStatement stmt = null;
         boolean output = false;
         try {
             String sql = "SELECT username, pass " +
                     "FROM userx " +
                     "WHERE username = ? AND pass = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2,password);
             ResultSet rs = stmt.executeQuery();
@@ -35,22 +36,39 @@ public class UserDao {
             }
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while finding user");
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return output;
     }
 
     public static User retrieveUserFrom(String username) {
+        PreparedStatement stmt = null;
         User user = null;
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM userx " +
                     ConstantsQueries.WHERE_USERNAME;
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             user = convertRSInUser(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while finding user");
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return user;
 
@@ -89,6 +107,14 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert user");
             return false;
+        }  finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return true;
     }
@@ -118,6 +144,14 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while updating user");
             return false;
+        }  finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return true;
     }

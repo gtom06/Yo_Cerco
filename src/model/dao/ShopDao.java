@@ -24,6 +24,7 @@ public class ShopDao {
     static Logger logger = Logger.getLogger(ShopDao.class.getName());
 
     public static List<Shop> findShopByCity(String city, String type, Integer hour) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
@@ -34,7 +35,7 @@ public class ShopDao {
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat(ConstantsQueries.AND_TYPE);
             }
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
             stmt.setInt(2, Constants.NOT_AVAILABLE);
             stmt.setInt(3, hours.get(1));
@@ -46,11 +47,20 @@ public class ShopDao {
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static List<Shop> findShopByName(String name, String type, Integer hour) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
@@ -61,7 +71,7 @@ public class ShopDao {
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat(ConstantsQueries.AND_TYPE);
             }
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             stmt.setInt(2, Constants.NOT_AVAILABLE);
             stmt.setInt(3, hours.get(1));
@@ -73,11 +83,20 @@ public class ShopDao {
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static List<Shop> findShopNearby(double lat, double lng, String type, Integer hour) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
@@ -91,7 +110,7 @@ public class ShopDao {
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat(ConstantsQueries.AND_TYPE);
             }
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, lat - 0.5);
             stmt.setDouble(2, lat + 0.5);
             stmt.setDouble(3, lng - 0.5);
@@ -106,43 +125,70 @@ public class ShopDao {
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static List<Shop> findShopByFavoriteUser(String username) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP + " s JOIN user_favoriteshop ufs " +
                     "ON s.shop_id = ufs.shop_id " +
                     "WHERE LOWER(username) = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static List<Shop> findShopsWithProducts(List<Integer> productSkuArrayList) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM product_shop PS " +
                     "JOIN shop S on S.shop_id = PS.shop_id " +
                     "WHERE sku IN ";
-            PreparedStatement stmt = conn.prepareStatement(sql + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
+            stmt = conn.prepareStatement(sql + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
+        PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP + " S " +
@@ -151,50 +197,77 @@ public class ShopDao {
                     "JOIN product p " +
                     "ON PS.sku = p.sku " +
                     "WHERE p.sku = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, simpleProduct.getSku());
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
 
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return arrayShop;
     }
 
     public static void insertFavoriteShopIntoDb(int shopId, String username) {
+        PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
                     ConstantsQueries.TWO_VALUES;
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, shopId);
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
     }
 
     public static void removeFavoriteShopFromDb(int shopId, String username) {
+        PreparedStatement stmt = null;
         try {
             String sql = "DELETE FROM user_favoriteshop " +
                     "WHERE LOWER(username) = ? AND shop_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username.toLowerCase());
             stmt.setInt(2, shopId);
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
     }
 
     public static boolean isFavoriteShop(int shopId, String username) {
+        PreparedStatement stmt = null;
         boolean output = false;
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM user_favoriteshop " +
                     "WHERE shop_id = ? AND LOWER(username) = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             stmt.setString(2, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
@@ -203,6 +276,14 @@ public class ShopDao {
             }
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return output;
     }
