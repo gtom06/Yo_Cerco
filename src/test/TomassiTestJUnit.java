@@ -6,9 +6,12 @@ import exceptions.ExceptionCart;
 import model.address.Address;
 import model.order.Order2;
 import model.product.ProductShop;
+import model.shop.Shop2;
 import model.user.Buyer;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -24,14 +27,37 @@ public class TomassiTestJUnit {
     }
     @Test
     public void calculateDistancePointToPointTest() {
-        /*
-        Shop2 shop = new Shop(null, null, null,null,
-                null,0,null,null,0, 0,
-                null,null,null);
-        Address address = new Address(1, 1, null);
+        Address addressShop = new Address(0,0, null, null, null);
+        Shop2 shop = new Shop2(
+                null,
+                addressShop,
+                null,
+                null,
+                Arrays.asList(new String[]{"1", "10"}),
+                null,
+                null
+        );
+
+        Address addressUser = new Address(1, 1, null);
         double expected = 157;
-        double result = LocationHandler.calculateDistancePointToPoint(shop, address);
-        assertEquals(expected, result, 1);*/
+        double result = LocationHandler.calculateDistancePointToPoint(shop, addressUser);
+        assertEquals(expected, result, 1);
+
+        Address addressShop2 = new Address(1,1, null, null, null);
+        Shop2 shop2 = new Shop2(
+                null,
+                addressShop2,
+                null,
+                null,
+                Arrays.asList(new String[]{"1", "10"}),
+                null,
+                null
+        );
+
+        double expected2 = 0;
+        double result2 = LocationHandler.calculateDistancePointToPoint(shop2, addressUser);
+        assertEquals(expected2, result2, 1);
+
     }
     @Test
     public void getTest() {
