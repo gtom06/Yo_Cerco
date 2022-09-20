@@ -3,7 +3,7 @@ package model.order;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class Order2 {
+public class Order {
     private int orderId;
     private int shopId;
     private String username;
@@ -18,7 +18,7 @@ public class Order2 {
     private List<OrderItem> orderItemArrayList;
     private String orderItemString;
 
-    public Order2(int orderId, int shopId, String username, Payment payment, int orderTotalQuantity, List<OrderItem> orderItemArrayList, String orderItemString) {
+    public Order(int orderId, int shopId, String username, Payment payment, int orderTotalQuantity, List<OrderItem> orderItemArrayList, String orderItemString) {
         this.orderId = orderId;
         this.shopId = shopId;
         this.username = username;

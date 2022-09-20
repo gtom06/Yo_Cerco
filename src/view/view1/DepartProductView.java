@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.department.Department;
 import model.product.ProductShop;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 public class DepartProductView {
     Department department = null;
-    Shop2 shop = null;
+    Shop shop = null;
     User user = null;
 
     @FXML
@@ -94,7 +94,7 @@ public class DepartProductView {
         CartElaboration.addOrderItemsToCart(productShop, 1);
     }
 
-    public void passParams(User user, Department department, Shop2 shop) {
+    public void passParams(User user, Department department, Shop shop) {
         this.shop = shop;
         this.user = user;
         this.department = department;

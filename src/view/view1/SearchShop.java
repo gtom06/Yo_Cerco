@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.Buyer;
 import model.user.User;
 
@@ -42,13 +42,13 @@ public class SearchShop  {
     @FXML
     protected ChoiceBox choiceBoxTypeShop;
     @FXML
-    protected TableView<Shop2> tableView = new TableView<>();
-    protected TableColumn<Shop2, String> addressColumn;
-    protected TableColumn<Shop2, String> cityColumn;
-    protected TableColumn<Shop2, String> nameColumn;
-    protected TableColumn<Shop2, String> openingColumn;
-    protected TableColumn<Shop2, String> closingColumn;
-    protected TableColumn<Shop2, Double> distanceColumn;
+    protected TableView<Shop> tableView = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
+    protected TableColumn<Shop, Double> distanceColumn;
     @FXML
     protected CheckBox openNow;
 
@@ -57,7 +57,7 @@ public class SearchShop  {
     @FXML
     protected void onTableViewItemClick() throws IOException {
 
-        Shop2 shop = tableView.getSelectionModel().getSelectedItem();
+        Shop shop = tableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -101,7 +101,7 @@ public class SearchShop  {
     @FXML
     protected void onSearchButtonClick() throws AddressException {
         tableView.getItems().clear();
-        List<Shop2> shopArrayList = null;
+        List<Shop> shopArrayList = null;
         String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();
 
 
@@ -123,7 +123,7 @@ public class SearchShop  {
             shopArrayList = ShopHandler.findShopByNameWithParams(requestTextField.getText(), openNow.isSelected(), type);
         }
         if (shopArrayList != null && shopArrayList.size() != 0) {
-            ObservableList<Shop2> observableListShops = FXCollections.observableArrayList(shopArrayList);
+            ObservableList<Shop> observableListShops = FXCollections.observableArrayList(shopArrayList);
             tableView.setItems(observableListShops);
         }
         else {

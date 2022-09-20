@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.department.Department;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 import java.io.*;
 import java.net.URI;
@@ -28,7 +28,7 @@ import java.util.logging.Logger;
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ShopView {
-    Shop2 shop = null;
+    Shop shop = null;
     User user = null;
     List<Department> departmentArrayList = null;
     Department department = null;
@@ -138,7 +138,7 @@ public class ShopView {
         textHi.setText(user.getUsername());
     }
 
-    public void passShop(Shop2 shop) throws FileNotFoundException {
+    public void passShop(Shop shop) throws FileNotFoundException {
         this.shop = shop;
         stream = new FileInputStream(shop.getLogoImagepath());
         Image shopImage = new Image(stream, 200, 200, false, false);
@@ -275,7 +275,7 @@ public class ShopView {
         }
     }
 
-    public void checkOffersFlyer(Shop2 shop){
+    public void checkOffersFlyer(Shop shop){
         if (shop.getOffersFlyerPath().equals("") || shop.getOffersFlyerPath() == null ){
             offersFlyerShop.setVisible(false);
             offersFlyerTagShop.setVisible(false);

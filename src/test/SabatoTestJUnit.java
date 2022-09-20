@@ -6,7 +6,7 @@ import exceptions.AddressException;
 import exceptions.ExceptionBrowser;
 import model.Constants;
 import model.product.SimpleProduct;
-import model.shop.Shop2;
+import model.shop.Shop;
 import org.junit.Test;
 
 import java.net.URI;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 public class SabatoTestJUnit {
     @Test
     public void findShopByProductTest() {
-        List<Shop2> shopArrayList = ShopHandler.findShopByProduct(
+        List<Shop> shopArrayList = ShopHandler.findShopByProduct(
                 new SimpleProduct(1, null, null, null, 0, null, null));
 
         assertNotNull(shopArrayList);
@@ -27,7 +27,7 @@ public class SabatoTestJUnit {
     }
     @Test
     public void findShopNearbyWithParamsTest() throws AddressException {
-        List<Shop2> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
+        List<Shop> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
         assertNotNull(shopArrayList);
         assertEquals("LIDL FR", shopArrayList.get(0).getShopName());
         assertEquals("+393881234567", shopArrayList.get(0).getPhone());

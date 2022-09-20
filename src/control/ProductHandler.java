@@ -4,7 +4,7 @@ import model.ConstantsExceptions;
 import model.dao.ProductDao;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 
 import java.util.Collections;
@@ -21,7 +21,7 @@ public class ProductHandler {
         }
         return ProductDao.findProductByName(productName);
     }
-    public static ProductShop findProductShopByShopAndSimpleProduct(Shop2 shop, SimpleProduct simpleProduct) {
+    public static ProductShop findProductShopByShopAndSimpleProduct(Shop shop, SimpleProduct simpleProduct) {
         if (shop == null || simpleProduct == null) {
             return (ProductShop) Collections.emptyList();
         }

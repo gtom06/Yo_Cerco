@@ -5,7 +5,7 @@ import model.address.Address;
 import model.ConstantsExceptions;
 import model.dao.ShopDao;
 import model.product.SimpleProduct;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,18 +15,18 @@ public class ShopHandler {
     private ShopHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-    public static void insertShop(Shop2 shop){
+    public static void insertShop(Shop shop){
         throw new UnsupportedOperationException();
     }
-    public static void deleteShop(Shop2 shop){
+    public static void deleteShop(Shop shop){
         throw new UnsupportedOperationException();
     }
-    public static void updateShop(Shop2 shop){
+    public static void updateShop(Shop shop){
         throw new UnsupportedOperationException();
     }
 
-    public static List<Shop2> useSearchByIpAddress(String type) throws AddressException {
-        List<Shop2> shopList = new ArrayList<>();
+    public static List<Shop> useSearchByIpAddress(String type) throws AddressException {
+        List<Shop> shopList = new ArrayList<>();
         Address address = LocationHandler.calculateLatLongFromIpAddress();
         if (address != null) {
             shopList = ShopDao.findShopNearby(address.getLat(), address.getLng(), type, null);
@@ -35,8 +35,8 @@ public class ShopHandler {
         return shopList != null ? shopList : null;
     }
 
-    public static List<Shop2> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
-        List<Shop2> shopList;
+    public static List<Shop> findShopNearbyWithParams(String searchParam, boolean onlyOpenNow, String type) throws AddressException {
+        List<Shop> shopList;
         if (searchParam == null || searchParam.isBlank() || searchParam.length() > 50){
             shopList = useSearchByIpAddress(type);
         }
@@ -46,8 +46,8 @@ public class ShopHandler {
         return shopList != null ? shopList : null;
     }
 
-    public static List<Shop2> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
-        List<Shop2> shopList = new ArrayList<>();
+    public static List<Shop> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
+        List<Shop> shopList = new ArrayList<>();
         Address address = LocationHandler.calculateLatLongFromAddress(addressString);
         if (address != null && onlyOpenNow){
             shopList = ComparableHandler.orderShopsByDistance(
@@ -70,8 +70,8 @@ public class ShopHandler {
         return shopList != null ? shopList : null;
     }
 
-    public static List<Shop2> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
-        List<Shop2> shopArrayList;
+    public static List<Shop> findShopByCityWithParams(String city, boolean onlyOpenNow, String type) {
+        List<Shop> shopArrayList;
         if (city.isBlank() || city.length() > 50){
             return null;
         }
@@ -84,8 +84,8 @@ public class ShopHandler {
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
-    public static List<Shop2> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
-        List<Shop2> shopArrayList;
+    public static List<Shop> findShopByNameWithParams(String name, boolean onlyOpenNow, String type) {
+        List<Shop> shopArrayList;
         if (name.isBlank() || name.length() >= 50){
             return null;
         }
@@ -98,24 +98,24 @@ public class ShopHandler {
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
-    public static List<Shop2> findShopByProduct(SimpleProduct product){
-        List<Shop2> shopArrayList = ShopDao.findShopsByProduct(product);
+    public static List<Shop> findShopByProduct(SimpleProduct product){
+        List<Shop> shopArrayList = ShopDao.findShopsByProduct(product);
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 
-    public static boolean isFavoriteShop(Shop2 shop, User user) {
+    public static boolean isFavoriteShop(Shop shop, User user) {
         return ShopDao.isFavoriteShop(shop.getShopId(), user.getUsername());
     }
 
-    public static void removeShopFromFavorite(Shop2 shop, User user) {
+    public static void removeShopFromFavorite(Shop shop, User user) {
         ShopDao.removeFavoriteShopFromDb(shop.getShopId(), user.getUsername());
     }
 
-    public static void insertShopIntoFavorite(Shop2 shop, User user){
+    public static void insertShopIntoFavorite(Shop shop, User user){
 		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
-    public static List<Shop2> findShopsContainingProductBy(List<SimpleProduct> productArrayList){
+    public static List<Shop> findShopsContainingProductBy(List<SimpleProduct> productArrayList){
         if (productArrayList.isEmpty()) {
             return null;
         }
@@ -126,8 +126,8 @@ public class ShopHandler {
         return ShopDao.findShopsWithProducts(productSkuArrayList);
     }
 
-    public static List<Shop2> findFavoriteShopsFromUser(User user){
-        List<Shop2> shopArrayList = ShopDao.findShopByFavoriteUser(user.getUsername());
+    public static List<Shop> findFavoriteShopsFromUser(User user){
+        List<Shop> shopArrayList = ShopDao.findShopByFavoriteUser(user.getUsername());
         return !shopArrayList.isEmpty() ? shopArrayList : null;
     }
 }

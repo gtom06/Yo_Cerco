@@ -5,7 +5,7 @@ import model.address.Address;
 
 import java.util.List;
 
-public class Shop2 {
+public class Shop {
     private Integer shopId;
     private final String phone;
     private Address address;
@@ -23,8 +23,8 @@ public class Shop2 {
     private final String completeAddress;
 
 
-    public Shop2(String phone, Address address, String shopName, String logoImagepath,
-                 List<String> openingTimes, String franchising, String offersFlyerPath) {
+    public Shop(String phone, Address address, String shopName, String logoImagepath,
+                List<String> openingTimes, String franchising, String offersFlyerPath) {
         this.phone = phone;
         this.address = address;
         this.city = address.getCity();

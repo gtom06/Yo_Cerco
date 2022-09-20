@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.order.Order2;
+import model.order.Order;
 import model.order.OrderItem;
 import model.user.User;
 
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 public class SpecificOrder {
     User user = null;
-    Order2 order = null;
+    Order order = null;
     @FXML
     protected ImageView homepageImageView;
     @FXML
@@ -137,7 +137,7 @@ public class SpecificOrder {
         }
     }
 
-    public void passParams(User user, Order2 order) throws Exception {
+    public void passParams(User user, Order order) throws Exception {
         this.user = user;
         this.order = order;
         fillOrder();

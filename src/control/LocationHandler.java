@@ -6,7 +6,7 @@ import exceptions.AddressException;
 import model.address.Address;
 import model.Constants;
 import model.ConstantsExceptions;
-import model.shop.Shop2;
+import model.shop.Shop;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +53,7 @@ public class LocationHandler {
         return address;
     }
 
-    public static double calculateDistancePointToPoint(Shop2 shop, Address address) {
+    public static double calculateDistancePointToPoint(Shop shop, Address address) {
         return Math.sqrt(Math.pow(shop.getLat() - address.getLat(), 2) + Math.pow(shop.getLng() - address.getLng(), 2)) * 111;
     }
 }

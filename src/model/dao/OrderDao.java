@@ -2,7 +2,7 @@ package model.dao;
 
 import exceptions.FileElaborationException;
 import model.ConstantsExceptions;
-import model.order.Order2;
+import model.order.Order;
 import model.order.Payment;
 
 import java.sql.*;
@@ -18,8 +18,8 @@ public class OrderDao {
     }
     static final Logger logger = Logger.getLogger(OrderDao.class.getName());
 
-    public static List<Order2> findOrdersFromUser(String username) {
-        List<Order2> orderArrayList = new ArrayList<>();
+    public static List<Order> findOrdersFromUser(String username) {
+        List<Order> orderArrayList = new ArrayList<>();
         try {
             ResultSet rs = Queries.findOrdersFromUserQuery(username);
             orderArrayList = convertRSInArrayOrder(rs);
@@ -29,7 +29,7 @@ public class OrderDao {
         return orderArrayList;
     }
 
-    public static Order2 findOrderItemsFromOrder(Order2 order) {
+    public static Order findOrderItemsFromOrder(Order order) {
         try {
             ResultSet rs = Queries.findOrderItemsFromOrderQuery(order.getOrderId());
             rs.next();
@@ -40,7 +40,7 @@ public class OrderDao {
         return order;
     }
 
-    public static Order2 insertOrder(Order2 order) {
+    public static Order insertOrder(Order order) {
         try {
             ResultSet rs = Queries.insertOrderQuery(order);
             rs.next();
@@ -77,8 +77,8 @@ public class OrderDao {
         return true;
     }
 
-    public static List<Order2> findOrdersByAdmin(String username) {
-        List<Order2> orderArrayList = new ArrayList<>();
+    public static List<Order> findOrdersByAdmin(String username) {
+        List<Order> orderArrayList = new ArrayList<>();
         try {
             ResultSet rs = Queries.findOrdersByAdminQuery(username);
             orderArrayList = convertRSInArrayOrder(rs);
@@ -97,9 +97,9 @@ public class OrderDao {
         return true;
     }
 
-    public static List<Order2> convertRSInArrayOrder(ResultSet rs) throws SQLException {
-        Order2 order;
-        ArrayList<Order2> arrayOrder= new ArrayList<>();
+    public static List<Order> convertRSInArrayOrder(ResultSet rs) throws SQLException {
+        Order order;
+        ArrayList<Order> arrayOrder= new ArrayList<>();
         while (rs.next()) {
             Integer orderId = rs.getInt("order_id");
             Integer shopId = rs.getInt("shop_id");
@@ -109,7 +109,7 @@ public class OrderDao {
             String currency = rs.getString("currency");
             Integer orderTotalQuantity = rs.getInt("total_quantity");
             String username = rs.getString("username");
-            order = new Order2(orderId, shopId, username, new Payment(paymentId, null, null, totalPrice, currency, orderTimestamp, null), orderTotalQuantity, null, null);
+            order = new Order(orderId, shopId, username, new Payment(paymentId, null, null, totalPrice, currency, orderTimestamp, null), orderTotalQuantity, null, null);
             arrayOrder.add(order);
         }
         return arrayOrder;

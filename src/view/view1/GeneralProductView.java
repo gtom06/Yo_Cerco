@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 
 import java.io.FileInputStream;
@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 
 public class GeneralProductView {
     User user ;
-    List<Shop2> arrayShopList;
+    List<Shop> arrayShopList;
     @FXML
     protected ImageView productPhoto;
     @FXML
@@ -43,19 +43,19 @@ public class GeneralProductView {
     @FXML
     protected Text brandProd;
     @FXML
-    protected TableView<Shop2> shopsTableView = new TableView<>();
-    protected TableColumn<Shop2, String> nameColumn;
-    protected TableColumn<Shop2, String> addressColumn;
-    protected TableColumn<Shop2, String> cityColumn;
-    protected TableColumn<Shop2, String> openingColumn;
-    protected TableColumn<Shop2, String> closingColumn;
+    protected TableView<Shop> shopsTableView = new TableView<>();
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
     InputStream stream = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
     @FXML
     protected void onTableViewItemClick() throws IOException {
 
-        Shop2 shop = shopsTableView.getSelectionModel().getSelectedItem();
+        Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -82,11 +82,11 @@ public class GeneralProductView {
         Image productImage = new Image(stream, 200, 200, false, false);
         productPhoto.setImage(productImage);
 
-        ObservableList<Shop2> observableListShops = FXCollections.observableArrayList();
+        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
         arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
 
         if (arrayShopList != null) {
-            for (Shop2 s : arrayShopList) {
+            for (Shop s : arrayShopList) {
                 observableListShops.add(s);
             }
             shopsTableView.setItems(observableListShops);

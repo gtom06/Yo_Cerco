@@ -188,11 +188,9 @@ public class CartElaboration {
         }
     }
 
-    public static boolean isEmptyCart() throws IOException {
+    public static boolean isEmptyCart() {
         boolean bool = false;
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(Constants.CART_PATH));
+        try (BufferedReader reader = new BufferedReader(new FileReader(Constants.CART_PATH))){
             if (reader.read() == -1) {
                 bool = true;
             }
@@ -204,7 +202,7 @@ public class CartElaboration {
         return bool;
     }
 
-    public static boolean delete0QuantityItemsFromCart() {
+    public static boolean delete0QuantityItemsFromCart() throws IOException {
         //initialize vars
         boolean output = false;
         BufferedWriter out = null;

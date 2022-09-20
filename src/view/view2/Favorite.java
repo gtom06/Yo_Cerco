@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
-import model.shop.Shop2;
+import model.shop.Shop;
 import model.user.User;
 
 import java.io.IOException;
@@ -30,12 +30,12 @@ public class Favorite {
     @FXML
     protected ImageView homepageImageView;
     @FXML
-    protected TableView<Shop2> shopTableView = new TableView<>();
-    protected TableColumn<Shop2, String> addressColumn;
-    protected TableColumn<Shop2, String> cityColumn;
-    protected TableColumn<Shop2, String> nameColumn;
-    protected TableColumn<Shop2, String> openingColumn;
-    protected TableColumn<Shop2, String> closingColumn;
+    protected TableView<Shop> shopTableView = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn;
+    protected TableColumn<Shop, String> cityColumn;
+    protected TableColumn<Shop, String> nameColumn;
+    protected TableColumn<Shop, String> openingColumn;
+    protected TableColumn<Shop, String> closingColumn;
 
     @FXML
     protected TableView<SimpleProduct> simpleProductTableView = new TableView<>();
@@ -48,7 +48,7 @@ public class Favorite {
 
     @FXML
     protected void onTableViewShopClick() throws IOException {
-        Shop2 shop = shopTableView.getSelectionModel().getSelectedItem();
+        Shop shop = shopTableView.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -152,10 +152,10 @@ public class Favorite {
 
     protected void fillShopTableView() {
         shopTableView.getItems().clear();
-        ObservableList<Shop2> observableListShops = FXCollections.observableArrayList();
-        ArrayList<Shop2> shopArrayList = (ArrayList<Shop2>) ShopHandler.findFavoriteShopsFromUser(user);
+        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
+        ArrayList<Shop> shopArrayList = (ArrayList<Shop>) ShopHandler.findFavoriteShopsFromUser(user);
         if (shopArrayList != null) {
-            for (Shop2 s : shopArrayList) {
+            for (Shop s : shopArrayList) {
                 observableListShops.add(s);
             }
             shopTableView.setItems(observableListShops);

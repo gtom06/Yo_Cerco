@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.order.Order2;
+import model.order.Order;
 import model.user.User;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -33,17 +33,17 @@ public class OrdersAdmin {
     @FXML
     protected Text totalOrdersText;
     @FXML
-    protected TableView<Order2> orderTableView = new TableView<>();
-    protected TableColumn<Order2, String> orderNumber;
-    protected TableColumn<Order2, Integer> orderTotalQuantity;
-    protected TableColumn<Order2, String> orderTotalPrice;
-    protected TableColumn<Order2, Timestamp> orderTimeStamp;
-    protected TableColumn<Order2, Timestamp> orderStatus;
+    protected TableView<Order> orderTableView = new TableView<>();
+    protected TableColumn<Order, String> orderNumber;
+    protected TableColumn<Order, Integer> orderTotalQuantity;
+    protected TableColumn<Order, String> orderTotalPrice;
+    protected TableColumn<Order, Timestamp> orderTimeStamp;
+    protected TableColumn<Order, Timestamp> orderStatus;
     static final Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
 
     @FXML
     protected void onOrderClicked() throws IOException {
-        Order2 order = orderTableView.getSelectionModel().getSelectedItem();
+        Order order = orderTableView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
         Parent root = loader.load();
         SpecificOrderAdmin specificOrder = loader.getController();
@@ -102,10 +102,10 @@ public class OrdersAdmin {
     protected void fillShopTableView() {
         int numberOfOrders = 0;
         orderTableView.getItems().clear();
-        ObservableList<Order2> orderObservableList = FXCollections.observableArrayList();
-        List<Order2> orderArrayList = OrderHandler.findOrdersByAdmin(user);
+        ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
+        List<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);
         if (orderArrayList != null) {
-            for (Order2 o : orderArrayList) {
+            for (Order o : orderArrayList) {
                 orderObservableList.add(o);
                 numberOfOrders++;
             }
