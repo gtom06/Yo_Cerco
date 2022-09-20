@@ -26,13 +26,13 @@ public class ProductDao {
     static final Logger logger = Logger.getLogger(ProductDao.class.getName());
 
     public static List<SimpleProduct> findProductByName(String name) {
-
+        PreparedStatement stmt = null;
         ArrayList<SimpleProduct> productArrayList = new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM product " +
                     "WHERE LOWER(name) LIKE ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
             ResultSet rs = stmt.executeQuery();
             productArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
@@ -40,7 +40,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -49,13 +49,14 @@ public class ProductDao {
     }
 
     public static List<ProductShop> findProductByDepartmentAndShop(int shopId, int departmentId) {
+        PreparedStatement stmt = null;
         ArrayList<ProductShop> arrayProductShop = new ArrayList<>();
         try {
             String sql =    "SELECT * FROM product_shop PS " +
                     "JOIN product P " +
                     "ON P.sku = PS.sku " +
                     "WHERE PS.shop_id = ? AND PS.department_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             stmt.setInt(2, departmentId);
             ResultSet rs = stmt.executeQuery();
@@ -64,7 +65,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -73,12 +74,13 @@ public class ProductDao {
     }
 
     public static boolean isFavoriteProduct(String username, int sku) {
+        PreparedStatement stmt = null;
         boolean output = false;
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM user_favoriteproduct " +
                     "WHERE sku = ? AND username = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, sku);
             stmt.setString(2, username);
             ResultSet rs = stmt.executeQuery();
@@ -89,7 +91,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -98,10 +100,11 @@ public class ProductDao {
     }
 
     public static void removeFavoriteProductFromDb(String username, int sku) {
+        PreparedStatement stmt = null;
         try {
             String sql = "DELETE FROM user_favoriteproduct " +
                     "WHERE username = ? AND sku = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, sku);
             stmt.executeUpdate();
@@ -109,7 +112,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -117,10 +120,11 @@ public class ProductDao {
     }
 
     public static void insertFavoriteProductIntoDb(String username, int sku ) {
+        PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
                     ConstantsQueries.TWO_VALUES;
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, sku);
             stmt.executeUpdate();
@@ -128,7 +132,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -136,6 +140,7 @@ public class ProductDao {
     }
 
     public static List<SimpleProduct> findSimpleProductFromUser(User user) {
+        PreparedStatement stmt = null;
         ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
@@ -143,7 +148,7 @@ public class ProductDao {
                     "JOIN product p " +
                     "ON p.sku = ufp.sku " +
                     ConstantsQueries.WHERE_USERNAME;
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             ResultSet rs = stmt.executeQuery();
             simpleProductArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
@@ -151,7 +156,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
@@ -160,13 +165,14 @@ public class ProductDao {
     }
 
     public static List<ProductShop> findProductBySkuAndShopId(int shopId, int sku) {
+        PreparedStatement stmt = null;
         ArrayList<ProductShop> productArrayList = new ArrayList<>();
         try {
             String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM product P JOIN product_shop PS " +
                     "ON P.sku = PS.sku " +
                     "WHERE shop_id = ? AND PS.sku = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             stmt.setInt(2, sku);
             ResultSet rs = stmt.executeQuery();
@@ -175,7 +181,7 @@ public class ProductDao {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
             try {
-                conn.close();
+                stmt.close();
             } catch (SQLException e){
                 logger.log(Level.OFF, "conn close error");
             }
