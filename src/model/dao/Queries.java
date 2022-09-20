@@ -366,7 +366,6 @@ public class Queries {
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.executeQuery();
-        stmt.getConnection().close();
         return stmt.getResultSet();
     }
 }
