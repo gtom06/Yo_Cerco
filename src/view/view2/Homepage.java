@@ -220,7 +220,6 @@ public class Homepage {
     }
 
     protected void fillShopTableView() throws AddressException {
-        ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
         ArrayList<Shop> searchShopArrayList;
         if (choiceBox.getSelectionModel().getSelectedItem().toString().equals("Shop")){
             String searchString = searchParam.getText();
