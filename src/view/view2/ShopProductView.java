@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
-import model.shop.Shop;
 import model.shop.Shop2;
 import model.user.User;
 

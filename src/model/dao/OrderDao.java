@@ -107,8 +107,6 @@ public class OrderDao {
             Timestamp orderTimestamp = rs.getTimestamp("order_timestamp");
             double totalPrice = rs.getDouble("total_price");
             String currency = rs.getString("currency");
-            String status = rs.getString(STATUS);
-            Timestamp collectionTimestamp = rs.getTimestamp("collection_order_timestamp");
             Integer orderTotalQuantity = rs.getInt("total_quantity");
             String username = rs.getString("username");
             order = new Order2(orderId, shopId, username, new Payment(paymentId, null, null, totalPrice, currency, orderTimestamp, null), orderTotalQuantity, null, null);

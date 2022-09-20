@@ -6,8 +6,6 @@ import exceptions.ExceptionCart;
 import model.address.Address;
 import model.order.Order2;
 import model.product.ProductShop;
-import model.shop.Shop;
-import model.shop.Shop2;
 import model.user.Buyer;
 import org.junit.Test;
 

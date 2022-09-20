@@ -16,7 +16,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
-import model.shop.Shop;
 import model.shop.Shop2;
 import model.user.User;
 
@@ -24,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

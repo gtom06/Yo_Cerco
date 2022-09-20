@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.order.Order2;
 import model.order.OrderItem;
-import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.Buyer;
 import model.user.User;
 
@@ -77,11 +77,11 @@ public class CartAndPayment {
     protected TableColumn<OrderItem, Double> priceTotalColumn;
 
     User user;
-    Shop shop;
+    Shop2 shop;
 
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    public void passParam(Shop shop, User user) throws ExceptionCart {
+    public void passParam(Shop2 shop, User user) throws ExceptionCart {
         this.shop = shop;
         this.user = user;
 

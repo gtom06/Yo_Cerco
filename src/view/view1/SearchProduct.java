@@ -15,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
-import model.shop.Shop;
 import model.user.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import java.util.logging.Logger;
 
 public class SearchProduct {
     User user;
-    ArrayList<Shop> arrayShopsList;
     @FXML
     protected ImageView homepageImageView;
     @FXML

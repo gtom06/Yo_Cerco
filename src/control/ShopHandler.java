@@ -5,7 +5,6 @@ import model.address.Address;
 import model.ConstantsExceptions;
 import model.dao.ShopDao;
 import model.product.SimpleProduct;
-import model.shop.Shop;
 import model.shop.Shop2;
 import model.user.User;
 import java.time.LocalTime;
@@ -16,13 +15,13 @@ public class ShopHandler {
     private ShopHandler(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
-    public static void insertShop(Shop shop){
+    public static void insertShop(Shop2 shop){
         throw new UnsupportedOperationException();
     }
-    public static void deleteShop(Shop shop){
+    public static void deleteShop(Shop2 shop){
         throw new UnsupportedOperationException();
     }
-    public static void updateShop(Shop shop){
+    public static void updateShop(Shop2 shop){
         throw new UnsupportedOperationException();
     }
 
