@@ -35,7 +35,6 @@ public class UserDao {
         try {
             ResultSet rs = Queries.retrieveUserFromQuery(username);
             user = convertRSInUser(rs);
-            rs.close();
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while finding user");
         }
