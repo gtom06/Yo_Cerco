@@ -115,17 +115,6 @@ public class ShopHandler {
 		ShopDao.insertFavoriteShopIntoDb(shop.getShopId(), user.getUsername());
     }
 
-    public static List<Shop> findShopsContainingProductBy(List<SimpleProduct> productArrayList){
-        if (productArrayList.isEmpty()) {
-            return null;
-        }
-        List<Integer> productSkuArrayList = new ArrayList<>();
-        for (SimpleProduct sp : productArrayList){
-            productSkuArrayList.add(sp.getSku());
-        }
-        return ShopDao.findShopsWithProducts(productSkuArrayList);
-    }
-
     public static List<Shop> findFavoriteShopsFromUser(User user){
         List<Shop> shopArrayList = ShopDao.findShopByFavoriteUser(user.getUsername());
         return !shopArrayList.isEmpty() ? shopArrayList : null;

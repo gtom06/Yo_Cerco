@@ -147,28 +147,6 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static List<Shop> findShopsWithProducts(List<Integer> productSkuArrayList) {
-        PreparedStatement stmt = null;
-        List<Shop> arrayShop= new ArrayList<>();
-        try {
-            String sql = "SELECT DISTINCT * FROM product_shop PS JOIN shop S on S.shop_id = PS.shop_id WHERE sku IN " + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList);
-            stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            arrayShop = convertRSInArrayShop(rs);
-        } catch (SQLException se) {
-            logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
-        }
-        return arrayShop;
-    }
-
     public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();

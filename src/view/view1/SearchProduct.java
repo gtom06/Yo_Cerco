@@ -89,14 +89,6 @@ public class SearchProduct {
         }
     }
 
-    @FXML
-    protected void onSearchShopButtonClick() {
-        ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
-        for (SimpleProduct sp : productTableView.getSelectionModel().getSelectedItems()) {
-            simpleProductArrayList.add(sp);
-        }
-        ShopHandler.findShopsContainingProductBy(simpleProductArrayList);
-    }
     public void passUser(User user) {
         this.user = user;
         textHi.setText(user.getUsername());
