@@ -3,6 +3,7 @@ package model.dao;
 import model.Constants;
 
 import model.ConstantsExceptions;
+import model.ConstantsQueries;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
@@ -13,17 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserDao {
-    private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
-    private static final String SELECT_DISTINCT_ALL_FROM_SHOP = "SELECT DISTINCT * FROM shop ";
-    private static final String AND_TYPE ="AND type = ?";
-    private static final String TWO_VALUES = "VALUES (?, ?)";
-    private static final String WHERE_USERNAME = "WHERE username = ?";
-    private static final String AND_TIME = "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
     private static final Connection conn = DbHelper.getInstance().getConnection();
     static Logger logger = Logger.getLogger(UserDao.class.getName());
     private UserDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
+
     public static boolean validateLogin(String username, String password) {
         boolean output = false;
         try {
@@ -46,9 +42,9 @@ public class UserDao {
     public static User retrieveUserFrom(String username) {
         User user = null;
         try {
-            String sql = SELECT_DISTINCT_ALL +
+            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM userx " +
-                    WHERE_USERNAME;
+                    ConstantsQueries.WHERE_USERNAME;
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();

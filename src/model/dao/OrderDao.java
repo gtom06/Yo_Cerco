@@ -2,6 +2,7 @@ package model.dao;
 
 import exceptions.FileElaborationException;
 import model.ConstantsExceptions;
+import model.ConstantsQueries;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;
@@ -15,14 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderDao {
-    private static final String SELECT_DISTINCT_ALL = "SELECT DISTINCT * ";
-    private static final String SELECT_DISTINCT_ALL_FROM_SHOP = "SELECT DISTINCT * FROM shop ";
-    private static final String AND_TYPE ="AND type = ?";
-    private static final String TWO_VALUES = "VALUES (?, ?)";
-    private static final String WHERE_USERNAME = "WHERE username = ?";
-    private static final String AND_TIME = "AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
     private static final Connection conn = DbHelper.getInstance().getConnection();
-    public static final String STATUS = "status";
     private OrderDao(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -31,22 +25,28 @@ public class OrderDao {
     public static List<Order> findOrdersFromUser(String username) {
         List<Order> orderArrayList = new ArrayList<>();
         try {
-            String sql = SELECT_DISTINCT_ALL +
+            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM orders " +
-                    WHERE_USERNAME;
+                    ConstantsQueries.WHERE_USERNAME;
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             orderArrayList = convertRSInArrayOrder(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return orderArrayList;
     }
 
     public static Order findOrderItemsFromOrder(Order order) {
         try {
-            String sql = SELECT_DISTINCT_ALL +
+            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
                     "FROM order_items " +
                     "WHERE order_id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -56,6 +56,12 @@ public class OrderDao {
             order.setOrderItemString(rs.getString("items"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return order;
     }
@@ -78,10 +84,16 @@ public class OrderDao {
             rs.next();
             order.setOrderId(rs.getInt("order_id"));
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
-            order.setStatus(rs.getString(STATUS));
+            order.setStatus(rs.getString("status"));
             order.setCollectionTimestamp(rs.getTimestamp("collection_order_timestamp"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return order;
     }
@@ -101,9 +113,15 @@ public class OrderDao {
             rs.next();
             payment.setPaymentId(rs.getInt("payment_id"));
             payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
-            payment.setStatus(rs.getString(STATUS));
+            payment.setStatus(rs.getString("status"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return payment;
     }
@@ -112,13 +130,19 @@ public class OrderDao {
     public static boolean insertOrderItems(int orderId, String jsonOrderItems) {
         try {
             String sql = "INSERT INTO order_items (order_id, items) " +
-                    TWO_VALUES;
+                    ConstantsQueries.TWO_VALUES;
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderId);
             stmt.setString(2, jsonOrderItems);
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return true;
     }
@@ -138,6 +162,12 @@ public class OrderDao {
             orderArrayList = convertRSInArrayOrder(rs);
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return orderArrayList;
     }
@@ -153,6 +183,12 @@ public class OrderDao {
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e){
+                logger.log(Level.OFF, "conn close error");
+            }
         }
         return true;
     }
