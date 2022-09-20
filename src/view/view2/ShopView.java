@@ -26,6 +26,7 @@ import model.Constants;
 import model.department.Department;
 import model.product.ProductShop;
 import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.User;
 import view.view1.SearchShop;
 
@@ -42,7 +43,7 @@ import java.util.logging.Logger;
 
 public class ShopView {
     InputStream stream = null;
-    Shop shop = null;
+    Shop2 shop = null;
     User user = null;
     List<Department> departmentArrayList = null;
     @FXML
@@ -147,7 +148,7 @@ public class ShopView {
         stage.close();
     }
 
-    public void passParams(User user, Shop shop) throws FileNotFoundException {
+    public void passParams(User user, Shop2 shop) throws FileNotFoundException {
         this.user = user;
         this.shop = shop;
 

@@ -15,6 +15,7 @@ import model.Constants;
 import model.department.Department;
 import model.product.ProductShop;
 import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.User;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +27,7 @@ import java.util.logging.Logger;
 import static model.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ProductView {
-    Shop shop = null;
+    Shop2 shop = null;
     User user = null;
     ProductShop productShop = null;
     Department department = null;
@@ -66,7 +67,7 @@ public class ProductView {
     static final Logger logger = Logger.getLogger(ProductView.class.getName());
 
 
-    public void passParams(User user, Department department, ProductShop productShop, Shop shop) throws FileNotFoundException {
+    public void passParams(User user, Department department, ProductShop productShop, Shop2 shop) throws FileNotFoundException {
 
         this.user = user;
         this.department = department;

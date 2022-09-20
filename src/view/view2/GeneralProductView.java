@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
 import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.User;
 
 import java.io.FileInputStream;
@@ -45,12 +46,12 @@ public class GeneralProductView {
     @FXML
     protected Label brandProd;
     @FXML
-    protected TableView<Shop> shopsTableView = new TableView<>();
-    protected TableColumn<Shop, String> nameColumn;
-    protected TableColumn<Shop, String> addressColumn;
-    protected TableColumn<Shop, String> cityColumn;
-    protected TableColumn<Shop, String> openingColumn;
-    protected TableColumn<Shop, String> closingColumn;
+    protected TableView<Shop2> shopsTableView = new TableView<>();
+    protected TableColumn<Shop2, String> nameColumn;
+    protected TableColumn<Shop2, String> addressColumn;
+    protected TableColumn<Shop2, String> cityColumn;
+    protected TableColumn<Shop2, String> openingColumn;
+    protected TableColumn<Shop2, String> closingColumn;
 
     InputStream stream = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
@@ -61,12 +62,12 @@ public class GeneralProductView {
         this.simpleProduct = simpleProduct;
         brandProd.setText(simpleProduct.getBrand());
         nameProd.setText(simpleProduct.getName());
-        List<Shop> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
+        List<Shop2> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
 
         stream = new FileInputStream(simpleProduct.getLogoImagepath());
         Image productImage = new Image(stream, 200, 200, false, false);
         productPhoto.setImage(productImage);
-        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
+        ObservableList<Shop2> observableListShops = FXCollections.observableArrayList();
         if (arrayShopList != null) {
             observableListShops.addAll(arrayShopList);
             shopsTableView.setItems(observableListShops);
@@ -148,7 +149,7 @@ public class GeneralProductView {
     protected void onItemClickedTableView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
         Parent root = loader.load();
-        Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
+        Shop2 shop = shopsTableView.getSelectionModel().getSelectedItem();
         if (shop != null) {
             ShopProductView shopProductView = loader.getController();
             shopProductView.passParams(user, simpleProduct, shop);

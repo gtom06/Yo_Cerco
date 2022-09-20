@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Constants;
-import model.order.Order;
+import model.order.Order2;
 import model.user.User;
 
 import java.io.IOException;
@@ -25,12 +25,12 @@ public class HomepageAdmin {
     User user = null;
     // Import the application's controls
     @FXML
-    protected TableView<Order> orderTableView = new TableView<>();
-    protected TableColumn<Order, String> orderNumber;
-    protected TableColumn<Order, Integer> orderTotalQuantity;
-    protected TableColumn<Order, String> orderTotalPrice;
-    protected TableColumn<Order, Timestamp> orderTimeStamp;
-    protected TableColumn<Order, String> orderStatus;
+    protected TableView<Order2> orderTableView = new TableView<>();
+    protected TableColumn<Order2, String> orderNumber;
+    protected TableColumn<Order2, Integer> orderTotalQuantity;
+    protected TableColumn<Order2, String> orderTotalPrice;
+    protected TableColumn<Order2, Timestamp> orderTimeStamp;
+    protected TableColumn<Order2, String> orderStatus;
     static final Logger logger = Logger.getLogger(HomepageAdmin.class.getName());
 
     @FXML
@@ -48,7 +48,7 @@ public class HomepageAdmin {
 
     @FXML
     protected void onOrderClicked() throws IOException {
-        Order order = orderTableView.getSelectionModel().getSelectedItem();
+        Order2 order = orderTableView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
         Parent root = loader.load();
         SpecificOrderAdmin specificOrderAdmin = loader.getController();
@@ -90,10 +90,10 @@ public class HomepageAdmin {
 
     protected void fillTableView() {
         orderTableView.getItems().clear();
-        ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        List<Order> orderArrayList = OrderHandler.findOrdersByAdmin(user);
+        ObservableList<Order2> orderObservableList = FXCollections.observableArrayList();
+        List<Order2> orderArrayList = OrderHandler.findOrdersByAdmin(user);
         if (orderArrayList != null) {
-            for (Order o : orderArrayList) {
+            for (Order2 o : orderArrayList) {
                 orderObservableList.add(o);
             }
             orderTableView.setItems(orderObservableList);

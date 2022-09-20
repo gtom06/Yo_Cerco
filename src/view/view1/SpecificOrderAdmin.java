@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.order.Order;
+import model.order.Order2;
 import model.order.OrderItem;
 import model.user.User;
 
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
     User user = null;
-    Order order = null;
+    Order2 order = null;
     @FXML
     protected ImageView homepageImageView;
     @FXML
@@ -110,7 +110,7 @@ public class SpecificOrderAdmin {
         }
     }
 
-    protected void passParams(User user, Order order) {
+    protected void passParams(User user, Order2 order) {
         this.user = user;
         this.order = order;
         textHi.setText(user.getUsername());

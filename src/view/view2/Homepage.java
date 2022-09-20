@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import model.Constants;
 import model.product.SimpleProduct;
 import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.Buyer;
 import model.user.User;
 
@@ -60,13 +61,13 @@ public class Homepage {
     @FXML
     protected TextField searchParam;
     @FXML
-    protected TableView<Shop> shopTableView = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn;
-    protected TableColumn<Shop, String> cityColumn;
-    protected TableColumn<Shop, String> nameColumn;
-    protected TableColumn<Shop, String> openingColumn;
-    protected TableColumn<Shop, String> closingColumn;
-    protected TableColumn<Shop, Double> distanceColumn;
+    protected TableView<Shop2> shopTableView = new TableView<>();
+    protected TableColumn<Shop2, String> addressColumn;
+    protected TableColumn<Shop2, String> cityColumn;
+    protected TableColumn<Shop2, String> nameColumn;
+    protected TableColumn<Shop2, String> openingColumn;
+    protected TableColumn<Shop2, String> closingColumn;
+    protected TableColumn<Shop2, Double> distanceColumn;
 
     @FXML
     protected TableView<SimpleProduct> productTableView = new TableView<>();
@@ -78,7 +79,7 @@ public class Homepage {
     static final Logger logger = Logger.getLogger(Homepage.class.getName());
 
     User user = null;
-    List<Shop> shopArrayList;
+    List<Shop2> shopArrayList;
 
     public void passParams(User user) throws FileNotFoundException, AddressException {
         this.user = user;
@@ -140,10 +141,10 @@ public class Homepage {
 
     @FXML
     protected void onClickOnShop(MouseEvent mouseEvent) {
-        Shop shop = null;
+        Shop2 shop = null;
         try {
             int ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-            for (Shop s : shopArrayList){
+            for (Shop2 s : shopArrayList){
                 if (s.getShopId() == ref) {
                     shop = s;
                     break;
@@ -158,7 +159,7 @@ public class Homepage {
     @FXML
     protected void onClickOnShopTableView() {
         try {
-            Shop shop = shopTableView.getSelectionModel().getSelectedItem();
+            Shop2 shop = shopTableView.getSelectionModel().getSelectedItem();
             if (shop != null) {
                 goToShop(shop);
             }
@@ -168,7 +169,7 @@ public class Homepage {
     }
 
     @FXML
-    protected void goToShop(Shop shop) throws IOException {
+    protected void goToShop(Shop2 shop) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
         ShopView shopView = loader.getController();
@@ -201,7 +202,7 @@ public class Homepage {
 
     @FXML
     protected void onClickOnLocation() throws AddressException {
-        List<Shop> searchShopArrayList;
+        List<Shop2> searchShopArrayList;
         distanceColumn.setVisible(true);
         shopTableView.getItems().clear();
         searchShopArrayList = ShopHandler.findShopNearbyWithParams(((Buyer) user).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
@@ -210,7 +211,7 @@ public class Homepage {
         choiceBox.setValue(Constants.SHOP);
         searchParam.setText("My position");
         if (searchShopArrayList != null && searchShopArrayList.size() != 0) {
-            ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
+            ObservableList<Shop2> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
             if (observableListShop.size()!= 0){
                 shopTableView.setItems(observableListShop);
             }
@@ -222,7 +223,7 @@ public class Homepage {
     @FXML
     protected void onSearchButtonClick() throws AddressException {
         Object selected = choiceBox.getSelectionModel().getSelectedItem();
-        ArrayList<Shop> searchShopArrayList;
+        ArrayList<Shop2> searchShopArrayList;
         ArrayList<SimpleProduct> searchSimpleProductArrayList = null;
 
         if (selected != null){
@@ -236,9 +237,9 @@ public class Homepage {
                     productTableView.setVisible(true);
                     shopTableView.setVisible(true);
                     distanceColumn.setVisible(false);
-                    searchShopArrayList = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
+                    searchShopArrayList = (ArrayList<Shop2>) ShopHandler.findShopByCityWithParams(searchString, false, Constants.ALL_TYPES);
                     if (searchShopArrayList != null) {
-                        ObservableList<Shop> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
+                        ObservableList<Shop2> observableListShop = FXCollections.observableArrayList(searchShopArrayList);
                         if (!observableListShop.isEmpty()) {
                             shopTableView.setItems(observableListShop);
                         }

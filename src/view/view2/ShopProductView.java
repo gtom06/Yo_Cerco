@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
 import model.shop.Shop;
+import model.shop.Shop2;
 import model.user.User;
 
 import java.io.FileInputStream;
@@ -52,7 +53,7 @@ public class ShopProductView {
     @FXML
     protected TextArea descriptionTextArea;
 
-    public void passParams(User user, SimpleProduct simpleProduct, Shop shop) throws FileNotFoundException {
+    public void passParams(User user, SimpleProduct simpleProduct, Shop2 shop) throws FileNotFoundException {
         this.user = user;
         this.simpleProduct = simpleProduct;
 

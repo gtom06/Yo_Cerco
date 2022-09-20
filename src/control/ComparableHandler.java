@@ -3,6 +3,7 @@ package control;
 import model.address.Address;
 import model.ConstantsExceptions;
 import model.shop.Shop;
+import model.shop.Shop2;
 
 import java.util.*;
 
@@ -11,8 +12,8 @@ public class ComparableHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static List<Shop> orderShopsByDistance(List<Shop> shopList, Address address) {
-        for (Shop shop : shopList) {
+    public static List<Shop2> orderShopsByDistance(List<Shop2> shopList, Address address) {
+        for (Shop2 shop : shopList) {
             shop.setDistance(
                     Math.round(LocationHandler.calculateDistancePointToPoint(shop,address) * 100.0) / 100.0
             );

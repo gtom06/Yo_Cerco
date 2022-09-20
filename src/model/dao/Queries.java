@@ -5,7 +5,7 @@ import model.Constants;
 
 import model.ConstantsExceptions;
 import model.db.DbHelper;
-import model.order.Order;
+import model.order.Order2;
 import model.order.Payment;
 import java.sql.*;
 import java.time.Instant;
@@ -282,7 +282,7 @@ public class Queries {
         return stmt.getResultSet();
     }
 
-    public static ResultSet insertOrderQuery(Order order) throws SQLException {
+    public static ResultSet insertOrderQuery(Order2 order) throws SQLException {
         String sql = "INSERT INTO orders (shop_id, username, payment_id, order_timestamp, total_price, total_quantity, currency, collection_order_timestamp) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
                 "RETURNING *";

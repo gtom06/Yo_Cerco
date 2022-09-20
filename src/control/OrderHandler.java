@@ -6,7 +6,7 @@ import exceptions.FileElaborationException;
 import model.Constants;
 import model.ConstantsExceptions;
 import model.dao.OrderDao;
-import model.order.Order;
+import model.order.Order2;
 import model.order.OrderItem;
 import model.order.Payment;
 import model.user.User;
@@ -22,19 +22,19 @@ public class OrderHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static List<Order> findOrdersInfoFromUser(User user) {
-        ArrayList<Order> orderArrayList = (ArrayList<Order>) OrderDao.findOrdersFromUser(user.getUsername());
+    public static List<Order2> findOrdersInfoFromUser(User user) {
+        ArrayList<Order2> orderArrayList = (ArrayList<Order2>) OrderDao.findOrdersFromUser(user.getUsername());
         return !orderArrayList.isEmpty() ? orderArrayList : null;
     }
 
-    public static List<Order> findOrdersByAdmin(User user){
-        ArrayList<Order> orderArrayList = (ArrayList<Order>) OrderDao.findOrdersByAdmin(user.getUsername());
+    public static List<Order2> findOrdersByAdmin(User user){
+        ArrayList<Order2> orderArrayList = (ArrayList<Order2>) OrderDao.findOrdersByAdmin(user.getUsername());
         return !orderArrayList.isEmpty() ? orderArrayList : null;
     }
 
-    public static Order populateOrderWithOrderItems(Order order){
+    public static Order2 populateOrderWithOrderItems(Order2 order){
         ArrayList<OrderItem> orderItemArrayList;
-        Order orderOutput = null;
+        Order2 orderOutput = null;
         try {
             orderOutput = OrderDao.findOrderItemsFromOrder(order);
             OrderItem[] output = new Gson().fromJson(order.getOrderItemString(), OrderItem[].class);
@@ -49,7 +49,7 @@ public class OrderHandler {
         return orderOutput;
     }
 
-    public static Order previewOrder() throws ExceptionCart {
+    public static Order2 previewOrder() throws ExceptionCart {
         List<OrderItem> orderItemArrayList;
         CartElaboration.delete0QuantityItemsFromCart();
         orderItemArrayList = CartElaboration.readOrderItemsFromCart();
@@ -67,13 +67,11 @@ public class OrderHandler {
             }
             orderCurrency = orderItemArrayList.get(0).getCurrency();
         }
-        return new Order(0, shopId, null, 0, null,
-                orderTotalPrice, orderCurrency, null, null, orderTotalQuantity,
-                null, null);
+        return new Order2(0, shopId, null, new Payment(0, null, null, orderTotalPrice, orderCurrency, null, null), orderTotalQuantity, orderItemArrayList, null);
     }
 
-    public static Order createOrder(User user, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
-        Order order = null;
+    public static Order2 createOrder(User user, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
+        Order2 order = null;
         Payment payment = null;
         int shopId = 0;
         List<OrderItem> orderItemArrayList;
@@ -131,20 +129,16 @@ public class OrderHandler {
                 return null;
             }
 
-            order = new Order(
+            order = new Order2(
                     0,
                     shopId,
                     user.getUsername(),
-                    payment.getPaymentId(),
-                    payment.getPaymentTimestamp(),
-                    orderTotalPrice,
-                    payment.getCurrency(),
-                    null,
-                    null,
+                    payment,
                     orderTotalQuantity,
                     orderItemArrayList,
                     orderItemsJson
             );
+
             //insert order
             order = OrderDao.insertOrder(order);
             //check on order
@@ -160,7 +154,7 @@ public class OrderHandler {
         return null;
     }
 
-    public static boolean setStatusOrder(Order order, String status) {
+    public static boolean setStatusOrder(Order2 order, String status) {
         return OrderDao.setStatusOrder(order.getOrderId(), status);
     }
 }

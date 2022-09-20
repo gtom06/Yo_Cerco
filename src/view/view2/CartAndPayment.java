@@ -17,8 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Constants;
-import model.ConstantsExceptions;
-import model.order.Order;
+import model.order.Order2;
 import model.order.OrderItem;
 import model.shop.Shop;
 import model.user.Buyer;
@@ -103,7 +102,7 @@ public class CartAndPayment {
             orderItemsTableView.setItems(observableListProducts);
         }
 
-        Order order = OrderHandler.previewOrder();
+        Order2 order = OrderHandler.previewOrder();
         if (order != null){
             totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
             totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
@@ -185,7 +184,7 @@ public class CartAndPayment {
         String mm = mmTextField.getText();
         String yy = yyTextField.getText();
         String cvv = cvvTextField.getText();
-        Order order = null;
+        Order2 order = null;
 
         if (cardRadioButton.isSelected() && cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
             logger.log(Level.INFO, "reviewPayment");
