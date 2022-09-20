@@ -1,7 +1,6 @@
 package dao;
 
 import constants.ConstantsExceptions;
-import constants.ConstantsQueries;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;

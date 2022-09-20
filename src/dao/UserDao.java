@@ -3,8 +3,6 @@ package dao;
 import constants.Constants;
 
 import constants.ConstantsExceptions;
-import constants.ConstantsQueries;
-import constants.Queries;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
@@ -25,7 +23,7 @@ public class UserDao {
         PreparedStatement stmt = null;
         boolean output = false;
         try {
-            String sql = Queries.VALIDATE_LOGIN;
+            String sql = "SELECT username, pass FROM userx WHERE username = ? AND pass = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2,password);
@@ -51,9 +49,7 @@ public class UserDao {
         PreparedStatement stmt = null;
         User user = null;
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM userx " +
-                    ConstantsQueries.WHERE_USERNAME;
+            String sql = "SELECT DISTINCT * FROM userx WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
@@ -118,7 +114,7 @@ public class UserDao {
     public static boolean updateBuyerRecord(User user) {
         PreparedStatement stmt = null;
         try {
-            String sql = Queries.UPDATE_BUYER_RECORD;
+            String sql = "UPDATE userx SET name=?,surname=?,billing_street=?,billing_city=?,billing_country=?,billing_zip=?,phone=?,profile_imagepath=? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getSurname());

@@ -2,7 +2,6 @@ package dao;
 
 import constants.Constants;
 import constants.ConstantsExceptions;
-import constants.ConstantsQueries;
 import model.address.Address;
 import model.db.DbHelper;
 import model.product.SimpleProduct;
@@ -28,12 +27,9 @@ public class ShopDao {
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP +
-                    "WHERE LOWER(city) " +
-                    "LIKE ? AND status != ? "+
-                    ConstantsQueries.AND_TIME;
+            String sql = "SELECT DISTINCT * FROM shop WHERE LOWER(city) LIKE ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ?";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
-                sql = sql.concat(ConstantsQueries.AND_TYPE);
+                sql = sql.concat(" AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + city.toLowerCase() + "%");
@@ -64,12 +60,9 @@ public class ShopDao {
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP +
-                    "WHERE LOWER(name) " +
-                    "LIKE ? AND status != ? " +
-                    ConstantsQueries.AND_TIME;
+            String sql = "SELECT DISTINCT * FROM shop WHERE LOWER(name) LIKE ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
-                sql = sql.concat(ConstantsQueries.AND_TYPE);
+                sql = sql.concat("AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + name.toLowerCase() + "%");
@@ -100,15 +93,9 @@ public class ShopDao {
         List<Shop> arrayShop= new ArrayList<>();
         try {
             ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP +
-                    "WHERE  ? < latitude " +
-                    "AND latitude < ? " +
-                    "AND ? < longitude " +
-                    "AND longitude < ? " +
-                    "AND status != ? "+
-                    ConstantsQueries.AND_TIME;
+            String sql = "SELECT DISTINCT * FROM shop WHERE  ? < latitude AND latitude < ? AND ? < longitude AND longitude < ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
-                sql = sql.concat(ConstantsQueries.AND_TYPE);
+                sql = sql.concat("AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, lat - 0.5);
@@ -141,9 +128,7 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP + " s JOIN user_favoriteshop ufs " +
-                    "ON s.shop_id = ufs.shop_id " +
-                    "WHERE LOWER(username) = ?";
+            String sql = "SELECT DISTINCT * FROM shop s JOIN user_favoriteshop ufs ON s.shop_id = ufs.shop_id WHERE LOWER(username) = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username.toLowerCase());
             ResultSet rs = stmt.executeQuery();
@@ -166,10 +151,7 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM product_shop PS " +
-                    "JOIN shop S on S.shop_id = PS.shop_id " +
-                    "WHERE sku IN ";
+            String sql = "SELECT DISTINCT * FROM product_shop PS JOIN shop S on S.shop_id = PS.shop_id WHERE sku IN ";
             stmt = conn.prepareStatement(sql + QueriesHelper.buildSqlStringFromArrayOfIntegers(productSkuArrayList));
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
@@ -191,12 +173,7 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL_FROM_SHOP + " S " +
-                    "JOIN product_shop PS " +
-                    "ON S.shop_id = PS.shop_id "+
-                    "JOIN product p " +
-                    "ON PS.sku = p.sku " +
-                    "WHERE p.sku = ?";
+            String sql = "SELECT DISTINCT * FROM shop S JOIN product_shop PS ON S.shop_id = PS.shop_id JOIN product p ON PS.sku = p.sku WHERE p.sku = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, simpleProduct.getSku());
             ResultSet rs = stmt.executeQuery();
@@ -219,8 +196,7 @@ public class ShopDao {
     public static void insertFavoriteShopIntoDb(int shopId, String username) {
         PreparedStatement stmt = null;
         try {
-            String sql = "INSERT INTO user_favoriteshop (username, shop_id) " +
-                    ConstantsQueries.TWO_VALUES;
+            String sql = "INSERT INTO user_favoriteshop (username, shop_id) VALUES (?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, shopId);
@@ -241,8 +217,7 @@ public class ShopDao {
     public static void removeFavoriteShopFromDb(int shopId, String username) {
         PreparedStatement stmt = null;
         try {
-            String sql = "DELETE FROM user_favoriteshop " +
-                    "WHERE LOWER(username) = ? AND shop_id = ?";
+            String sql = "DELETE FROM user_favoriteshop WHERE LOWER(username) = ? AND shop_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username.toLowerCase());
             stmt.setInt(2, shopId);
@@ -264,9 +239,7 @@ public class ShopDao {
         PreparedStatement stmt = null;
         boolean output = false;
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
-                    "FROM user_favoriteshop " +
-                    "WHERE shop_id = ? AND LOWER(username) = ?";
+            String sql = "SELECT DISTINCT * FROM user_favoriteshop WHERE shop_id = ? AND LOWER(username) = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, shopId);
             stmt.setString(2, username.toLowerCase());

@@ -1,7 +1,6 @@
 package dao;
 
 import constants.ConstantsExceptions;
-import constants.ConstantsQueries;
 import model.db.DbHelper;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
@@ -121,8 +120,7 @@ public class ProductDao {
     public static void insertFavoriteProductIntoDb(String username, int sku ) {
         PreparedStatement stmt = null;
         try {
-            String sql = "INSERT INTO user_favoriteproduct (username, sku) " +
-                    ConstantsQueries.TWO_VALUES;
+            String sql = "INSERT INTO user_favoriteproduct (username, sku) VALUES (?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setInt(2, sku);
@@ -167,7 +165,7 @@ public class ProductDao {
         PreparedStatement stmt = null;
         ArrayList<ProductShop> productArrayList = new ArrayList<>();
         try {
-            String sql = ConstantsQueries.SELECT_DISTINCT_ALL +
+            String sql = "SELECT DISTINCT * " +
                     "FROM product P JOIN product_shop PS " +
                     "ON P.sku = PS.sku " +
                     "WHERE shop_id = ? AND PS.sku = ?";
