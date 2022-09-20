@@ -213,7 +213,7 @@ public class CartAndPayment {
         }
         else {
             if (!CartElaboration.isEmptyCart()) {
-                if (!OrderHandler.validateDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
+                if (OrderHandler.someBlankDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
                     logger.log(Level.INFO, "please fill data");
                 } else {
                     UserHandler.updateRecord(

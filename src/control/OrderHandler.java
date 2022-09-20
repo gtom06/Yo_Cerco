@@ -159,11 +159,8 @@ public class OrderHandler {
         return OrderDao.setStatusOrder(order.getOrderId(), status);
     }
 
-    public static boolean validateDataUser(String name, String surname, String billingStreet, String billingCity, String billingCountry, String billingZip, String phoneNumber) {
-        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() ||
-                billingCountry.isBlank() || billingZip.isBlank() || phoneNumber.isBlank()) {
-            return false;
-        }
-        return true;
+    public static boolean someBlankDataUser(String name, String surname, String billingStreet, String billingCity, String billingCountry, String billingZip, String phoneNumber) {
+        return name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() ||
+                billingCountry.isBlank() || billingZip.isBlank() || phoneNumber.isBlank();
     }
 }
