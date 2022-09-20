@@ -365,7 +365,6 @@ public class Queries {
                 WHERE_USERNAME;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, username);
-        stmt.executeQuery();
-        return stmt.getResultSet();
+        return stmt.executeQuery();
     }
 }

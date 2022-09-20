@@ -32,18 +32,12 @@ public class UserDao {
 
     public static User retrieveUserFrom(String username) {
         User user = null;
-        ResultSet rs = null;
         try {
-            rs = Queries.retrieveUserFromQuery(username);
+            ResultSet rs = Queries.retrieveUserFromQuery(username);
             user = convertRSInUser(rs);
+            rs.close();
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while finding user");
-        } finally{
-            try {
-            rs.getStatement().close();
-            } catch (Exception e ){
-
-            }
         }
         return user;
 
