@@ -160,13 +160,10 @@ public class OrderHandler {
     }
 
     public static boolean validateDataUser(String name, String surname, String billingStreet, String billingCity, String billingCountry, String billingZip, String phoneNumber) {
-        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() ||
-                billingCity.isBlank() || billingCountry.isBlank() ||
-                billingZip.isBlank() || phoneNumber.isBlank()) {
+        if (name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() ||
+                billingCountry.isBlank() || billingZip.isBlank() || phoneNumber.isBlank()) {
             return false;
         }
-        else {
-            return true;
-        }
+        return true;
     }
 }

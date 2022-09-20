@@ -23,9 +23,6 @@ public class DbHelper {
         if (dbHelper == null){
             dbHelper = new DbHelper();
         }
-        if (dbHelper.getConnection() == null){
-            connection = DbHelper.getInstance().getConnection();
-        }
         return dbHelper;
     }
 
