@@ -205,7 +205,6 @@ public class CartElaboration {
     public static boolean delete0QuantityItemsFromCart() throws IOException {
         //initialize vars
         boolean output = false;
-        BufferedWriter out = null;
         ArrayList<OrderItem> orderItemArrayList;
         ArrayList<OrderItem> orderItemArrayListToDel = new ArrayList<>();
         try {
@@ -222,9 +221,10 @@ public class CartElaboration {
                 } else {
                     orderItemArrayList.removeAll(orderItemArrayListToDel);
                     String json = new Gson().toJson(orderItemArrayList);
-                    out = new BufferedWriter(new FileWriter(Constants.CART_PATH));
-                    out.write(json);
-                    output = true;
+                    try (BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH))) {
+                        out.write(json);
+                        output = true;
+                    }
                 }
             }
         } catch (Exception e) {
