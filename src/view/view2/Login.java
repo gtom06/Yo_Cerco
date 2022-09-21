@@ -16,7 +16,9 @@ import model.user.Buyer;
 import model.user.User;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.List;
 
 public class Login {
@@ -123,22 +125,25 @@ public class Login {
             invalidLoginCredentials.setText("");
             RadioButton rb = (RadioButton) gender.getSelectedToggle();
             String genderString = rb.getText();
-            if (!UserHandler.insertUser(signUpUsernameTextField.getText(),
-                    nameTextField.getText(),
-                    surnameTextField.getText(),
+            List<? extends Serializable> data = Arrays.asList(
+                    signUpUsernameTextField.getText(),
+                    null,
+                    null,
                     signUpPasswordPasswordField.getText(),
                     signUpEmailTextField.getText(),
-                    Date.valueOf(signUpDateDatePicker.getValue()),
-                    billingStreetTextField.getText(),
-                    billingCityTextField.getText(),
-                    billingCountryTextField.getText(),
-                    billingZipTextField.getText(),
-                    phoneTextField.getText(),
+                    signUpDateDatePicker.getValue().toString(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
                     genderString,
-                    Constants.BUYER_USER)){
+                    Constants.BUYER_USER);
+            if (!UserHandler.insertUser2((List<String>) data)){
                 invalidSignupCredentials.setText("Please use another username!");
                 invalidLoginCredentials.setText("");
-            } else {
+            }
+            else {
                 invalidSignupCredentials.setText("You are set!");
                 loginUsernameTextField.setText(signUpUsernameTextField.getText());
                 loginPasswordPasswordField.setText(signUpPasswordPasswordField.getText());

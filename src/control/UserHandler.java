@@ -7,6 +7,7 @@ import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;
 import java.sql.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,29 +24,26 @@ public class UserHandler {
         return UserDao.retrieveUserFrom(username);
     }
 
-    public static boolean insertUser(String username, String name, String surname, String password, String email,
-                                     Date dateOfBirth, String billingStreet, String billingCity,
-                                     String billingCountry, String billingZip, String phone, String gender,
-                                     String roleString) {
-        if (roleString.equals(Constants.BUYER) || roleString.equals(Constants.BUYER_USER)) {
+    public static boolean insertUser2(List<String> data){
+        if (data.get(12).equals(Constants.BUYER) || data.get(12).equals(Constants.BUYER_USER)) {
             Buyer buyer = new Buyer(
-                    username,
-                    name,
-                    surname,
-                    password,
-					email,
-                    dateOfBirth,
-                    billingStreet,
-                    billingCity,
-                    billingCountry,
-                    billingZip,
-                    phone,
-                    gender,
+                    data.get(0),
+                    data.get(1),
+                    data.get(2),
+                    data.get(3),
+                    data.get(4),
+                    Date.valueOf(data.get(5)),
+                    data.get(6),
+                    data.get(7),
+                    data.get(8),
+                    data.get(9),
+                    data.get(10),
+                    data.get(11),
                     null
             );
             return UserDao.insertUser(buyer);
-        } else if (roleString.equals(Constants.ADMIN) || roleString.equals(Constants.ADMIN_USER)) {
-            Admin admin = new Admin(username, name, surname, email, null);
+        } else if (data.get(0).equals(Constants.ADMIN) || data.get(0).equals(Constants.ADMIN_USER)) {
+            Admin admin = new Admin(data.get(1), data.get(2), data.get(3), data.get(4), null);
             return UserDao.insertUser(admin);
         }
         logger.log(Level.WARNING, "insert failed");
