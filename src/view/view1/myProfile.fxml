@@ -71,7 +71,7 @@
                   <Font name="Tahoma Bold" size="22.0" />
                </font>
             </Text>
-            <ImageView fx:id="editImageView" fitHeight="28.0" fitWidth="28.0" layoutX="259.0" layoutY="14.0" onMouseClicked="#editProfile" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="editImageView" fitHeight="28.0" fitWidth="28.0" layoutX="259.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-compose-48.png" />
                </image>
@@ -82,16 +82,6 @@
                </image>
             </ImageView>
             <Text fx:id="saveYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="32.0" onMouseClicked="#saveProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Save your profile">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="completeYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="33.0" onMouseClicked="#saveProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Complete your profile">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="modifyYourProfileText" fill="#2c2c2c" layoutX="301.0" layoutY="33.0" onMouseClicked="#editProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify your profile">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>

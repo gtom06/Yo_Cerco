@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 
 public class MyProfile {
 
@@ -44,10 +45,6 @@ public class MyProfile {
     protected Text phoneText;
     @FXML
     protected Text saveYourProfileText;
-    @FXML
-    protected Text modifyYourProfileText;
-    @FXML
-    protected Text completeYourProfileText;
     @FXML
     protected Text errorText;
     @FXML
@@ -73,8 +70,6 @@ public class MyProfile {
     @FXML
     protected AnchorPane anchorPane2;
 
-    boolean isSomeFieldBlank;
-
     @FXML
     protected void onClickAnchorPane2() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myOrders.fxml"));
@@ -98,20 +93,24 @@ public class MyProfile {
             Image profileImage = new Image(stream, 200, 200, false, false);
             myProfileImage.setImage(profileImage);
             stream.close();
-            if (this.isSomeFieldBlank == ((Buyer) user).isSomeFieldBlank()) {
-                saveYourProfileText.setVisible(false);
-                completeYourProfileText.setVisible(true);
-                modifyYourProfileText.setVisible(false);
-            }
-            else {
-                saveYourProfileText.setVisible(false);
-                completeYourProfileText.setVisible(false);
-                modifyYourProfileText.setVisible(true);
-                nameText.setText(user.getName());
-                surnameText.setText(user.getSurname());
-                phoneText.setText(((Buyer) user).getPhone());
-                addressText.setText(((Buyer) user).getBillingAddress());
-            }
+            //show textField
+            nameTextField.setVisible(true);
+            surnameTextField.setVisible(true);
+            streetTextField.setVisible(true);
+            cityTextField.setVisible(true);
+            countryTextField.setVisible(true);
+            zipTextField.setVisible(true);
+            phoneTextField.setVisible(true);
+            // populate text fields
+            nameTextField.setText(user.getName());
+            surnameTextField.setText(user.getSurname());
+            streetTextField.setText(((Buyer) user).getBillingStreet());
+            cityTextField.setText(((Buyer) user).getBillingCity());
+            countryTextField.setText(((Buyer) user).getBillingCountry());
+            zipTextField.setText(((Buyer) user).getBillingZip());
+            phoneTextField.setText(((Buyer) user).getPhone());
+
+            saveYourProfileText.setVisible(true);
         }
         if (user instanceof Admin) {
             phoneText.setVisible(false);
@@ -134,38 +133,6 @@ public class MyProfile {
     }
 
     @FXML
-    protected void editProfile() {
-        editImageView.setVisible(false);
-        saveImageView.setVisible(true);
-        saveYourProfileText.setVisible(true);
-        completeYourProfileText.setVisible(false);
-        modifyYourProfileText.setVisible(false);
-
-        //hide Text
-        nameText.setVisible(false);
-        surnameText.setVisible(false);
-        addressText.setVisible(false);
-        phoneText.setVisible(false);
-
-        //show textField
-        nameTextField.setVisible(true);
-        surnameTextField.setVisible(true);
-        streetTextField.setVisible(true);
-        cityTextField.setVisible(true);
-        countryTextField.setVisible(true);
-        zipTextField.setVisible(true);
-        phoneTextField.setVisible(true);
-        // populate text fields
-        nameTextField.setText(user.getName());
-        surnameTextField.setText(user.getSurname());
-        streetTextField.setText(((Buyer) user).getBillingStreet());
-        cityTextField.setText(((Buyer) user).getBillingCity());
-        countryTextField.setText(((Buyer) user).getBillingCountry());
-        zipTextField.setText(((Buyer) user).getBillingZip());
-        phoneTextField.setText(((Buyer) user).getPhone());
-    }
-
-    @FXML
     protected void saveProfile() {
         if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
                 streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
@@ -174,32 +141,10 @@ public class MyProfile {
             errorText.setVisible(true);
         }
         else{
-            if (UserHandler.updateRecord(user, nameTextField.getText(), surnameTextField.getText(),
+            if(UserHandler.updateRecord2(user, Arrays.asList(nameTextField.getText(), surnameTextField.getText(),
                     streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
-                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath())) {
-                //hide textfields
-                nameTextField.setVisible(false);
-                surnameTextField.setVisible(false);
-                streetTextField.setVisible(false);
-                cityTextField.setVisible(false);
-                countryTextField.setVisible(false);
-                zipTextField.setVisible(false);
-                phoneTextField.setVisible(false);
-                saveYourProfileText.setVisible(false);
-                completeYourProfileText.setVisible(false);
-                modifyYourProfileText.setVisible(true);
-                editImageView.setVisible(true);
-                saveImageView.setVisible(false);
-                errorText.setVisible(false);
-                //show Texts
-                nameText.setText(user.getName());
-                surnameText.setText(user.getSurname());
-                addressText.setText(((Buyer) user).getBillingAddress());
-                phoneText.setText(((Buyer) user).getPhone());
-                nameText.setVisible(true);
-                surnameText.setVisible(true);
-                addressText.setVisible(true);
-                phoneText.setVisible(true);
+                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath()))){
+                //
             }
         }
     }

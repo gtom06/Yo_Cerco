@@ -23,6 +23,7 @@ import model.user.Buyer;
 import model.user.User;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -216,9 +217,9 @@ public class CartAndPayment {
                 if (OrderHandler.someBlankDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
                     logger.log(Level.INFO, "please fill data");
                 } else {
-                    UserHandler.updateRecord(
-                            user, name, surname, billingStreet, billingCity, billingCountry,
-                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath());
+                    UserHandler.updateRecord2(
+                            user, Arrays.asList(name, surname, billingStreet, billingCity, billingCountry,
+                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath()));
 
                     order = OrderHandler.createOrder(
                             user,

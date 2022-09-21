@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,9 +97,9 @@ public class MyProfile {
             errorText.setVisible(true);
         }
         else{
-            if (UserHandler.updateRecord(user, nameTextField.getText(), surnameTextField.getText(),
+            if (UserHandler.updateRecord2(user, Arrays.asList(nameTextField.getText(), surnameTextField.getText(),
                     streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
-                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath())) {
+                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath()))) {
                 logger.log(Level.INFO, "update ok");
             }
         }
