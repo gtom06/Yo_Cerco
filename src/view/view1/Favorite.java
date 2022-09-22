@@ -27,156 +27,156 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Favorite {
-    User user1 = null;
+    User user1F = null;
     @FXML
     protected ImageView homepageImageView1F;
     @FXML
-    protected Text textHi1;
+    protected Text textHi1F;
     @FXML
-    protected TableView<Shop> shopTableView1 = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn1;
-    protected TableColumn<Shop, String> cityColumn1;
-    protected TableColumn<Shop, String> nameColumn1;
-    protected TableColumn<Shop, String> openingColumn1;
-    protected TableColumn<Shop, String> closingColumn1;
+    protected TableView<Shop> shopTableView1F = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn1F;
+    protected TableColumn<Shop, String> cityColumn1F;
+    protected TableColumn<Shop, String> nameColumn1F;
+    protected TableColumn<Shop, String> openingColumn1F;
+    protected TableColumn<Shop, String> closingColumn1F;
 
     @FXML
-    protected TableView<SimpleProduct> simpleProductTableView1 = new TableView<>();
-    protected TableColumn<SimpleProduct, String> brandColumn1;
-    protected TableColumn<SimpleProduct, Integer> sizeColumn1;
-    protected TableColumn<SimpleProduct, String> nameProductColumn1;
-    protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn1;
+    protected TableView<SimpleProduct> simpleProductTableView1F = new TableView<>();
+    protected TableColumn<SimpleProduct, String> brandColumn1F;
+    protected TableColumn<SimpleProduct, Integer> sizeColumn1F;
+    protected TableColumn<SimpleProduct, String> nameProductColumn1F;
+    protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn1F;
     static final Logger logger = Logger.getLogger(Favorite.class.getName());
 
     @FXML
-    protected void onShopTableViewClick() throws IOException {
+    protected void onShopTableViewClick1F() throws IOException {
 
-        Shop shop1 = shopTableView1.getSelectionModel().getSelectedItem();
+        Shop shop1F = shopTableView1F.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
-        if (shop1 != null) {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("shopView.fxml"));
-            Parent root1 = loader1.load();
-            ShopView shopView1 = loader1.getController();
-            shopView1.passUser(user1);
-            shopView1.passShop(shop1);
-            Stage newStage1 = new Stage();
-            newStage1.setScene(new Scene(root1));
-            newStage1.show();
-            newStage1.setResizable(false);
-            Stage stage1 = (Stage) shopTableView1.getScene().getWindow();
+        if (shop1F != null) {
+            FXMLLoader loader1F = new FXMLLoader(getClass().getResource("shopView.fxml"));
+            Parent root1F = loader1F.load();
+            ShopView shopView1F = loader1F.getController();
+            shopView1F.passUser(user1F);
+            shopView1F.passShop(shop1F);
+            Stage newStage1F = new Stage();
+            newStage1F.setScene(new Scene(root1F));
+            newStage1F.show();
+            newStage1F.setResizable(false);
+            Stage stage1 = (Stage) shopTableView1F.getScene().getWindow();
             stage1.close();
         }
     }
 
 
     @FXML
-    protected void onProductTableViewClick() throws IOException {
+    protected void onProductTableViewClick1F() throws IOException {
 
-        SimpleProduct product1 = simpleProductTableView1.getSelectionModel().getSelectedItem();
+        SimpleProduct product1F = simpleProductTableView1F.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
-        if (product1 != null) {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
-            Parent root1 = loader1.load();
-            GeneralProductView generalProductView1 = loader1.getController();
-            generalProductView1.passParams(user1, product1);
-            Stage newStage1 = new Stage();
-            newStage1.setScene(new Scene(root1));
-            newStage1.show();
-            newStage1.setResizable(false);
-            Stage stage1 = (Stage) simpleProductTableView1.getScene().getWindow();
-            stage1.close();
+        if (product1F != null) {
+            FXMLLoader loader1F = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
+            Parent root1F = loader1F.load();
+            GeneralProductView generalProductView1F = loader1F.getController();
+            generalProductView1F.passParams(user1F, product1F);
+            Stage newStage1F = new Stage();
+            newStage1F.setScene(new Scene(root1F));
+            newStage1F.show();
+            newStage1F.setResizable(false);
+            Stage stage1F = (Stage) simpleProductTableView1F.getScene().getWindow();
+            stage1F.close();
         }
 
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root1 = loader1.load();
-        Homepage homepage1 = loader1.getController();
-        homepage1.passUser(user1);
-        Stage newStage1 = new Stage();
-        newStage1.setScene(new Scene(root1));
-        newStage1.show();
-        newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1F.getScene().getWindow();
-        stage1.close();
+    protected void onHomepageImageClick1F() throws IOException {
+        FXMLLoader loader1F = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1F = loader1F.load();
+        Homepage homepage1F = loader1F.getController();
+        homepage1F.passUser(user1F);
+        Stage newStage1F = new Stage();
+        newStage1F.setScene(new Scene(root1F));
+        newStage1F.show();
+        newStage1F.setResizable(false);
+        Stage stage1F = (Stage) homepageImageView1F.getScene().getWindow();
+        stage1F.close();
     }
 
     public void passUser(User user) {
-        this.user1 = user;
-        textHi1.setText(user.getUsername());
-        fillShopTableView();
-        fillSimpleProductTableView();
+        this.user1F = user;
+        textHi1F.setText(user.getUsername());
+        fillShopTableView1F();
+        fillSimpleProductTableView1F();
     }
 
     @FXML
     public void initialize() {
-        shopTableView1.setEditable(true);
+        shopTableView1F.setEditable(true);
         //897
-        nameColumn1 = new TableColumn<>("ShopName");
-        addressColumn1 = new TableColumn<>("Address");
-        cityColumn1 = new TableColumn<>("City");
-        openingColumn1 = new TableColumn<>("Opening time");
-        closingColumn1 = new TableColumn<>("Closing time");
+        nameColumn1F = new TableColumn<>("ShopName");
+        addressColumn1F = new TableColumn<>("Address");
+        cityColumn1F = new TableColumn<>("City");
+        openingColumn1F = new TableColumn<>("Opening time");
+        closingColumn1F = new TableColumn<>("Closing time");
 
-        nameColumn1.setMinWidth(250);
-        addressColumn1.setMinWidth(377);
-        cityColumn1.setMinWidth(100);
-        nameColumn1.setMinWidth(10);
-        nameColumn1.setMinWidth(10);
+        nameColumn1F.setMinWidth(250);
+        addressColumn1F.setMinWidth(377);
+        cityColumn1F.setMinWidth(100);
+        nameColumn1F.setMinWidth(10);
+        nameColumn1F.setMinWidth(10);
 
-        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("shopName"));
-        addressColumn1.setCellValueFactory(new PropertyValueFactory<>("address"));
-        cityColumn1.setCellValueFactory(new PropertyValueFactory<>("city"));
-        openingColumn1.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
-        closingColumn1.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
+        nameColumn1F.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+        addressColumn1F.setCellValueFactory(new PropertyValueFactory<>("address"));
+        cityColumn1F.setCellValueFactory(new PropertyValueFactory<>("city"));
+        openingColumn1F.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
+        closingColumn1F.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
 
-        shopTableView1.getColumns().addAll(nameColumn1, addressColumn1, cityColumn1, openingColumn1, closingColumn1);
+        shopTableView1F.getColumns().addAll(nameColumn1F, addressColumn1F, cityColumn1F, openingColumn1F, closingColumn1F);
 
-        simpleProductTableView1.setEditable(true);
-        simpleProductTableView1.getSelectionModel().setSelectionMode(
+        simpleProductTableView1F.setEditable(true);
+        simpleProductTableView1F.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
         //897
-        nameProductColumn1 = new TableColumn<>("Name");
-        brandColumn1 = new TableColumn<>("Brand");
-        sizeColumn1 = new TableColumn<>("Size");
-        unitOfMeasureColumn1 = new TableColumn<>("Unit of measure");
+        nameProductColumn1F = new TableColumn<>("Name");
+        brandColumn1F = new TableColumn<>("Brand");
+        sizeColumn1F = new TableColumn<>("Size");
+        unitOfMeasureColumn1F = new TableColumn<>("Unit of measure");
 
-        nameProductColumn1.setMinWidth(477);
-        brandColumn1.setMinWidth(400);
-        sizeColumn1.setMinWidth(10);
-        unitOfMeasureColumn1.setMinWidth(10);
+        nameProductColumn1F.setMinWidth(477);
+        brandColumn1F.setMinWidth(400);
+        sizeColumn1F.setMinWidth(10);
+        unitOfMeasureColumn1F.setMinWidth(10);
 
-        nameProductColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        brandColumn1.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        sizeColumn1.setCellValueFactory(new PropertyValueFactory<>("size"));
-        unitOfMeasureColumn1.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
+        nameProductColumn1F.setCellValueFactory(new PropertyValueFactory<>("name"));
+        brandColumn1F.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        sizeColumn1F.setCellValueFactory(new PropertyValueFactory<>("size"));
+        unitOfMeasureColumn1F.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        simpleProductTableView1.getColumns().addAll(nameProductColumn1, brandColumn1, sizeColumn1, unitOfMeasureColumn1);
+        simpleProductTableView1F.getColumns().addAll(nameProductColumn1F, brandColumn1F, sizeColumn1F, unitOfMeasureColumn1F);
     }
 
-    protected void fillShopTableView() {
-        shopTableView1.getItems().clear();
-        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        List<Shop> shopArrayList = ShopHandler.findFavoriteShopsFromUser(user1);
-        if (shopArrayList != null) {
-            observableListShops.addAll(shopArrayList);
-            shopTableView1.setItems(observableListShops);
+    protected void fillShopTableView1F() {
+        shopTableView1F.getItems().clear();
+        ObservableList<Shop> observableListShops1F = FXCollections.observableArrayList();
+        List<Shop> shopArrayList1F = ShopHandler.findFavoriteShopsFromUser(user1F);
+        if (shopArrayList1F != null) {
+            observableListShops1F.addAll(shopArrayList1F);
+            shopTableView1F.setItems(observableListShops1F);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
-    protected void fillSimpleProductTableView() {
-        simpleProductTableView1.getItems().clear();
-        ObservableList<SimpleProduct> simpleProductObservableList = FXCollections.observableArrayList();
-        ArrayList<SimpleProduct> simpleProductArrayList = (ArrayList<SimpleProduct>) ProductHandler.findFavoriteSimpleProductFromUser(user1);
-        if (simpleProductArrayList != null) {
-            simpleProductObservableList.addAll(simpleProductArrayList);
-            simpleProductTableView1.setItems(simpleProductObservableList);
+    protected void fillSimpleProductTableView1F() {
+        simpleProductTableView1F.getItems().clear();
+        ObservableList<SimpleProduct> simpleProductObservableList1F = FXCollections.observableArrayList();
+        ArrayList<SimpleProduct> simpleProductArrayList1F = (ArrayList<SimpleProduct>) ProductHandler.findFavoriteSimpleProductFromUser(user1F);
+        if (simpleProductArrayList1F != null) {
+            simpleProductObservableList1F.addAll(simpleProductArrayList1F);
+            simpleProductTableView1F.setItems(simpleProductObservableList1F);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);

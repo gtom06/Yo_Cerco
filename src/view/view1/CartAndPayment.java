@@ -150,7 +150,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    protected void onCodClicked() {
+    protected void onCodClicked1CAP() {
         cardholderTextField1CAP.setVisible(false);
         creditcardTextField1CAP.setVisible(false);
         mmTextField1CAP.setVisible(false);
@@ -161,7 +161,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    protected void onCardClicked() {
+    protected void onCardClicked1CAP() {
         cardholderTextField1CAP.setVisible(true);
         creditcardTextField1CAP.setVisible(true);
         mmTextField1CAP.setVisible(true);
@@ -192,7 +192,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    protected void onPayButtonClick() throws Exception {
+    protected void onPayButtonClick1CAP() throws Exception {
         String name1 = nameTextField1CAP.getText();
         String surname1 = surnameTextField1CAP.getText();
         String phoneNumber1 = phoneNumberTextField1CAP.getText();
@@ -276,7 +276,7 @@ public class CartAndPayment {
     }
 
     @FXML
-    public void onClearCartClicked() throws ExceptionCart {
+    public void onClearCartClicked1CAP() throws ExceptionCart {
         CartElaboration.deleteCart();
         orderItemsTableView1CAP.setItems(null);
     }

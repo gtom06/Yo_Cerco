@@ -57,7 +57,7 @@ public class DepartProductView {
     static final Logger logger = Logger.getLogger(DepartProductView.class.getName());
 
     @FXML
-    protected void onListViewItemClick() throws IOException {
+    protected void onListViewItemClick1DPV() throws IOException {
         ProductShop productShop1DPV = productTable1DPV.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (productShop1DPV != null){
