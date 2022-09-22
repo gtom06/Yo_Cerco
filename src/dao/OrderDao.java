@@ -26,7 +26,7 @@ public class OrderDao {
         try {
             String sql = "SELECT DISTINCT * FROM orders WHERE username = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
+            setUsername(stmt, username);
             ResultSet rs = stmt.executeQuery();
             orderArrayList = convertRSInArrayOrder(rs);
         } catch (SQLException se) {
@@ -129,7 +129,7 @@ public class OrderDao {
             String sql = "SELECT O.order_id, O.shop_id, O.payment_id, O.order_timestamp, O.total_price, O.currency, O.status, O.collection_order_timestamp, O.total_quantity " +
                     "FROM shop S join shopholder_shop SHS ON S.shop_id = SHS.shop_id JOIN orders O ON O.shop_id = SHS.shop_id WHERE SHS.username = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
+            setUsername(stmt, username);
             ResultSet rs = stmt.executeQuery();
             orderArrayList = convertRSInArrayOrder(rs);
         } catch (SQLException se) {
@@ -172,5 +172,10 @@ public class OrderDao {
             arrayOrder.add(order);
         }
         return arrayOrder;
+    }
+
+    protected static PreparedStatement setUsername(PreparedStatement stmt, String username) throws SQLException {
+        stmt.setString(1, username);
+        return stmt;
     }
 }

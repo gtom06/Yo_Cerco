@@ -105,11 +105,6 @@ public class ProductDao {
             DbHelper.closeStatement(stmt);
         }
     }
-    protected static PreparedStatement setUsernameAndSku(PreparedStatement stmt, String username, int sku) throws SQLException {
-        stmt.setString(1, username);
-        stmt.setInt(2, sku);
-        return stmt;
-    }
 
     public static List<SimpleProduct> findSimpleProductFromUser(User user) {
         PreparedStatement stmt = null;
@@ -188,5 +183,11 @@ public class ProductDao {
             arraySimpleProduct.add(simpleProduct);
         }
         return arraySimpleProduct;
+    }
+
+    protected static PreparedStatement setUsernameAndSku(PreparedStatement stmt, String username, int sku) throws SQLException {
+        stmt.setString(1, username);
+        stmt.setInt(2, sku);
+        return stmt;
     }
 }

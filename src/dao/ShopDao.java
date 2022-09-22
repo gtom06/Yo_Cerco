@@ -46,14 +46,6 @@ public class ShopDao {
         return arrayShop;
     }
 
-    protected static PreparedStatement setShopArgs(PreparedStatement stmt, Integer hour) throws SQLException {
-        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-        stmt.setInt(1, Constants.NOT_AVAILABLE);
-        stmt.setInt(2, hours.get(1));
-        stmt.setInt(3, hours.get(0));
-        return stmt;
-    }
-
     public static List<Shop> findShopByName(String name, String type, Integer hour) {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
@@ -225,5 +217,13 @@ public class ShopDao {
             hour1 = hour2 = hour;
         }
         return new ArrayList<>(Arrays.asList(hour1, hour2));
+    }
+
+    protected static PreparedStatement setShopArgs(PreparedStatement stmt, Integer hour) throws SQLException {
+        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
+        stmt.setInt(1, Constants.NOT_AVAILABLE);
+        stmt.setInt(2, hours.get(1));
+        stmt.setInt(3, hours.get(0));
+        return stmt;
     }
 }
