@@ -113,15 +113,19 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            closeStatement(stmt);
         }
         return arrayShop;
+    }
+
+    protected static void closeStatement(PreparedStatement stmt){
+        try {
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e){
+            logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
+        }
     }
 
     public static List<Shop> findShopByFavoriteUser(String username) {
