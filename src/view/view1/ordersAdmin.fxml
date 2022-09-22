@@ -11,12 +11,12 @@
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.OrdersAdmin">
     <children>
         <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;">
-            <Text fx:id="textHi" fill="WHITE" layoutX="923.0" layoutY="32.0" >
+            <Text fx:id="textHi1OA" fill="WHITE" layoutX="923.0" layoutY="32.0" >
                 <font>
                     <Font name="Tahoma Bold" size="18.0" />
                 </font>
             </Text>
-            <ImageView fx:id="homepageImageView1OA" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="homepageImageView1OA" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick1OA" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../../images/user_interface/icons8-home-48.png" />
                 </image>
@@ -24,13 +24,13 @@
         </AnchorPane>
         <AnchorPane layoutY="50.0" maxHeight="650.0" maxWidth="1000.0" minHeight="313.0" minWidth="1000.0" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
             <children>
-                <TableView onMouseClicked="#onOrderClicked" fx:id="orderTableView" layoutX="21.0" layoutY="28.0" prefHeight="576.0" prefWidth="962.0" />
-                <Text fx:id="totalOrdersText" layoutX="21.0" layoutY="630.0" fill="#12d39d" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0">
+                <TableView onMouseClicked="#onOrderClicked1OA" fx:id="orderTableView1OA" layoutX="21.0" layoutY="28.0" prefHeight="576.0" prefWidth="962.0" />
+                <Text fx:id="totalOrdersText1OA" layoutX="21.0" layoutY="630.0" fill="#12d39d" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>
                 </Text>
-                <Text fx:id="numberOfOrdersText" layoutX="125.0" layoutY="630.0" fill="#12d39d" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0">
+                <Text fx:id="numberOfOrdersText1OA" layoutX="125.0" layoutY="630.0" fill="#12d39d" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>

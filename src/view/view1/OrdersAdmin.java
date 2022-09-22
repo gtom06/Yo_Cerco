@@ -23,105 +23,105 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrdersAdmin {
-    User user1 = null;
+    User user1OA = null;
     @FXML
     protected ImageView homepageImageView1OA;
     @FXML
-    protected Text textHi1;
+    protected Text textHi1OA;
     @FXML
-    protected Text numberOfOrdersText1;
+    protected Text numberOfOrdersText1OA;
     @FXML
-    protected Text totalOrdersText1;
+    protected Text totalOrdersText1OA;
     @FXML
-    protected TableView<Order> orderTableView1 = new TableView<>();
-    protected TableColumn<Order, String> orderNumber1;
-    protected TableColumn<Order, Integer> orderTotalQuantity1;
-    protected TableColumn<Order, String> orderTotalPrice1;
-    protected TableColumn<Order, Timestamp> orderTimeStamp1;
-    protected TableColumn<Order, Timestamp> orderStatus1;
+    protected TableView<Order> orderTableView1OA = new TableView<>();
+    protected TableColumn<Order, String> orderNumber1OA;
+    protected TableColumn<Order, Integer> orderTotalQuantity1OA;
+    protected TableColumn<Order, String> orderTotalPrice1OA;
+    protected TableColumn<Order, Timestamp> orderTimeStamp1OA;
+    protected TableColumn<Order, Timestamp> orderStatus1OA;
     static final Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
 
     @FXML
-    protected void onOrderClicked() throws IOException {
-        Order order1 = orderTableView1.getSelectionModel().getSelectedItem();
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
-        Parent root1 = loader1.load();
-        SpecificOrderAdmin specificOrder1 = loader1.getController();
-        specificOrder1.passParams(user1, order1);
-        Stage newStage1 = new Stage();
-        newStage1.setScene(new Scene(root1));
-        newStage1.show();
-        newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1OA.getScene().getWindow();
-        stage1.close();
+    protected void onOrderClicked1OA() throws IOException {
+        Order order1OA = orderTableView1OA.getSelectionModel().getSelectedItem();
+        FXMLLoader loader1OA = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
+        Parent root1OA = loader1OA.load();
+        SpecificOrderAdmin specificOrder1OA = loader1OA.getController();
+        specificOrder1OA.passParams(user1OA, order1OA);
+        Stage newStage1OA = new Stage();
+        newStage1OA.setScene(new Scene(root1OA));
+        newStage1OA.show();
+        newStage1OA.setResizable(false);
+        Stage stage1OA = (Stage) homepageImageView1OA.getScene().getWindow();
+        stage1OA.close();
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
-        Parent root1 = loader1.load();
-        HomepageAdmin homepage1 = loader1.getController();
-        homepage1.passUser(user1);
-        Stage newStage1 = new Stage();
-        newStage1.setScene(new Scene(root1));
-        newStage1.show();
-        newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1OA.getScene().getWindow();
-        stage1.close();
+    protected void onHomepageImageClick1OA() throws IOException {
+        FXMLLoader loader1OA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
+        Parent root1OA = loader1OA.load();
+        HomepageAdmin homepage1OA = loader1OA.getController();
+        homepage1OA.passUser(user1OA);
+        Stage newStage1OA = new Stage();
+        newStage1OA.setScene(new Scene(root1OA));
+        newStage1OA.show();
+        newStage1OA.setResizable(false);
+        Stage stage1OA = (Stage) homepageImageView1OA.getScene().getWindow();
+        stage1OA.close();
     }
 
 
     @FXML
     public void initialize() {
-        orderTableView1.setEditable(true);
+        orderTableView1OA.setEditable(true);
 
-        orderNumber1 = new TableColumn<>("Order Number");
-        orderNumber1.setMinWidth(10);
-        orderNumber1.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        orderNumber1OA = new TableColumn<>("Order Number");
+        orderNumber1OA.setMinWidth(10);
+        orderNumber1OA.setCellValueFactory(new PropertyValueFactory<>("orderId"));
 
-        orderTotalQuantity1 = new TableColumn<>("orderTotalQuantity");
-        orderTotalQuantity1.setMinWidth(10);
-        orderTotalQuantity1.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
+        orderTotalQuantity1OA = new TableColumn<>("orderTotalQuantity");
+        orderTotalQuantity1OA.setMinWidth(10);
+        orderTotalQuantity1OA.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
 
-        orderTotalPrice1 = new TableColumn<>("totalPrice");
-        orderTotalPrice1.setMinWidth(30);
-        orderTotalPrice1.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        orderTotalPrice1OA = new TableColumn<>("totalPrice");
+        orderTotalPrice1OA.setMinWidth(30);
+        orderTotalPrice1OA.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
-        orderTimeStamp1 = new TableColumn<>("orderTimestamp");
-        orderTimeStamp1.setMinWidth(10);
-        orderTimeStamp1.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
+        orderTimeStamp1OA = new TableColumn<>("orderTimestamp");
+        orderTimeStamp1OA.setMinWidth(10);
+        orderTimeStamp1OA.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
 
-        orderStatus1 = new TableColumn<>("Status");
-        orderStatus1.setMinWidth(10);
-        orderStatus1.setCellValueFactory(new PropertyValueFactory<>("status"));
+        orderStatus1OA = new TableColumn<>("Status");
+        orderStatus1OA.setMinWidth(10);
+        orderStatus1OA.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        orderTableView1.getColumns().addAll(orderNumber1, orderTotalQuantity1, orderTotalPrice1, orderTimeStamp1, orderStatus1);
+        orderTableView1OA.getColumns().addAll(orderNumber1OA, orderTotalQuantity1OA, orderTotalPrice1OA, orderTimeStamp1OA, orderStatus1OA);
 
     }
 
-    protected void fillShopTableView() {
-        int numberOfOrders1 = 0;
-        orderTableView1.getItems().clear();
-        ObservableList<Order> orderObservableList1 = FXCollections.observableArrayList();
-        List<Order> orderArrayList1 = OrderHandler.findOrdersByAdmin(user1);
-        if (orderArrayList1 != null) {
-            for (Order o1 : orderArrayList1) {
-                orderObservableList1.add(o1);
-                numberOfOrders1++;
+    protected void fillShopTableView1OA() {
+        int numberOfOrders1OA = 0;
+        orderTableView1OA.getItems().clear();
+        ObservableList<Order> orderObservableList1OA = FXCollections.observableArrayList();
+        List<Order> orderArrayList1OA = OrderHandler.findOrdersByAdmin(user1OA);
+        if (orderArrayList1OA != null) {
+            for (Order o1OA : orderArrayList1OA) {
+                orderObservableList1OA.add(o1OA);
+                numberOfOrders1OA++;
             }
-            orderTableView1.setItems(orderObservableList1);
+            orderTableView1OA.setItems(orderObservableList1OA);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
         }
-        totalOrdersText1.setText(Constants.TOTAL_ORDERS_STRING);
-        numberOfOrdersText1.setText(String.valueOf(numberOfOrders1));
+        totalOrdersText1OA.setText(Constants.TOTAL_ORDERS_STRING);
+        numberOfOrdersText1OA.setText(String.valueOf(numberOfOrders1OA));
     }
 
 
-    public void passUser(User user1) {
-        this.user1 = user1;
-        textHi1.setText(user1.getUsername());
-        fillShopTableView();
+    public void passUser(User user1OA) {
+        this.user1OA = user1OA;
+        textHi1OA.setText(user1OA.getUsername());
+        fillShopTableView1OA();
     }
 }
