@@ -11,31 +11,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.SearchProduct">
-    <children>
-        <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
-        <Button fx:id="searchButton1" layoutX="736.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClick" style="-fx-background-color: #12d39d;" text="Search" textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font name="Tahoma Bold" size="12.0" />
-            </font>
-        </Button>
-        <ImageView fx:id="homepageImageView1SP" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="7.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../images/user_interface/icons8-home-48.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="selected1" layoutX="86.0" layoutY="472.0" />
-        <TableView fx:id="productTableView1" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick" prefHeight="504.0" prefWidth="919.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="160.0" />
-        <TextField fx:id="requestTextField1" layoutX="268.0" layoutY="107.0" minHeight="26.0" prefHeight="26.0" prefWidth="463.0" style="-fx-border-color: #12d39d; -fx-border-width: 2;" />
-        <ImageView fitHeight="50.0" fitWidth="530.0" layoutX="236.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
-            </image>
-        </ImageView>
-        <Text fx:id="textHi1" fill="WHITE" layoutX="881.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-            <font>
-                <Font name="Tahoma Bold" size="18.0" />
-            </font>
-        </Text>
-    </children>
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.view1.SearchProduct">
+    <Rectangle fill="#2c2c2c" height="50.0" width="1000.0"/>
+    <Button fx:id="searchButton1SP" layoutX="736.0" layoutY="107.0" minHeight="26.0" mnemonicParsing="false"
+            onMouseClicked="#onSearchButtonClick1SP" style="-fx-background-color: #12d39d;" text="Search"
+            textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="Tahoma Bold" size="12.0"/>
+        </font>
+    </Button>
+    <ImageView fx:id="homepageImageView1SP" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="7.0"
+               onMouseClicked="#onHomepageImageClick1SP" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../images/user_interface/icons8-home-48.png"/>
+    </ImageView>
+    <Label fx:id="selected1SP" layoutX="86.0" layoutY="472.0"/>
+    <TableView fx:id="productTableView1SP" layoutX="40.0" layoutY="94.0" onMouseClicked="#onListViewItemClick1SP"
+               prefHeight="504.0" prefWidth="919.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0"
+               AnchorPane.topAnchor="160.0"/>
+    <TextField fx:id="requestTextField1SP" layoutX="268.0" layoutY="107.0" minHeight="26.0" prefHeight="26.0"
+               prefWidth="463.0" style="-fx-border-color: #12d39d; -fx-border-width: 2;"/>
+    <ImageView fitHeight="50.0" fitWidth="530.0" layoutX="236.0" layoutY="10.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg"/>
+    </ImageView>
+    <Text fx:id="textHi1SP" fill="WHITE" layoutX="881.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Text">
+        <font>
+            <Font name="Tahoma Bold" size="18.0"/>
+        </font>
+    </Text>
 </AnchorPane>
