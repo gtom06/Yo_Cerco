@@ -79,16 +79,16 @@ public class ProductDao {
     }
 
     public static void removeFavoriteProductFromDb(String username, int sku) {
-        PreparedStatement stmt = null;
+        PreparedStatement stmt1 = null;
         try {
-            String sql = "DELETE FROM user_favoriteproduct WHERE username = ? AND sku = ?";
-            stmt = conn.prepareStatement(sql);
-            setUsernameAndSku(stmt, username, sku);
-            stmt.executeUpdate();
+            String sql1 = "DELETE FROM user_favoriteproduct WHERE username = ? AND sku = ?";
+            stmt1 = conn.prepareStatement(sql1);
+            setUsernameAndSku(stmt1, username, sku);
+            stmt1.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            DbHelper.closeStatement(stmt);
+            DbHelper.closeStatement(stmt1);
         }
     }
 
