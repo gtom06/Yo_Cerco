@@ -11,9 +11,9 @@
 <Pane maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.Homepage">
-   <AnchorPane fx:id="anchorPane1" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onClickAnchorPane1" prefHeight="469.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_LEFT">
+   <AnchorPane fx:id="anchorPane11" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onClickAnchorPane1" prefHeight="469.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_LEFT">
       <children>
-         <ImageView fx:id="shopsImage" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+         <ImageView fx:id="shopsImage1" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
             <image>
                <Image url="@../../images/shop/icons8-small-business-96.png" />
             </image>
@@ -27,7 +27,7 @@
    </AnchorPane>
    <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c; -fx-border-color: #2c2c2c; -fx-border-radius: 2; -fx-border-width: 2;" BorderPane.alignment="CENTER">
       <children>
-         <Button fx:id="logoutButton" alignment="CENTER" layoutX="922.0" layoutY="13.0" maxHeight="26.0" maxWidth="64.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: #12d39d; -fx-text-fill: white;" text="Logout" textAlignment="JUSTIFY" wrapText="true">
+         <Button fx:id="logoutButton1" alignment="CENTER" layoutX="922.0" layoutY="13.0" maxHeight="26.0" maxWidth="64.0" minHeight="25.0" minWidth="54.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: #12d39d; -fx-text-fill: white;" text="Logout" textAlignment="JUSTIFY" wrapText="true">
             <font>
                <Font name="Tahoma Bold" size="12.0" />
             </font>
@@ -37,7 +37,7 @@
                <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
             </image>
          </ImageView>
-         <Label fx:id="labelHi" alignment="CENTER" layoutX="14.0" layoutY="17.0" style="-fx-text-fill: #e6e6e6;" textAlignment="JUSTIFY" textFill="#2c2c2c" wrapText="true">
+         <Label fx:id="labelHi1" alignment="CENTER" layoutX="14.0" layoutY="17.0" style="-fx-text-fill: #e6e6e6;" textAlignment="JUSTIFY" textFill="#2c2c2c" wrapText="true">
             <font>
                <Font name="Tahoma Bold" size="18.0" />
             </font>
@@ -47,9 +47,9 @@
          </ImageView>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="anchorPane3" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane3" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_RIGHT">
+   <AnchorPane fx:id="anchorPane31" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane3" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-width: 5; -fx-border-color: #2c2c2c;" BorderPane.alignment="BOTTOM_RIGHT">
       <children>
-         <ImageView fx:id="favoritesIamge" fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="38.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
             <image>
                <Image url="@../../images/shop/icons8-favorite-folder-96.png" />
             </image>
@@ -61,9 +61,9 @@
          </Text>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="anchorPane4" layoutX="500.0" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane4" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
+   <AnchorPane fx:id="anchorPane41" layoutX="500.0" layoutY="375.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane4" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
       <children>
-         <ImageView fx:id="myProfileImage" fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+         <ImageView fx:id="myProfileImage1" fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
             <image>
                <Image url="@../../images/user_interface/icons8-customer-100.png" />
             </image>
@@ -75,9 +75,9 @@
          </Text>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="anchorPane2" layoutX="500.0" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane2" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
+   <AnchorPane fx:id="anchorPane21" layoutX="500.0" layoutY="50.0" maxHeight="325.0" maxWidth="500.0" minHeight="325.0" minWidth="500.0" onMouseClicked="#onClickAnchorPane2" prefHeight="325.0" prefWidth="500.0" style="-fx-background-color: #e6e6e6; -fx-border-color: #2c2c2c; -fx-border-width: 5;">
       <children>
-         <ImageView fx:id="productsImage" fitHeight="150.0" fitWidth="150.0" layoutX="43.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
+         <ImageView fx:id="productsImage1" fitHeight="150.0" fitWidth="150.0" layoutX="43.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0">
             <image>
                <Image url="@../../images/shop/icons8-basket-96.png" />
             </image>

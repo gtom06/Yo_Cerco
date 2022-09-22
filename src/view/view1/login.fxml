@@ -26,12 +26,12 @@
                     <Font name="Tahoma" size="30.0" />
                 </font>
             </Label>
-            <Button fx:id="cancelButton" layoutX="618.0" layoutY="17.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-text-fill: #e6e6e6; -fx-border-width: 2; -fx-border-color: #0a7557; -fx-border-radius: 2; -fx-background-color: #12d39d;" text="Cancel">
+            <Button fx:id="cancelButton1" layoutX="618.0" layoutY="17.0" mnemonicParsing="false" onAction="#onCancelButtonClick" style="-fx-text-fill: #e6e6e6; -fx-border-width: 2; -fx-border-color: #0a7557; -fx-border-radius: 2; -fx-background-color: #12d39d;" text="Cancel">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
-            <TextField fx:id="loginUsernameTextField" layoutX="205.0" layoutY="103.0" prefHeight="30.0" prefWidth="300.0" promptText="Username / Email" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <TextField fx:id="loginUsernameTextField1" layoutX="205.0" layoutY="103.0" prefHeight="30.0" prefWidth="300.0" promptText="Username / Email" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -42,7 +42,7 @@
             <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="166.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../images/user_interface/icons8-customer-100.png" />
             </ImageView>
-            <PasswordField fx:id="loginPasswordPasswordField" layoutX="205.0" layoutY="143.0" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <PasswordField fx:id="loginPasswordPasswordField1" layoutX="205.0" layoutY="143.0" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -50,7 +50,7 @@
             <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="166.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../images/user_interface/icons8-key-48.png" />
             </ImageView>
-            <CheckBox fx:id="rememberMe" layoutX="205.0" layoutY="193.0" mnemonicParsing="false" style="-fx-text-fill: #0a7557;" text="Remember Me">
+            <CheckBox fx:id="rememberMe1" layoutX="205.0" layoutY="193.0" mnemonicParsing="false" style="-fx-text-fill: #0a7557;" text="Remember Me">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -60,12 +60,12 @@
                     <Font name="Tahoma" size="14.0" />
                 </font>
             </Button>
-            <Label fx:id="invalidLoginCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="220.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="invalidLoginCredentials1" alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="220.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
                 <opaqueInsets>
                     <Insets />
                 </opaqueInsets>
             </Label>
-            <Button fx:id="loginButton" layoutX="444.0" layoutY="186.0" mnemonicParsing="false" onAction="#onLoginButtonClick" style="-fx-background-color: #12d39d; -fx-text-fill: #e6e6e6; -fx-border-radius: 2; -fx-border-width: 2; -fx-border-color: #0a7557;" text="Login">
+            <Button fx:id="loginButton1" layoutX="444.0" layoutY="186.0" mnemonicParsing="false" onAction="#onLoginButtonClick" style="-fx-background-color: #12d39d; -fx-text-fill: #e6e6e6; -fx-border-radius: 2; -fx-border-width: 2; -fx-border-color: #0a7557;" text="Login">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -75,7 +75,7 @@
                     <Font name="SansSerif Regular" size="30.0" />
                 </font>
             </Label>
-            <TextField fx:id="signUpUsernameTextField" layoutX="205.0" layoutY="345.0" prefHeight="30.0" prefWidth="300.0" promptText="Username" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <TextField fx:id="signUpUsernameTextField1" layoutX="205.0" layoutY="345.0" prefHeight="30.0" prefWidth="300.0" promptText="Username" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -86,7 +86,7 @@
             <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="166.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../images/user_interface/icons8-customer-100.png" />
             </ImageView>
-            <TextField fx:id="signUpEmailTextField" layoutX="205.0" layoutY="390.0" prefHeight="30.0" prefWidth="300.0" promptText="Email" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <TextField fx:id="signUpEmailTextField1" layoutX="205.0" layoutY="390.0" prefHeight="30.0" prefWidth="300.0" promptText="Email" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -97,7 +97,7 @@
             <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="166.0" layoutY="388.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../images/user_interface/icons8-mail-48.png" />
             </ImageView>
-            <PasswordField fx:id="signUpPasswordPasswordField" layoutX="205.0" layoutY="431.0" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <PasswordField fx:id="signUpPasswordPasswordField1" layoutX="205.0" layoutY="431.0" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -105,7 +105,7 @@
             <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="166.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../images/user_interface/icons8-key-48.png" />
             </ImageView>
-            <PasswordField fx:id="signUpRepeatPasswordPasswordField" layoutX="205.0" layoutY="471.0" prefHeight="30.0" prefWidth="300.0" promptText="Repeat Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
+            <PasswordField fx:id="signUpRepeatPasswordPasswordField1" layoutX="205.0" layoutY="471.0" prefHeight="30.0" prefWidth="300.0" promptText="Repeat Password" style="-fx-border-width: 2; -fx-border-color: #12d39d; -fx-border-radius: 5;">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
@@ -115,7 +115,7 @@
                     <Font name="Tahoma" size="14.0" />
                 </font>
             </Label>
-            <DatePicker fx:id="signUpDateDatePicker" layoutX="332.0" layoutY="512.0" promptText="mm/dd/yyyy" showWeekNumbers="true" style="-fx-border-color: #12d39d;" />
+            <DatePicker fx:id="signUpDateDatePicker1" layoutX="332.0" layoutY="512.0" promptText="mm/dd/yyyy" showWeekNumbers="true" style="-fx-border-color: #12d39d;" />
             <Label layoutX="205.0" layoutY="545.0" prefHeight="20.0" prefWidth="90.0" style="-fx-text-fill: #0a7557;" text="Gender">
                 <font>
                     <Font name="Tahoma" size="14.0" />
@@ -139,12 +139,12 @@
                     <Font size="14.0" />
                 </font>
             </RadioButton>
-            <CheckBox fx:id="termsConditionsCheckbox" layoutX="215.0" layoutY="574.0" mnemonicParsing="false" selected="true" style="-fx-text-fill: #0a7557;" text="I have read the Terms and Conditions">
+            <CheckBox fx:id="termsConditionsCheckbox11" layoutX="215.0" layoutY="574.0" mnemonicParsing="false" selected="true" style="-fx-text-fill: #0a7557;" text="I have read the Terms and Conditions">
                 <font>
                     <Font name="Tahoma" size="14.0" />
                 </font>
             </CheckBox>
-            <Label fx:id="invalidSignupCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="595.0" prefHeight="19.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="invalidSignupCredentials11" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="595.0" prefHeight="19.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
                 <opaqueInsets>
                     <Insets />
                 </opaqueInsets>
