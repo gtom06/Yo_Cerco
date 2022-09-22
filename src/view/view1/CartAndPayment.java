@@ -32,181 +32,181 @@ public class CartAndPayment {
     @FXML
     protected ImageView homepageImageView1CAP;
     @FXML
-    protected Button payButton1;
+    protected Button payButton1CAP;
     @FXML
-    protected Text textHi1;
+    protected Text textHi1CAP;
     @FXML
-    protected Text slashText1;
+    protected Text slashText1CAP;
     @FXML
-    protected ToggleGroup paymentType1;
+    protected ToggleGroup paymentType1CAP;
     @FXML
-    protected RadioButton codRadioButton1;
+    protected RadioButton codRadioButton1CAP;
     @FXML
-    protected RadioButton cardRadioButton1;
+    protected RadioButton cardRadioButton1CAP;
     @FXML
-    protected Text orderCreatedText1;
+    protected Text orderCreatedText1CAP;
     @FXML
-    protected TextField nameTextField1;
+    protected TextField nameTextField1CAP;
     @FXML
-    protected TextField surnameTextField1;
+    protected TextField surnameTextField1CAP;
     @FXML
-    protected TextField phoneNumberTextField1;
+    protected TextField phoneNumberTextField1CAP;
     @FXML
-    protected TextField billingStreetTextField1;
+    protected TextField billingStreetTextField1CAP;
     @FXML
-    protected TextField billingCityTextField1;
+    protected TextField billingCityTextField1CAP;
     @FXML
-    protected TextField billingCountryTextField1;
+    protected TextField billingCountryTextField1CAP;
     @FXML
-    protected TextField billingZipTextField1;
+    protected TextField billingZipTextField1CAP;
     @FXML
-    protected TextField cardholderTextField1;
+    protected TextField cardholderTextField1CAP;
     @FXML
-    protected TextField creditcardTextField1;
+    protected TextField creditcardTextField1CAP;
     @FXML
-    protected TextField mmTextField1;
+    protected TextField mmTextField1CAP;
     @FXML
-    protected TextField yyTextField1;
+    protected TextField yyTextField1CAP;
     @FXML
-    protected TextField cvvTextField1;
+    protected TextField cvvTextField1CAP;
     @FXML
-    protected Text totalPriceText1;
+    protected Text totalPriceText1CAP;
     @FXML
-    protected Text shopNameText1;
+    protected Text shopNameText1CAP;
     @FXML
-    protected Text totalQuantityText1;
+    protected Text totalQuantityText1CAP;
     @FXML
-    protected TableView<OrderItem> orderItemsTableView1 = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn1;
-    protected TableColumn<OrderItem, String> quantityOrderedColumn1;
-    protected TableColumn<OrderItem, Double> pricePerItemColumn1;
-    protected TableColumn<OrderItem, Double> priceTotalColumn1;
+    protected TableView<OrderItem> orderItemsTableView1CAP = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn1CAP;
+    protected TableColumn<OrderItem, String> quantityOrderedColumn1CAP;
+    protected TableColumn<OrderItem, Double> pricePerItemColumn1CAP;
+    protected TableColumn<OrderItem, Double> priceTotalColumn1CAP;
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    User user1 = null;
-    Shop shop1 = null;
+    User user1CAP = null;
+    Shop shop1CAP = null;
 
-    public void passParam(Shop shop1, User user1) throws ExceptionCart {
-        this.shop1 = shop1;
-        this.user1 = user1;
+    public void passParam(Shop shop1CAP, User user1CAP) throws ExceptionCart {
+        this.shop1CAP = shop1CAP;
+        this.user1CAP = user1CAP;
 
-        if (user1 != null) {
-            textHi1.setText(user1.getUsername());
-            nameTextField1.setText(user1.getName());
-            surnameTextField1.setText(user1.getSurname());
-            phoneNumberTextField1.setText(((Buyer) user1).getPhone());
-            billingStreetTextField1.setText(((Buyer) user1).getBillingStreet());
-            billingCityTextField1.setText(((Buyer) user1).getBillingCity());
-            billingCountryTextField1.setText(((Buyer) user1).getBillingCountry());
-            billingZipTextField1.setText(((Buyer) user1).getBillingZip());
+        if (user1CAP != null) {
+            textHi1CAP.setText(user1CAP.getUsername());
+            nameTextField1CAP.setText(user1CAP.getName());
+            surnameTextField1CAP.setText(user1CAP.getSurname());
+            phoneNumberTextField1CAP.setText(((Buyer) user1CAP).getPhone());
+            billingStreetTextField1CAP.setText(((Buyer) user1CAP).getBillingStreet());
+            billingCityTextField1CAP.setText(((Buyer) user1CAP).getBillingCity());
+            billingCountryTextField1CAP.setText(((Buyer) user1CAP).getBillingCountry());
+            billingZipTextField1CAP.setText(((Buyer) user1CAP).getBillingZip());
         }
 
 
-        List<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-        if (orderItemArrayList != null && (orderItemArrayList).size() != 0) {
+        List<OrderItem> orderItemArrayList1CAP = CartElaboration.readOrderItemsFromCart();
+        if (orderItemArrayList1CAP != null && (orderItemArrayList1CAP).size() != 0) {
             ObservableList<OrderItem> observableListProducts =
-                    FXCollections.observableArrayList(orderItemArrayList);
-            orderItemsTableView1.setItems(observableListProducts);
+                    FXCollections.observableArrayList(orderItemArrayList1CAP);
+            orderItemsTableView1CAP.setItems(observableListProducts);
         }
 
-        Order order = OrderHandler.previewOrder();
-        if (order != null){
-            totalPriceText1.setText(order.getCurrency() + "" + order.getTotalPrice());
-            totalQuantityText1.setText(String.valueOf(order.getOrderTotalQuantity()));
+        Order order1CAP = OrderHandler.previewOrder();
+        if (order1CAP != null){
+            totalPriceText1CAP.setText(order1CAP.getCurrency() + "" + order1CAP.getTotalPrice());
+            totalQuantityText1CAP.setText(String.valueOf(order1CAP.getOrderTotalQuantity()));
         } else {
-            totalPriceText1.setText("0");
-            totalQuantityText1.setText("0");
+            totalPriceText1CAP.setText("0");
+            totalQuantityText1CAP.setText("0");
         }
 
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passUser(user1);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick1CAP() throws IOException {
+        FXMLLoader loader1CAP = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1CAP = loader1CAP.load();
+        Homepage homepage1CAP = loader1CAP.getController();
+        homepage1CAP.passUser(user1CAP);
+        Stage newStage1CAP = new Stage();
+        newStage1CAP.setScene(new Scene(root1CAP));
+        newStage1CAP.show();
+        newStage1CAP.setResizable(false);
+        Stage stage1CAP = (Stage) homepageImageView1CAP.getScene().getWindow();
+        stage1CAP.close();
     }
 
     @FXML
-    protected void previousPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
-        Parent root = loader.load();
-        ShopView shopView = loader.getController();
-        shopView.passUser(user1);
-        shopView.passShop(shop1);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
-        stage.close();
+    protected void previousPage1CAP() throws IOException {
+        FXMLLoader loader1CAP = new FXMLLoader(getClass().getResource("shopView.fxml"));
+        Parent root1CAP = loader1CAP.load();
+        ShopView shopView1CAP = loader1CAP.getController();
+        shopView1CAP.passUser(user1CAP);
+        shopView1CAP.passShop(shop1CAP);
+        Stage newStage1CAP = new Stage();
+        newStage1CAP.setScene(new Scene(root1CAP));
+        newStage1CAP.show();
+        newStage1CAP.setResizable(false);
+        Stage stage1CAP = (Stage) homepageImageView1CAP.getScene().getWindow();
+        stage1CAP.close();
     }
 
     @FXML
     protected void onCodClicked() {
-        cardholderTextField1.setVisible(false);
-        creditcardTextField1.setVisible(false);
-        mmTextField1.setVisible(false);
-        yyTextField1.setVisible(false);
-        cvvTextField1.setVisible(false);
-        slashText1.setVisible(false);
+        cardholderTextField1CAP.setVisible(false);
+        creditcardTextField1CAP.setVisible(false);
+        mmTextField1CAP.setVisible(false);
+        yyTextField1CAP.setVisible(false);
+        cvvTextField1CAP.setVisible(false);
+        slashText1CAP.setVisible(false);
 
     }
 
     @FXML
     protected void onCardClicked() {
-        cardholderTextField1.setVisible(true);
-        creditcardTextField1.setVisible(true);
-        mmTextField1.setVisible(true);
-        yyTextField1.setVisible(true);
-        cvvTextField1.setVisible(true);
-        slashText1.setVisible(true);
-        if (user1.getName() != null || !user1.getName().equals("")) {
-            nameTextField1.setText(user1.getName());
+        cardholderTextField1CAP.setVisible(true);
+        creditcardTextField1CAP.setVisible(true);
+        mmTextField1CAP.setVisible(true);
+        yyTextField1CAP.setVisible(true);
+        cvvTextField1CAP.setVisible(true);
+        slashText1CAP.setVisible(true);
+        if (user1CAP.getName() != null || !user1CAP.getName().equals("")) {
+            nameTextField1CAP.setText(user1CAP.getName());
         }
-        if (user1.getSurname() != null || !user1.getUsername().equals("")) {
-            surnameTextField1.setText(user1.getSurname());
+        if (user1CAP.getSurname() != null || !user1CAP.getUsername().equals("")) {
+            surnameTextField1CAP.setText(user1CAP.getSurname());
         }
-        if (((Buyer) user1).getPhone() != null || !((Buyer) user1).getPhone().equals("")) {
-            phoneNumberTextField1.setText(((Buyer) user1).getPhone());
+        if (((Buyer) user1CAP).getPhone() != null || !((Buyer) user1CAP).getPhone().equals("")) {
+            phoneNumberTextField1CAP.setText(((Buyer) user1CAP).getPhone());
         }
-        if (((Buyer) user1).getBillingStreet()!= null || !(((Buyer) user1).getBillingStreet()).equals("")) {
-            billingStreetTextField1.setText(((Buyer) user1).getBillingStreet());
+        if (((Buyer) user1CAP).getBillingStreet()!= null || !(((Buyer) user1CAP).getBillingStreet()).equals("")) {
+            billingStreetTextField1CAP.setText(((Buyer) user1CAP).getBillingStreet());
         }
-        if (((Buyer) user1).getPhone() != null || !((Buyer) user1).getPhone().equals("")) {
-            billingCityTextField1.setText(((Buyer) user1).getBillingCity());
+        if (((Buyer) user1CAP).getPhone() != null || !((Buyer) user1CAP).getPhone().equals("")) {
+            billingCityTextField1CAP.setText(((Buyer) user1CAP).getBillingCity());
         }
-        if (((Buyer) user1).getBillingCountry() != null || !((Buyer) user1).getBillingCountry().equals("")) {
-            billingCountryTextField1.setText(((Buyer) user1).getBillingCountry());
+        if (((Buyer) user1CAP).getBillingCountry() != null || !((Buyer) user1CAP).getBillingCountry().equals("")) {
+            billingCountryTextField1CAP.setText(((Buyer) user1CAP).getBillingCountry());
         }
-        if (((Buyer) user1).getBillingZip() != null || !((Buyer) user1).getBillingZip().equals("")) {
-            billingZipTextField1.setText(((Buyer) user1).getBillingZip());
+        if (((Buyer) user1CAP).getBillingZip() != null || !((Buyer) user1CAP).getBillingZip().equals("")) {
+            billingZipTextField1CAP.setText(((Buyer) user1CAP).getBillingZip());
         }
     }
 
     @FXML
     protected void onPayButtonClick() throws Exception {
-        String name1 = nameTextField1.getText();
-        String surname1 = surnameTextField1.getText();
-        String phoneNumber1 = phoneNumberTextField1.getText();
-        String billingStreet1 = billingStreetTextField1.getText();
-        String billingCity1 = billingCityTextField1.getText();
-        String billingCountry1 = billingCountryTextField1.getText();
-        String billingZip1 = billingZipTextField1.getText();
+        String name1 = nameTextField1CAP.getText();
+        String surname1 = surnameTextField1CAP.getText();
+        String phoneNumber1 = phoneNumberTextField1CAP.getText();
+        String billingStreet1 = billingStreetTextField1CAP.getText();
+        String billingCity1 = billingCityTextField1CAP.getText();
+        String billingCountry1 = billingCountryTextField1CAP.getText();
+        String billingZip1 = billingZipTextField1CAP.getText();
 
         String paymentMethod1 = "";
-        String cardholder1 = cardholderTextField1.getText();
-        String cardNumber1 = creditcardTextField1.getText();
-        String mm1 = mmTextField1.getText();
-        String yy1 = yyTextField1.getText();
-        String cvv1 = cvvTextField1.getText();
+        String cardholder1 = cardholderTextField1CAP.getText();
+        String cardNumber1 = creditcardTextField1CAP.getText();
+        String mm1 = mmTextField1CAP.getText();
+        String yy1 = yyTextField1CAP.getText();
+        String cvv1 = cvvTextField1CAP.getText();
         Order order1 = null;
 
         if (!PaymentHandler.validateParams(paymentMethod1, cardNumber1, mm1, yy1, cvv1)) {
@@ -218,11 +218,11 @@ public class CartAndPayment {
                     logger.log(Level.INFO, "please fill data");
                 } else {
                     UserHandler.updateRecord2(
-                            user1, Arrays.asList(name1, surname1, billingStreet1, billingCity1, billingCountry1,
-                            billingZip1, phoneNumber1, ((Buyer) user1).getProfileImagepath()));
+                            user1CAP, Arrays.asList(name1, surname1, billingStreet1, billingCity1, billingCountry1,
+                            billingZip1, phoneNumber1, ((Buyer) user1CAP).getProfileImagepath()));
 
                     order1 = OrderHandler.createOrder(
-                            user1,
+                            user1CAP,
                             paymentMethod1,
                             cardholder1,
                             cardNumber1,
@@ -230,22 +230,22 @@ public class CartAndPayment {
                             yy1,
                             cvv1
                     );
-                    orderItemsTableView1.setItems(null);
-                    orderCreatedText1.setVisible(true);
-                    totalPriceText1.setText("0");
-                    totalQuantityText1.setText("0");
+                    orderItemsTableView1CAP.setItems(null);
+                    orderCreatedText1CAP.setVisible(true);
+                    totalPriceText1CAP.setText("0");
+                    totalQuantityText1CAP.setText("0");
 
                     //and load specificOrder.fxml
-                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
-                    Parent root1 = loader1.load();
-                    SpecificOrder specificOrder1 = loader1.getController();
-                    specificOrder1.passParams(user1, order1);
-                    Stage newStage = new Stage();
-                    newStage.setScene(new Scene(root1));
-                    newStage.show();
-                    newStage.setResizable(false);
-                    Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
-                    stage.close();
+                    FXMLLoader loader1CAP = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+                    Parent root1CAP = loader1CAP.load();
+                    SpecificOrder specificOrder1CAP = loader1CAP.getController();
+                    specificOrder1CAP.passParams(user1CAP, order1);
+                    Stage newStage1CAP = new Stage();
+                    newStage1CAP.setScene(new Scene(root1CAP));
+                    newStage1CAP.show();
+                    newStage1CAP.setResizable(false);
+                    Stage stage1CAP = (Stage) homepageImageView1CAP.getScene().getWindow();
+                    stage1CAP.close();
                 }
             }
         }
@@ -253,31 +253,31 @@ public class CartAndPayment {
 
     @FXML
     public void initialize(){
-        orderItemsTableView1.setEditable(true);
+        orderItemsTableView1CAP.setEditable(true);
 
-        nameColumn1 = new TableColumn<>("Name");
-        nameColumn1.setMinWidth(276.0);
-        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn1CAP = new TableColumn<>("Name");
+        nameColumn1CAP.setMinWidth(276.0);
+        nameColumn1CAP.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        quantityOrderedColumn1 = new TableColumn<>("Quantity ordered");
-        quantityOrderedColumn1.setMinWidth(100.0);
-        quantityOrderedColumn1.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        quantityOrderedColumn1CAP = new TableColumn<>("Quantity ordered");
+        quantityOrderedColumn1CAP.setMinWidth(100.0);
+        quantityOrderedColumn1CAP.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
 
-        pricePerItemColumn1 = new TableColumn<>("Price per item");
-        pricePerItemColumn1.setMinWidth(100.0);
-        pricePerItemColumn1.setCellValueFactory(new PropertyValueFactory<>("price"));
+        pricePerItemColumn1CAP = new TableColumn<>("Price per item");
+        pricePerItemColumn1CAP.setMinWidth(100.0);
+        pricePerItemColumn1CAP.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-        priceTotalColumn1 = new TableColumn<>("Total price");
-        priceTotalColumn1.setMinWidth(100.0);
-        priceTotalColumn1.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        priceTotalColumn1CAP = new TableColumn<>("Total price");
+        priceTotalColumn1CAP.setMinWidth(100.0);
+        priceTotalColumn1CAP.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
 
-        orderItemsTableView1.getColumns().addAll(nameColumn1, quantityOrderedColumn1, pricePerItemColumn1, priceTotalColumn1);
+        orderItemsTableView1CAP.getColumns().addAll(nameColumn1CAP, quantityOrderedColumn1CAP, pricePerItemColumn1CAP, priceTotalColumn1CAP);
     }
 
     @FXML
     public void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
-        orderItemsTableView1.setItems(null);
+        orderItemsTableView1CAP.setItems(null);
     }
 }

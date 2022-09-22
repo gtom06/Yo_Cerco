@@ -16,7 +16,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.CartAndPayment">
    <children>
       <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
-      <ImageView fx:id="homepageImageView1CAP" fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="4.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="homepageImageView1CAP" fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="4.0" onMouseClicked="#onHomepageImageClick1CAP" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/user_interface/icons8-home-48.png" />
          </image>

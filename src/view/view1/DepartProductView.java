@@ -75,7 +75,7 @@ public class DepartProductView {
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
+    protected void onHomepageImageClick1DPV() throws IOException {
         FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root1DPV = loader1DPV.load();
         Homepage homepage1DPV = loader1DPV.getController();
@@ -89,7 +89,7 @@ public class DepartProductView {
     }
 
     @FXML
-    protected void onAddToCartClick() throws ExceptionCart {
+    protected void onAddToCartClick1DPV() throws ExceptionCart {
         ProductShop productShop = productTable1DPV.getSelectionModel().getSelectedItem();
         CartElaboration.addOrderItemsToCart(productShop, 1);
     }
@@ -114,7 +114,7 @@ public class DepartProductView {
     }
 
     @FXML
-    protected void previousPage() throws IOException {
+    protected void previousPage1DPV() throws IOException {
         FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root1DPV = loader1DPV.load();
         ShopView shopView1DPV = loader1DPV.getController();
