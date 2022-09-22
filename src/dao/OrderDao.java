@@ -32,13 +32,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return orderArrayList;
     }
@@ -55,13 +49,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return order;
     }
@@ -90,13 +78,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return order;
     }
@@ -119,13 +101,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return payment;
     }
@@ -142,13 +118,7 @@ public class OrderDao {
         } catch (SQLException e) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
     }
 
@@ -165,13 +135,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return orderArrayList;
     }
@@ -187,13 +151,7 @@ public class OrderDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return true;
     }
