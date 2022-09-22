@@ -24,157 +24,157 @@ import java.util.logging.Logger;
 
 public class SearchShop  {
 
-    User user = null;
+    User user1 = null;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView1;
     @FXML
-    protected ToggleGroup findValue;
+    protected ToggleGroup findValue1;
     @FXML
-    protected RadioButton param1;
+    protected RadioButton param11;
     @FXML
-    protected RadioButton param2;
+    protected RadioButton param21;
     @FXML
-    protected RadioButton param3;
+    protected RadioButton param31;
     @FXML
-    protected TextField requestTextField;
+    protected TextField requestTextField1;
     @FXML
-    protected Label labelHi;
+    protected Label labelHi1;
     @FXML
-    protected ChoiceBox choiceBoxTypeShop;
+    protected ChoiceBox choiceBoxTypeShop1;
     @FXML
-    protected TableView<Shop> tableView = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn;
-    protected TableColumn<Shop, String> cityColumn;
-    protected TableColumn<Shop, String> nameColumn;
-    protected TableColumn<Shop, String> openingColumn;
-    protected TableColumn<Shop, String> closingColumn;
-    protected TableColumn<Shop, Double> distanceColumn;
+    protected TableView<Shop> tableView1 = new TableView<>();
+    protected TableColumn<Shop, String> addressColumn1;
+    protected TableColumn<Shop, String> cityColumn1;
+    protected TableColumn<Shop, String> nameColumn1;
+    protected TableColumn<Shop, String> openingColumn1;
+    protected TableColumn<Shop, String> closingColumn1;
+    protected TableColumn<Shop, Double> distanceColumn1;
     @FXML
-    protected CheckBox openNow;
+    protected CheckBox openNow1;
 
     static final Logger logger = Logger.getLogger(SearchShop.class.getName());
 
     @FXML
     protected void onTableViewItemClick() throws IOException {
 
-        Shop shop = tableView.getSelectionModel().getSelectedItem();
+        Shop shop1 = tableView1.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
-        if (shop != null){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
-            Parent root = loader.load();
-            ShopView shopView = loader.getController();
-            shopView.passUser(user);
-            shopView.passShop(shop);
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.show();
-            newStage.setResizable(false);
-            Stage stage = (Stage) tableView.getScene().getWindow();
-            stage.close();
+        if (shop1 != null){
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("shopView.fxml"));
+            Parent root1 = loader1.load();
+            ShopView shopView1 = loader1.getController();
+            shopView1.passUser(user1);
+            shopView1.passShop(shop1);
+            Stage newStage1 = new Stage();
+            newStage1.setScene(new Scene(root1));
+            newStage1.show();
+            newStage1.setResizable(false);
+            Stage stage1 = (Stage) tableView1.getScene().getWindow();
+            stage1.close();
         }
     }
 
     @FXML
     protected void onUserPositionImageViewClick() {
-        if (((Buyer) user).getBillingStreet() != null) {
-            requestTextField.setText(((Buyer) user).getBillingAddress());
-            param3.setSelected(true);
+        if (((Buyer) user1).getBillingStreet() != null) {
+            requestTextField1.setText(((Buyer) user1).getBillingAddress());
+            param31.setSelected(true);
         } else {
-            requestTextField.setText("");
+            requestTextField1.setText("");
         }
     }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1 = loader1.load();
+        Homepage homepage1 = loader1.getController();
+        homepage1.passUser(user1);
+        Stage newStage1 = new Stage();
+        newStage1.setScene(new Scene(root1));
+        newStage1.show();
+        newStage1.setResizable(false);
+        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
     protected void onSearchButtonClick() throws AddressException {
-        tableView.getItems().clear();
-        List<Shop> shopArrayList = null;
-        String type = choiceBoxTypeShop.getSelectionModel().getSelectedItem().toString();
+        tableView1.getItems().clear();
+        List<Shop> shopArrayList1 = null;
+        String type1 = choiceBoxTypeShop1.getSelectionModel().getSelectedItem().toString();
 
 
-        if (requestTextField.getText() == null || requestTextField.getText().isBlank() || requestTextField.getText().length() > 50) {
-            distanceColumn.setVisible(true);
-            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected(), type);
+        if (requestTextField1.getText() == null || requestTextField1.getText().isBlank() || requestTextField1.getText().length() > 50) {
+            distanceColumn1.setVisible(true);
+            shopArrayList1 = ShopHandler.findShopNearbyWithParams(requestTextField1.getText(), openNow1.isSelected(), type1);
         }
 
-        if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.NEARBY) {
-            distanceColumn.setVisible(true);
-            shopArrayList = ShopHandler.findShopNearbyWithParams(requestTextField.getText(), openNow.isSelected(), type);
+        if (((RadioButton) findValue1.getSelectedToggle()).getText() == Constants.NEARBY) {
+            distanceColumn1.setVisible(true);
+            shopArrayList1 = ShopHandler.findShopNearbyWithParams(requestTextField1.getText(), openNow1.isSelected(), type1);
         }
-        else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_CITY) {
-            distanceColumn.setVisible(false);
-            shopArrayList = ShopHandler.findShopByCityWithParams(requestTextField.getText(), openNow.isSelected(), type);
+        else if (((RadioButton) findValue1.getSelectedToggle()).getText() == Constants.BY_CITY) {
+            distanceColumn1.setVisible(false);
+            shopArrayList1 = ShopHandler.findShopByCityWithParams(requestTextField1.getText(), openNow1.isSelected(), type1);
         }
-        else if (((RadioButton) findValue.getSelectedToggle()).getText() == Constants.BY_NAME){
-            distanceColumn.setVisible(false);
-            shopArrayList = ShopHandler.findShopByNameWithParams(requestTextField.getText(), openNow.isSelected(), type);
+        else if (((RadioButton) findValue1.getSelectedToggle()).getText() == Constants.BY_NAME){
+            distanceColumn1.setVisible(false);
+            shopArrayList1 = ShopHandler.findShopByNameWithParams(requestTextField1.getText(), openNow1.isSelected(), type1);
         }
-        if (shopArrayList != null && shopArrayList.size() != 0) {
-            ObservableList<Shop> observableListShops = FXCollections.observableArrayList(shopArrayList);
-            tableView.setItems(observableListShops);
+        if (shopArrayList1 != null && shopArrayList1.size() != 0) {
+            ObservableList<Shop> observableListShops1 = FXCollections.observableArrayList(shopArrayList1);
+            tableView1.setItems(observableListShops1);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
         }
     }
 
-    public void passUser(User user) {
-        this.user = user;
-        labelHi.setText(user.getUsername());
+    public void passUser(User user1) {
+        this.user1 = user1;
+        labelHi1.setText(user1.getUsername());
 
 
     }
 
     @FXML
     public void initialize(){
-        ObservableList<String> observableListTypeShop = FXCollections.observableArrayList(Constants.SHOP_TYPE);
-        choiceBoxTypeShop.setItems(FXCollections.observableArrayList(observableListTypeShop));
-        choiceBoxTypeShop.setValue(observableListTypeShop.get(0));
+        ObservableList<String> observableListTypeShop1 = FXCollections.observableArrayList(Constants.SHOP_TYPE);
+        choiceBoxTypeShop1.setItems(FXCollections.observableArrayList(observableListTypeShop1));
+        choiceBoxTypeShop1.setValue(observableListTypeShop1.get(0));
 
-        param1.setText(Constants.BY_CITY);
-        param2.setText(Constants.BY_NAME);
-        param3.setText(Constants.NEARBY);
+        param11.setText(Constants.BY_CITY);
+        param21.setText(Constants.BY_NAME);
+        param31.setText(Constants.NEARBY);
 
-        tableView.setEditable(true);
-        addressColumn = new TableColumn<>("Address");
-        addressColumn.setMinWidth(200);
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("completeAddress"));
+        tableView1.setEditable(true);
+        addressColumn1 = new TableColumn<>("Address");
+        addressColumn1.setMinWidth(200);
+        addressColumn1.setCellValueFactory(new PropertyValueFactory<>("completeAddress"));
 
-        cityColumn = new TableColumn<>("City");
-        cityColumn.setMinWidth(50);
-        cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
+        cityColumn1 = new TableColumn<>("City");
+        cityColumn1.setMinWidth(50);
+        cityColumn1.setCellValueFactory(new PropertyValueFactory<>("city"));
 
-        nameColumn = new TableColumn<>("Shop Name");
-        nameColumn.setMinWidth(200);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+        nameColumn1 = new TableColumn<>("Shop Name");
+        nameColumn1.setMinWidth(200);
+        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 
-        openingColumn = new TableColumn<>("Opening");
-        openingColumn.setMinWidth(10);
-        openingColumn.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
+        openingColumn1 = new TableColumn<>("Opening");
+        openingColumn1.setMinWidth(10);
+        openingColumn1.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
 
-        closingColumn = new TableColumn<>("Closing");
-        closingColumn.setMinWidth(10);
-        closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
+        closingColumn1 = new TableColumn<>("Closing");
+        closingColumn1.setMinWidth(10);
+        closingColumn1.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
 
-        distanceColumn = new TableColumn<>("Distance");
-        distanceColumn.setMinWidth(10);
-        distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
+        distanceColumn1 = new TableColumn<>("Distance");
+        distanceColumn1.setMinWidth(10);
+        distanceColumn1.setCellValueFactory(new PropertyValueFactory<>("distance"));
 
-        tableView.getColumns().addAll(nameColumn, addressColumn, cityColumn, openingColumn, closingColumn, distanceColumn);
+        tableView1.getColumns().addAll(nameColumn1, addressColumn1, cityColumn1, openingColumn1, closingColumn1, distanceColumn1);
 
-        distanceColumn.setVisible(false);
+        distanceColumn1.setVisible(false);
     }
 }

@@ -18,17 +18,17 @@
                 <Image url="@../../images/user_interface/Logos/Logo_Banner_2.jpeg" />
             </image>
         </ImageView>
-        <Text fx:id="textHi" fill="WHITE" layoutX="923.0" layoutY="32.0">
+        <Text fx:id="textHi1" fill="WHITE" layoutX="923.0" layoutY="32.0">
             <font>
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
         </Text>
-        <ImageView fx:id="homepageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="goPreviousPageImageView" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="goPreviousPageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
             </image>
@@ -38,9 +38,9 @@
                 <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
             </image>
         </ImageView>
-        <TableView fx:id="orderItemTableView" layoutX="50.0" layoutY="77.0" prefHeight="450.0" prefWidth="900.0" />
+        <TableView fx:id="orderItemTableView1" layoutX="50.0" layoutY="77.0" prefHeight="450.0" prefWidth="900.0" />
       <Button layoutX="828.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#completeOrder" text="Complete this order" />
-      <Label fx:id="completedLabel" layoutX="675.0" layoutY="539.0" text="COMPLETED" textFill="WHITE" visible="false">
+      <Label fx:id="completedLabel1" layoutX="675.0" layoutY="539.0" text="COMPLETED" textFill="WHITE" visible="false">
          <font>
             <Font size="24.0" />
          </font>

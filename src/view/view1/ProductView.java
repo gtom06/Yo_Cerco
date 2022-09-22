@@ -26,133 +26,133 @@ import java.util.logging.Logger;
 import static constants.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ProductView {
-    Shop shop = null;
-    User user = null;
-    ProductShop productShop = null;
-    Department department = null;
+    Shop shop1 = null;
+    User user1 = null;
+    ProductShop productShop1 = null;
+    Department department1 = null;
     @FXML
-    protected ImageView productPhoto;
+    protected ImageView productPhoto1;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView1;
     @FXML
-    protected ImageView addShopToFavorites;
+    protected ImageView addShopToFavorites1;
     @FXML
-    protected ImageView removeShopFromFavorites;
+    protected ImageView removeShopFromFavorites1;
     @FXML
-    protected ImageView cartImage;
+    protected ImageView cartImage1;
     @FXML
-    protected ImageView previousPage;
+    protected ImageView previousPage1;
     @FXML
-    protected ImageView discountedTagProd;
+    protected ImageView discountedTagProd1;
     @FXML
-    protected Text textHi;
+    protected Text textHi1;
     @FXML
-    protected Text nameProd;
+    protected Text nameProd1;
     @FXML
-    protected Text descriptionProd;
+    protected Text descriptionProd1;
     @FXML
-    protected Text priceProd;
+    protected Text priceProd1;
     @FXML
-    protected Text brandProd;
+    protected Text brandProd1;
     @FXML
-    protected Text favoriteText;
+    protected Text favoriteText1;
     @FXML
-    protected Text discountedPriceProd;
+    protected Text discountedPriceProd1;
     @FXML
-    protected Text itemAddedText;
+    protected Text itemAddedText1;
 
-    protected InputStream stream = null;
+    protected InputStream stream1 = null;
 
     static final Logger logger = Logger.getLogger(ProductView.class.getName());
 
 
-    public void passParams(User user, Department department, ProductShop productShop, Shop shop) throws FileNotFoundException {
+    public void passParams(User user1, Department department1, ProductShop productShop1, Shop shop1) throws FileNotFoundException {
 
-        this.user = user;
-        this.department = department;
-        this.productShop = productShop;
-        this.shop = shop;
+        this.user1 = user1;
+        this.department1 = department1;
+        this.productShop1 = productShop1;
+        this.shop1 = shop1;
 
-        itemAddedText.setVisible(false);
-        textHi.setText(user.getUsername());
-        descriptionProd.setText(productShop.getDescription());
-        priceProd.setText(String.valueOf(productShop.getPrice()));
-        brandProd.setText(productShop.getBrand());
-        nameProd.setText(productShop.getName());
-        checkDiscount(productShop);
+        itemAddedText1.setVisible(false);
+        textHi1.setText(user1.getUsername());
+        descriptionProd1.setText(productShop1.getDescription());
+        priceProd1.setText(String.valueOf(productShop1.getPrice()));
+        brandProd1.setText(productShop1.getBrand());
+        nameProd1.setText(productShop1.getName());
+        checkDiscount(productShop1);
 
-        stream = new FileInputStream(productShop.getLogoImagepath());
-        Image productImage = new Image(stream, 200, 200, false, false);
-        productPhoto.setImage(productImage);
+        stream1 = new FileInputStream(productShop1.getLogoImagepath());
+        Image productImage1 = new Image(stream1, 200, 200, false, false);
+        productPhoto1.setImage(productImage1);
 
-        if (ProductHandler.isFavoriteProduct(productShop, user)){
+        if (ProductHandler.isFavoriteProduct(productShop1, user1)){
             //set to remove
-            favoriteText.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
-            removeShopFromFavorites.setVisible(true);
-            addShopToFavorites.setVisible(false);
+            favoriteText1.setText(Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+            removeShopFromFavorites1.setVisible(true);
+            addShopToFavorites1.setVisible(false);
         } else {
             //set to add
-            favoriteText.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
-            removeShopFromFavorites.setVisible(false);
-            addShopToFavorites.setVisible(true);
+            favoriteText1.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+            removeShopFromFavorites1.setVisible(false);
+            addShopToFavorites1.setVisible(true);
         }
     }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1 = loader1.load();
+        Homepage homepage1 = loader1.getController();
+        homepage1.passUser(user1);
+        Stage newStage1 = new Stage();
+        newStage1.setScene(new Scene(root1));
+        newStage1.show();
+        newStage1.setResizable(false);
+        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
     public void previousPage() throws IOException {
-        Parent root;
-        if (shop != null || department != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("departProductView.fxml"));
-            root = loader.load();
-            DepartProductView departProductView = loader.getController();
-            departProductView.passParams(user, department, shop);
+        Parent root1;
+        if (shop1 != null || department1 != null) {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("departProductView.fxml"));
+            root1 = loader1.load();
+            DepartProductView departProductView1 = loader1.getController();
+            departProductView1.passParams(user1, department1, shop1);
         }
         else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
-            root = loader.load();
-            SearchProduct searchProduct = loader.getController();
-            searchProduct.passUser(user);
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+            root1 = loader1.load();
+            SearchProduct searchProduct1 = loader1.getController();
+            searchProduct1.passUser(user1);
         }
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) previousPage.getScene().getWindow();
-        stage.close();
+        Stage newStage1 = new Stage();
+        newStage1.setScene(new Scene(root1));
+        newStage1.show();
+        newStage1.setResizable(false);
+        Stage stage1 = (Stage) previousPage1.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
     protected void addToFavorite() {
-        ProductHandler.insertProductIntoFavorites(user,productShop);
-        favoriteText.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
-        removeShopFromFavorites.setVisible(true);
-        addShopToFavorites.setVisible(false);
+        ProductHandler.insertProductIntoFavorites(user1,productShop1);
+        favoriteText1.setText(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK);
+        removeShopFromFavorites1.setVisible(true);
+        addShopToFavorites1.setVisible(false);
     }
     @FXML
     protected void removeFromFavorite(){
-        ProductHandler.removeProductFromFavorites(user,productShop);
-        favoriteText.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
-        removeShopFromFavorites.setVisible(false);
-        addShopToFavorites.setVisible(true);
+        ProductHandler.removeProductFromFavorites(user1,productShop1);
+        favoriteText1.setText(Constants.ADD_TO_FAVORITE_SHOP_CAPSLOCK);
+        removeShopFromFavorites1.setVisible(false);
+        addShopToFavorites1.setVisible(true);
     }
 
     @FXML
     protected void addRemoveFavoriteFromText(){
-        if (favoriteText.getText().equals(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK)) {
+        if (favoriteText1.getText().equals(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK)) {
             removeFromFavorite();
         } else {
             addToFavorite();
@@ -161,23 +161,23 @@ public class ProductView {
 
     @FXML
     protected void addToCartClick() throws Exception {
-        if (!CartElaboration.addOrderItemsToCart(productShop, 1)) {
+        if (!CartElaboration.addOrderItemsToCart(productShop1, 1)) {
             logger.log(Level.WARNING, "item not added to cart");
         }
         CartElaboration.readOrderItemsFromCart();
-        itemAddedText.setVisible(true);
+        itemAddedText1.setVisible(true);
     }
 
     @FXML
-    protected void checkDiscount(ProductShop productShop){
-        productShop.setDiscountedPrice(0.50);
-        if (productShop.getDiscountedPrice() != 0){
-            discountedPriceProd.setText(String.valueOf(productShop.getDiscountedPrice()));
-            priceProd.setStrikethrough(true);
+    protected void checkDiscount(ProductShop productShop1){
+        productShop1.setDiscountedPrice(0.50);
+        if (productShop1.getDiscountedPrice() != 0){
+            discountedPriceProd1.setText(String.valueOf(productShop1.getDiscountedPrice()));
+            priceProd1.setStrikethrough(true);
         }
         else {
-            discountedTagProd.setVisible(false);
-            discountedPriceProd.setVisible(false);
+            discountedTagProd1.setVisible(false);
+            discountedPriceProd1.setVisible(false);
         }
     }
 }
