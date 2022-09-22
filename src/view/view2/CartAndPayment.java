@@ -31,201 +31,203 @@ import java.util.logging.Logger;
 
 public class CartAndPayment {
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2CA;
     @FXML
-    protected Button payButton;
+    protected Button payButton2CA;
     @FXML
-    protected Text slashText;
+    protected Text slashText2CA;
     @FXML
-    protected RadioButton codRadioButton;
+    protected RadioButton codRadioButton2CA;
     @FXML
-    protected RadioButton cardRadioButton;
+    protected RadioButton cardRadioButton2CA;
     @FXML
-    protected ToggleGroup paymentType;
+    protected ToggleGroup paymentType2CA;
     @FXML
-    protected TextField nameTextField;
+    protected TextField nameTextField2CA;
     @FXML
-    protected TextField surnameTextField;
+    protected TextField surnameTextField2CA;
     @FXML
-    protected TextField phoneNumberTextField;
+    protected TextField phoneNumberTextField2CA;
     @FXML
-    protected TextField billingStreetTextField;
+    protected TextField billingStreetTextField2CA;
     @FXML
-    protected TextField billingCityTextField;
+    protected TextField billingCityTextField2CA;
     @FXML
-    protected TextField billingCountryTextField;
+    protected TextField billingCountryTextField2CA;
     @FXML
-    protected TextField billingZipTextField;
+    protected TextField billingZipTextField2CA;
     @FXML
-    protected TextField cardholderTextField;
+    protected TextField cardholderTextField2CA;
     @FXML
-    protected TextField creditcardTextField;
+    protected TextField creditcardTextField2CA;
     @FXML
-    protected TextField mmTextField;
+    protected TextField mmTextField2CA;
     @FXML
-    protected TextField yyTextField;
+    protected TextField yyTextField2CA;
     @FXML
-    protected TextField cvvTextField;
+    protected TextField cvvTextField2CA;
     @FXML
-    protected Text orderCreatedText;
+    protected Text orderCreatedText2CA;
     @FXML
-    protected Text totalPriceText;
+    protected Text totalPriceText2CA;
     @FXML
-    protected Text totalQuantityText;
+    protected Text totalQuantityText2CA;
     @FXML
-    protected TableView<OrderItem> orderItemsTableView = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn;
-    protected TableColumn<OrderItem, String> quantityOrderedColumn;
-    protected TableColumn<OrderItem, Double> pricePerItemColumn;
-    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableView<OrderItem> orderItemsTableView2CA = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn2CA;
+    protected TableColumn<OrderItem, String> quantityOrderedColumn2CA;
+    protected TableColumn<OrderItem, Double> pricePerItemColumn2CA;
+    protected TableColumn<OrderItem, Double> priceTotalColumn2CA;
 
-    User user;
-    Shop shop;
+    User user2CA;
+    Shop shop2CA;
 
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    public void passParam(Shop shop, User user) throws ExceptionCart {
-        this.shop = shop;
-        this.user = user;
+    public void passParam(Shop shop2CA, User user2CA) throws ExceptionCart {
+        this.shop2CA = shop2CA;
+        this.user2CA = user2CA;
 
-        if (user != null) {
-            nameTextField.setText(user.getName());
-            surnameTextField.setText(user.getSurname());
-            phoneNumberTextField.setText(((Buyer) user).getPhone());
-            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
-            billingCityTextField.setText(((Buyer) user).getBillingCity());
-            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
-            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        if (user2CA != null) {
+            nameTextField2CA.setText(user2CA.getName());
+            surnameTextField2CA.setText(user2CA.getSurname());
+            phoneNumberTextField2CA.setText(((Buyer) user2CA).getPhone());
+            billingStreetTextField2CA.setText(((Buyer) user2CA).getBillingStreet());
+            billingCityTextField2CA.setText(((Buyer) user2CA).getBillingCity());
+            billingCountryTextField2CA.setText(((Buyer) user2CA).getBillingCountry());
+            billingZipTextField2CA.setText(((Buyer) user2CA).getBillingZip());
         }
 
-        List<OrderItem> orderItemArrayList = CartElaboration.readOrderItemsFromCart();
-        if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
-            ObservableList<OrderItem> observableListProducts =
-                    FXCollections.observableArrayList(orderItemArrayList);
-            orderItemsTableView.setItems(observableListProducts);
+        List<OrderItem> orderItemArrayList2CA = CartElaboration.readOrderItemsFromCart();
+        if (orderItemArrayList2CA != null && !orderItemArrayList2CA.isEmpty()) {
+            ObservableList<OrderItem> observableListProducts2CA =
+                    FXCollections.observableArrayList(orderItemArrayList2CA);
+            orderItemsTableView2CA.setItems(observableListProducts2CA);
         }
 
-        Order order = OrderHandler.previewOrder();
-        if (order != null){
-            totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
-            totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
+        Order order2CA = OrderHandler.previewOrder();
+        if (order2CA != null){
+            totalPriceText2CA.setText(order2CA.getCurrency() + "" + order2CA.getTotalPrice());
+            totalQuantityText2CA.setText(String.valueOf(order2CA.getOrderTotalQuantity()));
         } else {
-            totalPriceText.setText("0");
-            totalQuantityText.setText("0");
+            totalPriceText2CA.setText("0");
+            totalQuantityText2CA.setText("0");
         }
 
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException, AddressException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2CA() throws IOException, AddressException {
+        FXMLLoader loader2CA = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root2CA = loader2CA.load();
+        Homepage homepage2CA = loader2CA.getController();
+        homepage2CA.passParams(user2CA);
+        Stage newStage2CA = new Stage();
+        newStage2CA.setScene(new Scene(root2CA));
+        newStage2CA.show();
+        newStage2CA.setResizable(false);
+        Stage stage2CA = (Stage) homepageImageView2CA.getScene().getWindow();
+        stage2CA.close();
     }
 
     @FXML
-    protected void onCodClicked() {
-        cardholderTextField.setVisible(false);
-        creditcardTextField.setVisible(false);
-        mmTextField.setVisible(false);
-        yyTextField.setVisible(false);
-        cvvTextField.setVisible(false);
-        slashText.setVisible(false);
+    protected void onCodClicked2CA() {
+        cardholderTextField2CA.setVisible(false);
+        creditcardTextField2CA.setVisible(false);
+        mmTextField2CA.setVisible(false);
+        yyTextField2CA.setVisible(false);
+        cvvTextField2CA.setVisible(false);
+        slashText2CA.setVisible(false);
 
     }
 
     @FXML
-    protected void onCardClicked() {
-        cardholderTextField.setVisible(true);
-        creditcardTextField.setVisible(true);
-        mmTextField.setVisible(true);
-        yyTextField.setVisible(true);
-        cvvTextField.setVisible(true);
-        slashText.setVisible(true);
-        if (user.getName() != null || user.getName().equals("")) {
-            nameTextField.setText(user.getName());
+    protected void onCardClicked2CA() {
+        cardholderTextField2CA.setVisible(true);
+        creditcardTextField2CA.setVisible(true);
+        mmTextField2CA.setVisible(true);
+        yyTextField2CA.setVisible(true);
+        cvvTextField2CA.setVisible(true);
+        slashText2CA.setVisible(true);
+        if (user2CA.getName() != null || user2CA.getName().equals("")) {
+            nameTextField2CA.setText(user2CA.getName());
         }
-        if (user.getSurname() != null || user.getUsername().equals("")) {
-            surnameTextField.setText(user.getSurname());
+        if (user2CA.getSurname() != null || user2CA.getUsername().equals("")) {
+            surnameTextField2CA.setText(user2CA.getSurname());
         }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone().equals("")) {
-            phoneNumberTextField.setText(((Buyer) user).getPhone());
+        if (((Buyer) user2CA).getPhone() != null || ((Buyer) user2CA).getPhone().equals("")) {
+            phoneNumberTextField2CA.setText(((Buyer) user2CA).getPhone());
         }
-        if (((Buyer) user).getBillingStreet()!= null || (((Buyer) user).getBillingStreet()).equals("")) {
-            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
+        if (((Buyer) user2CA).getBillingStreet()!= null || (((Buyer) user2CA).getBillingStreet()).equals("")) {
+            billingStreetTextField2CA.setText(((Buyer) user2CA).getBillingStreet());
         }
-        if (((Buyer) user).getPhone() != null || ((Buyer) user).getPhone().equals("")) {
-            billingCityTextField.setText(((Buyer) user).getBillingCity());
+        if (((Buyer) user2CA).getPhone() != null || ((Buyer) user2CA).getPhone().equals("")) {
+            billingCityTextField2CA.setText(((Buyer) user2CA).getBillingCity());
         }
-        if (((Buyer) user).getBillingCountry() != null || ((Buyer) user).getBillingCountry().equals("")) {
-            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
+        if (((Buyer) user2CA).getBillingCountry() != null || ((Buyer) user2CA).getBillingCountry().equals("")) {
+            billingCountryTextField2CA.setText(((Buyer) user2CA).getBillingCountry());
         }
-        if (((Buyer) user).getBillingZip() != null || ((Buyer) user).getBillingZip().equals("")) {
-            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        if (((Buyer) user2CA).getBillingZip() != null || ((Buyer) user2CA).getBillingZip().equals("")) {
+            billingZipTextField2CA.setText(((Buyer) user2CA).getBillingZip());
         }
     }
 
     @FXML
-    protected void onPayButtonClick() throws Exception {
-        String name = nameTextField.getText();
-        String surname = surnameTextField.getText();
-        String phoneNumber = phoneNumberTextField.getText();
-        String billingStreet = billingStreetTextField.getText();
-        String billingCity = billingCityTextField.getText();
-        String billingCountry = billingCountryTextField.getText();
-        String billingZip = billingZipTextField.getText();
-        String paymentMethod = ((RadioButton) paymentType.getSelectedToggle()).getText();
-        String cardholder = cardholderTextField.getText();
-        String cardNumber = creditcardTextField.getText();
-        String mm = mmTextField.getText();
-        String yy = yyTextField.getText();
-        String cvv = cvvTextField.getText();
-        Order order;
+    protected void onPayButtonClick2CA() throws Exception {
+        String name2CA = nameTextField2CA.getText();
+        String surname2CA = surnameTextField2CA.getText();
+        String phoneNumber2CA = phoneNumberTextField2CA.getText();
+        String billingStreet2CA = billingStreetTextField2CA.getText();
+        String billingCity2CA = billingCityTextField2CA.getText();
+        String billingCountry2CA = billingCountryTextField2CA.getText();
+        String billingZip2CA = billingZipTextField2CA.getText();
+        String paymentMethod2CA = ((RadioButton) paymentType2CA.getSelectedToggle()).getText();
+        String cardholder2CA = cardholderTextField2CA.getText();
+        String cardNumber2CA = creditcardTextField2CA.getText();
+        String mm2CA = mmTextField2CA.getText();
+        String yy2CA = yyTextField2CA.getText();
+        String cvv2CA = cvvTextField2CA.getText();
+        Order order2CA;
 
-        if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
+        if (!PaymentHandler.validateParams(paymentMethod2CA, cardNumber2CA, mm2CA, yy2CA, cvv2CA)) {
             logger.log(Level.INFO, "reviewPayment");
         }
         else {
             if (!CartElaboration.isEmptyCart()) {
-                if (OrderHandler.someBlankDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
+                if (OrderHandler.someBlankDataUser(
+                        name2CA, surname2CA,billingStreet2CA,billingCity2CA,billingCountry2CA,billingZip2CA,phoneNumber2CA)) {
                         logger.log(Level.INFO, "please fill data");
                 } else {
                     UserHandler.updateRecord2(
-                            user, Arrays.asList(name, surname, billingStreet, billingCity, billingCountry,
-                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath()));
+                            user2CA, Arrays.asList(name2CA, surname2CA, billingStreet2CA, billingCity2CA,
+                                    billingCountry2CA,
+                            billingZip2CA, phoneNumber2CA, ((Buyer) user2CA).getProfileImagepath()));
 
-                    order = OrderHandler.createOrder(
-                            user,
-                            paymentMethod,
-                            cardholder,
-                            cardNumber,
-                            mm,
-                            yy,
-                            cvv
+                    order2CA = OrderHandler.createOrder(
+                            user2CA,
+                            paymentMethod2CA,
+                            cardholder2CA,
+                            cardNumber2CA,
+                            mm2CA,
+                            yy2CA,
+                            cvv2CA
                     );
-                    orderItemsTableView.setItems(null);
-                    orderCreatedText.setVisible(true);
-                    totalPriceText.setText("0");
-                    totalQuantityText.setText("0");
+                    orderItemsTableView2CA.setItems(null);
+                    orderCreatedText2CA.setVisible(true);
+                    totalPriceText2CA.setText("0");
+                    totalQuantityText2CA.setText("0");
 
                     //and load specificOrder.fxml
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
-                    Parent root = loader.load();
-                    SpecificOrder specificOrder = loader.getController();
-                    specificOrder.passParams(user, order);
-                    Stage newStage = new Stage();
-                    newStage.setScene(new Scene(root));
-                    newStage.show();
-                    newStage.setResizable(false);
-                    Stage stage = (Stage) homepageImageView.getScene().getWindow();
-                    stage.close();
+                    FXMLLoader loader2CA = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+                    Parent root2CA = loader2CA.load();
+                    SpecificOrder specificOrder2CA = loader2CA.getController();
+                    specificOrder2CA.passParams(user2CA, order2CA);
+                    Stage newStage2CA = new Stage();
+                    newStage2CA.setScene(new Scene(root2CA));
+                    newStage2CA.show();
+                    newStage2CA.setResizable(false);
+                    Stage stage2CA = (Stage) homepageImageView2CA.getScene().getWindow();
+                    stage2CA.close();
                 }
             }
         }
@@ -233,33 +235,34 @@ public class CartAndPayment {
 
     @FXML
     protected void initialize(){
-        orderItemsTableView.setEditable(true);
+        orderItemsTableView2CA.setEditable(true);
 
-        nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(276.0);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn2CA = new TableColumn<>("Name");
+        nameColumn2CA.setMinWidth(276.0);
+        nameColumn2CA.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
-        quantityOrderedColumn.setMinWidth(100.0);
-        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        quantityOrderedColumn2CA = new TableColumn<>("Quantity ordered");
+        quantityOrderedColumn2CA.setMinWidth(100.0);
+        quantityOrderedColumn2CA.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
 
-        pricePerItemColumn = new TableColumn<>("Price per item");
-        pricePerItemColumn.setMinWidth(100.0);
-        pricePerItemColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        pricePerItemColumn2CA = new TableColumn<>("Price per item");
+        pricePerItemColumn2CA.setMinWidth(100.0);
+        pricePerItemColumn2CA.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-        priceTotalColumn = new TableColumn<>("Total price");
-        priceTotalColumn.setMinWidth(100.0);
-        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        priceTotalColumn2CA = new TableColumn<>("Total price");
+        priceTotalColumn2CA.setMinWidth(100.0);
+        priceTotalColumn2CA.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
 
-        orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
+        orderItemsTableView2CA.getColumns().addAll(
+                nameColumn2CA, quantityOrderedColumn2CA, pricePerItemColumn2CA, priceTotalColumn2CA);
     }
 
     @FXML
-    protected void onClearCartClicked() throws ExceptionCart {
+    protected void onClearCartClicked2CA() throws ExceptionCart {
         CartElaboration.deleteCart();
-        orderItemsTableView.setItems(null);
-        totalPriceText.setText("0");
-        totalQuantityText.setText("0");
+        orderItemsTableView2CA.setItems(null);
+        totalPriceText2CA.setText("0");
+        totalQuantityText2CA.setText("0");
     }
 }

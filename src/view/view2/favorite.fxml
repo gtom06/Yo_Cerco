@@ -16,22 +16,22 @@
                   <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                </image>
             </ImageView>
-            <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="cartImageView2F" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                </image>
             </ImageView>
-             <ImageView fx:id="goPreviousPageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+             <ImageView fx:id="goPreviousPageImageView2F" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                  <image>
                      <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
                  </image>
              </ImageView>
-                  <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="profileImageView2F" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
                     <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-            <ImageView fx:id="homepageImageView" onMouseClicked="#onHomepageImageClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="homepageImageView2F" onMouseClicked="#onHomepageImageClick2F" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-home-48.png" />
                </image>
@@ -39,8 +39,8 @@
          </children></Pane>
       <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
          <children>
-            <TableView fx:id="shopTableView" onMouseClicked="#onTableViewShopClick" layoutX="40.0" layoutY="111.0" prefHeight="200.0" prefWidth="935.0" />
-            <TableView fx:id="simpleProductTableView" onMouseClicked="#onTableViewProductClick" layoutX="46.0" layoutY="426.0" prefHeight="200.0" prefWidth="922.0" />
+            <TableView fx:id="shopTableView2F" onMouseClicked="#onTableViewShopClick2F" layoutX="40.0" layoutY="111.0" prefHeight="200.0" prefWidth="935.0" />
+            <TableView fx:id="simpleProductTableView2F" onMouseClicked="#onTableViewProductClick2F" layoutX="46.0" layoutY="426.0" prefHeight="200.0" prefWidth="922.0" />
             <Label layoutX="453.0" layoutY="58.0" text="My favorite shops" />
             <Label layoutX="452.0" layoutY="384.0" text="My favorite products" />
          </children></Pane>

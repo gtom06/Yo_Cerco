@@ -41,198 +41,201 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShopView {
-    InputStream stream = null;
-    Shop shop = null;
-    User user = null;
-    List<Department> departmentArrayList = null;
+    InputStream stream2SV = null;
+    Shop shop2SV = null;
+    User user2SV = null;
+    List<Department> departmentArrayList2SV = null;
     @FXML
-    protected Button addToCartButton;
+    protected Button addToCartButton2SV;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2SV;
     @FXML
-    protected ImageView shopLogo;
+    protected ImageView shopLogo2SV;
     @FXML
-    protected ImageView profileImageView;
+    protected ImageView profileImageView2SV;
     @FXML
-    protected ImageView cartImageView;
+    protected ImageView cartImageView2SV;
     @FXML
-    protected ImageView addShopToFavorites;
+    protected ImageView addShopToFavorites2SV;
     @FXML
-    protected ImageView removeShopFromFavorites;
+    protected ImageView removeShopFromFavorites2SV;
     @FXML
-    protected ImageView dep1;
+    protected ImageView dep12SV;
     @FXML
-    protected ImageView dep2;
+    protected ImageView dep22SV;
     @FXML
-    protected ImageView dep3;
+    protected ImageView dep32SV;
     @FXML
-    protected ImageView dep4;
+    protected ImageView dep42SV;
     @FXML
-    protected ImageView dep5;
+    protected ImageView dep52SV;
     @FXML
-    protected ImageView dep6;
+    protected ImageView dep62SV;
     @FXML
-    protected ImageView dep7;
+    protected ImageView dep72SV;
     @FXML
-    protected ImageView dep8;
+    protected ImageView dep82SV;
     @FXML
-    protected ImageView dep9;
+    protected ImageView dep92SV;
     @FXML
-    protected ImageView dep10;
+    protected ImageView dep102SV;
     @FXML
-    protected ImageView dep11;
+    protected ImageView dep112SV;
     @FXML
-    protected ImageView dep12;
+    protected ImageView dep122SV;
     @FXML
-    protected ImageView dep13;
+    protected ImageView dep132SV;
     @FXML
-    protected ImageView dep14;
+    protected ImageView dep142SV;
     @FXML
-    protected Text textShopName;
+    protected Text textShopName2SV;
     @FXML
-    protected Text textShopAddress;
+    protected Text textShopAddress2SV;
     @FXML
-    protected Text textShopTime;
+    protected Text textShopTime2SV;
     @FXML
-    protected Text textPhoneShop;
+    protected Text textPhoneShop2SV;
     @FXML
-    protected TableView<ProductShop> productTable = new TableView<>();
-    protected TableColumn<ProductShop, String> nameColumn;
-    protected TableColumn<ProductShop, String> brandColumn;
-    protected TableColumn<ProductShop, Float> sizeColumn;
-    protected TableColumn<ProductShop, String> unitOfMeasureColumn;
-    protected TableColumn<ProductShop, Integer> currencyColumn;
-    protected TableColumn<ProductShop, Integer> priceColumn;
+    protected TableView<ProductShop> productTable2SV = new TableView<>();
+    protected TableColumn<ProductShop, String> nameColumn2SV;
+    protected TableColumn<ProductShop, String> brandColumn2SV;
+    protected TableColumn<ProductShop, Float> sizeColumn2SV;
+    protected TableColumn<ProductShop, String> unitOfMeasureColumn2SV;
+    protected TableColumn<ProductShop, Integer> currencyColumn2SV;
+    protected TableColumn<ProductShop, Integer> priceColumn2SV;
 
     static final Logger logger = Logger.getLogger(ShopView.class.getName());
 
     @FXML
-    protected void onHomepageImageClick() throws IOException, AddressException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2SV() throws IOException, AddressException {
+        FXMLLoader loader2SV = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root2SV = loader2SV.load();
+        Homepage homepage2SV = loader2SV.getController();
+        homepage2SV.passParams(user2SV);
+        Stage newStage2SV = new Stage();
+        newStage2SV.setScene(new Scene(root2SV));
+        newStage2SV.show();
+        newStage2SV.setResizable(false);
+        Stage stage2SV = (Stage) homepageImageView2SV.getScene().getWindow();
+        stage2SV.close();
     }
 
     @FXML
-    protected void openCartAndPayment() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
-        Parent root = loader.load();
-        CartAndPayment cartAndPayment = loader.getController();
-        cartAndPayment.passParam(null, user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+    protected void openCartAndPayment2SV() throws IOException {
+        FXMLLoader loader2SV = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
+        Parent root2SV = loader2SV.load();
+        CartAndPayment cartAndPayment2SV = loader2SV.getController();
+        cartAndPayment2SV.passParam(null, user2SV);
+        Stage newStage2SV = new Stage();
+        newStage2SV.setScene(new Scene(root2SV));
+        newStage2SV.show();
+        newStage2SV.setResizable(false);
+        Stage stage2SV = (Stage) cartImageView2SV.getScene().getWindow();
+        stage2SV.close();
     }
     @FXML
-    protected void onClickProfileImageView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
-        Parent root = loader.load();
-        MyProfile myProfile = loader.getController();
-        myProfile.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) profileImageView.getScene().getWindow();
-        stage.close();
+    protected void onClickProfileImageView2SV() throws IOException {
+        FXMLLoader loader2SV = new FXMLLoader(getClass().getResource("myProfile.fxml"));
+        Parent root2SV = loader2SV.load();
+        MyProfile myProfile2SV = loader2SV.getController();
+        myProfile2SV.passParams(user2SV);
+        Stage newStage2SV = new Stage();
+        newStage2SV.setScene(new Scene(root2SV));
+        newStage2SV.show();
+        newStage2SV.setResizable(false);
+        Stage stage2SV = (Stage) profileImageView2SV.getScene().getWindow();
+        stage2SV.close();
     }
 
-    public void passParams(User user, Shop shop) throws FileNotFoundException {
-        this.user = user;
-        this.shop = shop;
+    public void passParams(User user2SV, Shop shop2SV) throws FileNotFoundException {
+        this.user2SV = user2SV;
+        this.shop2SV = shop2SV;
 
-        stream = new FileInputStream(shop.getLogoImagepath());
-        Image shopImage = new Image(stream, 200, 200, false, false);
-        shopLogo.setImage(shopImage);
-        textShopName.setText(shop.getShopName());
-        ArrayList<ImageView> imageViewDepartmentsArrayList = new ArrayList<>(
-                Arrays.asList(dep1,dep2,dep3,dep4,dep5,dep6,dep7,dep8,dep9,dep10,dep11,dep12,dep13,dep14)
+        stream2SV = new FileInputStream(shop2SV.getLogoImagepath());
+        Image shopImage = new Image(stream2SV, 200, 200, false, false);
+        shopLogo2SV.setImage(shopImage);
+        textShopName2SV.setText(shop2SV.getShopName());
+        ArrayList<ImageView> imageViewDepartmentsArrayList2SV = new ArrayList<>(
+                Arrays.asList(
+                        dep12SV,dep22SV,dep32SV,dep42SV,dep52SV,dep62SV,dep72SV,
+                        dep82SV,dep92SV,dep102SV,dep112SV,dep122SV,dep132SV,dep142SV)
         );
-        this.departmentArrayList = DepartmentHandler.findDepartmentByShop(shop);
-        if (departmentArrayList != null && !departmentArrayList.isEmpty()) {
-            for (int i = 0; i < departmentArrayList.size(); i++) {
-                imageViewDepartmentsArrayList.get(i).setImage(new Image(new FileInputStream(departmentArrayList.get(i).getLogoImagepath())));
-                imageViewDepartmentsArrayList.get(i).setId(String.valueOf(departmentArrayList.get(i).getDepartmentId()));
+        this.departmentArrayList2SV = DepartmentHandler.findDepartmentByShop(shop2SV);
+        if (departmentArrayList2SV != null && !departmentArrayList2SV.isEmpty()) {
+            for (int i = 0; i < departmentArrayList2SV.size(); i++) {
+                imageViewDepartmentsArrayList2SV.get(i).setImage(new Image(new FileInputStream(departmentArrayList2SV.get(i).getLogoImagepath())));
+                imageViewDepartmentsArrayList2SV.get(i).setId(String.valueOf(departmentArrayList2SV.get(i).getDepartmentId()));
             }
         }
-        if (ShopHandler.isFavoriteShop(shop, user)) {
+        if (ShopHandler.isFavoriteShop(shop2SV, user2SV)) {
             //set to remove
-            removeShopFromFavorites.setVisible(true);
-            addShopToFavorites.setVisible(false);
+            removeShopFromFavorites2SV.setVisible(true);
+            addShopToFavorites2SV.setVisible(false);
         } else {
             //set to add
-            removeShopFromFavorites.setVisible(false);
-            addShopToFavorites.setVisible(true);
+            removeShopFromFavorites2SV.setVisible(false);
+            addShopToFavorites2SV.setVisible(true);
         }
 
-        textShopAddress.setText(shop.getCompleteAddress());
-        textShopTime.setText(shop.getOpeningTime() + " - " + shop.getClosingTime());
-        textPhoneShop.setText(shop.getPhone());
+        textShopAddress2SV.setText(shop2SV.getCompleteAddress());
+        textShopTime2SV.setText(shop2SV.getOpeningTime() + " - " + shop2SV.getClosingTime());
+        textPhoneShop2SV.setText(shop2SV.getPhone());
     }
 
     @FXML
-    protected void onClickGMapsHyperLink() throws ExceptionBrowser {
-        BrowserHandler.openWebpage(URI.create(shop.getGmapsLink()));
+    protected void onClickGMapsHyperLink2SV() throws ExceptionBrowser {
+        BrowserHandler.openWebpage(URI.create(shop2SV.getGmapsLink()));
     }
 
     //methods for adding and removing shops from favorite
     @FXML
-    protected void addToFavorite() {
-        ShopHandler.insertShopIntoFavorite(shop, user);
-        removeShopFromFavorites.setVisible(true);
-        addShopToFavorites.setVisible(false);
+    protected void addToFavorite2SV() {
+        ShopHandler.insertShopIntoFavorite(shop2SV, user2SV);
+        removeShopFromFavorites2SV.setVisible(true);
+        addShopToFavorites2SV.setVisible(false);
     }
 
     @FXML
-    protected void removeFromFavorite() {
-        ShopHandler.removeShopFromFavorite(shop, user);
-        removeShopFromFavorites.setVisible(false);
-        addShopToFavorites.setVisible(true);
+    protected void removeFromFavorite2SV() {
+        ShopHandler.removeShopFromFavorite(shop2SV, user2SV);
+        removeShopFromFavorites2SV.setVisible(false);
+        addShopToFavorites2SV.setVisible(true);
     }
 
     @FXML
-    protected void previousPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchShop.fxml"));
-        Parent root = loader.load();
-        SearchShop searchShop = loader.getController();
-        searchShop.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void previousPage2SV() throws IOException {
+        FXMLLoader loader2SV = new FXMLLoader(getClass().getResource("searchShop.fxml"));
+        Parent root2SV = loader2SV.load();
+        SearchShop searchShop2SV = loader2SV.getController();
+        searchShop2SV.passUser(user2SV);
+        Stage newStage2SV = new Stage();
+        newStage2SV.setScene(new Scene(root2SV));
+        newStage2SV.show();
+        newStage2SV.setResizable(false);
+        Stage stage2SV = (Stage) homepageImageView2SV.getScene().getWindow();
+        stage2SV.close();
     }
 
     @FXML
-    protected void onClickDepartmentImage(MouseEvent mouseEvent) {
-        productTable.getItems().clear();
-        List<ProductShop> productShopArrayList = null;
-        Department department = null;
+    protected void onClickDepartmentImage2SV(MouseEvent mouseEvent) {
+        productTable2SV.getItems().clear();
+        List<ProductShop> productShopArrayList2SV = null;
+        Department department2SV = null;
         int ref;
         try {
             ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-            for (Department dep : departmentArrayList) {
+            for (Department dep : departmentArrayList2SV) {
                 if (dep.getDepartmentId() == ref) {
-                    department = dep;
+                    department2SV = dep;
                     break;
                 }
             }
 
-            productShopArrayList = DepartmentHandler.findProductByDepartmentAndShop(shop, department);
-            if (productShopArrayList != null) {
-                ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-                productTable.setItems(observableListProducts);
+            productShopArrayList2SV = DepartmentHandler.findProductByDepartmentAndShop(shop2SV, department2SV);
+            if (productShopArrayList2SV != null) {
+                ObservableList<ProductShop> observableListProducts2SV =
+                        FXCollections.observableArrayList(productShopArrayList2SV);
+                productTable2SV.setItems(observableListProducts2SV);
             } else {
                 logger.log(Level.INFO, Constants.NO_RESULT);
             }
@@ -243,51 +246,51 @@ public class ShopView {
 
     @FXML
     public void initialize() {
-        productTable.setEditable(true);
+        productTable2SV.setEditable(true);
 
-        nameColumn = new TableColumn<>("NAME");
-        nameColumn.setMinWidth(20);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn2SV = new TableColumn<>("NAME");
+        nameColumn2SV.setMinWidth(20);
+        nameColumn2SV.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        priceColumn = new TableColumn<>("PRICE");
-        priceColumn.setMinWidth(50);
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceColumn2SV = new TableColumn<>("PRICE");
+        priceColumn2SV.setMinWidth(50);
+        priceColumn2SV.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        brandColumn = new TableColumn<>("BRAND");
-        brandColumn.setMinWidth(10);
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        brandColumn2SV = new TableColumn<>("BRAND");
+        brandColumn2SV.setMinWidth(10);
+        brandColumn2SV.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
-        sizeColumn = new TableColumn<>("SIZE");
-        sizeColumn.setMinWidth(10);
-        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        sizeColumn2SV = new TableColumn<>("SIZE");
+        sizeColumn2SV.setMinWidth(10);
+        sizeColumn2SV.setCellValueFactory(new PropertyValueFactory<>("size"));
 
-        unitOfMeasureColumn = new TableColumn<>("UNIT OF MEASURE");
-        unitOfMeasureColumn.setMinWidth(10);
-        unitOfMeasureColumn.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
+        unitOfMeasureColumn2SV = new TableColumn<>("UNIT OF MEASURE");
+        unitOfMeasureColumn2SV.setMinWidth(10);
+        unitOfMeasureColumn2SV.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        priceColumn = new TableColumn<>("PRICE");
-        priceColumn.setMinWidth(50);
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceColumn2SV = new TableColumn<>("PRICE");
+        priceColumn2SV.setMinWidth(50);
+        priceColumn2SV.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        currencyColumn = new TableColumn<>("CURRENCY");
-        currencyColumn.setMinWidth(50);
-        currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        currencyColumn2SV = new TableColumn<>("CURRENCY");
+        currencyColumn2SV.setMinWidth(50);
+        currencyColumn2SV.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-        productTable.getColumns().addAll(nameColumn, brandColumn, sizeColumn, unitOfMeasureColumn, priceColumn, currencyColumn);
+        productTable2SV.getColumns().addAll(nameColumn2SV, brandColumn2SV, sizeColumn2SV, unitOfMeasureColumn2SV, priceColumn2SV, currencyColumn2SV);
     }
 
     @FXML
-    protected void onClickOnOffersFlyer() throws ExceptionBrowser {
-        if (shop.getOffersFlyerPath() != null && !BrowserHandler.openWebpage(URI.create(shop.getOffersFlyerPath()))) {
+    protected void onClickOnOffersFlyer2SV() throws ExceptionBrowser {
+        if (shop2SV.getOffersFlyerPath() != null && !BrowserHandler.openWebpage(URI.create(shop2SV.getOffersFlyerPath()))) {
             logger.log(Level.WARNING, "failed to open webpage");
         }
     }
 
     @FXML
-    protected void onAddToCartClick() throws ExceptionCart {
-        ProductShop productShop = productTable.getSelectionModel().getSelectedItem();
-        if (productShop != null) {
-            CartElaboration.addOrderItemsToCart(productShop, 1);
+    protected void onAddToCartClick2SV() throws ExceptionCart {
+        ProductShop productShop2SV = productTable2SV.getSelectionModel().getSelectedItem();
+        if (productShop2SV != null) {
+            CartElaboration.addOrderItemsToCart(productShop2SV, 1);
         }
     }
 }

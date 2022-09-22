@@ -19,27 +19,27 @@
                   <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                </image>
             </ImageView>
-            <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" onMouseClicked="#openCartAndPayment" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cartImageView2H" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" onMouseClicked="#openCartAndPayment2H" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                </image>
             </ImageView>
-                  <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" onMouseClicked="#onClickProfileImageView" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profileImageView2H" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" onMouseClicked="#onClickProfileImageView2H" pickOnBounds="true" preserveRatio="true">
                     <image>
                     <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-            <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="homepageImageView2H" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../images/user_interface/icons8-home-48.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logoutImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onLogoutButtonClick" pickOnBounds="true" preserveRatio="true" visible="true">
+            <ImageView fx:id="logoutImageView2H" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onLogoutButtonClick2H" pickOnBounds="true" preserveRatio="true" visible="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-shutdown-96.png" />
                </image>
             </ImageView>
-            <ImageView onMouseClicked="#openFavorites" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView onMouseClicked="#openFavorites2H" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/shop/icons8-we-heart-it-96.png" />
                </image>
@@ -55,41 +55,41 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="40.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <ImageView fx:id="shopImageView1" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="shopText1" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+                  <ImageView fx:id="shopImageView12H" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop2H" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText12H" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
                </children>
             </Pane>
             <Pane layoutX="800.0" layoutY="210.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <ImageView fx:id="shopImageView2" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="shopText2" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+                  <ImageView fx:id="shopImageView22H" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop2H" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText22H" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
                </children>
             </Pane>
             <Pane layoutX="800.0" layoutY="380.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <ImageView fx:id="shopImageView3" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="shopText3" layoutX="3.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+                  <ImageView fx:id="shopImageView32H" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop2H" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText32H" layoutX="3.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
                </children>
             </Pane>
             <Pane layoutX="800.0" layoutY="550.0" maxHeight="170.0" maxWidth="200.0" minHeight="170.0" minWidth="200.0" prefHeight="170.0" prefWidth="200.0" style="-fx-border-color: #12d39d;">
                <children>
-                  <ImageView fx:id="shopImageView4" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="shopText4" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+                  <ImageView fx:id="shopImageView42H" fitHeight="120.0" fitWidth="120.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#onClickOnShop2H" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="shopText42H" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
                </children>
             </Pane>
          </children></Pane>
       <Pane prefHeight="720.0" prefWidth="800.0">
          <children>
-            <ChoiceBox fx:id="choiceBox" layoutX="552.0" layoutY="60.0" prefWidth="150.0" />
-            <TextField fx:id="searchParam" layoutX="52.0" layoutY="60.0" prefHeight="25.0" prefWidth="485.0" promptText="Search" />
-            <Button layoutX="714.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClick" text="Search" />
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="52.0" onMouseClicked="#onClickOnLocation" pickOnBounds="true" preserveRatio="true">
+            <ChoiceBox fx:id="choiceBox2H" layoutX="552.0" layoutY="60.0" prefWidth="150.0" />
+            <TextField fx:id="searchParam2H" layoutX="52.0" layoutY="60.0" prefHeight="25.0" prefWidth="485.0" promptText="Search" />
+            <Button layoutX="714.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClick2H" text="Search" />
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="52.0" onMouseClicked="#onClickOnLocation2H" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-user-location-48.png" />
                </image>
             </ImageView>
-            <TableView fx:id="productTableView" layoutX="25.0" layoutY="125.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" onMouseClicked="#onClickOnProductTableView" prefHeight="550.0" prefWidth="750.0" />
-            <TableView fx:id="shopTableView" layoutX="25.0" layoutY="125.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" onMouseClicked="#onClickOnShopTableView" prefHeight="550.0" prefWidth="750.0" />
+            <TableView fx:id="productTableView2H" layoutX="25.0" layoutY="125.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" onMouseClicked="#onClickOnProductTableView2H" prefHeight="550.0" prefWidth="750.0" />
+            <TableView fx:id="shopTableView2H" layoutX="25.0" layoutY="125.0" maxHeight="550.0" maxWidth="750.0" minHeight="550.0" minWidth="750.0" onMouseClicked="#onClickOnShopTableView2H" prefHeight="550.0" prefWidth="750.0" />
          </children>
       </Pane>
    </children>
