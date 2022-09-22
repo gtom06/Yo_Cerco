@@ -35,13 +35,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return productArrayList;
     }
@@ -59,13 +53,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.DEPARTMENT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return arrayProductShop;
     }
@@ -85,13 +73,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return output;
     }
@@ -106,13 +88,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
     }
 
@@ -126,13 +102,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
     }
     protected static PreparedStatement setUsernameAndSku(PreparedStatement stmt, String username, int sku) throws SQLException {
@@ -153,13 +123,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return simpleProductArrayList;
     }
@@ -180,13 +144,7 @@ public class ProductDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return productArrayList;
     }
