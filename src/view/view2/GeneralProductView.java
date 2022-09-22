@@ -29,47 +29,47 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GeneralProductView {
-    User user;
-    SimpleProduct simpleProduct;
+    User user2GPV;
+    SimpleProduct simpleProduct2GPV;
 
     @FXML
-    protected ImageView productPhoto;
+    protected ImageView productPhoto2GPV;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2GPV;
     @FXML
-    protected ImageView previousPage;
+    protected ImageView previousPage2GPV;
     @FXML
-    protected ImageView  cartImageView;
+    protected ImageView  cartImageView2GPV;
     @FXML
-    protected Label nameProd;
+    protected Label nameProd2GPV;
     @FXML
-    protected Label brandProd;
+    protected Label brandProd2GPV;
     @FXML
-    protected TableView<Shop> shopsTableView = new TableView<>();
-    protected TableColumn<Shop, String> nameColumn;
-    protected TableColumn<Shop, String> addressColumn;
-    protected TableColumn<Shop, String> cityColumn;
-    protected TableColumn<Shop, String> openingColumn;
-    protected TableColumn<Shop, String> closingColumn;
+    protected TableView<Shop> shopsTableView2GPV = new TableView<>();
+    protected TableColumn<Shop, String> nameColumn2GPV;
+    protected TableColumn<Shop, String> addressColumn2GPV;
+    protected TableColumn<Shop, String> cityColumn2GPV;
+    protected TableColumn<Shop, String> openingColumn2GPV;
+    protected TableColumn<Shop, String> closingColumn2GPV;
 
-    InputStream stream = null;
+    InputStream stream2GPV = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
 
-    public void passParams(User user, SimpleProduct simpleProduct) throws FileNotFoundException {
-        this.user = user;
-        this.simpleProduct = simpleProduct;
-        brandProd.setText(simpleProduct.getBrand());
-        nameProd.setText(simpleProduct.getName());
-        List<Shop> arrayShopList = ShopHandler.findShopByProduct(simpleProduct);
+    public void passParams(User user2GPV, SimpleProduct simpleProduct2GPV) throws FileNotFoundException {
+        this.user2GPV = user2GPV;
+        this.simpleProduct2GPV = simpleProduct2GPV;
+        brandProd2GPV.setText(simpleProduct2GPV.getBrand());
+        nameProd2GPV.setText(simpleProduct2GPV.getName());
+        List<Shop> arrayShopList2GPV = ShopHandler.findShopByProduct(simpleProduct2GPV);
 
-        stream = new FileInputStream(simpleProduct.getLogoImagepath());
-        Image productImage = new Image(stream, 200, 200, false, false);
-        productPhoto.setImage(productImage);
-        ObservableList<Shop> observableListShops = FXCollections.observableArrayList();
-        if (arrayShopList != null) {
-            observableListShops.addAll(arrayShopList);
-            shopsTableView.setItems(observableListShops);
+        stream2GPV = new FileInputStream(simpleProduct2GPV.getLogoImagepath());
+        Image productImage2GPV = new Image(stream2GPV, 200, 200, false, false);
+        productPhoto2GPV.setImage(productImage2GPV);
+        ObservableList<Shop> observableListShops2GPV = FXCollections.observableArrayList();
+        if (arrayShopList2GPV != null) {
+            observableListShops2GPV.addAll(arrayShopList2GPV);
+            shopsTableView2GPV.setItems(observableListShops2GPV);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
@@ -77,87 +77,88 @@ public class GeneralProductView {
     }
 
     @FXML
-    protected void onClickProfileImageView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
-        Parent root = loader.load();
-        MyProfile myProfile = loader.getController();
-        myProfile.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+    protected void onClickProfileImageView2GPV() throws IOException {
+        FXMLLoader loader2GPV = new FXMLLoader(getClass().getResource("myProfile.fxml"));
+        Parent root2GPV = loader2GPV.load();
+        MyProfile myProfile2GPV = loader2GPV.getController();
+        myProfile2GPV.passParams(user2GPV);
+        Stage newStage2GPV = new Stage();
+        newStage2GPV.setScene(new Scene(root2GPV));
+        newStage2GPV.show();
+        newStage2GPV.setResizable(false);
+        Stage stage2GPV = (Stage) cartImageView2GPV.getScene().getWindow();
+        stage2GPV.close();
     }
 
     @FXML
-    protected void onHomepageImageClick() throws IOException, AddressException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2GPV() throws IOException, AddressException {
+        FXMLLoader loader2GPV = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root2GPV = loader2GPV.load();
+        Homepage homepage2GPV = loader2GPV.getController();
+        homepage2GPV.passParams(user2GPV);
+        Stage newStage2GPV = new Stage();
+        newStage2GPV.setScene(new Scene(root2GPV));
+        newStage2GPV.show();
+        newStage2GPV.setResizable(false);
+        Stage stage2GPV = (Stage) homepageImageView2GPV.getScene().getWindow();
+        stage2GPV.close();
     }
 
     @FXML
-    protected void openCartAndPayment() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
-        Parent root = loader.load();
-        CartAndPayment cartAndPayment = loader.getController();
-        cartAndPayment.passParam(null, user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+    protected void openCartAndPayment2GPV() throws IOException {
+        FXMLLoader loader2GPV = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
+        Parent root2GPV = loader2GPV.load();
+        CartAndPayment cartAndPayment2GPV = loader2GPV.getController();
+        cartAndPayment2GPV.passParam(null, user2GPV);
+        Stage newStage2GPV = new Stage();
+        newStage2GPV.setScene(new Scene(root2GPV));
+        newStage2GPV.show();
+        newStage2GPV.setResizable(false);
+        Stage stage2GPV = (Stage) cartImageView2GPV.getScene().getWindow();
+        stage2GPV.close();
     }
 
     @FXML
     public void initialize(){
-        shopsTableView.setEditable(true);
+        shopsTableView2GPV.setEditable(true);
 
-        nameColumn = new TableColumn<>("NAME");
-        nameColumn.setMinWidth(200);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+        nameColumn2GPV = new TableColumn<>("NAME");
+        nameColumn2GPV.setMinWidth(200);
+        nameColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 
-        addressColumn = new TableColumn<>("ADDRESS");
-        addressColumn.setMinWidth(200);
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        addressColumn2GPV = new TableColumn<>("ADDRESS");
+        addressColumn2GPV.setMinWidth(200);
+        addressColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("address"));
 
-        cityColumn = new TableColumn<>("CITY");
-        cityColumn.setMinWidth(50);
-        cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
+        cityColumn2GPV = new TableColumn<>("CITY");
+        cityColumn2GPV.setMinWidth(50);
+        cityColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("city"));
 
-        openingColumn = new TableColumn<>("OPENING TIME");
-        openingColumn.setMinWidth(10);
-        openingColumn.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
+        openingColumn2GPV = new TableColumn<>("OPENING TIME");
+        openingColumn2GPV.setMinWidth(10);
+        openingColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("openingTime"));
 
-        closingColumn = new TableColumn<>("CLOSING TIME");
-        openingColumn.setMinWidth(10);
-        closingColumn.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
-        shopsTableView.getColumns().addAll(nameColumn, addressColumn, cityColumn, openingColumn, closingColumn);
+        closingColumn2GPV = new TableColumn<>("CLOSING TIME");
+        openingColumn2GPV.setMinWidth(10);
+        closingColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("closingTime"));
+        shopsTableView2GPV.getColumns().addAll(
+                nameColumn2GPV, addressColumn2GPV, cityColumn2GPV, openingColumn2GPV, closingColumn2GPV);
     }
 
     @FXML
-    protected void onItemClickedTableView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
-        Parent root = loader.load();
-        Shop shop = shopsTableView.getSelectionModel().getSelectedItem();
-        if (shop != null) {
-            ShopProductView shopProductView = loader.getController();
-            shopProductView.passParams(user, simpleProduct, shop);
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.show();
-            newStage.setResizable(false);
-            Stage stage = (Stage) cartImageView.getScene().getWindow();
-            stage.close();
+    protected void onItemClickedTableView2GPV() throws IOException {
+        FXMLLoader loader2GPV = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
+        Parent root2GPV = loader2GPV.load();
+        Shop shop2GPV = shopsTableView2GPV.getSelectionModel().getSelectedItem();
+        if (shop2GPV != null) {
+            ShopProductView shopProductView2GPV = loader2GPV.getController();
+            shopProductView2GPV.passParams(user2GPV, simpleProduct2GPV, shop2GPV);
+            Stage newStage2GPV = new Stage();
+            newStage2GPV.setScene(new Scene(root2GPV));
+            newStage2GPV.show();
+            newStage2GPV.setResizable(false);
+            Stage stage2GPV = (Stage) cartImageView2GPV.getScene().getWindow();
+            stage2GPV.close();
         }
     }
 }

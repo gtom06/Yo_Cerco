@@ -13,17 +13,17 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView2MP" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" visible="true">
+                <ImageView fx:id="profileImageView2MP" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" visible="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" onMouseClicked="#onHomepageImageClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView2MP" onMouseClicked="#onHomepageImageClick2MP" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -34,29 +34,29 @@
             <Pane maxHeight="720.0" maxWidth="500.0" minHeight="720.0" minWidth="500.0" prefHeight="720.0" prefWidth="500.0" style="-fx-border-color: #12d39d;">
                <children>
                   <Text layoutX="223.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My orders" wrappingWidth="53.677734375" />
-                  <TableView fx:id="orderTableView" onMouseClicked="#onClickOrderTableView" layoutX="22.0" layoutY="91.0" prefHeight="579.0" prefWidth="456.0" />
+                  <TableView fx:id="orderTableView2MP" onMouseClicked="#onClickOrderTableView2MP" layoutX="22.0" layoutY="91.0" prefHeight="579.0" prefWidth="456.0" />
                   <Text layoutX="22.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total orders:" />
-                  <Text fx:id="numberOfOrdersText" layoutX="109.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" />
+                  <Text fx:id="numberOfOrdersText2MP" layoutX="109.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" />
                </children>
             </Pane>
             <Pane layoutX="500.0" maxHeight="720.0" maxWidth="500.0" minHeight="720.0" minWidth="500.0" prefHeight="720.0" prefWidth="500.0" style="-fx-border-color: #12d39d;">
                <children>
                   <Text layoutX="211.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My profile info" />
-                   <Text fx:id="usernameText" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="500.0" />
-                   <Text fx:id="emailText" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" textAlignment="CENTER" wrappingWidth="500.0" />
-                   <TextField fx:id="nameTextField" layoutX="176.0" layoutY="175.0" promptText="Name" />
-                   <TextField fx:id="surnameTextField" layoutX="176.0" layoutY="228.0" promptText="Surname" />
-                   <TextField fx:id="streetTextField" layoutX="176.0" layoutY="288.0" promptText="Billing street" />
-                   <TextField fx:id="cityTextField" layoutX="176.0" layoutY="339.0" promptText="Billing city" />
-                   <TextField fx:id="countryTextField" layoutX="176.0" layoutY="391.0" promptText="Billing country" />
-                   <TextField fx:id="zipTextField" layoutX="176.0" layoutY="443.0" promptText="Billing zip" />
-                   <TextField fx:id="phoneTextField" layoutX="175.0" layoutY="501.0" promptText="Phone number" />
-                   <Text fx:id="errorText" fill="#2c2c2c" layoutX="259.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill all fields!" visible="false" wrappingWidth="497.0045471191406">
+                   <Text fx:id="usernameText2MP" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="500.0" />
+                   <Text fx:id="emailText2MP" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" textAlignment="CENTER" wrappingWidth="500.0" />
+                   <TextField fx:id="nameTextField2MP" layoutX="176.0" layoutY="175.0" promptText="Name" />
+                   <TextField fx:id="surnameTextField2MP" layoutX="176.0" layoutY="228.0" promptText="Surname" />
+                   <TextField fx:id="streetTextField2MP" layoutX="176.0" layoutY="288.0" promptText="Billing street" />
+                   <TextField fx:id="cityTextField2MP" layoutX="176.0" layoutY="339.0" promptText="Billing city" />
+                   <TextField fx:id="countryTextField2MP" layoutX="176.0" layoutY="391.0" promptText="Billing country" />
+                   <TextField fx:id="zipTextField2MP" layoutX="176.0" layoutY="443.0" promptText="Billing zip" />
+                   <TextField fx:id="phoneTextField2MP" layoutX="175.0" layoutY="501.0" promptText="Phone number" />
+                   <Text fx:id="errorText2MP" fill="#2c2c2c" layoutX="259.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill all fields!" visible="false" wrappingWidth="497.0045471191406">
                        <font>
                            <Font name="Tahoma Bold" size="12.0" />
                        </font>
                    </Text>
-                   <Button onMouseClicked="#saveProfile" layoutX="211.0" layoutY="555.0" mnemonicParsing="false" text="Save profile" />
+                   <Button onMouseClicked="#saveProfile2MP" layoutX="211.0" layoutY="555.0" mnemonicParsing="false" text="Save profile" />
                </children>
             </Pane>
          </children></Pane>

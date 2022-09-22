@@ -18,7 +18,7 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView2SOA" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onHomepageImageClick2SOA" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -27,15 +27,15 @@
         </Pane>
         <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
             <children>
-                <TableView fx:id="orderItemTableView" layoutX="50.0" layoutY="77.0" prefHeight="590.0" prefWidth="900.0" />
+                <TableView fx:id="orderItemTableView2SOA" layoutX="50.0" layoutY="77.0" prefHeight="590.0" prefWidth="900.0" />
                 <Text layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order n." wrappingWidth="54.0" />
-                <Text fx:id="orderNumberText" layoutX="127.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="orderN" wrappingWidth="49.79296875" />
+                <Text fx:id="orderNumberText2SOA" layoutX="127.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="orderN" wrappingWidth="49.79296875" />
                 <Text layoutX="226.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="placed on:" />
-                <Text fx:id="timestampText" layoutX="319.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timestamp" />
+                <Text fx:id="timestampText2SOA" layoutX="319.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timestamp" />
                 <Text layoutX="713.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" wrappingWidth="80.0" />
-                <Text fx:id="totalPriceText" layoutX="845.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="totalPrice" />
-            <Button onMouseClicked="#completeOrder" layoutX="850.0" layoutY="681.0" mnemonicParsing="false" text="Complete order" />
-            <Text fx:id="completedText" layoutX="703.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPLETED" visible="false">
+                <Text fx:id="totalPriceText2SOA" layoutX="845.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="totalPrice" />
+            <Button onMouseClicked="#completeOrder2SOA" layoutX="850.0" layoutY="681.0" mnemonicParsing="false" text="Complete order" />
+            <Text fx:id="completedText2SOA" layoutX="703.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPLETED" visible="false">
                <font>
                   <Font size="24.0" />
                </font>

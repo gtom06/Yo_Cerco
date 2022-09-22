@@ -24,110 +24,111 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrder {
-    User user = null;
-    Order order = null;
+    User user2SO = null;
+    Order order2SO = null;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2SO;
     @FXML
-    protected ImageView goPreviousPageImageView;
+    protected ImageView goPreviousPageImageView2SO;
     @FXML
-    protected ImageView cartImageView;
+    protected ImageView cartImageView2SO;
     @FXML
-    protected Text totalPriceText;
+    protected Text totalPriceText2SO;
     @FXML
-    protected Text timestampText;
+    protected Text timestampText2SO;
     @FXML
-    protected Text orderNumberText;
+    protected Text orderNumberText2SO;
     @FXML
-    protected TableView<OrderItem> orderItemTableView = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn;
-    protected TableColumn<OrderItem, String> brandColumn;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    protected TableColumn<OrderItem, Double> priceTotalColumn;
-    protected TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView2SO = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn2SO;
+    protected TableColumn<OrderItem, String> brandColumn2SO;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn2SO;
+    protected TableColumn<OrderItem, Double> priceTotalColumn2SO;
+    protected TableColumn<OrderItem, String> currencyColumn2SO;
 
     static final Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
     @FXML
-    protected void onHomepageImageClick() throws IOException, AddressException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2SO() throws IOException, AddressException {
+        FXMLLoader loader2SO = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root2SO = loader2SO.load();
+        Homepage homepage2SO = loader2SO.getController();
+        homepage2SO.passParams(user2SO);
+        Stage newStage2SO = new Stage();
+        newStage2SO.setScene(new Scene(root2SO));
+        newStage2SO.show();
+        newStage2SO.setResizable(false);
+        Stage stage2SO = (Stage) homepageImageView2SO.getScene().getWindow();
+        stage2SO.close();
     }
 
     @FXML
-    protected void previousPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("myProfile.fxml"));
-        Parent root = loader.load();
-        MyProfile myProfile = loader.getController();
-        myProfile.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) goPreviousPageImageView.getScene().getWindow();
-        stage.close();
+    protected void previousPage2SO() throws IOException {
+        FXMLLoader loader2SO = new FXMLLoader(getClass().getResource("myProfile.fxml"));
+        Parent root2SO = loader2SO.load();
+        MyProfile myProfile2SO = loader2SO.getController();
+        myProfile2SO.passParams(user2SO);
+        Stage newStage2SO = new Stage();
+        newStage2SO.setScene(new Scene(root2SO));
+        newStage2SO.show();
+        newStage2SO.setResizable(false);
+        Stage stage2SO = (Stage) goPreviousPageImageView2SO.getScene().getWindow();
+        stage2SO.close();
     }
 
     @FXML
-    protected void openCartAndPayment() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
-        Parent root = loader.load();
-        CartAndPayment cartAndPayment = loader.getController();
-        cartAndPayment.passParam(null, user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) cartImageView.getScene().getWindow();
-        stage.close();
+    protected void openCartAndPayment2SO() throws IOException {
+        FXMLLoader loader2SO = new FXMLLoader(getClass().getResource("cartAndPayment.fxml"));
+        Parent root2SO = loader2SO.load();
+        CartAndPayment cartAndPayment2SO = loader2SO.getController();
+        cartAndPayment2SO.passParam(null, user2SO);
+        Stage newStage2SO = new Stage();
+        newStage2SO.setScene(new Scene(root2SO));
+        newStage2SO.show();
+        newStage2SO.setResizable(false);
+        Stage stage2SO = (Stage) cartImageView2SO.getScene().getWindow();
+        stage2SO.close();
     }
 
     @FXML
     public void initialize() {
-        orderItemTableView.setEditable(true);
+        orderItemTableView2SO.setEditable(true);
 
-        nameColumn = new TableColumn<>("Name");
-        brandColumn = new TableColumn<>("Brand");
-        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
-        priceTotalColumn = new TableColumn<>("Price total");
-        currencyColumn = new TableColumn<>("Currency");
+        nameColumn2SO = new TableColumn<>("Name");
+        brandColumn2SO = new TableColumn<>("Brand");
+        quantityOrderedColumn2SO = new TableColumn<>("Quantity ordered");
+        priceTotalColumn2SO = new TableColumn<>("Price total");
+        currencyColumn2SO = new TableColumn<>("Currency");
 
-        nameColumn.setMinWidth(10);
-        brandColumn.setMinWidth(10);
-        quantityOrderedColumn.setMinWidth(10);
-        priceTotalColumn.setMinWidth(10);
-        currencyColumn.setMinWidth(10);
+        nameColumn2SO.setMinWidth(10);
+        brandColumn2SO.setMinWidth(10);
+        quantityOrderedColumn2SO.setMinWidth(10);
+        priceTotalColumn2SO.setMinWidth(10);
+        currencyColumn2SO.setMinWidth(10);
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
-        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
-        currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        nameColumn2SO.setCellValueFactory(new PropertyValueFactory<>("name"));
+        brandColumn2SO.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        quantityOrderedColumn2SO.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        priceTotalColumn2SO.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        currencyColumn2SO.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-        orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
+        orderItemTableView2SO.getColumns().addAll(
+                nameColumn2SO, brandColumn2SO, quantityOrderedColumn2SO, priceTotalColumn2SO, currencyColumn2SO);
     }
 
-    protected void fillOrder() throws Exception {
-        orderItemTableView.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
-        order = OrderHandler.populateOrderWithOrderItems(order);
-        if (order != null) {
-            totalPriceText.setText(String.valueOf(order.getTotalPrice()));
-            timestampText.setText(String.valueOf(order.getOrderTimestamp()));
-            orderNumberText.setText(String.valueOf(order.getOrderId()));
-            if (order.getOrderItemArrayList() != null) {
-                for (OrderItem orderItem : order.getOrderItemArrayList()) {
-                    orderItemObservableList.add(orderItem);
+    protected void fillOrder2SO() throws Exception {
+        orderItemTableView2SO.getItems().clear();
+        ObservableList<OrderItem> orderItemObservableList2SO = FXCollections.observableArrayList();
+        order2SO = OrderHandler.populateOrderWithOrderItems(order2SO);
+        if (order2SO != null) {
+            totalPriceText2SO.setText(String.valueOf(order2SO.getTotalPrice()));
+            timestampText2SO.setText(String.valueOf(order2SO.getOrderTimestamp()));
+            orderNumberText2SO.setText(String.valueOf(order2SO.getOrderId()));
+            if (order2SO.getOrderItemArrayList() != null) {
+                for (OrderItem orderItem2SO : order2SO.getOrderItemArrayList()) {
+                    orderItemObservableList2SO.add(orderItem2SO);
                 }
-                orderItemTableView.setItems(orderItemObservableList);
+                orderItemTableView2SO.setItems(orderItemObservableList2SO);
             } else {
                 logger.log(Level.INFO, Constants.NO_RESULT);
             }
@@ -137,9 +138,9 @@ public class SpecificOrder {
         }
     }
 
-    public void passParams(User user, Order order) throws Exception {
-        this.user = user;
-        this.order = order;
-        fillOrder();
+    public void passParams(User user2SO, Order order2SO) throws Exception {
+        this.user2SO = user2SO;
+        this.order2SO = order2SO;
+        fillOrder2SO();
     }
 }

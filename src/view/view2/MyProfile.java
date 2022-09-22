@@ -36,171 +36,172 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyProfile {
-    User user = null;
+    User user2MP = null;
 
     @FXML
-    protected ImageView myProfileImage;
+    protected ImageView myProfileImage2MP;
     @FXML
-    protected Text emailText;
+    protected Text emailText2MP;
     @FXML
-    protected Text usernameText;
+    protected Text usernameText2MP;
     @FXML
-    protected Text errorText;
+    protected Text errorText2MP;
     @FXML
-    protected TextField nameTextField;
+    protected TextField nameTextField2MP;
     @FXML
-    protected TextField surnameTextField;
+    protected TextField surnameTextField2MP;
     @FXML
-    protected TextField streetTextField;
+    protected TextField streetTextField2MP;
     @FXML
-    protected TextField cityTextField;
+    protected TextField cityTextField2MP;
     @FXML
-    protected TextField countryTextField;
+    protected TextField countryTextField2MP;
     @FXML
-    protected TextField zipTextField;
+    protected TextField zipTextField2MP;
     @FXML
-    protected TextField phoneTextField;
+    protected TextField phoneTextField2MP;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2MP;
     @FXML
-    protected TableView<Order> orderTableView = new TableView<>();
-    protected TableColumn<Order, String> orderNumber;
-    protected TableColumn<Order, Integer> orderTotalQuantity;
-    protected TableColumn<Order, String> orderTotalPrice;
-    protected TableColumn<Order, Timestamp> orderTimeStamp;
-    protected TableColumn<Order, Timestamp> orderStatus;
+    protected TableView<Order> orderTableView2MP = new TableView<>();
+    protected TableColumn<Order, String> orderNumber2MP;
+    protected TableColumn<Order, Integer> orderTotalQuantity2MP;
+    protected TableColumn<Order, String> orderTotalPrice2MP;
+    protected TableColumn<Order, Timestamp> orderTimeStamp2MP;
+    protected TableColumn<Order, Timestamp> orderStatus2MP;
     @FXML
-    protected Text numberOfOrdersText;
+    protected Text numberOfOrdersText2MP;
 
     static final Logger logger = Logger.getLogger(MyProfile.class.getName());
 
     @FXML
-    protected void onHomepageImageClick() throws IOException, AddressException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2MP() throws IOException, AddressException {
+        FXMLLoader loader2MP = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root2MP = loader2MP.load();
+        Homepage homepage2MP = loader2MP.getController();
+        homepage2MP.passParams(user2MP);
+        Stage newStage2MP = new Stage();
+        newStage2MP.setScene(new Scene(root2MP));
+        newStage2MP.show();
+        newStage2MP.setResizable(false);
+        Stage stage2MP = (Stage) homepageImageView2MP.getScene().getWindow();
+        stage2MP.close();
     }
 
     @FXML
-    protected void saveProfile() {
-        if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
-                streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
-                countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
-                phoneTextField.getText().isBlank()) {
-            errorText.setVisible(true);
+    protected void saveProfile2MP() {
+        if (nameTextField2MP.getText().isBlank() || surnameTextField2MP.getText().isBlank() ||
+                streetTextField2MP.getText().isBlank() || cityTextField2MP.getText().isBlank() ||
+                countryTextField2MP.getText().isBlank() || zipTextField2MP.getText().isBlank() ||
+                phoneTextField2MP.getText().isBlank()) {
+            errorText2MP.setVisible(true);
         }
         else{
-            if (UserHandler.updateRecord2(user, Arrays.asList(nameTextField.getText(), surnameTextField.getText(),
-                    streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
-                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath()))) {
+            if (UserHandler.updateRecord2(user2MP, Arrays.asList(nameTextField2MP.getText(), surnameTextField2MP.getText(),
+                    streetTextField2MP.getText(), cityTextField2MP.getText(), countryTextField2MP.getText(),
+                    zipTextField2MP.getText(), phoneTextField2MP.getText(), ((Buyer) user2MP).getProfileImagepath()))) {
                 logger.log(Level.INFO, "update ok");
             }
         }
     }
 
     @FXML
-    protected void onClickProfileImageView() throws IOException, FileElaborationException {
-        InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
-        Image profileImage = new Image(stream, 200, 200, false, false);
+    protected void onClickProfileImageView2MP() throws IOException, FileElaborationException {
+        InputStream stream2MP = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
+        Image profileImage2MP = new Image(stream2MP, 200, 200, false, false);
 
-        myProfileImage.setImage(profileImage);
-        String newFileName = user.getUsername() + ".jpg";
-        String newFilepath = Constants.PROFILE_IMAGES_PATH + newFileName;
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        fileChooser.getExtensionFilters().addAll(extFilterJPG);
-        File file = fileChooser.showOpenDialog(null);
+        myProfileImage2MP.setImage(profileImage2MP);
+        String newFileName2MP = user2MP.getUsername() + ".jpg";
+        String newFilepath2MP = Constants.PROFILE_IMAGES_PATH + newFileName2MP;
+        FileChooser fileChooser2MP = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG2MP = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        fileChooser2MP.getExtensionFilters().addAll(extFilterJPG2MP);
+        File file2MP = fileChooser2MP.showOpenDialog(null);
 
-        if (file != null) {
-            if (FileElaboration.copyAndReplaceFile(file, newFilepath)) {
-                stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
-                profileImage = new Image(stream, 200, 200, false, false);
-                myProfileImage.setImage(profileImage);
-                stream.close();
+        if (file2MP != null) {
+            if (FileElaboration.copyAndReplaceFile(file2MP, newFilepath2MP)) {
+                stream2MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user2MP).getProfileImagepath());
+                profileImage2MP = new Image(stream2MP, 200, 200, false, false);
+                myProfileImage2MP.setImage(profileImage2MP);
+                stream2MP.close();
             }
-            UserHandler.updateLogoImagePath(user, newFileName);
+            UserHandler.updateLogoImagePath(user2MP, newFileName2MP);
         }
     }
 
     @FXML
     public void initialize() {
-        orderTableView.setEditable(true);
+        orderTableView2MP.setEditable(true);
 
-        orderNumber = new TableColumn<>("Order No");
-        orderNumber.setMinWidth(10);
-        orderNumber.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        orderNumber2MP = new TableColumn<>("Order No");
+        orderNumber2MP.setMinWidth(10);
+        orderNumber2MP.setCellValueFactory(new PropertyValueFactory<>("orderId"));
 
-        orderTotalQuantity = new TableColumn<>("Quantity");
-        orderTotalQuantity.setMinWidth(10);
-        orderTotalQuantity.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
+        orderTotalQuantity2MP = new TableColumn<>("Quantity");
+        orderTotalQuantity2MP.setMinWidth(10);
+        orderTotalQuantity2MP.setCellValueFactory(new PropertyValueFactory<>("orderTotalQuantity"));
 
-        orderTotalPrice = new TableColumn<>("Price");
-        orderTotalPrice.setMinWidth(30);
-        orderTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        orderTotalPrice2MP = new TableColumn<>("Price");
+        orderTotalPrice2MP.setMinWidth(30);
+        orderTotalPrice2MP.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
-        orderTimeStamp = new TableColumn<>("Order date");
-        orderTimeStamp.setMinWidth(10);
-        orderTimeStamp.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
+        orderTimeStamp2MP = new TableColumn<>("Order date");
+        orderTimeStamp2MP.setMinWidth(10);
+        orderTimeStamp2MP.setCellValueFactory(new PropertyValueFactory<>("orderTimestamp"));
 
-        orderStatus = new TableColumn<>("Status");
-        orderStatus.setMinWidth(10);
-        orderStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        orderStatus2MP = new TableColumn<>("Status");
+        orderStatus2MP.setMinWidth(10);
+        orderStatus2MP.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        orderTableView.getColumns().addAll(orderNumber, orderTotalQuantity, orderTotalPrice, orderTimeStamp, orderStatus);
+        orderTableView2MP.getColumns().addAll(
+                orderNumber2MP, orderTotalQuantity2MP, orderTotalPrice2MP, orderTimeStamp2MP, orderStatus2MP);
 
     }
 
-    protected void fillView() {
-        int numberOfOrders = 0;
-        orderTableView.getItems().clear();
-        ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
-        List<Order> orderArrayList = OrderHandler.findOrdersInfoFromUser(user);
-        if (orderArrayList != null) {
-            orderObservableList.addAll(orderArrayList);
-            orderTableView.setItems(orderObservableList);
-            numberOfOrders = orderArrayList.size();
+    protected void fillView2MP() {
+        int numberOfOrders2MP = 0;
+        orderTableView2MP.getItems().clear();
+        ObservableList<Order> orderObservableList2MP = FXCollections.observableArrayList();
+        List<Order> orderArrayList2MP = OrderHandler.findOrdersInfoFromUser(user2MP);
+        if (orderArrayList2MP != null) {
+            orderObservableList2MP.addAll(orderArrayList2MP);
+            orderTableView2MP.setItems(orderObservableList2MP);
+            numberOfOrders2MP = orderArrayList2MP.size();
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
         }
-        numberOfOrdersText.setText(String.valueOf(numberOfOrders));
+        numberOfOrdersText2MP.setText(String.valueOf(numberOfOrders2MP));
     }
 
 
-    public void passParams(User user){
-        this.user = user;
-        fillView();
-        usernameText.setText(user.getUsername());
-        emailText.setText(user.getEmail());
-        nameTextField.setText(user.getName());
-        surnameTextField.setText(user.getSurname());
-        streetTextField.setText(((Buyer) user).getBillingStreet());
-        cityTextField.setText(((Buyer) user).getBillingCity());
-        countryTextField.setText(((Buyer) user).getBillingCountry());
-        zipTextField.setText(((Buyer) user).getBillingZip());
-        phoneTextField.setText(((Buyer) user).getPhone());
+    public void passParams(User user2MP){
+        this.user2MP = user2MP;
+        fillView2MP();
+        usernameText2MP.setText(user2MP.getUsername());
+        emailText2MP.setText(user2MP.getEmail());
+        nameTextField2MP.setText(user2MP.getName());
+        surnameTextField2MP.setText(user2MP.getSurname());
+        streetTextField2MP.setText(((Buyer) user2MP).getBillingStreet());
+        cityTextField2MP.setText(((Buyer) user2MP).getBillingCity());
+        countryTextField2MP.setText(((Buyer) user2MP).getBillingCountry());
+        zipTextField2MP.setText(((Buyer) user2MP).getBillingZip());
+        phoneTextField2MP.setText(((Buyer) user2MP).getPhone());
     }
 
     @FXML
-    protected void onClickOrderTableView() throws Exception {
-        Order order = orderTableView.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
-        Parent root = loader.load();
-        SpecificOrder specificOrder = loader.getController();
+    protected void onClickOrderTableView2MP() throws Exception {
+        Order order2MP = orderTableView2MP.getSelectionModel().getSelectedItem();
+        FXMLLoader loader2MP = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+        Parent root2MP = loader2MP.load();
+        SpecificOrder specificOrder2MP = loader2MP.getController();
 
-        specificOrder.passParams(user, order);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) orderTableView.getScene().getWindow();
-        stage.close();
+        specificOrder2MP.passParams(user2MP, order2MP);
+        Stage newStage2MP = new Stage();
+        newStage2MP.setScene(new Scene(root2MP));
+        newStage2MP.show();
+        newStage2MP.setResizable(false);
+        Stage stage2MP = (Stage) orderTableView2MP.getScene().getWindow();
+        stage2MP.close();
     }
 }

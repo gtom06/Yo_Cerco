@@ -144,7 +144,7 @@ public class ShopView {
         Image shopImage1SV = new Image(stream1SV, 200, 200, false, false);
         shopLogo1SV.setImage(shopImage1SV);
         textShopName1SV.setText(shop1SV.getShopName());
-        checkOffersFlyer(shop1SV);
+        checkOffersFlyer1SV(shop1SV);
         ArrayList<ImageView> imageViewDepartmentsArrayList1SV = new ArrayList<>(
                 Arrays.asList(dep11SV,dep21SV,dep31SV,dep41SV,dep51SV,dep61SV,dep71SV,dep81SV,dep91SV,dep101SV,dep111SV,dep121SV,dep131SV,dep141SV)
         );
@@ -223,7 +223,7 @@ public class ShopView {
 
     @FXML
     protected void addRemoveFavoriteFromText1SV(){
-        if (textFavorite1SV.getText() == REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK) {
+        if (textFavorite1SV.getText().equals(REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK)) {
             removeFromFavorite1SV();
         } else {
             addToFavorite1SV();

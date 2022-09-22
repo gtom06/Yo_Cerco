@@ -17,22 +17,22 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" onMouseClicked="#openCartAndPayment" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView2GPV" onMouseClicked="#openCartAndPayment2GPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="goPreviousPageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                <ImageView fx:id="goPreviousPageImageView2GPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
                         <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" onMouseClicked="#onClickProfileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profileImageView2GPV" onMouseClicked="#onClickProfileImageView2GPV" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" onMouseClicked="#onHomepageImageClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView2GPV" onMouseClicked="#onHomepageImageClick2GPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -44,17 +44,17 @@
                     <children>
                         <Pane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <ImageView fx:id="productPhoto" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fx:id="productPhoto2GPV" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
                             </children>
                         </Pane>
                         <Pane layoutX="250.0" maxHeight="250.0" maxWidth="750.0" minHeight="250.0" minWidth="750.0" prefHeight="250.0" prefWidth="750.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <Label fx:id="nameProd" layoutX="37.0" layoutY="75.0" text="productName">
+                                <Label fx:id="nameProd2GPV" layoutX="37.0" layoutY="75.0" text="productName">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="brandProd" layoutX="37.0" layoutY="141.0" text="brand">
+                                <Label fx:id="brandProd2GPV" layoutX="37.0" layoutY="141.0" text="brand">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -65,7 +65,7 @@
                 </Pane>
                 <Pane layoutY="250.0" maxHeight="470.0" maxWidth="1000.0" minHeight="470.0" minWidth="1000.0" prefHeight="470.0" prefWidth="1000.0" style="-fx-border-color: #12d39d;">
                     <children>
-                        <TableView fx:id="shopsTableView" onMouseClicked="#onItemClickedTableView" layoutX="25.0" layoutY="69.0" prefHeight="367.0" prefWidth="950.0" />
+                        <TableView fx:id="shopsTableView2GPV" onMouseClicked="#onItemClickedTableView2GPV" layoutX="25.0" layoutY="69.0" prefHeight="367.0" prefWidth="950.0" />
                         <Label layoutX="366.0" layoutY="11.0" text="You can find it in">
                             <font>
                                 <Font size="36.0" />

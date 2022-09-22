@@ -23,83 +23,84 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
-    User user = null;
-    Order order = null;
+    User user2SOA = null;
+    Order order2SOA = null;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView2SOA;
     @FXML
-    protected ImageView goPreviousPageImageView;
+    protected ImageView goPreviousPageImageView2SOA;
     @FXML
-    protected ImageView cartImageView;
+    protected ImageView cartImageView2SOA;
     @FXML
-    protected Text totalPriceText;
+    protected Text totalPriceText2SOA;
     @FXML
-    protected Text timestampText;
+    protected Text timestampText2SOA;
     @FXML
-    protected Text orderNumberText;
+    protected Text orderNumberText2SOA;
     @FXML
-    protected Text completedText;
+    protected Text completedText2SOA;
     @FXML
-    protected TableView<OrderItem> orderItemTableView = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn;
-    protected TableColumn<OrderItem, String> brandColumn;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn;
-    protected TableColumn<OrderItem, Double> priceTotalColumn;
-    protected TableColumn<OrderItem, String> currencyColumn;
+    protected TableView<OrderItem> orderItemTableView2SOA = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn2SOA;
+    protected TableColumn<OrderItem, String> brandColumn2SOA;
+    protected TableColumn<OrderItem, Integer> quantityOrderedColumn2SOA;
+    protected TableColumn<OrderItem, Double> priceTotalColumn2SOA;
+    protected TableColumn<OrderItem, String> currencyColumn2SOA;
     static final Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
     @FXML
-    protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
-        Parent root = loader.load();
-        HomepageAdmin homepage = loader.getController();
-        homepage.passParams(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+    protected void onHomepageImageClick2SOA() throws IOException {
+        FXMLLoader loader2SOA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
+        Parent root2SOA = loader2SOA.load();
+        HomepageAdmin homepage2SOA = loader2SOA.getController();
+        homepage2SOA.passParams(user2SOA);
+        Stage newStage2SOA = new Stage();
+        newStage2SOA.setScene(new Scene(root2SOA));
+        newStage2SOA.show();
+        newStage2SOA.setResizable(false);
+        Stage stage2SOA = (Stage) homepageImageView2SOA.getScene().getWindow();
+        stage2SOA.close();
     }
 
     @FXML
     public void initialize() {
-        orderItemTableView.setEditable(true);
+        orderItemTableView2SOA.setEditable(true);
 
-        nameColumn = new TableColumn<>("Name");
-        brandColumn = new TableColumn<>("Brand");
-        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
-        priceTotalColumn = new TableColumn<>("Price total");
-        currencyColumn = new TableColumn<>("Currency");
+        nameColumn2SOA = new TableColumn<>("Name");
+        brandColumn2SOA = new TableColumn<>("Brand");
+        quantityOrderedColumn2SOA = new TableColumn<>("Quantity ordered");
+        priceTotalColumn2SOA = new TableColumn<>("Price total");
+        currencyColumn2SOA = new TableColumn<>("Currency");
 
-        nameColumn.setMinWidth(10);
-        brandColumn.setMinWidth(10);
-        quantityOrderedColumn.setMinWidth(10);
-        priceTotalColumn.setMinWidth(10);
-        currencyColumn.setMinWidth(10);
+        nameColumn2SOA.setMinWidth(10);
+        brandColumn2SOA.setMinWidth(10);
+        quantityOrderedColumn2SOA.setMinWidth(10);
+        priceTotalColumn2SOA.setMinWidth(10);
+        currencyColumn2SOA.setMinWidth(10);
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
-        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
-        currencyColumn.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        nameColumn2SOA.setCellValueFactory(new PropertyValueFactory<>("name"));
+        brandColumn2SOA.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        quantityOrderedColumn2SOA.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        priceTotalColumn2SOA.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        currencyColumn2SOA.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-        orderItemTableView.getColumns().addAll(nameColumn, brandColumn, quantityOrderedColumn, priceTotalColumn, currencyColumn);
+        orderItemTableView2SOA.getColumns().addAll(
+                nameColumn2SOA, brandColumn2SOA, quantityOrderedColumn2SOA, priceTotalColumn2SOA, currencyColumn2SOA);
     }
 
-    protected void fillOrder() {
-        orderItemTableView.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList = FXCollections.observableArrayList();
-        order = OrderHandler.populateOrderWithOrderItems(order);
-        if (order != null) {
-            totalPriceText.setText(String.valueOf(order.getTotalPrice()));
-            timestampText.setText(String.valueOf(order.getOrderTimestamp()));
-            orderNumberText.setText(String.valueOf(order.getOrderId()));
-            if (order.getOrderItemArrayList() != null) {
-                for (OrderItem orderItem : order.getOrderItemArrayList()) {
-                    orderItemObservableList.add(orderItem);
+    protected void fillOrder2SOA() {
+        orderItemTableView2SOA.getItems().clear();
+        ObservableList<OrderItem> orderItemObservableList2SOA = FXCollections.observableArrayList();
+        order2SOA = OrderHandler.populateOrderWithOrderItems(order2SOA);
+        if (order2SOA != null) {
+            totalPriceText2SOA.setText(String.valueOf(order2SOA.getTotalPrice()));
+            timestampText2SOA.setText(String.valueOf(order2SOA.getOrderTimestamp()));
+            orderNumberText2SOA.setText(String.valueOf(order2SOA.getOrderId()));
+            if (order2SOA.getOrderItemArrayList() != null) {
+                for (OrderItem orderItem2SOA : order2SOA.getOrderItemArrayList()) {
+                    orderItemObservableList2SOA.add(orderItem2SOA);
                 }
-                orderItemTableView.setItems(orderItemObservableList);
+                orderItemTableView2SOA.setItems(orderItemObservableList2SOA);
             } else {
                 logger.log(Level.INFO, Constants.NO_RESULT);
             }
@@ -109,15 +110,15 @@ public class SpecificOrderAdmin {
         }
     }
 
-    public void passParams(User user, Order order){
-        this.user = user;
-        this.order = order;
-        fillOrder();
+    public void passParams(User user2SOA, Order order2SOA){
+        this.user2SOA = user2SOA;
+        this.order2SOA = order2SOA;
+        fillOrder2SOA();
     }
     @FXML
-    protected void completeOrder() {
-        if (OrderHandler.setStatusOrder(order, Constants.COMPLETED)) {
-            completedText.setVisible(true);
+    protected void completeOrder2SOA() {
+        if (OrderHandler.setStatusOrder(order2SOA, Constants.COMPLETED)) {
+            completedText2SOA.setVisible(true);
         }
     }
 }

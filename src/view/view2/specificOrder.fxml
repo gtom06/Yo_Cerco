@@ -16,22 +16,22 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" onMouseClicked="#openCartAndPayment" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView2SO" onMouseClicked="#openCartAndPayment2SO" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" onMouseClicked="#previousPage" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profileImageView2SO" onMouseClicked="#previousPage2SO" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" onMouseClicked="#onHomepageImageClick" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView2SO" onMouseClicked="#onHomepageImageClick2SO" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
                 </ImageView>
-            <ImageView fx:id="goPreviousPageImageView" onMouseClicked="#previousPage" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="goPreviousPageImageView2SO" onMouseClicked="#previousPage2SO" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
                </image>
@@ -40,13 +40,13 @@
         </Pane>
         <Pane maxHeight="720.0" maxWidth="1000.0" minHeight="720.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1000.0">
         <children>
-            <TableView fx:id="orderItemTableView" layoutX="50.0" layoutY="77.0" prefHeight="590.0" prefWidth="900.0" />
+            <TableView fx:id="orderItemTableView2SO" layoutX="50.0" layoutY="77.0" prefHeight="590.0" prefWidth="900.0" />
             <Text layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order n." wrappingWidth="54.0" />
-            <Text fx:id="orderNumberText" layoutX="127.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="orderN" wrappingWidth="49.79296875" />
+            <Text fx:id="orderNumberText2SO" layoutX="127.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="orderN" wrappingWidth="49.79296875" />
             <Text layoutX="226.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="placed on:" />
-            <Text fx:id="timestampText" layoutX="319.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timestamp" />
+            <Text fx:id="timestampText2SO" layoutX="319.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timestamp" />
             <Text layoutX="713.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" wrappingWidth="80.0" />
-            <Text fx:id="totalPriceText" layoutX="845.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="totalPrice" />
+            <Text fx:id="totalPriceText2SO" layoutX="845.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="totalPrice" />
         </children>
         </Pane>
     </children>

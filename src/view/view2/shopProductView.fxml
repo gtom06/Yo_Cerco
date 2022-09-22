@@ -17,22 +17,22 @@
                         <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="cartImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" onMouseClicked="#openCartAndPayment" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="cartImageView2SPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="562.0" onMouseClicked="#openCartAndPayment2SPV" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-shopping-cart-96.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="goPreviousPageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                <ImageView fx:id="goPreviousPageImageView2SPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
                         <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="profileImageView" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" onMouseClicked="#onClickProfileImageView" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profileImageView2SPV" fitHeight="78.0" fitWidth="78.0" layoutY="640.0" onMouseClicked="#onClickProfileImageView2SPV" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-customer-100.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="homepageImageView" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="homepageImageView2SPV" fitHeight="78.0" fitWidth="78.0" layoutX="1.0" layoutY="2.0" onMouseClicked="#onHomepageImageClick2SPV" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/user_interface/icons8-home-48.png" />
                     </image>
@@ -45,26 +45,26 @@
                     <children>
                         <Pane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <ImageView fx:id="productPhoto" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fx:id="productPhoto2SPV" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
                             </children>
                         </Pane>
                         <Pane layoutX="250.0" maxHeight="250.0" maxWidth="750.0" minHeight="250.0" minWidth="750.0" prefHeight="250.0" prefWidth="750.0" style="-fx-border-color: #12d39d;">
                             <children>
-                                <Text fx:id="nameProd" layoutX="37.0" layoutY="75.0" text="productName">
+                                <Text fx:id="nameProd2SPV" layoutX="37.0" layoutY="75.0" text="productName">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Text>
-                                <Text fx:id="brandProd" layoutX="37.0" layoutY="141.0" text="brand">
+                                <Text fx:id="brandProd2SPV" layoutX="37.0" layoutY="141.0" text="brand">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Text>
-                                <ImageView fx:id="addShopToFavorites" fitHeight="62.0" fitWidth="63.0" layoutX="674.0" layoutY="174.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="addShopToFavorites2SPV" fitHeight="62.0" fitWidth="63.0" layoutX="674.0" layoutY="174.0" onMouseClicked="#addToFavorite2SPV" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../images/shop/icons8-we-heart-it-96.png" />
                                     </image></ImageView>
-                                <ImageView fx:id="removeShopFromFavorites" fitHeight="62.0" fitWidth="63.0" layoutX="674.0" layoutY="174.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="removeShopFromFavorites2SPV" fitHeight="62.0" fitWidth="63.0" layoutX="674.0" layoutY="174.0" onMouseClicked="#removeFromFavorite2SPV" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../images/shop/icons8-close-96.png" />
                                     </image>
@@ -80,7 +80,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="productShopPrice1" layoutX="139.0" layoutY="39.0" text="price1">
+                  <Text fx:id="productShopPrice12SPV" layoutX="139.0" layoutY="39.0" text="price1">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -90,8 +90,8 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <TextArea fx:id="descriptionTextArea" editable="false" layoutX="38.0" layoutY="135.0" prefHeight="290.0" prefWidth="925.0" />
-                  <Text fx:id="sizeLabel" layoutX="524.0" layoutY="39.0" text="Label">
+                  <TextArea fx:id="descriptionTextArea2SPV" editable="false" layoutX="38.0" layoutY="135.0" prefHeight="290.0" prefWidth="925.0" />
+                  <Text fx:id="sizeLabel2SPV" layoutX="524.0" layoutY="39.0" text="Label">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -101,7 +101,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="productShopPrice2" layoutX="228.0" layoutY="39.0" text="price2">
+                  <Text fx:id="productShopPrice22SPV" layoutX="228.0" layoutY="39.0" text="price2">
                      <font>
                         <Font size="24.0" />
                      </font>
