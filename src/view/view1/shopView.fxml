@@ -16,12 +16,12 @@
             </image>
         </ImageView>
         <Rectangle fill="#e6e6e6" height="475.0" layoutX="26.0" layoutY="52.0" width="937.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="52.0" />
-        <Text fx:id="textHi1" fill="WHITE" layoutX="923.0" layoutY="32.0">
+        <Text fx:id="textHi1SV" fill="WHITE" layoutX="923.0" layoutY="32.0">
             <font>
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
         </Text>
-        <ImageView fx:id="shopLogo1" fitHeight="200.0" fitWidth="200.0" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
+        <ImageView fx:id="shopLogo1SV" fitHeight="200.0" fitWidth="200.0" layoutX="61.0" layoutY="118.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
          <image>
             <Image url="@../../images/shop_images/lidl.png" />
          </image></ImageView>
@@ -30,7 +30,7 @@
                 <Image url="@../../images/shop/icons8-google-maps-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="homepageImageView1SV" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="homepageImageView1SV" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick1SV" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>
@@ -45,32 +45,32 @@
                 <Image url="@../../images/shop/icons8-ringing-phone-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="addShopToFavorites1" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="419.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="910.0">
+        <ImageView fx:id="addShopToFavorites1SV" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="419.0" onMouseClicked="#addToFavorite1SV" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="910.0">
             <image>
                 <Image url="@../../images/shop/icons8-we-heart-it-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="addShopToFavourites1" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="addShopToFavourites1SV" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/shop/icons8-small-business-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="removeShopFromFavorites1" fitHeight="59.0" fitWidth="60.0" layoutX="40.0" layoutY="410.0" onMouseClicked="#removeFromFavorite" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="901.0">
+        <ImageView fx:id="removeShopFromFavorites1SV" fitHeight="59.0" fitWidth="60.0" layoutX="40.0" layoutY="410.0" onMouseClicked="#removeFromFavorite1SV" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="901.0">
             <image>
                 <Image url="@../../images/shop/icons8-close-96.png" />
             </image>
         </ImageView>
-        <Text fx:id="textFavorite1" fill="#ffb703" layoutX="103.0" layoutY="444.0" onMouseClicked="#addRemoveFavoriteFromText" stroke="#2c2c2c" text="test">
+        <Text fx:id="textFavorite1SV" fill="#ffb703" layoutX="103.0" layoutY="444.0" onMouseClicked="#addRemoveFavoriteFromText1SV" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="textShopAddress1" fill="#ffb703" layoutX="103.0" layoutY="317.0" onMouseClicked="#onClickGMapsHyperLink" onMouseEntered="#onMouseEnteredAddress" onMouseExited="#onMouseExitedAddress" stroke="#2c2c2c" text="test" textAlignment="JUSTIFY">
+        <Text fx:id="textShopAddress1SV" fill="#ffb703" layoutX="103.0" layoutY="317.0" onMouseClicked="#onClickGMapsHyperLink1SV" onMouseEntered="#onMouseEnteredAddress1SV" onMouseExited="#onMouseExitedAddress1SV" stroke="#2c2c2c" text="test" textAlignment="JUSTIFY">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="textShopOpeningTime1" fill="#ffb703" layoutX="315.0" layoutY="105.0" stroke="#2c2c2c" text="18AM">
+        <Text fx:id="textShopOpeningTime1SV" fill="#ffb703" layoutX="315.0" layoutY="105.0" stroke="#2c2c2c" text="18AM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
@@ -80,106 +80,106 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="textShopClosingTime1" fill="#ffb703" layoutX="373.0" layoutY="105.0" stroke="#2c2c2c" text="20PM">
+        <Text fx:id="textShopClosingTime1SV" fill="#ffb703" layoutX="373.0" layoutY="105.0" stroke="#2c2c2c" text="20PM">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="textPhoneShop1" fill="#ffb703" layoutX="315.0" layoutY="175.0" stroke="#2c2c2c" text="test">
+        <Text fx:id="textPhoneShop1SV" fill="#ffb703" layoutX="315.0" layoutY="175.0" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <Text fx:id="textShopName1" fill="#ffb703" layoutX="103.0" layoutY="381.0" stroke="#2c2c2c" text="test">
+        <Text fx:id="textShopName1SV" fill="#ffb703" layoutX="103.0" layoutY="381.0" stroke="#2c2c2c" text="test">
             <font>
                 <Font name="Tahoma Bold" size="14.0" />
             </font>
         </Text>
-        <ImageView fx:id="dep11" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="120.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep21" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep31" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep41" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep51" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep61" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep71" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep81" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep91" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep101" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep111" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="292.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep121" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep131" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="dep141" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="goPreviousPageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="5.0" onMouseClicked="#previousPage" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="dep11SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="120.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep21SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep31SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep41SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep51SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep61SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep71SV" fitHeight="40.0" fitWidth="40.0" layoutX="510.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep81SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="170.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep91SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="220.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep101SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="270.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep111SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="292.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep121SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="320.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep131SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="370.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="dep141SV" fitHeight="40.0" fitWidth="40.0" layoutX="727.0" layoutY="420.0" onMouseClicked="#onClickDepartmentImage1SV" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="goPreviousPageImageView1SV" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="5.0" onMouseClicked="#previousPage1SV" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-u-turn-to-left-48.png" />
             </image>
         </ImageView>
-        <Text fx:id="dep1Text1" fill="#12d39d" layoutX="558.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep1Text1SV" fill="#12d39d" layoutX="558.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep2Text1" fill="#12d39d" layoutX="558.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep2Text1SV" fill="#12d39d" layoutX="558.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep3Text1" fill="#12d39d" layoutX="558.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep3Text1SV" fill="#12d39d" layoutX="558.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep4Text1" fill="#12d39d" layoutX="558.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep4Text1SV" fill="#12d39d" layoutX="558.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep5Text1" fill="#12d39d" layoutX="558.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep5Text1SV" fill="#12d39d" layoutX="558.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep6Text1" fill="#12d39d" layoutX="558.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep6Text1SV" fill="#12d39d" layoutX="558.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep7Text1" fill="#12d39d" layoutX="558.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" textAlignment="JUSTIFY">
+        <Text fx:id="dep7Text1SV" fill="#12d39d" layoutX="558.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" textAlignment="JUSTIFY">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep8Text1" fill="#12d39d" layoutX="778.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep8Text1SV" fill="#12d39d" layoutX="778.0" layoutY="145.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep9Text1" fill="#12d39d" layoutX="778.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep9Text1SV" fill="#12d39d" layoutX="778.0" layoutY="195.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep10Text1" fill="#12d39d" layoutX="778.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep10Text1SV" fill="#12d39d" layoutX="778.0" layoutY="245.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep11Text1" fill="#12d39d" layoutX="778.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep11Text1SV" fill="#12d39d" layoutX="778.0" layoutY="295.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep12Text1" fill="#12d39d" layoutX="778.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep12Text1SV" fill="#12d39d" layoutX="778.0" layoutY="345.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep13Text1" fill="#12d39d" layoutX="778.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep13Text1SV" fill="#12d39d" layoutX="778.0" layoutY="395.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
         </Text>
-        <Text fx:id="dep14Text1" fill="#12d39d" layoutX="778.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
+        <Text fx:id="dep14Text1SV" fill="#12d39d" layoutX="778.0" layoutY="445.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND">
             <font>
                 <Font name="Tahoma Bold" size="12.0" />
             </font>
@@ -194,12 +194,12 @@
                 <Image url="@../../images/user_interface/Logos/Logo_Banner.jpeg" />
             </image>
         </ImageView>
-      <ImageView fx:id="offersFlyerTagShop1" fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="offersFlyerTagShop1SV" fitHeight="40.0" fitWidth="40.0" layoutX="266.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/shop/icons8-discount-96.png" />
          </image>
       </ImageView>
-      <Text fx:id="offersFlyerShop1" fill="#ffb703" layoutX="315.0" layoutY="245.0" onMouseEntered="#onMouseEnteredFlyer" onMouseExited="#onMouseExitedFlyer" stroke="#2c2c2c" onMouseClicked="#onClickOnOffersFlyer" text="Offers Flyer">
+      <Text fx:id="offersFlyerShop1SV" fill="#ffb703" layoutX="315.0" layoutY="245.0" onMouseEntered="#onMouseEnteredFlyer1SV" onMouseExited="#onMouseExitedFlyer1SV" stroke="#2c2c2c" onMouseClicked="#onClickOnOffersFlyer1SV" text="Offers Flyer">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>
