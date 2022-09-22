@@ -26,7 +26,7 @@ public class SearchShop  {
 
     User user1 = null;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1SS;
     @FXML
     protected ToggleGroup findValue1;
     @FXML
@@ -94,7 +94,7 @@ public class SearchShop  {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SS.getScene().getWindow();
         stage1.close();
     }
 

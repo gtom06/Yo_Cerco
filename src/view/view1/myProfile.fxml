@@ -12,7 +12,7 @@
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.MyProfile">
    <children>
       <AnchorPane maxHeight="50.0" maxWidth="1000.0" minHeight="50.0" minWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" />
-      <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="homepageImageView1MP" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/user_interface/icons8-home-48.png" />
          </image>

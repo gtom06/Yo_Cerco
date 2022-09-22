@@ -33,7 +33,7 @@ public class ShopView {
     List<Department> departmentArrayList1 = null;
     Department department1 = null;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1SV;
     @FXML
     protected ImageView shopLogo1;
     @FXML
@@ -128,7 +128,7 @@ public class ShopView {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SV.getScene().getWindow();
         stage1.close();
     }
 
@@ -239,7 +239,7 @@ public class ShopView {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SV.getScene().getWindow();
         stage1.close();
     }
 
@@ -263,7 +263,7 @@ public class ShopView {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SV.getScene().getWindow();
         stage1.close();
 
     }

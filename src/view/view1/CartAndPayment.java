@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 
 public class CartAndPayment {
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1CAP;
     @FXML
     protected Button payButton1;
     @FXML
@@ -130,7 +130,7 @@ public class CartAndPayment {
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
         stage.close();
     }
 
@@ -145,7 +145,7 @@ public class CartAndPayment {
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
         stage.close();
     }
 
@@ -244,7 +244,7 @@ public class CartAndPayment {
                     newStage.setScene(new Scene(root1));
                     newStage.show();
                     newStage.setResizable(false);
-                    Stage stage = (Stage) homepageImageView1.getScene().getWindow();
+                    Stage stage = (Stage) homepageImageView1CAP.getScene().getWindow();
                     stage.close();
                 }
             }

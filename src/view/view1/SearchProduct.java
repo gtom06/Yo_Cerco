@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class SearchProduct {
     User user1;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1SP;
     @FXML
     protected TextField requestTextField1;
     @FXML
@@ -67,7 +67,7 @@ public class SearchProduct {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SP.getScene().getWindow();
         stage1.close();
     }
 

@@ -11,7 +11,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.Favorite">
     <children>
         <Rectangle fill="#2c2c2c" height="50.0" width="1000.0" />
-        <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="6.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="654.0" AnchorPane.topAnchor="6.0">
+        <ImageView fx:id="homepageImageView1F" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="6.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="654.0" AnchorPane.topAnchor="6.0">
             <image>
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>

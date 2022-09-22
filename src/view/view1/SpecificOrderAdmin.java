@@ -27,7 +27,7 @@ public class SpecificOrderAdmin {
     User user1 = null;
     Order order1 = null;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1SOA;
     @FXML
     protected ImageView goPreviousPageImageView1;
     @FXML
@@ -54,7 +54,7 @@ public class SpecificOrderAdmin {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1SOA.getScene().getWindow();
         stage1.close();
     }
 

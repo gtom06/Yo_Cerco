@@ -21,7 +21,7 @@
                 <Font name="Tahoma Bold" size="18.0" />
             </font>
         </Text>
-        <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="homepageImageView1SO" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>

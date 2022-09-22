@@ -33,7 +33,7 @@ public class ProductView {
     @FXML
     protected ImageView productPhoto1;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1PV;
     @FXML
     protected ImageView addShopToFavorites1;
     @FXML
@@ -108,7 +108,7 @@ public class ProductView {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1PV.getScene().getWindow();
         stage1.close();
     }
 

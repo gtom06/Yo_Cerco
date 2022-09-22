@@ -66,7 +66,7 @@ public class MyProfile {
     @FXML
     protected ImageView saveImageView1;
     @FXML
-    protected ImageView homepageImageView1;
+    protected ImageView homepageImageView1MP;
     @FXML
     protected AnchorPane anchorPane21;
 
@@ -80,7 +80,7 @@ public class MyProfile {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1MP.getScene().getWindow();
         stage1.close();
     }
 
@@ -128,7 +128,7 @@ public class MyProfile {
         newStage1.setScene(new Scene(root1));
         newStage1.show();
         newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        Stage stage1 = (Stage) homepageImageView1MP.getScene().getWindow();
         stage1.close();
     }
 

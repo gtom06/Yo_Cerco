@@ -30,7 +30,7 @@
                 <Image url="@../../images/shop/icons8-google-maps-48.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="homepageImageView1SV" fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="5.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/user_interface/icons8-home-48.png" />
             </image>

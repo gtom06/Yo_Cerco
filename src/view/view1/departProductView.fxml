@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #2c2c2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.view1.DepartProductView">
    <children>
       <TableView fx:id="productTable1" layoutX="20.0" layoutY="100.0" minHeight="504.0" minWidth="919.0" onMouseClicked="#onListViewItemClick" prefHeight="504.0" prefWidth="919.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="160.0" />
-      <ImageView fx:id="homepageImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="14.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="646.0" AnchorPane.topAnchor="14.0">
+      <ImageView fx:id="homepageImageView1DPV" fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="14.0" onMouseClicked="#onHomepageImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="646.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../images/user_interface/icons8-home-48.png" />
          </image>
