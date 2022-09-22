@@ -101,8 +101,7 @@ public class ProductDao {
         try {
             String sql = "DELETE FROM user_favoriteproduct WHERE username = ? AND sku = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setInt(2, sku);
+            setUsernameAndSku(stmt, username, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
@@ -122,8 +121,7 @@ public class ProductDao {
         try {
             String sql = "INSERT INTO user_favoriteproduct (username, sku) VALUES (?, ?)";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setInt(2, sku);
+            setUsernameAndSku(stmt, username, sku);
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.PRODUCT_DAO_ERROR);
@@ -136,6 +134,11 @@ public class ProductDao {
                 logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
             }
         }
+    }
+    protected static PreparedStatement setUsernameAndSku(PreparedStatement stmt, String username, int sku) throws SQLException {
+        stmt.setString(1, username);
+        stmt.setInt(2, sku);
+        return stmt;
     }
 
     public static List<SimpleProduct> findSimpleProductFromUser(User user) {

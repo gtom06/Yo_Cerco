@@ -1,6 +1,7 @@
 package model.db;
 
 import constants.Constants;
+import constants.ConstantsExceptions;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -26,6 +27,15 @@ public class DbHelper {
         return dbHelper;
     }
 
+    public static void closeStatement(PreparedStatement stmt) {
+        try {
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e){
+            logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
+        }
+    }
     public Connection getConnection() {
         return connection;
     }

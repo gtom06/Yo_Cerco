@@ -34,13 +34,7 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.USER_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return output;
     }
@@ -57,13 +51,7 @@ public class UserDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error while finding user");
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return user;
 
@@ -100,13 +88,7 @@ public class UserDao {
             logger.log(Level.WARNING, "error in insert user");
             return false;
         }  finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return true;
     }
@@ -131,13 +113,7 @@ public class UserDao {
             logger.log(Level.WARNING, "error while updating user");
             return false;
         }  finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return true;
     }

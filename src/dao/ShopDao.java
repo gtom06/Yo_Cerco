@@ -26,16 +26,13 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = "SELECT DISTINCT * FROM shop WHERE LOWER(city) LIKE ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ?";
+            String sql = "SELECT DISTINCT * FROM shop WHERE status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? AND LOWER(city) LIKE ?";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat(" AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + city.toLowerCase() + "%");
-            stmt.setInt(2, Constants.NOT_AVAILABLE);
-            stmt.setInt(3, hours.get(1));
-            stmt.setInt(4, hours.get(0));
+            setShopArgs(stmt, hour);
+            stmt.setString(4, "%" + city.toLowerCase() + "%");
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(5,type);
             }
@@ -44,31 +41,30 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return arrayShop;
+    }
+
+    protected static PreparedStatement setShopArgs(PreparedStatement stmt, Integer hour) throws SQLException {
+        ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
+        stmt.setInt(1, Constants.NOT_AVAILABLE);
+        stmt.setInt(2, hours.get(1));
+        stmt.setInt(3, hours.get(0));
+        return stmt;
     }
 
     public static List<Shop> findShopByName(String name, String type, Integer hour) {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = "SELECT DISTINCT * FROM shop WHERE LOWER(name) LIKE ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+            String sql = "SELECT DISTINCT * FROM shop WHERE status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? AND LOWER(name) LIKE ? ";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat("AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + name.toLowerCase() + "%");
-            stmt.setInt(2, Constants.NOT_AVAILABLE);
-            stmt.setInt(3, hours.get(1));
-            stmt.setInt(4, hours.get(0));
+            setShopArgs(stmt, hour);
+            stmt.setString(4, "%" + name.toLowerCase() + "%");
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(5,type);
             }
@@ -77,13 +73,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return arrayShop;
     }
@@ -92,19 +82,16 @@ public class ShopDao {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
-            ArrayList<Integer> hours = (ArrayList<Integer>) checkHour(hour);
-            String sql = "SELECT DISTINCT * FROM shop WHERE  ? < latitude AND latitude < ? AND ? < longitude AND longitude < ? AND status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? ";
+            String sql = "SELECT DISTINCT * FROM shop WHERE status != ? AND CAST(opening_time AS INT) <= ? AND CAST(closing_time AS INT) >= ? AND ? < latitude AND latitude < ? AND ? < longitude AND longitude < ? ";
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 sql = sql.concat("AND type = ?");
             }
             stmt = conn.prepareStatement(sql);
-            stmt.setDouble(1, lat - 0.5);
-            stmt.setDouble(2, lat + 0.5);
-            stmt.setDouble(3, lng - 0.5);
-            stmt.setDouble(4, lng + 0.5);
-            stmt.setInt(5,Constants.NOT_AVAILABLE);
-            stmt.setInt(6, hours.get(1));
-            stmt.setInt(7, hours.get(0));
+            setShopArgs(stmt, hour);
+            stmt.setDouble(4, lat - 0.5);
+            stmt.setDouble(5, lat + 0.5);
+            stmt.setDouble(6, lng - 0.5);
+            stmt.setDouble(7, lng + 0.5);
             if (!type.equals(Constants.SHOP_TYPE.get(0))){
                 stmt.setString(8,type);
             }
@@ -113,19 +100,9 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            closeStatement(stmt);
+            DbHelper.closeStatement(stmt);
         }
         return arrayShop;
-    }
-
-    protected static void closeStatement(PreparedStatement stmt){
-        try {
-            if (stmt != null) {
-                stmt.close();
-            }
-        } catch (SQLException e){
-            logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-        }
     }
 
     public static List<Shop> findShopByFavoriteUser(String username) {
@@ -140,13 +117,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return arrayShop;
     }
@@ -164,13 +135,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return arrayShop;
     }
@@ -186,13 +151,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
     }
 
@@ -207,13 +166,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
     }
 
@@ -232,13 +185,7 @@ public class ShopDao {
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.SHOP_DAO_ERROR);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e){
-                logger.log(Level.OFF, ConstantsExceptions.CLOSING_STMT_ERROR);
-            }
+            DbHelper.closeStatement(stmt);
         }
         return output;
     }
