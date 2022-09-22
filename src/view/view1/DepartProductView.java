@@ -26,146 +26,146 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DepartProductView {
-    Department department1 = null;
-    Shop shop1 = null;
-    User user1 = null;
+    Department department1DPV = null;
+    Shop shop1DPV = null;
+    User user1DPV = null;
 
     @FXML
     protected ImageView homepageImageView1DPV;
     @FXML
-    protected Text departmentName1;
+    protected Text departmentName1DPV;
     @FXML
-    protected Text shopName1;
+    protected Text shopName1DPV;
     @FXML
-    protected Text textHi1;
+    protected Text textHi1DPV;
     @FXML
-    protected TableView<ProductShop> productTable1 = new TableView<>();
+    protected TableView<ProductShop> productTable1DPV = new TableView<>();
     @FXML
-    protected TableColumn<ProductShop,String> nameColumn1;
+    protected TableColumn<ProductShop,String> nameColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,String> brandColumn1;
+    protected TableColumn<ProductShop,String> brandColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,Float> sizeColumn1;
+    protected TableColumn<ProductShop,Float> sizeColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,String> unitOfMeasureColumn1;
+    protected TableColumn<ProductShop,String> unitOfMeasureColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, String> currencyColumn1;
+    protected TableColumn<ProductShop, String> currencyColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, Double> discountedPriceColumn1;
+    protected TableColumn<ProductShop, Double> discountedPriceColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, Double> priceColumn1;
+    protected TableColumn<ProductShop, Double> priceColumn1DPV;
     static final Logger logger = Logger.getLogger(DepartProductView.class.getName());
 
     @FXML
     protected void onListViewItemClick() throws IOException {
-        ProductShop productShop1 = productTable1.getSelectionModel().getSelectedItem();
+        ProductShop productShop1DPV = productTable1DPV.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
-        if (productShop1 != null){
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("productView.fxml"));
-            Parent root1 = loader1.load();
-            ProductView productView1 = loader1.getController();
-            productView1.passParams(user1, department1, productShop1, shop1);
-            Stage newStage1 = new Stage();
-            newStage1.setScene(new Scene(root1));
-            newStage1.show();
-            newStage1.setResizable(false);
-            Stage stage1 = (Stage) productTable1.getScene().getWindow();
-            stage1.close();
+        if (productShop1DPV != null){
+            FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("productView.fxml"));
+            Parent root1DPV = loader1DPV.load();
+            ProductView productView1DPV = loader1DPV.getController();
+            productView1DPV.passParams(user1DPV, department1DPV, productShop1DPV, shop1DPV);
+            Stage newStage1DPV = new Stage();
+            newStage1DPV.setScene(new Scene(root1DPV));
+            newStage1DPV.show();
+            newStage1DPV.setResizable(false);
+            Stage stage1DPV = (Stage) productTable1DPV.getScene().getWindow();
+            stage1DPV.close();
         }
     }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root1 = loader1.load();
-        Homepage homepage1 = loader1.getController();
-        homepage1.passUser(user1);
-        Stage newStage1 = new Stage();
-        newStage1.setScene(new Scene(root1));
-        newStage1.show();
-        newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1DPV.getScene().getWindow();
-        stage1.close();
+        FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1DPV = loader1DPV.load();
+        Homepage homepage1DPV = loader1DPV.getController();
+        homepage1DPV.passUser(user1DPV);
+        Stage newStage1DPV = new Stage();
+        newStage1DPV.setScene(new Scene(root1DPV));
+        newStage1DPV.show();
+        newStage1DPV.setResizable(false);
+        Stage stage1DPV = (Stage) homepageImageView1DPV.getScene().getWindow();
+        stage1DPV.close();
     }
 
     @FXML
     protected void onAddToCartClick() throws ExceptionCart {
-        ProductShop productShop = productTable1.getSelectionModel().getSelectedItem();
+        ProductShop productShop = productTable1DPV.getSelectionModel().getSelectedItem();
         CartElaboration.addOrderItemsToCart(productShop, 1);
     }
 
-    public void passParams(User user, Department department, Shop shop) {
-        this.shop1 = shop;
-        this.user1 = user;
-        this.department1 = department;
-        List<ProductShop> productShopArrayList = department.getItems();
+    public void passParams(User user1DPV, Department department1DPV, Shop shop1DPV) {
+        this.shop1DPV = shop1DPV;
+        this.user1DPV = user1DPV;
+        this.department1DPV = department1DPV;
+        List<ProductShop> productShopArrayList = department1DPV.getItems();
         if (productShopArrayList!=null){
             ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
-            productTable1.setItems(observableListProducts);
+            productTable1DPV.setItems(observableListProducts);
         }
         else {
             logger.log(Level.INFO, Constants.NO_RESULT);
         }
 
-        departmentName1.setText(department.getName());
-        shopName1.setText(shop.getShopName());
-        textHi1.setText(user.getUsername());
+        departmentName1DPV.setText(department1DPV.getName());
+        shopName1DPV.setText(shop1DPV.getShopName());
+        textHi1DPV.setText(user1DPV.getUsername());
 
     }
 
     @FXML
     protected void previousPage() throws IOException {
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("shopView.fxml"));
-        Parent root1 = loader1.load();
-        ShopView shopView1 = loader1.getController();
-        shopView1.passUser(user1);
-        shopView1.passShop(shop1);
-        Stage newStage1 = new Stage();
-        newStage1.setScene(new Scene(root1));
-        newStage1.show();
-        newStage1.setResizable(false);
-        Stage stage1 = (Stage) homepageImageView1DPV.getScene().getWindow();
-        stage1.close();
+        FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("shopView.fxml"));
+        Parent root1DPV = loader1DPV.load();
+        ShopView shopView1DPV = loader1DPV.getController();
+        shopView1DPV.passUser(user1DPV);
+        shopView1DPV.passShop(shop1DPV);
+        Stage newStage1DPV = new Stage();
+        newStage1DPV.setScene(new Scene(root1DPV));
+        newStage1DPV.show();
+        newStage1DPV.setResizable(false);
+        Stage stage1DPV = (Stage) homepageImageView1DPV.getScene().getWindow();
+        stage1DPV.close();
     }
 
     @FXML
     public void initialize(){
 
-        productTable1.setEditable(true);
+        productTable1DPV.setEditable(true);
 
-        nameColumn1 = new TableColumn<>("NAME");
-        nameColumn1.setMinWidth(20);
-        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn1DPV = new TableColumn<>("NAME");
+        nameColumn1DPV.setMinWidth(20);
+        nameColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        priceColumn1 = new TableColumn<>("PRICE");
-        priceColumn1.setMinWidth(50);
-        priceColumn1.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceColumn1DPV = new TableColumn<>("PRICE");
+        priceColumn1DPV.setMinWidth(50);
+        priceColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        brandColumn1 = new TableColumn<>("BRAND");
-        brandColumn1.setMinWidth(10);
-        brandColumn1.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        brandColumn1DPV = new TableColumn<>("BRAND");
+        brandColumn1DPV.setMinWidth(10);
+        brandColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
-        sizeColumn1 = new TableColumn<>("SIZE");
-        sizeColumn1.setMinWidth(10);
-        sizeColumn1.setCellValueFactory(new PropertyValueFactory<>("size"));
+        sizeColumn1DPV = new TableColumn<>("SIZE");
+        sizeColumn1DPV.setMinWidth(10);
+        sizeColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("size"));
 
-        unitOfMeasureColumn1 = new TableColumn<>("UNIT OF MEASURE");
-        unitOfMeasureColumn1.setMinWidth(10);
-        unitOfMeasureColumn1.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
+        unitOfMeasureColumn1DPV = new TableColumn<>("UNIT OF MEASURE");
+        unitOfMeasureColumn1DPV.setMinWidth(10);
+        unitOfMeasureColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("unitOfMeasure"));
 
-        priceColumn1 = new TableColumn<>("PRICE");
-        priceColumn1.setMinWidth(50);
-        priceColumn1.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceColumn1DPV = new TableColumn<>("PRICE");
+        priceColumn1DPV.setMinWidth(50);
+        priceColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        discountedPriceColumn1 = new TableColumn<>("DISCOUNTED PRICE");
-        discountedPriceColumn1.setMinWidth(50);
-        discountedPriceColumn1.setCellValueFactory(new PropertyValueFactory<>("discountedPrice"));
+        discountedPriceColumn1DPV = new TableColumn<>("DISCOUNTED PRICE");
+        discountedPriceColumn1DPV.setMinWidth(50);
+        discountedPriceColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("discountedPrice"));
 
-        currencyColumn1 = new TableColumn<>("CURRENCY");
-        currencyColumn1.setMinWidth(50);
-        currencyColumn1.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        currencyColumn1DPV = new TableColumn<>("CURRENCY");
+        currencyColumn1DPV.setMinWidth(50);
+        currencyColumn1DPV.setCellValueFactory(new PropertyValueFactory<>("currency"));
 
-        productTable1.getColumns().addAll(nameColumn1,brandColumn1,sizeColumn1,unitOfMeasureColumn1,priceColumn1, discountedPriceColumn1, currencyColumn1);
+        productTable1DPV.getColumns().addAll(nameColumn1DPV,brandColumn1DPV,sizeColumn1DPV,unitOfMeasureColumn1DPV,priceColumn1DPV, discountedPriceColumn1DPV, currencyColumn1DPV);
 
     }
 
