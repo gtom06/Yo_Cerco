@@ -28,122 +28,122 @@ import java.util.Arrays;
 
 public class MyProfile {
 
-    User user = null;
+    User user1 = null;
     @FXML
-    protected Rectangle borderProfileImageRectangle;
+    protected Rectangle borderProfileImageRectangle1;
     @FXML
-    protected ImageView myProfileImage;
+    protected ImageView myProfileImage1;
     @FXML
-    protected Text nameText;
+    protected Text nameText1;
     @FXML
-    protected Text surnameText;
+    protected Text surnameText1;
     @FXML
-    protected Text usernameText;
+    protected Text usernameText1;
     @FXML
-    protected Text addressText;
+    protected Text addressText1;
     @FXML
-    protected Text phoneText;
+    protected Text phoneText1;
     @FXML
-    protected Text saveYourProfileText;
+    protected Text saveYourProfileText1;
     @FXML
-    protected Text errorText;
+    protected Text errorText1;
     @FXML
-    protected TextField nameTextField;
+    protected TextField nameTextField1;
     @FXML
-    protected TextField surnameTextField;
+    protected TextField surnameTextField1;
     @FXML
-    protected TextField streetTextField;
+    protected TextField streetTextField1;
     @FXML
-    protected TextField cityTextField;
+    protected TextField cityTextField1;
     @FXML
-    protected TextField countryTextField;
+    protected TextField countryTextField1;
     @FXML
-    protected TextField zipTextField;
+    protected TextField zipTextField1;
     @FXML
-    protected TextField phoneTextField;
+    protected TextField phoneTextField1;
     @FXML
-    protected ImageView editImageView;
+    protected ImageView editImageView1;
     @FXML
-    protected ImageView saveImageView;
+    protected ImageView saveImageView1;
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView1;
     @FXML
-    protected AnchorPane anchorPane2;
+    protected AnchorPane anchorPane21;
 
     @FXML
     protected void onClickAnchorPane2() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("myOrders.fxml"));
-        Parent root = loader.load();
-        MyOrders myOrders = loader.getController();
-        myOrders.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("myOrders.fxml"));
+        Parent root1 = loader1.load();
+        MyOrders myOrders1 = loader1.getController();
+        myOrders1.passUser(user1);
+        Stage newStage1 = new Stage();
+        newStage1.setScene(new Scene(root1));
+        newStage1.show();
+        newStage1.setResizable(false);
+        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        stage1.close();
     }
 
-    public void passUser(User user) throws IOException {
-        this.user = user;
-        usernameText.setText(user.getUsername());
+    public void passUser(User user1) throws IOException {
+        this.user1 = user1;
+        usernameText1.setText(user1.getUsername());
 
-        if (user instanceof Buyer) {
-            InputStream stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
+        if (user1 instanceof Buyer) {
+            InputStream stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user1).getProfileImagepath());
             Image profileImage = new Image(stream, 200, 200, false, false);
-            myProfileImage.setImage(profileImage);
+            myProfileImage1.setImage(profileImage);
             stream.close();
             //show textField
-            nameTextField.setVisible(true);
-            surnameTextField.setVisible(true);
-            streetTextField.setVisible(true);
-            cityTextField.setVisible(true);
-            countryTextField.setVisible(true);
-            zipTextField.setVisible(true);
-            phoneTextField.setVisible(true);
+            nameTextField1.setVisible(true);
+            surnameTextField1.setVisible(true);
+            streetTextField1.setVisible(true);
+            cityTextField1.setVisible(true);
+            countryTextField1.setVisible(true);
+            zipTextField1.setVisible(true);
+            phoneTextField1.setVisible(true);
             // populate text fields
-            nameTextField.setText(user.getName());
-            surnameTextField.setText(user.getSurname());
-            streetTextField.setText(((Buyer) user).getBillingStreet());
-            cityTextField.setText(((Buyer) user).getBillingCity());
-            countryTextField.setText(((Buyer) user).getBillingCountry());
-            zipTextField.setText(((Buyer) user).getBillingZip());
-            phoneTextField.setText(((Buyer) user).getPhone());
+            nameTextField1.setText(user1.getName());
+            surnameTextField1.setText(user1.getSurname());
+            streetTextField1.setText(((Buyer) user1).getBillingStreet());
+            cityTextField1.setText(((Buyer) user1).getBillingCity());
+            countryTextField1.setText(((Buyer) user1).getBillingCountry());
+            zipTextField1.setText(((Buyer) user1).getBillingZip());
+            phoneTextField1.setText(((Buyer) user1).getPhone());
 
-            saveYourProfileText.setVisible(true);
+            saveYourProfileText1.setVisible(true);
         }
-        if (user instanceof Admin) {
-            phoneText.setVisible(false);
-            addressText.setVisible(false);
+        if (user1 instanceof Admin) {
+            phoneText1.setVisible(false);
+            addressText1.setVisible(false);
         }
     }
 
     @FXML
     protected void onHomepageImageClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-        Parent root = loader.load();
-        Homepage homepage = loader.getController();
-        homepage.passUser(user);
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
-        stage.close();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        Parent root1 = loader1.load();
+        Homepage homepage1 = loader1.getController();
+        homepage1.passUser(user1);
+        Stage newStage1 = new Stage();
+        newStage1.setScene(new Scene(root1));
+        newStage1.show();
+        newStage1.setResizable(false);
+        Stage stage1 = (Stage) homepageImageView1.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
     protected void saveProfile() {
-        if (nameTextField.getText().isBlank() || surnameTextField.getText().isBlank() ||
-                streetTextField.getText().isBlank() || cityTextField.getText().isBlank() ||
-                countryTextField.getText().isBlank() || zipTextField.getText().isBlank() ||
-                phoneTextField.getText().isBlank()) {
-            errorText.setVisible(true);
+        if (nameTextField1.getText().isBlank() || surnameTextField1.getText().isBlank() ||
+                streetTextField1.getText().isBlank() || cityTextField1.getText().isBlank() ||
+                countryTextField1.getText().isBlank() || zipTextField1.getText().isBlank() ||
+                phoneTextField1.getText().isBlank()) {
+            errorText1.setVisible(true);
         }
         else{
-            if(UserHandler.updateRecord2(user, Arrays.asList(nameTextField.getText(), surnameTextField.getText(),
-                    streetTextField.getText(), cityTextField.getText(), countryTextField.getText(),
-                    zipTextField.getText(), phoneTextField.getText(), ((Buyer) user).getProfileImagepath()))){
+            if(UserHandler.updateRecord2(user1, Arrays.asList(nameTextField1.getText(), surnameTextField1.getText(),
+                    streetTextField1.getText(), cityTextField1.getText(), countryTextField1.getText(),
+                    zipTextField1.getText(), phoneTextField1.getText(), ((Buyer) user1).getProfileImagepath()))){
                 //
             }
         }
@@ -151,40 +151,40 @@ public class MyProfile {
 
     @FXML
     protected void enterProfileImage() {
-        borderProfileImageRectangle.setVisible(true);
+        borderProfileImageRectangle1.setVisible(true);
     }
     @FXML
     protected void exitProfileImage(){
-        borderProfileImageRectangle.setVisible(false);
+        borderProfileImageRectangle1.setVisible(false);
     }
     @FXML
     public void initialize(){
-        editImageView.setVisible(true);
-        saveImageView.setVisible(false);
+        editImageView1.setVisible(true);
+        saveImageView1.setVisible(false);
     }
 
     @FXML
     protected void onClickProfileImageView() throws IOException, FileElaborationException {
 
-        InputStream stream = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
-        Image profileImage = new Image(stream, 200, 200, false, false);
+        InputStream stream1 = new FileInputStream(Constants.PROFILE_IMAGE_BLANK);
+        Image profileImage1 = new Image(stream1, 200, 200, false, false);
 
-        myProfileImage.setImage(profileImage);
-        String newFileName = user.getUsername() + ".jpg";
-        String newFilepath = Constants.PROFILE_IMAGES_PATH + newFileName;
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        fileChooser.getExtensionFilters().addAll(extFilterJPG);
-        File file = fileChooser.showOpenDialog(null);
+        myProfileImage1.setImage(profileImage1);
+        String newFileName = user1.getUsername() + ".jpg";
+        String newFilepath1 = Constants.PROFILE_IMAGES_PATH + newFileName;
+        FileChooser fileChooser1 = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG1 = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        fileChooser1.getExtensionFilters().addAll(extFilterJPG1);
+        File file1 = fileChooser1.showOpenDialog(null);
 
-        if (file != null) {
-            if (FileElaboration.copyAndReplaceFile(file, newFilepath)) {
-                stream = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user).getProfileImagepath());
-                profileImage = new Image(stream, 200, 200, false, false);
-                myProfileImage.setImage(profileImage);
-                stream.close();
+        if (file1 != null) {
+            if (FileElaboration.copyAndReplaceFile(file1, newFilepath1)) {
+                stream1 = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user1).getProfileImagepath());
+                profileImage1 = new Image(stream1, 200, 200, false, false);
+                myProfileImage1.setImage(profileImage1);
+                stream1.close();
             }
-            UserHandler.updateLogoImagePath(user, newFileName);
+            UserHandler.updateLogoImagePath(user1, newFileName);
         }
     }
 }
