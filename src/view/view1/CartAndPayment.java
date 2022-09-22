@@ -30,75 +30,75 @@ import java.util.logging.Logger;
 
 public class CartAndPayment {
     @FXML
-    protected ImageView homepageImageView;
+    protected ImageView homepageImageView1;
     @FXML
-    protected Button payButton;
+    protected Button payButton1;
     @FXML
-    protected Text textHi;
+    protected Text textHi1;
     @FXML
-    protected Text slashText;
+    protected Text slashText1;
     @FXML
-    protected ToggleGroup paymentType;
+    protected ToggleGroup paymentType1;
     @FXML
-    protected RadioButton codRadioButton;
+    protected RadioButton codRadioButton1;
     @FXML
-    protected RadioButton cardRadioButton;
+    protected RadioButton cardRadioButton1;
     @FXML
-    protected Text orderCreatedText;
+    protected Text orderCreatedText1;
     @FXML
-    protected TextField nameTextField;
+    protected TextField nameTextField1;
     @FXML
-    protected TextField surnameTextField;
+    protected TextField surnameTextField1;
     @FXML
-    protected TextField phoneNumberTextField;
+    protected TextField phoneNumberTextField1;
     @FXML
-    protected TextField billingStreetTextField;
+    protected TextField billingStreetTextField1;
     @FXML
-    protected TextField billingCityTextField;
+    protected TextField billingCityTextField1;
     @FXML
-    protected TextField billingCountryTextField;
+    protected TextField billingCountryTextField1;
     @FXML
-    protected TextField billingZipTextField;
+    protected TextField billingZipTextField1;
     @FXML
-    protected TextField cardholderTextField;
+    protected TextField cardholderTextField1;
     @FXML
-    protected TextField creditcardTextField;
+    protected TextField creditcardTextField1;
     @FXML
-    protected TextField mmTextField;
+    protected TextField mmTextField1;
     @FXML
-    protected TextField yyTextField;
+    protected TextField yyTextField1;
     @FXML
-    protected TextField cvvTextField;
+    protected TextField cvvTextField1;
     @FXML
-    protected Text totalPriceText;
+    protected Text totalPriceText1;
     @FXML
-    protected Text shopNameText;
+    protected Text shopNameText1;
     @FXML
-    protected Text totalQuantityText;
+    protected Text totalQuantityText1;
     @FXML
-    protected TableView<OrderItem> orderItemsTableView = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn;
-    protected TableColumn<OrderItem, String> quantityOrderedColumn;
-    protected TableColumn<OrderItem, Double> pricePerItemColumn;
-    protected TableColumn<OrderItem, Double> priceTotalColumn;
+    protected TableView<OrderItem> orderItemsTableView1 = new TableView<>();
+    protected TableColumn<OrderItem, String> nameColumn1;
+    protected TableColumn<OrderItem, String> quantityOrderedColumn1;
+    protected TableColumn<OrderItem, Double> pricePerItemColumn1;
+    protected TableColumn<OrderItem, Double> priceTotalColumn1;
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    User user = null;
-    Shop shop = null;
+    User user1 = null;
+    Shop shop1 = null;
 
-    public void passParam(Shop shop, User user) throws ExceptionCart {
-        this.shop = shop;
-        this.user = user;
+    public void passParam(Shop shop1, User user1) throws ExceptionCart {
+        this.shop1 = shop1;
+        this.user1 = user1;
 
-        if (user != null) {
-            textHi.setText(user.getUsername());
-            nameTextField.setText(user.getName());
-            surnameTextField.setText(user.getSurname());
-            phoneNumberTextField.setText(((Buyer) user).getPhone());
-            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
-            billingCityTextField.setText(((Buyer) user).getBillingCity());
-            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
-            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        if (user1 != null) {
+            textHi1.setText(user1.getUsername());
+            nameTextField1.setText(user1.getName());
+            surnameTextField1.setText(user1.getSurname());
+            phoneNumberTextField1.setText(((Buyer) user1).getPhone());
+            billingStreetTextField1.setText(((Buyer) user1).getBillingStreet());
+            billingCityTextField1.setText(((Buyer) user1).getBillingCity());
+            billingCountryTextField1.setText(((Buyer) user1).getBillingCountry());
+            billingZipTextField1.setText(((Buyer) user1).getBillingZip());
         }
 
 
@@ -106,16 +106,16 @@ public class CartAndPayment {
         if (orderItemArrayList != null && (orderItemArrayList).size() != 0) {
             ObservableList<OrderItem> observableListProducts =
                     FXCollections.observableArrayList(orderItemArrayList);
-            orderItemsTableView.setItems(observableListProducts);
+            orderItemsTableView1.setItems(observableListProducts);
         }
 
         Order order = OrderHandler.previewOrder();
         if (order != null){
-            totalPriceText.setText(order.getCurrency() + "" + order.getTotalPrice());
-            totalQuantityText.setText(String.valueOf(order.getOrderTotalQuantity()));
+            totalPriceText1.setText(order.getCurrency() + "" + order.getTotalPrice());
+            totalQuantityText1.setText(String.valueOf(order.getOrderTotalQuantity()));
         } else {
-            totalPriceText.setText("0");
-            totalQuantityText.setText("0");
+            totalPriceText1.setText("0");
+            totalQuantityText1.setText("0");
         }
 
     }
@@ -125,12 +125,12 @@ public class CartAndPayment {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         Parent root = loader.load();
         Homepage homepage = loader.getController();
-        homepage.passUser(user);
+        homepage.passUser(user1);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        Stage stage = (Stage) homepageImageView1.getScene().getWindow();
         stage.close();
     }
 
@@ -139,112 +139,112 @@ public class CartAndPayment {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root = loader.load();
         ShopView shopView = loader.getController();
-        shopView.passUser(user);
-        shopView.passShop(shop);
+        shopView.passUser(user1);
+        shopView.passShop(shop1);
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.show();
         newStage.setResizable(false);
-        Stage stage = (Stage) homepageImageView.getScene().getWindow();
+        Stage stage = (Stage) homepageImageView1.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     protected void onCodClicked() {
-        cardholderTextField.setVisible(false);
-        creditcardTextField.setVisible(false);
-        mmTextField.setVisible(false);
-        yyTextField.setVisible(false);
-        cvvTextField.setVisible(false);
-        slashText.setVisible(false);
+        cardholderTextField1.setVisible(false);
+        creditcardTextField1.setVisible(false);
+        mmTextField1.setVisible(false);
+        yyTextField1.setVisible(false);
+        cvvTextField1.setVisible(false);
+        slashText1.setVisible(false);
 
     }
 
     @FXML
     protected void onCardClicked() {
-        cardholderTextField.setVisible(true);
-        creditcardTextField.setVisible(true);
-        mmTextField.setVisible(true);
-        yyTextField.setVisible(true);
-        cvvTextField.setVisible(true);
-        slashText.setVisible(true);
-        if (user.getName() != null || !user.getName().equals("")) {
-            nameTextField.setText(user.getName());
+        cardholderTextField1.setVisible(true);
+        creditcardTextField1.setVisible(true);
+        mmTextField1.setVisible(true);
+        yyTextField1.setVisible(true);
+        cvvTextField1.setVisible(true);
+        slashText1.setVisible(true);
+        if (user1.getName() != null || !user1.getName().equals("")) {
+            nameTextField1.setText(user1.getName());
         }
-        if (user.getSurname() != null || !user.getUsername().equals("")) {
-            surnameTextField.setText(user.getSurname());
+        if (user1.getSurname() != null || !user1.getUsername().equals("")) {
+            surnameTextField1.setText(user1.getSurname());
         }
-        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
-            phoneNumberTextField.setText(((Buyer) user).getPhone());
+        if (((Buyer) user1).getPhone() != null || !((Buyer) user1).getPhone().equals("")) {
+            phoneNumberTextField1.setText(((Buyer) user1).getPhone());
         }
-        if (((Buyer) user).getBillingStreet()!= null || !(((Buyer) user).getBillingStreet()).equals("")) {
-            billingStreetTextField.setText(((Buyer) user).getBillingStreet());
+        if (((Buyer) user1).getBillingStreet()!= null || !(((Buyer) user1).getBillingStreet()).equals("")) {
+            billingStreetTextField1.setText(((Buyer) user1).getBillingStreet());
         }
-        if (((Buyer) user).getPhone() != null || !((Buyer) user).getPhone().equals("")) {
-            billingCityTextField.setText(((Buyer) user).getBillingCity());
+        if (((Buyer) user1).getPhone() != null || !((Buyer) user1).getPhone().equals("")) {
+            billingCityTextField1.setText(((Buyer) user1).getBillingCity());
         }
-        if (((Buyer) user).getBillingCountry() != null || !((Buyer) user).getBillingCountry().equals("")) {
-            billingCountryTextField.setText(((Buyer) user).getBillingCountry());
+        if (((Buyer) user1).getBillingCountry() != null || !((Buyer) user1).getBillingCountry().equals("")) {
+            billingCountryTextField1.setText(((Buyer) user1).getBillingCountry());
         }
-        if (((Buyer) user).getBillingZip() != null || !((Buyer) user).getBillingZip().equals("")) {
-            billingZipTextField.setText(((Buyer) user).getBillingZip());
+        if (((Buyer) user1).getBillingZip() != null || !((Buyer) user1).getBillingZip().equals("")) {
+            billingZipTextField1.setText(((Buyer) user1).getBillingZip());
         }
     }
 
     @FXML
     protected void onPayButtonClick() throws Exception {
-        String name = nameTextField.getText();
-        String surname = surnameTextField.getText();
-        String phoneNumber = phoneNumberTextField.getText();
-        String billingStreet = billingStreetTextField.getText();
-        String billingCity = billingCityTextField.getText();
-        String billingCountry = billingCountryTextField.getText();
-        String billingZip = billingZipTextField.getText();
+        String name1 = nameTextField1.getText();
+        String surname1 = surnameTextField1.getText();
+        String phoneNumber1 = phoneNumberTextField1.getText();
+        String billingStreet1 = billingStreetTextField1.getText();
+        String billingCity1 = billingCityTextField1.getText();
+        String billingCountry1 = billingCountryTextField1.getText();
+        String billingZip1 = billingZipTextField1.getText();
 
-        String paymentMethod = "";
-        String cardholder = cardholderTextField.getText();
-        String cardNumber = creditcardTextField.getText();
-        String mm = mmTextField.getText();
-        String yy = yyTextField.getText();
-        String cvv = cvvTextField.getText();
-        Order order = null;
+        String paymentMethod1 = "";
+        String cardholder1 = cardholderTextField1.getText();
+        String cardNumber1 = creditcardTextField1.getText();
+        String mm1 = mmTextField1.getText();
+        String yy1 = yyTextField1.getText();
+        String cvv1 = cvvTextField1.getText();
+        Order order1 = null;
 
-        if (!PaymentHandler.validateParams(paymentMethod, cardNumber, mm, yy, cvv)) {
+        if (!PaymentHandler.validateParams(paymentMethod1, cardNumber1, mm1, yy1, cvv1)) {
             logger.log(Level.INFO, "reviewPayment");
         }
         else {
             if (!CartElaboration.isEmptyCart()) {
-                if (OrderHandler.someBlankDataUser(name, surname,billingStreet,billingCity,billingCountry,billingZip,phoneNumber)) {
+                if (OrderHandler.someBlankDataUser(name1, surname1,billingStreet1,billingCity1,billingCountry1,billingZip1,phoneNumber1)) {
                     logger.log(Level.INFO, "please fill data");
                 } else {
                     UserHandler.updateRecord2(
-                            user, Arrays.asList(name, surname, billingStreet, billingCity, billingCountry,
-                            billingZip, phoneNumber, ((Buyer) user).getProfileImagepath()));
+                            user1, Arrays.asList(name1, surname1, billingStreet1, billingCity1, billingCountry1,
+                            billingZip1, phoneNumber1, ((Buyer) user1).getProfileImagepath()));
 
-                    order = OrderHandler.createOrder(
-                            user,
-                            paymentMethod,
-                            cardholder,
-                            cardNumber,
-                            mm,
-                            yy,
-                            cvv
+                    order1 = OrderHandler.createOrder(
+                            user1,
+                            paymentMethod1,
+                            cardholder1,
+                            cardNumber1,
+                            mm1,
+                            yy1,
+                            cvv1
                     );
-                    orderItemsTableView.setItems(null);
-                    orderCreatedText.setVisible(true);
-                    totalPriceText.setText("0");
-                    totalQuantityText.setText("0");
+                    orderItemsTableView1.setItems(null);
+                    orderCreatedText1.setVisible(true);
+                    totalPriceText1.setText("0");
+                    totalQuantityText1.setText("0");
 
                     //and load specificOrder.fxml
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
-                    Parent root = loader.load();
-                    SpecificOrder specificOrder = loader.getController();
-                    specificOrder.passParams(user, order);
+                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
+                    Parent root1 = loader1.load();
+                    SpecificOrder specificOrder1 = loader1.getController();
+                    specificOrder1.passParams(user1, order1);
                     Stage newStage = new Stage();
-                    newStage.setScene(new Scene(root));
+                    newStage.setScene(new Scene(root1));
                     newStage.show();
                     newStage.setResizable(false);
-                    Stage stage = (Stage) homepageImageView.getScene().getWindow();
+                    Stage stage = (Stage) homepageImageView1.getScene().getWindow();
                     stage.close();
                 }
             }
@@ -253,31 +253,31 @@ public class CartAndPayment {
 
     @FXML
     public void initialize(){
-        orderItemsTableView.setEditable(true);
+        orderItemsTableView1.setEditable(true);
 
-        nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(276.0);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn1 = new TableColumn<>("Name");
+        nameColumn1.setMinWidth(276.0);
+        nameColumn1.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        quantityOrderedColumn = new TableColumn<>("Quantity ordered");
-        quantityOrderedColumn.setMinWidth(100.0);
-        quantityOrderedColumn.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
+        quantityOrderedColumn1 = new TableColumn<>("Quantity ordered");
+        quantityOrderedColumn1.setMinWidth(100.0);
+        quantityOrderedColumn1.setCellValueFactory(new PropertyValueFactory<>("quantityOrdered"));
 
-        pricePerItemColumn = new TableColumn<>("Price per item");
-        pricePerItemColumn.setMinWidth(100.0);
-        pricePerItemColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        pricePerItemColumn1 = new TableColumn<>("Price per item");
+        pricePerItemColumn1.setMinWidth(100.0);
+        pricePerItemColumn1.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
-        priceTotalColumn = new TableColumn<>("Total price");
-        priceTotalColumn.setMinWidth(100.0);
-        priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        priceTotalColumn1 = new TableColumn<>("Total price");
+        priceTotalColumn1.setMinWidth(100.0);
+        priceTotalColumn1.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
 
-        orderItemsTableView.getColumns().addAll(nameColumn, quantityOrderedColumn, pricePerItemColumn, priceTotalColumn);
+        orderItemsTableView1.getColumns().addAll(nameColumn1, quantityOrderedColumn1, pricePerItemColumn1, priceTotalColumn1);
     }
 
     @FXML
     public void onClearCartClicked() throws ExceptionCart {
         CartElaboration.deleteCart();
-        orderItemsTableView.setItems(null);
+        orderItemsTableView1.setItems(null);
     }
 }
