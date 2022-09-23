@@ -17,7 +17,7 @@
             </image>
         </ImageView>
         <Text fx:id="myFavoriteShopText1F" layoutX="86.0" layoutY="472.0" text="MY FAVORITE SHOPS" />
-        <Text fx:id="textHi1" fill="WHITE" layoutX="896.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+        <Text fx:id="textHi1F" fill="WHITE" layoutX="896.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
             <font>
                 <Font name="Tahoma Bold" size="18.0" />
             </font>

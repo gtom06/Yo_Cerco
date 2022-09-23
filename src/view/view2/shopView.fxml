@@ -177,7 +177,7 @@
                                    preserveRatio="true">
                            <Image url="@../../images/shop/icons8-close-96.png"/>
                         </ImageView>
-                        <Text fx:id="textShopName" layoutX="14.0" layoutY="44.0" text="ShopName">
+                        <Text fx:id="textShopName2SV" layoutX="14.0" layoutY="44.0" text="ShopName">
                            <font>
                               <Font size="30.0" />
                            </font>

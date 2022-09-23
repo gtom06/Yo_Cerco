@@ -81,7 +81,7 @@
                 <Font name="Tahoma Bold" size="24.0" />
             </font>
         </Text>
-        <Text fx:id="brandProd1" fill="#12d39d" layoutX="95.0" layoutY="409.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text="BRAND DEL PRODOTTO" textAlignment="JUSTIFY" wrappingWidth="430.0">
+        <Text fx:id="brandProd1PV" fill="#12d39d" layoutX="95.0" layoutY="409.0" stroke="#0a7557" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" text="BRAND DEL PRODOTTO" textAlignment="JUSTIFY" wrappingWidth="430.0">
             <font>
                 <Font name="Tahoma Bold" size="24.0" />
             </font>
