@@ -201,7 +201,7 @@ public class CartAndPayment {
         String billingCountry1 = billingCountryTextField1CAP.getText();
         String billingZip1 = billingZipTextField1CAP.getText();
 
-        String paymentMethod1 = "";
+        String paymentMethod1 = ((RadioButton) paymentType1CAP.getSelectedToggle()).getText();
         String cardholder1 = cardholderTextField1CAP.getText();
         String cardNumber1 = creditcardTextField1CAP.getText();
         String mm1 = mmTextField1CAP.getText();

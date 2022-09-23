@@ -9,8 +9,8 @@ public class PaymentHandler {
     }
 
     public static boolean validateParams(String payment, String cardNumber, String mm, String yy, String cvv) {
-        if (payment.equals(Constants.BY_CARD)){
-            if (cardNumber.length() < 16 && mm.length() == 0 && yy.length() == 0 && cvv.length() < 3) {
+        if (payment.equals(Constants.BY_CREDITCARD)){
+            if (cardNumber.length() == 16 && mm.length() > 0 && yy.length() > 1 && cvv.length() > 2) {
                 return true;
             }
         }

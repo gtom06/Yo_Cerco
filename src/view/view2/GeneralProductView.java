@@ -128,7 +128,7 @@ public class GeneralProductView {
 
         addressColumn2GPV = new TableColumn<>("ADDRESS");
         addressColumn2GPV.setMinWidth(200);
-        addressColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("address"));
+        addressColumn2GPV.setCellValueFactory(new PropertyValueFactory<>("completeAddress"));
 
         cityColumn2GPV = new TableColumn<>("CITY");
         cityColumn2GPV.setMinWidth(50);

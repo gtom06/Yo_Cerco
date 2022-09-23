@@ -41,7 +41,7 @@
             <TextField fx:id="billingCityTextField2CA" layoutX="663.0" layoutY="283.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing city" />
             <TextField fx:id="billingCountryTextField2CA" layoutX="663.0" layoutY="338.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing country" />
             <TextField fx:id="billingZipTextField2CA" layoutX="663.0" layoutY="396.0" prefHeight="25.0" prefWidth="283.0" promptText="Billing zip" />
-            <RadioButton fx:id="cardRadioButton2CA" layoutX="663.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCardClicked2CA" selected="true" text="By card">
+            <RadioButton fx:id="cardRadioButton2CA" layoutX="663.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#onCardClicked2CA" selected="true" text="By creditcard">
                <toggleGroup>
                   <ToggleGroup fx:id="paymentType2CA" />
                </toggleGroup>
