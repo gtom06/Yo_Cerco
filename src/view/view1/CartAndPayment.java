@@ -225,12 +225,7 @@ public class CartAndPayment {
                     order1 = OrderHandler.createOrder(
                             user1CAP,
                             paymentMethod1,
-                            cardholder1,
-                            cardNumber1,
-                            mm1,
-                            yy1,
-                            cvv1
-                    );
+                            cardholder1);
                     orderItemsTableView1CAP.setItems(null);
                     orderCreatedText1CAP.setVisible(true);
                     totalPriceText1CAP.setText("0");

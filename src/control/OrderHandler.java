@@ -125,13 +125,14 @@ public class OrderHandler {
         orderBean.setTotalPrice(orderTotalPrice);
         orderBean.setCurrency(orderCurrency);
         orderBean.setOrderItemArrayList(orderItemArrayList);
+        orderBean.setOrderTotalQuantity(orderTotalQuantity);
         paymentBean.setCurrency(orderCurrency);
         paymentBean.setTotalPrice(orderTotalPrice);
         orderBean.setPayment(paymentBean);
         return orderBean;
     }
 
-    public static OrderBean createOrder(UserBean user, String paymentMethod, String cardholder, String cardNumber, String mm, String yy, String cvv) throws IOException, FileElaborationException {
+    public static OrderBean createOrder(UserBean user, String paymentMethod, String cardholder) throws IOException, FileElaborationException {
         Order order = null;
         Payment payment = null;
         OrderBean order2 = null;

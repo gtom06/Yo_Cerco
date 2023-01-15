@@ -210,12 +210,7 @@ public class CartAndPayment {
                     order2CA = OrderHandler.createOrder(
                             user2CA,
                             paymentMethod2CA,
-                            cardholder2CA,
-                            cardNumber2CA,
-                            mm2CA,
-                            yy2CA,
-                            cvv2CA
-                    );
+                            cardholder2CA);
                     orderItemsTableView2CA.setItems(null);
                     orderCreatedText2CA.setVisible(true);
                     totalPriceText2CA.setText("0");
