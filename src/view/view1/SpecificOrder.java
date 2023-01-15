@@ -1,5 +1,8 @@
 package view.view1;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,8 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrder {
-    User user1SO = null;
-    Order order1SO = null;
+    UserBean user1SO = null;
+    OrderBean order1SO = null;
     @FXML
     protected ImageView homepageImageView1SO;
     @FXML
@@ -32,12 +35,12 @@ public class SpecificOrder {
     @FXML
     protected Text textHi1SO;
     @FXML
-    protected TableView<OrderItem> orderItemTableView1SO = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn1SO;
-    protected TableColumn<OrderItem, String> brandColumn1SO;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn1SO;
-    protected TableColumn<OrderItem, Double> priceTotalColumn1SO;
-    protected TableColumn<OrderItem, String> currencyColumn1SO;
+    protected TableView<OrderItemBean> orderItemTableView1SO = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn1SO;
+    protected TableColumn<OrderItemBean, String> brandColumn1SO;
+    protected TableColumn<OrderItemBean, Integer> quantityOrderedColumn1SO;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn1SO;
+    protected TableColumn<OrderItemBean, String> currencyColumn1SO;
 
     static final Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
@@ -100,10 +103,10 @@ public class SpecificOrder {
 
     protected void fillOrderTableView1SO() {
         orderItemTableView1SO.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList1SO = FXCollections.observableArrayList();
+        ObservableList<OrderItemBean> orderItemObservableList1SO = FXCollections.observableArrayList();
         order1SO = OrderHandler.populateOrderWithOrderItems(order1SO);
         if (order1SO.getOrderItemArrayList() != null) {
-            for (OrderItem orderItem1SO : order1SO.getOrderItemArrayList()) {
+            for (OrderItemBean orderItem1SO : order1SO.getOrderItemArrayList()) {
                 orderItemObservableList1SO.add(orderItem1SO);
             }
             orderItemTableView1SO.setItems(orderItemObservableList1SO);
@@ -112,7 +115,7 @@ public class SpecificOrder {
         }
     }
 
-    public void passParams(User user1SO, Order order1SO) {
+    public void passParams(UserBean user1SO, OrderBean order1SO) {
         this.user1SO = user1SO;
         this.order1SO = order1SO;
         textHi1SO.setText(user1SO.getUsername());

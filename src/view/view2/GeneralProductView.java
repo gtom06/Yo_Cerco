@@ -1,5 +1,8 @@
 package view.view2;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ShopHandler;
 import exceptions.AddressException;
 import javafx.collections.FXCollections;
@@ -29,8 +32,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GeneralProductView {
-    User user2GPV;
-    SimpleProduct simpleProduct2GPV;
+    UserBean user2GPV;
+    SimpleProductBean simpleProduct2GPV;
 
     @FXML
     protected ImageView productPhoto2GPV;
@@ -45,28 +48,28 @@ public class GeneralProductView {
     @FXML
     protected Label brandProd2GPV;
     @FXML
-    protected TableView<Shop> shopsTableView2GPV = new TableView<>();
-    protected TableColumn<Shop, String> nameColumn2GPV;
-    protected TableColumn<Shop, String> addressColumn2GPV;
-    protected TableColumn<Shop, String> cityColumn2GPV;
-    protected TableColumn<Shop, String> openingColumn2GPV;
-    protected TableColumn<Shop, String> closingColumn2GPV;
+    protected TableView<ShopBean> shopsTableView2GPV = new TableView<>();
+    protected TableColumn<ShopBean, String> nameColumn2GPV;
+    protected TableColumn<ShopBean, String> addressColumn2GPV;
+    protected TableColumn<ShopBean, String> cityColumn2GPV;
+    protected TableColumn<ShopBean, String> openingColumn2GPV;
+    protected TableColumn<ShopBean, String> closingColumn2GPV;
 
     InputStream stream2GPV = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
 
-    public void passParams(User user2GPV, SimpleProduct simpleProduct2GPV) throws FileNotFoundException {
+    public void passParams(UserBean user2GPV, SimpleProductBean simpleProduct2GPV) throws FileNotFoundException {
         this.user2GPV = user2GPV;
         this.simpleProduct2GPV = simpleProduct2GPV;
         brandProd2GPV.setText(simpleProduct2GPV.getBrand());
         nameProd2GPV.setText(simpleProduct2GPV.getName());
-        List<Shop> arrayShopList2GPV = ShopHandler.findShopByProduct(simpleProduct2GPV);
+        List<ShopBean> arrayShopList2GPV = ShopHandler.findShopByProduct(simpleProduct2GPV);
 
         stream2GPV = new FileInputStream(simpleProduct2GPV.getLogoImagepath());
         Image productImage2GPV = new Image(stream2GPV, 200, 200, false, false);
         productPhoto2GPV.setImage(productImage2GPV);
-        ObservableList<Shop> observableListShops2GPV = FXCollections.observableArrayList();
+        ObservableList<ShopBean> observableListShops2GPV = FXCollections.observableArrayList();
         if (arrayShopList2GPV != null) {
             observableListShops2GPV.addAll(arrayShopList2GPV);
             shopsTableView2GPV.setItems(observableListShops2GPV);
@@ -149,7 +152,7 @@ public class GeneralProductView {
     protected void onItemClickedTableView2GPV() throws IOException {
         FXMLLoader loader2GPV = new FXMLLoader(getClass().getResource("shopProductView.fxml"));
         Parent root2GPV = loader2GPV.load();
-        Shop shop2GPV = shopsTableView2GPV.getSelectionModel().getSelectedItem();
+        ShopBean shop2GPV = shopsTableView2GPV.getSelectionModel().getSelectedItem();
         if (shop2GPV != null) {
             ShopProductView shopProductView2GPV = loader2GPV.getController();
             shopProductView2GPV.passParams(user2GPV, simpleProduct2GPV, shop2GPV);

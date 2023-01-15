@@ -1,5 +1,8 @@
 package view.view2;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,8 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
-    User user2SOA = null;
-    Order order2SOA = null;
+    UserBean user2SOA = null;
+    OrderBean order2SOA = null;
     @FXML
     protected ImageView homepageImageView2SOA;
     @FXML
@@ -40,12 +43,12 @@ public class SpecificOrderAdmin {
     @FXML
     protected Text completedText2SOA;
     @FXML
-    protected TableView<OrderItem> orderItemTableView2SOA = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn2SOA;
-    protected TableColumn<OrderItem, String> brandColumn2SOA;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn2SOA;
-    protected TableColumn<OrderItem, Double> priceTotalColumn2SOA;
-    protected TableColumn<OrderItem, String> currencyColumn2SOA;
+    protected TableView<OrderItemBean> orderItemTableView2SOA = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn2SOA;
+    protected TableColumn<OrderItemBean, String> brandColumn2SOA;
+    protected TableColumn<OrderItemBean, Integer> quantityOrderedColumn2SOA;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn2SOA;
+    protected TableColumn<OrderItemBean, String> currencyColumn2SOA;
     static final Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
     @FXML
@@ -90,14 +93,14 @@ public class SpecificOrderAdmin {
 
     protected void fillOrder2SOA() {
         orderItemTableView2SOA.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList2SOA = FXCollections.observableArrayList();
+        ObservableList<OrderItemBean> orderItemObservableList2SOA = FXCollections.observableArrayList();
         order2SOA = OrderHandler.populateOrderWithOrderItems(order2SOA);
         if (order2SOA != null) {
             totalPriceText2SOA.setText(String.valueOf(order2SOA.getTotalPrice()));
             timestampText2SOA.setText(String.valueOf(order2SOA.getOrderTimestamp()));
             orderNumberText2SOA.setText(String.valueOf(order2SOA.getOrderId()));
             if (order2SOA.getOrderItemArrayList() != null) {
-                for (OrderItem orderItem2SOA : order2SOA.getOrderItemArrayList()) {
+                for (OrderItemBean orderItem2SOA : order2SOA.getOrderItemArrayList()) {
                     orderItemObservableList2SOA.add(orderItem2SOA);
                 }
                 orderItemTableView2SOA.setItems(orderItemObservableList2SOA);
@@ -110,7 +113,7 @@ public class SpecificOrderAdmin {
         }
     }
 
-    public void passParams(User user2SOA, Order order2SOA){
+    public void passParams(UserBean user2SOA, OrderBean order2SOA){
         this.user2SOA = user2SOA;
         this.order2SOA = order2SOA;
         fillOrder2SOA();

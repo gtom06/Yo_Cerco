@@ -1,5 +1,6 @@
 package view.view1;
 
+import bean.UserBean;
 import control.FileElaboration;
 import control.UserHandler;
 import exceptions.FileElaborationException;
@@ -66,8 +67,8 @@ public class Login {
         else {
             FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
         }
-        User user1 = UserHandler.selectUserFromUsername(loginUsernameTextField1.getText());
-        if (user1 instanceof Buyer) {
+        UserBean user1 = UserHandler.selectUserFromUsername(loginUsernameTextField1.getText());
+        if (!user1.isAdmin()) {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
             Parent root1 = loader1.load();
             Homepage homepage1 = loader1.getController();
@@ -79,7 +80,7 @@ public class Login {
             Stage stage1 = (Stage) loginButton1.getScene().getWindow();
             stage1.close();
         }
-        if (user1 instanceof Admin) {
+        else {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
             Parent root1 = loader1.load();
             HomepageAdmin homepage1 = loader1.getController();

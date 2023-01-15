@@ -1,5 +1,7 @@
 package view.view1;
 
+import bean.ShopBean;
+import bean.UserBean;
 import control.ShopHandler;
 import exceptions.AddressException;
 import javafx.collections.FXCollections;
@@ -24,7 +26,7 @@ import java.util.logging.Logger;
 
 public class SearchShop  {
 
-    User user1SS = null;
+    UserBean user1SS = null;
     @FXML
     protected ImageView homepageImageView1SS;
     @FXML
@@ -42,13 +44,13 @@ public class SearchShop  {
     @FXML
     protected ChoiceBox choiceBoxTypeShop1SS;
     @FXML
-    protected TableView<Shop> tableView1SS = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn1SS;
-    protected TableColumn<Shop, String> cityColumn1SS;
-    protected TableColumn<Shop, String> nameColumn1SS;
-    protected TableColumn<Shop, String> openingColumn1SS;
-    protected TableColumn<Shop, String> closingColumn1SS;
-    protected TableColumn<Shop, Double> distanceColumn1SS;
+    protected TableView<ShopBean> tableView1SS = new TableView<>();
+    protected TableColumn<ShopBean, String> addressColumn1SS;
+    protected TableColumn<ShopBean, String> cityColumn1SS;
+    protected TableColumn<ShopBean, String> nameColumn1SS;
+    protected TableColumn<ShopBean, String> openingColumn1SS;
+    protected TableColumn<ShopBean, String> closingColumn1SS;
+    protected TableColumn<ShopBean, Double> distanceColumn1SS;
     @FXML
     protected CheckBox openNow1SS;
 
@@ -57,7 +59,7 @@ public class SearchShop  {
     @FXML
     protected void onTableViewItemClick1SS() throws IOException {
 
-        Shop shop1SS = tableView1SS.getSelectionModel().getSelectedItem();
+        ShopBean shop1SS = tableView1SS.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop1SS != null){
             FXMLLoader loader1SS = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -76,8 +78,8 @@ public class SearchShop  {
 
     @FXML
     protected void onUserPositionImageViewClick1SS() {
-        if (((Buyer) user1SS).getBillingStreet() != null) {
-            requestTextField1SS.setText(((Buyer) user1SS).getBillingAddress());
+        if (user1SS.getBillingStreet() != null) {
+            requestTextField1SS.setText(user1SS.getBillingAddress());
             param31SS.setSelected(true);
         } else {
             requestTextField1SS.setText("");
@@ -101,7 +103,7 @@ public class SearchShop  {
     @FXML
     protected void onSearchButtonClick1SS() throws AddressException {
         tableView1SS.getItems().clear();
-        List<Shop> shopArrayList1SS = null;
+        List<ShopBean> shopArrayList1SS = null;
         String type1SS = choiceBoxTypeShop1SS.getSelectionModel().getSelectedItem().toString();
 
 
@@ -128,7 +130,7 @@ public class SearchShop  {
                     requestTextField1SS.getText(), openNow1SS.isSelected(), type1SS);
         }
         if (shopArrayList1SS != null && shopArrayList1SS.size() != 0) {
-            ObservableList<Shop> observableListShops1SS = FXCollections.observableArrayList(shopArrayList1SS);
+            ObservableList<ShopBean> observableListShops1SS = FXCollections.observableArrayList(shopArrayList1SS);
             tableView1SS.setItems(observableListShops1SS);
         }
         else {
@@ -136,7 +138,7 @@ public class SearchShop  {
         }
     }
 
-    public void passUser(User user1SS) {
+    public void passUser(UserBean user1SS) {
         this.user1SS = user1SS;
         labelHi1SS.setText(user1SS.getUsername());
 

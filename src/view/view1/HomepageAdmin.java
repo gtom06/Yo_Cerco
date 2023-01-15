@@ -1,5 +1,6 @@
 package view.view1;
 
+import bean.UserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +13,7 @@ import model.user.User;
 import java.io.IOException;
 
 public class HomepageAdmin {
-    User user1 = null;
+    UserBean user1 = null;
     @FXML
     protected Button logoutButton1;
     @FXML
@@ -31,7 +32,7 @@ public class HomepageAdmin {
         stage1.close();
     }
 
-    public void passUser(User user) {
+    public void passUser(UserBean user) {
         this.user1 = user;
     }
 
@@ -40,7 +41,7 @@ public class HomepageAdmin {
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ordersAdmin.fxml"));
         Parent root = loader1.load();
         OrdersAdmin ordersAdmin1 = loader1.getController();
-        ordersAdmin1.passUser(user1);
+        //ordersAdmin1.passUser(user1);
         Stage newStage1 = new Stage();
         newStage1.setScene(new Scene(root));
         newStage1.show();

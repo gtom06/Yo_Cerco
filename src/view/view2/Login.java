@@ -1,5 +1,6 @@
 package view.view2;
 
+import bean.UserBean;
 import control.FileElaboration;
 import control.UserHandler;
 import exceptions.AddressException;
@@ -69,30 +70,31 @@ public class Login {
         else {
             FileElaboration.writeOnFile(Constants.REMEMBER_LOGIN, "");
         }
-        User u = UserHandler.selectUserFromUsername(loginUsernameTextField.getText());
-        if (u instanceof Buyer) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
-            Parent root = loader.load();
-            Homepage homepage = loader.getController();
-            homepage.passParams(u);
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.show();
-            newStage.setResizable(false);
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.close();
+
+        UserBean user1 = UserHandler.selectUserFromUsername(loginUsernameTextField.getText());
+        if (!user1.isAdmin()) {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepage.fxml"));
+            Parent root1 = loader1.load();
+            view.view1.Homepage homepage1 = loader1.getController();
+            homepage1.passUser(user1);
+            Stage newStage1 = new Stage();
+            newStage1.setScene(new Scene(root1));
+            newStage1.show();
+            newStage1.setResizable(false);
+            Stage stage1 = (Stage) loginButton.getScene().getWindow();
+            stage1.close();
         }
-        if (u instanceof Admin) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
-            Parent root = loader.load();
-            HomepageAdmin homepage = loader.getController();
-            homepage.passParams(u);
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.show();
-            newStage.setResizable(false);
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.close();
+        else {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
+            Parent root1 = loader1.load();
+            view.view1.HomepageAdmin homepage1 = loader1.getController();
+            homepage1.passUser(user1);
+            Stage newStage1 = new Stage();
+            newStage1.setScene(new Scene(root1));
+            newStage1.show();
+            newStage1.setResizable(false);
+            Stage stage1 = (Stage) loginButton.getScene().getWindow();
+            stage1.close();
         }
     }
 

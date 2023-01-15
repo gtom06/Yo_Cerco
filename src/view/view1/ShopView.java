@@ -1,7 +1,11 @@
 package view.view1;
 
+import bean.DepartmentBean;
+import bean.ShopBean;
+import bean.UserBean;
 import control.BrowserHandler;
 import control.DepartmentHandler;
+import control.ProductHandler;
 import control.ShopHandler;
 import exceptions.ExceptionBrowser;
 import javafx.fxml.FXML;
@@ -28,10 +32,10 @@ import java.util.logging.Logger;
 import static constants.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ShopView {
-    Shop shop1SV = null;
-    User user1SV = null;
-    List<Department> departmentArrayList1SV = null;
-    Department department1SV = null;
+    ShopBean shop1SV = null;
+    UserBean user1SV = null;
+    List<DepartmentBean> departmentArrayList1SV = null;
+    DepartmentBean department1SV = null;
     @FXML
     protected ImageView homepageImageView1SV;
     @FXML
@@ -133,12 +137,12 @@ public class ShopView {
     }
 
 
-    public void passUser(User user1SV) {
+    public void passUser(UserBean user1SV) {
         this.user1SV = user1SV;
         textHi1SV.setText(user1SV.getUsername());
     }
 
-    public void passShop(Shop shop1SV) throws FileNotFoundException {
+    public void passShop(ShopBean shop1SV) throws FileNotFoundException {
         this.shop1SV = shop1SV;
         stream1SV = new FileInputStream(shop1SV.getLogoImagepath());
         Image shopImage1SV = new Image(stream1SV, 200, 200, false, false);
@@ -247,13 +251,13 @@ public class ShopView {
     protected void onClickDepartmentImage1SV(MouseEvent mouseEvent) throws IOException {
 
         int ref1SV = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-        for (Department dep1SV : departmentArrayList1SV){
+        for (DepartmentBean dep1SV : departmentArrayList1SV){
             if (dep1SV.getDepartmentId()==ref1SV) {
                 department1SV = dep1SV;
                 break;
             }
         }
-        department1SV.setItems(DepartmentHandler.findProductByDepartmentAndShop(shop1SV, department1SV));
+        department1SV.setItems(ProductHandler.findProductByDepartmentAndShop(shop1SV, department1SV));
 
         FXMLLoader loader1SV = new FXMLLoader(getClass().getResource("departProductView.fxml"));
         Parent root1SV = loader1SV.load();
@@ -275,7 +279,7 @@ public class ShopView {
         }
     }
 
-    public void checkOffersFlyer1SV(Shop shop1SV){
+    public void checkOffersFlyer1SV(ShopBean shop1SV){
         if (shop1SV.getOffersFlyerPath().equals("") || shop1SV.getOffersFlyerPath() == null ){
             offersFlyerShop1SV.setVisible(false);
             offersFlyerTagShop1SV.setVisible(false);

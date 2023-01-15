@@ -1,6 +1,10 @@
 package view.view1;
 
 
+import bean.DepartmentBean;
+import bean.ProductShopBean;
+import bean.ShopBean;
+import bean.UserBean;
 import control.CartElaboration;
 import control.ProductHandler;
 import javafx.fxml.FXML;
@@ -26,10 +30,10 @@ import java.util.logging.Logger;
 import static constants.Constants.REMOVE_FROM_FAVORITE_SHOP_CAPSLOCK;
 
 public class ProductView {
-    Shop shop1PV = null;
-    User user1PV = null;
-    ProductShop productShop1PV = null;
-    Department department1PV = null;
+    ShopBean shop1PV = null;
+    UserBean user1PV = null;
+    ProductShopBean productShop1PV = null;
+    DepartmentBean department1PV = null;
     @FXML
     protected ImageView productPhoto1PV;
     @FXML
@@ -66,7 +70,7 @@ public class ProductView {
     static final Logger logger = Logger.getLogger(ProductView.class.getName());
 
 
-    public void passParams(User user1PV, Department department1PV, ProductShop productShop1PV, Shop shop1PV) throws FileNotFoundException {
+    public void passParams(UserBean user1PV, DepartmentBean department1PV, ProductShopBean productShop1PV, ShopBean shop1PV) throws FileNotFoundException {
 
         this.user1PV = user1PV;
         this.department1PV = department1PV;
@@ -169,7 +173,7 @@ public class ProductView {
     }
 
     @FXML
-    protected void checkDiscount(ProductShop productShop1PV){
+    protected void checkDiscount(ProductShopBean productShop1PV){
         productShop1PV.setDiscountedPrice(0.50);
         if (productShop1PV.getDiscountedPrice() != 0){
             discountedPriceProd1PV.setText(String.valueOf(productShop1PV.getDiscountedPrice()));

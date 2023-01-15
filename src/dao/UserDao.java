@@ -1,5 +1,6 @@
 package dao;
 
+import bean.UserBean;
 import constants.Constants;
 
 import constants.ConstantsExceptions;
@@ -93,19 +94,19 @@ public class UserDao {
         return true;
     }
 
-    public static boolean updateBuyerRecord(User user) {
+    public static boolean updateBuyerRecord(UserBean user) {
         PreparedStatement stmt = null;
         try {
             String sql = "UPDATE userx SET name=?,surname=?,billing_street=?,billing_city=?,billing_country=?,billing_zip=?,phone=?,profile_imagepath=? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getSurname());
-            stmt.setString(3, ((Buyer) user).getBillingStreet());
-            stmt.setString(4, ((Buyer) user).getBillingCity());
-            stmt.setString(5, ((Buyer) user).getBillingCountry());
-            stmt.setString(6, ((Buyer) user).getBillingZip());
-            stmt.setString(7, ((Buyer) user).getPhone());
-            stmt.setString(8, ((Buyer) user).getProfileImagepath());
+            stmt.setString(3, user.getBillingStreet());
+            stmt.setString(4, user.getBillingCity());
+            stmt.setString(5, user.getBillingCountry());
+            stmt.setString(6, user.getBillingZip());
+            stmt.setString(7, user.getPhone());
+            stmt.setString(8, user.getProfileImagepath());
             stmt.setString(9, user.getUsername());
 
             stmt.executeUpdate();

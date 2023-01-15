@@ -1,5 +1,6 @@
 package view.view1;
 
+import bean.UserBean;
 import control.FileElaboration;
 import control.UserHandler;
 import exceptions.FileElaborationException;
@@ -28,7 +29,7 @@ import java.util.Arrays;
 
 public class MyProfile {
 
-    User user1MP = null;
+    UserBean user1MP = null;
     @FXML
     protected Rectangle borderProfileImageRectangle1MP;
     @FXML
@@ -84,12 +85,12 @@ public class MyProfile {
         stage1MP.close();
     }
 
-    public void passUser(User user1MP) throws IOException {
+    public void passUser(UserBean user1MP) throws IOException {
         this.user1MP = user1MP;
         usernameText1MP.setText(user1MP.getUsername());
 
-        if (user1MP instanceof Buyer) {
-            InputStream stream1MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user1MP).getProfileImagepath());
+        if (!user1MP.isAdmin()){
+            InputStream stream1MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + user1MP.getProfileImagepath());
             Image profileImage1MP = new Image(stream1MP, 200, 200, false, false);
             myProfileImage1MP.setImage(profileImage1MP);
             stream1MP.close();
@@ -104,15 +105,15 @@ public class MyProfile {
             // populate text fields
             nameTextField1MP.setText(user1MP.getName());
             surnameTextField1MP.setText(user1MP.getSurname());
-            streetTextField1MP.setText(((Buyer) user1MP).getBillingStreet());
-            cityTextField1MP.setText(((Buyer) user1MP).getBillingCity());
-            countryTextField1MP.setText(((Buyer) user1MP).getBillingCountry());
-            zipTextField1MP.setText(((Buyer) user1MP).getBillingZip());
-            phoneTextField1MP.setText(((Buyer) user1MP).getPhone());
+            streetTextField1MP.setText(user1MP.getBillingStreet());
+            cityTextField1MP.setText(user1MP.getBillingCity());
+            countryTextField1MP.setText(user1MP.getBillingCountry());
+            zipTextField1MP.setText(user1MP.getBillingZip());
+            phoneTextField1MP.setText(user1MP.getPhone());
 
             saveYourProfileText1MP.setVisible(true);
         }
-        if (user1MP instanceof Admin) {
+        else {
             phoneText1MP.setVisible(false);
             addressText1MP.setVisible(false);
         }
@@ -143,7 +144,7 @@ public class MyProfile {
         else{
             if(UserHandler.updateRecord2(user1MP, Arrays.asList(nameTextField1MP.getText(), surnameTextField1MP.getText(),
                     streetTextField1MP.getText(), cityTextField1MP.getText(), countryTextField1MP.getText(),
-                    zipTextField1MP.getText(), phoneTextField1MP.getText(), ((Buyer) user1MP).getProfileImagepath()))){
+                    zipTextField1MP.getText(), phoneTextField1MP.getText(), user1MP.getProfileImagepath()))){
                 //
             }
         }
@@ -179,7 +180,7 @@ public class MyProfile {
 
         if (file1MP != null) {
             if (FileElaboration.copyAndReplaceFile(file1MP, newFilepath1MP)) {
-                stream1MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user1MP).getProfileImagepath());
+                stream1MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + user1MP.getProfileImagepath());
                 profileImage1MP = new Image(stream1MP, 200, 200, false, false);
                 myProfileImage1MP.setImage(profileImage1MP);
                 stream1MP.close();

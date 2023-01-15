@@ -1,5 +1,7 @@
 package test;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
 import control.BrowserHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
@@ -18,8 +20,10 @@ import static org.junit.Assert.assertNotNull;
 public class SabatoTestJUnit {
     @Test
     public void findShopByProductTest() {
-        List<Shop> shopArrayList = ShopHandler.findShopByProduct(
-                new SimpleProduct(1, null, null, null, 0, null, null));
+        SimpleProductBean spb = new SimpleProductBean();
+        spb.setSku(1);
+        spb.setSize(0);
+        List<ShopBean> shopArrayList = ShopHandler.findShopByProduct(spb);
 
         assertNotNull(shopArrayList);
         assertEquals("TODIS FR", shopArrayList.get(0).getShopName());
@@ -27,7 +31,7 @@ public class SabatoTestJUnit {
     }
     @Test
     public void findShopNearbyWithParamsTest() throws AddressException {
-        List<Shop> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
+        List<ShopBean> shopArrayList = ShopHandler.findShopNearbyWithParams("via maria frosinone", false, Constants.SHOP_TYPE.get(0));
         assertNotNull(shopArrayList);
         assertEquals("LIDL FR", shopArrayList.get(0).getShopName());
         assertEquals("+393881234567", shopArrayList.get(0).getPhone());

@@ -1,5 +1,7 @@
 package view.view2;
 
+import bean.OrderBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,15 +24,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HomepageAdmin {
-    User user2HA = null;
+    UserBean user2HA = null;
     // Import the application's controls
     @FXML
-    protected TableView<Order> orderTableView2HA = new TableView<>();
-    protected TableColumn<Order, String> orderNumber2HA;
-    protected TableColumn<Order, Integer> orderTotalQuantity2HA;
-    protected TableColumn<Order, String> orderTotalPrice2HA;
-    protected TableColumn<Order, Timestamp> orderTimeStamp2HA;
-    protected TableColumn<Order, String> orderStatus2HA;
+    protected TableView<OrderBean> orderTableView2HA = new TableView<>();
+    protected TableColumn<OrderBean, String> orderNumber2HA;
+    protected TableColumn<OrderBean, Integer> orderTotalQuantity2HA;
+    protected TableColumn<OrderBean, String> orderTotalPrice2HA;
+    protected TableColumn<OrderBean, Timestamp> orderTimeStamp2HA;
+    protected TableColumn<OrderBean, String> orderStatus2HA;
     static final Logger logger = Logger.getLogger(HomepageAdmin.class.getName());
 
     @FXML
@@ -48,7 +50,7 @@ public class HomepageAdmin {
 
     @FXML
     protected void onOrderClicked2HA() throws IOException {
-        Order order2HA = orderTableView2HA.getSelectionModel().getSelectedItem();
+        OrderBean order2HA = orderTableView2HA.getSelectionModel().getSelectedItem();
         FXMLLoader loader2HA = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
         Parent root2HA = loader2HA.load();
         SpecificOrderAdmin specificOrderAdmin2HA = loader2HA.getController();
@@ -91,10 +93,10 @@ public class HomepageAdmin {
 
     protected void fillTableView2HA() {
         orderTableView2HA.getItems().clear();
-        ObservableList<Order> orderObservableList2HA = FXCollections.observableArrayList();
-        List<Order> orderArrayList2HA = OrderHandler.findOrdersByAdmin(user2HA);
+        ObservableList<OrderBean> orderObservableList2HA = FXCollections.observableArrayList();
+        List<OrderBean> orderArrayList2HA = OrderHandler.findOrdersByAdmin(user2HA);
         if (orderArrayList2HA != null) {
-            for (Order o : orderArrayList2HA) {
+            for (OrderBean o : orderArrayList2HA) {
                 orderObservableList2HA.add(o);
             }
             orderTableView2HA.setItems(orderObservableList2HA);
@@ -104,7 +106,7 @@ public class HomepageAdmin {
         }
     }
 
-    public void passParams(User user2HA) {
+    public void passParams(UserBean user2HA) {
         this.user2HA = user2HA;
         fillTableView2HA();
     }

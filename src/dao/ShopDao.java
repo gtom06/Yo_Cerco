@@ -1,5 +1,7 @@
 package dao;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
 import constants.Constants;
 import constants.ConstantsExceptions;
 import model.address.Address;
@@ -114,7 +116,7 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static List<Shop> findShopsByProduct(SimpleProduct simpleProduct) {
+    public static List<Shop> findShopsByProduct(SimpleProductBean simpleProduct) {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {

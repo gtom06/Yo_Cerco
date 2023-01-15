@@ -1,5 +1,7 @@
 package view.view1;
 
+import bean.OrderBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrdersAdmin {
-    User user1OA = null;
+    UserBean user1OA = null;
     @FXML
     protected ImageView homepageImageView1OA;
     @FXML
@@ -33,17 +35,17 @@ public class OrdersAdmin {
     @FXML
     protected Text totalOrdersText1OA;
     @FXML
-    protected TableView<Order> orderTableView1OA = new TableView<>();
-    protected TableColumn<Order, String> orderNumber1OA;
-    protected TableColumn<Order, Integer> orderTotalQuantity1OA;
-    protected TableColumn<Order, String> orderTotalPrice1OA;
-    protected TableColumn<Order, Timestamp> orderTimeStamp1OA;
-    protected TableColumn<Order, Timestamp> orderStatus1OA;
+    protected TableView<OrderBean> orderTableView1OA = new TableView<>();
+    protected TableColumn<OrderBean, String> orderNumber1OA;
+    protected TableColumn<OrderBean, Integer> orderTotalQuantity1OA;
+    protected TableColumn<OrderBean, String> orderTotalPrice1OA;
+    protected TableColumn<OrderBean, Timestamp> orderTimeStamp1OA;
+    protected TableColumn<OrderBean, Timestamp> orderStatus1OA;
     static final Logger logger = Logger.getLogger(OrdersAdmin.class.getName());
 
     @FXML
     protected void onOrderClicked1OA() throws IOException {
-        Order order1OA = orderTableView1OA.getSelectionModel().getSelectedItem();
+        OrderBean order1OA = orderTableView1OA.getSelectionModel().getSelectedItem();
         FXMLLoader loader1OA = new FXMLLoader(getClass().getResource("specificOrderAdmin.fxml"));
         Parent root1OA = loader1OA.load();
         SpecificOrderAdmin specificOrder1OA = loader1OA.getController();
@@ -61,7 +63,7 @@ public class OrdersAdmin {
         FXMLLoader loader1OA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
         Parent root1OA = loader1OA.load();
         HomepageAdmin homepage1OA = loader1OA.getController();
-        homepage1OA.passUser(user1OA);
+        //homepage1OA.passUser(user1OA);
         Stage newStage1OA = new Stage();
         newStage1OA.setScene(new Scene(root1OA));
         newStage1OA.show();
@@ -102,10 +104,10 @@ public class OrdersAdmin {
     protected void fillShopTableView1OA() {
         int numberOfOrders1OA = 0;
         orderTableView1OA.getItems().clear();
-        ObservableList<Order> orderObservableList1OA = FXCollections.observableArrayList();
-        List<Order> orderArrayList1OA = OrderHandler.findOrdersByAdmin(user1OA);
+        ObservableList<OrderBean> orderObservableList1OA = FXCollections.observableArrayList();
+        List<OrderBean> orderArrayList1OA = OrderHandler.findOrdersByAdmin(user1OA);
         if (orderArrayList1OA != null) {
-            for (Order o1OA : orderArrayList1OA) {
+            for (OrderBean o1OA : orderArrayList1OA) {
                 orderObservableList1OA.add(o1OA);
                 numberOfOrders1OA++;
             }
@@ -119,7 +121,7 @@ public class OrdersAdmin {
     }
 
 
-    public void passUser(User user1OA) {
+    public void passUser(UserBean user1OA) {
         this.user1OA = user1OA;
         textHi1OA.setText(user1OA.getUsername());
         fillShopTableView1OA();

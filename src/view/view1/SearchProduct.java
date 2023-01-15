@@ -1,5 +1,7 @@
 package view.view1;
 
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ProductHandler;
 import control.ShopHandler;
 import javafx.collections.FXCollections;
@@ -22,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SearchProduct {
-    User user1SP;
+    UserBean user1SP;
     @FXML
     protected ImageView homepageImageView1SP;
     @FXML
@@ -30,17 +32,17 @@ public class SearchProduct {
     @FXML
     protected Text textHi1SP;
     @FXML
-    protected TableView<SimpleProduct> productTableView1SP = new TableView<>();
-    protected TableColumn<SimpleProduct, String> nameColumn1SP;
-    protected TableColumn<SimpleProduct, Double> sizeColumn1SP;
-    protected TableColumn<SimpleProduct, String> unitOfMeasureColumn1SP;
-    protected TableColumn<SimpleProduct, String> brandColumn1SP;
+    protected TableView<SimpleProductBean> productTableView1SP = new TableView<>();
+    protected TableColumn<SimpleProductBean, String> nameColumn1SP;
+    protected TableColumn<SimpleProductBean, Double> sizeColumn1SP;
+    protected TableColumn<SimpleProductBean, String> unitOfMeasureColumn1SP;
+    protected TableColumn<SimpleProductBean, String> brandColumn1SP;
 
     static final Logger logger = Logger.getLogger(SearchProduct.class.getName());
 
     @FXML
     protected void onListViewItemClick1SP() throws IOException {
-        SimpleProduct simpleProduct1SP = productTableView1SP.getSelectionModel().getSelectedItem();
+        SimpleProductBean simpleProduct1SP = productTableView1SP.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (simpleProduct1SP != null){
             FXMLLoader loader1SP = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
@@ -75,11 +77,11 @@ public class SearchProduct {
     protected void onSearchButtonClick1SP() {
         productTableView1SP.getItems().clear();
         String paramForSearch1SP = requestTextField1SP.getText();
-        ObservableList<SimpleProduct> observableListProducts1SP = FXCollections.observableArrayList();
-        ArrayList<SimpleProduct> simpleProductArrayList1SP = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(paramForSearch1SP);
+        ObservableList<SimpleProductBean> observableListProducts1SP = FXCollections.observableArrayList();
+        ArrayList<SimpleProductBean> simpleProductArrayList1SP = (ArrayList<SimpleProductBean>) ProductHandler.findSimpleProductBy(paramForSearch1SP);
 
         if (simpleProductArrayList1SP != null) {
-            for (SimpleProduct sp1 : simpleProductArrayList1SP) {
+            for (SimpleProductBean sp1 : simpleProductArrayList1SP) {
                 observableListProducts1SP.add(sp1);
             }
             productTableView1SP.setItems(observableListProducts1SP);
@@ -89,7 +91,7 @@ public class SearchProduct {
         }
     }
 
-    public void passUser(User user1SP) {
+    public void passUser(UserBean user1SP) {
         this.user1SP = user1SP;
         textHi1SP.setText(user1SP.getUsername());
     }

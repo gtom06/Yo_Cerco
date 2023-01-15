@@ -1,5 +1,9 @@
 package view.view1;
 
+import bean.DepartmentBean;
+import bean.ProductShopBean;
+import bean.ShopBean;
+import bean.UserBean;
 import control.CartElaboration;
 import exceptions.ExceptionCart;
 import javafx.collections.FXCollections;
@@ -26,9 +30,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DepartProductView {
-    Department department1DPV = null;
-    Shop shop1DPV = null;
-    User user1DPV = null;
+    DepartmentBean department1DPV = null;
+    ShopBean shop1DPV = null;
+    UserBean user1DPV = null;
 
     @FXML
     protected ImageView homepageImageView1DPV;
@@ -39,26 +43,26 @@ public class DepartProductView {
     @FXML
     protected Text textHi1DPV;
     @FXML
-    protected TableView<ProductShop> productTable1DPV = new TableView<>();
+    protected TableView<ProductShopBean> productTable1DPV = new TableView<>();
     @FXML
-    protected TableColumn<ProductShop,String> nameColumn1DPV;
+    protected TableColumn<ProductShopBean,String> nameColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,String> brandColumn1DPV;
+    protected TableColumn<ProductShopBean,String> brandColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,Float> sizeColumn1DPV;
+    protected TableColumn<ProductShopBean,Float> sizeColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop,String> unitOfMeasureColumn1DPV;
+    protected TableColumn<ProductShopBean,String> unitOfMeasureColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, String> currencyColumn1DPV;
+    protected TableColumn<ProductShopBean, String> currencyColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, Double> discountedPriceColumn1DPV;
+    protected TableColumn<ProductShopBean, Double> discountedPriceColumn1DPV;
     @FXML
-    protected TableColumn<ProductShop, Double> priceColumn1DPV;
+    protected TableColumn<ProductShopBean, Double> priceColumn1DPV;
     static final Logger logger = Logger.getLogger(DepartProductView.class.getName());
 
     @FXML
     protected void onListViewItemClick1DPV() throws IOException {
-        ProductShop productShop1DPV = productTable1DPV.getSelectionModel().getSelectedItem();
+        ProductShopBean productShop1DPV = productTable1DPV.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (productShop1DPV != null){
             FXMLLoader loader1DPV = new FXMLLoader(getClass().getResource("productView.fxml"));
@@ -90,17 +94,17 @@ public class DepartProductView {
 
     @FXML
     protected void onAddToCartClick1DPV() throws ExceptionCart {
-        ProductShop productShop = productTable1DPV.getSelectionModel().getSelectedItem();
+        ProductShopBean productShop = productTable1DPV.getSelectionModel().getSelectedItem();
         CartElaboration.addOrderItemsToCart(productShop, 1);
     }
 
-    public void passParams(User user1DPV, Department department1DPV, Shop shop1DPV) {
+    public void passParams(UserBean user1DPV, DepartmentBean department1DPV, ShopBean shop1DPV) {
         this.shop1DPV = shop1DPV;
         this.user1DPV = user1DPV;
         this.department1DPV = department1DPV;
-        List<ProductShop> productShopArrayList = department1DPV.getItems();
+        List<ProductShopBean> productShopArrayList = department1DPV.getItems();
         if (productShopArrayList!=null){
-            ObservableList<ProductShop> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
+            ObservableList<ProductShopBean> observableListProducts = FXCollections.observableArrayList(productShopArrayList);
             productTable1DPV.setItems(observableListProducts);
         }
         else {

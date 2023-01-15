@@ -1,5 +1,7 @@
 package control;
 
+import bean.AddressBean;
+import bean.ShopBean;
 import model.address.Address;
 import constants.ConstantsExceptions;
 import model.shop.Shop;

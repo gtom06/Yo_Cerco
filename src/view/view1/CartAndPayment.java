@@ -1,5 +1,9 @@
 package view.view1;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.ShopBean;
+import bean.UserBean;
 import control.CartElaboration;
 import control.OrderHandler;
 import control.PaymentHandler;
@@ -18,9 +22,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.order.Order;
 import model.order.OrderItem;
-import model.shop.Shop;
-import model.user.Buyer;
-import model.user.User;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -76,17 +77,17 @@ public class CartAndPayment {
     @FXML
     protected Text totalQuantityText1CAP;
     @FXML
-    protected TableView<OrderItem> orderItemsTableView1CAP = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn1CAP;
-    protected TableColumn<OrderItem, String> quantityOrderedColumn1CAP;
-    protected TableColumn<OrderItem, Double> pricePerItemColumn1CAP;
-    protected TableColumn<OrderItem, Double> priceTotalColumn1CAP;
+    protected TableView<OrderItemBean> orderItemsTableView1CAP = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn1CAP;
+    protected TableColumn<OrderItemBean, String> quantityOrderedColumn1CAP;
+    protected TableColumn<OrderItemBean, Double> pricePerItemColumn1CAP;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn1CAP;
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    User user1CAP = null;
-    Shop shop1CAP = null;
+    UserBean user1CAP = null;
+    ShopBean shop1CAP = null;
 
-    public void passParam(Shop shop1CAP, User user1CAP) throws ExceptionCart {
+    public void passParam(ShopBean shop1CAP, UserBean user1CAP) throws ExceptionCart {
         this.shop1CAP = shop1CAP;
         this.user1CAP = user1CAP;
 
@@ -94,22 +95,22 @@ public class CartAndPayment {
             textHi1CAP.setText(user1CAP.getUsername());
             nameTextField1CAP.setText(user1CAP.getName());
             surnameTextField1CAP.setText(user1CAP.getSurname());
-            phoneNumberTextField1CAP.setText(((Buyer) user1CAP).getPhone());
-            billingStreetTextField1CAP.setText(((Buyer) user1CAP).getBillingStreet());
-            billingCityTextField1CAP.setText(((Buyer) user1CAP).getBillingCity());
-            billingCountryTextField1CAP.setText(((Buyer) user1CAP).getBillingCountry());
-            billingZipTextField1CAP.setText(((Buyer) user1CAP).getBillingZip());
+            phoneNumberTextField1CAP.setText(user1CAP.getPhone());
+            billingStreetTextField1CAP.setText(user1CAP.getBillingStreet());
+            billingCityTextField1CAP.setText(user1CAP.getBillingCity());
+            billingCountryTextField1CAP.setText(user1CAP.getBillingCountry());
+            billingZipTextField1CAP.setText(user1CAP.getBillingZip());
         }
 
 
-        List<OrderItem> orderItemArrayList1CAP = CartElaboration.readOrderItemsFromCart();
+        List<OrderItemBean> orderItemArrayList1CAP = CartElaboration.readOrderItemsFromCart();
         if (orderItemArrayList1CAP != null && (orderItemArrayList1CAP).size() != 0) {
-            ObservableList<OrderItem> observableListProducts =
+            ObservableList<OrderItemBean> observableListProducts =
                     FXCollections.observableArrayList(orderItemArrayList1CAP);
             orderItemsTableView1CAP.setItems(observableListProducts);
         }
 
-        Order order1CAP = OrderHandler.previewOrder();
+        OrderBean order1CAP = OrderHandler.previewOrder();
         if (order1CAP != null){
             totalPriceText1CAP.setText(order1CAP.getCurrency() + "" + order1CAP.getTotalPrice());
             totalQuantityText1CAP.setText(String.valueOf(order1CAP.getOrderTotalQuantity()));
@@ -174,20 +175,20 @@ public class CartAndPayment {
         if (user1CAP.getSurname() != null || !user1CAP.getUsername().equals("")) {
             surnameTextField1CAP.setText(user1CAP.getSurname());
         }
-        if (((Buyer) user1CAP).getPhone() != null || !((Buyer) user1CAP).getPhone().equals("")) {
-            phoneNumberTextField1CAP.setText(((Buyer) user1CAP).getPhone());
+        if (user1CAP.getPhone() != null || !user1CAP.getPhone().equals("")) {
+            phoneNumberTextField1CAP.setText(user1CAP.getPhone());
         }
-        if (((Buyer) user1CAP).getBillingStreet()!= null || !(((Buyer) user1CAP).getBillingStreet()).equals("")) {
-            billingStreetTextField1CAP.setText(((Buyer) user1CAP).getBillingStreet());
+        if (user1CAP.getBillingStreet()!= null || !user1CAP.getBillingStreet().equals("")) {
+            billingStreetTextField1CAP.setText(user1CAP.getBillingStreet());
         }
-        if (((Buyer) user1CAP).getPhone() != null || !((Buyer) user1CAP).getPhone().equals("")) {
-            billingCityTextField1CAP.setText(((Buyer) user1CAP).getBillingCity());
+        if (user1CAP.getPhone() != null || !(user1CAP).getPhone().equals("")) {
+            billingCityTextField1CAP.setText(user1CAP.getBillingCity());
         }
-        if (((Buyer) user1CAP).getBillingCountry() != null || !((Buyer) user1CAP).getBillingCountry().equals("")) {
-            billingCountryTextField1CAP.setText(((Buyer) user1CAP).getBillingCountry());
+        if (user1CAP.getBillingCountry() != null || !user1CAP.getBillingCountry().equals("")) {
+            billingCountryTextField1CAP.setText(user1CAP.getBillingCountry());
         }
-        if (((Buyer) user1CAP).getBillingZip() != null || !((Buyer) user1CAP).getBillingZip().equals("")) {
-            billingZipTextField1CAP.setText(((Buyer) user1CAP).getBillingZip());
+        if (user1CAP.getBillingZip() != null || !user1CAP.getBillingZip().equals("")) {
+            billingZipTextField1CAP.setText(user1CAP.getBillingZip());
         }
     }
 
@@ -207,7 +208,7 @@ public class CartAndPayment {
         String mm1 = mmTextField1CAP.getText();
         String yy1 = yyTextField1CAP.getText();
         String cvv1 = cvvTextField1CAP.getText();
-        Order order1 = null;
+        OrderBean order1 = null;
 
         if (!PaymentHandler.validateParams(paymentMethod1, cardNumber1, mm1, yy1, cvv1)) {
             logger.log(Level.INFO, "reviewPayment");
@@ -219,7 +220,7 @@ public class CartAndPayment {
                 } else {
                     UserHandler.updateRecord2(
                             user1CAP, Arrays.asList(name1, surname1, billingStreet1, billingCity1, billingCountry1,
-                            billingZip1, phoneNumber1, ((Buyer) user1CAP).getProfileImagepath()));
+                            billingZip1, phoneNumber1, user1CAP.getProfileImagepath()));
 
                     order1 = OrderHandler.createOrder(
                             user1CAP,

@@ -1,5 +1,9 @@
 package view.view2;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.ShopBean;
+import bean.UserBean;
 import control.CartElaboration;
 import control.OrderHandler;
 import control.PaymentHandler;
@@ -73,39 +77,39 @@ public class CartAndPayment {
     @FXML
     protected Text totalQuantityText2CA;
     @FXML
-    protected TableView<OrderItem> orderItemsTableView2CA = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn2CA;
-    protected TableColumn<OrderItem, String> quantityOrderedColumn2CA;
-    protected TableColumn<OrderItem, Double> pricePerItemColumn2CA;
-    protected TableColumn<OrderItem, Double> priceTotalColumn2CA;
+    protected TableView<OrderItemBean> orderItemsTableView2CA = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn2CA;
+    protected TableColumn<OrderItemBean, String> quantityOrderedColumn2CA;
+    protected TableColumn<OrderItemBean, Double> pricePerItemColumn2CA;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn2CA;
 
-    User user2CA;
-    Shop shop2CA;
+    UserBean user2CA;
+    ShopBean shop2CA;
 
     static final Logger logger = Logger.getLogger(CartAndPayment.class.getName());
 
-    public void passParam(Shop shop2CA, User user2CA) throws ExceptionCart {
+    public void passParam(ShopBean shop2CA, UserBean user2CA) throws ExceptionCart {
         this.shop2CA = shop2CA;
         this.user2CA = user2CA;
 
         if (user2CA != null) {
             nameTextField2CA.setText(user2CA.getName());
             surnameTextField2CA.setText(user2CA.getSurname());
-            phoneNumberTextField2CA.setText(((Buyer) user2CA).getPhone());
-            billingStreetTextField2CA.setText(((Buyer) user2CA).getBillingStreet());
-            billingCityTextField2CA.setText(((Buyer) user2CA).getBillingCity());
-            billingCountryTextField2CA.setText(((Buyer) user2CA).getBillingCountry());
-            billingZipTextField2CA.setText(((Buyer) user2CA).getBillingZip());
+            phoneNumberTextField2CA.setText(user2CA.getPhone());
+            billingStreetTextField2CA.setText(user2CA.getBillingStreet());
+            billingCityTextField2CA.setText(user2CA.getBillingCity());
+            billingCountryTextField2CA.setText(user2CA.getBillingCountry());
+            billingZipTextField2CA.setText(user2CA.getBillingZip());
         }
 
-        List<OrderItem> orderItemArrayList2CA = CartElaboration.readOrderItemsFromCart();
+        List<OrderItemBean> orderItemArrayList2CA = CartElaboration.readOrderItemsFromCart();
         if (orderItemArrayList2CA != null && !orderItemArrayList2CA.isEmpty()) {
-            ObservableList<OrderItem> observableListProducts2CA =
+            ObservableList<OrderItemBean> observableListProducts2CA =
                     FXCollections.observableArrayList(orderItemArrayList2CA);
             orderItemsTableView2CA.setItems(observableListProducts2CA);
         }
 
-        Order order2CA = OrderHandler.previewOrder();
+        OrderBean order2CA = OrderHandler.previewOrder();
         if (order2CA != null){
             totalPriceText2CA.setText(order2CA.getCurrency() + "" + order2CA.getTotalPrice());
             totalQuantityText2CA.setText(String.valueOf(order2CA.getOrderTotalQuantity()));
@@ -155,20 +159,20 @@ public class CartAndPayment {
         if (user2CA.getSurname() != null || user2CA.getUsername().equals("")) {
             surnameTextField2CA.setText(user2CA.getSurname());
         }
-        if (((Buyer) user2CA).getPhone() != null || ((Buyer) user2CA).getPhone().equals("")) {
-            phoneNumberTextField2CA.setText(((Buyer) user2CA).getPhone());
+        if (user2CA.getPhone() != null || user2CA.getPhone().equals("")) {
+            phoneNumberTextField2CA.setText(user2CA.getPhone());
         }
-        if (((Buyer) user2CA).getBillingStreet()!= null || (((Buyer) user2CA).getBillingStreet()).equals("")) {
-            billingStreetTextField2CA.setText(((Buyer) user2CA).getBillingStreet());
+        if (user2CA.getBillingStreet()!= null || user2CA.getBillingStreet().equals("")) {
+            billingStreetTextField2CA.setText(user2CA.getBillingStreet());
         }
-        if (((Buyer) user2CA).getPhone() != null || ((Buyer) user2CA).getPhone().equals("")) {
-            billingCityTextField2CA.setText(((Buyer) user2CA).getBillingCity());
+        if (user2CA.getPhone() != null || user2CA.getPhone().equals("")) {
+            billingCityTextField2CA.setText(user2CA.getBillingCity());
         }
-        if (((Buyer) user2CA).getBillingCountry() != null || ((Buyer) user2CA).getBillingCountry().equals("")) {
-            billingCountryTextField2CA.setText(((Buyer) user2CA).getBillingCountry());
+        if (user2CA.getBillingCountry() != null || user2CA.getBillingCountry().equals("")) {
+            billingCountryTextField2CA.setText(user2CA.getBillingCountry());
         }
-        if (((Buyer) user2CA).getBillingZip() != null || ((Buyer) user2CA).getBillingZip().equals("")) {
-            billingZipTextField2CA.setText(((Buyer) user2CA).getBillingZip());
+        if (user2CA.getBillingZip() != null || user2CA.getBillingZip().equals("")) {
+            billingZipTextField2CA.setText(user2CA.getBillingZip());
         }
     }
 
@@ -187,7 +191,7 @@ public class CartAndPayment {
         String mm2CA = mmTextField2CA.getText();
         String yy2CA = yyTextField2CA.getText();
         String cvv2CA = cvvTextField2CA.getText();
-        Order order2CA;
+        OrderBean order2CA;
 
         if (!PaymentHandler.validateParams(paymentMethod2CA, cardNumber2CA, mm2CA, yy2CA, cvv2CA)) {
             logger.log(Level.INFO, "reviewPayment");
@@ -201,7 +205,7 @@ public class CartAndPayment {
                     UserHandler.updateRecord2(
                             user2CA, Arrays.asList(name2CA, surname2CA, billingStreet2CA, billingCity2CA,
                                     billingCountry2CA,
-                            billingZip2CA, phoneNumber2CA, ((Buyer) user2CA).getProfileImagepath()));
+                            billingZip2CA, phoneNumber2CA, user2CA.getProfileImagepath()));
 
                     order2CA = OrderHandler.createOrder(
                             user2CA,

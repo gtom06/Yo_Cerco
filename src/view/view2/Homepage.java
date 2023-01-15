@@ -1,5 +1,8 @@
 package view.view2;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ProductHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
@@ -60,27 +63,27 @@ public class Homepage {
     @FXML
     protected TextField searchParam2H;
     @FXML
-    protected TableView<Shop> shopTableView2H = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn2H;
-    protected TableColumn<Shop, String> cityColumn2H;
-    protected TableColumn<Shop, String> nameColumn2H;
-    protected TableColumn<Shop, String> openingColumn2H;
-    protected TableColumn<Shop, String> closingColumn2H;
-    protected TableColumn<Shop, Double> distanceColumn2H;
+    protected TableView<ShopBean> shopTableView2H = new TableView<>();
+    protected TableColumn<ShopBean, String> addressColumn2H;
+    protected TableColumn<ShopBean, String> cityColumn2H;
+    protected TableColumn<ShopBean, String> nameColumn2H;
+    protected TableColumn<ShopBean, String> openingColumn2H;
+    protected TableColumn<ShopBean, String> closingColumn2H;
+    protected TableColumn<ShopBean, Double> distanceColumn2H;
 
     @FXML
-    protected TableView<SimpleProduct> productTableView2H = new TableView<>();
-    protected TableColumn<SimpleProduct, String> nameProductColumn2H;
-    protected TableColumn<SimpleProduct, Double> sizeColumn2H;
-    protected TableColumn<SimpleProduct, String> unitOfMeasureColumn2H;
-    protected TableColumn<SimpleProduct, String> brandColumn2H;
+    protected TableView<SimpleProductBean> productTableView2H = new TableView<>();
+    protected TableColumn<SimpleProductBean, String> nameProductColumn2H;
+    protected TableColumn<SimpleProductBean, Double> sizeColumn2H;
+    protected TableColumn<SimpleProductBean, String> unitOfMeasureColumn2H;
+    protected TableColumn<SimpleProductBean, String> brandColumn2H;
 
     static final Logger logger = Logger.getLogger(Homepage.class.getName());
 
-    User user2H = null;
-    List<Shop> shopArrayList2H;
+    UserBean user2H = null;
+    List<ShopBean> shopArrayList2H;
 
-    public void passParams(User user2H) throws FileNotFoundException, AddressException {
+    public void passParams(UserBean user2H) throws FileNotFoundException, AddressException {
         this.user2H = user2H;
         ArrayList<Text> textArrayList2H = new ArrayList<>(
                 Arrays.asList(shopText12H, shopText22H, shopText32H, shopText42H)
@@ -88,7 +91,7 @@ public class Homepage {
         ArrayList<ImageView> imageViewArrayList2H = new ArrayList<>(
                 Arrays.asList(shopImageView12H, shopImageView22H, shopImageView32H, shopImageView42H)
         );
-        shopArrayList2H = ShopHandler.findShopNearbyWithParams(((Buyer) user2H).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
+        shopArrayList2H = ShopHandler.findShopNearbyWithParams(user2H.getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
         if (shopArrayList2H != null && shopArrayList2H.size() != 0){
             for (int i = 0; i < 4; i++) {
                 imageViewArrayList2H.get(i).setImage(new Image(new FileInputStream(shopArrayList2H.get(i).getLogoImagepath())));
@@ -140,10 +143,10 @@ public class Homepage {
 
     @FXML
     protected void onClickOnShop2H(MouseEvent mouseEvent) {
-        Shop shop2H = null;
+        ShopBean shop2H = null;
         try {
             int ref2H = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-            for (Shop s : shopArrayList2H){
+            for (ShopBean s : shopArrayList2H){
                 if (s.getShopId() == ref2H) {
                     shop2H = s;
                     break;
@@ -158,7 +161,7 @@ public class Homepage {
     @FXML
     protected void onClickOnShopTableView2H() {
         try {
-            Shop shop2H = shopTableView2H.getSelectionModel().getSelectedItem();
+            ShopBean shop2H = shopTableView2H.getSelectionModel().getSelectedItem();
             if (shop2H != null) {
                 goToShop2H(shop2H);
             }
@@ -168,7 +171,7 @@ public class Homepage {
     }
 
     @FXML
-    protected void goToShop2H(Shop shop2H) throws IOException {
+    protected void goToShop2H(ShopBean shop2H) throws IOException {
         FXMLLoader loader2H = new FXMLLoader(getClass().getResource("shopView.fxml"));
         Parent root2H = loader2H.load();
         ShopView shopView2H = loader2H.getController();
@@ -183,7 +186,7 @@ public class Homepage {
 
     @FXML
     protected void onClickOnProductTableView2H() throws IOException {
-        SimpleProduct simpleProduct2H = productTableView2H.getSelectionModel().getSelectedItem();
+        SimpleProductBean simpleProduct2H = productTableView2H.getSelectionModel().getSelectedItem();
         if (simpleProduct2H != null) {
             FXMLLoader loader2H = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
             Parent root2H = loader2H.load();
@@ -201,16 +204,16 @@ public class Homepage {
 
     @FXML
     protected void onClickOnLocation2H() throws AddressException {
-        List<Shop> searchShopArrayList2H;
+        List<ShopBean> searchShopArrayList2H;
         distanceColumn2H.setVisible(true);
         shopTableView2H.getItems().clear();
-        searchShopArrayList2H = ShopHandler.findShopNearbyWithParams(((Buyer) user2H).getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
+        searchShopArrayList2H = ShopHandler.findShopNearbyWithParams(user2H.getBillingAddress(), false, Constants.SHOP_TYPE.get(0));
         productTableView2H.setVisible(true);
         shopTableView2H.setVisible(true);
         choiceBox2H.setValue(Constants.SHOP);
         searchParam2H.setText("My position");
         if (searchShopArrayList2H != null && searchShopArrayList2H.size() != 0) {
-            ObservableList<Shop> observableListShop2H = FXCollections.observableArrayList(searchShopArrayList2H);
+            ObservableList<ShopBean> observableListShop2H = FXCollections.observableArrayList(searchShopArrayList2H);
             if (observableListShop2H.size()!= 0){
                 shopTableView2H.setItems(observableListShop2H);
             }
@@ -220,7 +223,7 @@ public class Homepage {
     }
 
     protected void fillShopTableView2H() throws AddressException {
-        ArrayList<Shop> searchShopArrayList2H;
+        ArrayList<ShopBean> searchShopArrayList2H;
         if (choiceBox2H.getSelectionModel().getSelectedItem().toString().equals("Shop")){
             String searchString2H = searchParam2H.getText();
             if (searchString2H.equals("My position")) {
@@ -231,9 +234,9 @@ public class Homepage {
                 productTableView2H.setVisible(true);
                 shopTableView2H.setVisible(true);
                 distanceColumn2H.setVisible(false);
-                searchShopArrayList2H = (ArrayList<Shop>) ShopHandler.findShopByCityWithParams(searchString2H, false, Constants.ALL_TYPES);
+                searchShopArrayList2H = (ArrayList<ShopBean>) ShopHandler.findShopByCityWithParams(searchString2H, false, Constants.ALL_TYPES);
                 if (searchShopArrayList2H != null) {
-                    ObservableList<Shop> observableListShop2H = FXCollections.observableArrayList(searchShopArrayList2H);
+                    ObservableList<ShopBean> observableListShop2H = FXCollections.observableArrayList(searchShopArrayList2H);
                     if (!observableListShop2H.isEmpty()) {
                         shopTableView2H.setItems(observableListShop2H);
                     }
@@ -245,14 +248,14 @@ public class Homepage {
     }
 
     protected void fillProductTableView2H(){
-        ArrayList<SimpleProduct> searchSimpleProductArrayList2H = null;
+        ArrayList<SimpleProductBean> searchSimpleProductArrayList2H = null;
         if (choiceBox2H.getSelectionModel().getSelectedItem().toString().equals("Product")) {
             productTableView2H.setVisible(true);
             productTableView2H.getItems().clear();
             shopTableView2H.setVisible(false);
-            searchSimpleProductArrayList2H = (ArrayList<SimpleProduct>) ProductHandler.findSimpleProductBy(searchParam2H.getText());
+            searchSimpleProductArrayList2H = (ArrayList<SimpleProductBean>) ProductHandler.findSimpleProductBy(searchParam2H.getText());
             if (searchSimpleProductArrayList2H != null && !searchSimpleProductArrayList2H.isEmpty()) {
-                ObservableList<SimpleProduct> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList2H);
+                ObservableList<SimpleProductBean> observableListProducts = FXCollections.observableArrayList(searchSimpleProductArrayList2H);
                 if (observableListProducts.size()!= 0){
                     productTableView2H.setItems(observableListProducts);
                 }

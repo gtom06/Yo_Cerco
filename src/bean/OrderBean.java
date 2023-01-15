@@ -1,13 +1,13 @@
-package model.order;
+package bean;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-public class Order {
-    private int orderId;
-    private int shopId;
+public class OrderBean {
+    private int orderId = 0;
+    private int shopId = 0;
     private String username;
-    private Payment payment;
+    private PaymentBean payment;
     private int paymentId;
     private Timestamp orderTimestamp;
     private double totalPrice;
@@ -15,21 +15,10 @@ public class Order {
     private String status;
     private Timestamp collectionTimestamp;
     private int orderTotalQuantity;
-    private List<OrderItem> orderItemArrayList;
+    private List<OrderItemBean> orderItemArrayList;
     private String orderItemString;
 
-    public Order(int orderId, int shopId, String username, Payment payment, int orderTotalQuantity, List<OrderItem> orderItemArrayList, String orderItemString) {
-        this.orderId = orderId;
-        this.shopId = shopId;
-        this.username = username;
-        this.payment = payment;
-        this.orderTotalQuantity = orderTotalQuantity;
-        this.orderItemArrayList = orderItemArrayList;
-        this.orderItemString = orderItemString;
-        this.paymentId = payment.getPaymentId();
-        this.orderTimestamp = payment.getPaymentTimestamp();
-        this.totalPrice = payment.getTotalPrice();
-        this.currency = payment.getCurrency();
+    public OrderBean() {
     }
 
     public int getOrderId() {
@@ -56,11 +45,11 @@ public class Order {
         this.username = username;
     }
 
-    public Payment getPayment() {
+    public PaymentBean getPayment() {
         return payment;
     }
 
-    public void setPayment(Payment payment) {
+    public void setPayment(PaymentBean payment) {
         this.payment = payment;
     }
 
@@ -120,11 +109,11 @@ public class Order {
         this.orderTotalQuantity = orderTotalQuantity;
     }
 
-    public List<OrderItem> getOrderItemArrayList() {
+    public List<OrderItemBean> getOrderItemArrayList() {
         return orderItemArrayList;
     }
 
-    public void setOrderItemArrayList(List<OrderItem> orderItemArrayList) {
+    public void setOrderItemArrayList(List<OrderItemBean> orderItemArrayList) {
         this.orderItemArrayList = orderItemArrayList;
     }
 
@@ -134,24 +123,5 @@ public class Order {
 
     public void setOrderItemString(String orderItemString) {
         this.orderItemString = orderItemString;
-    }
-
-    @Override
-    public String toString() {
-        return "Order2{" +
-                "orderId=" + orderId +
-                ", shopId=" + shopId +
-                ", username='" + username + '\'' +
-                ", payment=" + payment +
-                ", paymentId=" + paymentId +
-                ", orderTimestamp=" + orderTimestamp +
-                ", totalPrice=" + totalPrice +
-                ", currency='" + currency + '\'' +
-                ", status='" + status + '\'' +
-                ", collectionTimestamp=" + collectionTimestamp +
-                ", orderTotalQuantity=" + orderTotalQuantity +
-                ", orderItemArrayList=" + orderItemArrayList +
-                ", orderItemString='" + orderItemString + '\'' +
-                '}';
     }
 }

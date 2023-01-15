@@ -5,10 +5,7 @@ public class ProductShop extends SimpleProduct {
     private final String currency;
     private int shopId;
     private int departmentId;
-
-
     private double discountedPrice;
-
 
     public ProductShop(double price, String currency, int shopId,
                        int sku, String name, String brand, String description, double size, String unitOfMeasure, String logoImagepath, int departmentId, double discountedPrice) {

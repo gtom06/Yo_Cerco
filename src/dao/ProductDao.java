@@ -106,13 +106,13 @@ public class ProductDao {
         }
     }
 
-    public static List<SimpleProduct> findSimpleProductFromUser(User user) {
+    public static List<SimpleProduct> findSimpleProductFromUser(String username) {
         PreparedStatement stmt = null;
         ArrayList<SimpleProduct> simpleProductArrayList = new ArrayList<>();
         try {
             String sql = "SELECT DISTINCT * FROM user_favoriteproduct UFP JOIN product P ON P.sku = UFP.sku WHERE username = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, user.getUsername());
+            stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             simpleProductArrayList = (ArrayList<SimpleProduct>) convertRSInArraySimpleProduct(rs);
         } catch (SQLException se) {

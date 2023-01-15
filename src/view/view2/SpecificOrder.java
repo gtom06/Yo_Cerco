@@ -1,5 +1,8 @@
 package view.view2;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.UserBean;
 import control.OrderHandler;
 import exceptions.AddressException;
 import javafx.collections.FXCollections;
@@ -24,8 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrder {
-    User user2SO = null;
-    Order order2SO = null;
+    UserBean user2SO = null;
+    OrderBean order2SO = null;
     @FXML
     protected ImageView homepageImageView2SO;
     @FXML
@@ -39,12 +42,12 @@ public class SpecificOrder {
     @FXML
     protected Text orderNumberText2SO;
     @FXML
-    protected TableView<OrderItem> orderItemTableView2SO = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn2SO;
-    protected TableColumn<OrderItem, String> brandColumn2SO;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn2SO;
-    protected TableColumn<OrderItem, Double> priceTotalColumn2SO;
-    protected TableColumn<OrderItem, String> currencyColumn2SO;
+    protected TableView<OrderItemBean> orderItemTableView2SO = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn2SO;
+    protected TableColumn<OrderItemBean, String> brandColumn2SO;
+    protected TableColumn<OrderItemBean, Integer> quantityOrderedColumn2SO;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn2SO;
+    protected TableColumn<OrderItemBean, String> currencyColumn2SO;
 
     static final Logger logger = Logger.getLogger(SpecificOrder.class.getName());
 
@@ -118,14 +121,14 @@ public class SpecificOrder {
 
     protected void fillOrder2SO() throws Exception {
         orderItemTableView2SO.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList2SO = FXCollections.observableArrayList();
+        ObservableList<OrderItemBean> orderItemObservableList2SO = FXCollections.observableArrayList();
         order2SO = OrderHandler.populateOrderWithOrderItems(order2SO);
         if (order2SO != null) {
             totalPriceText2SO.setText(String.valueOf(order2SO.getTotalPrice()));
             timestampText2SO.setText(String.valueOf(order2SO.getOrderTimestamp()));
             orderNumberText2SO.setText(String.valueOf(order2SO.getOrderId()));
             if (order2SO.getOrderItemArrayList() != null) {
-                for (OrderItem orderItem2SO : order2SO.getOrderItemArrayList()) {
+                for (OrderItemBean orderItem2SO : order2SO.getOrderItemArrayList()) {
                     orderItemObservableList2SO.add(orderItem2SO);
                 }
                 orderItemTableView2SO.setItems(orderItemObservableList2SO);
@@ -138,7 +141,7 @@ public class SpecificOrder {
         }
     }
 
-    public void passParams(User user2SO, Order order2SO) throws Exception {
+    public void passParams(UserBean user2SO, OrderBean order2SO) throws Exception {
         this.user2SO = user2SO;
         this.order2SO = order2SO;
         fillOrder2SO();

@@ -1,5 +1,8 @@
 package control;
 
+import bean.DepartmentBean;
+import bean.ProductShopBean;
+import bean.ShopBean;
 import constants.ConstantsExceptions;
 import dao.DepartmentDao;
 import dao.ProductDao;
@@ -15,19 +18,20 @@ public class DepartmentHandler {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static List<Department> findDepartmentByShop(Shop shop) {
+    public static List<DepartmentBean> findDepartmentByShop(ShopBean shop) {
         ArrayList<Department> output = (ArrayList<Department>) DepartmentDao.findDepartmentByShop(shop.getShopId());
+        ArrayList<DepartmentBean> outputBean = new ArrayList<>();
         if (output.size() > 14) {
             output = new ArrayList<>(output.subList(0, 14));
         }
-        return !output.isEmpty() ? output : null;
-    }
-
-    public static List<ProductShop> findProductByDepartmentAndShop(Shop shop, Department department){
-        ArrayList<ProductShop> output = (ArrayList<ProductShop>) ProductDao.findProductByDepartmentAndShop(shop.getShopId(), department.getDepartmentId());
-        if (output.size() > 14) {
-            output = new ArrayList<>(output.subList(0, 14));
+        for (Department d : output) {
+            DepartmentBean departmentBean = new DepartmentBean();
+            departmentBean.setDepartmentId(d.getDepartmentId());
+            departmentBean.setLogoImagepath(d.getLogoImagepath());
+            departmentBean.setName(d.getName());
+            departmentBean.setShopId(d.getShopId());
+            outputBean.add(departmentBean);
         }
-        return !output.isEmpty() ? output : null;
+        return !outputBean.isEmpty() ? outputBean : null;
     }
 }

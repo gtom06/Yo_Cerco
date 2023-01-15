@@ -1,5 +1,6 @@
 package dao;
 
+import bean.OrderBean;
 import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.order.Order;
@@ -37,7 +38,7 @@ public class OrderDao {
         return orderArrayList;
     }
 
-    public static Order findOrderItemsFromOrder(Order order) {
+    public static OrderBean findOrderItemsFromOrder(OrderBean order) {
         PreparedStatement stmt = null;
         try {
             String sql = "SELECT DISTINCT * FROM order_items WHERE order_id = ?";

@@ -1,5 +1,8 @@
 package view.view1;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ShopHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,8 +31,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GeneralProductView {
-    User user1GPV;
-    List<Shop> arrayShopList1GPV;
+    UserBean user1GPV;
+    List<ShopBean> arrayShopList1GPV;
     @FXML
     protected ImageView productPhoto1GPV;
     @FXML
@@ -43,19 +46,19 @@ public class GeneralProductView {
     @FXML
     protected Text brandProd1GPV;
     @FXML
-    protected TableView<Shop> shopsTableView1GPV = new TableView<>();
-    protected TableColumn<Shop, String> nameColumn1GPV;
-    protected TableColumn<Shop, String> addressColumn1GPV;
-    protected TableColumn<Shop, String> cityColumn1GPV;
-    protected TableColumn<Shop, String> openingColumn1GPV;
-    protected TableColumn<Shop, String> closingColumn1GPV;
+    protected TableView<ShopBean> shopsTableView1GPV = new TableView<>();
+    protected TableColumn<ShopBean, String> nameColumn1GPV;
+    protected TableColumn<ShopBean, String> addressColumn1GPV;
+    protected TableColumn<ShopBean, String> cityColumn1GPV;
+    protected TableColumn<ShopBean, String> openingColumn1GPV;
+    protected TableColumn<ShopBean, String> closingColumn1GPV;
     InputStream stream1GPV = null;
     static final Logger logger = Logger.getLogger(GeneralProductView.class.getName());
 
     @FXML
     protected void onTableViewItemClick1GPV() throws IOException {
 
-        Shop shop1GPV = shopsTableView1GPV.getSelectionModel().getSelectedItem();
+        ShopBean shop1GPV = shopsTableView1GPV.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop1GPV != null){
             FXMLLoader loader1GPV = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -71,7 +74,7 @@ public class GeneralProductView {
             stage1GPV.close();
         }
     }
-    public void passParams(User user1GPV, SimpleProduct simpleProduct1GPV) throws FileNotFoundException {
+    public void passParams(UserBean user1GPV, SimpleProductBean simpleProduct1GPV) throws FileNotFoundException {
 
         this.user1GPV = user1GPV;
         textHi1GPV.setText(user1GPV.getUsername());
@@ -82,11 +85,11 @@ public class GeneralProductView {
         Image productImage1GPV = new Image(stream1GPV, 200, 200, false, false);
         productPhoto1GPV.setImage(productImage1GPV);
 
-        ObservableList<Shop> observableListShops1GPV = FXCollections.observableArrayList();
+        ObservableList<ShopBean> observableListShops1GPV = FXCollections.observableArrayList();
         arrayShopList1GPV = ShopHandler.findShopByProduct(simpleProduct1GPV);
 
         if (arrayShopList1GPV != null) {
-            for (Shop s1 : arrayShopList1GPV) {
+            for (ShopBean s1 : arrayShopList1GPV) {
                 observableListShops1GPV.add(s1);
             }
             shopsTableView1GPV.setItems(observableListShops1GPV);

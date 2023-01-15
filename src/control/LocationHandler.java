@@ -1,5 +1,7 @@
 package control;
 
+import bean.AddressBean;
+import bean.ShopBean;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import exceptions.AddressException;

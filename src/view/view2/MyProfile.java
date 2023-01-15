@@ -1,5 +1,7 @@
 package view.view2;
 
+import bean.OrderBean;
+import bean.UserBean;
 import control.FileElaboration;
 import control.OrderHandler;
 import control.UserHandler;
@@ -36,7 +38,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyProfile {
-    User user2MP = null;
+    UserBean user2MP = null;
 
     @FXML
     protected ImageView myProfileImage2MP;
@@ -63,12 +65,12 @@ public class MyProfile {
     @FXML
     protected ImageView homepageImageView2MP;
     @FXML
-    protected TableView<Order> orderTableView2MP = new TableView<>();
-    protected TableColumn<Order, String> orderNumber2MP;
-    protected TableColumn<Order, Integer> orderTotalQuantity2MP;
-    protected TableColumn<Order, String> orderTotalPrice2MP;
-    protected TableColumn<Order, Timestamp> orderTimeStamp2MP;
-    protected TableColumn<Order, Timestamp> orderStatus2MP;
+    protected TableView<OrderBean> orderTableView2MP = new TableView<>();
+    protected TableColumn<OrderBean, String> orderNumber2MP;
+    protected TableColumn<OrderBean, Integer> orderTotalQuantity2MP;
+    protected TableColumn<OrderBean, String> orderTotalPrice2MP;
+    protected TableColumn<OrderBean, Timestamp> orderTimeStamp2MP;
+    protected TableColumn<OrderBean, Timestamp> orderStatus2MP;
     @FXML
     protected Text numberOfOrdersText2MP;
 
@@ -99,7 +101,7 @@ public class MyProfile {
         else{
             if (UserHandler.updateRecord2(user2MP, Arrays.asList(nameTextField2MP.getText(), surnameTextField2MP.getText(),
                     streetTextField2MP.getText(), cityTextField2MP.getText(), countryTextField2MP.getText(),
-                    zipTextField2MP.getText(), phoneTextField2MP.getText(), ((Buyer) user2MP).getProfileImagepath()))) {
+                    zipTextField2MP.getText(), phoneTextField2MP.getText(), user2MP.getProfileImagepath()))) {
                 logger.log(Level.INFO, "update ok");
             }
         }
@@ -120,7 +122,7 @@ public class MyProfile {
 
         if (file2MP != null) {
             if (FileElaboration.copyAndReplaceFile(file2MP, newFilepath2MP)) {
-                stream2MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + ((Buyer) user2MP).getProfileImagepath());
+                stream2MP = new FileInputStream(Constants.PROFILE_IMAGES_PATH + user2MP.getProfileImagepath());
                 profileImage2MP = new Image(stream2MP, 200, 200, false, false);
                 myProfileImage2MP.setImage(profileImage2MP);
                 stream2MP.close();
@@ -161,8 +163,8 @@ public class MyProfile {
     protected void fillView2MP() {
         int numberOfOrders2MP = 0;
         orderTableView2MP.getItems().clear();
-        ObservableList<Order> orderObservableList2MP = FXCollections.observableArrayList();
-        List<Order> orderArrayList2MP = OrderHandler.findOrdersInfoFromUser(user2MP);
+        ObservableList<OrderBean> orderObservableList2MP = FXCollections.observableArrayList();
+        List<OrderBean> orderArrayList2MP = OrderHandler.findOrdersInfoFromUser(user2MP);
         if (orderArrayList2MP != null) {
             orderObservableList2MP.addAll(orderArrayList2MP);
             orderTableView2MP.setItems(orderObservableList2MP);
@@ -175,23 +177,23 @@ public class MyProfile {
     }
 
 
-    public void passParams(User user2MP){
+    public void passParams(UserBean user2MP){
         this.user2MP = user2MP;
         fillView2MP();
         usernameText2MP.setText(user2MP.getUsername());
         emailText2MP.setText(user2MP.getEmail());
         nameTextField2MP.setText(user2MP.getName());
         surnameTextField2MP.setText(user2MP.getSurname());
-        streetTextField2MP.setText(((Buyer) user2MP).getBillingStreet());
-        cityTextField2MP.setText(((Buyer) user2MP).getBillingCity());
-        countryTextField2MP.setText(((Buyer) user2MP).getBillingCountry());
-        zipTextField2MP.setText(((Buyer) user2MP).getBillingZip());
-        phoneTextField2MP.setText(((Buyer) user2MP).getPhone());
+        streetTextField2MP.setText(user2MP.getBillingStreet());
+        cityTextField2MP.setText(user2MP.getBillingCity());
+        countryTextField2MP.setText(user2MP.getBillingCountry());
+        zipTextField2MP.setText(user2MP.getBillingZip());
+        phoneTextField2MP.setText(user2MP.getPhone());
     }
 
     @FXML
     protected void onClickOrderTableView2MP() throws Exception {
-        Order order2MP = orderTableView2MP.getSelectionModel().getSelectedItem();
+        OrderBean order2MP = orderTableView2MP.getSelectionModel().getSelectedItem();
         FXMLLoader loader2MP = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
         Parent root2MP = loader2MP.load();
         SpecificOrder specificOrder2MP = loader2MP.getController();

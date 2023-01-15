@@ -1,5 +1,7 @@
 package view.view1;
 
+import bean.OrderBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyOrders {
-    User user1MO = null;
+    UserBean user1MO = null;
     @FXML
     protected ImageView homepageImageView1MO;
     @FXML
@@ -34,17 +36,17 @@ public class MyOrders {
     @FXML
     protected Text totalOrdersText1MO;
     @FXML
-    protected TableView<Order> orderTableView1MO = new TableView<>();
-    protected TableColumn<Order, String> orderNumber1MO;
-    protected TableColumn<Order, Integer> orderTotalQuantity1MO;
-    protected TableColumn<Order, String> orderTotalPrice1MO;
-    protected TableColumn<Order, Timestamp> orderTimeStamp1MO;
-    protected TableColumn<Order, Timestamp> orderStatus1MO;
+    protected TableView<OrderBean> orderTableView1MO = new TableView<>();
+    protected TableColumn<OrderBean, String> orderNumber1MO;
+    protected TableColumn<OrderBean, Integer> orderTotalQuantity1MO;
+    protected TableColumn<OrderBean, String> orderTotalPrice1MO;
+    protected TableColumn<OrderBean, Timestamp> orderTimeStamp1MO;
+    protected TableColumn<OrderBean, Timestamp> orderStatus1MO;
     static final Logger logger = Logger.getLogger(MyOrders.class.getName());
 
     @FXML
     protected void onOrderClicked1MO() throws IOException {
-        Order order1MO = orderTableView1MO.getSelectionModel().getSelectedItem();
+        OrderBean order1MO = orderTableView1MO.getSelectionModel().getSelectedItem();
         FXMLLoader loader1MO = new FXMLLoader(getClass().getResource("specificOrder.fxml"));
         Parent root1MO = loader1MO.load();
         SpecificOrder specificOrder1MO = loader1MO.getController();
@@ -103,10 +105,10 @@ public class MyOrders {
     protected void fillShopTableView1MO() {
         int numberOfOrders1MO = 0;
         orderTableView1MO.getItems().clear();
-        ObservableList<Order> orderObservableList1MO = FXCollections.observableArrayList();
-        List<Order> orderArrayList1MO = OrderHandler.findOrdersInfoFromUser(user1MO);
+        ObservableList<OrderBean> orderObservableList1MO = FXCollections.observableArrayList();
+        List<OrderBean> orderArrayList1MO = OrderHandler.findOrdersInfoFromUser(user1MO);
         if (orderArrayList1MO != null) {
-            for (Order o1 : orderArrayList1MO) {
+            for (OrderBean o1 : orderArrayList1MO) {
                 orderObservableList1MO.add(o1);
                 numberOfOrders1MO++;
             }
@@ -120,7 +122,7 @@ public class MyOrders {
     }
 
 
-    public void passUser(User user1MO) {
+    public void passUser(UserBean user1MO) {
         this.user1MO = user1MO;
         textHi1MO.setText(user1MO.getUsername());
         fillShopTableView1MO();

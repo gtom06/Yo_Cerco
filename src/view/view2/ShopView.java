@@ -1,9 +1,10 @@
 package view.view2;
 
-import control.BrowserHandler;
-import control.CartElaboration;
-import control.DepartmentHandler;
-import control.ShopHandler;
+import bean.DepartmentBean;
+import bean.ProductShopBean;
+import bean.ShopBean;
+import bean.UserBean;
+import control.*;
 import exceptions.AddressException;
 import exceptions.ExceptionBrowser;
 import exceptions.ExceptionCart;
@@ -42,9 +43,9 @@ import java.util.logging.Logger;
 
 public class ShopView {
     InputStream stream2SV = null;
-    Shop shop2SV = null;
-    User user2SV = null;
-    List<Department> departmentArrayList2SV = null;
+    ShopBean shop2SV = null;
+    UserBean user2SV = null;
+    List<DepartmentBean> departmentArrayList2SV = null;
     @FXML
     protected Button addToCartButton2SV;
     @FXML
@@ -96,13 +97,13 @@ public class ShopView {
     @FXML
     protected Text textPhoneShop2SV;
     @FXML
-    protected TableView<ProductShop> productTable2SV = new TableView<>();
-    protected TableColumn<ProductShop, String> nameColumn2SV;
-    protected TableColumn<ProductShop, String> brandColumn2SV;
-    protected TableColumn<ProductShop, Float> sizeColumn2SV;
-    protected TableColumn<ProductShop, String> unitOfMeasureColumn2SV;
-    protected TableColumn<ProductShop, Integer> currencyColumn2SV;
-    protected TableColumn<ProductShop, Integer> priceColumn2SV;
+    protected TableView<ProductShopBean> productTable2SV = new TableView<>();
+    protected TableColumn<ProductShopBean, String> nameColumn2SV;
+    protected TableColumn<ProductShopBean, String> brandColumn2SV;
+    protected TableColumn<ProductShopBean, Float> sizeColumn2SV;
+    protected TableColumn<ProductShopBean, String> unitOfMeasureColumn2SV;
+    protected TableColumn<ProductShopBean, Integer> currencyColumn2SV;
+    protected TableColumn<ProductShopBean, Integer> priceColumn2SV;
 
     static final Logger logger = Logger.getLogger(ShopView.class.getName());
 
@@ -147,7 +148,7 @@ public class ShopView {
         stage2SV.close();
     }
 
-    public void passParams(User user2SV, Shop shop2SV) throws FileNotFoundException {
+    public void passParams(UserBean user2SV, ShopBean shop2SV) throws FileNotFoundException {
         this.user2SV = user2SV;
         this.shop2SV = shop2SV;
 
@@ -219,21 +220,21 @@ public class ShopView {
     @FXML
     protected void onClickDepartmentImage2SV(MouseEvent mouseEvent) {
         productTable2SV.getItems().clear();
-        List<ProductShop> productShopArrayList2SV = null;
-        Department department2SV = null;
+        List<ProductShopBean> productShopArrayList2SV = null;
+        DepartmentBean department2SV = null;
         int ref;
         try {
             ref = Integer.parseInt(mouseEvent.getPickResult().getIntersectedNode().getId());
-            for (Department dep : departmentArrayList2SV) {
+            for (DepartmentBean dep : departmentArrayList2SV) {
                 if (dep.getDepartmentId() == ref) {
                     department2SV = dep;
                     break;
                 }
             }
 
-            productShopArrayList2SV = DepartmentHandler.findProductByDepartmentAndShop(shop2SV, department2SV);
+            productShopArrayList2SV = ProductHandler.findProductByDepartmentAndShop(shop2SV, department2SV);
             if (productShopArrayList2SV != null) {
-                ObservableList<ProductShop> observableListProducts2SV =
+                ObservableList<ProductShopBean> observableListProducts2SV =
                         FXCollections.observableArrayList(productShopArrayList2SV);
                 productTable2SV.setItems(observableListProducts2SV);
             } else {
@@ -288,7 +289,7 @@ public class ShopView {
 
     @FXML
     protected void onAddToCartClick2SV() throws ExceptionCart {
-        ProductShop productShop2SV = productTable2SV.getSelectionModel().getSelectedItem();
+        ProductShopBean productShop2SV = productTable2SV.getSelectionModel().getSelectedItem();
         if (productShop2SV != null) {
             CartElaboration.addOrderItemsToCart(productShop2SV, 1);
         }

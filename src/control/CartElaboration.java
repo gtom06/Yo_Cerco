@@ -1,5 +1,7 @@
 package control;
 
+import bean.OrderItemBean;
+import bean.ProductShopBean;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import exceptions.ExceptionCart;
@@ -22,12 +24,12 @@ public class CartElaboration {
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
 
-    public static List<OrderItem> readOrderItemsFromCart() throws ExceptionCart {
-        ArrayList<OrderItem> orderItemArrayList = new ArrayList<>();
+    public static List<OrderItemBean> readOrderItemsFromCart() throws ExceptionCart {
+        ArrayList<OrderItemBean> orderItemArrayList = new ArrayList<>();
         JsonReader reader = null;
         try {
             reader = new JsonReader(new FileReader(Constants.CART_PATH));
-            OrderItem[] output = new Gson().fromJson(reader, OrderItem[].class);
+            OrderItemBean[] output = new Gson().fromJson(reader, OrderItem[].class);
             if (output == null) {
                 return Collections.emptyList();
             }
@@ -52,7 +54,7 @@ public class CartElaboration {
         }
         return true;
     }
-
+/*
     public static boolean addArrayListOrderItemsToCart(List<ProductShop> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
         List<OrderItem> orderItemArrayList = readOrderItemsFromCart();
         //backup file
@@ -68,31 +70,31 @@ public class CartElaboration {
         }
         return true;
     }
-
-    public static boolean addOrderItemsToCart(ProductShop productShop, int quantityToAdd) throws ExceptionCart {
-        List<OrderItem> orderItemArrayList;
+*/
+    public static boolean addOrderItemsToCart(ProductShopBean productShop, int quantityToAdd) throws ExceptionCart {
+        List<OrderItemBean> orderItemArrayList;
         try {
             orderItemArrayList = readOrderItemsFromCart();
             if (!orderItemArrayList.isEmpty() && orderItemArrayList.get(0).getShopId() != productShop.getShopId()){
                 return false; //prevent adding products from different shops
             }
             int position = -1;
-            OrderItem orderItemToAdd = new OrderItem(
-                    productShop.getPrice(),
-                    productShop.getCurrency(),
-                    productShop.getShopId(),
-                    productShop.getSku(),
-                    productShop.getName(),
-                    productShop.getBrand(),
-                    productShop.getDescription(),
-                    productShop.getSize(),
-                    productShop.getUnitOfMeasure(),
-                    productShop.getLogoImagepath(),
-                    productShop.getDepartmentId(),
-                    quantityToAdd,
-                    productShop.getPrice() * quantityToAdd,
-                    productShop.getDiscountedPrice()
-            );
+            OrderItemBean orderItemToAdd = new OrderItemBean();
+            orderItemToAdd.setPrice(productShop.getPrice());
+            orderItemToAdd.setCurrency(productShop.getCurrency());
+            orderItemToAdd.setShopId(productShop.getShopId());
+            orderItemToAdd.setName(productShop.getName());
+            orderItemToAdd.setSku(productShop.getSku());
+            orderItemToAdd.setBrand(productShop.getBrand());
+            orderItemToAdd.setDescription(productShop.getDescription());
+            orderItemToAdd.setSize(productShop.getSize());
+            orderItemToAdd.setUnitOfMeasure(productShop.getUnitOfMeasure());
+            orderItemToAdd.setLogoImagepath(productShop.getLogoImagepath());
+            orderItemToAdd.setDepartmentId(productShop.getDepartmentId());
+            orderItemToAdd.setQuantityOrdered(quantityToAdd);
+            orderItemToAdd.setPriceTotal(productShop.getPrice() * quantityToAdd);
+            orderItemToAdd.setDiscountedPrice(productShop.getDiscountedPrice());
+
             if (!orderItemArrayList.isEmpty()) {
                 position = positionOfExistingProductInCart(productShop, orderItemArrayList);
                 if (position != -1) {
@@ -114,8 +116,8 @@ public class CartElaboration {
         return true;
     }
 
-    protected static void setNewQuantityOnOrderItem(List<OrderItem> orderItemList, int position, int quantityToAdd) {
-        OrderItem orderItem = orderItemList.get(position);
+    protected static void setNewQuantityOnOrderItem(List<OrderItemBean> orderItemList, int position, int quantityToAdd) {
+        OrderItemBean orderItem = orderItemList.get(position);
         int actualQuantity = orderItem.getQuantityOrdered();
         orderItem.setQuantityOrdered(actualQuantity + quantityToAdd);
         if (orderItem.getDiscountedPrice() == 0) {
@@ -126,8 +128,8 @@ public class CartElaboration {
         }
     }
 
-    protected static int positionOfExistingProductInCart(ProductShop productShop, List<OrderItem> orderItemList){
-        for (OrderItem orderItem : orderItemList) {
+    protected static int positionOfExistingProductInCart(ProductShopBean productShop, List<OrderItemBean> orderItemList){
+        for (OrderItemBean orderItem : orderItemList) {
             if (orderItem.getSku() == productShop.getSku()) {
                 return orderItemList.indexOf(orderItem);
             }
@@ -135,7 +137,7 @@ public class CartElaboration {
         return -1;
     }
 
-    protected static OrderItem addNewProductToCart(ProductShop productShop, OrderItem orderItem, int quantityToAdd) {
+    protected static OrderItemBean addNewProductToCart(ProductShopBean productShop, OrderItemBean orderItem, int quantityToAdd) {
         //not discounted
         if (productShop.getDiscountedPrice() == 0) {
             orderItem.setPriceTotal(productShop.getPrice() * quantityToAdd);
@@ -147,7 +149,7 @@ public class CartElaboration {
         return orderItem;
     }
 
-    protected static boolean writeOrderItemOnCart(List<OrderItem> orderItemList) throws ExceptionCart {
+    protected static boolean writeOrderItemOnCart(List<OrderItemBean> orderItemList) throws ExceptionCart {
         String json = new Gson().toJson(orderItemList);
         try (BufferedWriter out = new BufferedWriter(new FileWriter(Constants.CART_PATH))){
             out.write(json);
@@ -186,13 +188,13 @@ public class CartElaboration {
     public static boolean delete0QuantityItemsFromCart() throws IOException {
         //initialize vars
         boolean output = false;
-        ArrayList<OrderItem> orderItemArrayList;
-        ArrayList<OrderItem> orderItemArrayListToDel = new ArrayList<>();
+        ArrayList<OrderItemBean> orderItemArrayList;
+        ArrayList<OrderItemBean> orderItemArrayListToDel = new ArrayList<>();
         try {
             if (!isEmptyCart()) {
                 //read json && convert to arrayList
                 orderItemArrayList = new ArrayList<>(List.of(new Gson().fromJson(new JsonReader(new FileReader(Constants.CART_PATH)), OrderItem[].class)));
-                for (OrderItem orderItem : orderItemArrayList) {
+                for (OrderItemBean orderItem : orderItemArrayList) {
                     if (orderItem.getQuantityOrdered() == 0) {
                         orderItemArrayListToDel.add(orderItem);
                     }

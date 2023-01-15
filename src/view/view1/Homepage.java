@@ -1,5 +1,6 @@
 package view.view1;
 
+import bean.UserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +14,7 @@ import model.user.User;
 import java.io.IOException;
 
 public class Homepage {
-    User user1H = null;
+    UserBean user1H = null;
     @FXML
     protected Button logoutButton1H;
     @FXML
@@ -109,7 +110,7 @@ public class Homepage {
         stage1H.close();
     }
 
-    public void passUser(User user) {
+    public void passUser(UserBean user) {
         this.user1H = user;
         labelHi1H.setText(user.getUsername());
     }

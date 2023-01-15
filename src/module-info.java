@@ -19,6 +19,7 @@ module Supermarket {
     opens model.department;
     opens model.db;
     opens dao;
+    opens bean;
     opens constants;
     opens main;
     opens model.order;

@@ -1,5 +1,8 @@
 package view.view2;
 
+import bean.ShopBean;
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ProductHandler;
 import control.ShopHandler;
 import exceptions.AddressException;
@@ -26,29 +29,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Favorite {
-    User user2F = null;
+    UserBean user2F = null;
     @FXML
     protected ImageView homepageImageView2F;
     @FXML
-    protected TableView<Shop> shopTableView2F = new TableView<>();
-    protected TableColumn<Shop, String> addressColumn2F;
-    protected TableColumn<Shop, String> cityColumn2F;
-    protected TableColumn<Shop, String> nameColumn2F;
-    protected TableColumn<Shop, String> openingColumn2F;
-    protected TableColumn<Shop, String> closingColumn2F;
+    protected TableView<ShopBean> shopTableView2F = new TableView<>();
+    protected TableColumn<ShopBean, String> addressColumn2F;
+    protected TableColumn<ShopBean, String> cityColumn2F;
+    protected TableColumn<ShopBean, String> nameColumn2F;
+    protected TableColumn<ShopBean, String> openingColumn2F;
+    protected TableColumn<ShopBean, String> closingColumn2F;
 
     @FXML
-    protected TableView<SimpleProduct> simpleProductTableView2F = new TableView<>();
-    protected TableColumn<SimpleProduct, String> brandColumn2F;
-    protected TableColumn<SimpleProduct, Integer> sizeColumn2F;
-    protected TableColumn<SimpleProduct, String> nameProductColumn2F;
-    protected TableColumn<SimpleProduct, Double> unitOfMeasureColumn2F;
+    protected TableView<SimpleProductBean> simpleProductTableView2F = new TableView<>();
+    protected TableColumn<SimpleProductBean, String> brandColumn2F;
+    protected TableColumn<SimpleProductBean, Integer> sizeColumn2F;
+    protected TableColumn<SimpleProductBean, String> nameProductColumn2F;
+    protected TableColumn<SimpleProductBean, Double> unitOfMeasureColumn2F;
 
     static final Logger logger = Logger.getLogger(Favorite.class.getName());
 
     @FXML
     protected void onTableViewShopClick2F() throws IOException {
-        Shop shop2F = shopTableView2F.getSelectionModel().getSelectedItem();
+        ShopBean shop2F = shopTableView2F.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (shop2F != null) {
             FXMLLoader loader2F = new FXMLLoader(getClass().getResource("shopView.fxml"));
@@ -66,7 +69,7 @@ public class Favorite {
 
     @FXML
     protected void onTableViewProductClick2F() throws IOException {
-        SimpleProduct product2F = simpleProductTableView2F.getSelectionModel().getSelectedItem();
+        SimpleProductBean product2F = simpleProductTableView2F.getSelectionModel().getSelectedItem();
         //check if shop selected: used to avoid exception when clicking wrong on tableview
         if (product2F != null) {
             FXMLLoader loader2F = new FXMLLoader(getClass().getResource("generalProductView.fxml"));
@@ -97,7 +100,7 @@ public class Favorite {
         stage2F.close();
     }
 
-    public void passParams(User user2F) {
+    public void passParams(UserBean user2F) {
         this.user2F = user2F;
         fillShopTableView2F();
         fillSimpleProductTableView2F();
@@ -154,10 +157,10 @@ public class Favorite {
 
     protected void fillShopTableView2F() {
         shopTableView2F.getItems().clear();
-        ObservableList<Shop> observableListShops2F = FXCollections.observableArrayList();
-        ArrayList<Shop> shopArrayList2F = (ArrayList<Shop>) ShopHandler.findFavoriteShopsFromUser(user2F);
+        ObservableList<ShopBean> observableListShops2F = FXCollections.observableArrayList();
+        ArrayList<ShopBean> shopArrayList2F = (ArrayList<ShopBean>) ShopHandler.findFavoriteShopsFromUser(user2F);
         if (shopArrayList2F != null) {
-            for (Shop s : shopArrayList2F) {
+            for (ShopBean s : shopArrayList2F) {
                 observableListShops2F.add(s);
             }
             shopTableView2F.setItems(observableListShops2F);
@@ -169,10 +172,10 @@ public class Favorite {
 
     protected void fillSimpleProductTableView2F() {
         simpleProductTableView2F.getItems().clear();
-        ObservableList<SimpleProduct> simpleProductObservableList2F = FXCollections.observableArrayList();
-        ArrayList<SimpleProduct> simpleProductArrayList2F = (ArrayList<SimpleProduct>) ProductHandler.findFavoriteSimpleProductFromUser(user2F);
+        ObservableList<SimpleProductBean> simpleProductObservableList2F = FXCollections.observableArrayList();
+        ArrayList<SimpleProductBean> simpleProductArrayList2F = (ArrayList<SimpleProductBean>) ProductHandler.findFavoriteSimpleProductFromUser(user2F);
         if (simpleProductArrayList2F != null) {
-            for (SimpleProduct sp : simpleProductArrayList2F) {
+            for (SimpleProductBean sp : simpleProductArrayList2F) {
                 simpleProductObservableList2F.add(sp);
             }
             simpleProductTableView2F.setItems(simpleProductObservableList2F);

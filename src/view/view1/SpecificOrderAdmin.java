@@ -1,5 +1,8 @@
 package view.view1;
 
+import bean.OrderBean;
+import bean.OrderItemBean;
+import bean.UserBean;
 import control.OrderHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,8 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpecificOrderAdmin {
-    User user1SOA = null;
-    Order order1SOA = null;
+    UserBean user1SOA = null;
+    OrderBean order1SOA = null;
     @FXML
     protected ImageView homepageImageView1SOA;
     @FXML
@@ -35,12 +38,12 @@ public class SpecificOrderAdmin {
     @FXML
     protected Label completedLabel1SOA;
     @FXML
-    protected TableView<OrderItem> orderItemTableView1SOA = new TableView<>();
-    protected TableColumn<OrderItem, String> nameColumn1SOA;
-    protected TableColumn<OrderItem, String> brandColumn1SOA;
-    protected TableColumn<OrderItem, Integer> quantityOrderedColumn1SOA;
-    protected TableColumn<OrderItem, Double> priceTotalColumn1SOA;
-    protected TableColumn<OrderItem, String> currencyColumn1SOA;
+    protected TableView<OrderItemBean> orderItemTableView1SOA = new TableView<>();
+    protected TableColumn<OrderItemBean, String> nameColumn1SOA;
+    protected TableColumn<OrderItemBean, String> brandColumn1SOA;
+    protected TableColumn<OrderItemBean, Integer> quantityOrderedColumn1SOA;
+    protected TableColumn<OrderItemBean, Double> priceTotalColumn1SOA;
+    protected TableColumn<OrderItemBean, String> currencyColumn1SOA;
 
     static final Logger logger = Logger.getLogger(SpecificOrderAdmin.class.getName());
 
@@ -49,7 +52,7 @@ public class SpecificOrderAdmin {
         FXMLLoader loader1SOA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
         Parent root1SOA = loader1SOA.load();
         HomepageAdmin homepage1SOA = loader1SOA.getController();
-        homepage1SOA.passUser(user1SOA);
+        //homepage1SOA.passUser(user1SOA);
         Stage newStage1SOA = new Stage();
         newStage1SOA.setScene(new Scene(root1SOA));
         newStage1SOA.show();
@@ -100,7 +103,7 @@ public class SpecificOrderAdmin {
 
     protected void fillOrderTableView1SOA() {
         orderItemTableView1SOA.getItems().clear();
-        ObservableList<OrderItem> orderItemObservableList1SOA = FXCollections.observableArrayList();
+        ObservableList<OrderItemBean> orderItemObservableList1SOA = FXCollections.observableArrayList();
         order1SOA = OrderHandler.populateOrderWithOrderItems(order1SOA);
         if (order1SOA.getOrderItemArrayList() != null) {
             orderItemObservableList1SOA.addAll(order1SOA.getOrderItemArrayList());
@@ -110,7 +113,7 @@ public class SpecificOrderAdmin {
         }
     }
 
-    protected void passParams(User user1SOA, Order order1SOA) {
+    protected void passParams(UserBean user1SOA, OrderBean order1SOA) {
         this.user1SOA = user1SOA;
         this.order1SOA = order1SOA;
         textHi1SOA.setText(user1SOA.getUsername());

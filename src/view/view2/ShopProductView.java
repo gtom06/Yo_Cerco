@@ -1,5 +1,9 @@
 package view.view2;
 
+import bean.ProductShopBean;
+import bean.ShopBean;
+import bean.SimpleProductBean;
+import bean.UserBean;
 import control.ProductHandler;
 import exceptions.AddressException;
 import javafx.fxml.FXML;
@@ -22,10 +26,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ShopProductView {
-    User user2SPV;
-    SimpleProduct simpleProduct2SPV;
+    UserBean user2SPV;
+    SimpleProductBean simpleProduct2SPV;
     InputStream stream2SPV = null;
-    ProductShop productShop2SPV = null;
+    ProductShopBean productShop2SPV = null;
 
     @FXML
     protected ImageView productPhoto2SPV;
@@ -52,7 +56,7 @@ public class ShopProductView {
     @FXML
     protected TextArea descriptionTextArea2SPV;
 
-    public void passParams(User user2SPV, SimpleProduct simpleProduct2SPV, Shop shop2SPV) throws FileNotFoundException {
+    public void passParams(UserBean user2SPV, SimpleProductBean simpleProduct2SPV, ShopBean shop2SPV) throws FileNotFoundException {
         this.user2SPV = user2SPV;
         this.simpleProduct2SPV = simpleProduct2SPV;
 
@@ -135,7 +139,7 @@ public class ShopProductView {
         stage2SPV.close();
     }
 
-    protected void checkDiscount2SPV(ProductShop productShop2SPV){
+    protected void checkDiscount2SPV(ProductShopBean productShop2SPV){
         if (productShop2SPV.getDiscountedPrice() != 0){
             productShopPrice12SPV.setStrikethrough(true);
         }
