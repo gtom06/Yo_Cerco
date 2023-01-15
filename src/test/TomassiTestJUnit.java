@@ -84,22 +84,53 @@ public class TomassiTestJUnit {
     }
     @Test
     public void addOrderItemsToCartTest() throws ExceptionCart {
-        //ProductShop productShop1 = new ProductShop(150.00,"eur",1, 1, "name1", "brand1", "description1", 1.0,"m", "null", 1, 0);
         ProductShopBean productShop1 = new ProductShopBean();
         productShop1.setPrice(150.00);
-        productShop1.setShopId(1);
-        productShop1.setName("name1");
         productShop1.setCurrency("eur");
+        productShop1.setShopId(1);
+        productShop1.setSku(1);
+        productShop1.setName("name1");
+        productShop1.setBrand("brand1");
+        productShop1.setDescription("description1");
+        productShop1.setSize(1.0);
+        productShop1.setUnitOfMeasure("m");
+        productShop1.setLogoImagepath("null");
+        productShop1.setDepartmentId(1);
+        productShop1.setDiscountedPrice(0);
         boolean bool = CartElaboration.addOrderItemsToCart(productShop1, 5);
         assertEquals(true, bool);
-        /*
-        ProductShop productShop2 = new ProductShop(1.00,"eur",1, 2, "name2", "brand2", "description2", 1.0,"kg", "null", 1, 0);
+
+        ProductShopBean productShop2 = new ProductShopBean();
+        productShop2.setPrice(1.00);
+        productShop2.setCurrency("eur");
+        productShop2.setShopId(1);
+        productShop2.setSku(2);
+        productShop2.setName("name2");
+        productShop2.setBrand("brand2");
+        productShop2.setDescription("description2");
+        productShop2.setSize(1.0);
+        productShop2.setUnitOfMeasure("m");
+        productShop2.setLogoImagepath("null");
+        productShop2.setDepartmentId(1);
+        productShop2.setDiscountedPrice(0);
         bool = CartElaboration.addOrderItemsToCart(productShop2, 5);
         assertEquals(true, bool);
-        ProductShop productShop3 = new ProductShop(100.00,"eur",1, 3, "name3", "brand3", "description3", 1.0,"m", "null", 1, 0);
+
+
+        ProductShopBean productShop3 = new ProductShopBean();
+        productShop3.setPrice(100.00);
+        productShop3.setCurrency("eur");
+        productShop3.setShopId(2);
+        productShop3.setSku(3);
+        productShop3.setName("name3");
+        productShop3.setBrand("brand1");
+        productShop3.setDescription("description3");
+        productShop3.setSize(1.0);
+        productShop3.setUnitOfMeasure("m");
+        productShop3.setLogoImagepath("null");
+        productShop3.setDepartmentId(1);
+        productShop3.setDiscountedPrice(0);
         bool = CartElaboration.addOrderItemsToCart(productShop3, 5);
         assertEquals(false, bool);
-
-         */
     }
 }

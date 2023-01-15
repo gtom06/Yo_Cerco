@@ -52,7 +52,7 @@ public class SpecificOrderAdmin {
         FXMLLoader loader1SOA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
         Parent root1SOA = loader1SOA.load();
         HomepageAdmin homepage1SOA = loader1SOA.getController();
-        //homepage1SOA.passUser(user1SOA);
+        homepage1SOA.passUser(user1SOA);
         Stage newStage1SOA = new Stage();
         newStage1SOA.setScene(new Scene(root1SOA));
         newStage1SOA.show();

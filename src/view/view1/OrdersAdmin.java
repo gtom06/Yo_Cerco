@@ -63,7 +63,7 @@ public class OrdersAdmin {
         FXMLLoader loader1OA = new FXMLLoader(getClass().getResource("homepageAdmin.fxml"));
         Parent root1OA = loader1OA.load();
         HomepageAdmin homepage1OA = loader1OA.getController();
-        //homepage1OA.passUser(user1OA);
+        homepage1OA.passUser(user1OA);
         Stage newStage1OA = new Stage();
         newStage1OA.setScene(new Scene(root1OA));
         newStage1OA.show();

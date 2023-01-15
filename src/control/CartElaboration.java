@@ -29,7 +29,7 @@ public class CartElaboration {
         JsonReader reader = null;
         try {
             reader = new JsonReader(new FileReader(Constants.CART_PATH));
-            OrderItemBean[] output = new Gson().fromJson(reader, OrderItem[].class);
+            OrderItemBean[] output = new Gson().fromJson(reader, OrderItemBean[].class);
             if (output == null) {
                 return Collections.emptyList();
             }
@@ -54,9 +54,9 @@ public class CartElaboration {
         }
         return true;
     }
-/*
-    public static boolean addArrayListOrderItemsToCart(List<ProductShop> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
-        List<OrderItem> orderItemArrayList = readOrderItemsFromCart();
+
+    public static boolean addArrayListOrderItemsToCart(List<ProductShopBean> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
+        List<OrderItemBean> orderItemArrayList = readOrderItemsFromCart();
         //backup file
         if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
             FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
@@ -70,7 +70,7 @@ public class CartElaboration {
         }
         return true;
     }
-*/
+
     public static boolean addOrderItemsToCart(ProductShopBean productShop, int quantityToAdd) throws ExceptionCart {
         List<OrderItemBean> orderItemArrayList;
         try {

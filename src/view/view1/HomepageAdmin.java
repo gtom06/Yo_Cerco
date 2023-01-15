@@ -41,7 +41,7 @@ public class HomepageAdmin {
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ordersAdmin.fxml"));
         Parent root = loader1.load();
         OrdersAdmin ordersAdmin1 = loader1.getController();
-        //ordersAdmin1.passUser(user1);
+        ordersAdmin1.passUser(user1);
         Stage newStage1 = new Stage();
         newStage1.setScene(new Scene(root));
         newStage1.show();
