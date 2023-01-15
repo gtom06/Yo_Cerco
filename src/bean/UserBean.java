@@ -17,6 +17,7 @@ public class UserBean {
     private boolean isAdmin;
 
     public UserBean() {
+        //only init
     }
 
     public String getUsername() {

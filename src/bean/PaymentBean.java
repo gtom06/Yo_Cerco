@@ -12,6 +12,7 @@ public class PaymentBean {
     private String status;
 
     public PaymentBean() {
+        //only init
     }
 
     public int getPaymentId() {

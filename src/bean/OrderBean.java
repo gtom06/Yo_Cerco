@@ -19,6 +19,7 @@ public class OrderBean {
     private String orderItemString;
 
     public OrderBean() {
+        //only init
     }
 
     public int getOrderId() {

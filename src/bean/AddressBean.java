@@ -9,6 +9,7 @@ public class AddressBean {
     private String addressOnlyStreet;
 
     public AddressBean() {
+        //only init
     }
 
     public double getLat() {

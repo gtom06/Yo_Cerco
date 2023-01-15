@@ -20,6 +20,7 @@ public class ShopBean {
     private AddressBean address;
 
     public ShopBean() {
+        //only init
     }
 
     public Integer getShopId() {

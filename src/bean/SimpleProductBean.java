@@ -10,6 +10,7 @@ public class SimpleProductBean {
     private String unitOfMeasure;
 
     public SimpleProductBean() {
+        //only init
     }
 
     public int getSku() {

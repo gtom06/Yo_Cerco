@@ -10,6 +10,7 @@ public class DepartmentBean {
     private List<ProductShopBean> items;
 
     public DepartmentBean() {
+        //only init
     }
 
     public int getShopId() {
