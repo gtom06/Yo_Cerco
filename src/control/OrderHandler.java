@@ -17,6 +17,7 @@ import model.user.User;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +42,7 @@ public class OrderHandler {
     private static List<OrderBean> toListOrderBean(List<Order> orderList){
         ArrayList<OrderBean> orderBeanArrayList = new ArrayList<>();
         if (orderList.isEmpty()){
-            return null;
+            return Collections.emptyList();
         }
         for (Order order : orderList){
             OrderBean ob = new OrderBean();
@@ -60,7 +61,6 @@ public class OrderHandler {
 
     public static OrderBean populateOrderWithOrderItems(OrderBean order){
         ArrayList<OrderItem> orderItemArrayList;
-        OrderBean orderOutputBean = null;
         try {
             OrderItem[] output = new Gson().fromJson(OrderDao.findOrderItemsFromOrder(order).getOrderItemString(), OrderItem[].class);
             if (output == null) {
@@ -75,8 +75,26 @@ public class OrderHandler {
     }
 
     private static List<OrderItemBean> toListOrderItemBean(ArrayList<OrderItem> orderItemArrayList) {
-
-        return null;
+        List<OrderItemBean> orderItemBeanList = new ArrayList<>();
+        for (OrderItem oi : orderItemArrayList) {
+            OrderItemBean orderItemBean = new OrderItemBean();
+            orderItemBean.setDiscountedPrice(oi.getDiscountedPrice());
+            orderItemBean.setPrice(oi.getPrice());
+            orderItemBean.setDepartmentId(oi.getDepartmentId());
+            orderItemBean.setPriceTotal(oi.getPriceTotal());
+            orderItemBean.setSize(oi.getSize());
+            orderItemBean.setLogoImagepath(oi.getLogoImagepath());
+            orderItemBean.setCurrency(oi.getCurrency());
+            orderItemBean.setSku(oi.getSku());
+            orderItemBean.setShopId(oi.getShopId());
+            orderItemBean.setUnitOfMeasure(oi.getUnitOfMeasure());
+            orderItemBean.setQuantityOrdered(oi.getQuantityOrdered());
+            orderItemBean.setDescription(oi.getDescription());
+            orderItemBean.setBrand(oi.getBrand());
+            orderItemBean.setName(oi.getName());
+            orderItemBeanList.add(orderItemBean);
+        }
+        return orderItemBeanList;
     }
 
     public static OrderBean previewOrder() throws ExceptionCart {
@@ -149,10 +167,7 @@ public class OrderHandler {
             payment2.setPaymentMethod(paymentMethod);
             payment2.setTotalPrice(orderTotalPrice);
             payment2.setCurrency(orderCurrency);
-            if (paymentMethod.equals(Constants.CASH_ON_DELIVERY_PAYMENT) && cardNumber.isBlank() && cardholder.isBlank() && mm.isBlank() && yy.isBlank() && cvv.isBlank()) {}
-            else {
-                payment2.setCardholder(cardholder);
-            }
+            payment2.setCardholder(cardholder);
             //insert payment
             payment = OrderDao.insertPayment(payment);
             //check on payment
