@@ -129,7 +129,7 @@ public class SearchShop  {
             shopArrayList1SS = ShopHandler.findShopByNameWithParams(
                     requestTextField1SS.getText(), openNow1SS.isSelected(), type1SS);
         }
-        if (!shopArrayList1SS.isEmpty()) {
+        if (shopArrayList1SS != null) {
             ObservableList<ShopBean> observableListShops1SS = FXCollections.observableArrayList(shopArrayList1SS);
             tableView1SS.setItems(observableListShops1SS);
         }
