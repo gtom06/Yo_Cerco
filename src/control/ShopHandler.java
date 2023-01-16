@@ -73,7 +73,7 @@ public class ShopHandler {
         else {
             shopList = useSearchByLatLong(searchParam, onlyOpenNow, type);
         }
-        return shopList.size() != 0 ? shopList : null;
+        return shopList != null || shopList.size() == 0 ? null : shopList;
     }
 
     public static List<ShopBean> useSearchByLatLong(String addressString, boolean onlyOpenNow, String type) throws AddressException {
