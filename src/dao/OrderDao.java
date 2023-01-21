@@ -55,7 +55,7 @@ public class OrderDao {
         return order;
     }
 
-    public static Order insertOrder(Order order) {
+    public static OrderBean insertOrder(OrderBean order) {
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO orders (shop_id, username, payment_id, order_timestamp, total_price, total_quantity, currency, collection_order_timestamp) " +
@@ -70,6 +70,7 @@ public class OrderDao {
             stmt.setInt(6, order.getOrderTotalQuantity());
             stmt.setString(7, order.getCurrency());
             stmt.setTimestamp(8, Timestamp.from(order.getOrderTimestamp().toInstant().plus(1, ChronoUnit.DAYS)));
+            //stmt.setTimestamp(8, Timestamp.from(timestamp.toInstant().plus(1, ChronoUnit.DAYS)));
             ResultSet rs = stmt.executeQuery();
             rs.next();
             order.setOrderId(rs.getInt("order_id"));

@@ -92,7 +92,7 @@ public class ProductDao {
         }
     }
 
-    public static void insertFavoriteProductIntoDb(String username, int sku ) {
+    public static void insertFavoriteProductIntoDb(String username, int sku) {
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO user_favoriteproduct (username, sku) VALUES (?, ?)";

@@ -18,7 +18,8 @@ public class Buyer implements User {
     private final String gender; //1 male 2 female 3 other
     private String profileImagepath;
 
-    public Buyer(String username, String name, String surname, String password, String email, Date dateOfBirth, String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String profileImagepath) {
+    public Buyer(String username, String name, String surname, String password, String email, Date dateOfBirth,
+                 String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String profileImagepath) {
         this.username = username;
         this.name = name;
         this.surname = surname;

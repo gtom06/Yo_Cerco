@@ -116,13 +116,13 @@ public class ShopDao {
         return arrayShop;
     }
 
-    public static List<Shop> findShopsByProduct(SimpleProductBean simpleProduct) {
+    public static List<Shop> findShopsByProduct(Integer sku) {
         PreparedStatement stmt = null;
         List<Shop> arrayShop= new ArrayList<>();
         try {
             String sql = "SELECT DISTINCT * FROM shop S JOIN product_shop PS ON S.shop_id = PS.shop_id JOIN product p ON PS.sku = p.sku WHERE p.sku = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, simpleProduct.getSku());
+            stmt.setInt(1, sku);
             ResultSet rs = stmt.executeQuery();
             arrayShop = convertRSInArrayShop(rs);
 

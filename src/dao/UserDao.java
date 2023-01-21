@@ -58,6 +58,58 @@ public class UserDao {
 
     }
 
+    public static boolean insertBuyer(String username, String password, String email, Date dateOfBirth,
+                                      String gender, String billingStreet, String billingCity, String billingCountry,
+                                      String billingZip, String phone, String name, String surname) {
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO userx (username, pass, email, date_of_birth, gender, role, billing_street, billing_city, billing_country, billing_zip, phone, name, surname) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.setString(3, email);
+            stmt.setDate(4, dateOfBirth);
+            stmt.setString(5, gender);
+            stmt.setString(6, Constants.BUYER_USER);
+            stmt.setString(7, billingStreet);
+            stmt.setString(8, billingCity);
+            stmt.setString(9, billingCountry);
+            stmt.setString(10, billingZip);
+            stmt.setString(11, phone);
+            stmt.setString(12, name);
+            stmt.setString(13, surname);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, "error in insert user");
+            return false;
+        }  finally {
+            DbHelper.closeStatement(stmt);
+        }
+        return true;
+    }
+
+    public static boolean insertAdmin(String username, String password, String email) {
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO userx (username, pass, email, role) " +
+                    "VALUES (?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.setString(3, email);
+            stmt.setString(4, Constants.ADMIN_USER);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            logger.log(Level.WARNING, "error in insert user");
+            return false;
+        }  finally {
+            DbHelper.closeStatement(stmt);
+        }
+        return true;
+
+    }
+
     public static boolean insertUser(User user){
         PreparedStatement stmt = null;
         try {

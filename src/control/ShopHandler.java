@@ -134,7 +134,7 @@ public class ShopHandler {
     }
 
     public static List<ShopBean> findShopByProduct(SimpleProductBean product){
-        List<Shop> shopList = ShopDao.findShopsByProduct(product);
+        List<Shop> shopList = ShopDao.findShopsByProduct(product.getSku());
         return convertListShopInListShopBean(shopList);
     }
 

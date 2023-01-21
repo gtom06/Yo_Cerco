@@ -133,7 +133,6 @@ public class OrderHandler {
     }
 
     public static OrderBean createOrder(UserBean user, String paymentMethod, String cardholder) throws IOException, FileElaborationException {
-        Order order = null;
         Payment payment = null;
         OrderBean order2 = null;
         PaymentBean payment2 = null;
@@ -184,8 +183,8 @@ public class OrderHandler {
             order2.setOrderItemArrayList(orderItemArrayList);
             order2.setOrderItemString(orderItemsJson);
             //insert order
-            order = OrderDao.insertOrder(order);
-            OrderDao.insertOrderItems(order.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
+            order2 = OrderDao.insertOrder(order2);
+            OrderDao.insertOrderItems(order2.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
             //deleteCart after order is created
             CartElaboration.deleteCart();
             return order2;
