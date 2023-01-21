@@ -49,26 +49,10 @@ public class UserHandler {
 
     public static boolean insertUser2(List<String> data){
         if (data.get(12).equals(Constants.BUYER) || data.get(12).equals(Constants.BUYER_USER)) {
-            Buyer buyer = new Buyer(
-                    data.get(0), //username
-                    data.get(1), //name
-                    data.get(2), //surname
-                    data.get(3), //password
-                    data.get(4), //email
-                    Date.valueOf(data.get(5)), //dateOfBirth
-                    data.get(6), //billingStreet
-                    data.get(7), //billingCity
-                    data.get(8), //billingCOuntry
-                    data.get(9), //billingZip
-                    data.get(10), //phone
-                    data.get(11), //gender
-                    null
-            );
             return UserDao.insertBuyer(data.get(0), data.get(3), data.get(4), Date.valueOf(data.get(5)),
                     data.get(11), data.get(6), data.get(7), data.get(8), data.get(9),
                     data.get(10), data.get(1), data.get(2));
         } else if (data.get(0).equals(Constants.ADMIN) || data.get(0).equals(Constants.ADMIN_USER)) {
-            Admin admin = new Admin(data.get(1), data.get(2), data.get(3), data.get(4), null);
             return UserDao.insertAdmin(data.get(0), data.get(3), data.get(4));
         }
         logger.log(Level.WARNING, "no insert");

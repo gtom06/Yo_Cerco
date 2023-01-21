@@ -81,7 +81,7 @@ public class UserDao {
             stmt.setString(13, surname);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in insert user");
+            logger.log(Level.WARNING, "error in insert buyer");
             return false;
         }  finally {
             DbHelper.closeStatement(stmt);
@@ -101,7 +101,7 @@ public class UserDao {
             stmt.setString(4, Constants.ADMIN_USER);
             stmt.executeUpdate();
         } catch (SQLException se) {
-            logger.log(Level.WARNING, "error in insert user");
+            logger.log(Level.WARNING, "error in insert admin");
             return false;
         }  finally {
             DbHelper.closeStatement(stmt);
