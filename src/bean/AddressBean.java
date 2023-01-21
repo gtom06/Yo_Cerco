@@ -1,62 +1,62 @@
 package bean;
 
 public class AddressBean {
-    private double lat;
-    private double lng;
-    private String addressString;
-    private String gmapsLink;
-    private String city;
-    private String addressOnlyStreet;
+    private double latBean;
+    private double lngBean;
+    private String addressStringBean;
+    private String gmapsLinkBean;
+    private String cityBean;
+    private String addressOnlyStreetBean;
 
     public AddressBean() {
         //only init
     }
 
     public double getLat() {
-        return lat;
+        return latBean;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setLat(double latBean) {
+        this.latBean = latBean;
     }
 
-    public double getLng() {
-        return lng;
+    public double getLngBean() {
+        return lngBean;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setLng(double lngBean) {
+        this.lngBean = lngBean;
     }
 
     public String getAddressString() {
-        return addressString;
+        return addressStringBean;
     }
 
-    public void setAddressString(String addressString) {
-        this.addressString = addressString;
+    public void setAddressString(String addressStringBean) {
+        this.addressStringBean = addressStringBean;
     }
 
     public String getGmapsLink() {
-        return gmapsLink;
+        return gmapsLinkBean;
     }
 
-    public void setGmapsLink(String gmapsLink) {
-        this.gmapsLink = gmapsLink;
+    public void setGmapsLink(String gmapsLinkBean) {
+        this.gmapsLinkBean = gmapsLinkBean;
     }
 
     public String getCity() {
-        return city;
+        return cityBean;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCity(String cityBean) {
+        this.cityBean = cityBean;
     }
 
     public String getAddressOnlyStreet() {
-        return addressOnlyStreet;
+        return addressOnlyStreetBean;
     }
 
-    public void setAddressOnlyStreet(String addressOnlyStreet) {
-        this.addressOnlyStreet = addressOnlyStreet;
+    public void setAddressOnlyStreet(String addressOnlyStreetBean) {
+        this.addressOnlyStreetBean = addressOnlyStreetBean;
     }
 }
