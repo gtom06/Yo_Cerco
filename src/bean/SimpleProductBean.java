@@ -33,7 +33,7 @@ public class SimpleProductBean {
         return brandBean;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(String brandBean) {
         this.brandBean = brandBean;
     }
 
