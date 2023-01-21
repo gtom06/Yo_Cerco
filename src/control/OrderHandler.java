@@ -62,7 +62,11 @@ public class OrderHandler {
     public static OrderBean populateOrderWithOrderItems(OrderBean order){
         ArrayList<OrderItem> orderItemArrayList;
         try {
-            OrderItem[] output = new Gson().fromJson(OrderDao.findOrderItemsFromOrder(order).getOrderItemString(), OrderItem[].class);
+            String orderItemsJson = OrderDao.findOrderItemsFromOrder(order.getOrderId());
+            if (orderItemsJson != ""){
+                return null;
+            }
+            OrderItem[] output = new Gson().fromJson(orderItemsJson, OrderItem[].class);
             if (output == null) {
                 return null;
             }
@@ -134,6 +138,7 @@ public class OrderHandler {
 
     public static OrderBean createOrder(UserBean user, String paymentMethod, String cardholder) throws IOException, FileElaborationException {
         Payment payment = null;
+        Order order = null;
         OrderBean order2 = null;
         PaymentBean payment2 = null;
         int shopId = 0;
@@ -163,18 +168,29 @@ public class OrderHandler {
 
         //check params passed from UX/UI
         if (user != null && !paymentMethod.isBlank()) {
-            payment2 = new PaymentBean();
-            payment2.setPaymentMethod(paymentMethod);
-            payment2.setTotalPrice(orderTotalPrice);
-            payment2.setCurrency(orderCurrency);
-            payment2.setCardholder(cardholder);
             //insert payment
-            payment = OrderDao.insertPayment(payment);
+            payment = OrderDao.insertPayment2(paymentMethod, cardholder, orderTotalPrice, orderCurrency);
             //check on payment
             if (payment == null) {
                 logger.log(Level.SEVERE, "payment not executed");
                 return null;
             }
+
+            //create PaymentBean
+            payment2 = new PaymentBean();
+            payment2.setPaymentMethod(paymentMethod);
+            payment2.setTotalPrice(orderTotalPrice);
+            payment2.setCurrency(orderCurrency);
+            payment2.setCardholder(cardholder);
+            payment2.setPaymentId(payment.getPaymentId());
+            payment2.setPaymentTimestamp(payment.getPaymentTimestamp());
+            payment2.setStatus(payment.getStatus());
+
+            //insert order
+            order = OrderDao.insertOrder2(shopId, user.getUsername(), payment.getPaymentId(), payment.getPaymentTimestamp(), orderTotalPrice, orderTotalQuantity, orderCurrency);
+            OrderDao.insertOrderItems(order.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
+
+            //create OrderBean
             order2 = new OrderBean();
             order2.setShopId(shopId);
             order2.setUsername(user.getUsername());
@@ -182,9 +198,11 @@ public class OrderHandler {
             order2.setOrderTotalQuantity(orderTotalQuantity);
             order2.setOrderItemArrayList(orderItemArrayList);
             order2.setOrderItemString(orderItemsJson);
-            //insert order
-            order2 = OrderDao.insertOrder(order2);
-            OrderDao.insertOrderItems(order2.getOrderId(), FileElaboration.fileToString(Constants.CART_PATH));
+            order2.setOrderId(order.getOrderId());
+            order2.setOrderTimestamp(order.getOrderTimestamp());
+            order2.setStatus(order.getStatus());
+            order2.setCollectionTimestamp(order.getCollectionTimestamp());
+
             //deleteCart after order is created
             CartElaboration.deleteCart();
             return order2;

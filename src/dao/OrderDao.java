@@ -1,6 +1,7 @@
 package dao;
 
 import bean.OrderBean;
+import bean.PaymentBean;
 import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.order.Order;
@@ -38,41 +39,46 @@ public class OrderDao {
         return orderArrayList;
     }
 
-    public static OrderBean findOrderItemsFromOrder(OrderBean order) {
+    public static String findOrderItemsFromOrder(Integer orderId) {
         PreparedStatement stmt = null;
+        String result = "";
         try {
             String sql = "SELECT DISTINCT * FROM order_items WHERE order_id = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, order.getOrderId());
+            stmt.setInt(1, orderId);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            order.setOrderItemString(rs.getString("items"));
+            result = rs.getString("items");
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
             DbHelper.closeStatement(stmt);
         }
-        return order;
+        return result;
     }
-
-    public static OrderBean insertOrder(OrderBean order) {
+    
+    public static Order insertOrder2(Integer shopId, String username, Integer paymentId, Timestamp orderTimestamp, Double totalPrice,
+                                     Integer totalQuantity, String currency) {
+        Order order = null;
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO orders (shop_id, username, payment_id, order_timestamp, total_price, total_quantity, currency, collection_order_timestamp) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
                     "RETURNING *";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, order.getShopId());
-            stmt.setString(2, order.getUsername());
-            stmt.setInt(3, order.getPaymentId());
-            stmt.setTimestamp(4, order.getOrderTimestamp());
-            stmt.setDouble(5, order.getTotalPrice());
-            stmt.setInt(6, order.getOrderTotalQuantity());
-            stmt.setString(7, order.getCurrency());
-            stmt.setTimestamp(8, Timestamp.from(order.getOrderTimestamp().toInstant().plus(1, ChronoUnit.DAYS)));
+            stmt.setInt(1, shopId);
+            stmt.setString(2, username);
+            stmt.setInt(3, paymentId);
+            stmt.setTimestamp(4, orderTimestamp);
+            stmt.setDouble(5, totalPrice);
+            stmt.setInt(6, totalQuantity);
+            stmt.setString(7, currency);
+            stmt.setTimestamp(8, Timestamp.from(orderTimestamp.toInstant().plus(1, ChronoUnit.DAYS)));
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            order.setOrderId(rs.getInt("order_id"));
+
+            order = new Order(rs.getInt("order_id"), shopId, username,
+                    null, totalQuantity, null, "");
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
             order.setStatus(rs.getString("status"));
             order.setCollectionTimestamp(rs.getTimestamp("collection_order_timestamp"));
@@ -84,21 +90,20 @@ public class OrderDao {
         return order;
     }
 
-    public static Payment insertPayment(Payment payment){
+    public static Payment insertPayment2(String paymentMethod, String cardholder, Double totalPrice, String currency){
+        Payment payment = null;
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO payment (payment_method, cardholder, total_price, currency, payment_timestamp) VALUES (?, ?, ?, ?, ?) RETURNING *";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, payment.getPaymentMethod());
-            stmt.setString(2, payment.getCardholder());
-            stmt.setDouble(3, payment.getTotalPrice());
-            stmt.setString(4, payment.getCurrency());
+            stmt.setString(1, paymentMethod);
+            stmt.setString(2, cardholder);
+            stmt.setDouble(3, totalPrice);
+            stmt.setString(4, currency);
             stmt.setTimestamp(5, Timestamp.from(Instant.now()));
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            payment.setPaymentId(rs.getInt("payment_id"));
-            payment.setPaymentTimestamp(rs.getTimestamp("payment_timestamp"));
-            payment.setStatus(rs.getString("status"));
+            payment = new Payment(rs.getInt("payment_id"), paymentMethod, cardholder, totalPrice, currency, rs.getTimestamp("payment_timestamp"), rs.getString("status"));
         } catch (SQLException se) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_DAO_ERROR);
         } finally {
@@ -106,7 +111,6 @@ public class OrderDao {
         }
         return payment;
     }
-
 
     public static void insertOrderItems(int orderId, String jsonOrderItems) {
         PreparedStatement stmt = null;
