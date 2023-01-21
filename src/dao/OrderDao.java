@@ -56,7 +56,7 @@ public class OrderDao {
         }
         return result;
     }
-    
+
     public static Order insertOrder2(Integer shopId, String username, Integer paymentId, Timestamp orderTimestamp, Double totalPrice,
                                      Integer totalQuantity, String currency) {
         Order order = null;

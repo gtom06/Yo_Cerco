@@ -63,7 +63,7 @@ public class OrderHandler {
         ArrayList<OrderItem> orderItemArrayList;
         try {
             String orderItemsJson = OrderDao.findOrderItemsFromOrder(order.getOrderId());
-            if (orderItemsJson != ""){
+            if (orderItemsJson.equals("")){
                 return null;
             }
             OrderItem[] output = new Gson().fromJson(orderItemsJson, OrderItem[].class);
