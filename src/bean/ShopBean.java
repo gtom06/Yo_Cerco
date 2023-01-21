@@ -1,145 +1,143 @@
 package bean;
 
-import model.address.Address;
-
 public class ShopBean {
-    private Integer shopId;
-    private String phone;
-    private String city;
-    private String shopName;
-    private String logoImagepath;
-    private String openingTime;
-    private String closingTime;
-    private String gmapsLink;
-    private String franchising;
-    private String offersFlyerPath;
-    private double distance;
-    private double lat;
-    private double lng;
-    private String completeAddress;
-    private AddressBean address;
+    private Integer shopIdBean;
+    private String phoneBean;
+    private String cityBean;
+    private String shopNameBean;
+    private String logoImagepathBean;
+    private String openingTimeBean;
+    private String closingTimeBean;
+    private String gmapsLinkBean;
+    private String franchisingBean;
+    private String offersFlyerPathBean;
+    private double distanceBean;
+    private double latBean;
+    private double lngBean;
+    private String completeAddressBean;
+    private AddressBean addressBean;
 
     public ShopBean() {
         //only init
     }
 
     public Integer getShopId() {
-        return shopId;
+        return shopIdBean;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setShopId(Integer shopIdBean) {
+        this.shopIdBean = shopIdBean;
     }
 
     public String getPhone() {
-        return phone;
+        return phoneBean;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phoneBean) {
+        this.phoneBean = phoneBean;
     }
 
     public String getCity() {
-        return city;
+        return cityBean;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCity(String cityBean) {
+        this.cityBean = cityBean;
     }
 
     public String getShopName() {
-        return shopName;
+        return shopNameBean;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
+    public void setShopName(String shopNameBean) {
+        this.shopNameBean = shopNameBean;
     }
 
     public String getLogoImagepath() {
-        return logoImagepath;
+        return logoImagepathBean;
     }
 
-    public void setLogoImagepath(String logoImagepath) {
-        this.logoImagepath = logoImagepath;
+    public void setLogoImagepath(String logoImagepathBean) {
+        this.logoImagepathBean = logoImagepathBean;
     }
 
     public String getOpeningTime() {
-        return openingTime;
+        return openingTimeBean;
     }
 
-    public void setOpeningTime(String openingTime) {
-        this.openingTime = openingTime;
+    public void setOpeningTime(String openingTimeBean) {
+        this.openingTimeBean = openingTimeBean;
     }
 
     public String getClosingTime() {
-        return closingTime;
+        return closingTimeBean;
     }
 
-    public void setClosingTime(String closingTime) {
-        this.closingTime = closingTime;
+    public void setClosingTime(String closingTimeBean) {
+        this.closingTimeBean = closingTimeBean;
     }
 
     public String getGmapsLink() {
-        return gmapsLink;
+        return gmapsLinkBean;
     }
 
-    public void setGmapsLink(String gmapsLink) {
-        this.gmapsLink = gmapsLink;
+    public void setGmapsLink(String gmapsLinkBean) {
+        this.gmapsLinkBean = gmapsLinkBean;
     }
 
     public String getFranchising() {
-        return franchising;
+        return franchisingBean;
     }
 
-    public void setFranchising(String franchising) {
-        this.franchising = franchising;
+    public void setFranchising(String franchisingBean) {
+        this.franchisingBean = franchisingBean;
     }
 
     public String getOffersFlyerPath() {
-        return offersFlyerPath;
+        return offersFlyerPathBean;
     }
 
-    public void setOffersFlyerPath(String offersFlyerPath) {
-        this.offersFlyerPath = offersFlyerPath;
+    public void setOffersFlyerPath(String offersFlyerPathBean) {
+        this.offersFlyerPathBean = offersFlyerPathBean;
     }
 
     public double getDistance() {
-        return distance;
+        return distanceBean;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
+    public void setDistance(double distanceBean) {
+        this.distanceBean = distanceBean;
     }
 
     public double getLat() {
-        return lat;
+        return latBean;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setLat(double latBean) {
+        this.latBean = latBean;
     }
 
     public double getLng() {
-        return lng;
+        return lngBean;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setLng(double lngBean) {
+        this.lngBean = lngBean;
     }
 
     public String getCompleteAddress() {
-        return completeAddress;
+        return completeAddressBean;
     }
 
-    public void setCompleteAddress(String completeAddress) {
-        this.completeAddress = completeAddress;
+    public void setCompleteAddress(String completeAddressBean) {
+        this.completeAddressBean = completeAddressBean;
     }
 
     public AddressBean getAddress() {
-        return address;
+        return addressBean;
     }
 
-    public void setAddress(AddressBean address) {
-        this.address = address;
+    public void setAddress(AddressBean addressBean) {
+        this.addressBean = addressBean;
     }
 }

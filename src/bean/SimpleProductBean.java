@@ -1,71 +1,71 @@
 package bean;
 
 public class SimpleProductBean {
-    private int sku;
-    private String name;
-    private String brand;
-    private String description;
-    private String logoImagepath;
-    private double size;
-    private String unitOfMeasure;
+    private int skuBean;
+    private String nameBean;
+    private String brandBean;
+    private String descriptionBean;
+    private String logoImagepathBean;
+    private double sizeBean;
+    private String unitOfMeasureBean;
 
     public SimpleProductBean() {
         //only init
     }
 
     public int getSku() {
-        return sku;
+        return skuBean;
     }
 
-    public void setSku(int sku) {
-        this.sku = sku;
+    public void setSku(int skuBean) {
+        this.skuBean = skuBean;
     }
 
     public String getName() {
-        return name;
+        return nameBean;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameBean) {
+        this.nameBean = nameBean;
     }
 
     public String getBrand() {
-        return brand;
+        return brandBean;
     }
 
     public void setBrand(String brand) {
-        this.brand = brand;
+        this.brandBean = brandBean;
     }
 
     public String getDescription() {
-        return description;
+        return descriptionBean;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String descriptionBean) {
+        this.descriptionBean = descriptionBean;
     }
 
     public String getLogoImagepath() {
-        return logoImagepath;
+        return logoImagepathBean;
     }
 
-    public void setLogoImagepath(String logoImagepath) {
-        this.logoImagepath = logoImagepath;
+    public void setLogoImagepath(String logoImagepathBean) {
+        this.logoImagepathBean = logoImagepathBean;
     }
 
     public double getSize() {
-        return size;
+        return sizeBean;
     }
 
-    public void setSize(double size) {
-        this.size = size;
+    public void setSize(double sizeBean) {
+        this.sizeBean = sizeBean;
     }
 
     public String getUnitOfMeasure() {
-        return unitOfMeasure;
+        return unitOfMeasureBean;
     }
 
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
+    public void setUnitOfMeasure(String unitOfMeasureBean) {
+        this.unitOfMeasureBean = unitOfMeasureBean;
     }
 }

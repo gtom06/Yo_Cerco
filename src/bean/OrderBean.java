@@ -4,125 +4,125 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class OrderBean {
-    private int orderId = 0;
-    private int shopId = 0;
-    private String username;
-    private PaymentBean payment;
-    private int paymentId;
-    private Timestamp orderTimestamp;
-    private double totalPrice;
-    private String currency;
-    private String status;
-    private Timestamp collectionTimestamp;
-    private int orderTotalQuantity;
-    private List<OrderItemBean> orderItemArrayList;
-    private String orderItemString;
+    private int orderIdBean = 0;
+    private int shopIdBean = 0;
+    private String usernameBean;
+    private PaymentBean paymentBean;
+    private int paymentIdBean;
+    private Timestamp orderTimestampBean;
+    private double totalPriceBean;
+    private String currencyBean;
+    private String statusBean;
+    private Timestamp collectionTimestampBean;
+    private int orderTotalQuantityBean;
+    private List<OrderItemBean> orderItemArrayListBean;
+    private String orderItemStringBean;
 
     public OrderBean() {
         //only init
     }
 
     public int getOrderId() {
-        return orderId;
+        return orderIdBean;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderId(int orderIdBean) {
+        this.orderIdBean = orderIdBean;
     }
 
     public int getShopId() {
-        return shopId;
+        return shopIdBean;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setShopId(int shopIdBean) {
+        this.shopIdBean = shopIdBean;
     }
 
     public String getUsername() {
-        return username;
+        return usernameBean;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String usernameBean) {
+        this.usernameBean = usernameBean;
     }
 
     public PaymentBean getPayment() {
-        return payment;
+        return paymentBean;
     }
 
-    public void setPayment(PaymentBean payment) {
-        this.payment = payment;
+    public void setPayment(PaymentBean paymentBean) {
+        this.paymentBean = paymentBean;
     }
 
     public int getPaymentId() {
-        return paymentId;
+        return paymentIdBean;
     }
 
-    public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
+    public void setPaymentId(int paymentIdBean) {
+        this.paymentIdBean = paymentIdBean;
     }
 
     public Timestamp getOrderTimestamp() {
-        return orderTimestamp;
+        return orderTimestampBean;
     }
 
-    public void setOrderTimestamp(Timestamp orderTimestamp) {
-        this.orderTimestamp = orderTimestamp;
+    public void setOrderTimestamp(Timestamp orderTimestampBean) {
+        this.orderTimestampBean = orderTimestampBean;
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        return totalPriceBean;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPrice(double totalPriceBean) {
+        this.totalPriceBean = totalPriceBean;
     }
 
     public String getCurrency() {
-        return currency;
+        return currencyBean;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setCurrency(String currencyBean) {
+        this.currencyBean = currencyBean;
     }
 
     public String getStatus() {
-        return status;
+        return statusBean;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String statusBean) {
+        this.statusBean = statusBean;
     }
 
     public Timestamp getCollectionTimestamp() {
-        return collectionTimestamp;
+        return collectionTimestampBean;
     }
 
-    public void setCollectionTimestamp(Timestamp collectionTimestamp) {
-        this.collectionTimestamp = collectionTimestamp;
+    public void setCollectionTimestamp(Timestamp collectionTimestampBean) {
+        this.collectionTimestampBean = collectionTimestampBean;
     }
 
     public int getOrderTotalQuantity() {
-        return orderTotalQuantity;
+        return orderTotalQuantityBean;
     }
 
-    public void setOrderTotalQuantity(int orderTotalQuantity) {
-        this.orderTotalQuantity = orderTotalQuantity;
+    public void setOrderTotalQuantity(int orderTotalQuantityBean) {
+        this.orderTotalQuantityBean = orderTotalQuantityBean;
     }
 
     public List<OrderItemBean> getOrderItemArrayList() {
-        return orderItemArrayList;
+        return orderItemArrayListBean;
     }
 
-    public void setOrderItemArrayList(List<OrderItemBean> orderItemArrayList) {
-        this.orderItemArrayList = orderItemArrayList;
+    public void setOrderItemArrayList(List<OrderItemBean> orderItemArrayListBean) {
+        this.orderItemArrayListBean = orderItemArrayListBean;
     }
 
     public String getOrderItemString() {
-        return orderItemString;
+        return orderItemStringBean;
     }
 
-    public void setOrderItemString(String orderItemString) {
-        this.orderItemString = orderItemString;
+    public void setOrderItemString(String orderItemStringBean) {
+        this.orderItemStringBean = orderItemStringBean;
     }
 }

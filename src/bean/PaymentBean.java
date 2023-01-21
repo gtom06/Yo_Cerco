@@ -3,71 +3,71 @@ package bean;
 import java.sql.Timestamp;
 
 public class PaymentBean {
-    private int paymentId;
-    private String paymentMethod; //card or cod
-    private String cardholder; //name + surname
-    private double totalPrice;
-    private String currency;
-    private Timestamp paymentTimestamp;
-    private String status;
+    private int paymentIdBean = 0;
+    private String paymentMethodBean; //card or cod
+    private String cardholderBean; //name + surname
+    private double totalPriceBean;
+    private String currencyBean;
+    private Timestamp paymentTimestampBean;
+    private String statusBean;
 
     public PaymentBean() {
         //only init
     }
 
     public int getPaymentId() {
-        return paymentId;
+        return paymentIdBean;
     }
 
-    public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
+    public void setPaymentId(int paymentIdBean) {
+        this.paymentIdBean = paymentIdBean;
     }
 
     public String getPaymentMethod() {
-        return paymentMethod;
+        return paymentMethodBean;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethod(String paymentMethodBean) {
+        this.paymentMethodBean = paymentMethodBean;
     }
 
     public String getCardholder() {
-        return cardholder;
+        return cardholderBean;
     }
 
-    public void setCardholder(String cardholder) {
-        this.cardholder = cardholder;
+    public void setCardholder(String cardholderBean) {
+        this.cardholderBean = cardholderBean;
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        return totalPriceBean;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPrice(double totalPriceBean) {
+        this.totalPriceBean = totalPriceBean;
     }
 
     public String getCurrency() {
-        return currency;
+        return currencyBean;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setCurrency(String currencyBean) {
+        this.currencyBean = currencyBean;
     }
 
     public Timestamp getPaymentTimestamp() {
-        return paymentTimestamp;
+        return paymentTimestampBean;
     }
 
-    public void setPaymentTimestamp(Timestamp paymentTimestamp) {
-        this.paymentTimestamp = paymentTimestamp;
+    public void setPaymentTimestamp(Timestamp paymentTimestampBean) {
+        this.paymentTimestampBean = paymentTimestampBean;
     }
 
     public String getStatus() {
-        return status;
+        return statusBean;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String statusBean) {
+        this.statusBean = statusBean;
     }
 }

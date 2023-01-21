@@ -3,53 +3,53 @@ package bean;
 import java.util.List;
 
 public class DepartmentBean {
-    private int shopId;
-    private String logoImagepath;
-    private String name;
-    private int departmentId;
-    private List<ProductShopBean> items;
+    private int shopIdBean;
+    private String logoImagepathBean;
+    private String nameBean;
+    private int departmentIdBean;
+    private List<ProductShopBean> itemsBean;
 
     public DepartmentBean() {
         //only init
     }
 
     public int getShopId() {
-        return shopId;
+        return shopIdBean;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setShopId(int shopIdBean) {
+        this.shopIdBean = shopIdBean;
     }
 
     public String getLogoImagepath() {
-        return logoImagepath;
+        return logoImagepathBean;
     }
 
-    public void setLogoImagepath(String logoImagepath) {
-        this.logoImagepath = logoImagepath;
+    public void setLogoImagepath(String logoImagepathBean) {
+        this.logoImagepathBean = logoImagepathBean;
     }
 
     public String getName() {
-        return name;
+        return nameBean;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameBean) {
+        this.nameBean = nameBean;
     }
 
     public int getDepartmentId() {
-        return departmentId;
+        return departmentIdBean;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentId(int departmentIdBean) {
+        this.departmentIdBean = departmentIdBean;
     }
 
     public List<ProductShopBean> getItems() {
-        return items;
+        return itemsBean;
     }
 
-    public void setItems(List<ProductShopBean> items) {
-        this.items = items;
+    public void setItems(List<ProductShopBean> itemsBean) {
+        this.itemsBean = itemsBean;
     }
 }

@@ -1,53 +1,53 @@
 package bean;
 
 public class ProductShopBean extends SimpleProductBean {
-    private double price;
-    private String currency;
-    private int shopId;
-    private int departmentId;
-    private double discountedPrice;
+    private double priceBean;
+    private String currencyBean;
+    private int shopIdBean;
+    private int departmentIdBean;
+    private double discountedPriceBean;
 
     public ProductShopBean() {
         super();
     }
 
     public double getPrice() {
-        return price;
+        return priceBean;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(double priceBean) {
+        this.priceBean = priceBean;
     }
 
     public String getCurrency() {
-        return currency;
+        return currencyBean;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setCurrency(String currencyBean) {
+        this.currencyBean = currencyBean;
     }
 
     public int getShopId() {
-        return shopId;
+        return shopIdBean;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setShopId(int shopIdBean) {
+        this.shopIdBean = shopIdBean;
     }
 
     public int getDepartmentId() {
-        return departmentId;
+        return departmentIdBean;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentId(int departmentIdBean) {
+        this.departmentIdBean = departmentIdBean;
     }
 
     public double getDiscountedPrice() {
-        return discountedPrice;
+        return discountedPriceBean;
     }
 
-    public void setDiscountedPrice(double discountedPrice) {
-        this.discountedPrice = discountedPrice;
+    public void setDiscountedPrice(double discountedPriceBean) {
+        this.discountedPriceBean = discountedPriceBean;
     }
 }

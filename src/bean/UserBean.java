@@ -1,134 +1,134 @@
 package bean;
 
 public class UserBean {
-    private String username;
-    private String name;
-    private String surname;
-    private String password;
-    private String email;
-    private String billingAddress;
-    private String billingStreet;
-    private String billingCity;
-    private String billingCountry;
-    private String billingZip;
-    private String phone;
-    private String gender; //1 male 2 female 3 other
-    private String profileImagepath;
-    private boolean isAdmin;
+    private String usernameBean;
+    private String nameBean;
+    private String surnameBean;
+    private String passwordBean;
+    private String emailBean;
+    private String billingAddressBean;
+    private String billingStreetBean;
+    private String billingCityBean;
+    private String billingCountryBean;
+    private String billingZipBean;
+    private String phoneBean;
+    private String genderBean; //1 male 2 female 3 other
+    private String profileImagepathBean;
+    private boolean isAdminBean = false;
 
     public UserBean() {
         //only init
     }
 
     public String getUsername() {
-        return username;
+        return usernameBean;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String usernameBean) {
+        this.usernameBean = usernameBean;
     }
 
     public String getName() {
-        return name;
+        return nameBean;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameBean) {
+        this.nameBean = nameBean;
     }
 
     public String getSurname() {
-        return surname;
+        return surnameBean;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurname(String surnameBean) {
+        this.surnameBean = surnameBean;
     }
 
     public String getPassword() {
-        return password;
+        return passwordBean;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passwordBean) {
+        this.passwordBean = passwordBean;
     }
 
     public String getEmail() {
-        return email;
+        return emailBean;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String emailBean) {
+        this.emailBean = emailBean;
     }
 
     public String getBillingAddress() {
-        return billingAddress;
+        return billingAddressBean;
     }
 
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setBillingAddress(String billingAddressBean) {
+        this.billingAddressBean = billingAddressBean;
     }
 
     public String getBillingStreet() {
-        return billingStreet;
+        return billingStreetBean;
     }
 
-    public void setBillingStreet(String billingStreet) {
-        this.billingStreet = billingStreet;
+    public void setBillingStreet(String billingStreetBean) {
+        this.billingStreetBean = billingStreetBean;
     }
 
     public String getBillingCity() {
-        return billingCity;
+        return billingCityBean;
     }
 
-    public void setBillingCity(String billingCity) {
-        this.billingCity = billingCity;
+    public void setBillingCity(String billingCityBean) {
+        this.billingCityBean = billingCityBean;
     }
 
     public String getBillingCountry() {
-        return billingCountry;
+        return billingCountryBean;
     }
 
-    public void setBillingCountry(String billingCountry) {
-        this.billingCountry = billingCountry;
+    public void setBillingCountry(String billingCountryBean) {
+        this.billingCountryBean = billingCountryBean;
     }
 
     public String getBillingZip() {
-        return billingZip;
+        return billingZipBean;
     }
 
-    public void setBillingZip(String billingZip) {
-        this.billingZip = billingZip;
+    public void setBillingZip(String billingZipBean) {
+        this.billingZipBean = billingZipBean;
     }
 
     public String getPhone() {
-        return phone;
+        return phoneBean;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phoneBean) {
+        this.phoneBean = phoneBean;
     }
 
     public String getGender() {
-        return gender;
+        return genderBean;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String genderBean) {
+        this.genderBean = genderBean;
     }
 
     public String getProfileImagepath() {
-        return profileImagepath;
+        return profileImagepathBean;
     }
 
-    public void setProfileImagepath(String profileImagepath) {
-        this.profileImagepath = profileImagepath;
+    public void setProfileImagepath(String profileImagepathBean) {
+        this.profileImagepathBean = profileImagepathBean;
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return isAdminBean;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setIsAdmin(boolean isAdminBean) {
+        this.isAdminBean = isAdminBean;
     }
 }

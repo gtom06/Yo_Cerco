@@ -1,8 +1,8 @@
 package bean;
 
 public class OrderItemBean extends ProductShopBean {
-    int quantityOrdered;
-    double priceTotal;
+    int quantityOrderedBean;
+    double priceTotalBean;
     ProductShopBean productShopBean;
 
     public OrderItemBean() {
@@ -10,19 +10,19 @@ public class OrderItemBean extends ProductShopBean {
     }
 
     public int getQuantityOrdered() {
-        return quantityOrdered;
+        return quantityOrderedBean;
     }
 
-    public void setQuantityOrdered(int quantityOrdered) {
-        this.quantityOrdered = quantityOrdered;
+    public void setQuantityOrdered(int quantityOrderedBean) {
+        this.quantityOrderedBean = quantityOrderedBean;
     }
 
     public double getPriceTotal() {
-        return priceTotal;
+        return priceTotalBean;
     }
 
-    public void setPriceTotal(double priceTotal) {
-        this.priceTotal = priceTotal;
+    public void setPriceTotal(double priceTotalBean) {
+        this.priceTotalBean = priceTotalBean;
     }
 
     public ProductShopBean getProductShopBean() {
