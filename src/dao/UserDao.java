@@ -10,6 +10,7 @@ import model.user.Buyer;
 import model.user.User;
 
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,27 +59,25 @@ public class UserDao {
 
     }
 
-    public static boolean insertBuyer(String username, String password, String email, Date dateOfBirth,
-                                      String gender, String billingStreet, String billingCity, String billingCountry,
-                                      String billingZip, String phone, String name, String surname) {
+    public static boolean insertBuyer(List<String> data) {
         PreparedStatement stmt = null;
         try {
             String sql = "INSERT INTO userx (username, pass, email, date_of_birth, gender, role, billing_street, billing_city, billing_country, billing_zip, phone, name, surname) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, email);
-            stmt.setDate(4, dateOfBirth);
-            stmt.setString(5, gender);
-            stmt.setString(6, Constants.BUYER_USER);
-            stmt.setString(7, billingStreet);
-            stmt.setString(8, billingCity);
-            stmt.setString(9, billingCountry);
-            stmt.setString(10, billingZip);
-            stmt.setString(11, phone);
-            stmt.setString(12, name);
-            stmt.setString(13, surname);
+            stmt.setString(1, data.get(0));
+            stmt.setString(2, data.get(3));
+            stmt.setString(3, data.get(4));
+            stmt.setDate(4, Date.valueOf(data.get(5)));
+            stmt.setString(5, data.get(11));
+            stmt.setString(6, data.get(12));
+            stmt.setString(7, data.get(6));
+            stmt.setString(8, data.get(7));
+            stmt.setString(9, data.get(8));
+            stmt.setString(10, data.get(9));
+            stmt.setString(11, data.get(10));
+            stmt.setString(12, data.get(1));
+            stmt.setString(13, data.get(2));
             stmt.executeUpdate();
         } catch (SQLException se) {
             logger.log(Level.WARNING, "error in insert buyer");

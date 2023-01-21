@@ -49,10 +49,8 @@ public class UserHandler {
 
     public static boolean insertUser2(List<String> data){
         if (data.get(12).equals(Constants.BUYER) || data.get(12).equals(Constants.BUYER_USER)) {
-            return UserDao.insertBuyer(data.get(0), data.get(3), data.get(4), Date.valueOf(data.get(5)),
-                    data.get(11), data.get(6), data.get(7), data.get(8), data.get(9),
-                    data.get(10), data.get(1), data.get(2));
-        } else if (data.get(0).equals(Constants.ADMIN) || data.get(0).equals(Constants.ADMIN_USER)) {
+            return UserDao.insertBuyer(data);
+        } else if (data.get(12).equals(Constants.ADMIN) || data.get(12).equals(Constants.ADMIN_USER)) {
             return UserDao.insertAdmin(data.get(0), data.get(3), data.get(4));
         }
         logger.log(Level.WARNING, "no insert");

@@ -70,7 +70,6 @@ public class OrderDao {
             stmt.setInt(6, order.getOrderTotalQuantity());
             stmt.setString(7, order.getCurrency());
             stmt.setTimestamp(8, Timestamp.from(order.getOrderTimestamp().toInstant().plus(1, ChronoUnit.DAYS)));
-            //stmt.setTimestamp(8, Timestamp.from(timestamp.toInstant().plus(1, ChronoUnit.DAYS)));
             ResultSet rs = stmt.executeQuery();
             rs.next();
             order.setOrderId(rs.getInt("order_id"));
