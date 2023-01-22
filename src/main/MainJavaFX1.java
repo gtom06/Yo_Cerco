@@ -1,9 +1,7 @@
 package main;
 
 import constants.Constants;
-import constants.ConstantsExceptions;
 import control.CartElaboration;
-import dao.DepartmentDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +20,7 @@ public class MainJavaFX1 extends Application {
 
     @Override
     public void start(Stage stage1) throws IOException {
-        logger.log(Level.INFO, Constants.RUN_OK);
+        logger.log(Level.INFO, Constants.RUN_OK_1);
         Parent root1 = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("/view/view1/login.fxml"))));
         Scene scene1 = new Scene(root1, 1000, 700);
         stage1.setTitle("Login1");
