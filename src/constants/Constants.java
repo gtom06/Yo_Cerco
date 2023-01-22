@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 public final class Constants {
+
+
     private Constants(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
@@ -84,4 +86,6 @@ public final class Constants {
     public static final String BUYER_USER = "B";
     public static final String ADMIN = "Admin";
     public static final String BUYER = "Buyer";
+    public static final String SUPERADMIN_USER = "S";
+    public static final String SUPERADMIN = "SUPERADMIN";
 }

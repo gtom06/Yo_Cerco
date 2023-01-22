@@ -3,174 +3,174 @@ package model.user;
 import java.sql.Date;
 
 public class Buyer implements User {
-    private String username;
-    private String name;
-    private String surname;
-    private String password;
-    private String email;
-    private Date dateOfBirth;
-    private String billingAddress;
-    private String billingStreet;
-    private String billingCity;
-    private String billingCountry;
-    private String billingZip;
-    private String phone;
-    private String gender; //1 male 2 female 3 other
-    private String profileImagepath;
+    private String usernameB;
+    private String nameB;
+    private String surnameB;
+    private String passwordB;
+    private String emailB;
+    private Date dateOfBirthB;
+    private String billingAddressB;
+    private String billingStreetB;
+    private String billingCityB;
+    private String billingCountryB;
+    private String billingZipB;
+    private String phoneB;
+    private String genderB; //1 male 2 female 3 other
+    private String profileImagepathB;
 
     public Buyer(){
         //init
     }
 
     public String getProfileImagepath() {
-        return profileImagepath;
+        return profileImagepathB;
     }
 
     public boolean isSomeFieldBlank(){
-        return name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() || billingCountry.isBlank() || billingZip.isBlank() || phone.isBlank();
+        return nameB.isBlank() || surnameB.isBlank() || billingStreetB.isBlank() || billingCityB.isBlank() || billingCountryB.isBlank() || billingZipB.isBlank() || phoneB.isBlank();
     }
 
     @Override
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String usernameB) {
+        this.usernameB = usernameB;
     }
 
     @Override
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String emailB) {
+        this.emailB = emailB;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(Date dateOfBirthB) {
+        this.dateOfBirthB = dateOfBirthB;
     }
 
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setBillingAddress(String billingAddressB) {
+        this.billingAddressB = billingAddressB;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String genderB) {
+        this.genderB = genderB;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return usernameB;
     }
 
     @Override
     public String getEmail() {
-        return email;
+        return emailB;
     }
 
     @Override
     public String getName() {
-        return name;
+        return nameB;
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return passwordB;
     }
 
     @Override
     public String getSurname() {
-        return surname;
+        return surnameB;
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return dateOfBirthB;
     }
 
     public String getBillingAddress() {
-        return billingAddress;
+        return billingAddressB;
     }
 
     public String getBillingStreet() {
-        return billingStreet;
+        return billingStreetB;
     }
 
     public String getBillingCity() {
-        return billingCity;
+        return billingCityB;
     }
 
     public String getBillingCountry() {
-        return billingCountry;
+        return billingCountryB;
     }
 
     public String getBillingZip() {
-        return billingZip;
+        return billingZipB;
     }
 
     public String getPhone() {
-        return phone;
+        return phoneB;
     }
 
     public String getGender() {
-        return gender;
+        return genderB;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameB) {
+        this.nameB = nameB;
     }
 
     @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurname(String surnameB) {
+        this.surnameB = surnameB;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passwordB) {
+        this.passwordB = passwordB;
     }
 
     public void setBillingAddress() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.billingStreet).append(" - ").append(this.billingCity).append(" - ")
-                .append(this.billingCountry).append(" - ").append(this.billingZip);
-        this.billingAddress = sb.toString();
+        sb.append(this.billingStreetB).append(" - ").append(this.billingCityB).append(" - ")
+                .append(this.billingCountryB).append(" - ").append(this.billingZipB);
+        this.billingAddressB = sb.toString();
     }
 
-    public void setBillingStreet(String billingStreet) {
-        this.billingStreet = billingStreet;
+    public void setBillingStreet(String billingStreetB) {
+        this.billingStreetB = billingStreetB;
     }
 
-    public void setBillingCity(String billingCity) {
-        this.billingCity = billingCity;
+    public void setBillingCity(String billingCityB) {
+        this.billingCityB = billingCityB;
     }
 
-    public void setBillingCountry(String billingCountry) {
-        this.billingCountry = billingCountry;
+    public void setBillingCountry(String billingCountryB) {
+        this.billingCountryB = billingCountryB;
     }
 
-    public void setBillingZip(String billingZip) {
-        this.billingZip = billingZip;
+    public void setBillingZip(String billingZipB) {
+        this.billingZipB = billingZipB;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phoneB) {
+        this.phoneB = phoneB;
     }
 
-    public void setProfileImagepath(String profileImagepath) {
-        this.profileImagepath = profileImagepath;
+    public void setProfileImagepath(String profileImagepathB) {
+        this.profileImagepathB = profileImagepathB;
     }
 
     @Override
     public String toString() {
         return "Buyer{" +
-                "username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", billingAddress='" + billingAddress + '\'' +
-                ", billingStreet='" + billingStreet + '\'' +
-                ", billingCity='" + billingCity + '\'' +
-                ", billingCountry='" + billingCountry + '\'' +
-                ", billingZip='" + billingZip + '\'' +
-                ", phone='" + phone + '\'' +
-                ", gender='" + gender + '\'' +
-                ", profileImagepath='" + profileImagepath + '\'' +
+                "username='" + usernameB + '\'' +
+                ", name='" + nameB + '\'' +
+                ", surname='" + surnameB + '\'' +
+                ", password='" + passwordB + '\'' +
+                ", email='" + emailB + '\'' +
+                ", dateOfBirth=" + dateOfBirthB +
+                ", billingAddress='" + billingAddressB + '\'' +
+                ", billingStreet='" + billingStreetB + '\'' +
+                ", billingCity='" + billingCityB + '\'' +
+                ", billingCountry='" + billingCountryB + '\'' +
+                ", billingZip='" + billingZipB + '\'' +
+                ", phone='" + phoneB + '\'' +
+                ", gender='" + genderB + '\'' +
+                ", profileImagepath='" + profileImagepathB + '\'' +
                 '}';
     }
 }

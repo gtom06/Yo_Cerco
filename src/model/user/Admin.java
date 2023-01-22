@@ -1,48 +1,48 @@
 package model.user;
 
 public class Admin implements User {
-    private String username;
-    private String name;
-    private String surname;
-    private String email;
-    private String password;
+    private String usernameA;
+    private String nameA;
+    private String surnameA;
+    private String emailA;
+    private String passwordA;
 
     public Admin() {
         //init
     }
 
     @Override
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String usernameA) {
+        this.usernameA = usernameA;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String emailA) {
+        this.emailA = emailA;
     }
 
     @Override
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passwordA) {
+        this.passwordA = passwordA;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return usernameA;
     }
     @Override
-    public String getName() { return name;}
+    public String getName() { return nameA;}
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameA) {
+        this.nameA = nameA;
     }
 
     @Override
-    public String getSurname() { return surname;}
+    public String getSurname() { return surnameA;}
 
     @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurname(String surnameA) {
+        this.surnameA = surnameA;
     }
 
     @Override
@@ -52,17 +52,17 @@ public class Admin implements User {
 
     @Override
     public String getEmail() {
-        return email;
+        return emailA;
     }
 
     @Override
     public String toString() {
         return "Admin{" +
-                "username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                "username='" + usernameA + '\'' +
+                ", name='" + nameA + '\'' +
+                ", surname='" + surnameA + '\'' +
+                ", email='" + emailA + '\'' +
+                ", password='" + passwordA + '\'' +
                 '}';
     }
 }
