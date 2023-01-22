@@ -1,17 +1,25 @@
 package model.user;
 
 public class Admin implements User {
-    private final String username;
+    private String username;
     private String name;
     private String surname;
-    private final String email;
-    private final String password;
+    private String email;
+    private String password;
 
-    public Admin(String username, String name, String surname, String email, String password) {
+    public Admin() {
+        //init
+    }
+
+    public void setUsername(String username) {
         this.username = username;
-        this.name = name;
-        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 

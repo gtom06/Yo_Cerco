@@ -8,6 +8,7 @@ import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;
+import model.user.UserFactory;
 
 import java.sql.*;
 import java.util.List;
@@ -186,25 +187,31 @@ public class UserDao {
         String billingZip = rs.getString("billing_zip");
         String phone = rs.getString("phone");
         String profileImagepath = rs.getString("profile_imagepath");
+        UserFactory userFactory = new UserFactory();
         if (role.equals(Constants.ADMIN_USER)){
-            user = new Admin(username, name, surname, email, null);
+            user = userFactory.getUser(Constants.ADMIN);
+            ((Admin) user).setUsername(username);
+            user.setName(name);
+            user.setSurname(surname);
+            ((Admin) user).setEmail(email);
+            ((Admin) user).setPassword("");
         }
         else if (role.equals(Constants.BUYER_USER)) {
-            user = new Buyer(
-                    username,
-                    name,
-                    surname,
-                    null,
-                    email,
-                    dateOfBirth,
-                    billingStreet,
-                    billingCity,
-                    billingCountry,
-                    billingZip,
-                    phone,
-                    gender,
-                    profileImagepath
-            );
+            user = userFactory.getUser(Constants.BUYER);
+            ((Buyer) user).setUsername(username);
+            user.setName(name);
+            user.setSurname(surname);
+            ((Buyer) user).setPassword("");
+            ((Buyer) user).setEmail(email);
+            ((Buyer) user).setDateOfBirth(dateOfBirth);
+            ((Buyer) user).setBillingStreet(billingStreet);
+            ((Buyer) user).setBillingCity(billingCity);
+            ((Buyer) user).setBillingCountry(billingCountry);
+            ((Buyer) user).setBillingZip(billingZip);
+            ((Buyer) user).setPhone(phone);
+            ((Buyer) user).setGender(gender);
+            ((Buyer) user).setProfileImagepath(profileImagepath);
+            ((Buyer) user).setBillingAddress();
         }
         return user;
     }

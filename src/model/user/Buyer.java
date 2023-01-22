@@ -3,39 +3,24 @@ package model.user;
 import java.sql.Date;
 
 public class Buyer implements User {
-    private final String username;
+    private String username;
     private String name;
     private String surname;
     private String password;
-    private final String email;
-    private final Date dateOfBirth;
+    private String email;
+    private Date dateOfBirth;
     private String billingAddress;
     private String billingStreet;
     private String billingCity;
     private String billingCountry;
     private String billingZip;
     private String phone;
-    private final String gender; //1 male 2 female 3 other
+    private String gender; //1 male 2 female 3 other
     private String profileImagepath;
 
-    public Buyer(String username, String name, String surname, String password, String email, Date dateOfBirth,
-                 String billingStreet, String billingCity, String billingCountry, String billingZip, String phone, String gender, String profileImagepath) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.password = password;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.billingStreet = billingStreet;
-        this.billingCity = billingCity;
-        this.billingCountry = billingCountry;
-        this.billingZip = billingZip;
-        this.phone = phone;
-        this.gender = gender; //0:male 1:female 2:other
-        this.profileImagepath = profileImagepath;
-        setBillingAddress();
+    public Buyer(){
+        //init
     }
-
 
     public String getProfileImagepath() {
         return profileImagepath;
@@ -43,6 +28,26 @@ public class Buyer implements User {
 
     public boolean isSomeFieldBlank(){
         return name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() || billingCountry.isBlank() || billingZip.isBlank() || phone.isBlank();
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override
