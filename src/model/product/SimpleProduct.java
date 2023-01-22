@@ -90,4 +90,17 @@ public class SimpleProduct implements Product {
     public String getUnitOfMeasure() {
         return unitOfMeasure;
     }
+
+    @Override
+    public String toString() {
+        return "SimpleProduct{" +
+                "sku=" + sku +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", description='" + description + '\'' +
+                ", logoImagepath='" + logoImagepath + '\'' +
+                ", size=" + size +
+                ", unitOfMeasure='" + unitOfMeasure + '\'' +
+                '}';
+    }
 }

@@ -62,6 +62,7 @@ public class ProductShop extends SimpleProduct {
                 ", currency='" + currency + '\'' +
                 ", shopId=" + shopId +
                 ", departmentId=" + departmentId +
+                ", discountedPrice=" + discountedPrice +
                 '}';
     }
 }

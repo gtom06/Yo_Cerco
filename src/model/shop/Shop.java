@@ -154,8 +154,9 @@ public class Shop {
 
     @Override
     public String toString() {
-        return "Shop2{" +
-                "phone='" + phone + '\'' +
+        return "Shop{" +
+                "shopId=" + shopId +
+                ", phone='" + phone + '\'' +
                 ", address=" + address +
                 ", city='" + city + '\'' +
                 ", shopName='" + shopName + '\'' +

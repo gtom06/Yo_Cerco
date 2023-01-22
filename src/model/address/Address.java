@@ -63,7 +63,10 @@ public class Address {
         return "Address{" +
                 "lat=" + lat +
                 ", lng=" + lng +
-                ", address='" + addressString + '\'' +
+                ", addressString='" + addressString + '\'' +
+                ", gmapsLink='" + gmapsLink + '\'' +
+                ", city='" + city + '\'' +
+                ", addressOnlyStreet='" + addressOnlyStreet + '\'' +
                 '}';
     }
 }

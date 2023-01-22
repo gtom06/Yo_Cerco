@@ -28,4 +28,14 @@ public class DepartmentShop {
     public int getDepartmentId() {
         return departmentId;
     }
+
+    @Override
+    public String toString() {
+        return "DepartmentShop{" +
+                "shopId=" + shopId +
+                ", logoImagepath='" + logoImagepath + '\'' +
+                ", name='" + name + '\'' +
+                ", departmentId=" + departmentId +
+                '}';
+    }
 }

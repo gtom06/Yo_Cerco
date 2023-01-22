@@ -19,6 +19,7 @@ public class Admin implements User {
         this.email = email;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
@@ -58,6 +59,7 @@ public class Admin implements User {
         return "Admin{" +
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

@@ -25,14 +25,6 @@ public class OrderItem extends ProductShop {
         this.priceTotal = priceTotal;
     }
 
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "quantityOrdered=" + quantityOrdered +
-                ", priceTotal=" + priceTotal +
-                '}';
-    }
-
     public int getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -47,5 +39,13 @@ public class OrderItem extends ProductShop {
 
     public void setPriceTotal(double priceTotal) {
         this.priceTotal = priceTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "quantityOrdered=" + quantityOrdered +
+                ", priceTotal=" + priceTotal +
+                '}';
     }
 }

@@ -73,12 +73,12 @@ public class TomassiTestJUnit {
     @Test
     public void populateOrderWithOrderItemsTest() {
         UserBean userBean = new UserBean();
-        userBean.setUsername("abc");
+        userBean.setUsername("gtom");
         List<OrderBean> orderArrayList = OrderHandler.findOrdersInfoFromUser(userBean);
         assertEquals(2, orderArrayList.get(0).getShopId());
-        assertEquals(44, orderArrayList.get(0).getOrderId());
+        assertEquals(1, orderArrayList.get(0).getOrderId());
         assertEquals("eur", orderArrayList.get(0).getCurrency());
-        assertEquals(14.0, orderArrayList.get(0).getTotalPrice(), 0);
+        assertEquals(3.5, orderArrayList.get(0).getTotalPrice(), 0);
         OrderBean order = OrderHandler.populateOrderWithOrderItems(orderArrayList.get(0));
         assertNotNull(order.getOrderItemArrayList());
     }

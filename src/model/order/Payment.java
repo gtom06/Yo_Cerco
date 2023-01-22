@@ -21,19 +21,6 @@ public class Payment {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId=" + paymentId +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", cardholder='" + cardholder + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", currency='" + currency + '\'' +
-                ", paymentTimestamp=" + paymentTimestamp +
-                ", status='" + status + '\'' +
-                '}';
-    }
-
     public int getPaymentId() {
         return paymentId;
     }
@@ -88,5 +75,18 @@ public class Payment {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", cardholder='" + cardholder + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", currency='" + currency + '\'' +
+                ", paymentTimestamp=" + paymentTimestamp +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

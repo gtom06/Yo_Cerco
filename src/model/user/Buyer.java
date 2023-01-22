@@ -30,10 +30,12 @@ public class Buyer implements User {
         return name.isBlank() || surname.isBlank() || billingStreet.isBlank() || billingCity.isBlank() || billingCountry.isBlank() || billingZip.isBlank() || phone.isBlank();
     }
 
+    @Override
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
