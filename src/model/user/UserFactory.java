@@ -11,6 +11,11 @@ public class UserFactory {
         if (type.equalsIgnoreCase("BUYER")){
             return new Buyer();
         }
+
+        if (type.equalsIgnoreCase("SUPERADMIN")){
+            return new SuperAdmin();
+        }
+
         return null;
     }
 }

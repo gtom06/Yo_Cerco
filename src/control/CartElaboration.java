@@ -53,22 +53,6 @@ public class CartElaboration {
         return true;
     }
 
-    public static boolean addArrayListOrderItemsToCart(List<ProductShopBean> productShopList, List<Integer> newQuantityArrayList) throws IOException, FileElaborationException {
-        List<OrderItemBean> orderItemArrayList = readOrderItemsFromCart();
-        //backup file
-        if (orderItemArrayList != null && !orderItemArrayList.isEmpty()) {
-            FileElaboration.writeOnFile(Constants.CART_PATH2, FileElaboration.fileToString(Constants.CART_PATH));
-        }
-        for (int i = 0; i<productShopList.size(); i++) {
-            if (!addOrderItemsToCart(productShopList.get(i), newQuantityArrayList.get(i))) {
-                FileElaboration.writeOnFile(Constants.CART_PATH, FileElaboration.fileToString(Constants.CART_PATH2));
-                FileElaboration.writeOnFile(Constants.CART_PATH2, "");
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static boolean addOrderItemsToCart(ProductShopBean productShop, int quantityToAdd) throws ExceptionCart {
         List<OrderItemBean> orderItemArrayList;
         try {

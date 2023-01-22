@@ -48,14 +48,12 @@ public final class Constants {
     //for files
     public static final String REMEMBER_LOGIN = "src/data/remember_login.txt";
     public static final String CART_PATH = "src/data/cart.json";
-    public static final String CART_PATH2 = "src/data/cart2.json";
     //for images
     public static final String LOGO_PRODUCTS_PATH = "src/images/product/";
     public static final String LOGO_SHOPS_PATH = "src/images/shop_images/";
     public static final String LOGO_SHOP_NA = "NotAvailablePhoto.png";
     public static final String PROFILE_IMAGES_PATH = "src/images/user_profile_images/";
     public static final String PROFILE_IMAGE_BLANK = "src/images/user_profile_images/icons8-customer-100.png";
-    public static final String SHOP_IMAGE = "src/images/shop/";
     public static final String LOGO_DEPARTMENT_PATH = "src/images/department/";
 
     //values
@@ -84,8 +82,6 @@ public final class Constants {
     //for users
     public static final String ADMIN_USER = "A";
     public static final String BUYER_USER = "B";
-    public static final String SHOPHOLDER_USER = "S";
     public static final String ADMIN = "Admin";
     public static final String BUYER = "Buyer";
-    public static final String OWNER = "Owner";
 }

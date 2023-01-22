@@ -1,17 +1,17 @@
 package model.user;
 
-public class Admin implements User {
+public class SuperAdmin implements User {
+
     private String username;
     private String name;
     private String surname;
     private String email;
     private String password;
 
-    public Admin() {
+    public SuperAdmin() {
         //init
     }
 
-    @Override
     public void setUsername(String username) {
         this.username = username;
     }
@@ -57,7 +57,7 @@ public class Admin implements User {
 
     @Override
     public String toString() {
-        return "Admin{" +
+        return "SuperAdmin{" +
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
