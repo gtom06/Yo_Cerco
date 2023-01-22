@@ -1,12 +1,9 @@
 package dao;
 
-import bean.OrderBean;
-import bean.PaymentBean;
 import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.order.Order;
 import model.order.Payment;
-
 import java.sql.*;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

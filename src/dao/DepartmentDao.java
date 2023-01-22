@@ -3,7 +3,6 @@ package dao;
 import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.department.Department;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

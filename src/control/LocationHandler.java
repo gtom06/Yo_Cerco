@@ -1,7 +1,5 @@
 package control;
 
-import bean.AddressBean;
-import bean.ShopBean;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import exceptions.AddressException;
@@ -9,7 +7,6 @@ import model.address.Address;
 import constants.Constants;
 import constants.ConstantsExceptions;
 import model.shop.Shop;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -7,7 +7,6 @@ import dao.UserDao;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;
-import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;

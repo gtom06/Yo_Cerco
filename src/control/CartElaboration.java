@@ -9,8 +9,6 @@ import exceptions.FileElaborationException;
 import constants.Constants;
 import constants.ConstantsExceptions;
 import model.order.OrderItem;
-import model.product.ProductShop;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;

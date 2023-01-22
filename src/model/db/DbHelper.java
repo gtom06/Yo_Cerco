@@ -2,7 +2,6 @@ package model.db;
 
 import constants.Constants;
 import constants.ConstantsExceptions;
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

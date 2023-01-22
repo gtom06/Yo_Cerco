@@ -1,14 +1,10 @@
 package dao;
 
-import bean.ShopBean;
-import bean.SimpleProductBean;
 import constants.Constants;
 import constants.ConstantsExceptions;
 import model.address.Address;
 import model.db.DbHelper;
-import model.product.SimpleProduct;
 import model.shop.Shop;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;

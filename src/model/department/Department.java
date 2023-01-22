@@ -2,7 +2,6 @@ package model.department;
 
 import constants.Constants;
 import model.product.ProductShop;
-
 import java.util.List;
 
 public class Department {

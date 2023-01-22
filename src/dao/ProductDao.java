@@ -4,8 +4,6 @@ import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
-import model.user.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

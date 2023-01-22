@@ -2,14 +2,12 @@ package dao;
 
 import bean.UserBean;
 import constants.Constants;
-
 import constants.ConstantsExceptions;
 import model.db.DbHelper;
 import model.user.Admin;
 import model.user.Buyer;
 import model.user.User;
 import model.user.UserFactory;
-
 import java.sql.*;
 import java.util.List;
 import java.util.logging.Level;

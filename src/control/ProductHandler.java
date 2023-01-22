@@ -5,9 +5,6 @@ import constants.ConstantsExceptions;
 import dao.ProductDao;
 import model.product.ProductShop;
 import model.product.SimpleProduct;
-import model.shop.Shop;
-import model.user.User;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

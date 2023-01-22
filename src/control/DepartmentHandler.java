@@ -1,15 +1,10 @@
 package control;
 
 import bean.DepartmentBean;
-import bean.ProductShopBean;
 import bean.ShopBean;
 import constants.ConstantsExceptions;
 import dao.DepartmentDao;
-import dao.ProductDao;
 import model.department.Department;
-import model.product.ProductShop;
-import model.shop.Shop;
-
 import java.util.ArrayList;
 import java.util.List;
 
