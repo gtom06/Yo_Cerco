@@ -9,6 +9,8 @@ public final class Constants {
     private Constants(){
         throw new IllegalStateException(ConstantsExceptions.UTILITY_CLASS_INFO);
     }
+
+    public static final String RUN_OK = "Application started";
     //for google apis
     public static final String GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     public static final String GOOGLE_AND_KEY = "&key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
