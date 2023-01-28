@@ -7,8 +7,6 @@ import model.address.Address;
 import constants.Constants;
 import constants.ConstantsExceptions;
 import model.shop.Shop;
-
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +20,7 @@ public class LocationHandler {
         //uses googleapis
         Address address = null;
         try {
-            String httpResponse = HttpRequest.post(FileElaboration.fileToString("src/gmapskey"));
+            String httpResponse = HttpRequest.post(Constants.GEOLOCATION_URL);
             JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
             JsonObject jsonObject1 = (JsonObject) jsonObject.get("location");
             address = new Address(jsonObject1.get("lat").getAsDouble(), jsonObject1.get("lat").getAsDouble(), null);
@@ -39,7 +37,7 @@ public class LocationHandler {
         //uses googleapis
         Address address = null;
         try {
-            String httpResponse = HttpRequest.get(Constants.GEOCODE_URL + addressString.replace(" ", "+") + FileElaboration.fileToString("src/gkey"));
+            String httpResponse = HttpRequest.get(Constants.GEOCODE_URL + addressString.replace(" ", "+") + Constants.G_STRING1 + Constants.G_STRING2);
             JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
             JsonArray jsonObject1 = (JsonArray) jsonObject.get("results");
             JsonObject jsonObject2 = (JsonObject) jsonObject1.get(0);

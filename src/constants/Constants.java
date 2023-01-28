@@ -16,6 +16,9 @@ public final class Constants {
     public static final String RUN_OK_2 = "Application 2 started";
     //for google apis
     public static final String GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+    public static final String G_STRING1 = "&key=AIzaSyC_H";
+    public static final String G_STRING2 = "hyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
+    public static final String GEOLOCATION_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC_HhyhuMjokSEFzXZ4K3jQNkXJlgdBNFQ";
     public static final String GOOGLE_MAPS_LINK_START_STRING = "https://www.google.com/maps/place";
 
     //for postgres
