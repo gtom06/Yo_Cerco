@@ -73,9 +73,9 @@ public class OrderDao {
             stmt.setTimestamp(8, Timestamp.from(orderTimestamp.toInstant().plus(1, ChronoUnit.DAYS)));
             ResultSet rs = stmt.executeQuery();
             rs.next();
-
             order = new Order(rs.getInt("order_id"), shopId, username,
                     null, totalQuantity, null, "");
+
             order.setOrderTimestamp(rs.getTimestamp("order_timestamp"));
             order.setStatus(rs.getString("status"));
             order.setCollectionTimestamp(rs.getTimestamp("collection_order_timestamp"));

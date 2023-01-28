@@ -46,30 +46,32 @@ public class OrderHandler {
             OrderBean ob = new OrderBean();
             ob.setOrderId(order.getOrderId());
             ob.setShopId(order.getShopId());
-            ob.setPaymentId(order.getPaymentId());
-            ob.setOrderTimestamp(order.getOrderTimestamp());
-            ob.setTotalPrice(order.getTotalPrice());
-            ob.setCurrency(order.getCurrency());
+            ob.setPaymentId(order.getPayment().getPaymentId());
+            ob.setOrderTimestamp(order.getPayment().getPaymentTimestamp());
+            ob.setTotalPrice(order.getPayment().getTotalPrice());
+            ob.setCurrency(order.getPayment().getCurrency());
             ob.setOrderTotalQuantity(order.getOrderTotalQuantity());
             ob.setUsername(order.getUsername());
+            ob.setCollectionTimestamp(order.getCollectionTimestamp());
+            ob.setStatus(Constants.CREATED_STATUS);
             orderBeanArrayList.add(ob);
         }
         return orderBeanArrayList;
     }
 
     public static OrderBean populateOrderWithOrderItems(OrderBean order){
-        ArrayList<OrderItem> orderItemArrayList;
+        ArrayList<OrderItemBean> orderItemArrayList;
         try {
             String orderItemsJson = OrderDao.findOrderItemsFromOrder(order.getOrderId());
             if (orderItemsJson.equals("")){
                 return null;
             }
-            OrderItem[] output = new Gson().fromJson(orderItemsJson, OrderItem[].class);
+            OrderItemBean[] output = new Gson().fromJson(orderItemsJson, OrderItemBean[].class);
             if (output == null) {
                 return null;
             }
             orderItemArrayList = new ArrayList<>(List.of(output));
-            order.setOrderItemArrayList(OrderHandler.toListOrderItemBean(orderItemArrayList));
+            order.setOrderItemArrayList(orderItemArrayList);
         } catch (Exception e) {
             logger.log(Level.WARNING, ConstantsExceptions.ORDER_HANDLER_ERROR);
         }

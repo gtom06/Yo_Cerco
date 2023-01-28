@@ -26,10 +26,6 @@ public class Order {
         this.orderTotalQuantity = orderTotalQuantity;
         this.orderItemArrayList = orderItemArrayList;
         this.orderItemString = orderItemString;
-        this.paymentId = payment.getPaymentId();
-        this.orderTimestamp = payment.getPaymentTimestamp();
-        this.totalPrice = payment.getTotalPrice();
-        this.currency = payment.getCurrency();
     }
 
     public int getOrderId() {

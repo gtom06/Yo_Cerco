@@ -175,7 +175,7 @@ public class CartElaboration {
         try {
             if (!isEmptyCart()) {
                 //read json && convert to arrayList
-                orderItemArrayList = new ArrayList<>(List.of(new Gson().fromJson(new JsonReader(new FileReader(Constants.CART_PATH)), OrderItem[].class)));
+                orderItemArrayList = new ArrayList<>(List.of(new Gson().fromJson(new JsonReader(new FileReader(Constants.CART_PATH)), OrderItemBean[].class)));
                 for (OrderItemBean orderItem : orderItemArrayList) {
                     if (orderItem.getQuantityOrdered() == 0) {
                         orderItemArrayListToDel.add(orderItem);
