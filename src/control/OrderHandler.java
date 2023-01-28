@@ -78,29 +78,6 @@ public class OrderHandler {
         return order;
     }
 
-    private static List<OrderItemBean> toListOrderItemBean(ArrayList<OrderItem> orderItemArrayList) {
-        List<OrderItemBean> orderItemBeanList = new ArrayList<>();
-        for (OrderItem oi : orderItemArrayList) {
-            OrderItemBean orderItemBean = new OrderItemBean();
-            orderItemBean.setDiscountedPrice(oi.getDiscountedPrice());
-            orderItemBean.setPrice(oi.getPrice());
-            orderItemBean.setDepartmentId(oi.getDepartmentId());
-            orderItemBean.setPriceTotal(oi.getPriceTotal());
-            orderItemBean.setSize(oi.getSize());
-            orderItemBean.setLogoImagepath(oi.getLogoImagepath());
-            orderItemBean.setCurrency(oi.getCurrency());
-            orderItemBean.setSku(oi.getSku());
-            orderItemBean.setShopId(oi.getShopId());
-            orderItemBean.setUnitOfMeasure(oi.getUnitOfMeasure());
-            orderItemBean.setQuantityOrdered(oi.getQuantityOrdered());
-            orderItemBean.setDescription(oi.getDescription());
-            orderItemBean.setBrand(oi.getBrand());
-            orderItemBean.setName(oi.getName());
-            orderItemBeanList.add(orderItemBean);
-        }
-        return orderItemBeanList;
-    }
-
     public static OrderBean previewOrder() throws ExceptionCart {
         List<OrderItemBean> orderItemArrayList;
         try {
