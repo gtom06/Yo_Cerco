@@ -20,7 +20,7 @@ public class LocationHandler {
         //uses googleapis
         Address address = null;
         try {
-            String httpResponse = HttpRequest.post(Constants.GEOLOCATION_URL);
+            String httpResponse = HttpRequest.post(Constants.G_STRING3+ Constants.G_STRING2);
             JsonObject jsonObject = JsonParserCustom.convertStringToJsonObject(httpResponse);
             JsonObject jsonObject1 = (JsonObject) jsonObject.get("location");
             address = new Address(jsonObject1.get("lat").getAsDouble(), jsonObject1.get("lat").getAsDouble(), null);
