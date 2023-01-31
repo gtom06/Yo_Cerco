@@ -27,6 +27,7 @@ public class MainJavaFX1 extends Application {
         stage1.setScene(scene1);
         stage1.show();
         stage1.setResizable(false);
+        int a;
         CartElaboration.deleteCart();
     }
 }
